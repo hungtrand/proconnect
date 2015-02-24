@@ -69,29 +69,37 @@ fieldset {
 }
 
 #usertype li{
-display: inline;
-list-style-type: none;
-padding: 0px;
-margin-left:0px;
-text-align:left;
+	display: inline;
+	list-style-type: none;
+	padding: 0px;
+	margin-left:0px;
+	text-align:left;
 }
 
 .button {
-	background-color: #0571A6;
-	border-color:#045a8b;
+	background-color:-webkit-gradient(linear, left top, left bottom, color-stop(0, #73aec9), color-stop(5%, #73aec9), color-stop(5%, #338ab0), color-stop(100%, #0571a6));
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(115, 174, 201)), color-stop(0.05, rgb(115, 174, 201)), color-stop(0.05, rgb(51, 138, 176)), to(rgb(5, 113, 166)));
+	border: 1px solid #045a8b;
 	color: white;
-	height: 25px;
+	height: 24px;
+	width: 121px;
 }
 ul{
-line-height: 50%;
-padding:0px;
-margin-left: 30px;
+	line-height: 50%;
+	padding:0px;
+	margin-left: 30px;
 }
 
 ul .title{
-list-style-image: url("../image/info1.png");
-font-size: 15px;
+	list-style-image: url("../image/info1.png");
+	font-size: 15px;
 }
 ul .item{
-list-style-image: url("../image/info2.png");
+	list-style-image: url("../image/info2.png");
+}
+
+#self{
+	font-size: 11px;
+	line-height: 50%;
+	color: #666;
 }
