@@ -286,8 +286,8 @@
 		  <div class="controls">
 			<ul id="usertype">
 				<li class="employed">
-				<label for="employed-btn">
-				<input type="radio" name="status-chooser" value="employed" id="employed-btn">Employed
+					<label for="employed-btn">
+					<input type="radio" name="status-chooser" value="employed" id="employed-btn" checked>Employed
 				</label>
 				</li>
 				<li class="looking">
@@ -303,12 +303,13 @@
 			</ul>
 		  </div>
 		</div>
-	
+
 	<!--For employed-->	 
-		<div class="control-group">
+
+		<div id="jT" class="control-group">
 		  <!-- Job title-->
 		  <label class="control-label" for="jobTitle">* Job title</label>
-		  <div class="controls">
+		  <div class="controls" >
 			<input type="text" id="jobTitle" name="jobTitle" placeholder="" class="input-xlarge">
 			<input type="checkbox" name="self-employed" value="self-employed">I am self-employed<br>
 		  </div>
@@ -404,7 +405,7 @@
 			<input type="checkbox" name="age" value="age">I am 18 or older.<br>
 		  </div>
 		</div>
-		
+
 	
 		<div class="control-group">
 		  <!-- Button -->
@@ -415,6 +416,7 @@
 		</div>
 			
 	</div>
+	
 
 	<div class = "right">
 		<div class="info box">
@@ -432,4 +434,6 @@
 </form>
 
 </body>
+
+<script type="text/javascript" src="../js/signup.js"></script>
 </html>
