@@ -1,0 +1,63 @@
+body {
+  padding-top: 50px;
+  padding-left:0px;
+  background-image: url("../image/signout_background.png");
+  font: arial;
+}
+.starter-template {
+  font-size: 26px;
+  padding: 30px 0px;
+  text-align: left;
+}
+
+nav{
+height: 40px;
+}
+.container {
+padding-right: 15px;
+padding-left: 100px;
+margin-right: auto;
+margin-left: auto;
+
+}
+.navbar {
+min-height: 40px;
+}
+
+.navbar-brand {
+background-image: url(../image/signout_logo.png);
+background-repeat: no-repeat;
+background-position: center;
+float: left;
+width: 100px;
+height: 40px;
+}
+
+.navbar-inverse {
+background: #333;
+background-image: -webkit-linear-gradient(top, #555555 0%,#515151 18%,#373737 85%,#333333 100%);
+vertical-align: center;
+}
+#navbar{
+float: right;
+margin-right: 90px;
+}
+
+#logo{
+color: #D7D7D7;
+}
+
+.navbar-inverse .navbar-nav>li{
+height: 40px;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+color: #D7D7D7;
+height: 40px;
+padding: 10px;
+font-size: 13px;
+}
+
+.navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover {
+color: #0077B5;
+}
