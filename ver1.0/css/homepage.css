@@ -63,6 +63,7 @@ input[name="last"]{
 
 .logo {
 	float: left;
+	margin-top: 10px;
 }
 
 #main {

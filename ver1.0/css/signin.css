@@ -10,13 +10,7 @@ body {
   padding: 15px;
   margin: 0 auto;
 }
-.form-signin .form-signin-heading,
-.form-signin .checkbox {
-  margin-bottom: 10px;
-}
-.form-signin .checkbox {
-  font-weight: normal;
-}
+
 .form-signin .form-control {
   position: relative;
   height: auto;
@@ -37,9 +31,9 @@ background-color: rgba(238, 238, 238, 0.89);
 
 }
 #logo{
-  width: 200px;
-  margin-bottom: 20px;
-  margin-left:50px;
+  width: 250px;
+  margin-bottom: 25px;
+  margin-left:27px;
 }
 
 .form-signin input[type="email"] {
@@ -52,6 +46,12 @@ background-color: rgba(238, 238, 238, 0.89);
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+.btn-primary {
+color: #fff;
+background-color: #0497EC;
+border-color: #2e6da4;
+}
 #signUp{
+margin-top: 10px;
 margin-left: 60px;
 }
