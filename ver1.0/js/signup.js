@@ -22,8 +22,9 @@
 			student.style.display = "";
 			}
 	};
-	for(var i; i<signup_options.length; i++){
-	signup_options[i].addEventListener("click",showOption(this.value));
+	for(var i=0; i<signup_options.length; i++){
+	signup_options[i].addEventListener("click",showOption(signup_options[i].value));
+	console.log(signup_options[i].value);
 	}
 	/*
 	signup_options[0].addEventListener("click",showOption(signup_options[0].value));
