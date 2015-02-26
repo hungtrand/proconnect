@@ -33,16 +33,22 @@ class AccountAdmin {
 	public function signup($data) {
 		$this->err = null;
 
-		// routine check
+		// routine check / Validation
 		if (!isset($data)) return false;
 		if (strlen($data['Email'].'') == 0 || strlen($data['Password'].'') == 0
 			|| strlen($data['Username'].'') == 0 || strlen($data['FirstName'].'') == 0
 			|| strlen($data['LastName'].'') == 0) return false;
 
+		if (!filter_var($data['Email'], FILTER_VALIDATE_EMAIL)) {
+			$this->err = "Invalid Email Address";
+			return false;
+		}
+
 		if ($this->AccountExists($data['Username'], $data['Email'])) {
 			$this->err = "Account already exists";
 			return false;
 		}
+		// End of validation
 
 		$insertedID = 0;
 
