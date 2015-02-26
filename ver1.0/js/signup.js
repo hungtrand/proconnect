@@ -3,7 +3,7 @@
 	var jobseeker= document.getElementById("jobSeekerSelection");	
 	var student = document.getElementById("studentSelection");
 	
-	window.div_OnOff =function (value){
+	window.div_OnOff = function (value){
 		 if(value == "employed"){
 			employed.style.display = "";
 			jobseeker.style.display = "none";
