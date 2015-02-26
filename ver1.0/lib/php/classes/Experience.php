@@ -1,40 +1,40 @@
 <?php
  //include "../sqlConnection.php"; // For testing
- //$u = new User(1); echo $u->get('firstname').'\n'; // For testing
-// $u->update(['firstname'=>'Feb']); echo $u->get('firstname'); // For Testing
+ //$u = new Experience(1); echo $u->get('Description').'\n'; // For testing
+// $u->update(['Username'=>'Feb2015']); echo $u->get('Username'); // For Testing
 
 /*
-	The user class retrieve data of user from the provided UserID
-	@params: $UserID
-	$data: an associated array that act as the main property of the class user
-			this array holds all data from the database of instance user with UserID
+	The user class retrieve data of Account from the provided AccountID
+	@params: $AccountID
+	$data: an associated array that act as the main property of the class Account
+			this array holds all data from the database of instance user with AccountID
 			the key is the exact name of column in database, and the value is the field value
-	@update: public function update allow user to update its own data
-			after updating, the object user would reload itself with new data
+	@update: public function update allow Account to update its own data
+			after updating, the object Account would reload itself with new data
 */
-class User {
+class Experience {
 	private $data;
 	private $db;
 
-	function __construct($UserID) {
+	function __construct($ExperienceID) {
 		$this->db = connect('ProConnect');
 
-		$this->load($UserID);
+		$this->load($ExperienceID);
 	}
 
-	private function load($UserID) {
-		$sql = 'SELECT `UserID`, `FirstName`, `MiddleName`, `LastName`,
-				`Gender`, `Birthday`, `Address`, `City`, `State`, `Zip`
-				FROM `User` WHERE `UserID` = ? LIMIT 1 ';
+	private function load($ExperienceID) {
+		$sql = 'SELECT `ExperienceID`, `CompanyName`, `Title`, `Location`,
+				`TimePeriod`, `Description`, `DateCreated`
+				FROM `Experience` WHERE `ExperienceID` = ? LIMIT 1 ';
 
 		if ($stmt = $this->db->prepare($sql)) {
 
 			try {
-				$stmt->bindParam(1, $UserID);
+				$stmt->bindParam(1, $ExperienceID);
 
 				$stmt->execute();
 				$rs = $stmt->fetch(PDO::FETCH_ASSOC);
-
+				
 				foreach ($rs as $col => $value) {
 					$this->data[strtoupper($col)] = $value;
 				}
@@ -63,7 +63,7 @@ class User {
 			$delimiter = ", ";
 		}
 
-		$sql = "UPDATE `User` " . $setStmt . "WHERE `UserID` = ? ";
+		$sql = "UPDATE `Experience` " . $setStmt . "WHERE `ExperienceID` = ? ";
 
 		if ($stmt = $this->db->prepare($sql)) {
 
@@ -74,9 +74,9 @@ class User {
 					$i++;
 				}
 
-				$stmt->bindParam($i, $this->get('UserID'));
+				$stmt->bindParam($i, $this->get('ExperienceID'));
 				$stmt->execute();
-				$this->load($this->get('UserID'));
+				$this->load($this->get('ExperienceID'));
 			} catch (Exception $e) {
 				echo $e->getMessage();
 				return false;

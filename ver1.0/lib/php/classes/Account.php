@@ -1,6 +1,6 @@
 <?php
-// include "../sqlConnection.php"; // For testing
-// $u = new Account(1); echo $u->get('Username').'\n'; // For testing
+ //include "../sqlConnection.php"; // For testing
+ //$u = new Account(1); echo $u->get('Username').'\n'; // For testing
 // $u->update(['Username'=>'Feb2015']); echo $u->get('Username'); // For Testing
 
 /*
