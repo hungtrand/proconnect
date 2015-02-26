@@ -1,7 +1,14 @@
 <?php
- //include "../sqlConnection.php"; // For testing
- //$u = new User(1); echo $u->get('firstname').'\n'; // For testing
-// $u->update(['firstname'=>'Feb']); echo $u->get('firstname'); // For Testing
+ include "../sqlConnection.php"; // For testing
+ require_once "EducationManager.php";
+
+/* $u = new User(1); echo $u->get('firstname').'\n'; // For testing
+ $arrEdu = $u->getTopEducation(2);
+
+for ($i=0; $i<count($arrEdu);$i++) {
+	$edu = $arrEdu[$i];
+	echo $edu->get('school');
+}*/
 
 /*
 	The user class retrieve data of user from the provided UserID
@@ -15,11 +22,13 @@
 class User {
 	private $data;
 	private $db;
+	private $EducationManager;
 
 	function __construct($UserID) {
 		$this->db = connect('ProConnect');
 
 		$this->load($UserID);
+		$this->EducationManager = new EducationManager($this);
 	}
 
 	private function load($UserID) {
@@ -52,6 +61,18 @@ class User {
 
 	public function get($field) {
 		return $this->data[strtoupper($field)];
+	}
+
+	public function getCurrentEducation() {
+		return $this->EducationManager->getOne();
+	}
+
+	public function getAllEducation() {
+		return $this->EducationManager->getAll();
+	}
+
+	public function getTopEducation($num) {
+		return $this->EducationManager->getTop($num);
 	}
 
 	public function update($newData) {

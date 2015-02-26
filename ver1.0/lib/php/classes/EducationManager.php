@@ -1,14 +1,16 @@
 <?php
-// include ../sqlConnection.php
-require_once "../interfaces.php"
+// include "../sqlConnection.php";
+require_once "Education.php";
+require_once "../interfaces.php";
 
 class EducationManager implements manager {
-	private User;
+	private $User;
 	private $db;
 
 	function __construct($User) {
 		$this->db = connect('ProConnect');
 		$this->User = $User;
+	}
 
 	public function getOne() {
 		$sql = 'SELECT `EduID` FROM `Education` WHERE `UserID` = ? 
@@ -31,7 +33,7 @@ class EducationManager implements manager {
 			}
 			
 
-			if (isset($EduID) {
+			if (isset($EduID)) {
 				$Edu = new Education($EduID);
 				return $Edu;
 			}
@@ -54,11 +56,11 @@ class EducationManager implements manager {
 				$stmt->execute();
 				$rs = $stmt->fetchAll();
 
-				
-				for ($rs as $row) {
+				for ($i=0;$i<count($rs);$i++) {
+					$row = $rs[$i];
 					$Edu = new Education($row['EduID']);
 					array_push($Edus, $Edu);
-				}				
+				}		
 			} catch (Exception $e) {
 				echo $e->getMessage();
 				return false;
@@ -71,22 +73,24 @@ class EducationManager implements manager {
 	}
 
 	public function getTop($num) {
+		if (!is_integer($num)) return false;
+		
 		$Edus = [];
 		
 		$sql = 'SELECT `EduID` FROM `Education` WHERE `UserID` = ? 
-				ORDER BY `EduID` DESC LIMIT ? ';
+				ORDER BY `EduID` DESC LIMIT ' . $num;
 
 		if ($stmt = $this->db->prepare($sql)) {
 
 			try {
 				$stmt->bindParam(1, $this->User->get('UserID'));
-				$stmt->bindParam(2, $num);
+				//$stmt->bindParam(2, $num);
 
 				$stmt->execute();
 				$rs = $stmt->fetchAll();
-
 				
-				for ($rs as $row) {
+				for ($i=0;$i<count($rs);$i++) {
+					$row = $rs[$i];
 					$Edu = new Education($row['EduID']);
 					array_push($Edus, $Edu);
 				}				
