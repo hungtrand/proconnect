@@ -1,0 +1,102 @@
+body {
+  padding-top: 50px;
+  padding-left:0px;
+  /*background-image: url("../image/signout_background.png");*/
+  font: arial;
+  background-color: #E8E8E8;
+}
+
+header {
+	margin-bottom: 25px;
+}
+
+small {
+display: block;
+line-height: 1.428571429;
+color: #999;
+}
+
+nav{
+height: 40px;
+}
+
+.container {
+padding-right: 15px;
+padding-left: 100px;
+margin-right: auto;
+margin-left: auto;
+
+}
+
+.team-member-block {
+	min-height: 48px;
+}
+
+.team-member-mini-image {
+	max-width: 38px;
+}
+
+.team-member-block-description p {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.team-members-container {
+}
+
+.glyphicon {  
+margin-bottom: 10px;
+margin-right: 10px;
+}
+
+#main-container {
+	margin-top:20px;
+}
+
+.navbar {
+min-height: 50px;
+}
+
+.navbar-brand {
+background-image: url(../image/proconnect/logo_text.png);
+background-repeat: no-repeat;
+background-position: center;
+float: left;
+width: 250px;
+height: 40px;
+}
+
+.navbar-inverse {
+background: #333;
+background-image: -webkit-linear-gradient(top, #555555 0%,#515151 18%,#373737 85%,#333333 100%);
+vertical-align: center;
+}
+#navbar{
+float: right;
+margin-right: 90px;
+}
+
+#logo{
+color: #D7D7D7;
+}
+
+.navbar-inverse .navbar-nav>li{
+height: 40px;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+color: #D7D7D7;
+height: 40px;
+padding: 10px;
+font-size: 13px;
+}
+
+.navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover {
+color: #0077B5;
+}
+
+.well {
+	background-color: white;
+	box-shadow: 0 1px 1px #ccc;
+}
