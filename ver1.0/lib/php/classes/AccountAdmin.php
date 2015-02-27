@@ -136,5 +136,37 @@ class AccountAdmin {
 			return true;
 		}
 	}
+
+	public function validateAccount($login, $password) {
+		if (!(isset($login) && isset($password)) return false;
+
+		$sql = 'SELECT `AccountID` FROM `Account` 
+				WHERE (`Username` LIKE ? OR `Email` LIKE ?) 
+				AND `Password` = ? AND `Active` = 1 ';
+		$cnt;
+
+		if ($stmt = $this->db->prepare($sql)) {
+
+			try {
+				$stmt->bindParam(1, $login);
+				$stmt->bindParam(2, $login);
+				$stmt->bindParam(3, $password);
+
+				$stmt->execute();
+				$rs = $stmt->fetch(PDO::FETCH_ASSOC);
+				$id = $rs['AccountID'];
+			} catch (Exception $e) {
+				$this->err = $e->getMessage();
+				return false;
+			}
+		} else {
+			return false;
+		}
+
+		if (!isset($id)) return false;
+		} else {
+			return $id;
+		}
+	}
 }
 ?>
