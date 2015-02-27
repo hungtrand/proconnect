@@ -59,6 +59,7 @@ input[name="last"]{
 
 #login-short-cut-control li {
 	float: left;
+	padding: 10px;
 }
 
 .logo {
