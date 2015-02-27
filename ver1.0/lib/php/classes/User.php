@@ -1,6 +1,6 @@
 <?php
- include "../sqlConnection.php"; // For testing
- require_once "EducationManager.php";
+ //include "../sqlConnection.php"; // For testing
+ require_once __DIR__."/EducationManager.php";
 
 /* $u = new User(1); echo $u->get('firstname').'\n'; // For testing
  $arrEdu = $u->getTopEducation(2);
@@ -61,6 +61,10 @@ class User {
 
 	public function get($field) {
 		return $this->data[strtoupper($field)];
+	}
+
+	public function getData() {
+		return $this->data;
 	}
 
 	public function getCurrentEducation() {

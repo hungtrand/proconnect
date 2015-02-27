@@ -1,9 +1,9 @@
 <?php
-require_once "../sqlConnection.php"; // For testing
+//require_once __DIR__."/../sqlConnection.php"; // For testing
 
 // We are using PHPMailer library to send out email
 // Documentation here: https://github.com/PHPMailer/PHPMailer
-require_once "../../PHPMailer/PHPMailerAutoload.php";
+require_once __DIR__."/../../PHPMailer/PHPMailerAutoload.php";
 
 // $m = new Email(['EMAILTO'=>'hung.d.tran@sjsu.edu']); 
 // $m->loadTemplate(1, ['{{FullName}}'=>'Hung Tran', '{{VerificationLink}}'=>'http://www.google.com']);

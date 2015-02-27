@@ -1,7 +1,7 @@
 <?php
 // include "../sqlConnection.php";
-require_once "Education.php";
-require_once "../interfaces.php";
+require_once __DIR__."/Education.php";
+require_once __DIR__."/../interfaces.php";
 
 class EducationManager implements manager {
 	private $User;

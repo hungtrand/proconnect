@@ -1,6 +1,7 @@
 <?php
-include "../sqlConnection.php"; // For testing
-require_once "Email.php";
+//include "../sqlConnection.php"; // For testing
+require_once __DIR__."/Email.php";
+require_once __DIR__."/Account.php";
 /* Test scripts
 $u = ["FirstName"=>"Iron", "LastName"=>"Man", 
 		"Username"=>"iman", "Password"=>"robots",
@@ -137,8 +138,8 @@ class AccountAdmin {
 		}
 	}
 
-	public function validateAccount($login, $password) {
-		if (!(isset($login) && isset($password)) return false;
+	public function getAccount($login, $password) {
+		if (!(isset($login) && isset($password))) return false;
 
 		$sql = 'SELECT `AccountID` FROM `Account` 
 				WHERE (`Username` LIKE ? OR `Email` LIKE ?) 
@@ -164,8 +165,8 @@ class AccountAdmin {
 		}
 
 		if (!isset($id)) return false;
-		} else {
-			return $id;
+		else {
+			return new Account($id);
 		}
 	}
 }
