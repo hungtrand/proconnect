@@ -1,0 +1,147 @@
+0,47,corp fin,Accounting
+0,94,man tech tran,Airlines/Aviation
+0,120,leg org,Alternative Dispute Resolution
+0,125,hlth,Alternative Medicine
+0,127,art med,Animation
+0,19,good,Apparel & Fashion
+0,50,cons,Architecture & Planning
+0,111,art med rec,Arts and Crafts
+0,53,man,Automotive
+0,52,gov man,Aviation & Aerospace
+0,41,fin,Banking
+0,12,gov hlth tech,Biotechnology
+0,36,med rec,Broadcast Media
+0,49,cons,Building Materials
+0,138,corp man,Business Supplies and Equipment
+0,129,fin,Capital Markets
+0,54,man,Chemicals
+0,90,org serv,Civic & Social Organization
+0,51,cons gov,Civil Engineering
+0,128,cons corp fin,Commercial Real Estate
+0,118,tech,Computer & Network Security
+0,109,med rec,Computer Games
+0,3,tech,Computer Hardware
+0,5,tech,Computer Networking
+0,4,tech,Computer Software
+0,48,cons,Construction
+0,24,good man,Consumer Electronics
+0,25,good man,Consumer Goods
+0,91,org serv,Consumer Services
+0,18,good,Cosmetics
+0,65,agr,Dairy
+0,1,gov tech,Defense & Space
+0,99,art med,Design
+0,69,edu,Education Management
+0,132,edu org,E-Learning
+0,112,good man,Electrical/Electronic Manufacturing
+0,28,med rec,Entertainment
+0,86,org serv,Environmental Services
+0,110,corp rec serv,Events Services
+0,76,gov,Executive Office
+0,122,corp serv,Facilities Services
+0,63,agr,Farming
+0,43,fin,Financial Services
+0,38,art med rec,Fine Art
+0,66,agr,Fishery
+0,34,rec serv,Food & Beverages
+0,23,good man serv,Food Production
+0,101,org,Fund-Raising
+0,26,good man,Furniture
+0,29,rec,Gambling & Casinos
+0,145,cons man,"Glass, Ceramics & Concrete"
+0,75,gov,Government Administration
+0,148,gov,Government Relations
+0,140,art med,Graphic Design
+0,124,hlth rec,"Health, Wellness and Fitness"
+0,68,edu,Higher Education
+0,14,hlth,Hospital & Health Care
+0,31,rec serv tran,Hospitality
+0,137,corp,Human Resources
+0,134,corp good tran,Import and Export
+0,88,org serv,Individual & Family Services
+0,147,cons man,Industrial Automation
+0,84,med serv,Information Services
+0,96,tech,Information Technology and Services
+0,42,fin,Insurance
+0,74,gov,International Affairs
+0,141,gov org tran,International Trade and Development
+0,6,tech,Internet
+0,45,fin,Investment Banking
+0,46,fin,Investment Management
+0,73,gov leg,Judiciary
+0,77,gov leg,Law Enforcement
+0,9,leg,Law Practice
+0,10,leg,Legal Services
+0,72,gov leg,Legislative Office
+0,30,rec serv tran,"Leisure, Travel & Tourism"
+0,85,med rec serv,Libraries
+0,116,corp tran,Logistics and Supply Chain
+0,143,good,Luxury Goods & Jewelry
+0,55,man,Machinery
+0,11,corp,Management Consulting
+0,95,tran,Maritime
+0,97,corp,Market Research
+0,80,corp med,Marketing and Advertising
+0,135,cons gov man,Mechanical or Industrial Engineering
+0,126,med rec,Media Production
+0,17,hlth,Medical Devices
+0,13,hlth,Medical Practice
+0,139,hlth,Mental Health Care
+0,71,gov,Military
+0,56,man,Mining & Metals
+0,35,art med rec,Motion Pictures and Film
+0,37,art med rec,Museums and Institutions
+0,115,art rec,Music
+0,114,gov man tech,Nanotechnology
+0,81,med rec,Newspapers
+0,100,org,Non-Profit Organization Management
+0,57,man,Oil & Energy
+0,113,med,Online Media
+0,123,corp,Outsourcing/Offshoring
+0,87,serv tran,Package/Freight Delivery
+0,146,good man,Packaging and Containers
+0,61,man,Paper & Forest Products
+0,39,art med rec,Performing Arts
+0,15,hlth tech,Pharmaceuticals
+0,131,org,Philanthropy
+0,136,art med rec,Photography
+0,117,man,Plastics
+0,107,gov org,Political Organization
+0,67,edu,Primary/Secondary Education
+0,83,med rec,Printing
+0,105,corp,Professional Training & Coaching
+0,102,corp org,Program Development
+0,79,gov,Public Policy
+0,98,corp,Public Relations and Communications
+0,78,gov,Public Safety
+0,82,med rec,Publishing
+0,62,man,Railroad Manufacture
+0,64,agr,Ranching
+0,44,cons fin good,Real Estate
+0,40,rec serv,Recreational Facilities and Services
+0,89,org serv,Religious Institutions
+0,144,gov man org,Renewables & Environment
+0,70,edu gov,Research
+0,32,rec serv,Restaurants
+0,27,good man,Retail
+0,121,corp org serv,Security and Investigations
+0,7,tech,Semiconductors
+0,58,man,Shipbuilding
+0,20,good rec,Sporting Goods
+0,33,rec,Sports
+0,104,corp,Staffing and Recruiting
+0,22,good,Supermarkets
+0,8,gov tech,Telecommunications
+0,60,man,Textiles
+0,130,gov org,Think Tanks
+0,21,good,Tobacco
+0,108,corp gov serv,Translation and Localization
+0,92,tran,Transportation/Trucking/Railroad
+0,59,man,Utilities
+0,106,fin tech,Venture Capital & Private Equity
+0,16,hlth,Veterinary
+0,93,tran,Warehousing
+0,133,good,Wholesale
+0,142,good man rec,Wine and Spirits
+0,119,tech,Wireless
+0,103,art med rec,Writing and Editing
