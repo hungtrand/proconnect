@@ -11,8 +11,12 @@
 
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
+	
+	<!--customed CSS-->
 	<link rel="stylesheet" type="text/css" href="css/homepage.css">
+	
+	<!-- JavaScript link -->
+    <script type="text/javascript" src="js/index.js"></script>
 	
 </head>
 <body>
@@ -73,17 +77,17 @@
 						<div>
 							<form action="javascript:void(0);" method="POST" novalidate>
 								<div class="form-group input-lg">
-									<input class="form-control" type="text" name="first" placeholder="First name" required> 
-									<input class="form-control" type="text" name="last" placeholder="Last name" required>
+									<input class="form-control" id= "first" type="text" name="first" placeholder="First name" required> 
+									<input class="form-control" id= "last"type="text" name="last" placeholder="Last name" required>
 								</div>
 								<div class="form-group input-lg">
-									<input class="form-control col-md-12" type="email" name="email" placeholder="Email address" required>
+									<input class="form-control col-md-12" id= "email" type="email" name="email" placeholder="Email address" required>
 								</div>
 								<div class="form-group input-lg">
-									<input class="form-control col-md-12" type="password" name="email" placeholder="Password (6 or more characters)" required>
+									<input class="form-control col-md-12" id= "password" type="password" name="password" placeholder="Password (6 or more characters)" required>
 								</div>
 								<div class="form-group input-lg">
-									<button class="gold-gradient btn btn-lg btn-block" type="submit"><b>Join now</b></button>
+									<button class="gold-gradient btn btn-lg btn-block" id = "signup-btn"type="submit"><b>Join now</b></button>
 								</div>
 							</form>
 						</div>
