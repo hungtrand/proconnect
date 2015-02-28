@@ -1,0 +1,6 @@
+CREATE TABLE `Skills` (
+  `SkillID` int(11) NOT NULL AUTO_INCREMENT,
+  `SkillName` varchar(45) DEFAULT NULL,
+  `SkillCategories` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`SkillID`)
+) ENGINE=InnoDB AUTO_INCREMENT=65536 DEFAULT CHARSET=latin1;
