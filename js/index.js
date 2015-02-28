@@ -3,9 +3,13 @@ $(document).ready(function() {
 	  
 	  //show alert if any field is empty or email is in invalid form
 	  $("#signin-btn").click(function(){
-		  
+		  //clear previous error box
 		  $('#email-login').css({"border": ""});
 		  $('#password-login').css({"border": ""});
+		  $('#first').css({"border": ""});
+		  $('#last').css({"border": ""});
+		  $('#email').css({"border": ""});
+		  $('#password').css({"border": ""});
 			
           var email= $('#email-login').val();
           var password = $('#password-login').val();
@@ -39,6 +43,9 @@ $(document).ready(function() {
 	  //show alert if any field is empty or in invalid form
 	  $("#signup-btn").click(function(){
 		  
+		  //clear previous error box 
+		  $('#email-login').css({"border": ""});
+		  $('#password-login').css({"border": ""});
 		  $('#first').css({"border": ""});
 		  $('#last').css({"border": ""});
 		  $('#email').css({"border": ""});

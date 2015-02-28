@@ -7,7 +7,7 @@ body {
 }
 #logo-container{
 	margin: 0 auto;
-  	width: 805px;
+  	width: 820px;
 	padding:0px;
 	padding-bottom: 5px;
 }
@@ -17,7 +17,7 @@ body {
 }
 fieldset { 
     display: block;
-	width: 805px;
+	width: 820px;
 	margin: 0 auto;
     padding-top: 1em;
     padding-bottom: 3em;
@@ -42,7 +42,7 @@ margin-bottom: 0px;
 
 .left{
 	float: left;
-	width: 420px;
+	width: 450px;
 	text-align: right;
 	padding: 0px;
 	margin-top: 30px;
@@ -62,11 +62,11 @@ margin-bottom: 0px;
 	float: left;
 	font-weight: bold;
 	text-align: right;
-	width: 145px;
+	width: 160px;
 }
 .controls{
 	text-align: left;
-	margin-left: 155px;
+	margin-left: 170px;
 }
 .input-xlarge{
 	width: 290px;
@@ -88,6 +88,7 @@ margin-bottom: 0px;
 
 .button {
 	background-color:-webkit-gradient(linear, left top, left bottom, color-stop(0, #73aec9), color-stop(5%, #73aec9), color-stop(5%, #338ab0), color-stop(100%, #0571a6));
+	background-color:rgb(5, 113, 166);
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(115, 174, 201)), color-stop(0.05, rgb(115, 174, 201)), color-stop(0.05, rgb(51, 138, 176)), to(rgb(5, 113, 166)));
 	border: 1px solid #045a8b;
 	color: white;
