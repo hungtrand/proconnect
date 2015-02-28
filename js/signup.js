@@ -1,4 +1,4 @@
-(function() {
+$(document).ready(function() {
 	var employed = document.getElementById("employedSelection");
 	var jobseeker= document.getElementById("jobSeekerSelection");	
 	var student = document.getElementById("studentSelection");
