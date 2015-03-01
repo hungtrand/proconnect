@@ -1,3 +1,7 @@
+<?php
+include '../signout/php/session_check_signout.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,13 +14,13 @@
 
     <title>Edit Profile</title>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="../lib/jquery/jquery-2.1.3.min.js"></script>
 
     <!-- Bootstrap core CSS -->
     <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="../css/profile-user-POV.css" rel="stylesheet">
+    <link href="css/profile-user-POV.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -31,7 +35,6 @@
 
     <!-- JQuery UI -->
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
-    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="http://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
 
     <!-- Bootstrap core JavaScript
@@ -43,7 +46,7 @@
     <script src="../js/ie10-viewport-bug-workaround.js"></script>
 
     <!-- Custome Script -->
-    <script src="../js/profile-user-POV.js"></script>
+    <script src="js/profile-user-POV.js"></script>
   </head>
 
   <body>
@@ -57,7 +60,7 @@
           <ul class="nav navbar-nav">
             <li><a href="#about">What is ProConnect?</a></li>
             <li><a href="#signup">Join Today</a></li>
-            <li><a href="../signout/signout.html">Sign Out</a></li>
+            <li><a href="../signout/php/session_signout.php">Sign Out</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

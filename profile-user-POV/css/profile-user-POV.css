@@ -132,7 +132,7 @@ nav{
 }
 
 .navbar-brand {
-	background-image: url(../image/proconnect/logo_text.png);
+	background-image: url(../../image/proconnect/logo_text.png);
 	background-repeat: no-repeat;
 	background-position: center;
 	float: left;

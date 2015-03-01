@@ -70,6 +70,7 @@ class AccountAdmin {
 			}
 
 		} else {
+			$this->err = "signup err: fail to prepare the database.";
 			return false;
 		}
 
@@ -84,7 +85,7 @@ class AccountAdmin {
 
 			try {
 				$stmt->bindParam(1, $data['Username']);
-				$stmt->bindParam(2, $data['Password']);
+				$stmt->bindParam(2, sha1($data['Password']));
 				$stmt->bindParam(3, $data['Email']);
 				$stmt->bindParam(4, $insertedID);
 				$stmt->bindParam(5, $VerificationKey);
@@ -100,7 +101,7 @@ class AccountAdmin {
 
 		// send email with verification link
 		$mailVar = ["{{FullName}}" => $data['FirstName'].' '.$data['LastName'], 
-					"{{VerificationLink}}" => "https://www.proconnect.com/ver1.0/signup/EmailVerification.php?VerificationKey=".urlencode($VerificationKey)];
+					"{{VerificationLink}}" => "http://79.170.40.230/proconnect.com/signup/EmailVerification.php?Email=".urlencode($data['Email'])."&VerificationKey=".urlencode($VerificationKey)];
 		$m = new Email(["EMAILTO"=>$data['Email']]);
 		$m->loadTemplate(1, $mailVar);
 		$m->send();
@@ -127,6 +128,7 @@ class AccountAdmin {
 				return false;
 			}
 		} else {
+			$this->err = "exists err: fail to prepare the database.";
 			return false;
 		}
 
@@ -144,14 +146,13 @@ class AccountAdmin {
 		$sql = 'SELECT `AccountID` FROM `Account` 
 				WHERE (`Username` LIKE ? OR `Email` LIKE ?) 
 				AND `Password` = ? AND `Active` = 1 ';
-		$cnt;
 
 		if ($stmt = $this->db->prepare($sql)) {
 
 			try {
 				$stmt->bindParam(1, $login);
 				$stmt->bindParam(2, $login);
-				$stmt->bindParam(3, $password);
+				$stmt->bindParam(3, sha1($password));
 
 				$stmt->execute();
 				$rs = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -168,6 +169,61 @@ class AccountAdmin {
 		else {
 			return new Account($id);
 		}
+	}
+
+	public function verifyAccount($email, $VerificationKey) {
+		if (!(isset($email) && isset($VerificationKey))) return false;
+
+		$sql = 'SELECT `AccountID` FROM `Account`
+				WHERE `Email` LIKE ? AND `VerificationKey` = ? 
+        		AND `Active` = 1 AND `Verified` = 0;';
+
+		if ($stmt = $this->db->prepare($sql)) {
+
+			try {
+				$stmt->bindParam(1, $email);
+				$stmt->bindParam(2, $VerificationKey);
+
+				$stmt->execute();
+				$rs = $stmt->fetch(PDO::FETCH_ASSOC);
+				
+				//echo json_encode($rs);
+				$id = $rs['AccountID'];
+			} catch (Exception $e) {
+				$this->err = $e->getMessage();
+				return false;
+			}
+		} else {
+			$this->err = "verify Err: failed to prepare database.";
+			return false;
+		}
+
+		if (!isset($id)) {
+			$this->err = "verify Err: failed to obtain associated account.";
+			return false;
+		} 
+
+		$acc = new Account($id);
+		if (!$acc->get("AccountID")) return false;
+
+		$sql = 'UPDATE `Account` SET `Verified` = 1, `Active` = 1 WHERE `AccountID` = ? ';
+		
+		if ($stmt = $this->db->prepare($sql)) {
+
+			try {
+				$stmt->bindParam(1, $id);
+
+				$stmt->execute();
+			} catch (Exception $e) {
+				$this->err = $e->getMessage();
+				return false;
+			}
+		} else {
+			$this->err = "verify Err: failed to update database.";
+			return false;
+		}
+
+		return $acc;
 	}
 }
 ?>
