@@ -7,7 +7,7 @@ body {
 }
 #logo-container{
 	margin: 0 auto;
-  	width: 780px;
+  	width: 805px;
 	padding:0px;
 	padding-bottom: 5px;
 }
@@ -17,7 +17,7 @@ body {
 }
 fieldset { 
     display: block;
-	width: 780px;
+	width: 805px;
 	margin: 0 auto;
     padding-top: 1em;
     padding-bottom: 3em;
@@ -26,24 +26,33 @@ fieldset {
 	background-color: white;
     border: 1px solid #CCC;
 }
+#username{
+	float: left;
+}
 #legend{
 	color: #39C;
 	font-size: 16px;
-	padding-bottom : 10px;
+	padding-bottom :0px;
 	border-bottom:1px solid #CCC;
-	margin-bottom: 30px;
+	margin-bottom: 0px;
 }
+.alert{
+margin-bottom: 0px;
+}
+
 .left{
 	float: left;
-	width: 450px;
+	width: 420px;
 	text-align: right;
 	padding: 0px;
+	margin-top: 30px;
 }
 .right{
 	float: right;
 	width: 280px;
     border: 1px solid #BADDEE;
 	padding: 0px;
+	margin-top: 30px;
 }
 
 .control-group{
@@ -53,11 +62,11 @@ fieldset {
 	float: left;
 	font-weight: bold;
 	text-align: right;
-	width: 150px;
+	width: 145px;
 }
 .controls{
 	text-align: left;
-	margin-left: 160px;
+	margin-left: 155px;
 }
 .input-xlarge{
 	width: 290px;
