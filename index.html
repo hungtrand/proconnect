@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>World's Most Professional Connection Network</title>
+
+	<!-- JQuery link -->
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	
+	<!--customed CSS-->
+	<link rel="stylesheet" type="text/css" href="css/homepage.css">
+	
+	<!-- JavaScript link -->
+    <script type="text/javascript" src="js/index.js"></script>
+	
+</head>
+<body>
+	<div id="header" class="container">
+
+		<div class="row"> 
+			<div id="header-body" class="col-md-12">
+				<div class="row">
+					<div class="col-md-2 col-md-offset-1">
+
+						<!-- logo needs to be changed to ProConnect -->
+						<img class="logo" src="image/proconnect/logo_text.png" alt="ProConnect" > 
+					</div>
+				
+					<div class="col-md-5 col-md-offset-4">
+						<!-- login shortcut -->
+						<form id="login-short-cut" method="POST" action="javascript:void(0)" novalidate>
+							
+								<ul id="login-short-cut-control">
+									<li>
+										<label for="email-login" >Email Address</label> <br>
+										<input id="email-login" name="email" type="email" tabindex="1" > 
+									</li>
+									<li>
+										<label for="password-login" >Password</label> 
+										<a href="javascript:void(0)" tabindex="4">Forgot your password?</a>
+										<br>
+										<input id="password-login" name="password" type="password" tabindex="2" > 
+									</li>
+									<li>
+										<input id="signin-btn" type="submit" tabindex="3"> 
+									</li>
+								</ul>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="main-wrapper"  >	
+
+		<!-- Invalid input alert -->
+		<div class="alert alert-danger" role="alert" style="display: none;"><b>Invalid Input :</b> Please correct the marked field(s)</div>
+			<div id="main" class="container" >
+
+		<div id="main" class="container" >
+			
+				<h2>Stay Connected With Your Profession.</h2>
+				<div id="main-body" class="row">
+					<section id="left-section" class="col-md-6">
+						<img class="img-rounded" src="image/pronetwork.jpg" style="width: 100%;" />
+					</section>
+
+					<section id="right-section" class="col-md-5">
+						<h2>Get started &mdash; it's free!</h2>
+						<p style="font-size:16px">Registration takes less than 2 minutes.</p>
+						<div>
+							<form action="javascript:void(0);" method="POST" novalidate>
+								<div class="form-group input-lg">
+									<input class="form-control" id= "first" type="text" name="first" placeholder="First name" required> 
+									<input class="form-control" id= "last"type="text" name="last" placeholder="Last name" required>
+								</div>
+								<div class="form-group input-lg">
+									<input class="form-control col-md-12" id= "email" type="email" name="email" placeholder="Email address" required>
+								</div>
+								<div class="form-group input-lg">
+									<input class="form-control col-md-12" id= "password" type="password" name="password" placeholder="Password (6 or more characters)" required>
+								</div>
+								<div class="form-group input-lg">
+									<button class="gold-gradient btn btn-lg btn-block" id = "signup-btn"type="submit"><b>Join now</b></button>
+								</div>
+							</form>
+						</div>
+					</section>
+				</div>
+			
+	</div>
+	
+	<footer>
+		<div id="footer" class="container-fluid">
+			<div>Some footer info here</div>
+		</div>
+	</footer>
+
+</body>
+</html>
