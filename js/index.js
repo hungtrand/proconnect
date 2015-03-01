@@ -106,7 +106,7 @@ $(document).ready(function() {
             }
 			if(IsPassword(password)==false){
                 $('#password').css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
-				$(".alert").text("password has to be 6-20 in length ");
+				$(".alert").text("password must contain at least one lower case, one upper case, one special character, one digit and minimum 6 characters in length ");
 				$(".alert").show();
                 return false;
             }
@@ -129,8 +129,9 @@ $(document).ready(function() {
            return true;
         }
       }
+	  //at least one lower case, one upper case, one special character, one digit and minimum 6 characters in length
 	  	  function IsPassword(password) {
-        var regex = /^.{6,20}$/;
+        var regex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/;
         if(!regex.test(password)) {
            return false;
         }else{
