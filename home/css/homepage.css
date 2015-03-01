@@ -28,16 +28,6 @@
 }
 
 
-input[name="first"]{
-	float: left;
-	width: 49%;
-}
-
-input[name="last"]{
-	float: right;
-	width: 49%;
-}
-
 #main-wrapper {
 	margin-top: 40px;
 	margin-bottom: 40px;

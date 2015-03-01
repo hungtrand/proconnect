@@ -1,3 +1,7 @@
+<?php
+	include 'signout/php/session_check.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,6 +21,7 @@
 	
 	<!-- JavaScript link -->
 	<script type="text/javascript" src="signin/js/SignInForm.js"></script>
+	<script type="text/javascript" src="signup/js/SignUpForm.js"></script>
 	<script type="text/javascript" src="home/js/home.js"></script>
     <script type="text/javascript" src="home/js/index.js"></script>
     
@@ -72,25 +77,45 @@
 					<h2>Get started &mdash; it's free!</h2>
 					<p style="font-size:16px">Registration takes less than 2 minutes.</p>
 					<div>
-						<form action="javascript:void(0);" method="POST" novalidate>
-							<div class="form-group input-lg">
-								<input class="form-control" id= "first" type="text" name="first" placeholder="First name" required> 
-								<input class="form-control" id= "last"type="text" name="last" placeholder="Last name" required>
+						<form id="SignUpForm" action="signup/php/user_signup.php" class="text-left" novalidate>
+							<div class="form-group" style="overflow: auto;">
+								<div class="col-xs-6" style="padding: 0 5px 0 0">
+									<label for"first">First Name:</label> <br />
+									<input class="form-control" id="first" type="text" name="first" placeholder="First name" required> 
+								</div>
+
+								<div class="col-xs-6" style="padding: 0 0 0 5px">
+									<label for"last">Last Name:</label> <br />
+									<input class="form-control" id="last" type="text" name="last" placeholder="Last name" required>
+								</div>
 							</div>
-							<div class="form-group input-lg">
-								<input class="form-control col-md-12" id= "email" type="email" name="email" placeholder="Email address" required>
+
+							<div class="form-group">
+								<label for="email">Email</label> <br />
+								<input class="form-control" id="email" type="email" name="email" placeholder="professional@proconnect.com" required>
 							</div>
-							<div class="form-group input-lg">
-								<input class="form-control col-md-12" id= "password" type="password" name="password" placeholder="Password (6 or more characters)" required>
+
+							<div class="form-group">
+								<label for="password">Password</label> <br />
+								<input class="form-control" id="password" type="password" name="password" placeholder="6 or more characters" required>
 							</div>
-							<div class="form-group input-lg">
+
+							<div class="form-group">
+								<label for="confpassword">Confirm Password</label> <br />
+								<input class="form-control" id="confpassword" type="password" name="confpassword" placeholder="retype your password above" required>
+							</div>
+
+							<!-- Invalid input alert -->
+							<div class="form-group">
+								<div class="alert alert-danger text-center" role="alert" style="display: none; margin-top: 10px;"><b>Invalid Input :</b> Please correct the marked field(s)</div>
+							</div>
+
+							<div class="form-group">
 								<button class="gold-gradient btn btn-lg btn-block" id = "signup-btn"type="submit"><b>Join now</b></button>
 							</div>
+
 						</form>
 					</div>
-
-					<!-- Invalid input alert -->
-					<div class="alert alert-danger text-center" role="alert" style="display: none;"><b>Invalid Input :</b> Please correct the marked field(s)</div>
 
 				</section>
 			</div>

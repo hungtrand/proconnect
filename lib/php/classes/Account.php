@@ -15,6 +15,7 @@
 class Account {
 	private $data;
 	private $db;
+	public $err;
 
 	function __construct($ID) {
 		$this->db = connect('ProConnect');
@@ -25,7 +26,8 @@ class Account {
 	private function load($ID) {
 		$sql = 'SELECT `AccountID`, `Username`, `Password`, `Email`,
 				`Email_Alt`, `SecurityQuestion`, `SecurityAnswer`, 
-				`DateCreated`, `LastLogin`, `Active`, `UserID`, `Verified`
+				`DateCreated`, `LastLogin`, `Active`, `UserID`, `Verified`,
+				`isRecruiter`
 				FROM `Account` WHERE `AccountID` = ? LIMIT 1 ';
 
 		if ($stmt = $this->db->prepare($sql)) {
@@ -40,7 +42,7 @@ class Account {
 					$this->data[strtoupper($col)] = $value;
 				}
 			} catch (Exception $e) {
-				echo $e->getMessage();
+				echo $this->err->getMessage();
 				return false;
 			}
 			
@@ -52,9 +54,19 @@ class Account {
 	}
 
 	public function get($field) {
+		if (!is_array($this->data)) return false;
+		if (!array_key_exists(strtoupper($field), $this->data)) return false;
+
 		return $this->data[strtoupper($field)];
 	}
 
+	public function getData() {
+		if (!is_array($this->data)) return false;
+
+		return $this->data;
+	}
+
+	// $newData is associated array with column name as key, and  value as column value
 	public function update($newData) {
 		$setStmt = "SET ";
 		$delimiter = "";
@@ -79,7 +91,7 @@ class Account {
 				$stmt->execute();
 				$this->load($this->get('AccountID'));
 			} catch (Exception $e) {
-				echo $e->getMessage();
+				echo $this->err->getMessage();
 				return false;
 			}			
 

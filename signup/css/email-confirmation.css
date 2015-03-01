@@ -1,7 +1,7 @@
 body {
   padding-top: 50px;
   padding-left:0px;
-  background-image: url("../image/signout_background.png");
+  background-image: url("../../image/signout_background.png");
   font: arial;
 }
 .starter-template {
@@ -25,7 +25,7 @@ min-height: 40px;
 }
 
 .navbar-brand {
-background-image: url(../image/proconnect/logo_text.png);
+background-image: url(../../image/proconnect/logo_text.png);
 background-repeat: no-repeat;
 background-position: center;
 float: left;

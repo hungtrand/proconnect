@@ -4,6 +4,7 @@ function SignInForm(SignInForm) {
 	this.PasswordInput = SignInForm.find('#password-login');
 	this.SubmitBtn = SignInForm.find('#signin-btn');
 	this.Alert = SignInForm.find('.alert');
+	this.waitingGif = '<img src="/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif" alt="Loading..."/>';
 
 	this.init();
 }
@@ -18,7 +19,7 @@ SignInForm.prototype = {
 			e.preventDefault();
 			if (!that.validate()) return false;
 			
-			that.Alert.html('/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif');
+			that.Alert.html(that.waitingGif);
 			that.Alert.show();
 			that.signin();
 		});
@@ -37,13 +38,13 @@ SignInForm.prototype = {
 				var json = $.parseJSON(response);
 
 				that.Alert.toggleClass('alert-danger', false)
-				.toggleClass('alert-success', false)
+				.toggleClass('alert-success', true)
 				.text('Signed In Successfully.');
 
-				window.location.href = "profile-user-POV/";
+				window.location.href = "/profile-user-POV/";
 			} catch (err) {
 				that.Alert.text(response);
-				window.location.href = "signin/#failed";
+				// window.location.href = "signin/#failed";
 			}
 			
 		})
@@ -55,15 +56,11 @@ SignInForm.prototype = {
 
 	validate: function() {
 		var that = this;
-		//clear previous error box
-		that.EmailInput.css({"border": ""});
-		that.PasswordInput.css({"border": ""});
+
+		that.reset();
 
 		var email= that.EmailInput.val();
 		var password = that.PasswordInput.val();
-
-		//clear password field every time submit 
-		that.PasswordInput.val("");
 	  
         if(email == ""){
 			that.EmailInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
@@ -103,5 +100,13 @@ SignInForm.prototype = {
 	           return true;
 	        }
 	    }
+	}, 
+
+	reset: function() {
+		var that = this;
+		//clear previous error box
+		that.EmailInput.css({"border": ""});
+		that.PasswordInput.css({"border": ""});
+		that.Alert.html('');
 	}
 }

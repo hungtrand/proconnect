@@ -1,4 +1,6 @@
 <?php
+//error_reporting(E_ALL); // debug
+//ini_set("display_errors", 1); // debug
 require_once __DIR__."/../../lib/php/sqlConnection.php";
 require_once __DIR__."/../../lib/php/classes/AccountAdmin.php";
 require_once __DIR__."/../../lib/php/classes/User.php";
@@ -19,11 +21,21 @@ if ((isset($_POST['first']) && isset($_POST['last'])
 
 	$Email = $_POST['email'];
 	$Username = $_POST['email'];
-	$Password = $_POST['first'];
-	$FirstName = $_POST['last'];
-	$LastName = $_POST['password'];
+	$Password = $_POST['password'];
+	$FirstName = $_POST['first'];
+	$LastName = $_POST['last'];
 } elseif (!$test) {
 	echo "Cannot sign up. Missing information.";
+	die();
+}
+
+if (!filter_var($Email, FILTER_VALIDATE_EMAIL)) {
+	echo "Invalid Email";
+	die();
+}
+
+if (strlen($Password) < 6) {
+	echo "Invalid Password";
 	die();
 }
 
@@ -34,9 +46,10 @@ $acc = ['Email'=>$Email, 'Password'=>$Password,
 
 
 if ($accAdm->signup($acc)) {
-	echo 'success';
+	echo json_encode($acc);
 } else {
-	echo 'fail';
+	echo 'Could not process your request. Please try again later.';
+	echo $accAdm->err;
 }
 
 ?>
