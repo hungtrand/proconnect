@@ -10,7 +10,7 @@ if (isset($_POST['Username']) && isset($_POST['Password'])) {
 	$login = $argv[1]; // for testing
 	$password = $argv[2]; // for testing
 } else {
-	echo "Account not found.";
+	echo "Invalid Inputs.";
 	die();
 }
 

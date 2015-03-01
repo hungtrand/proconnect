@@ -1,44 +1,5 @@
 $(document).ready(function() {
-      $(".alert").hide();
-	  
-	  //show alert if any field is empty or email is in invalid form
-	  $("#signin-btn").click(function(){
-		  //clear previous error box
-		  $('#email-login').css({"border": ""});
-		  $('#password-login').css({"border": ""});
-		  $('#first').css({"border": ""});
-		  $('#last').css({"border": ""});
-		  $('#email').css({"border": ""});
-		  $('#password').css({"border": ""});
-			
-          var email= $('#email-login').val();
-          var password = $('#password-login').val();
-		  
-		//clear password field every time submit 
-		  $('#password-login').val("");
-		  
-            if(email== ""){
-			   $('#email-login').css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
-			   $(".alert").text("Please enter your email address");
-			   $(".alert").show();
-			   $('#email-login').val("");
-               return false;
-            }
-            if(IsEmail(email)==false){
-                $('#email-login').css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
-				$(".alert").text("Please enter a valid email address ");
-				$(".alert").show();
-				$('#email-login').val("");
-                return false;
-            }
-            if(password==""){
-				$(".alert").text("Please enter password");
-                $('#password-login').css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
-				$(".alert").show();
-                return false;
-            }
-			$(".alert").hide();
-	  });
+      var sif = new SignInForm($('#login-short-cut'));
 	  
 	  //show alert if any field is empty or in invalid form
 	  $("#signup-btn").click(function(){
@@ -121,20 +82,14 @@ $(document).ready(function() {
            return true;
         }
       }
-      function IsEmail(email) {
-        var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-        if(!regex.test(email)) {
-           return false;
-        }else{
-           return true;
-        }
-      }
-	  	  function IsPassword(password) {
-        var regex = /^.{6,20}$/;
-        if(!regex.test(password)) {
-           return false;
-        }else{
-           return true;
-        }
 
-      }
+      	function IsPassword(password) {
+			var regex = /^.{6,20}$/;
+			if(!regex.test(password)) {
+				return false;
+			}else{
+				return true;
+			}
+		}
+      
+

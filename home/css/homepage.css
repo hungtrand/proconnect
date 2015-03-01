@@ -1,6 +1,4 @@
 #footer {
-	text-align: center;
-	width: 100%;
 	background-color: #F4F4F4;
 	-webkit-box-shadow: 0 -4px 4px #ccc;
 	-moz-box-shadow: 0 -4px 4px #ccc;
@@ -40,16 +38,9 @@ input[name="last"]{
 	width: 49%;
 }
 
-#main-body {
-	/*border: 1px solid blue;*/
-
-	/*-webkit-column-count: 2;  Chrome, Safari, Opera */
-    /*-moz-column-count: 2; /* Firefox */
-    /*column-count: 2;*/
-}
-
 #main-wrapper {
 	margin-top: 40px;
+	margin-bottom: 40px;
 }
 
 
