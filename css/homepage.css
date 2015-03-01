@@ -20,22 +20,15 @@
 }
 
 #header {
-	width: 100%;
-	height: 10rem;
 	background-color: #F4F4F4;
 	padding-bottom: 5px;
 	-webkit-box-shadow: 0 1px 4px #ccc;
 	-moz-box-shadow: 0 1px 4px #ccc;
 	box-shadow: 0 1px 4px #ccc;
 	border-bottom: 1px solid #CDCDCD;
-
-	position: absolute;
-	top: 0px;
+	padding: 30px 0;
 }
 
-#header-body {
-	/*margin: 0 auto;*/
-}
 
 input[name="first"]{
 	float: left;
@@ -47,37 +40,7 @@ input[name="last"]{
 	width: 49%;
 }
 
-#left-section {
-	float: left;
-	text-align: center;
-}
-
-#login-short-cut-control {
-	list-style-type: none;
-	top: 9px;
-}
-
-#login-short-cut-control li {
-	float: left;
-	padding: 10px;
-}
-
-.logo {
-	float: left;
-	margin-top: 10px;
-}
-
-#main {
-	/*width: 80%;*/
-	margin: 0 auto;
-	text-align: center;
-	/*border: 1px solid red;*/
-	
-}
-
 #main-body {
-	padding-top: 10px;
-	height: 500px;
 	/*border: 1px solid blue;*/
 
 	/*-webkit-column-count: 2;  Chrome, Safari, Opera */
@@ -86,11 +49,7 @@ input[name="last"]{
 }
 
 #main-wrapper {
-	margin-top: 10rem;
-}
-
-#right-section {
-	float: right;
+	margin-top: 40px;
 }
 
 
