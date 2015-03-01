@@ -80,12 +80,11 @@ class AccountAdmin {
 				VALUES (?, ?, ?, ?, ?)';
 
 		$VerificationKey = sha1(mt_rand(10000,99999). str_replace(' ', '', date("Y-m-d H:i:s")).$data['Email']);
-		$EncryptedPassword = sha1($data['Password']);
 		if ($stmt = $this->db->prepare($sql)) {
 
 			try {
 				$stmt->bindParam(1, $data['Username']);
-				$stmt->bindParam(2, $EncryptedPassword);
+				$stmt->bindParam(2, $data['Password']);
 				$stmt->bindParam(3, $data['Email']);
 				$stmt->bindParam(4, $insertedID);
 				$stmt->bindParam(5, $VerificationKey);
@@ -101,61 +100,12 @@ class AccountAdmin {
 
 		// send email with verification link
 		$mailVar = ["{{FullName}}" => $data['FirstName'].' '.$data['LastName'], 
-					"{{VerificationLink}}" => "http://79.170.40.230/proconnect.com/signup/EmailVerification.php?$Email=". urlencode($data["Email"]) . "VerificationKey=".urlencode($VerificationKey)];
+					"{{VerificationLink}}" => "https://www.proconnect.com/ver1.0/signup/EmailVerification.php?VerificationKey=".urlencode($VerificationKey)];
 		$m = new Email(["EMAILTO"=>$data['Email']]);
 		$m->loadTemplate(1, $mailVar);
 		$m->send();
 
 		return true;
-	}
-
-	public function verifyAccount($Email, $VerificationKey) {
-		$sql = 'SELECT COUNT(`AccountID`) AS cnt FROM `Account` 
-				WHERE `Email` LIKE ? AND `VerificationKey` = ? ';
-		$cnt;
-
-		if ($stmt = $this->db->prepare($sql)) {
-
-			try {
-				$stmt->bindParam(1, $Email);
-				$stmt->bindParam(2, $VerificationKey);
-
-				$stmt->execute();
-				$rs = $stmt->fetch(PDO::FETCH_ASSOC);
-				$cnt = $rs['cnt'];
-			} catch (Exception $e) {
-				$this->err = $e->getMessage();
-				return false;
-			}
-		} else {
-			return false;
-		}
-
-		if (!isset($cnt)) return false;
-		elseif ($cnt == 0) {
-			return false;
-		} else {
-			$sql = 'UPDATE `Account` SET `Verified` = 1 
-					WHERE `Email` LIKE ? AND `VerificationKey` = ?';
-
-			if ($stmt = $this->db->prepare($sql)) {
-
-				try {
-					$stmt->bindParam(1, $Email);
-					$stmt->bindParam(2, $VerificationKey);
-
-					$stmt->execute();
-				} catch (Exception $e) {
-					$this->err = $e->getMessage();
-					return false;
-				}
-
-			} else {
-				return false;
-			}
-			
-			return true;
-		}
 	}
 
 	public function AccountExists($username, $email) {
@@ -193,16 +143,15 @@ class AccountAdmin {
 
 		$sql = 'SELECT `AccountID` FROM `Account` 
 				WHERE (`Username` LIKE ? OR `Email` LIKE ?) 
-				AND `Password` = ? AND `Active` = 1 AND `Verified` = 1 ';
+				AND `Password` = ? AND `Active` = 1 ';
 		$cnt;
 
-		$EncryptedPassword = sha1($password);
 		if ($stmt = $this->db->prepare($sql)) {
 
 			try {
 				$stmt->bindParam(1, $login);
 				$stmt->bindParam(2, $login);
-				$stmt->bindParam(3, $EncryptedPassword);
+				$stmt->bindParam(3, $password);
 
 				$stmt->execute();
 				$rs = $stmt->fetch(PDO::FETCH_ASSOC);

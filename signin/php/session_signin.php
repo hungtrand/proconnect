@@ -25,7 +25,7 @@ if ($acc) {
 	$_SESSION['__USERDATA__'] = json_encode($user->getData());
 	echo $_SESSION['__USERDATA__'];
 } else {
-	echo "Account not found or not verified.";
+	echo "Account not found.";
 }
 
 ?>
