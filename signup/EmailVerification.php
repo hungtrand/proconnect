@@ -1,16 +1,22 @@
 <?php
+ini_set('display_errors', 'On');
+error_reporting(E_ALL | E_STRICT);
+
 require_once __DIR__.'/../lib/php/sqlConnection.php';
 require_once __DIR__.'/../lib/php/classes/AccountAdmin.php';
 
-if ( $_GET['VerificationKey'] && $_GET])
+if (!isset($_GET['VerificationKey'])) {
+	echo "Invalid request.";
+	die();
+}
 
 $VerificationKey = $_GET['VerificationKey'];
 $Email = $_GET['Email'];
 
 $admin = new AccountAdmin();
 if ($admin->verifyAccount($Email, $VerificationKey)) {
-	echo 'success';
+	header('Location: ../profile-user-POV/profile-user-POV.html#Verified' ) ;
 } else {
-	echo 'Could not verify account.';
+	header('Location: ../index.html#VerficationFailed');
 }
 ?>
