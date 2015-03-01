@@ -59,5 +59,6 @@
 	//     });
 	// }
 
+	//console.log($(".signup_option"));
 
 })();
