@@ -48,7 +48,7 @@ $acc = ['Email'=>$Email, 'Password'=>$Password,
 if ($accAdm->signup($acc)) {
 	echo json_encode($acc);
 } else {
-	echo 'Could not process your request. Please try again later.';
+	// echo 'Could not process your request. Please try again later.';
 	echo $accAdm->err;
 }
 

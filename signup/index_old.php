@@ -1,3 +1,8 @@
+<?php
+	//error_reporting(E_ALL); // debug
+	//ini_set("display_errors", 1); // debug
+  	include '../signin/php/session_check.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,16 +14,16 @@
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">-->
 
 
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script type="text/javascript" src="../lib/jquery/jquery-2.1.3.min.js"></script>
   <!-- Bootstrap core CSS -->
   <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  <script src="../lib/bootstrap/js/bootstrap.min.js"></script>
  <!-- CSS link -->
-  <link rel="stylesheet" type="text/css" href="../css/signup.css">
+  <link rel="stylesheet" type="text/css" href="css/signup.css">
   <!-- JavaScript link -->
-  <script type="text/javascript" src="../js/signup.js"></script>
-  
+  <script type="text/javascript" src="js/SignUpForm.js"></script>
+  <script type="text/javascript" src="js/index.js"></script>
 </head>
 <body>
 

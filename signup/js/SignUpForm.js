@@ -47,7 +47,7 @@ SignUpForm.prototype = {
 				.toggleClass('alert-success', true)
 				.text('Signed Up Successfully.');
 
-				window.location.href = "signup/email-confirmation.html";
+				window.location.href = "/signup/email-confirmation.html";
 			} catch (err) {
 				that.Alert.text(response);
 				return false;
