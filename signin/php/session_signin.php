@@ -1,4 +1,7 @@
 <?php
+error_reporting(E_ALL); // debug
+ini_set("display_errors", 1); // debug
+
 require_once __DIR__."/../../lib/php/sqlConnection.php";
 require_once __DIR__."/../../lib/php/classes/AccountAdmin.php";
 require_once __DIR__."/../../lib/php/classes/User.php";
@@ -24,6 +27,9 @@ if ($acc) {
 
 	$_SESSION['__USERDATA__'] = json_encode($user->getData());
 	echo $_SESSION['__USERDATA__'];
+
+	$FullName = $user->get('FirstName') . ' ' . $user->get('LastName');
+	setcookie("__USER_FULL_NAME__", $FullName, time()+60*60*24*365, '/');
 } else {
 	echo "Account not found.";
 }

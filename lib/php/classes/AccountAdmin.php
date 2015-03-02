@@ -147,12 +147,13 @@ class AccountAdmin {
 				WHERE (`Username` LIKE ? OR `Email` LIKE ?) 
 				AND `Password` = ? AND `Active` = 1 ';
 
+		$password = sha1($password);
 		if ($stmt = $this->db->prepare($sql)) {
 
 			try {
 				$stmt->bindParam(1, $login);
 				$stmt->bindParam(2, $login);
-				$stmt->bindParam(3, sha1($password));
+				$stmt->bindParam(3, $password);
 
 				$stmt->execute();
 				$rs = $stmt->fetch(PDO::FETCH_ASSOC);
