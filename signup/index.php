@@ -35,7 +35,7 @@
     <div class="container-fluid">
         
         <div class ="formContainer container-fluid">
-            <header><a href= "../"><img id= "logo" src = "../image/proconnect/logo_text.png"></a></header>
+            <header class="text-center"><a href= "../"><img id= "logo" src = "../image/proconnect/logo_text.png"></a></header>
             
             <form id="SignUpForm" action="php/user_signup.php" class="text-left" novalidate>
                 <div class="form-group" style="overflow: auto;">
