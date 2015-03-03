@@ -102,7 +102,7 @@ class AccountAdmin {
 
 		// send email with verification link
 		$mailVar = ["{{FullName}}" => $data['FirstName'].' '.$data['LastName'], 
-					"{{VerificationLink}}" => "http://71.6.84.70:8080/proconnect.com/signup/EmailVerification.php?Email=".urlencode($data['Email'])."&VerificationKey=".urlencode($VerificationKey)];
+					"{{VerificationLink}}" => "http://71.6.84.70:8080/signup/EmailVerification.php?Email=".urlencode($data['Email'])."&VerificationKey=".urlencode($VerificationKey)];
 		$m = new Email(["EMAILTO"=>$data['Email']]);
 		$m->loadTemplate(1, $mailVar);
 		$m->send();
