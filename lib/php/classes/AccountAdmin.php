@@ -83,9 +83,10 @@ class AccountAdmin {
 		$VerificationKey = sha1(mt_rand(10000,99999). str_replace(' ', '', date("Y-m-d H:i:s")).$data['Email']);
 		if ($stmt = $this->db->prepare($sql)) {
 
+			$data['Password'] = sha1($data['Password']);
 			try {
 				$stmt->bindParam(1, $data['Username']);
-				$stmt->bindParam(2, sha1($data['Password']));
+				$stmt->bindParam(2, $data['Password']);
 				$stmt->bindParam(3, $data['Email']);
 				$stmt->bindParam(4, $insertedID);
 				$stmt->bindParam(5, $VerificationKey);
