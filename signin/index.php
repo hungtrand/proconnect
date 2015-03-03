@@ -2,6 +2,14 @@
     error_reporting(E_ALL); // debug
     ini_set("display_errors", 1); // debug
     include 'php/session_check.php';
+
+    $welcome = '';
+    if (isset($_COOKIE['__USER_FULL_NAME__'])) { 
+        $welcome = 'Welcome back, '.$_COOKIE['__USER_FULL_NAME__']
+        .' <a href="../signout/php/cookie_signout.php">(Not '.$_COOKIE['__USER_FULL_NAME__'].'?)</a>'; 
+    };
+
+    echo $_SERVER['SERVER_NAME'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,6 +50,7 @@
                 <!-- Invalid input alert -->
                 <div class="alert alert-danger" role="alert" style="display: none"><b>Invalid Input</b></div>
                 
+                <label class="text-info"><?=$welcome?></label>
                 <div class="form-group">
                     <label for="inputEmail" class="sr-only">Email address</label>
                     <input type="email" name="Username" id="email-login" class="form-control" placeholder="Email address" autofocus>

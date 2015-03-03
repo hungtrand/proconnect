@@ -1,5 +1,5 @@
 <?php
-	// include 'signout/php/session_check_signout.php';
+	include 'signin/php/session_check.php';
 ?>
 
 <!DOCTYPE html>

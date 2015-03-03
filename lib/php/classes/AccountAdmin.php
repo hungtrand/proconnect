@@ -83,9 +83,10 @@ class AccountAdmin {
 		$VerificationKey = sha1(mt_rand(10000,99999). str_replace(' ', '', date("Y-m-d H:i:s")).$data['Email']);
 		if ($stmt = $this->db->prepare($sql)) {
 
+			$data['Password'] = sha1($data['Password']);
 			try {
 				$stmt->bindParam(1, $data['Username']);
-				$stmt->bindParam(2, sha1($data['Password']));
+				$stmt->bindParam(2, $data['Password']);
 				$stmt->bindParam(3, $data['Email']);
 				$stmt->bindParam(4, $insertedID);
 				$stmt->bindParam(5, $VerificationKey);
@@ -101,7 +102,7 @@ class AccountAdmin {
 
 		// send email with verification link
 		$mailVar = ["{{FullName}}" => $data['FirstName'].' '.$data['LastName'], 
-					"{{VerificationLink}}" => "http://79.170.40.230/proconnect.com/signup/EmailVerification.php?Email=".urlencode($data['Email'])."&VerificationKey=".urlencode($VerificationKey)];
+					"{{VerificationLink}}" => "http://71.6.84.70:8080/proconnect.com/signup/EmailVerification.php?Email=".urlencode($data['Email'])."&VerificationKey=".urlencode($VerificationKey)];
 		$m = new Email(["EMAILTO"=>$data['Email']]);
 		$m->loadTemplate(1, $mailVar);
 		$m->send();
@@ -147,12 +148,13 @@ class AccountAdmin {
 				WHERE (`Username` LIKE ? OR `Email` LIKE ?) 
 				AND `Password` = ? AND `Active` = 1 ';
 
+		$password = sha1($password);
 		if ($stmt = $this->db->prepare($sql)) {
 
 			try {
 				$stmt->bindParam(1, $login);
 				$stmt->bindParam(2, $login);
-				$stmt->bindParam(3, sha1($password));
+				$stmt->bindParam(3, $password);
 
 				$stmt->execute();
 				$rs = $stmt->fetch(PDO::FETCH_ASSOC);
