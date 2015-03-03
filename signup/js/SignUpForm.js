@@ -7,6 +7,7 @@ function SignUpForm(SignUpForm) {
 	this.ConfPasswordInput = SignUpForm.find('#confpassword');
 	this.Alert = SignUpForm.find('.alert');
 	this.waitingGif = '<img src="/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif" alt="Loading..."/>';
+	this.activeError = false;
 
 	this.init();
 }
@@ -24,6 +25,12 @@ SignUpForm.prototype = {
 			that.Alert.show();
 			that.signup();
 		});
+
+		that.FirstInput.on('keyup', function(e) { that.reset(); });
+		that.LastInput.on('keyup', function(e) { that.reset(); });
+		that.EmailInput.on('keyup', function(e) { that.reset(); });
+		that.PasswordInput.on('keyup', function(e) { that.reset(); });
+		that.ConfPasswordInput.on('keyup', function(e) { that.reset(); });
 	},
 
 	signup: function() {
@@ -62,12 +69,7 @@ SignUpForm.prototype = {
 	validate: function() {
 		var that = this;
 
-		//clear previous error box 
-		that.FirstInput.css({"border": ""});
-		that.LastInput.css({"border": ""});
-		that.EmailInput.css({"border": ""});
-		that.PasswordInput.css({"border": ""});
-		that.ConfPasswordInput.css({"border": ""});
+		that.reset();
 
 		var first= that.FirstInput.val().trim();
 		var last = that.LastInput.val().trim();
@@ -147,5 +149,20 @@ SignUpForm.prototype = {
 	           return true;
 	        }
 	    }
+	}, 
+
+	reset: function() {
+		var that = this;
+
+		if (that.activeError) return;
+		//clear previous error box
+		that.FirstInput.css({"border": ""});
+		that.LastInput.css({"border": ""});
+		that.EmailInput.css({"border": ""});
+		that.PasswordInput.css({"border": ""});
+		that.ConfPasswordInput.css({"border": ""});
+		that.Alert.html('');
+		that.Alert.hide();
+		that.activeError = false;
 	}
 }
