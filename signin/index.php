@@ -5,8 +5,11 @@
 
     $welcome = '';
     if (isset($_COOKIE['__USER_FULL_NAME__'])) { 
-        $welcome = 'Welcome back, '.$_COOKIE['__USER_FULL_NAME__']; 
+        $welcome = 'Welcome back, '.$_COOKIE['__USER_FULL_NAME__']
+        .' <a href="../signout/php/cookie_signout.php">(Not '.$_COOKIE['__USER_FULL_NAME__'].'?)</a>'; 
     };
+
+    echo $_SERVER['SERVER_NAME'];
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -6,7 +6,7 @@
 	if (isset($_SESSION['__USERDATA__'])) {
 		header($profile);
 		die();
-	} elseif (isset($_COOKIE['__USER_FULL_NAME__']) && !strpos(__DIR__, '/signin/')) {
+	} elseif (isset($_COOKIE['__USER_FULL_NAME__']) && $_SERVER['REQUEST_URI'] == "/") {
 		header($loggedInBefore);
 		die();
 	}
