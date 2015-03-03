@@ -39,8 +39,10 @@ CREATE TABLE `Account` (
   `Verified` bit(1) NOT NULL DEFAULT b'0',
   `VerificationKey` varchar(200) DEFAULT NULL,
   `isRecruiter` bit(1) NOT NULL DEFAULT b'0',
+  `ForgotPasswordKey` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`AccountID`),
   UNIQUE KEY `VerificationKey_UNIQUE` (`VerificationKey`),
+  UNIQUE KEY `ForgotPasswordKey_UNIQUE` (`ForgotPasswordKey`),
   KEY `Account_ibfk_1` (`UserID`),
   CONSTRAINT `Account_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `User` (`UserID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
@@ -52,7 +54,7 @@ CREATE TABLE `Account` (
 
 LOCK TABLES `Account` WRITE;
 /*!40000 ALTER TABLE `Account` DISABLE KEYS */;
-INSERT INTO `Account` VALUES (6,'hung.d.tran@sjsu.edu','8cb2237d0679ca88db6464eac60da96345513964','2015-02-27 09:57:00',NULL,'',7,'hung.d.tran@sjsu.edu','','','','','4f1f9bc6dc9fe6e8f2f3a9e58bc1d970f74da755','\0'),(9,'hungtrand0929@gmail.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-03-01 20:32:24',NULL,'',10,'hungtrand0929@gmail.com','','','','','12864cd03656bdeaab0a69705f18c57daf92fadd','\0');
+INSERT INTO `Account` VALUES (6,'hung.d.tran@sjsu.edu','8cb2237d0679ca88db6464eac60da96345513964','2015-02-27 09:57:00',NULL,'',7,'hung.d.tran@sjsu.edu','','','','','4f1f9bc6dc9fe6e8f2f3a9e58bc1d970f74da755','\0',NULL),(9,'hungtrand0929@gmail.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-03-01 20:32:24',NULL,'',10,'hungtrand0929@gmail.com','','','','','12864cd03656bdeaab0a69705f18c57daf92fadd','\0',NULL);
 /*!40000 ALTER TABLE `Account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -394,4 +396,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-03-02 17:24:34
+-- Dump completed on 2015-03-02 17:40:53
