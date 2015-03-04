@@ -1,9 +1,9 @@
 <?php
-include "../sqlConnection.php"; // For testing
+//include "../sqlConnection.php"; // For testing
 require_once __DIR__."/Email.php";
 require_once __DIR__."/Account.php";
-$aa = new AccountAdmin();
-echo $aa->VerifyForgotPasswordKey("hungtrand0929@gmail.com","140224282d822de15acffbd38bd3c3d8bc2a3f65");
+//$aa = new AccountAdmin();
+//echo $aa->VerifyForgotPasswordKey("hungtrand0929@gmail.com","140224282d822de15acffbd38bd3c3d8bc2a3f65");
 /* Test scripts
 $u = ["FirstName"=>"Iron", "LastName"=>"Man", 
 		"Username"=>"iman", "Password"=>"robots",
