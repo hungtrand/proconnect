@@ -5,6 +5,7 @@ function SignInForm(SignInForm) {
 	this.SubmitBtn = SignInForm.find('#signin-btn');
 	this.Alert = SignInForm.find('.alert');
 	this.waitingGif = '<img src="/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif" alt="Loading..."/>';
+	this.activeError = false;
 
 	this.init();
 }
@@ -17,12 +18,18 @@ SignInForm.prototype = {
 
 		that.theForm.on('submit', function(e) {
 			e.preventDefault();
-			if (!that.validate()) return false;
+			if (!that.validate()) { 
+				this.activeError = true;
+				return false;
+			}
 			
 			that.Alert.html(that.waitingGif);
 			that.Alert.show();
 			that.signin();
 		});
+
+		that.EmailInput.on('keyup', function(e) { that.reset(); });
+		that.PasswordInput.on('keyup', function(e) { that.reset(); });
 	},
 
 	signin: function() {
@@ -43,7 +50,7 @@ SignInForm.prototype = {
 
 				window.location.href = "/profile-user-POV/";
 			} catch (err) {
-				that.Alert.text(response);
+				that.Alert.text(response + err.message);
 				// window.location.href = "signin/#failed";
 			}
 			
@@ -104,9 +111,13 @@ SignInForm.prototype = {
 
 	reset: function() {
 		var that = this;
+
+		if (that.activeError) return;
 		//clear previous error box
 		that.EmailInput.css({"border": ""});
 		that.PasswordInput.css({"border": ""});
 		that.Alert.html('');
+		that.Alert.hide();
+		that.activeError = false;
 	}
 }

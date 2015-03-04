@@ -1,10 +1,11 @@
 <?php
-	include 'signout/php/session_check.php';
+	include 'signin/php/session_check.php';
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>World's Most Professional Connection Network</title>
 
 	<!-- JQuery link -->
