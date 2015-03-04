@@ -52,9 +52,15 @@ include '../signout/php/session_check_signout.php';
   <body>
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
+      <div class="container-fluid">
         <div class="navbar-header">
-          <a id= "logo" class="navbar-brand" href="#"></a>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a id= "logo" class="navbar-brand" href="#"><img src="../image/proconnect/logo_text.png" /></a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -66,14 +72,14 @@ include '../signout/php/session_check_signout.php';
       </div>
     </nav>
 
-    <div id="main-container" class="container">
+    <div id="main-container" class="container-fluid">
       <div class="row">
-          <div class="col-xs-12 col-sm-7 col-md-7">
+          <div class="col col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
               <div class="well well-sm">
                   <div class="row">
-                      <div id="profile-image-block" class="col-sm-6 col-md-4">
+                      <div id="profile-image-block" class="col col-sm-6 col-md-4 col-lg-3">
                           <div id="profile-image" class="outer-ref" >
-                            <img src="http://placehold.it/380x500" alt="" class="img-responsive" />
+                            <img src="http://placehold.it/380x500" alt="" class="img-responsive profile-image" />
                             <div id="change-image-block" > 
                               <span id="glyphicon-picture" class="glyphicon glyphicon-picture" aria-hidden="true"></span>
                               <span id="change-photo-text">Change Photo</span>
@@ -176,7 +182,7 @@ include '../signout/php/session_check_signout.php';
 
       <!-- Summary -->
       <div class="row">
-          <div class="col-xs-12 col-sm-7 col-md-7">
+          <div class="col col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
 
               <div class="well well-sm ">
                   <header>
@@ -205,7 +211,7 @@ include '../signout/php/session_check_signout.php';
 
       <!-- Experience -->
       <div class="row">
-          <div class="col-xs-12 col-sm-7 col-md-7">
+          <div class="col col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
               <div class="well well-sm">
                   <header>
                     <h3>Experience</h3>
@@ -306,7 +312,7 @@ include '../signout/php/session_check_signout.php';
 
        <!-- Project-->
       <div class="row">
-          <div class="col-xs-12 col-sm-7 col-md-7">
+          <div class="col col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
               <div class="well well-sm">
                   <header>
                     <h3>Projects</h3>
@@ -444,7 +450,7 @@ include '../signout/php/session_check_signout.php';
 
       <!-- Education -->
       <div class="row">
-          <div class="col-xs-12 col-sm-7 col-md-7">
+          <div class="col col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
               <div class="well well-sm">
                   <header>
                     <h3>Education</h3>
