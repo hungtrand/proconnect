@@ -59,17 +59,22 @@
 						<!-- Invalid input alert -->
 						<div class="alert alert-danger text-center" role="alert" style="display: none; margin-top: 10px;"><b>Invalid Input :</b> Please correct the marked field(s)</div>
 					</div>
+
+					<div class="col col-md-12 visible-xs visible-sm">
+						<br />
+						<a href="signup/">Not a member? Join ProConnect!</a>
+					</div>
 				</form>
 			</div>
 		</div>
 	</div>
 
-	<div id="main-wrapper">	
+	<div id="main-wrapper" class="hidden-xs hidden-sm">	
 		<div id="main" class="container-fluid text-center" >
 			
 			<h2>Stay Connected With Your Profession.</h2>
 			<div id="main-body" class="row">
-				<section id="left-section" class="col col-md-5 col-md-offset-2 hidden-xs hidden-sm">
+				<section id="left-section" class="col col-md-5 col-md-offset-2">
 					<img class="img-rounded" src="image/pronetwork.jpg" style="width: 100%;" />
 				</section>
 
