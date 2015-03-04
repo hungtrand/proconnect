@@ -59,6 +59,11 @@
 						<!-- Invalid input alert -->
 						<div class="alert alert-danger text-center" role="alert" style="display: none; margin-top: 10px;"><b>Invalid Input :</b> Please correct the marked field(s)</div>
 					</div>
+
+					<div class="col col-md-12 visible-xs visible-sm">
+						<br />
+						<a href="signup/">Not a member? Join ProConnect!</a>
+					</div>
 				</form>
 			</div>
 		</div>
