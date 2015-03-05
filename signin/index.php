@@ -41,7 +41,7 @@
 <body>
 
     <div class="container-fluid">
-        <div class="row visible-md visible-lg" style="height: 150px"></div>
+        <!-- <div class="row visible-md visible-lg" style="height: 150px"></div> -->
         <div class="row">
             <div class="formContainer col col-xs-12 col-sm-10 col-md-4 col-lg-4 col-sm-offset-1 col-md-offset-4 col-lg-offset-4">   
                 <form class="form-signin form" id="SignInForm" action="php/session_signin.php" novalidate>
