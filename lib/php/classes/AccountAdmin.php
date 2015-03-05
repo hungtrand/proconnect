@@ -2,11 +2,13 @@
 //include "../sqlConnection.php"; // For testing
 require_once __DIR__."/Email.php";
 require_once __DIR__."/Account.php";
+//$aa = new AccountAdmin();
+//echo $aa->VerifyForgotPasswordKey("hungtrand0929@gmail.com","140224282d822de15acffbd38bd3c3d8bc2a3f65");
 /* Test scripts
 $u = ["FirstName"=>"Iron", "LastName"=>"Man", 
 		"Username"=>"iman", "Password"=>"robots",
 		"Email"=>"hungtrand0929@gmail.com"];
-$aa = new AccountAdmin();
+
 $aa->signup($u);
 echo $aa->err;
 */
@@ -108,6 +110,70 @@ class AccountAdmin {
 		$m->send();
 
 		return true;
+	}
+	
+	public function ForgotPassword($email){
+
+		if (!$this->AccountExists($email, $email)) return false;
+		$VerificationKey = sha1(mt_rand(10000,99999). str_replace(' ', '', date("Y-m-d H:i:s")).$email);
+		$sql = 'UPDATE `Account` SET ForgotPasswordKey = ? WHERE `Email` = ? ';
+
+		if ($stmt = $this->db->prepare($sql)) {
+
+			try {
+				$stmt->bindParam(1, $VerificationKey);
+				$stmt->bindParam(2, $email);
+				$stmt->execute();
+			} catch (Exception $e) {
+				$this->err = $e->getMessage();
+				return false;
+			}
+		} else {
+			$this->err = "verify Err: failed to update database.";
+			return false;
+		}
+				
+		$mailVar = ["{{VerificationLink}}" => "http://71.6.84.70:8080/signin/php/ForgotPasswordVerification.php?Email=".$email."ForgotPasswordKey=".urlencode($VerificationKey)];
+		$m = new Email(["EMAILTO"=> $email]);
+		$m->loadTemplate(2, $mailVar);
+		$m->send();
+
+		return true;
+
+	}
+	
+	public function VerifyForgotPasswordKey($email,$ForgotPasswordKey){
+		if (!(isset($email) && isset($ForgotPasswordKey))) return false;
+
+		$sql = 'SELECT `AccountID` FROM `Account`
+				WHERE `Email` LIKE ? AND `ForgotPasswordKey` = ? ';
+
+		if ($stmt = $this->db->prepare($sql)) {
+
+			try {
+				$stmt->bindParam(1, $email);
+				$stmt->bindParam(2, $ForgotPasswordKey);
+
+				$stmt->execute();
+				$rs = $stmt->fetch(PDO::FETCH_ASSOC);
+				
+				//echo json_encode($rs);
+				$id = $rs['AccountID'];
+			} catch (Exception $e) {
+				$this->err = $e->getMessage();
+				return false;
+			}
+		} else {
+			$this->err = "verify Err: failed to prepare database.";
+			return false;
+		}
+
+		if(isset($id)){
+			return true;
+		} else {
+			return false;
+		}
+
 	}
 
 	public function AccountExists($username, $email) {
