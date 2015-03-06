@@ -3,7 +3,7 @@
 require_once __DIR__."/Email.php";
 require_once __DIR__."/Account.php";
 //$aa = new AccountAdmin();
-//echo $aa->VerifyForgotPasswordKey("hungtrand0929@gmail.com","140224282d822de15acffbd38bd3c3d8bc2a3f65");
+//echo $aa->UpdatePassword("abc");
 /* Test scripts
 $u = ["FirstName"=>"Iron", "LastName"=>"Man", 
 		"Username"=>"iman", "Password"=>"robots",
@@ -174,6 +174,53 @@ class AccountAdmin {
 			return false;
 		}
 
+	}
+
+	public function UpdatePassword($ForgotPasswordKey, $passWord){
+		//$email = ?;
+		if(!isset($ForgotPasswordKey)) return false;
+
+		$sql = 'SELECT COUNT (`AccountID`) AS cnt FROM `Account`
+				WHERE `ForgotPasswordKey` LIKE ?';
+		
+		if ($stmt = $this->db->prepare($sql)) {
+
+			try {
+				
+				$stmt->bindParam(1, $ForgotPasswordKey);
+				
+				$stmt->execute();
+			} catch (Exception $e) {
+				$this->err = $e->getMessage();
+				return false;
+			}
+			return true;
+
+		} else {
+			$this->err = "verify Err: failed to update database.";
+			return false;
+		}
+
+		$sql = 'UPDATE `Account` SET Password = ? AND ForgotPasswordKey = ? WHERE `ForgotPasswordKey` = ? ';
+
+		if ($stmt = $this->db->prepare($sql)) {
+
+			try {
+				
+				$stmt->bindParam(1, $passWord);
+				$stmt->bindParam(2, null);
+				$stmt->bindParam(3, $ForgotPasswordKey);
+				$stmt->execute();
+			} catch (Exception $e) {
+				$this->err = $e->getMessage();
+				return false;
+			}
+			return true;
+		} else {
+			$this->err = "verify Err: failed to update database.";
+			return false;
+		}
+		return true;
 	}
 
 	public function AccountExists($username, $email) {
