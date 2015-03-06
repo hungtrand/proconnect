@@ -49,7 +49,7 @@
 						<label for="password-login" >Password</label> 
 						<input id="password-login" class="form-control" name="Password" type="password" tabindex="2" > 
 
-						<a href="javascript:void(0)" tabindex="4">Forgot your password?</a>
+						<a href="/signin/forgotPassword.php" tabindex="4">Forgot your password?</a>
 					</div>
 					<div class="col col-md-2">
 						<br />
