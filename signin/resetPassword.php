@@ -20,8 +20,8 @@
     <script src="../lib/jquery/jquery-2.1.3.min.js"></script>
 
     <!-- JavaScript link -->
-    <script type="text/javascript" src="js/ResetPassordForm.js"></script>
-    <script type="text/javascript" src="js/ResetPassordMain.js"></script>
+    <script type="text/javascript" src="js/ResetPasswordForm.js"></script>
+    <script type="text/javascript" src="js/ResetPasswordMain.js"></script>
   
 </head>
 
