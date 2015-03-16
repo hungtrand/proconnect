@@ -1,8 +1,8 @@
 function ForgotPasswordForms(form) {
 	this.theForm = form;
-	console.log(this.theForm);
+	//console.log(this.theForm);
 	this.EmailInput = form.find('#email-login');
-	this.SubmitBtn = form.find('#signin-btn');
+	this.SubmitBtn = form.find('#continue-btn');
 	this.Alert = form.find('.alert');
 	this.waitingGif = '<img src="/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif" alt="Loading..."/>';
 	this.activeError = false;
@@ -25,13 +25,13 @@ ForgotPasswordForms.prototype = {
 			
 			that.Alert.html(that.waitingGif);
 			that.Alert.show();
-			that.signin();
+			that.submit();
 		});
 
 		that.EmailInput.on('keyup', function(e) { that.reset(); });
 	},
 
-	signin: function() {
+	submit: function() {
 		var that = this;
 
 		$.ajax({
@@ -45,11 +45,10 @@ ForgotPasswordForms.prototype = {
 
 				that.Alert.toggleClass('alert-danger', false)
 				.toggleClass('alert-success', true)
-				.text('Signed In Successfully.');
-
-				window.location.href = "/profile-user-POV/";
+				.text('Please check your email for instructions to reset your password.');
 			} catch (err) {
-				that.Alert.text(response + err.message);
+				that.Alert.text(response);
+				//that.Alert.append(err.message);
 				// window.location.href = "signin/#failed";
 			}
 			
@@ -84,6 +83,9 @@ ForgotPasswordForms.prototype = {
 
 	        return false;
         }
+
+        that.Alert.hide();
+		return true;
 
 
 		function IsEmail(email) {

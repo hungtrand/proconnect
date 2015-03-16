@@ -55,6 +55,7 @@ class Email {
 				}
 			} catch (Exception $e) {
 				echo $e->getMessage();
+				echo 'EmailTemplate may not be found';
 				return false;
 			}
 			

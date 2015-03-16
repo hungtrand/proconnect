@@ -1,3 +1,15 @@
+<?php
+error_reporting(E_ALL); // debug
+ini_set("display_errors", 1); // debug
+
+$Email = '';
+$ForgotPasswordKey = '';
+
+if (isset($_GET['Email'])) $Email = $_GET['Email'];
+session_start();
+$ForgotPasswordKey = $_SESSION['__ForgotPasswordKey__'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,8 +32,8 @@
     <script src="../lib/jquery/jquery-2.1.3.min.js"></script>
 
     <!-- JavaScript link -->
-    <script type="text/javascript" src="js/ResetPassordForm.js"></script>
-    <script type="text/javascript" src="js/ResetPassordMain.js"></script>
+    <script type="text/javascript" src="js/ResetPasswordForm.js"></script>
+    <script type="text/javascript" src="js/ResetPasswordMain.js"></script>
   
 </head>
 
@@ -30,7 +42,9 @@
     <div class="container">
         
         <div class = "formContainer">   
-            <form class="form-reset form" id="ResetPassordForm" novalidate>
+            <form class="form-reset form" id="ResetPasswordForm" action="php/UpdatePassword.php" novalidate>
+                <input type="hidden" name="Email" value="<?=$Email?>" />
+                <input type="hidden" name="ForgotPasswordKey" value="<?=$ForgotPasswordKey?>" />
           
                 <a href= "../"><img id= "logo" src = "../image/proconnect/logo_text.png"></a>
                 
