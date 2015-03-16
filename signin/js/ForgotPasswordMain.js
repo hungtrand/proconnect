@@ -1,3 +1,3 @@
 $(document).ready(function() {
-    var sif = new ForgotPasswordForms($('#ForgotPasswordForm'));
+    var fpf = new ForgotPasswordForms($('#ForgotPasswordForm'));
 });

@@ -30,7 +30,7 @@
     <div class="container">
         
         <div class = "formContainer">   
-            <form class="form-forgot form" id="ForgotPasswordForm" novalidate>
+            <form class="form-forgot form" id="ForgotPasswordForm" action="php/ForgotPasswordEmail.php" novalidate>
           
                 <a href= "../"><img id= "logo" src = "../image/proconnect/logo_text.png"></a>
                 
@@ -41,11 +41,11 @@
 				 <div class="label"><p><b>Please enter your email to reset password</p></b></div>
                 <div class="form-group">
                     <label for="inputEmail" class="sr-only">Email address</label>
-                    <input type="email" name="Username" id="email-login" class="form-control" placeholder="Email address" autofocus>
+                    <input type="email" name="Email" id="email-login" class="form-control" placeholder="Email address" autofocus>
                 </div>
 
                 <div class="form-group">
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Continue</button>
+                    <button class="btn btn-lg btn-primary btn-block" id="continue-btn" type="submit">Continue</button>
                 </div>
 
             </form>

@@ -25,14 +25,14 @@ ResetPasswordForms.prototype = {
 			
 			that.Alert.html(that.waitingGif);
 			that.Alert.show();
-			that.signin();
+			that.submit();
 		});
 
 		that.NewPasswordInput.on('keyup', function(e) { that.reset(); });
 		that.ConfirmPasswordInput.on('keyup', function(e) { that.reset(); });
 	},
 
-	signin: function() {
+	submit: function() {
 		var that = this;
 
 		$.ajax({
@@ -43,15 +43,23 @@ ResetPasswordForms.prototype = {
 		.done(function(response) {
 			try {
 				var json = $.parseJSON(response);
+				console.log(json['success']);
+				if (json['success'] == 1) {
+					that.Alert.toggleClass('alert-danger', false)
+					.toggleClass('alert-success', true)
+					.text('Password updated. Redirecting...');
 
-				that.Alert.toggleClass('alert-danger', false)
-				.toggleClass('alert-success', true)
-				.text('Signed In Successfully.');
-
-				window.location.href = "/profile-user-POV/";
+					setTimeout(function() {
+						window.location.href = "/signin/";
+					}, 1000);
+				} else {
+					that.Alert.toggleClass('alert-success', false)
+					.toggleClass('alert-danger', true)
+					.text('Failed to update password.');
+				}
 			} catch (err) {
 				//console.log(err);
-				that.Alert.text(response + err.message);
+				that.Alert.text(response);
 				// window.location.href = "signin/#failed";
 			}
 			
@@ -82,6 +90,15 @@ ResetPasswordForms.prototype = {
 
         if(confirmPassword == ""){
 			that.Alert.text("Please confirm password");
+            that.ConfirmPasswordInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
+            that.ConfirmPasswordInput.focus();
+			that.Alert.show();
+
+            return false;
+        }
+
+        if (newPassword != confirmPassword) {
+        	that.Alert.text("Password fields do not match.");
             that.ConfirmPasswordInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
             that.ConfirmPasswordInput.focus();
 			that.Alert.show();
