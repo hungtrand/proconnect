@@ -50,7 +50,7 @@ SignInForm.prototype = {
 
 				window.location.href = "/profile-user-POV/";
 			} catch (err) {
-				that.Alert.text(response + err.message);
+				that.Alert.text(response);
 				// window.location.href = "signin/#failed";
 			}
 			

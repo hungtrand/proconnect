@@ -3,7 +3,7 @@
 require_once __DIR__."/Email.php";
 require_once __DIR__."/Account.php";
 //$aa = new AccountAdmin();
-//echo $aa->VerifyForgotPasswordKey("hungtrand0929@gmail.com","140224282d822de15acffbd38bd3c3d8bc2a3f65");
+//echo $aa->UpdatePassword("abc");
 /* Test scripts
 $u = ["FirstName"=>"Iron", "LastName"=>"Man", 
 		"Username"=>"iman", "Password"=>"robots",
@@ -83,6 +83,7 @@ class AccountAdmin {
 				VALUES (?, ?, ?, ?, ?)';
 
 		$VerificationKey = sha1(mt_rand(10000,99999). str_replace(' ', '', date("Y-m-d H:i:s")).$data['Email']);
+		$data['Password'] = sha1($data['Password']);
 		if ($stmt = $this->db->prepare($sql)) {
 
 			$data['Password'] = sha1($data['Password']);
@@ -133,8 +134,8 @@ class AccountAdmin {
 			return false;
 		}
 				
-		$mailVar = ["{{VerificationLink}}" => "http://71.6.84.70:8080/signin/php/ForgotPasswordVerification.php?Email=".$email."ForgotPasswordKey=".urlencode($VerificationKey)];
-		$m = new Email(["EMAILTO"=> $email]);
+		$mailVar = ["{{VerificationLink}}"=>"http://71.6.84.70:8080/signin/php/ForgotPasswordVerification.php?Email=".$email."&ForgotPasswordKey=".urlencode($VerificationKey)];
+		$m = new Email(["EMAILTO"=>$email]);
 		$m->loadTemplate(2, $mailVar);
 		$m->send();
 
@@ -174,6 +175,54 @@ class AccountAdmin {
 			return false;
 		}
 
+	}
+
+	public function UpdatePassword($Email, $ForgotPasswordKey, $newPassword){
+		//$email = ?;
+		if(!isset($ForgotPasswordKey) || !isset($Email) || !isset($newPassword)) return false;
+
+		$this->err = "";
+
+		$sql = 'SELECT `AccountID` FROM `Account`
+				WHERE `ForgotPasswordKey` = ? AND `Email` = ? ';
+		
+		$AccountID = 0;
+		if ($stmt = $this->db->prepare($sql)) {
+
+			try {
+				
+				$stmt->bindParam(1, $ForgotPasswordKey);
+				$stmt->bindParam(2, $Email);
+				
+				$stmt->execute();
+				$rs = $stmt->fetch(PDO::FETCH_ASSOC);
+				$AccountID = $rs['AccountID'];
+			} catch (Exception $e) {
+				$this->err = $e->getMessage();
+				return false;
+			}
+
+		} else {
+			$this->err = "verify Err: Insufficient information provided.";
+			return false;
+		}
+
+		if ($AccountID <= 0) {
+			$this->err = "verify Err: Incorrect information provided.";
+			return false;
+		}
+
+		$newPassword = sha1($newPassword);
+		$acc = new Account($AccountID);
+		
+		if ($acc->get('AccountID') > 0) {
+
+			$acc->update(['Password'=>$newPassword]);
+			return true;
+		} else {
+			$this->err = "verify Err: failed to update database.";
+			return false;
+		}
 	}
 
 	public function AccountExists($username, $email) {

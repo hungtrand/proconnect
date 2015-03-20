@@ -1,3 +1,3 @@
 $(document).ready(function() {
-    var sif = new ResetPasswordForms($('#ResetPassordForm'));
+    var spf = new ResetPasswordForms($('#ResetPasswordForm'));
 });

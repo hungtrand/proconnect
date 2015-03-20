@@ -78,6 +78,7 @@ class Account {
 
 		$sql = "UPDATE `Account` " . $setStmt . "WHERE `AccountID` = ? ";
 
+		$AccountID =  $this->get('AccountID');
 		if ($stmt = $this->db->prepare($sql)) {
 
 			try {
@@ -87,7 +88,7 @@ class Account {
 					$i++;
 				}
 
-				$stmt->bindParam($i, $this->get('AccountID'));
+				$stmt->bindParam($i, $AccountID);
 				$stmt->execute();
 				$this->load($this->get('AccountID'));
 			} catch (Exception $e) {

@@ -64,7 +64,8 @@
 
                     <div class="form-group">
                         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-                        <p id= "signUp">Not a member?  <a href= "../signup/">Join now</a></p>
+                        <br /><br />
+                        <p class="text-center"><a href="forgotPassword.php">Forgot password?</a> &nbsp;&nbsp;&nbsp;&nbsp; Not a member?  <a href= "../signup/">Join now</a></p>
                     </div>
 
                 </form>
