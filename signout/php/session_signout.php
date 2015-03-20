@@ -18,9 +18,6 @@ if (ini_get("session.use_cookies")) {
 
 // Finally, destroy the session.
 session_destroy();
-<<<<<<< HEAD
-// header( 'Location: ../../');
-=======
+
 header( 'Location: ../../signin/');
->>>>>>> d29c1e640e8fd1638899ebe7359f0cbdecf87d63
 ?>

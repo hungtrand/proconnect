@@ -5,6 +5,7 @@ $(document).ready(function() {
 	$("#employed-btn").attr('checked', true).trigger('click');
 	//validate the form as employed by default
 	validateEmployed();
+	
 	//show options by usertype
 	var signup_options = document.getElementsByClassName("signup-option");	
 	function showOption(){
