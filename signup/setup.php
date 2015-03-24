@@ -1,11 +1,11 @@
-
-
-<!DOCTYPE html>
-<!--<?php
+<?php
     error_reporting(E_ALL); // debug
     ini_set("display_errors", 1); // debug
     include '../signin/php/session_check.php';
-?>-->
+?>
+
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -84,7 +84,7 @@
                     <div class="form-group">
                         <button class="btn btn-warning btn-lg btn-block" id = "setup-btn"type="submit"><b>Submit</b></button>
                         <br />
-                        <a href="../profile-user-POV/index.php" style="float:right">Skip this step >></a>
+                        <a href="../profile-user-POV" style="float:right">Skip this step >></a>
                     </div>
 
                 </form>
