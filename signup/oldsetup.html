@@ -302,7 +302,7 @@
 			<ul id="usertype">
 				<li class="employed">
 					<label for="employed-btn">
-						<input type="radio" name="status-chooser" value="employed" class="signup-option" id="employed-btn">Employed
+						<input type="radio" name="status-chooser" value="employed" class="signup-option" id="employed-btn" data-toggle="collapse" data-target="#employedSelection">Employed
 					</label>
 				</li>
 				<li class="looking">
@@ -320,7 +320,7 @@
 		</div>
 
 	<!--For employed-->	 
-	<div id= "employedSelection">
+	<div class="collapse" id= "employedSelection">
 		<div class="control-group">
 		  <!-- Job title-->
 		  <label class="control-label" for="jobTitle">* Job title</label>

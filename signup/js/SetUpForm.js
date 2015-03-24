@@ -5,9 +5,19 @@ function SetUpForm(SetUpForm) {
 	this.PostalInput = SetUpForm.find('#postal-code');
 	this.AddressInput = SetUpForm.find('#address');
 	this.PhonenumberInput = SetUpForm.find('#phonenumber');
+	this.JobTitleInput = SetUpForm.find('#jobTitle');
+	this.CompanyInput = SetUpForm.find('#company');
+	this.RecentJobTitleInput = SetUpForm.find('#recentJobTitle');
+	this.RecentCompanyInput = SetUpForm.find('#recentCompany');
+	this.StartYearSeekerInput = SetUpForm.find('#start-yearpicker-seeker');
+	this.EndYearSeekerInput = SetUpForm.find('#end-yearpicker-seeker');
+	this.SchoolInput = SetUpForm.find('#school');
+	this.StartYearStudentInput = SetUpForm.find('#start-yearpicker-student');
+	this.EndYearStudentInput = SetUpForm.find('#end-yearpicker-student');
 	this.Alert = SetUpForm.find('.alert');
 	this.waitingGif = '<img src="../image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif" alt="Loading..."/>';
 	this.activeError = false;
+	
 	this.init();
 }
 
@@ -75,8 +85,7 @@ SetUpForm.prototype = {
 		var postal= that.PostalInput.val();
 		var address = that.AddressInput.val(); 
 		var phonenumber = that.PhonenumberInput.val();
-	console.log(country);
-	console.log(phonenumber);
+
 		if(country!= "United States"){
 			if(postal== ""){
 				that.PostalInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
