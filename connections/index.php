@@ -39,7 +39,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse navbar-fixed-top affix" data-spy="affix" data-offset-top="60 " data-offset-bottom="200">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -54,9 +54,9 @@
 
                 <form class="navbar-form navbar-left text-center" role="search">
                     <div class="form-group">
-                      <input type="text" class="form-control" placeholder="Search for people, companies, jobs...">
+                      <input type="text" size="40" class="form-control" placeholder="Search for people, companies, jobs...">
                     </div>
-                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
+                    <button type="submit" class="btn btn-primary">&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;&nbsp;&nbsp;</button>
                 </form>
             </div>
 
@@ -88,7 +88,30 @@
                 </ul>
 
             </div><!-- /.navbar-collapse -->
+
+            <ul class="nav nav-pills">
+                <li role="presentation"><a href="#">
+                    Home</a>
+                </li>
+                <li role="presentation"><a href="#">
+                    Profile</a>
+                </li>
+                <li role="presentation"><a href="#">
+                    Connections</a>
+                </li>
+                <li role="presentation"><a href="#">
+                    Education</a>
+                </li>
+                <li role="presentation"><a href="#">
+                    Jobs</a>
+                </li>
+                <li role="presentation"><a href="#">
+                    Interests</a>
+                </li>
+            </ul>
         </div><!-- /.container-fluid -->
+
+        
     </nav>
 
     <!-- Page Content -->
@@ -104,7 +127,7 @@
                     </div>
 
                     <div class="col col-xs-4 text-right">
-                        <button id="btnAddConnection" class="btn btn-danger" title="Add New Connection"><span class="glyphicon glyphicon-plus"></span></button>
+                        <button id="btnAddConnection" class="btn btn-danger" title="Add New Connection" data-toggle="modal" data-target="#modalNewConnection"><span class="glyphicon glyphicon-plus"></span></button>
                     </div>
                     
                 </div>
@@ -146,19 +169,16 @@
 
                 <hr />
 
-                <div id="ConnListing">
+                <div id="ConnListing" style="height: 2000px;">
 
                 </div>
                
             </div>
 
             <!-- Blog Sidebar Widgets Column -->
-            <div id="fixed-right-section" class="col col-md-4" role="complimentary">
-                <div class="affix hidden-print hidden-xs hidden-sm" data-spy="affix" data-offset-top="60 " data-offset-bottom="200">
-                    
-                    <div class="well">
-                        <h3 class="text-primary" style="overflow: auto;">Suggestions</h3>
-                    </div>
+            <div id="fixed-right-section" class="col col-md-4 affix hidden-print hidden-xs hidden-sm" role="complimentary" data-spy="affix" data-offset-top="60 " data-offset-bottom="200">
+                <div class="well">
+                    <h3 class="text-primary" style="overflow: auto;">Suggestions</h3>
                 </div>
 
             </div>
@@ -181,8 +201,54 @@
     </div>
     <!-- /.container -->
 
-    <script type="text/template">
-    <div id="UserConnection" class="col col-sm-12 col-md-6 col-lg-4 col-xs-12">
+    <div id="modalNewConnection" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Add New Connection</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="NewConnName" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Company</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="NewConnCompany" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Location</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="NewConnLocation" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Email</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="NewConnEmail" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <script type="text/template" id="ConnectionTemplate">
+    <div id="UserConnection" class="col col-xs-12">
         <div class="row">
             <div class="col col-xs-4">
                 <img width="100px" src="../users/1/images/androidEating.jpg" class="img-rounded" />
@@ -190,14 +256,26 @@
 
             <div class="col col-xs-8">
                 <h4 class="text-primary ConnectionName">John Doe</h4>
-                <p class="ConnectionJob">Web Applications Developer</p>
-                <p class="ConnectionJoinDate">Joined On <span class="JoinDate">03/03/2003</span></p>
+                <p class="ConnectionWork"><span class="ConnectionJob"></span>&nbsp;at&nbsp;<span class="ConnectionCompany"></span></p>
+                <p class="ConnectionLocation"></p>
+
+                <ul class="nav nav-pills">
+                    <li role="presentation"><a href="#">
+                        <span class="glyphicon glyphicon-envelope"><span>&nbsp;Home</a>
+                    </li>
+                    <li role="presentation"><a href="#">
+                        <span class="glyphicon glyphicon-retweet"><span>&nbsp;Connect</a>
+                    </li>
+                </ul>
             </div>
         </div>
 
+        <hr />
     </div>
     </script>
 
+    <script src="js/ConnectionList.js"></script>
+    <script src="js/index.js"></script>
 </body>
 
 </html>
