@@ -1,0 +1,53 @@
+body {
+  padding-top: 50px;
+  padding-bottom: 40px;
+  background-color: white;
+  background-image: url("../../image/cityatnight1680x1050.jpg");
+  background-repeat: repeat-y;
+  background-size: 100%;
+}
+
+#setupForm {
+  max-width: 400px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+#setupForm .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+
+#setupForm .form-control:focus {
+  z-index: 2;
+}
+.formContainer {
+padding: 50px;
+/*width:500px;
+margin: 0 auto;*/
+background-color: rgba(238, 238, 238, 0.89);
+
+}
+#logo{
+  width: 250px;
+  margin-bottom: 25px;
+  margin-left:27px;
+}
+.dropdown-toggle {   
+    overflow: hidden;
+    padding-right: 24px /* Optional for caret */;
+    text-align: left;
+    text-overflow: ellipsis;    
+    width: 100%;
+}
+
+.dropdown-toggle .caret {
+    position: absolute;
+    right: 12px;
+    top: 40px;
+}
