@@ -1,8 +1,10 @@
 <?php
+	error_reporting(E_ALL); // debug
+    ini_set("display_errors", 1); // debug
+    require_once __DIR__."/../../lib/php/sqlConnection.php";
+	require_once __DIR__.'/../../lib/php/classes/AccountAdmin.php';
 
-require_once _DIR_.'/../../lib/php/classes/AccountAdmin.php';
-
-	if(!$_POST['Email']) {
+	if(!isset($_POST['Email'])) {
 		echo "You're supposed to send me an email!!";
 		die();
 	}
