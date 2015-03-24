@@ -225,7 +225,7 @@ User.prototype = {
 
 			var teamMemberBlock = "";
 
-			console.log(projTitle);
+			// console.log(projTitle);
 			if(proj['team-member'].length !== 0) {
 				var memberBlocks = "";
 
@@ -241,7 +241,6 @@ User.prototype = {
 	                    "<p>" + member['snipet'] + "</p>"+
 	                  "</div>" +
 	                "</div>";
-	              // "</div>";
 				});
 
 				// console.log(memberBlocks);

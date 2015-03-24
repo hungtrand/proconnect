@@ -38,6 +38,7 @@ $(document).ready(function(){
 		var target = "#" + $(this).attr("for");	//grab target
 		var targetLink = '#' + $(this).attr("link");	//grab link
 
+		console.log(target);
 		//load info
 
 		if(target !== "#user-info-edit"){	
@@ -151,13 +152,15 @@ $(document).ready(function(){
 		var target = "#" + $(this).attr("for");	//grab target
 		var forTarget = '#' + $(this).attr("edit"); //grab edit flag
 
+		
 		if(forTarget !== '#true') {
 			//display edit view
+
 			$(target).fadeIn(); //.css("display","block").
 		} else {				//handle editview on add
-
+			console.log(target);
 			//NOTE: target should be the live view id, not edit view id
-			$(target).trigger("click");	
+			$(target).find("div.editable").trigger("click");	
 		}
 
 	});

@@ -235,29 +235,31 @@
                         <h3>Skills and Endorsements</h3>
                   </header>
                  <!--   <h4>Top Skills</h4> -->
-                  <div id="skills-endorsements" class="normal-view editable" for="skills-endorsements-edit"> 
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                   
-                    <div class="panel panel-default">
-                      <!-- Default panel contents -->
-                      <!-- List group -->
-                        <div id="skill-title" class="panel-heading"><b></b></div>
-
-                        <ul id="skill-top-list" class="list-group">
-                          <!-- <li class="list-group-item "><span class="badge colored-badge">12</span>Cras justo odio</li> -->
-                        </ul> 
-
-                        <div id="skill-more-title" class="panel-footer skill-more">
-                          <b><span class="first-name"></span> also know about...</b>
-                        </div>
-
+                  <div id="skills-endorsements" class="normal-view " for="skills-endorsements-edit"> 
+                    <div class="editable">
+                      <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                     
+                      <div class="panel panel-default ">
                         <!-- Default panel contents -->
                         <!-- List group -->
-                        
-                        <div id="skill-more-list" class="panel-body skill-more">
+                          <div id="skill-title" class="panel-heading"><b></b></div>
+
+                          <ul id="skill-top-list" class="list-group">
+                            <!-- <li class="list-group-item "><span class="badge colored-badge">12</span>Cras justo odio</li> -->
+                          </ul> 
+
+                          <div id="skill-more-title" class="panel-footer skill-more">
+                            <b><span class="first-name"></span> also know about...</b>
+                          </div>
+
+                          <!-- Default panel contents -->
+                          <!-- List group -->
                           
-                        </div>
-                    </div>
+                          <div id="skill-more-list" class="panel-body skill-more">
+                            
+                          </div>
+                      </div>
+                    </div>  
                   </div>
 
 
@@ -449,19 +451,18 @@
                     </form>  
                   </div>
                   <div id="user-projects" class="normal-view">
-                    <div>
+                    <!-- <div>
                       <div class="editable" for="project-edit" link="Tmemers" entry-number="">
                         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                        <!-- <i class="glyphicon glyphicon-link"></i> -->
+                        <!-- <i class="glyphicon glyphicon-link"></i> 
                         <h4>Project Name</h4>
                         
-                        <!-- <h5>Date Range</h5> -->
+                        <!-- <h5>Date Range</h5> 
                         <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.
                         </p>
                       </div>
                       <div class="team-members-container row" name="team-members" id="Tmemers">
 
-                        <!-- REPEATABLE -->
                         <div class="team-member-block col-md-6">
                           <div class="col-md-2">
                             <img src="http://vignette2.wikia.nocookie.net/farmville/images/d/da/38x38-icon.png/revision/latest?cb=20120530023501" class="team-member-mini-image">
@@ -472,10 +473,10 @@
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> -->
 
                      <!--  </div> -->
-                    </div>
+                  </div>
                 </div>  
               <div class="add-star">
                 <button id="user-info-edit-btn" class="add-btn" for="project-edit">Add Project</button>
