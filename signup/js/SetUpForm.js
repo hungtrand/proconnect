@@ -86,20 +86,17 @@ SetUpForm.prototype = {
 
 				return false;
 			}
-		   
 		}
+		else{
+			if(zipcode== "" || IsZipcode(zipcode)==false){
+				that.ZipcodeInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
+				that.Alert.text("Please enter valid Zip Code");
+				that.Alert.show();
+				that.ZipcodeInput.val("");
 
-		if(zipcode== "" || IsZipcode(zipcode)==false){
-		    that.ZipcodeInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
-			that.Alert.text("Please enter valid Zip Code");
-			that.Alert.show();
-			that.ZipcodeInput.val("");
-
-		    return false;
+				return false;
+			}
 		}
-
-
-
 		if(address==""){
 		    that.AddressInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
 			that.Alert.text("Please enter address ");
