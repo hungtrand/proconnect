@@ -17,10 +17,8 @@ function SetUpForm(SetUpForm) {
 	this.Alert = SetUpForm.find('.alert');
 	this.waitingGif = '<img src="../image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif" alt="Loading..."/>';
 	this.activeError = false;
-	
 	this.init();
 }
-
 SetUpForm.prototype = {
 	constructor: SetUpForm,
 
@@ -40,6 +38,15 @@ SetUpForm.prototype = {
 		that.PostalInput.on('keyup', function(e) { that.reset(); });
 		that.AddressInput.on('keyup', function(e) { that.reset(); });
 		that.PhonenumberInput.on('keyup', function(e) { that.reset(); });
+		that.JobTitleInput.on('keyup', function(e) { that.reset(); });
+		that.CompanyInput.on('keyup', function(e) { that.reset(); });
+		that.RecentJobTitleInput.on('keyup', function(e) { that.reset(); });
+		that.RecentCompanyInput.on('keyup', function(e) { that.reset(); });
+		that.StartYearSeekerInput.on('keyup', function(e) { that.reset(); });
+		that.EndYearSeekerInput.on('keyup', function(e) { that.reset(); });
+		that.SchoolInput.on('keyup', function(e) { that.reset(); });
+		that.StartYearStudentInput.on('keyup', function(e) { that.reset(); });
+		that.EndYearStudentInput.on('keyup', function(e) { that.reset(); });
 	},
 
 	/*signup: function() {
@@ -85,6 +92,15 @@ SetUpForm.prototype = {
 		var postal= that.PostalInput.val();
 		var address = that.AddressInput.val(); 
 		var phonenumber = that.PhonenumberInput.val();
+		var jobtitle= that.JobTitleInput.val();
+		var company= that.CompanyInput.val();
+		var rctJobtitle= that.RecentJobTitleInput.val();
+		var rctCompany= that.RecentCompanyInput.val();
+		var startSeeker= that.StartYearSeekerInput.val();
+		var endSeeker= that.EndYearSeekerInput.val();
+		var school= that.SchoolInput.val();
+		var startStudent= that.StartYearStudentInput.val();
+		var endStudent= that.EndYearStudentInput.val();
 
 		if(country!= "United States"){
 			if(postal== ""){
@@ -122,6 +138,93 @@ SetUpForm.prototype = {
 
 			return false;
 		}
+		
+		if ($("#inlineRadio1").prop("checked")) {
+			console.log("employed check")
+			if(jobtitle==""){
+				that.JobTitleInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
+				that.Alert.text("Please enter job title ");
+				that.Alert.show();
+				that.JobTitleInput.val("");
+				return false;
+			}
+			if(company==""){
+				that.CompanyInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
+				that.Alert.text("Please enter Company Name ");
+				that.Alert.show();
+				that.CompanyInput.val("");
+				return false;
+			}
+		}
+		if ($("#inlineRadio2").prop("checked")) {
+		console.log("looking check")
+			if(rctJobtitle==""){
+				that.RecentJobTitleInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
+				that.Alert.text("Please enter recent job title ");
+				that.Alert.show();
+				that.RecentJobTitleInput.val("");
+				return false;
+			}
+			if(rctCompany==""){
+				that.RecentCompanyInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
+				that.Alert.text("Please enter recent company Name ");
+				that.Alert.show();
+				that.RecentCompanyInput.val("");
+				return false;
+			}
+			if(startSeeker==""){
+				that.StartYearSeekerInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
+				that.Alert.text("Please enter start year ");
+				that.Alert.show();
+				that.StartYearSeekerInput.val("");
+				return false;
+			}
+			if(endSeeker==""){
+				that.EndYearSeekerInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
+				that.Alert.text("Please enter end year ");
+				that.Alert.show();
+				that.EndYearSeekerInput.val("");
+				return false;
+			}
+			if(endSeeker<startSeeker){
+				that.EndYearSeekerInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
+				that.Alert.text("End year has to be later than start year");
+				that.Alert.show();
+				that.EndYearSeekerInput.val("");
+				return false;
+			}
+		}
+		else if ($("#inlineRadio3").prop("checked")) {
+		console.log("student check")
+			if(school==""){
+				that.SchoolInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
+				that.Alert.text("Please enter school ");
+				that.Alert.show();
+				that.SchoolInput.val("");
+				return false;
+			}
+			if(startStudent==""){
+				that.StartYearStudentInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
+				that.Alert.text("Please enter start year ");
+				that.Alert.show();
+				that.StartYearStudentInput.val("");
+				return false;
+			}
+			if(endStudent==""){
+				that.EndYearStudentInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
+				that.Alert.text("Please enter end year ");
+				that.Alert.show();
+				that.EndYearStudentInput.val("");
+				return false;
+			}
+			if(endStudent<startStudent){
+				that.EndYearStudentInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
+				that.Alert.text("End year has to be later than start year");
+				that.Alert.show();
+				that.EndYearStudentInput.val("");
+				return false;
+			}
+		}
 
 		return true;
 
@@ -154,6 +257,15 @@ SetUpForm.prototype = {
 		that.PostalInput.css({"border": ""});
 		that.AddressInput.css({"border": ""});
 		that.PhonenumberInput.css({"border": ""});
+		that.JobTitleInput.css({"border": ""});
+		that.CompanyInput.css({"border": ""});
+		that.RecentJobTitleInput.css({"border": ""});
+		that.RecentCompanyInput.css({"border": ""});
+		that.StartYearSeekerInput.css({"border": ""});
+		that.EndYearSeekerInput.css({"border": ""});
+		that.SchoolInput.css({"border": ""});
+		that.StartYearStudentInput.css({"border": ""});
+		that.EndYearStudentInput.css({"border": ""});
 		that.Alert.html('');
 		that.Alert.hide();
 		that.activeError = false;
