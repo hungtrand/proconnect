@@ -1,7 +1,6 @@
 <?php
-include '../signout/php/session_check_signout.php';
+  include '../signout/php/session_check_signout.php';
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -34,8 +33,11 @@ include '../signout/php/session_check_signout.php';
 
 
     <!-- JQuery UI -->
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
-    <script src="http://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+    <!-- <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css"> -->
+    <!-- // <script src="http://code.jquery.com/ui/1.11.3/jquery-ui.js"></script> -->
+
+    <!-- Sortable script -->
+    <script src="../js/jquery.sortable.min.js"></script>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -45,7 +47,12 @@ include '../signout/php/session_check_signout.php';
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../js/ie10-viewport-bug-workaround.js"></script>
 
-    <!-- Custome Script -->
+
+    <!-- Custom modal handler -->
+    <script src="../js/bootbox.min.js"></script>
+
+    <!-- Custom Script -->
+    <script src="js/User.js"></script>
     <script src="js/profile-user-POV.js"></script>
   </head>
 
@@ -76,7 +83,7 @@ include '../signout/php/session_check_signout.php';
       <div class="row">
           <div class="col col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
               <div class="well well-sm">
-                  <div class="row">
+                  <div class="row normal-view">
                       <div id="profile-image-block" class="col col-sm-6 col-md-4 col-lg-3">
                           <div id="profile-image" class="outer-ref" >
                             <img src="http://placehold.it/380x500" alt="" class="img-responsive profile-image" />
@@ -86,25 +93,28 @@ include '../signout/php/session_check_signout.php';
                             </div>
                           </div>
                       </div>
-                      <div class="col-sm-6 col-md-8 editable">
+                      <div class="col-sm-6 col-md-8 editable" for="user-info-edit">
                           <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 
-                          <h4>Bhaumik Patel</h4>
-                          <small><cite title="San Francisco, USA">San Francisco, USA <i class="glyphicon glyphicon-map-marker">
+                          <h4><span id="user-first" class="first-name"></span> <span id="user-mi"></span> <span id="user-last"></span></h4>
+                          <small><cite title=""><span id="user-address"></span><i class="glyphicon glyphicon-map-marker">
                           </i></cite></small>
                           <p>
-                              <i class="glyphicon glyphicon-envelope"></i><span id="email">email@example.com</span>
+                              <i class="glyphicon glyphicon-envelope"></i><span id="user-email"></span>
                               <br />
                               <!-- <i class="glyphicon glyphicon-globe"></i><span id><a href="http://www.jquery2dotnet.com">www.jquery2dotnet.com</a></span>
                               <br /> -->
-                              <i class="glyphicon glyphicon-phone"></i><span id="phone">phone #</span>
+                              <i class="glyphicon glyphicon-phone"></i><span id="user-phone">phone #</span>
                               <br />
-                               <i class="glyphicon glyphicon-home"></i><span id="home">somewhere someplace</span>
+                               <i class="glyphicon glyphicon-home"></i><span id="user-home">somewhere someplace</span>
                               <br />
-                              <i class="glyphicon glyphicon-education"></i><span id="education">somewhere someplace</span>
-                              <br />
+                              <!-- <i class="glyphicon glyphicon-education"></i><span id="user-education">somewhere someplace</span>
+                              <br /> -->
                           </p>
-                          <!-- Split button -->
+                          
+                      </div>
+                      <div class="col-sm-6 col-md-8">
+                      <!-- Split button -->
                           <div class="btn-group">
                               <button type="button" class="btn btn-primary">
                                   Social</button>
@@ -124,41 +134,44 @@ include '../signout/php/session_check_signout.php';
                   <br>
 
                   <!-- User Info -->
-                  <div class="edit-view">
-                        <form >
+                  <div id="user-info-edit" class="edit-view">
+                        <div class="loading">
+                          <img src="../image/ajax-loader.gif">
+                        </div>
+                        <form class="editable-form" action="javascript:void(0)" method="POST">
                           <!-- User Name -->
                           <div class="form-group form-inline">
                             <div class="form-group">
                               <label for="first-name-input">First</label>
                               <abbr title="Required" class="required">*</abbr>
-                              <input type="text" class="form-control" id="first-name-input" placeholder="First" required>
+                              <input name="first-name" type="text" class="form-control" id="first-name-input" placeholder="First" required>
                             </div>
                             <div class="form-group">
                               <label for="last-name-input">Last</label>
                               <abbr title="Required" class="required">*</abbr>
-                              <input type="text" class="form-control" id="last-name-input" placeholder="Last" required>
+                              <input name="last-name" type="text" class="form-control" id="last-name-input" placeholder="Last" required>
                             </div>
                             <div class="form-group">
                               <label for="middle-initial-input">M.I.</label>
-                              <input type="text" class="form-control" id="middle-initial-input" placeholder="M.I." style="width:50px;" maxlength="1">
+                              <input name="middle-intial" type="text" class="form-control" id="middle-initial-input" placeholder="M.I." style="width:50px;" maxlength="1">
                             </div>
                           </div>
                           <!-- Email Address -->
                            <div class="form-group">
                             <label for="email-input">Email</label>
                             <abbr title="Required" class="required">*</abbr>
-                            <input type="text" class="form-control" id="email-input" value="" required>
+                            <input name="email-address" type="text" class="form-control" id="email-input" value="" required>
                           </div>
                           <!-- Alternate Email Address -->
                            <div class="form-group">
                             <label for="alt-email-input">Alternate Email</label>
-                            <input type="text" class="form-control" id="alt-email-input" value="">
+                            <input name="alt-email-address" type="text" class="form-control" id="alt-email-input" value="">
                           </div>
                           <!-- Phone -->
                           <label for="phone-input">Phone</label>
                           <div class="form-group form-inline">
-                            <input type="text" class="form-control" id="phone-input" placeholder="#(###) ###-#### ">
-                            <select type="text" class="form-control" id="work-start-month"> 
+                            <input name="phone-number" type="text" class="form-control" id="phone-input" placeholder="#(###) ###-#### ">
+                            <select name="phone-number-type" type="text" class="form-control" id="phone-number-type"> 
                               <option value="home">Home</option>
                               <option value="work">Work</option>
                               <option value="mobile">Mobile</option>
@@ -166,10 +179,10 @@ include '../signout/php/session_check_signout.php';
                           </div>
 
                           <!-- Address -->
-                          <label for="address">Address</label>
-                          <textarea id="address" class="form-control" rows="2"></textarea> <br><br>
-                          <button type="submit" class="btn btn-primary">Save</button>
-                          <button type="button" class="btn btn-default">Cancel</button>
+                         <!--  <label for="address">Address</label>
+                          <textarea id="address" class="form-control" rows="2"></textarea> <br><br> -->
+                          <button type="submit" class="btn btn-primary save-btn" value="save">Save</button>
+                          <button type="button" class="btn btn-default cancel-btn" value="cancel" for="user-info-edit">Cancel</button>
                         </form>  
                       </div>
                       
@@ -188,23 +201,99 @@ include '../signout/php/session_check_signout.php';
                   <header>
                         <h3>Summary</h3>
                   </header>
-                  <div class="normal-view editable">
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                    <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
+                  <div id="summary-description" class="normal-view" > 
+                    <div class="editable" for="summary-edit">
+                      <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                      <p id="user-summary"></p>
+                    </div>
                   </div>
-                  <div class="edit-view">
-                    <b><h4>Summary</h4></b>
-                    <form>
-                      <textarea class="form-control" rows="10"></textarea> <br><br>
-                      <button type="submit" class="btn btn-primary">Save</button>
-                      <button type="button" class="btn btn-default">Cancel</button>
+                  <div id="summary-edit" class="edit-view" >
+                    <div class="loading">
+                        <img src="../image/ajax-loader.gif">
+                      </div>
+                    <!-- <b><h4>Summary</h4></b> -->
+                    <form class="editable-form">
+                      <textarea name="user-description" class="form-control" rows="10"></textarea> <br><br>
+                      <button type="submit" class="btn btn-primary save-btn">Save</button>
+                      <button type="button" class="btn btn-default cancel-btn">Cancel</button>
+                    </form>
+                  </div>
+              </div>
+              
+              <div class="add-star" >
+                <button id="user-info-edit-btn" class="add-btn" for="summary-description" edit="true" >Edit Summary</button>
+              </div>
+          </div>
+      </div>
+
+      <!-- Skills -->
+      <div class="row">
+          <div class="col col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
+
+              <div class="well well-sm ">
+                  <header>
+                        <h3>Skills and Endorsements</h3>
+                  </header>
+                 <!--   <h4>Top Skills</h4> -->
+                  <div id="skills-endorsements" class="normal-view editable" for="skills-endorsements-edit"> 
+                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                   
+                    <div class="panel panel-default">
+                      <!-- Default panel contents -->
+                      <!-- List group -->
+                        <div id="skill-title" class="panel-heading"><b></b></div>
+
+                        <ul id="skill-top-list" class="list-group">
+                          <!-- <li class="list-group-item "><span class="badge colored-badge">12</span>Cras justo odio</li> -->
+                        </ul> 
+
+                        <div id="skill-more-title" class="panel-footer skill-more">
+                          <b><span class="first-name"></span> also know about...</b>
+                        </div>
+
+                        <!-- Default panel contents -->
+                        <!-- List group -->
+                        
+                        <div id="skill-more-list" class="panel-body skill-more">
+                          
+                        </div>
+                    </div>
+                  </div>
+
+
+                  <!-- edit-view -->
+                  <div id="skills-endorsements-edit" class="edit-view " > 
+                    <div class="loading">
+                      <img src="../image/ajax-loader.gif">
+                    </div>
+                    <!-- <b><h4>Summary</h4></b> -->
+                    <form class="editable-form">
+
+                      <div class="form-group">
+                        <input name="skill" type="text" class="form-control typeahead" id="skill-input" placeholder="What are you areas of expertise?">
+                      </div>  
+
+
+                      <div class="playground form-group well well-sm"> <!-- contentEditable="true" -->
+
+                        <ul class="sortable grid">
+                          <li class="">
+                            <span class="badge">12</span>
+                            <span class="skill-pill-name">asda</span>
+                            <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          </li>
+                        </ul>
+                      </div>
+                      <b style="float:right">Drag to reorder</b>
+                      <button type="submit" class="btn btn-primary save-btn">Save</button>
+                      <button type="button" class="btn btn-default cancel-btn">Cancel</button>
                     </form>
                   </div>
                   
               </div>
               
-              <div class="add-star">
-                <button id="user-info-edit-btn">Edit Summary</button>
+              <div class="add-star" >
+                <button id="skills-endorsements-edit-btn" class="add-btn" for="skills-endorsements" edit="true">Add Skill</button>
               </div>
           </div>
       </div>
@@ -216,31 +305,34 @@ include '../signout/php/session_check_signout.php';
                   <header>
                     <h3>Experience</h3>
                   </header>
-                  <div class="edit-view">
-                    <form >
+                  <div id="experience-edit" class="edit-view" entry-number="">
+                    <div class="loading">
+                        <img src="../image/ajax-loader.gif">
+                      </div>
+                    <form class="editable-form">
                       <!-- Position Title -->
                       <div class="form-group ">
                         <label for="position-title">Position Title</label>
                         <abbr title="Required" class="required">*</abbr>
-                        <input type="text" class="form-control" id="position-title" value="place holder" required>
+                        <input name="position-title" type="text" class="form-control" id="position-title" value="place holder" required>
                       </div>
                       <!-- Company Name -->
                        <div class="form-group ">
                         <label for="company-name">Company Name</label>
                         <abbr title="Required" class="required">*</abbr>
-                        <input type="text" class="form-control" id="company-name" value="Company Name" required>
+                        <input name="company-name" type="text" class="form-control" id="company-name" value="Company Name" required>
                       </div>
                       <!-- Location -->
                       <div class="form-group ">
                         <label for="company-location">Location</label>
-                        <input type="text" class="form-control" id="company-location" value="Location">
+                        <input name="company-location" type="text" class="form-control" id="company-location" value="Location">
                       </div>
 
                       <!-- Time Period -->
                       <label for="work-start-month">Time Period</label>
                       <abbr title="Required" class="required">*</abbr>
                       <div class="form-group form-inline ">
-                        <select type="month" class="form-control" id="work-start-month" required> 
+                        <select name="work-start-month" type="month" class="form-control" id="work-start-month" required> 
                           <option value>Choose...</option>
                           <option value="1">January</option>
                           <option value="2">February</option>
@@ -255,30 +347,32 @@ include '../signout/php/session_check_signout.php';
                           <option value="11">November</option>
                           <option value="12">December</option>
                         </select>
-                        <input type="text" class="form-control short-input" id="work-start-year" placeholder="Year" maxlength="4"> &#8213 
+                        <input name="work-start-year" type="text" class="form-control short-input" id="work-start-year" placeholder="Year" maxlength="4" required> &#8213 
 
                         <div class="form-group work-time-right-block">
-                          <span id="current"> present</span>
+                          <span id="work-present"> present</span>
 
-                          <select type="month" class="form-control" id="work-end-month" > 
-                            <option value>Choose...</option>
-                            <option value="1">January</option>
-                            <option value="2">February</option>
-                            <option value="3">March</option>
-                            <option value="4">April</option>
-                            <option value="5">May</option>
-                            <option value="6">June</option>
-                            <option value="7">July</option>
-                            <option value="8">August</option>
-                            <option value="9">September</option>
-                            <option value="10">October</option>
-                            <option value="11">November</option>
-                            <option value="12">December</option>
-                          </select>
-                          <input type="text" class="form-control short-input" id="work-end-year" placeholder="Year" maxlength="4"><br>
+                          <div id="work-end-time-explicit" >
+                            <select name="work-end-month" type="month" class="form-control" id="work-end-month"> 
+                              <option value>Choose...</option>
+                              <option value="1">January</option>
+                              <option value="2">February</option>
+                              <option value="3">March</option>
+                              <option value="4">April</option>
+                              <option value="5">May</option>
+                              <option value="6">June</option>
+                              <option value="7">July</option>
+                              <option value="8">August</option>
+                              <option value="9">September</option>
+                              <option value="10">October</option>
+                              <option value="11">November</option>
+                              <option value="12">December</option>
+                            </select>
+                            <input name="work-end-year" type="text" class="form-control short-input" id="work-end-year" placeholder="Year" maxlength="4"><br>
+                          </div>
                           <div class="checkbox">
                             <label>
-                              <input type="checkbox" value="">
+                              <input id="work-present-chk" name="work-present" type="checkbox" value="current">
                               I currently work here.
                             </label>
                           </div> 
@@ -287,25 +381,18 @@ include '../signout/php/session_check_signout.php';
 
                       <!-- Description -->
                       <label for="work-description">Description</label>
-                      <textarea id="work-description" class="form-control" rows="5"></textarea> <br><br>
-                      <button type="submit" class="btn btn-primary">Save</button>
-                      <button type="button" class="btn btn-default">Cancel</button>
+                      <textarea id="work-description" class="form-control" rows="5" name="experience-description"></textarea> 
+                      <br><br>
+                      <button type="submit" class="btn btn-primary save-btn">Save</button>
+                      <button type="button" class="btn btn-default cancel-btn">Cancel</button>
+                      <a class="remove-entry-link" href="#" >Remove this entry.</a>
                     </form>  
                   </div>
-                  <div class="normal-view outer-ref">
-                  
-                    <div></div>
-                    <div class="editable">
-                      <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                      <h4>Position Title</h4>
-                      <h5>Company Name</h5>
-                      <h5>Time Period</h5>
-                      <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
-                    </div>
+                  <div id="user-experiences" class="normal-view outer-ref">
                   </div>
               </div>
               <div class="add-star">
-                <button id="user-info-edit-btn">Add Position</button>
+                <button id="user-info-edit-btn" class="add-btn" for="experience-edit">Add Eperience</button>
               </div>
           </div>
       </div>
@@ -317,83 +404,62 @@ include '../signout/php/session_check_signout.php';
                   <header>
                     <h3>Projects</h3>
                   </header>
-                  <div class="edit-view">
-                    <form >
+                  <div id="project-edit" class="edit-view" entry-number="">
+                    <div class="loading">
+                      <img src="../image/ajax-loader.gif">
+                    </div>
+                    <form class="editable-form">
                       <!-- Project Name -->
                       <div class="form-group ">
                         <label for="project-name">Name</label>
                         <abbr title="Required" class="required">*</abbr>
-                        <input type="text" class="form-control" id="project-name" value="ProConnect" required>
+                        <input name="project-name" type="text" class="form-control" id="project-name" value="ProConnect" required>
                       </div>
                       <!-- Project URL -->
                        <div class="form-group ">
-                        <label for="project-url">Company Name</label>
-                        <input type="text" class="form-control" id="project-url" value="URL">
+                        <label for="project-url">Project URL</label>
+                        <input name="project-url" type="text" class="form-control" id="project-url" value="URL">
                       </div>
                       <!-- Team Members -->
                       <label for="project-team-members">Team Members</label>
                       
                       <div id="project-team-editable-block" class="form-group well well-sm"> <!-- contentEditable="true" -->
 
-                        <ul id="sortable">
-                          <li class="ui-state-default col-md-3">
-                            <div class="team-member-block team-member-block-edit-view col-md-6">
-                              <div class="team-member-block-description">
-                                <p>You</p>
-                              </div>
-                            </div>
-                            <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                          </li>
-                          <li class="ui-state-default col-md-3">
-                            <div class="team-member-block team-member-block-edit-view col-md-6">
-                              <div class="team-member-block-description">
-                                <p>You</p>
-                              </div>
-                            </div>
-                            <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                          </li>
-                          <li class="ui-state-default col-md-3">
-                            <div class="team-member-block team-member-block-edit-view col-md-6">
-                              <div class="team-member-block-description">
-                                <p>You</p>
-                              </div>
-                            </div>
-                            <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                          </li>
-                           <li class="ui-state-default col-md-3">
-                            <div class="team-member-block team-member-block-edit-view col-md-6">
-                              <div class="team-member-block-description">
-                                <p>You</p>
-                              </div>
-                            </div>
+                        <ul class="sortable grid">
+                          <li class="no-sort" index="0">
+                            <!-- team member icon goes here-->
+                            <span class="skill-pill-name">you</span>
                             <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                           </li>
                         </ul>
 
-                        <input type="text" class="form-control" id="project-team-members" placeholder="+Add Member"> 
+                      
+                        <input name="new-member-name" type="text" class="form-control" id="project-team-members" placeholder="+Add Member"> 
+                        
 
                       </div>
 
                       <!-- Project Description -->
                       <label for="project-description">Description</label>
-                      <textarea id="project-description" class="form-control" rows="5"></textarea> <br><br>
+                      <textarea name="project-description" id="project-description" class="form-control" rows="5"></textarea> <br><br>
 
-                      <button type="submit" class="btn btn-primary">Save</button>
-                      <button type="button" class="btn btn-default">Cancel</button>
+                      <button type="submit" class="btn btn-primary save-btn">Save</button>
+                      <button type="button" class="btn btn-default cancel-btn">Cancel</button>
+                      <a class="remove-entry-link" href="#" >Remove this entry.</a>
                     </form>  
                   </div>
-                  <div class="normal-view">
+                  <div id="user-projects" class="normal-view">
                     <div>
-                      <div class="editable">
+                      <div class="editable" for="project-edit" link="Tmemers" entry-number="">
                         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-
+                        <!-- <i class="glyphicon glyphicon-link"></i> -->
                         <h4>Project Name</h4>
                         
-                        <h5>Date Range</h5>
-                        <p name="description">Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.
+                        <!-- <h5>Date Range</h5> -->
+                        <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.
                         </p>
                       </div>
-                      <div class="team-members-container row" name="team-members">
+                      <div class="team-members-container row" name="team-members" id="Tmemers">
 
                         <!-- REPEATABLE -->
                         <div class="team-member-block col-md-6">
@@ -402,48 +468,17 @@ include '../signout/php/session_check_signout.php';
                           </div>
                           <div class="team-member-block-description col-md-10">
                             <a href="www.google.com">Google</a> <br>
-                            <p>User title displayed hereaasdasdasdassdasdasd</p>
-                          </div>
-                        </div>
-
-                        <!-- REPEATABLE -->
-                        <div class="team-member-block col-md-6">
-                          <div class="col-md-2">
-                            <img src="http://vignette2.wikia.nocookie.net/farmville/images/d/da/38x38-icon.png/revision/latest?cb=20120530023501" class="team-member-mini-image">
-                          </div>
-                          <div class="team-member-block-description col-md-10">
-                            <a href="www.google.com">Google</a> <br>
-                            <p>User title displayed hereaasdasdasdassdasdasd</p>
-                          </div>
-                        </div>
-
-                        <!-- REPEATABLE -->
-                        <div class="team-member-block col-md-6">
-                          <div class="col-md-2">
-                            <img src="http://vignette2.wikia.nocookie.net/farmville/images/d/da/38x38-icon.png/revision/latest?cb=20120530023501" class="team-member-mini-image">
-                          </div>
-                          <div class="team-member-block-description col-md-10">
-                            <a href="www.google.com">Google</a> <br>
-                            <p>User title displayed hereaasdasdasdassdasdasd</p>
-                          </div>
-                        </div>
-
-                        <!-- REPEATABLE -->
-                        <div class="team-member-block col-md-6">
-                          <div class="col-md-2">
-                            <img src="http://vignette2.wikia.nocookie.net/farmville/images/d/da/38x38-icon.png/revision/latest?cb=20120530023501" class="team-member-mini-image">
-                          </div>
-                          <div class="team-member-block-description col-md-10">
-                            <a href="www.google.com">Google</a> <br>
-                            <p>User title displayed hereaasdasdasdassdasdasd</p>
+                            <p>User title displayed hereaasdasdasdassdasdasdasdasdsasd</p>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>  
-              </div>
+
+                     <!--  </div> -->
+                    </div>
+                </div>  
               <div class="add-star">
-                <button id="user-info-edit-btn">Add Project</button>
+                <button id="user-info-edit-btn" class="add-btn" for="project-edit">Add Project</button>
               </div>
           </div>
       </div>
@@ -455,35 +490,38 @@ include '../signout/php/session_check_signout.php';
                   <header>
                     <h3>Education</h3>
                   </header>
-                  <div class="edit-view">
-                    <form >
+                  <div id="education-edit" class="edit-view" entry-number="">
+                    <div class="loading">
+                      <img src="../image/ajax-loader.gif">
+                    </div>
+                    <form class="editable-form">
                       <!-- School -->
                       <div class="form-group">
                         <label for="school-name">School</label>
                         <abbr title="Required" class="required">*</abbr>
-                        <input type="text" class="form-control" id="school-name" value="Some value" required>
+                        <input name="school-name" type="text" class="form-control" id="school-name" value="Some value" required>
                       </div>
                       <!-- Degree -->
                        <div class="form-group">
                         <label for="degree">Degree</label>
-                        <input type="text" class="form-control" id="degree" value="Bachelor of Science (BS)">
+                        <input name="degree" type="text" class="form-control" id="degree" value="Bachelor of Science (BS)">
                       </div>
                       <!-- Field of Study -->
                       <div class="form-group">
                         <label for="field-of-study">Field of Study</label>
-                        <input type="text" class="form-control" id="field-of-study" value="Computer Science">
+                        <input name="field-of-study" type="text" class="form-control" id="field-of-study" value="Computer Science">
                       </div>
 
                       <!-- Grade -->
                       <div class="form-group">
                         <label for="grade">Grade</label>
-                        <input type="text" class="form-control" id="grade" value="SHIT">
+                        <input name="grade" type="text" class="form-control" id="grade" value="SHIT">
                       </div>
 
                       <!-- Time Period -->
                       <label for="school-year-started">Dates Attended</label>
                       <div class="form-group form-inline ">
-                        <select type="month" class="form-control" id="school-year-started" > 
+                        <select name="school-year-started" type="month" class="form-control" id="school-year-started" > 
                           <option value="" selected>-</option>
                           <option value="2015">2015</option><option value="2014">2014</option><option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option><option value="2009">2009</option><option value="2008">2008</option><option value="2007">2007</option><option value="2006">2006</option><option value="2005">2005</option><option value="2004">2004</option><option value="2003">2003</option><option value="2002">2002</option><option value="2001">2001</option><option value="2000">2000</option>
                           <option value="1999">1999</option><option value="1998">1998</option><option value="1997">1997</option><option value="1996">1996</option><option value="1995">1995</option><option value="1994">1994</option><option value="1993">1993</option><option value="1992">1992</option><option value="1991">1991</option><option value="1990">1990</option>
@@ -493,7 +531,7 @@ include '../signout/php/session_check_signout.php';
                           <option value="1959">1959</option><option value="1958">1958</option><option value="1957">1957</option><option value="1956">1956</option><option value="1955">1955</option><option value="1954">1954</option><option value="1953">1953</option><option value="1952">1952</option><option value="1951">1951</option>
                         </select>
                         &#8213 
-                        <select type="month" class="form-control" id="work-end-month" > 
+                        <select name="school-year-ended" type="month" class="form-control" id="school-year-ended" > 
                           <option value="" selected>-</option>
                           <option value="2022">2022</option><option value="2021">2021</option><option value="2020">2020</option><option value="2019">2019</option><option value="2018">2018</option><option value="2017">2017</option><option value="2016">2016</option>
                           <option value="2015">2015</option><option value="2014">2014</option><option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option><option value="2009">2009</option><option value="2008">2008</option><option value="2007">2007</option><option value="2006">2006</option><option value="2005">2005</option><option value="2004">2004</option><option value="2003">2003</option><option value="2002">2002</option><option value="2001">2001</option><option value="2000">2000</option>
@@ -508,17 +546,22 @@ include '../signout/php/session_check_signout.php';
 
                       <!-- Activities and Societies -->
                       <label for="activities">Activities and Societies</label>
-                      <textarea id="activities" class="form-control" rows="3"></textarea> <br>
+                      <textarea name="activities" id="activities" class="form-control" rows="3"></textarea> <br>
 
                       <!-- Description -->
-                      <label for="school-description">Description</label>
-                      <textarea id="school-description" class="form-control" rows="5"></textarea> <br><br>
-                      <button type="submit" class="btn btn-primary">Save</button>
-                      <button type="button" class="btn btn-default">Cancel</button>
+                      <label for="education-description">Description</label>
+                      <textarea name="education-description" id="education-description" class="form-control" rows="4"></textarea> <br>
+
+                      <!-- file -->
+                      <!-- <label for="school-description">Description</label>
+                      <input name="school-description" id="school-description" class="form-control" rows="5"></input> <br><br> -->
+                      <button type="submit" class="btn btn-primary save-btn">Save</button>
+                      <button type="button" class="btn btn-default cancel-btn">Cancel</button>
+                      <a class="remove-entry-link" href="#" >Remove this entry.</a>
                     </form>  
                   </div>
-                  <div class="normal-view">
-                    <div class="editable">
+                  <div id="user-education" class="normal-view">
+                    <!-- <div class="editable" for="education-edit" index="0">
                       <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                       <h4>School Name</h4>
                       <h5>Degree and <span>Grade</span></h5>
@@ -527,12 +570,13 @@ include '../signout/php/session_check_signout.php';
                      
                       <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
                       <h5 style="color:#888";>Activities and Societies:</h5>
-                    </div>
+                      <p>some society</p>
+                    </div> -->
                   </div>
 
               </div>
               <div class="add-star">
-                <button id="user-info-edit-btn">Add Education</button>
+                <button id="user-info-edit-btn" class="add-btn" for="education-edit">Add Education</button>
               </div>
           </div>
       </div>

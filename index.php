@@ -49,11 +49,7 @@
 						<label for="password-login" >Password</label> 
 						<input id="password-login" class="form-control" name="Password" type="password" tabindex="2" > 
 
-<<<<<<< HEAD
-						<a href="signin/index.php" tabindex="4">Forgot your password?</a>
-=======
 						<a href="/signin/forgotPassword.php" tabindex="4">Forgot your password?</a>
->>>>>>> 884cc532198525b33a57df5adfc72ab99e3a63d3
 					</div>
 					<div class="col col-md-2">
 						<br />

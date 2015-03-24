@@ -46,10 +46,15 @@ margin-left: auto;
 
 }
 
-.profile-image {
-	width: 80%;
-	margin: 0 auto;
+.colored-badge{
+	background-color: #1ba8e5; 
 }
+
+.close {
+	padding: 3px !important;
+ 	margin-left: 10px;
+}
+
 
 #change-image-block {
 	width: 100%;
@@ -81,7 +86,7 @@ margin-left: auto;
 	border: 1px solid rgba(0,0,0,0);
 }
 
-.editable:hover {
+.editable:hover, .editable *:hover {
 	cursor: pointer;
 	background-color: rgba(62, 146, 219, 0.41);
 	border: 1px solid #337ab7;
@@ -93,6 +98,7 @@ margin-left: auto;
 	right: 0px;
 	display: hidden;
 	color: #337ab7;
+	z-index: 1;
 }
 
 .editable > span.glyphicon:hover { 
@@ -110,6 +116,10 @@ margin-left: auto;
 	display: none;
 }
 
+div[for="skills-endorsements-edit"] > .panel,.list-group{
+	border-radius: 0px;
+}
+
 #glyphicon-picture {
 	font-size: 27px;
 	/*float: left;*/
@@ -122,6 +132,10 @@ margin-left: auto;
 
 .glyphicon-picture {
 	margin-right: 5px;
+}
+
+.loading{
+	display: none;
 }
 
 #main-container {
@@ -170,7 +184,7 @@ margin-left: auto;
 .navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover {
 	color: #0077B5;
 }
-*/
+
 
 #logo{
 	color: #D7D7D7;
@@ -185,11 +199,11 @@ margin-left: auto;
 }
 
 .team-member-block {
-	min-height: 28px;
+	/*min-height: 28px;*/
 }
 
 .team-member-block-edit-view {
-	vertical-align: center;
+	/*vertical-align: center;*/
 }
 
 .team-member-mini-image {
@@ -202,6 +216,11 @@ margin-left: auto;
 	overflow: hidden;
 }
 
+.profile-image {
+	width: 80%;
+	margin: 0 auto;
+}
+
 #project-team-members {
 	border: none;
 	box-shadow: none;
@@ -210,6 +229,10 @@ margin-left: auto;
 #project-team-editable-block {
 	background-color: white;
 	border-radius: 4px;
+}
+
+.remove-entry-link {
+	display: none;
 }
 
 .required {
@@ -223,10 +246,52 @@ margin-left: auto;
 	width: 60px !important;
 }
 
+.sortable {
+	padding-left: 0px;
+}
+
+.sortable li {
+	margin-right: 5px;
+	list-style: none;
+	/*border: 1px solid red;*/
+	background-color: #ccc;
+	/*width: 60px;*/
+	line-height: 30px;
+	height: 30px;
+	padding: 0px 5px 0px 10px;
+	float: left;
+	cursor: move;
+}
+
+.skill-bean {
+	border: 1px solid #ccc;
+	padding: 5px;
+	border-radius: 4px;
+	background-color: #f0f0f0;
+	margin: 5px;
+	display: inline-block;
+}
+
+.sortable-dragging {
+	border: 1px solid gray;
+
+}
+
+.sortable-placeholder {
+	width: 80px;
+	border: 1px dashed gray;
+}
+
+
 small {
 	display: block;
 	line-height: 1.428571429;
 	color: #999;
+}
+
+.playground {
+	height: 200px;
+	overflow: scroll;
 }
 
 .well {
@@ -239,9 +304,18 @@ small {
 	vertical-align: top;
 }
 */
+
+#work-present{
+	display: none;
+	position: absolute;
+	padding-top: 6px;
+}
+
 .work-time-right-block {
 	padding-top: 19px;
+	position: relative;
 }
+
 
 
 #sortable { 
