@@ -11,8 +11,7 @@ $(document).ready(function(){
 			}
 		});
 
-<<<<<<< HEAD
-=======
+
 	var signup_options = $(".signup-option");
 	 for(var i = 0; i<signup_options.length; i++){
 	     signup_options[i].addEventListener("click",function(){
@@ -34,5 +33,5 @@ $(document).ready(function(){
 			}
 	    });
 	 }
->>>>>>> 635ef0dfabf93c78a9febc2ebd49a2584249e380
+
 });
