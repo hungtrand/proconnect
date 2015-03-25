@@ -1,7 +1,6 @@
-(function() {
+$(document).ready(function(){
 		$("#country").change(function(){
 			var value = this.value;
-			console.log(value);
 			if(value == "United States"){
 				$("#zipcode-group").show();
 				$("#postalcode-group").hide();
@@ -11,4 +10,5 @@
 				$("#postalcode-group").show();
 			}
 		});
-})();
+
+});

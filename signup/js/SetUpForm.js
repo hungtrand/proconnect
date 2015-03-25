@@ -86,6 +86,7 @@ SetUpForm.prototype = {
 
 				return false;
 			}
+<<<<<<< HEAD
 		   
 		}
 
@@ -100,6 +101,19 @@ SetUpForm.prototype = {
 
 
 
+=======
+		}
+		else{
+			if(zipcode== "" || IsZipcode(zipcode)==false){
+				that.ZipcodeInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
+				that.Alert.text("Please enter valid Zip Code");
+				that.Alert.show();
+				that.ZipcodeInput.val("");
+
+				return false;
+			}
+		}
+>>>>>>> ad1195507926b611061bc076b89d006fc1d6e255
 		if(address==""){
 		    that.AddressInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
 			that.Alert.text("Please enter address ");

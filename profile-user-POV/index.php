@@ -221,7 +221,7 @@
               </div>
               
               <div class="add-star" >
-                <button id="user-info-edit-btn" class="add-btn" for="summary-description" edit="true" >Edit Summary</button>
+                <button  class="add-btn" for="summary-description" edit="true" >Edit Summary</button>
               </div>
           </div>
       </div>
@@ -235,8 +235,8 @@
                         <h3>Skills and Endorsements</h3>
                   </header>
                  <!--   <h4>Top Skills</h4> -->
-                  <div id="skills-endorsements" class="normal-view " for="skills-endorsements-edit"> 
-                    <div class="editable">
+                  <div id="skills-endorsements" class="normal-view "> 
+                    <div class="editable" for="skills-endorsements-edit">
                       <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                      
                       <div class="panel panel-default ">
@@ -278,12 +278,12 @@
 
                       <div class="playground form-group well well-sm"> <!-- contentEditable="true" -->
 
-                        <ul class="sortable grid">
-                          <li class="">
+                        <ul id="skill-list-edit" class="sortable grid">
+                          <!-- <li entry-index="" >
                             <span class="badge">12</span>
                             <span class="skill-pill-name">asda</span>
                             <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                          </li>
+                          </li> -->
                         </ul>
                       </div>
                       <b style="float:right">Drag to reorder</b>
@@ -352,7 +352,7 @@
                         <input name="work-start-year" type="text" class="form-control short-input" id="work-start-year" placeholder="Year" maxlength="4" required> &#8213 
 
                         <div class="form-group work-time-right-block">
-                          <span id="work-present"> present</span>
+                          <span id="work-present"> current</span>
 
                           <div id="work-end-time-explicit" >
                             <select name="work-end-month" type="month" class="form-control" id="work-end-month"> 
@@ -394,7 +394,7 @@
                   </div>
               </div>
               <div class="add-star">
-                <button id="user-info-edit-btn" class="add-btn" for="experience-edit">Add Eperience</button>
+                <button class="add-btn" for="experience-edit">Add Eperience</button>
               </div>
           </div>
       </div>
@@ -427,12 +427,14 @@
                       
                       <div id="project-team-editable-block" class="form-group well well-sm"> <!-- contentEditable="true" -->
 
-                        <ul class="sortable grid">
-                          <li class="no-sort" index="0">
-                            <!-- team member icon goes here-->
-                            <span class="skill-pill-name">you</span>
+                        <ul id="project-team-list" class='sortable grid'>  
+                          <!-- <li class='no-sort' index='0'>
+                            
+                            <img src="https://static.licdn.com/scds/common/u/images/themes/katy/ghosts/person/ghost_person_30x30_v1.png">
+                            <span class="skill-pill-name">You</span>
                             <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                          </li>
+                            
+                          </li> -->
                         </ul>
 
                       
@@ -452,7 +454,7 @@
                   </div>
                   <div id="user-projects" class="normal-view">
                     <!-- <div>
-                      <div class="editable" for="project-edit" link="Tmemers" entry-number="">
+                      <div class="editable" for="project-edit" link="Tmemers" index="">
                         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                         <!-- <i class="glyphicon glyphicon-link"></i> 
                         <h4>Project Name</h4>
@@ -479,7 +481,7 @@
                   </div>
                 </div>  
               <div class="add-star">
-                <button id="user-info-edit-btn" class="add-btn" for="project-edit">Add Project</button>
+                <button class="add-btn" for="project-edit">Add Project</button>
               </div>
           </div>
       </div>
@@ -500,7 +502,7 @@
                       <div class="form-group">
                         <label for="school-name">School</label>
                         <abbr title="Required" class="required">*</abbr>
-                        <input name="school-name" type="text" class="form-control" id="school-name" value="Some value" required>
+                        <input name="school-name" type="text" class="form-control" id="school-name" placeholder="School name" required>
                       </div>
                       <!-- Degree -->
                        <div class="form-group">
@@ -577,7 +579,7 @@
 
               </div>
               <div class="add-star">
-                <button id="user-info-edit-btn" class="add-btn" for="education-edit">Add Education</button>
+                <button class="add-btn" for="education-edit">Add Education</button>
               </div>
           </div>
       </div>

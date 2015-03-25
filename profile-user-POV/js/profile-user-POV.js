@@ -35,24 +35,32 @@ $(document).ready(function(){
 	
 	//enable edit view
 	$(".normal-view").on("click",".editable",function(){
-		var target = "#" + $(this).attr("for");	//grab target
+		var target = "#" + $(this).attr("for");			//grab target
 		var targetLink = '#' + $(this).attr("link");	//grab link
+		var indexNum = $(this).attr("index");			//grab index
 
-		console.log(target);
-		//load info
-
-		if(target !== "#user-info-edit"){	
+		//hide current entry except for #user-info-edit
+		if(target !== "#user-info-edit"){
 			//hide this
 			$(this).fadeOut(50);				//fadeOut current content
 			$(targetLink).fadeOut(50);
 		} 
 
+		//embed index in form
+		if(indexNum !== '') {					//an index is present
+			$(target).find("form").attr("for-index",indexNum);
+		}
+
+		// console.log( $(target).find("form").attr("link") + " " +target  );
+		// console.log($(target).find("form").attr("forIndex") );
+
+		//load info
+		user.loadEditForm(target);
+
 		//display delete entry link
 		$(target).find("a.remove-entry-link").show();
-		// console.log( $(target).find("a.delete-entry-link"));
-
 		//display edit view
-		$(target).fadeIn(); //.css("display","block").
+		$(target).fadeIn().find("form").attr( "link", $(this).attr("link") ); 
 	});
 
 	//handle edit-form submit
@@ -129,22 +137,22 @@ $(document).ready(function(){
 		}
 	});
 
-
-
 	//handle edit-form cancel 
 	$(".cancel-btn").on("click",function(){
 		// var target = "#" + $(this).attr("for"); //grab target
-
+		var link = '#' + $(this).parent("form").attr("link");
 		target = $(this).parent("form").parent("div");
 		$(target).fadeOut(50);				 //close editable view
 		$(target).find("form").trigger("reset"); //reset form
 		$(target).find("a.remove-entry-link").hide(); //hide delete entry link
 		//clear temporary data
 
+		console.log(link);
 
 		//repopulate the page
+
 		$(".editable").fadeIn(50);  //debug only
-		$("#Tmemers").fadeIn();		//debug only
+		$(link).fadeIn();			//fade link items in
 	});
 
 	//enable add new 
@@ -164,7 +172,6 @@ $(document).ready(function(){
 		}
 
 	});
-
 
 	//enable team member or skill deletion 
 	$("ul.sortable").on("click","button.close",function(){

@@ -8,16 +8,16 @@
 					"userEmail" => "fake@fake.fake",
 					"userAltEmail" => "fake@fake.fake",
 					"userPhoneNumber" => "fake",
-					"userPhoneNumberType" => "fake",
+					"userPhoneNumberType" => "home",
 					"userAddress" => "need to be added later",
-					"userSummary" => "fake"
+					"userSummary" => "fakeasdasdasdqhk3fjk2qejklfqkl;"
 				],
 				"experiences" => [
 					[
-						"position-title" => "Position Title",
-						"company-name" => "Company Name",
-						"company-location" => "Location",
-						"work-start-month" => "September",
+						"position-title" => "Position Title XYA",
+						"company-name" => "Company Name XYA",
+						"company-location" => "Location XYA",
+						"work-start-month" => "9",
 						"work-start-year" => "2012",
 						"work-end-month" => "",
 						"work-end-year" => "",
@@ -28,9 +28,9 @@
 						"position-title" => "place holder",
 						"company-name" => "Company Name",
 						"company-location" => "Location",
-						"work-start-month" => "September",
+						"work-start-month" => "9",
 						"work-start-year" => "2012",
-						"work-end-month" => "October",
+						"work-end-month" => "10",
 						"work-end-year" => "2013",
 						"work-present" => "",
 						"experience-description" => "DESCRIPTION something something something really long"
@@ -51,12 +51,12 @@
 
 				"projects" => [
 						[
-							"project-name" => "ProConnect",
-							"project-url" => "URL",
+							"project-name" => "ProConnects",
+							"project-url" => "URLasdasd",
 							"team-member" =>  [
-								"Member name" => [
+								"You" => [
 									//default icon
-									"icon-URL" => "http://vignette2.wikia.nocookie.net/farmville/images/d/da/38x38-icon.png/revision/latest?cb=20120530023501",
+									"icon-URL" => "https://static.licdn.com/scds/common/u/images/themes/katy/ghosts/person/ghost_person_30x30_v1.png",
 									"direct-URL" => "", //url to the user if any
 									"snipet" => "some smart guy"//snipet of member, e.g. job title, title, etc
 								],
@@ -69,9 +69,15 @@
 							"project-description" => "asdasdasdasdasdasdasdasdasdasdasdas"
 						],
 						[
-							"project-name" => "ProConnect",
+							"project-name" => "ProConnecta",
 							"project-url" => "",
-							"team-member" => [ //default is an empty array
+							"team-member" => [ //default should be the user themself "You"
+									// "You" => [
+									// 	//default icon
+									// 	"icon-URL" => "https://static.licdn.com/scds/common/u/images/themes/katy/ghosts/person/ghost_person_30x30_v1.png",
+									// 	"direct-URL" => "", //url to the user if any
+									// 	"snipet" => "some smart guy"//snipet of member, e.g. job title, title, etc
+									// ]
 								],
 							"project-description" => "asdasdasdasasdasdasdasddasd"
 						]
