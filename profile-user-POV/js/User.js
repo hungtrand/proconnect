@@ -8,7 +8,7 @@ function User(){
 		"alt-email-address":"",
 		"phone-number":"",
 		"phone-number-type":"",
-		"address":"",
+		"user-address":"",
 		"summary":""
 	};
 	this.experiences = {
@@ -125,31 +125,81 @@ User.prototype = {
 				that.updateView();
 			}
 		})
-		// this.modifyData(newData,true);
+		// this.updateData(newData,true);
 		// this.updateView();	
 	}, 
 
 	//mutator
-	setData: function(newData){
+	setData: function(jQForm,newData){
 		//do ajax call to modify existing data
-		this.modifyData(newData,false);
+		this.updateData(jQForm,newData,false);
 		// this.updateView();
 	},
 
 	//mutator
-	addData: function(newData){
+	addData: function(jQForm,newData){
 		//do ajax call to add data 
-		this.modifyData(newData,true);
-		// this.updateView();
+		this.updateData(jQForm,newData,true);
+		//this.updateView();
 	},
 
 	/*
 	 * object - new data
 	 * bool isNew - signal new data
 	 */
-	modifyData: function(newData,isNew) {
-		console.log(newData);
-		console.log("modifyData");
+	updateData: function(jQFormEle,newData,isNew) {
+		var that = this;
+		var formName = jQFormEle.parent("div").attr("id");
+
+		switch(formName){
+			case "user-info-edit": //update user info
+				$.each(newData,function(k,newValue){
+					$.each(that.userData.personalInfo,function(name,v){
+						if(name === k) {
+							// console.log("old data is: " + value);
+							// console.log("new data is: " + v);
+							that.userData.personalInfo[name] = newValue;
+							// console.log(name + ": " + that.userData.personalInfo[name]);
+							return false; //break out of the each loop
+						}
+					});
+				});
+			break;
+			case "summary-edit":
+				// console.log("summary-edit");
+				$.each(newData,function(k,newValue){
+					$.each(that.userData.personalInfo,function(name,v){
+						if(name === k) {
+							// console.log("old data is: " + value);
+							// console.log("new data is: " + v);
+							that.userData.personalInfo[name] = newValue;
+							// console.log(name + ": " + that.userData.personalInfo[name]);
+							return false; //break out of the each loop
+						}
+					});
+				});
+				// console.log(this.userData.personalInfo);
+			break;
+			case "skills-endorsements-edit":
+				// console.log("skills-endorsements-edit");
+				console.log(newData);
+
+			break;
+			case "experience-edit":
+				console.log("experience-edit");
+
+			break;
+			case "project-edit":
+				console.log("project-edit-edit");
+
+			break;
+			case "education-edit":
+				console.log("education-edit");
+
+			break;
+		}
+		// var count = 0;
+
 		//modify current data
 	},
 
@@ -159,18 +209,20 @@ User.prototype = {
 
 		switch (formWrapperID) {
 			case "#user-info-edit":
+
+				// console.log(this.userData.personalInfo);
 				//load values
-				form.find("#first-name-input").val(this.userData.personalInfo.userFirst);
-				form.find("#last-name-input").val(this.userData.personalInfo.userLast);
-				form.find("#middle-initial-input").val(this.userData.personalInfo.userMI);
-				form.find("#email-input").val(this.userData.personalInfo.userEmail);
-				form.find("#alt-email-input").val(this.userData.personalInfo.userAltEmail);
-				form.find("#phone-input").val(this.userData.personalInfo.userPhoneNumber);
-				form.find("#phone-number-type").val(this.userData.personalInfo.userPhoneNumberType);
+				form.find("#first-name-input").val(this.userData.personalInfo["first-name"]);
+				form.find("#last-name-input").val(this.userData.personalInfo["last-name"]);
+				form.find("#middle-initial-input").val(this.userData.personalInfo["middle-initial"]);
+				form.find("#email-input").val(this.userData.personalInfo["email-address"]);
+				form.find("#alt-email-input").val(this.userData.personalInfo["alt-email-address"]);
+				form.find("#phone-input").val(this.userData.personalInfo["phone-number"]);
+				form.find("#phone-number-type").val(this.userData.personalInfo["phone-number-type"]);
 			break;
 
 			case "#summary-edit":
-				form.find("[name='user-description']").val(this.userData.personalInfo.userSummary);
+				form.find("[name='summary']").val(this.userData.personalInfo["summary"]);
 			break;
 
 			case "#skills-endorsements-edit":
@@ -191,7 +243,7 @@ User.prototype = {
 
 			case "#experience-edit":
 				var index =  form.attr("for-index");
-				console.log(formWrapperID + " index is: " +index);
+				// console.log(formWrapperID + " index is: " +index);
 				var exp = this.userData.experiences[index];
 				//console.log(exp);
 				$("#position-title").val(exp['position-title']);
@@ -221,8 +273,7 @@ User.prototype = {
 
 				var userImgURL;
 
-				//START HERE
-
+				
 				if(proj['team-member'].length === 0) { //project just created
 					// userImgURL = "https://static.licdn.com/scds/common/u/images/themes/katy/ghosts/person/ghost_person_30x30_v1.png";
 					teamMembers += "<li class='no-sort' index='" + 0 + "'>" +
@@ -244,7 +295,15 @@ User.prototype = {
 
 				}
 
-				console.log(teamMembers);
+				//START HERE
+				//enable sortable - Needs to figure this out
+				// $(".sortable").sortable({
+				// 	items: ':not(.no-sort)'
+				// }).bind('sortupdate', function() {
+			 //    	//Triggered when the user stopped sorting and the DOM position has changed.
+				// });
+
+				// console.log(teamMembers);
 				$("#project-team-list").html(teamMembers);
 				
 	     		$("#project-description").val(proj["project-description"]);
@@ -252,7 +311,7 @@ User.prototype = {
 			break;
 
 			case "#education-edit":
-				console.log(formWrapperID + " index is: " + $(formWrapperID).find("form").attr("for-index"));
+				// console.log(formWrapperID + " index is: " + $(formWrapperID).find("form").attr("for-index"));
 
 				var index =  form.attr("for-index");
 				var edu = this.userData.education[index];
@@ -277,20 +336,23 @@ User.prototype = {
 
 	//update view
 	updateView: function(){
-		console.log("updateView " + this.userData.personalInfo.userFirst);
+		// console.log("updateView " + this.userData.personalInfo.first-name);
 		//update user info
-		$(".first-name").text(this.userData.personalInfo.userFirst);
-		$("#user-mi").text(this.userData.personalInfo.userMI+'.');
-		$("#user-last").text(this.userData.personalInfo.userLast);
-		$("#user-address").text(this.userData.personalInfo.userAddress).parent("cite").attr("title",this.userData.personalInfo.userAddress);
-		$("#user-email").text(this.userData.personalInfo.userEmail);
-		$("#user-phone").text(this.userData.personalInfo.userPhoneNumber);
-		$("#user-home").text(this.userData.personalInfo.userAddress);
+		$(".first-name").text(this.userData.personalInfo["first-name"]);
+		$("#user-mi").text(this.userData.personalInfo["middle-initial"]+'.');
+		$("#user-last").text(this.userData.personalInfo["last-name"]);
+		$("#user-address").text(this.userData.personalInfo["user-address"]).parent("cite").attr("title",this.userData.personalInfo["user-address"]);
+		$("#user-email").text(this.userData.personalInfo["email-address"]);
+		$("#user-phone").text(this.userData.personalInfo["phone-number"]);
+		$("#user-home").text(this.userData.personalInfo["user-address"]);
 
 		//update summary description
-		if(this.userData.personalInfo.userSummary !== "") {
-			$("#user-summary").text(this.userData.personalInfo.userSummary);
+		if(this.userData.personalInfo["summary"] !== "") {
+			// console.log(this.userData.personalInfo["summary"]);
+			$("#user-summary").text(this.userData.personalInfo["summary"]);
 		} else {
+			// console.log(this.userData.personalInfo["summary"]);
+
 			$("#user-summary").text("Say something about yourself!");
 		}
 

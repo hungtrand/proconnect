@@ -1,16 +1,16 @@
 <?php
 	//fake data
-	$data = [
-				"personalInfo" => [
-					"userFirst" => "fake",
-					"userLast" => "fake",
-					"userMI" => "f",
-					"userEmail" => "fake@fake.fake",
-					"userAltEmail" => "fake@fake.fake",
-					"userPhoneNumber" => "fake",
-					"userPhoneNumberType" => "home",
-					"userAddress" => "need to be added later",
-					"userSummary" => "fakeasdasdasdqhk3fjk2qejklfqkl;"
+	$data = [	
+				"personalInfo" => [	//this entry should always be present and have static key name
+					"first-name" => "fake",
+					"last-name" => "fake",
+					"middle-initial" => "f",
+					"email-address" => "fake@fake.fake",
+					"alt-email-address" => "fake@fake.fake",
+					"phone-number" => "fake",
+					"phone-number-type" => "home",
+					"user-address" => "need to be added later",
+					"summary" => "fakeasdasdasdqhk3fjk2qejklfqkl;"
 				],
 				"experiences" => [
 					[

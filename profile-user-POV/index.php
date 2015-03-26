@@ -138,7 +138,13 @@
                         <div class="loading">
                           <img src="../image/ajax-loader.gif">
                         </div>
-                        <form class="editable-form" action="javascript:void(0)" method="POST">
+                        <form class="editable-form" method="POST">
+                          <!-- Error Alert -->
+                          <div class="alert alert-danger" role="alert">
+                            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                            <span class="sr-only">Error:</span>
+                            <span class="alert-msg"></span>
+                          </div>
                           <!-- User Name -->
                           <div class="form-group form-inline">
                             <div class="form-group">
@@ -180,7 +186,7 @@
 
                           <!-- Address -->
                          <!--  <label for="address">Address</label>
-                          <textarea id="address" class="form-control" rows="2"></textarea> <br><br> -->
+                          <textarea id="address" class="form-control" name="user-address" rows="2"></textarea> <br><br> -->
                           <button type="submit" class="btn btn-primary save-btn" value="save">Save</button>
                           <button type="button" class="btn btn-default cancel-btn" value="cancel" for="user-info-edit">Cancel</button>
                         </form>  
@@ -213,7 +219,13 @@
                       </div>
                     <!-- <b><h4>Summary</h4></b> -->
                     <form class="editable-form">
-                      <textarea name="user-description" class="form-control" rows="10"></textarea> <br><br>
+                      <!-- Error Alert -->
+                      <div class="alert alert-danger" role="alert">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span>
+                        <span class="alert-msg"></span>
+                      </div>
+                      <textarea name="summary" class="form-control" rows="10"></textarea> <br><br>
                       <button type="submit" class="btn btn-primary save-btn">Save</button>
                       <button type="button" class="btn btn-default cancel-btn">Cancel</button>
                     </form>
@@ -270,6 +282,12 @@
                     </div>
                     <!-- <b><h4>Summary</h4></b> -->
                     <form class="editable-form">
+                      <!-- Error Alert -->
+                      <div class="alert alert-danger" role="alert">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span>
+                        <span class="alert-msg"></span>
+                      </div>
 
                       <div class="form-group">
                         <input name="skill" type="text" class="form-control typeahead" id="skill-input" placeholder="What are you areas of expertise?">
@@ -312,22 +330,28 @@
                         <img src="../image/ajax-loader.gif">
                       </div>
                     <form class="editable-form">
+                      <!-- Error Alert -->
+                      <div class="alert alert-danger" role="alert">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span>
+                        <span class="alert-msg"></span>
+                      </div>
                       <!-- Position Title -->
                       <div class="form-group ">
                         <label for="position-title">Position Title</label>
                         <abbr title="Required" class="required">*</abbr>
-                        <input name="position-title" type="text" class="form-control" id="position-title" value="place holder" required>
+                        <input name="position-title" type="text" class="form-control" id="position-title" required>
                       </div>
                       <!-- Company Name -->
                        <div class="form-group ">
                         <label for="company-name">Company Name</label>
                         <abbr title="Required" class="required">*</abbr>
-                        <input name="company-name" type="text" class="form-control" id="company-name" value="Company Name" required>
+                        <input name="company-name" type="text" class="form-control" id="company-name" required>
                       </div>
                       <!-- Location -->
                       <div class="form-group ">
                         <label for="company-location">Location</label>
-                        <input name="company-location" type="text" class="form-control" id="company-location" value="Location">
+                        <input name="company-location" type="text" class="form-control" id="company-location" >
                       </div>
 
                       <!-- Time Period -->
@@ -411,16 +435,22 @@
                       <img src="../image/ajax-loader.gif">
                     </div>
                     <form class="editable-form">
+                      <!-- Error Alert -->
+                      <div class="alert alert-danger" role="alert">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span>
+                        <span class="alert-msg"></span>
+                      </div>
                       <!-- Project Name -->
                       <div class="form-group ">
                         <label for="project-name">Name</label>
                         <abbr title="Required" class="required">*</abbr>
-                        <input name="project-name" type="text" class="form-control" id="project-name" value="ProConnect" required>
+                        <input name="project-name" type="text" class="form-control" id="project-name" required>
                       </div>
                       <!-- Project URL -->
                        <div class="form-group ">
                         <label for="project-url">Project URL</label>
-                        <input name="project-url" type="text" class="form-control" id="project-url" value="URL">
+                        <input name="project-url" type="text" class="form-control" id="project-url">
                       </div>
                       <!-- Team Members -->
                       <label for="project-team-members">Team Members</label>
@@ -429,6 +459,13 @@
 
                         <ul id="project-team-list" class='sortable grid'>  
                           <!-- <li class='no-sort' index='0'>
+                            
+                            <img src="https://static.licdn.com/scds/common/u/images/themes/katy/ghosts/person/ghost_person_30x30_v1.png">
+                            <span class="skill-pill-name">You</span>
+                            <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            
+                          </li>
+                          <li index='0'>
                             
                             <img src="https://static.licdn.com/scds/common/u/images/themes/katy/ghosts/person/ghost_person_30x30_v1.png">
                             <span class="skill-pill-name">You</span>
@@ -498,27 +535,33 @@
                       <img src="../image/ajax-loader.gif">
                     </div>
                     <form class="editable-form">
+                      <!-- Error Alert -->
+                      <div class="alert alert-danger" role="alert">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span>
+                        <span class="alert-msg"></span>
+                      </div>
                       <!-- School -->
                       <div class="form-group">
                         <label for="school-name">School</label>
                         <abbr title="Required" class="required">*</abbr>
-                        <input name="school-name" type="text" class="form-control" id="school-name" placeholder="School name" required>
+                        <input name="school-name" type="text" class="form-control" id="school-name" required>
                       </div>
                       <!-- Degree -->
                        <div class="form-group">
                         <label for="degree">Degree</label>
-                        <input name="degree" type="text" class="form-control" id="degree" value="Bachelor of Science (BS)">
+                        <input name="degree" type="text" class="form-control" id="degree" >
                       </div>
                       <!-- Field of Study -->
                       <div class="form-group">
                         <label for="field-of-study">Field of Study</label>
-                        <input name="field-of-study" type="text" class="form-control" id="field-of-study" value="Computer Science">
+                        <input name="field-of-study" type="text" class="form-control" id="field-of-study" >
                       </div>
 
                       <!-- Grade -->
                       <div class="form-group">
                         <label for="grade">Grade</label>
-                        <input name="grade" type="text" class="form-control" id="grade" value="SHIT">
+                        <input name="grade" type="text" class="form-control" id="grade" >
                       </div>
 
                       <!-- Time Period -->

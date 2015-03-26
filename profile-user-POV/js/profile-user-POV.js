@@ -26,12 +26,12 @@ $(document).ready(function(){
 	   return o;
 	};
 	
-	//enable sortable
-	$(".sortable").sortable({
-		items: ':not(.no-sort)'
-	}).bind('sortupdate', function() {
-    	//Triggered when the user stopped sorting and the DOM position has changed.
-	});
+	// //enable sortable
+	// $(".sortable").sortable({
+	// 	items: ':not(.no-sort)'
+	// }).bind('sortupdate', function() {
+ //    	//Triggered when the user stopped sorting and the DOM position has changed.
+	// });
 	
 	//enable edit view
 	$(".normal-view").on("click",".editable",function(){
@@ -60,32 +60,178 @@ $(document).ready(function(){
 		//display delete entry link
 		$(target).find("a.remove-entry-link").show();
 		//display edit view
-		$(target).fadeIn().find("form").attr( "link", $(this).attr("link") ); 
+		$(target).fadeIn().find("form").attr( "link", $(this).attr("link") ).attr("editing","true"); 
 	});
 
-	//handle edit-form submit
+	//handle edit-form submition
 	$(".editable-form").on("submit", function(e){
-		if($("#project-team-members").val() !== ""){ //form submition was not for adding team members
+		
+		e.preventDefault();
+
+		if($("#project-team-members").val() !== ""){ //form submission for new members
 			//add user to model 
-			//clear input text
+			
 			//update Form
+
+			//clear input text
 	 		$("#project-team-members").val("");//clear field
 			console.log("adding new teammate");
 
+		} else if($("#skill-input").val() !== "") {	//form submission for new skills
+			//add new skill 
+			
+			//update Form
+
+			//clear input text
+			$("#skill-input").val("");
+			console.log("adding new skill");
 		} else {
 			var data = $(this).serializeObject();	//grab data in json object format
+
+			if( $(this).parent("div").attr("id") === "skills-endorsements-edit") { //grabbing skill data
+				// console.log($(this).find("ul#skill-list-edit"));
+				$.each($(this).find("ul#skill-list-edit li"),function(i,li){
+					var skillName = $(li).find("span.skill-pill-name").text();
+					var endorsementNum = $(li).find("span.badge").text();
+					console.log(skillName + ": " + endorsementNum);
+					// console.log(li);
+				});
+				// console.log();
+			}
+
 			//pass json object to model for processing
+			// console.log($(this).parent("div").attr("id"));
+			try{ 
+				validateForm($(this));				//validate this form according to form name
+				var editing = ($(this).attr("editing") === "true") ? true : false;
+
+				if(editing) {
+					user.setData($(this),data);
+				} else {
+					user.addData($(this),data);
+				}
+
+			} catch(e) {
+				if(typeof(e) === "string") {
+					//display error
+					console.log(e); //debug only
+				} else {
+					throw e;
+				}
+			}
+
 			// console.log(data);
 			$(this).siblings("div.loading").show();//show loading gif					
 			//on success
+			//turn off
 			
 		}
-		// console.log(JSON.stringify(data));
-
 
 		
-		e.preventDefault();
 		$("a.remove-entry-link").hide(); //hide delete entry link
+
+		
+
+		function validateForm(jQFormEle){ //NEED TO BE IMPLEMENTED
+			var formName = jQFormEle.parent("div").attr("id");
+
+			switch(formName){
+				case "user-info-edit":
+					// console.log("user-info-edit");
+					console.log( jQFormEle.find(":input[required]:visible").css("border-color","red") );
+				break;
+				case "summary-edit":
+					console.log("summary-edit");
+
+				break;
+				case "skills-endorsements-edit":
+					console.log("skills-endorsements-edit");
+
+				break;
+				case "experience-edit":
+					console.log("experience-edit");
+
+				break;
+				case "project-edit":
+					console.log("project-edit-edit");
+
+				break;
+				case "education-edit":
+					console.log("education-edit");
+
+				break;
+			}
+			// var first= that.FirstInput.val().trim();
+			// var last = that.LastInput.val().trim();
+			// var email= that.EmailInput.val().trim();
+			// var password = that.PasswordInput.val(); 
+			// var confpassword = that.ConfPasswordInput.val();
+
+			
+			// if(first== "" || IsName(first)==false){
+			//     that.FirstInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
+			// 	that.Alert.text("Please enter valid first name");
+			// 	that.Alert.show();
+			// 	that.FirstInput.val("");
+
+			//     return false;
+			// }
+
+			// if(last== "" || IsName(first)==false){
+			//     that.LastInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
+			// 	that.Alert.text("Please enter valid last name");
+			// 	that.Alert.show();
+			// 	that.LastInput.val("");
+
+			//     return false;
+			// }
+
+			// if(email== "" || IsEmail(email)==false){
+			//     that.EmailInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
+			// 	that.Alert.text("Please enter a valid email address ");
+			// 	that.Alert.show();
+			// 	that.EmailInput.val("");
+
+			//     return false;
+			// }
+
+			// if(password=="" || IsPassword(password)==false){
+			//     that.PasswordInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
+			// 	that.Alert.text("Password has to be 6-20 in length ");
+			// 	that.Alert.show();
+			// 	that.PasswordInput.val("");
+
+			//     return false;
+			// }
+
+			// if (password !== confpassword) {
+			// 	that.ConfPasswordInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
+			// 	that.Alert.text("The passwords don't match. Please type again. ");
+			// 	that.PasswordInput.val("");
+
+			// 	return false;
+			// }
+
+			// return true;
+
+			function IsName(name) {
+			var regex =/^[a-z ,.'-]+$/i;
+				if(!regex.test(name)) {
+				   	return false;
+				}else{
+				   	return true;
+				}
+			}
+
+			// function IsEmail(email) {
+		 //        var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+		 //        if(!regex.test(email)) {
+		 //           return false;
+		 //        }else{
+		 //           return true;
+		 //        }
+		 //    }
+		}
 	});
 
 	//handle remove entry link
@@ -146,12 +292,12 @@ $(document).ready(function(){
 		$(target).find("form").trigger("reset"); //reset form
 		$(target).find("a.remove-entry-link").hide(); //hide delete entry link
 		//clear temporary data
+		$(this).parent("form").attr("editing","false")
 
-		console.log(link);
+		//console.log(link);
 
 		//repopulate the page
-
-		$(".editable").fadeIn(50);  //debug only
+		$(".editable").fadeIn(50);  //show all editable components
 		$(link).fadeIn();			//fade link items in
 	});
 
@@ -177,7 +323,6 @@ $(document).ready(function(){
 	$("ul.sortable").on("click","button.close",function(){
 
 		//remove entry from model
-
 		$(this).parent("li").remove();
 	});
 
