@@ -1,83 +1,85 @@
 "use strict"
 function User(){
-	this.personalInfo = {
-		"first-name":"",
-		"last-name":"",
-		"middle-initial":"",
-		"email-address":"",
-		"alt-email-address":"",
-		"phone-number":"",
-		"phone-number-type":"",
-		"user-address":"",
-		"summary":""
-	};
-	this.experiences = {
-		"0":{
-			"position-title":"place holder",
-			"company-name":"Company Name",
-			"company-location":"Location",
-			"work-start-month":"1",
-			"work-start-year":"asd",
-			"work-end-month":"",
-			"work-end-year":"",
-			"work-present":"current",
-			"experience-description":"something something something really long"
-		},
-		"1":{
-			"position-title":"place holder",
-			"company-name":"Company Name",
-			"company-location":"Location",
-			"work-start-month":"1",
-			"work-start-year":"asd",
-			"work-end-month":"",
-			"work-end-year":"",
-			"work-present":"current",
-			"experience-description":"something something something really long"
-		},
-	};
-	this.skills = Array("skill","skillssssssss","ski","skillasdasdasdwq asdasdasd","skill","skill","skill","skill");
-	this.projects = {
-		"0":{
-			"project-name":"ProConnect",
-			"project-url":"URL",
-			"team-member": {
-				"0":"me"
-			},
-			"project-description":""
-		},
-		"1":{
-			"project-name":"ProConnect",
-			"project-url":"URL",
-			"team-member": {
-				"0":"me"
-			},
-			"project-description":""
-		}
+	// this.personalInfo = {
+	// 	"first-name":"",
+	// 	"last-name":"",
+	// 	"middle-initial":"",
+	// 	"email-address":"",
+	// 	"alt-email-address":"",
+	// 	"phone-number":"",
+	// 	"phone-number-type":"",
+	// 	"user-address":"",
+	// 	"summary":""
+	// };
+	// this.experiences = {
+	// 	"0":{
+	// 		"position-title":"place holder",
+	// 		"company-name":"Company Name",
+	// 		"company-location":"Location",
+	// 		"work-start-month":"1",
+	// 		"work-start-year":"asd",
+	// 		"work-end-month":"",
+	// 		"work-end-year":"",
+	// 		"work-present":"current",
+	// 		"experience-description":"something something something really long"
+	// 	},
+	// 	"1":{
+	// 		"position-title":"place holder",
+	// 		"company-name":"Company Name",
+	// 		"company-location":"Location",
+	// 		"work-start-month":"1",
+	// 		"work-start-year":"asd",
+	// 		"work-end-month":"",
+	// 		"work-end-year":"",
+	// 		"work-present":"current",
+	// 		"experience-description":"something something something really long"
+	// 	},
+	// };
+	// this.skills = Array("skill","skillssssssss","ski","skillasdasdasdwq asdasdasd","skill","skill","skill","skill");
+	// this.projects = {
+	// 	"0":{
+	// 		"project-name":"ProConnect",
+	// 		"project-url":"URL",
+	// 		"team-member": {
+	// 			"0":"me"
+	// 		},
+	// 		"project-description":""
+	// 	},
+	// 	"1":{
+	// 		"project-name":"ProConnect",
+	// 		"project-url":"URL",
+	// 		"team-member": {
+	// 			"0":"me"
+	// 		},
+	// 		"project-description":""
+	// 	}
 
 		
-	};
-	this.education = {
-		"0":{
-			"school-name":"Some value",
-			"degree":"Bachelor of Science (BS)",
-			"field-of-study":"Computer Science",
-			"grade":"SHIT",
-			"school-year-started":"",
-			"school-year-ended":"",
-			"activities":""
-		},
-		"1":{
-			"school-name":"Some value",
-			"degree":"Bachelor of Science (BS)",
-			"field-of-study":"Computer Science",
-			"grade":"SHIT",
-			"school-year-started":"",
-			"school-year-ended":"",
-			"activities":""
-		}
-	};
+	// };
+	// this.education = {
+	// 	"0":{
+	// 		"school-name":"Some value",
+	// 		"degree":"Bachelor of Science (BS)",
+	// 		"field-of-study":"Computer Science",
+	// 		"grade":"SHIT",
+	// 		"school-year-started":"",
+	// 		"school-year-ended":"",
+	// 		"activities":""
+	// 	},
+	// 	"1":{
+	// 		"school-name":"Some value",
+	// 		"degree":"Bachelor of Science (BS)",
+	// 		"field-of-study":"Computer Science",
+	// 		"grade":"SHIT",
+	// 		"school-year-started":"",
+	// 		"school-year-ended":"",
+	// 		"activities":""
+	// 	}
+	// };
 	this.userData = "";
 	this.temporaryData = "";	// meant to hold any temporary data
+	this.oMemberList = "";
+	this.oSkillList = "";
 }
 
 User.prototype = {
@@ -129,25 +131,89 @@ User.prototype = {
 		// this.updateView();	
 	}, 
 
-	//mutator
-	setData: function(jQForm,newData){
-		//do ajax call to modify existing data
-		this.updateData(jQForm,newData,false);
-		// this.updateView();
+	//accessor 
+	//expected to return object about a member 
+	fetchMember: function(name){
+
+		console.log(name);
+
+		//do an ajax call to fetch member object
+		//if no member exist, still return an empty object
+
+
+
+		// var template = {"template": {
+		// 				//default icon
+		// 				"icon-URL" : "https://static.licdn.com/scds/common/u/images/themes/katy/ghosts/person/ghost_person_30x30_v1.png",
+		// 				"direct-URL" : "", //url to the user if any
+		// 				"snipet" : "some static smart guy"//snipet of member, e.g. job title, title, etc,
+		// 			}
+		// 		};
+		// return template;
+
 	},
 
 	//mutator
+	removeEntry: function(entryElement){
+		//get entry index
+		console.log(entryElement.attr("for-index"));
+
+		//do an ajax call to the server to remove entry
+
+
+		//on success, modify model
+		//switch case for what entry this is
+		//should only be for projects, experiences, and educations
+	},
+
+	//mutator - edit the existing entries
+	setData: function(jQForm,newData){
+		//do ajax call to modify existing data
+
+
+
+		this.updateData(jQForm,newData);
+		this.updateView();
+	},
+
+	//mutator - add new entries
 	addData: function(jQForm,newData){
-		//do ajax call to add data 
-		this.updateData(jQForm,newData,true);
-		//this.updateView();
+		//do ajax call to add data to server
+
+		this.updateData(jQForm,newData);
+		this.updateView();
 	},
 
 	/*
+	 * update model 
 	 * object - new data
 	 * bool isNew - signal new data
+	 * NOTE: This function does not handle data validation, the calling functions should handle.
 	 */
-	updateData: function(jQFormEle,newData,isNew) {
+	updateData: function(jQFormEle,newData) {
+		// function addMembers(memberList,projObj) {
+		// 	projObj["team-member"] = memberList;
+
+		// 	// var temporaryMemList = projObj["team-member"];
+		// 	// projObj["team-member"] = [];
+		// 	// $.each(memberList,function(name,other){
+		// 	// 	var memFound = false;
+		// 	// 	$.each(temporaryMemList,function(oName,oData){ 
+		// 	// 		if(name === oName){ 						//found user in existing data
+
+		// 	// 			projObj["team-member"].push({name:oData});
+		// 	// 			memFound = true;
+		// 	// 			return false;
+		// 	// 		} 
+		// 	// 	});
+
+		// 	// 	if(memFound === false) {
+		// 	// 		projObj["team-member"].push({name:other});
+		// 	// 	}
+
+		// 	// });
+		// }
+
 		var that = this;
 		var formName = jQFormEle.parent("div").attr("id");
 
@@ -182,25 +248,91 @@ User.prototype = {
 			break;
 			case "skills-endorsements-edit":
 				// console.log("skills-endorsements-edit");
-				console.log(newData);
-
+				// console.log(this.userData.skill);
+				this.userData.skill = newData.skill;
+				// console.log(newData);
+				// console.log(this.userData.skill);
 			break;
 			case "experience-edit":
-				console.log("experience-edit");
+				var forIndex = newData["for-index"];
+				delete newData["for-index"];
+				if(forIndex === "new") {				//new entry
+					this.userData.experiences[this.userData.experiences.length] = newData;
+					// console.log(this.userData.experiences);
+				} else if( /[0-9]/.test(forIndex) ) {	//edit entry
+					// console.log(newData);
 
+					if(newData['work-present'] === undefined) {	//work present was not selected
+						that.userData.experiences[forIndex]['work-present'] = "";
+					}
+
+					$.each(newData,function(k,newValue){
+						$.each(that.userData.experiences[forIndex],function(name,v){
+							if(name === k) {
+								// console.log("old data is: " + v);
+								// console.log("new data is: " + newValue);
+								that.userData.experiences[forIndex][name] = newValue;
+								// console.log(name + ": " + that.userData.personalInfo[name]);
+								return false; //break out of the each loop
+							}
+						});
+					});
+					// console.log(that.userData.experiences[forIndex]);
+				} else {
+					throw "Undefined 'for-index' variable.";
+				}
+ 
 			break;
 			case "project-edit":
-				console.log("project-edit-edit");
+				// console.log("project-edit-edit");
+				var forIndex = newData["for-index"];
+				delete newData["for-index"];
+				// var members = newData["team-member"];
+				// delete newData["team-member"];		//delete so 
 
+				if(forIndex === "new") {				//new entry
+					that.userData.projects[that.userData.experiences.length] = newData;
+					// addMembers(members,that.userData.projects[that.userData.experiences.length]);
+					// console.log(this.userData.experiences);
+				} else if( /[0-9]/.test(forIndex) ) {	//edit entry
+					$.each(newData,function(k,newValue){
+						$.each(that.userData.projects[forIndex],function(name,v){
+							if(name === k) {
+								that.userData.projects[forIndex][name] = newValue;
+								return false; //break out of the each loop
+							}
+						});
+					});
+					// addMembers(members,that.userData.projects[forIndex]);
+				} else {
+					throw "Undefined 'for-index' variable.";
+				}
+				// console.log(that.userData.projects);
 			break;
 			case "education-edit":
-				console.log("education-edit");
-
+				var forIndex = newData["for-index"];
+				delete newData["for-index"];
+				if(forIndex === "new") {				//new entry
+					this.userData.education[this.userData.experiences.length] = newData;
+					// console.log(this.userData.experiences);
+				} else if( /[0-9]/.test(forIndex) ) {	//edit entry
+					$.each(newData,function(k,newValue){
+						$.each(that.userData.education[forIndex],function(name,v){
+							if(name === k) {
+								// console.log("old data is: " + v);
+								// console.log("new data is: " + newValue);
+								that.userData.education[forIndex][name] = newValue;
+								// console.log(name + ": " + that.userData.personalInfo[name]);
+								return false; //break out of the each loop
+							}
+						});
+					});
+				} else {
+					throw "Undefined 'for-index' variable.";
+				}
+				// console.log(this.userData.education[forIndex]);
 			break;
 		}
-		// var count = 0;
-
-		//modify current data
 	},
 
 	//accessor
@@ -363,7 +495,7 @@ User.prototype = {
 			$("#skill-top-list").show();
 			$(".skill-more").hide();
 
-			console.log(this.userData.skill);
+			// console.log(this.userData.skill);
 			var count = 0;
 			$.each(this.userData.skill,function(key, value){
 				// $.each(i,function(name,))

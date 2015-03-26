@@ -329,7 +329,7 @@
                     <div class="loading">
                         <img src="../image/ajax-loader.gif">
                       </div>
-                    <form class="editable-form">
+                    <form class="editable-form" >
                       <!-- Error Alert -->
                       <div class="alert alert-danger" role="alert">
                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>

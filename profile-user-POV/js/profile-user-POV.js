@@ -70,7 +70,10 @@ $(document).ready(function(){
 
 		if($("#project-team-members").val() !== ""){ //form submission for new members
 			//add user to model 
-			
+			user.fetchMember($("#project-team-members").val());
+			//store the original memberlist
+			//add new member entry to existing model
+
 			//update Form
 
 			//clear input text
@@ -78,6 +81,7 @@ $(document).ready(function(){
 			console.log("adding new teammate");
 
 		} else if($("#skill-input").val() !== "") {	//form submission for new skills
+			//check for duplicate
 			//add new skill 
 			
 			//update Form
@@ -85,24 +89,41 @@ $(document).ready(function(){
 			//clear input text
 			$("#skill-input").val("");
 			console.log("adding new skill");
-		} else {
+		} else {									//all other form submission
 			var data = $(this).serializeObject();	//grab data in json object format
 
+			data["for-index"] = $(this).attr("for-index");	//grab for-index, undefined if there isn't any
+
 			if( $(this).parent("div").attr("id") === "skills-endorsements-edit") { //grabbing skill data
+				var skillList = {};
 				// console.log($(this).find("ul#skill-list-edit"));
 				$.each($(this).find("ul#skill-list-edit li"),function(i,li){
 					var skillName = $(li).find("span.skill-pill-name").text();
 					var endorsementNum = $(li).find("span.badge").text();
 					console.log(skillName + ": " + endorsementNum);
-					// console.log(li);
+					skillList[skillName] = endorsementNum;
 				});
-				// console.log();
-			}
+				data["skill"] = skillList;	
+			} else if( $(this).parent("div").attr("id") === "project-edit" ) {		//grabbing team members
+				// console.log("project-edit hellow");
+				var memberList = {};
+				$.each($(this).find("ul#project-team-list li"),function(i,li){
+					var memName = $(li).find("span.skill-pill-name").text();
+
+					// var imgURL = $(li).find("img").attr("src");	// may be unnecessary
+					var memData = user.userData.projects[ data["for-index"] ]["team-member"][memName];
+					memberList[memName] = memData;
+				});
+				data["team-member"] =  memberList
+				// console.log(data["team-member"]);
+			}	
+
+			// console.log($(this).parent("div").attr("id"));
 
 			//pass json object to model for processing
-			// console.log($(this).parent("div").attr("id"));
-			try{ 
+			// try{ 
 				validateForm($(this));				//validate this form according to form name
+
 				var editing = ($(this).attr("editing") === "true") ? true : false;
 
 				if(editing) {
@@ -111,34 +132,33 @@ $(document).ready(function(){
 					user.addData($(this),data);
 				}
 
-			} catch(e) {
-				if(typeof(e) === "string") {
-					//display error
-					console.log(e); //debug only
-				} else {
-					throw e;
-				}
-			}
+			// } catch(e) {
+			// 	if(typeof(e) === "string") {
+			// 		//display error
+			// 		console.log(e); //debug only
+			// 	} else {
+			// 		throw e;
+			// 	}
+			// }
 
 			// console.log(data);
 			$(this).siblings("div.loading").show();//show loading gif					
 			//on success
-			//turn off
+			//turn off gif loader
 			
 		}
-
 		
 		$("a.remove-entry-link").hide(); //hide delete entry link
-
 		
 
+		//RETURNS NOTHING. BUT WILL THROW AN ERROR IF ANY FIELD IS WRONG	
 		function validateForm(jQFormEle){ //NEED TO BE IMPLEMENTED
 			var formName = jQFormEle.parent("div").attr("id");
 
 			switch(formName){
 				case "user-info-edit":
 					// console.log("user-info-edit");
-					console.log( jQFormEle.find(":input[required]:visible").css("border-color","red") );
+					// console.log( jQFormEle.find(":input[required]:visible").css("border-color","red") );
 				break;
 				case "summary-edit":
 					console.log("summary-edit");
@@ -153,7 +173,7 @@ $(document).ready(function(){
 
 				break;
 				case "project-edit":
-					console.log("project-edit-edit");
+					console.log("project-edit");
 
 				break;
 				case "education-edit":
@@ -263,7 +283,7 @@ $(document).ready(function(){
 				       */
 						label: "Yes, I'm sure",
 						className: 'btn-primary',
-						callback: removeEntry
+						callback: user.removeEntry($(that).parent("form"));
 					},
 					/**
 				     * this usage demonstrates that if no label property is
@@ -275,12 +295,13 @@ $(document).ready(function(){
 				}
 		});
 
-		function removeEntry(){
-			//find entry-number
-			$(that).parent("form").parent("div").attr("entry-number");
+		// function removeEntry(){
+		// 	// var index = .parent("div").attr("entry-number");
 
-			//send to model for removing
-		}
+		// 	// console.log(user);
+		// 	//send to model for removing
+			
+		// }
 	});
 
 	//handle edit-form cancel 
@@ -307,12 +328,12 @@ $(document).ready(function(){
 		var forTarget = '#' + $(this).attr("edit"); //grab edit flag
 
 		
-		if(forTarget !== '#true') {
+		if(forTarget !== '#true') { 		//handle editview on add
 			//display edit view
-
+			$(target).find("form.editable-form").attr("for-index","new");
 			$(target).fadeIn(); //.css("display","block").
-		} else {				//handle editview on add
-			console.log(target);
+		} else {				
+			console.log(target);	//if add btn is doing an edit action 
 			//NOTE: target should be the live view id, not edit view id
 			$(target).find("div.editable").trigger("click");	
 		}
