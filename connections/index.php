@@ -179,8 +179,12 @@
             <div id="fixed-right-section" class="col col-md-4 affix hidden-print hidden-xs hidden-sm" role="complimentary" data-spy="affix" data-offset-top="60 " data-offset-bottom="200">
                 <div class="well">
                     <h3 class="text-primary" style="overflow: auto;">Suggestions</h3>
-                </div>
+					<hr />
 
+					<div id="SuggListing" style="height: 350px;" >
+
+					</div>
+                </div>
             </div>
         </div>
         <!-- /.row -->
@@ -251,7 +255,7 @@
     <div id="UserConnection" class="col col-xs-12">
         <div class="row">
             <div class="col col-xs-4">
-                <img width="100px" src="../users/1/images/androidEating.jpg" class="img-rounded" />
+                <img width="100px" src="../image/user_img.png" class="img-rounded" />
             </div>
 
             <div class="col col-xs-8">
@@ -273,7 +277,27 @@
         <hr />
     </div>
     </script>
+	
+	<script type="text/template" id="SuggestionTemplate">
+    <div id="UserConnection" class="col col-xs-12">
+        <div class="row">
+            <div class="col col-xs-3">
+                <img width="50px" src="../image/user_img.png" class="img-rounded" />
+            </div>
 
+            <div class="col col-xs-9">
+                <h5 class="text-primary ConnectionName" style="margin-top: 0px; margin-bottom: 7px;">John Doe</h5>
+                <p class="ConnectionWork" style= "font-size: 12px;"><span class="ConnectionJob"></span>&nbsp;at&nbsp;<span class="ConnectionCompany"></span></p>
+                   <a href="#" style= "font-size: 12px;">Connect</a>
+                     <a> &#8226;</a>
+				   <a href="#" style= "font-size: 12px; color: gray;">Skip</a>
+            </div>
+        </div>
+
+        <hr / style= "-webkit-margin-before: 0.8em; -webkit-margin-after: 0.8em;">
+    </div>
+    </script>
+    <script src="js/SuggestionList.js"></script>
     <script src="js/ConnectionList.js"></script>
     <script src="js/index.js"></script>
 </body>
