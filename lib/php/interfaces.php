@@ -5,7 +5,7 @@ interface manager {
 	public function getTop($num);
 }
 
-interface ActiveRecord {
+/*interface ActiveRecord {
 	public function get($field);
 	public function set($field, $value);
 	public function getData();
@@ -13,5 +13,5 @@ interface ActiveRecord {
 	public function save();
 	public function update();
 	public function delete();
-}
+}*/
 ?>

@@ -1,4 +1,7 @@
 <?php
+//error_reporting(E_ALL); // debug
+//ini_set("display_errors", 1); // debug
+require_once __DIR__."/ActiveRecord.php";
  //include "../sqlConnection.php"; // For testing
  //$u = new Account(1); echo $u->get('Username').'\n'; // For testing
 // $u->update(['Username'=>'Feb2015']); echo $u->get('Username'); // For Testing
@@ -12,170 +15,250 @@
 	@update: public function update allow Account to update its own data
 			after updating, the object Account would reload itself with new data
 */
-class Account {
-	private $db;
+class Account extends ActiveRecord {
 	private $data;
-	private $id;
-	private $PrimaryKey;
-	private $TableName;
-	private $Columns;
+	private $AccountID;
 	public $err;
 
-	function __construct($ID) {
-		$this->db = connect('ProConnect');
-		$this->TableName = 'Account';
-		$this->PrimaryKey = 'ACCOUNTID';
-		$this->Columns = array('ACCOUNTID', 'USERNAME', 'PASSWORD', 'EMAIL',
-				'EMAIL_ALT', 'SECURITYQUESTION', 'SECURITYANSWER', 
-				'DATECREATED', 'LASTLOGIN', 'ACTIVE', 'USERID', 'VERIFIED',
-				'ISRECRUITER');
+	function __construct($ID = null) {
+		$TableName = 'Account';
+		$PrimaryKey = 'ACCOUNTID';
+		$this->data = ['ACCOUNTID'=>'', 'USERNAME'=>'', 'PASSWORD'=>'', 
+				'EMAIL'=>'', 'EMAIL_ALT'=>'', 'SECURITYQUESTION'=>'', 
+				'SECURITYANSWER'=>'', 'DATECREATED'=>'', 'LASTLOGIN'=>'', 
+				'ACTIVE'=>'', 'USERID'=>'', 'VERIFIED'=>'', 'ISRECRUITER'=>'',
+				'VERIFICATIONKEY'=>null, 'FORGOTPASSWORDKEY'=>null];
+
+		parent::__construct($TableName, $PrimaryKey);
 
 		if (isset($ID)) {
-			$this->id = $ID;
-			$this->load($ID);
-		}
-	}
-
-	private function load($ID) {
-		$sql = 'SELECT ' . implode(', ', $this->Columns);
-		$sql .=' FROM '.$this->TableName.' WHERE '.$this->PrimaryKey.'= ? LIMIT 1 ';
-
-		if ($stmt = $this->db->prepare($sql)) {
-
-			try {
-				$stmt->bindParam(1, $ID);
-
-				$stmt->execute();
-				$rs = $stmt->fetch(PDO::FETCH_ASSOC);
-
-				foreach ($rs as $col => $value) {
-					$this->data[strtoupper($col)] = $value;
-				}
-			} catch (Exception $e) {
-				$this->err = $e->getMessage();
+			$this->AccountID = $ID; // Primary Key
+			if (!$this->data = $this->fetch($ID)) {
+				$this->err = "Record not found.";
 				return false;
-			}
-			
-
-			if (is_array($this->data)) return true;
-		} else {
-			return false;
+			};
 		}
 	}
 
-	public function get($field) {
-		if (!is_array($this->data)) return false;
-		if (!array_key_exists(strtoupper($field), $this->data)) return false;
-
-		return $this->data[strtoupper($field)];
-	}
-
-	public function set($field, $value) {
-		if (!isset($this->data[$field])) return false;
-
-		$this->data[strtoupper($field)] = $value;
-	}
-
+	/* Implementing Abstract Methods */
+	// OVERRIDE
 	public function getData() {
 		return $this->data;
 	}
 
-	public function save() {
-		$delimiter = "";
-
-		$fields = '(';
-		$values = 'VALUES (';
-		foreach($this->data as $col=>$value) {
-			$fields .= $delimiter . $col . ' ';
-			$values .= $delimiter . '? ';
-
-			$delimiter = ', '; 
-		}
-
-		$fields .= ') ';
-		$values .= ') ';
-
-		$sql .= 'INSERT INTO ' . $this->TableName . $fields . $values;
-		if ($stmt = $this->db->prepare($sql)) {
-
-			try {
-				$i = 1;
-				foreach($this->data as $col => $value) {
-					$stmt->bindParam($i, $value);
-					$i++;
-				}
-
-				$stmt->execute();
-				$insertedID = $this->db->lastInsertId();
-				$this->load($insertedID);
-			} catch (Exception $e) {
-				$this->err = $e->getMessage();
-				return false;
-			}			
-
-			return true;
-		} else {
-			return false;
-		}
+	// OVERRIDE
+	public function getID() {
+		return $this->AccountID;
 	}
 
-	public function update() {
-		$setStmt = "SET ";
-		$delimiter = "";
-
-		foreach($this->data as $col => $value) {
-			$setStmt .= $delimiter . $col . ' = ? ';
-			$delimiter = ", ";
-		}
-
-		$sql = "UPDATE ".$this->TableName." " . $setStmt . "WHERE ".$this->PrimaryKey." = ? ";
-
-		if ($stmt = $this->db->prepare($sql)) {
-
-			try {
-				$i = 1;
-				foreach($this->data as $col => $value) {
-					$stmt->bindParam($i, $value);
-					$i++;
-				}
-
-				$stmt->bindParam($i, $this->get($this->PrimaryKey));
-				$stmt->execute();
-				$this->load($this->get($this->PrimaryKey));
-			} catch (Exception $e) {
-				$this->err = $e->getMessage();
-				return false;
-			}			
-
-			return true;
-		} else {
+	// OVERRIDE
+	public function load($ID) {
+		if (!$this->data = $this->fetch($ID)) {
+			$this->err = "Could not fetch the account with that id.";
 			return false;
 		}
+
+		$this->AccountID = $ID;
+
+		return true;
+	}
+	/* End Of Implementing Abstract Methods */
+
+	public function loadByEmail($Email) {
+		if (!$this->data = $this->fetchBy(["EMAIL"=>$Email])) {
+			return false;
+		}
+
+		$this->AccountID = $this->data['ACCOUNTID'];
+
+		return true;
 	}
 
-	public function delete() {
-		if (!$this->get($this->PrimaryKey)) {
-			$this->err = "Object uninitialized. Missing ID.";
+	public function loadByLogin($email, $password) {
+		$params = ["EMAIL"=>$email, "PASSWORD"=>sha1($password)];
+		if (!$this->data = $this->fetchBy($params) ) {
+			
 			return false;
 		}
 
-		$sql .= 'DELETE FROM ' . $this->TableName . ' WHERE '.$this->PrimaryKey.' = ? ';
-		if ($stmt = $this->db->prepare($sql)) {
+		$this->AccountID = $this->data['ACCOUNTID'];
 
-			try {
-				$stmt->bindParam(1, $this->get($this->PrimaryKey));
+		return true;
+	}
 
-				$stmt->execute();
-				$this->load($this->get($this->PrimaryKey));
-			} catch (Exception $e) {
-				$this->err = $e->getMessage();
-				return false;
-			}			
+	public function getUsername() {
+		return $this->data['USERNAME'];
+	}
 
+	public function getPassword() {
+		return $this->data['PASSWORD'];
+	}
+
+	public function isActive() {
+		if ((string)$this->data['ACTIVE'] == "1" 
+			|| (string)$this->data['ACTIVE'] == "true")
 			return true;
-		} else {
+		else
+			return false;
+	}
+
+	public function getUserID() {
+		return $this->data['USERID'];
+	}
+	
+	public function getEmail() {
+		return $this->data['EMAIL'];
+	}
+
+	public function getEmail_Alt() {
+		return $this->data['EMAIL_ALT'];
+	}
+
+	public function getSecurityQuestion() {
+		return $this->data['SECURITYQUESTION'];
+	}
+
+	public function getSecurityAnswer() {
+		return $this->data['SECURITYANSWER'];
+	}
+
+	public function isVerified() {
+		if ((string)$this->data['VERIFIED'] == "1" 
+			|| (string)$this->data['VERIFIED'] == "true")
+			return true;
+		else
+			return false;
+	}
+	
+	public function getVerificationKey() {
+		return $this->data['VERIFICATIONKEY'];
+	}
+
+	public function isRecruiter() {
+		if ((string)$this->data['ISRECRUITER'] == "1" 
+			|| (string)$this->data['ISRECRUITER'] == "true")
+			return true;
+		else
+			return false;
+	}
+
+	public function getForgotPasswordKey() {
+		return $this->data['FORGOTPASSWORDKEY'];
+	}
+
+	public function getLastLogin() {
+		return date('m/d/Y', strtotime($this->data['LastLogin']));
+	}
+
+	// This is foreign key not primary key of Account table
+	public function setUserID($UserID) {
+		if (!$UserID = (int) $UserID) {
+			$this->err = "ID must be int.";
 			return false;
 		}
+
+		$this->data['USERID'] = $UserID;
+
+		return true;
+	}
+
+	public function setUsername($newUsername) {
+		$this->data['USERNAME'] = $newUsername;
+
+		return true;
+	}
+
+	public function setPassword($newPassword) {
+		$this->data['PASSWORD'] = sha1($newPassword);
+
+		return true;
+	}
+
+	public function setEmail($newEmail) {
+		$this->data['EMAIL'] = $newEmail;
+
+		return true;
+	}
+
+	public function setEmail_Alt($newEmailAlt) {
+		$this->data['EMAIL_ALT'] = $newEmailAlt;
+
+		return true;
+	}
+
+	public function setSecurityQuestion($SecQues) {
+		$this->data['SECURITYQUESTION'] = $SecQues;
+
+		return true;
+	}
+
+	public function setSecurityAnswer($SecAns) {
+		$this->data['SECURITYANSWER'] = $SecAns;
+
+		return true;
+	}
+
+	public function setVerificationKey($extra = null) {
+		if (isset($extra)) {
+			$this->data['VERIFICATIONKEY'] = sha1(mt_rand(10000,99999)
+				. str_replace(' ', '', date("Y-m-d H:i:s")).$extra);
+		} else {
+			$this->data['VERIFICATIONKEY'] = sha1(mt_rand(10000,99999)
+				. str_replace(' ', '', date("Y-m-d H:i:s")));
+		}
+		
+		return true;
+	}
+
+	public function setForgotPasswordKey($extra = null) {
+		if (isset($extra)) {
+			$this->data['FORGOTPASSWORDKEY'] = sha1(mt_rand(10000,99999)
+				. str_replace(' ', '', date("Y-m-d H:i:s")).$extra);
+		} else {
+			$this->data['FORGOTPASSWORDKEY'] = sha1(mt_rand(10000,99999)
+				. str_replace(' ', '', date("Y-m-d H:i:s")));
+		}
+		
+		return true;
+	}
+
+	public function setLastLogin($LastLogin = null) {
+		if (!isset($LastLogin)) {
+			date_default_timezone_set('America/Los_Angeles');
+			$LastLogin = date('Y-m-d H:i:s', time());
+			
+		} elseif (!date('Y-m-d H:i:s', $LastLogin)) {
+			$this->err = "Parameter must be a date.";
+
+			return false;
+		} else {
+			$LastLogin = date('Y-m-d H:i:s', $LastLogin);
+		}
+
+		$this->data['LASTLOGIN'] = $LastLogin;
+
+		return true;
+	}
+
+	public function setActive($isActive) {
+		if ($isActive) $this->data['ACTIVE'] = true;
+		else $this->data['ACTIVE'] = false;
+
+		return true;
+	}
+
+	public function setVerified($isVerified) {
+		if ($isVerified) $this->data['VERIFIED'] = true;
+		else $this->data['VERIFIED'] = false;
+
+		return true;
+	}
+
+	public function setIsRecruiter($isRecruiter) {
+		if ($isRecruiter) $this->data['ISRECRUITER'] = true;
+		else $this->data['ISRECRUITER'] = false;
+
+		return true;
 	}
 }
 ?>
