@@ -16,20 +16,18 @@ require_once __DIR__."/ActiveRecord.php";
 			after updating, the object Account would reload itself with new data
 */
 class Account extends ActiveRecord {
-	private $data;
-	private $AccountID;
-	public $err;
-
-	function __construct($ID = null) {
-		$TableName = 'Account';
-		$PrimaryKey = 'ACCOUNTID';
-		$this->data = ['ACCOUNTID'=>'', 'USERNAME'=>'', 'PASSWORD'=>'', 
+	private $data  = ['ACCOUNTID'=>'', 'USERNAME'=>'', 'PASSWORD'=>'', 
 				'EMAIL'=>'', 'EMAIL_ALT'=>'', 'SECURITYQUESTION'=>'', 
 				'SECURITYANSWER'=>'', 'DATECREATED'=>'', 'LASTLOGIN'=>'', 
 				'ACTIVE'=>'', 'USERID'=>'', 'VERIFIED'=>'', 'ISRECRUITER'=>'',
 				'VERIFICATIONKEY'=>null, 'FORGOTPASSWORDKEY'=>null];
+	private $AccountID;
+	public static $PrimaryKey = 'ACCOUNTID';
+	public static $TableName = 'Account';
+	public $err;
 
-		parent::__construct($TableName, $PrimaryKey);
+	function __construct($ID = null) {
+		parent::__construct();
 
 		if (isset($ID)) {
 			$this->AccountID = $ID; // Primary Key
@@ -49,6 +47,16 @@ class Account extends ActiveRecord {
 	// OVERRIDE
 	public function getID() {
 		return $this->AccountID;
+	}
+
+	// OVERRIDE
+	protected function getPrimaryKey() {
+		return self::$PrimaryKey;
+	}
+
+	// OVERRIDE
+	protected function getTableName() {
+		return self::$TableName;
 	}
 
 	// OVERRIDE

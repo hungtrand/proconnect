@@ -9,18 +9,17 @@
 	Load education data from the database
 */
 class Education extends ActiveRecord {
-	private $data;
+	private $data = ['EDUID'=>'', 'SCHOOL'=>'', 'DEGREE'=>'', 'FIELDOFSTUDY'=>'',
+				'ACTIVITIES'=>'', 'USERID'=>'', 'GPA'=>'', 
+				'YEARSTART'=>'', 'YEAREND'=>''];
 	private $EduID;
+	public static $TableName = 'Education';
+	public static $PrimaryKey = 'EDUID';
 	public $err;
 
 	function __construct($ID = null) {
-		$TableName = 'Education';
-		$PrimaryKey = 'EDUID';
-		$this->data = ['EDUID'=>'', 'SCHOOL'=>'', 'DEGREE'=>'', 'FIELDOFSTUDY'=>'',
-				'ACTIVITIES'=>'', 'USERID'=>'', 'GPA'=>'', 
-				'YEARSTART'=>'', 'YEAREND'=>''];
 
-		parent::__construct($TableName, $PrimaryKey);
+		parent::__construct();
 
 		if (isset($ID)) {
 			$this->EduID = $ID;
@@ -40,6 +39,16 @@ class Education extends ActiveRecord {
 	// OVERRIDE
 	public function getID() {
 		return $this->UserID;
+	}
+
+	// OVERRIDE
+	protected function getPrimaryKey() {
+		return self::$PrimaryKey;
+	}
+
+	// OVERRIDE
+	protected function getTableName() {
+		return self::$TableName;
 	}
 
 	// OVERRIDE

@@ -15,20 +15,18 @@
 abstract class ActiveRecord {
 	private $db;
 	private $id;
-	private $PrimaryKey;
-	private $TableName;
 	private $Columns;
 	public $err;
 
-	function __construct($TableName, $PrimaryKey) {
+	function __construct() {
 		$this->db = connect('ProConnect');
-		$this->PrimaryKey = $PrimaryKey;
-		$this->TableName = $TableName;
 		$this->Columns = array_keys($this->getData());
 	}
 
 	abstract public function getData();
 	abstract public function getID();
+	abstract protected function getPrimaryKey();
+	abstract protected function getTableName();
 
 	// TODO call fetch and save the new ID to the extended class
 	abstract public function load($ID); 
@@ -39,8 +37,11 @@ abstract class ActiveRecord {
 
 	protected function fetch($ID) {
 		$data = $this->getData();
+		$table = $this->getTableName();
+		$pk = $this->getPrimaryKey();
+
 		$sql = 'SELECT ' . implode(', ', $this->Columns);
-		$sql .=' FROM '.$this->TableName.' WHERE '.$this->PrimaryKey.'= ? LIMIT 1 ';
+		$sql .=' FROM '.$table.' WHERE '.$pk.'= ? LIMIT 1 ';
 
 		if ($stmt = $this->db->prepare($sql)) {
 
@@ -74,13 +75,16 @@ abstract class ActiveRecord {
 		$delimiter = '';
 		$data = [];
 
+		$table = $this->getTableName();
+		$pk = $this->getPrimaryKey();
+
 		foreach($params as $param=>$paramVal) {
 			$cond .= $delimiter . $param . ' = ? ';
 			$delimiter = $Logic." ";
 		}
 
 		$sql = 'SELECT ' . implode(', ', $this->Columns);
-		$sql .=' FROM '.$this->TableName.$cond.' LIMIT 1 ';
+		$sql .=' FROM '.$table.$cond.' LIMIT 1 ';
 		if ($stmt = $this->db->prepare($sql)) {
 
 			try {
@@ -114,7 +118,11 @@ abstract class ActiveRecord {
 
 	public function save() {
 		$data = $this->getData();
-		if ($data[$this->PrimaryKey]) {
+
+		$table = $this->getTableName();
+		$pk = $this->getPrimaryKey();
+
+		if ($data[$pk]) {
 			$this->err="Cannot insert a new record with existing ID.";
 			return false;
 		}
@@ -133,7 +141,7 @@ abstract class ActiveRecord {
 		$fields .= ') ';
 		$values .= ') ';
 
-		$sql = 'INSERT INTO ' . $this->TableName . $fields . $values;
+		$sql = 'INSERT INTO ' . $table . $fields . $values;
 		if ($stmt = $this->db->prepare($sql)) {
 
 			try {
@@ -159,25 +167,29 @@ abstract class ActiveRecord {
 
 	public function update() {
 		$data = $this->getData(); //echo json_encode($data);
+
+		$table = $this->getTableName();
+		$pk = $this->getPrimaryKey();
+
 		$setStmt = "SET ";
 		$delimiter = "";
 
 		foreach($data as $col => $value) {
-			if ($col == $this->PrimaryKey) continue;
+			if ($col == $pk) continue;
 
 			$setStmt .= $delimiter . $col . ' = ? ';
 			$delimiter = ", ";
 		}
 		$setStmt .= " ";
 
-		$sql = "UPDATE ".$this->TableName." " . $setStmt . "WHERE ".$this->PrimaryKey." = ? ";
+		$sql = "UPDATE ".$table." " . $setStmt . "WHERE ".$pk." = ? ";
 
 		if ($stmt = $this->db->prepare($sql)) {
 
 			try {
 				$i = 1;
 				foreach($data as $col => &$value) {
-					if ($col == $this->PrimaryKey) continue;
+					if ($col == $pk) continue;
 
 					$stmt->bindParam($i, $value);
 					$i++;
@@ -205,7 +217,10 @@ abstract class ActiveRecord {
 			return false;
 		}
 
-		$sql = 'DELETE FROM ' . $this->TableName . ' WHERE '.$this->PrimaryKey.' = ? ';
+		$table = $this->getTableName();
+		$pk = $this->getPrimaryKey();
+
+		$sql = 'DELETE FROM ' . $table . ' WHERE '.$pk.' = ? ';
 		if ($stmt = $this->db->prepare($sql)) {
 
 			try {
@@ -222,6 +237,10 @@ abstract class ActiveRecord {
 		} else {
 			return false;
 		}
+	}
+
+	public static function getColumns() {
+		return $this->Columns;
 	}
 }
 ?>

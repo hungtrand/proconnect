@@ -5,18 +5,16 @@ require_once __DIR__."/ActiveRecord.php";
 //$u->update(['Username'=>'Feb2015']); echo $u->get('Username'); // For Testing
 
 class Experience extends ActiveRecord {
-	private $data;
-	private $ExpID;
+	private $data = ['EXPID'=>'', 'COMPANYNAME'=>'', 'TITLE'=>'', 'LOCATION'=>'',
+				'DESCRIPTION'=>'', 'USERID'=>'', 'DATECREATED'=>'', 
+				'STARTMONTH'=>null, 'STARTYEAR'=>null, 'ENDMONTH'=>null,'ENDYEAR'=>null];
+	private $ExpID
+	public static $TableName = 'Experience';
+	public static $PrimaryKey = 'EXPID';
 	public $err;
 
 	function __construct($ID = null) {
-		$TableName = 'Experience';
-		$PrimaryKey = 'EXPID';
-		$this->data = ['EXPID'=>'', 'COMPANYNAME'=>'', 'TITLE'=>'', 'LOCATION'=>'',
-				'DESCRIPTION'=>'', 'USERID'=>'', 'DATECREATED'=>'', 
-				'STARTMONTH'=>null, 'STARTYEAR'=>null, 'ENDMONTH'=>null,'ENDYEAR'=>null];
-
-		parent::__construct($TableName, $PrimaryKey);
+		parent::__construct();
 
 		if (isset($ID)) {
 			$this->ExpID = $ID;
@@ -37,6 +35,16 @@ class Experience extends ActiveRecord {
 	public function getID() {
 		return $this->ExpID;
 	}
+
+	// OVERRIDE
+	protected function getPrimaryKey() {
+		return self::$PrimaryKey;
+	}
+
+	// OVERRIDE
+	protected function getTableName() {
+		return self::$TableName;
+	}	
 
 	// OVERRIDE
 	public function load($ID) {

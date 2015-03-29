@@ -21,18 +21,16 @@ for ($i=0; $i<count($arrEdu);$i++) {
 			after updating, the object user would reload itself with new data
 */
 class User extends ActiveRecord {
-	private $data;
+	private $data = ['USERID'=>'', 'FIRSTNAME'=>'', 'MIDDLENAME'=>'', 'LASTNAME'=>'',
+				'GENDER'=>'', 'BIRTHDAY'=>'', 'ADDRESS'=>'', 
+				'CITY'=>'', 'STATE'=>'', 'ZIP'=>''];
 	private $UserID;
+	public static $TableName = 'User';
+	public static $PrimaryKey = 'USERID';
 	public $err;
 
 	function __construct($ID = null) {
-		$TableName = 'User';
-		$PrimaryKey = 'USERID';
-		$this->data = ['USERID'=>'', 'FIRSTNAME'=>'', 'MIDDLENAME'=>'', 'LASTNAME'=>'',
-				'GENDER'=>'', 'BIRTHDAY'=>'', 'ADDRESS'=>'', 
-				'CITY'=>'', 'STATE'=>'', 'ZIP'=>''];
-
-		parent::__construct($TableName, $PrimaryKey);
+		parent::__construct();
 
 		if (isset($ID)) {
 			$this->UserID = $ID;
@@ -40,8 +38,6 @@ class User extends ActiveRecord {
 				$this->err = "Record not found.";
 				return false;
 			};
-
-			$this->EducationManager = new EducationManager($this);
 		}
 	}
 
@@ -54,6 +50,16 @@ class User extends ActiveRecord {
 	// OVERRIDE
 	public function getID() {
 		return $this->UserID;
+	}
+
+	// OVERRIDE
+	protected function getPrimaryKey() {
+		return self::$PrimaryKey;
+	}
+
+	// OVERRIDE
+	protected function getTableName() {
+		return self::$TableName;
 	}
 
 	// OVERRIDE
@@ -141,18 +147,6 @@ class User extends ActiveRecord {
 		$this->data['ZIP'] = $Zip;
 
 		return true;
-	}
-
-	public function getCurrentEducation() {
-		return $this->EducationManager->getOne();
-	}
-
-	public function getAllEducation() {
-		return $this->EducationManager->getAll();
-	}
-
-	public function getTopEducation($num) {
-		return $this->EducationManager->getTop($num);
 	}
 }
 ?>

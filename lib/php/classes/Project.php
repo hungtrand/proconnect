@@ -5,18 +5,16 @@ require_once __DIR__."/ActiveRecord.php";
 //$u->update(['Username'=>'Feb2015']); echo $u->get('Username'); // For Testing
 
 class Project extends ActiveRecord {
-	private $data;
+	private $data = ['PROJECTID'=>'', 'PROJECTITLE'=>'', 'PROJECTURL'=>'', 'OCCUPATION'=>'',
+				'DESCRIPTION'=>'', 'USERID'=>'', 'DATECREATED'=>'', 
+				'STARTMONTH'=>null, 'STARTYEAR'=>null, 'ENDMONTH'=>null,'ENDYEAR'=>null];
 	private $ProjectID;
+	public static $TableName = 'Projects';
+	public static $PrimaryKey = 'ProjectID';
 	public $err;
 
 	function __construct($ID = null) {
-		$TableName = 'Projects';
-		$PrimaryKey = 'ProjectID';
-		$this->data = ['PROJECTID'=>'', 'PROJECTITLE'=>'', 'PROJECTURL'=>'', 'OCCUPATION'=>'',
-				'DESCRIPTION'=>'', 'USERID'=>'', 'DATECREATED'=>'', 
-				'STARTMONTH'=>null, 'STARTYEAR'=>null, 'ENDMONTH'=>null,'ENDYEAR'=>null];
-
-		parent::__construct($TableName, $PrimaryKey);
+		parent::__construct();
 
 		if (isset($ID)) {
 			$this->ProjectID = $ID;
@@ -36,6 +34,16 @@ class Project extends ActiveRecord {
 	// OVERRIDE
 	public function getID() {
 		return $this->ProjectID;
+	}
+
+	// OVERRIDE
+	protected function getPrimaryKey() {
+		return self::PrimaryKey;
+	}
+
+	// OVERRIDE
+	protected function getTableName() {
+		return self::TableName;
 	}
 
 	// OVERRIDE
