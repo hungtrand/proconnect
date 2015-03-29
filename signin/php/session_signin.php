@@ -21,6 +21,10 @@ $accAdm = new AccountAdmin();
 $acc = $accAdm->getAccount($login, $password);
 
 if ($acc) {
+	// SIGNED IN, LOG LASTLOGIN
+	$acc->setLastLogin();
+	$acc->update();
+	
 	$user = new User($acc->getUserID());
 
 	session_start();
