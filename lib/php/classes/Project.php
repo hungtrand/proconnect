@@ -4,22 +4,22 @@ require_once __DIR__."/ActiveRecord.php";
 //$u = new Experience(1); echo $u->get('Description').'\n'; // For testing
 //$u->update(['Username'=>'Feb2015']); echo $u->get('Username'); // For Testing
 
-class Experience extends ActiveRecord {
+class Project extends ActiveRecord {
 	private $data;
-	private $ExpID;
+	private $ProjectID;
 	public $err;
 
 	function __construct($ID = null) {
-		$TableName = 'Experience';
-		$PrimaryKey = 'EXPID';
-		$this->data = ['EXPID'=>'', 'COMPANYNAME'=>'', 'TITLE'=>'', 'LOCATION'=>'',
+		$TableName = 'Projects';
+		$PrimaryKey = 'ProjectID';
+		$this->data = ['PROJECTID'=>'', 'PROJECTITLE'=>'', 'PROJECTURL'=>'', 'OCCUPATION'=>'',
 				'DESCRIPTION'=>'', 'USERID'=>'', 'DATECREATED'=>'', 
 				'STARTMONTH'=>null, 'STARTYEAR'=>null, 'ENDMONTH'=>null,'ENDYEAR'=>null];
 
 		parent::__construct($TableName, $PrimaryKey);
 
 		if (isset($ID)) {
-			$this->ExpID = $ID;
+			$this->ProjectID = $ID;
 			if (!$this->data = $this->fetch($ID)) {
 				$this->err = "Record not found.";
 				return false;
@@ -35,7 +35,7 @@ class Experience extends ActiveRecord {
 
 	// OVERRIDE
 	public function getID() {
-		return $this->ExpID;
+		return $this->ProjectID;
 	}
 
 	// OVERRIDE
@@ -47,27 +47,27 @@ class Experience extends ActiveRecord {
 			return false;
 		}
 
-		$this->ExpID = $ID;
+		$this->ProjectID = $ID;
 
 		return true;
 	}
 	/* End of Implementing Abstract Methods */
 
 	// Get methods
-	public function getCompanyName() {
-		return $this->data['COMPANYNAME'];
+	public function getProjectTitle() {
+		return $this->data['PROJECTITLE'];
 	}
 
 	public function getUserID() {
 		return $this->data['USERID'];
 	}
 
-	public function getTitle() {
-		return $this->data['TITLE'];
+	public function getProjectURL() {
+		return $this->data['PROJECTURL'];
 	}
 
-	public function getLocation() {
-		return $this->data['LOCATION'];
+	public function getOccupation() {
+		return $this->data['OCCUPATION'];
 	}
 
 	public function getDescription() {
@@ -95,8 +95,8 @@ class Experience extends ActiveRecord {
 	}
 
 	// Set methods
-	public function setCompanyName($strVal) {
-		$this->data['COMPANYNAME'] = $strVal;
+	public function setProjectTitle($strVal) {
+		$this->data['PROJECTITLE'] = $strVal;
 
 		return true;
 	}
@@ -107,14 +107,14 @@ class Experience extends ActiveRecord {
 		return true;
 	}
 
-	public function setTitle($strVal) {
-		$this->data['TITLE'] = $strVal;
+	public function setProjectURL($strVal) {
+		$this->data['PROJECTURL'] = $strVal;
 
 		return true;
 	}
 
-	public function setLocation($strVal) {
-		$this->data['LOCATION'] = $strVal;
+	public function setOccupation($strVal) {
+		$this->data['OCCUPATION'] = $strVal;
 
 		return true;
 	}

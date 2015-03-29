@@ -1,9 +1,10 @@
 <?php
  //include "../sqlConnection.php"; // For testing
+ require_once __DIR__."/ActiveRecord.php";
  require_once __DIR__."/EducationManager.php";
 
-/* $u = new User(1); echo $u->get('firstname').'\n'; // For testing
- $arrEdu = $u->getTopEducation(2);
+
+ /*$arrEdu = $u->getTopEducation(2);
 
 for ($i=0; $i<count($arrEdu);$i++) {
 	$edu = $arrEdu[$i];
@@ -19,52 +20,127 @@ for ($i=0; $i<count($arrEdu);$i++) {
 	@update: public function update allow user to update its own data
 			after updating, the object user would reload itself with new data
 */
-class User {
+class User extends ActiveRecord {
 	private $data;
-	private $db;
-	private $EducationManager;
+	private $UserID;
+	public $err;
 
-	function __construct($UserID) {
-		$this->db = connect('ProConnect');
+	function __construct($ID = null) {
+		$TableName = 'User';
+		$PrimaryKey = 'USERID';
+		$this->data = ['USERID'=>'', 'FIRSTNAME'=>'', 'MIDDLENAME'=>'', 'LASTNAME'=>'',
+				'GENDER'=>'', 'BIRTHDAY'=>'', 'ADDRESS'=>'', 
+				'CITY'=>'', 'STATE'=>'', 'ZIP'=>''];
 
-		$this->load($UserID);
-		$this->EducationManager = new EducationManager($this);
-	}
+		parent::__construct($TableName, $PrimaryKey);
 
-	private function load($UserID) {
-		$sql = 'SELECT `UserID`, `FirstName`, `MiddleName`, `LastName`,
-				`Gender`, `Birthday`, `Address`, `City`, `State`, `Zip`
-				FROM `User` WHERE `UserID` = ? LIMIT 1 ';
-
-		if ($stmt = $this->db->prepare($sql)) {
-
-			try {
-				$stmt->bindParam(1, $UserID);
-
-				$stmt->execute();
-				$rs = $stmt->fetch(PDO::FETCH_ASSOC);
-
-				foreach ($rs as $col => $value) {
-					$this->data[strtoupper($col)] = $value;
-				}
-			} catch (Exception $e) {
-				echo $e->getMessage();
+		if (isset($ID)) {
+			$this->UserID = $ID;
+			if (!$this->data = $this->fetch($ID)) {
+				$this->err = "Record not found.";
 				return false;
-			}
-			
+			};
 
-			if (is_array($this->data)) return true;
-		} else {
-			return false;
+			$this->EducationManager = new EducationManager($this);
 		}
 	}
 
-	public function get($field) {
-		return $this->data[strtoupper($field)];
-	}
-
+	/* Implementing Abstract Methods */
+	// OVERRIDE
 	public function getData() {
 		return $this->data;
+	}
+
+	// OVERRIDE
+	public function getID() {
+		return $this->UserID;
+	}
+
+	// OVERRIDE
+	public function load($ID) {
+		if (!$ID) return false;
+
+		if (!$this->data = $this->fetch($ID)) {
+			$this->err = "Could fetch the user with that id.";
+			return false;
+		}
+
+		$this->UserID = $ID;
+
+		return true;
+	}
+	/* End of Implementing Abstract Methods */
+
+	public function getName($isFullName=null) {
+		if ($isFullName)
+			return $this->data['FIRSTNAME'].' '.$this->data['MIDDLENAME'].' '.$this->data['LASTNAME'];
+		else
+			return $this->data['FIRSTNAME'].' '.$this->data['LASTNAME'];
+	}
+
+	public function getFirstName() {
+		return $this->data['FIRSTNAME'];
+	}
+
+	public function getLastName() {
+		return $this->data['LASTNAME'];
+	}
+
+	public function getMiddleName() {
+		return $this->data['MIDDLENAME'];
+	}
+
+	public function getBirthday() {
+		return date("m/d/Y",strtotime($this->data['BIRTHDAY']));
+	}
+
+	public function getGender() {
+		return $this->data['GENDER'];
+	}
+
+	public function getAddress() {
+		return $this->data['ADDRESS'];
+	}
+
+	public function getCity() {
+		return $this->data['CITY'];
+	}
+
+	public function getState() {
+		return $this->data['STATE'];
+	}
+
+	public function getZip() {
+		return $this->data['ZIP'];
+	}
+
+	public function setName($FirstName, $LastName, $MidName) {
+		$this->data['FIRSTNAME'] = $FirstName;
+		$this->data['LASTNAME'] = $LastName;
+		$this->data['MIDDLENAME'] = $MidName;
+
+		return true;
+	}
+
+	public function setGender($Gender) {
+		$this->data['GENDER'] = $Gender;
+
+		return true;
+	}
+
+	public function setBirthday($Birthday) {
+		$this->data['BIRTHDAY'] = date("Y-m-d",strtotime($Birthday));
+
+		return true;
+	}
+
+	public function setAddress($Address, $City, $State, $Zip) {
+		$this->data['ADDRESS'] = $Address;
+		$this->data['CITY'] = $City;
+		$this->data['STATE'] = $State;
+		$this->data['ZIP'] = $Zip;
+
+		return true;
 	}
 
 	public function getCurrentEducation() {
@@ -77,40 +153,6 @@ class User {
 
 	public function getTopEducation($num) {
 		return $this->EducationManager->getTop($num);
-	}
-
-	public function update($newData) {
-		$setStmt = "SET ";
-		$delimiter = "";
-
-		foreach($newData as $col => $value) {
-			$setStmt .= $delimiter . $col . ' = ? ';
-			$delimiter = ", ";
-		}
-
-		$sql = "UPDATE `User` " . $setStmt . "WHERE `UserID` = ? ";
-
-		if ($stmt = $this->db->prepare($sql)) {
-
-			try {
-				$i = 1;
-				foreach($newData as $col => $value) {
-					$stmt->bindParam($i, $value);
-					$i++;
-				}
-
-				$stmt->bindParam($i, $this->get('UserID'));
-				$stmt->execute();
-				$this->load($this->get('UserID'));
-			} catch (Exception $e) {
-				echo $e->getMessage();
-				return false;
-			}			
-
-			return true;
-		} else {
-			return false;
-		}
 	}
 }
 ?>
