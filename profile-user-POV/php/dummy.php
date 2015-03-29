@@ -1,23 +1,23 @@
 <?php
 	//fake data
-	$data = [
-				"personalInfo" => [
-					"userFirst" => "fake",
-					"userLast" => "fake",
-					"userMI" => "f",
-					"userEmail" => "fake@fake.fake",
-					"userAltEmail" => "fake@fake.fake",
-					"userPhoneNumber" => "fake",
-					"userPhoneNumberType" => "fake",
-					"userAddress" => "need to be added later",
-					"userSummary" => "fake"
+	$data = [	
+				"personalInfo" => [	//this entry should always be present and have static key name
+					"first-name" => "fake",
+					"last-name" => "fake",
+					"middle-initial" => "f",
+					"email-address" => "fake@fake.fake",
+					"alt-email-address" => "fake@fake.fake",
+					"phone-number" => "fake",
+					"phone-number-type" => "home",
+					"user-address" => "need to be added later",
+					"summary" => "fakeasdasdasdqhk3fjk2qejklfqkl;"
 				],
 				"experiences" => [
 					[
-						"position-title" => "Position Title",
-						"company-name" => "Company Name",
-						"company-location" => "Location",
-						"work-start-month" => "September",
+						"position-title" => "Position Title XYA",
+						"company-name" => "Company Name XYA",
+						"company-location" => "Location XYA",
+						"work-start-month" => "9",
 						"work-start-year" => "2012",
 						"work-end-month" => "",
 						"work-end-year" => "",
@@ -28,9 +28,9 @@
 						"position-title" => "place holder",
 						"company-name" => "Company Name",
 						"company-location" => "Location",
-						"work-start-month" => "September",
+						"work-start-month" => "9",
 						"work-start-year" => "2012",
-						"work-end-month" => "October",
+						"work-end-month" => "10",
 						"work-end-year" => "2013",
 						"work-present" => "",
 						"experience-description" => "DESCRIPTION something something something really long"
@@ -51,12 +51,12 @@
 
 				"projects" => [
 						[
-							"project-name" => "ProConnect",
-							"project-url" => "URL",
+							"project-name" => "ProConnects",
+							"project-url" => "URLasdasd",
 							"team-member" =>  [
-								"Member name" => [
+								"You" => [
 									//default icon
-									"icon-URL" => "http://vignette2.wikia.nocookie.net/farmville/images/d/da/38x38-icon.png/revision/latest?cb=20120530023501",
+									"icon-URL" => "https://static.licdn.com/scds/common/u/images/themes/katy/ghosts/person/ghost_person_30x30_v1.png",
 									"direct-URL" => "", //url to the user if any
 									"snipet" => "some smart guy"//snipet of member, e.g. job title, title, etc
 								],
@@ -69,9 +69,15 @@
 							"project-description" => "asdasdasdasdasdasdasdasdasdasdasdas"
 						],
 						[
-							"project-name" => "ProConnect",
+							"project-name" => "ProConnecta",
 							"project-url" => "",
-							"team-member" => [ //default is an empty array
+							"team-member" => [ //default should be the user themself "You"
+									// "You" => [
+									// 	//default icon
+									// 	"icon-URL" => "https://static.licdn.com/scds/common/u/images/themes/katy/ghosts/person/ghost_person_30x30_v1.png",
+									// 	"direct-URL" => "", //url to the user if any
+									// 	"snipet" => "some smart guy"//snipet of member, e.g. job title, title, etc
+									// ]
 								],
 							"project-description" => "asdasdasdasasdasdasdasddasd"
 						]

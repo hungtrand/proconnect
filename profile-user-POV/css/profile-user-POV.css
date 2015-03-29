@@ -106,6 +106,10 @@ margin-left: auto;
 	color: #14548B;
 }
 
+.editable-form > div.alert-danger{
+	display: none;
+}
+
 .edit-view {
 	background-color: #D4D4D4;
 	border: 1px solid #B4B4B4;
@@ -251,16 +255,24 @@ div[for="skills-endorsements-edit"] > .panel,.list-group{
 }
 
 .sortable li {
-	margin-right: 5px;
+	margin-right: 7px;
+	margin-bottom: 7px;
 	list-style: none;
 	/*border: 1px solid red;*/
 	background-color: #ccc;
 	/*width: 60px;*/
 	line-height: 30px;
-	height: 30px;
+	/*height: 30px;*/
 	padding: 0px 5px 0px 10px;
 	float: left;
 	cursor: move;
+}
+
+.sortable li img {
+	margin-right: 5px;
+	margin-left: -5px;
+	max-height: 30px;
+	max-width: 30px;
 }
 
 .skill-bean {
@@ -279,6 +291,7 @@ div[for="skills-endorsements-edit"] > .panel,.list-group{
 
 .sortable-placeholder {
 	width: 80px;
+	height: 30px;
 	border: 1px dashed gray;
 }
 
