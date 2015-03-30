@@ -21,12 +21,14 @@ for ($i=0; $i<count($arrEdu);$i++) {
 			after updating, the object user would reload itself with new data
 */
 class User extends ActiveRecord {
-	private $data = ['USERID'=>'', 'FIRSTNAME'=>'', 'MIDDLENAME'=>'', 'LASTNAME'=>'',
-				'GENDER'=>'', 'BIRTHDAY'=>'', 'ADDRESS'=>'', 
-				'CITY'=>'', 'STATE'=>'', 'ZIP'=>''];
-	private $UserID;
 	public static $TableName = 'User';
 	public static $PrimaryKey = 'USERID';
+	public static $Columns = ['USERID', 'FIRSTNAME', 'MIDDLENAME', 'LASTNAME',
+				'GENDER', 'BIRTHDAY', 'ADDRESS', 'CITY', 'STATE', 'ZIP', 'COUNTRY',
+				'PHONE', 'PHONETYPE', 'SUMMARY', 'EMPLOYMENTSTATUS'];
+	
+	private $data = [];
+	private $UserID;
 	public $err;
 
 	function __construct($ID = null) {
@@ -60,6 +62,11 @@ class User extends ActiveRecord {
 	// OVERRIDE
 	protected function getTableName() {
 		return self::$TableName;
+	}
+
+	// OVERRIDE
+	protected function getColumns() {
+		return self::$Columns;
 	}
 
 	// OVERRIDE
@@ -120,6 +127,26 @@ class User extends ActiveRecord {
 		return $this->data['ZIP'];
 	}
 
+	public function getCountry() {
+		return $this->data['COUNTRY'];
+	}
+
+	public function getPhone() {
+		return $this->data['PHONE'];
+	}
+
+	public function getPhoneType() {
+		return $this->data['PHONETYPE'];
+	}
+
+	public function getSummary() {
+		return $this->data['SUMMARY'];
+	}
+
+	public function getEmploymentStatus() {
+		return $this->data['EMPLOYMENTSTATUS'];
+	}
+
 	public function setName($FirstName, $LastName, $MidName) {
 		$this->data['FIRSTNAME'] = $FirstName;
 		$this->data['LASTNAME'] = $LastName;
@@ -140,11 +167,29 @@ class User extends ActiveRecord {
 		return true;
 	}
 
-	public function setAddress($Address, $City, $State, $Zip) {
+	public function setAddress($Address, $City, $State, $Zip, $Country) {
 		$this->data['ADDRESS'] = $Address;
 		$this->data['CITY'] = $City;
 		$this->data['STATE'] = $State;
 		$this->data['ZIP'] = $Zip;
+		$this->data['COUNTRY'] = $Country;
+
+		return true;
+	}
+
+	public function setPhone($Phone, $PhoneType="Home") {
+		$this->data['PHONE'] = $Phone;
+		$this->data['PHONETYPE'] = $PhoneType;
+	}
+
+	public function setSummary($strSummary) {
+		$this->data['SUMMARY'] = $strSummary;
+
+		return true;
+	}
+
+	public function setEmploymentStatus($strStatus) {
+		$this->data['EMPLOYMENTSTATUS'] = $strStatus;
 
 		return true;
 	}

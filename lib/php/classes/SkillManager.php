@@ -1,10 +1,10 @@
 <?php
 //require_once "../sqlConnection.php"; // for testing
 //require_once __DIR__."/User.php"; // for testing
-require_once __DIR__."/Education.php";
+require_once __DIR__."/Skill.php";
 require_once __DIR__."/RecordSet.php";
 
-class EducationManager extends RecordSet {
+class SkillManager extends RecordSet {
 	protected $PrimaryKey;
 	protected $TableName;
 	protected $Columns;
@@ -15,9 +15,9 @@ class EducationManager extends RecordSet {
 	public $err;
 
 	function __construct($User) {
-		$this->PrimaryKey = Education::$PrimaryKey;
-		$this->TableName = Education::$TableName;
-		$this->Columns = Education::$Columns;
+		$this->PrimaryKey = Skill::$PrimaryKey;
+		$this->TableName = Skill::$TableName;
+		$this->Columns = Skill::$Columns;
 		$this->User = $User;
 
 		parent::__construct();
@@ -49,9 +49,9 @@ class EducationManager extends RecordSet {
 		if (!isset($this->data) || count($this->data) < 1) return false;
 
 		$arr = [];
-		foreach ($this->getData() as $row) {
+		foreach ($this->data as $row) {
 			$id = $row[$this->PrimaryKey];
-			$obj = new Education($id);
+			$obj = new Skill($id);
 			array_push($arr, $obj);
 		}
 
@@ -61,19 +61,17 @@ class EducationManager extends RecordSet {
 }
 //Test
 /*$u = new User(10);
-$edu = new Education();
-$edu->setSchool('Alameda College');
-$edu->setFieldOfStudy('Computer Science');
-$edu->setUserID($u->getID());
-$edu->setGPA(3.9);
-$edu->setYearStart(2011);
-$edu->setYearEnd(2013);
+$skill = new Skill();
+$skill->setSkillName('PHP)');
+$skill->setOrderPosition(1);
+$skill->setUserID($u->getID());
 
-$edu->save();
+$skill->save();
+echo $skill->err;
 
-$em = new EducationManager($u);
+$sm = new SkillManager($u);
 echo "\n";
-echo json_encode($em->getData());
-echo $em->err;
+echo json_encode($sm->getData());
+echo $sm->err;
 echo"\n";*/
 ?>

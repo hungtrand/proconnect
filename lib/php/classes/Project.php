@@ -5,12 +5,15 @@ require_once __DIR__."/ActiveRecord.php";
 //$u->update(['Username'=>'Feb2015']); echo $u->get('Username'); // For Testing
 
 class Project extends ActiveRecord {
-	private $data = ['PROJECTID'=>'', 'PROJECTITLE'=>'', 'PROJECTURL'=>'', 'OCCUPATION'=>'',
-				'DESCRIPTION'=>'', 'USERID'=>'', 'DATECREATED'=>'', 
-				'STARTMONTH'=>null, 'STARTYEAR'=>null, 'ENDMONTH'=>null,'ENDYEAR'=>null];
-	private $ProjectID;
 	public static $TableName = 'Projects';
-	public static $PrimaryKey = 'ProjectID';
+	public static $PrimaryKey = 'PROJECTID';
+	public static $Columns = ['PROJECTID', 'PROJECTTITLE', 'PROJECTURL', 'OCCUPATION',
+				'DESCRIPTION', 'USERID', 'DATECREATED', 
+				'STARTMONTH', 'STARTYEAR', 'ENDMONTH','ENDYEAR'];
+
+	private $data = [];
+	private $ProjectID;
+
 	public $err;
 
 	function __construct($ID = null) {
@@ -38,12 +41,17 @@ class Project extends ActiveRecord {
 
 	// OVERRIDE
 	protected function getPrimaryKey() {
-		return self::PrimaryKey;
+		return self::$PrimaryKey;
 	}
 
 	// OVERRIDE
 	protected function getTableName() {
-		return self::TableName;
+		return self::$TableName;
+	}
+
+	// OVERRIDE
+	protected function getColumns() {
+		return self::$Columns;
 	}
 
 	// OVERRIDE
@@ -63,7 +71,7 @@ class Project extends ActiveRecord {
 
 	// Get methods
 	public function getProjectTitle() {
-		return $this->data['PROJECTITLE'];
+		return $this->data['PROJECTTITLE'];
 	}
 
 	public function getUserID() {
@@ -104,7 +112,7 @@ class Project extends ActiveRecord {
 
 	// Set methods
 	public function setProjectTitle($strVal) {
-		$this->data['PROJECTITLE'] = $strVal;
+		$this->data['PROJECTTITLE'] = $strVal;
 
 		return true;
 	}

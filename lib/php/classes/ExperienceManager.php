@@ -1,10 +1,10 @@
 <?php
 //require_once "../sqlConnection.php"; // for testing
 //require_once __DIR__."/User.php"; // for testing
-require_once __DIR__."/Education.php";
+require_once __DIR__."/Experience.php";
 require_once __DIR__."/RecordSet.php";
 
-class EducationManager extends RecordSet {
+class ExperienceManager extends RecordSet {
 	protected $PrimaryKey;
 	protected $TableName;
 	protected $Columns;
@@ -15,9 +15,9 @@ class EducationManager extends RecordSet {
 	public $err;
 
 	function __construct($User) {
-		$this->PrimaryKey = Education::$PrimaryKey;
-		$this->TableName = Education::$TableName;
-		$this->Columns = Education::$Columns;
+		$this->PrimaryKey = Experience::$PrimaryKey;
+		$this->TableName = Experience::$TableName;
+		$this->Columns = Experience::$Columns;
 		$this->User = $User;
 
 		parent::__construct();
@@ -49,9 +49,9 @@ class EducationManager extends RecordSet {
 		if (!isset($this->data) || count($this->data) < 1) return false;
 
 		$arr = [];
-		foreach ($this->getData() as $row) {
+		foreach ($this->data as $row) {
 			$id = $row[$this->PrimaryKey];
-			$obj = new Education($id);
+			$obj = new Experience($id);
 			array_push($arr, $obj);
 		}
 
@@ -61,17 +61,17 @@ class EducationManager extends RecordSet {
 }
 //Test
 /*$u = new User(10);
-$edu = new Education();
-$edu->setSchool('Alameda College');
-$edu->setFieldOfStudy('Computer Science');
-$edu->setUserID($u->getID());
-$edu->setGPA(3.9);
-$edu->setYearStart(2011);
-$edu->setYearEnd(2013);
+$exp = new Experience();
+$exp->setCompanyName('Google Inc.');
+$exp->setTitle('Web Application Developer');
+$exp->setUserID($u->getID());
+$exp->setLocation("Mountain View");
+$exp->setStartMonth(11);
+$exp->setStartYear(2013);
 
-$edu->save();
+$exp->save();
 
-$em = new EducationManager($u);
+$em = new ExperienceManager($u);
 echo "\n";
 echo json_encode($em->getData());
 echo $em->err;

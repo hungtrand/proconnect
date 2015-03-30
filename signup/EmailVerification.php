@@ -16,7 +16,7 @@ if ($acc) {
 	session_start();
 
 	$_SESSION['__USERDATA__'] = json_encode($user->getData());
-	header( 'Location: ../profile-user-POV/#EmailVerified');
+	header( 'Location: setup.php');
 } else {
 	echo $admin->err;
 	echo "Could not find the account associated with the provided link.";

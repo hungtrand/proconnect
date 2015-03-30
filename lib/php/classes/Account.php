@@ -16,14 +16,17 @@ require_once __DIR__."/ActiveRecord.php";
 			after updating, the object Account would reload itself with new data
 */
 class Account extends ActiveRecord {
-	private $data  = ['ACCOUNTID'=>'', 'USERNAME'=>'', 'PASSWORD'=>'', 
-				'EMAIL'=>'', 'EMAIL_ALT'=>'', 'SECURITYQUESTION'=>'', 
-				'SECURITYANSWER'=>'', 'DATECREATED'=>'', 'LASTLOGIN'=>'', 
-				'ACTIVE'=>'', 'USERID'=>'', 'VERIFIED'=>'', 'ISRECRUITER'=>'',
-				'VERIFICATIONKEY'=>null, 'FORGOTPASSWORDKEY'=>null];
-	private $AccountID;
 	public static $PrimaryKey = 'ACCOUNTID';
 	public static $TableName = 'Account';
+	public static $Columns = ['ACCOUNTID', 'USERNAME', 'PASSWORD', 
+				'EMAIL', 'EMAIL_ALT', 'SECURITYQUESTION', 
+				'SECURITYANSWER', 'DATECREATED', 'LASTLOGIN', 
+				'ACTIVE', 'USERID', 'VERIFIED', 'ISRECRUITER',
+				'VERIFICATIONKEY', 'FORGOTPASSWORDKEY'];
+
+
+	private $data  = [];
+	private $AccountID;
 	public $err;
 
 	function __construct($ID = null) {
@@ -60,6 +63,11 @@ class Account extends ActiveRecord {
 	}
 
 	// OVERRIDE
+	protected function getColumns() {
+		return self::$Columns;
+	}
+
+	// OVERRIDE
 	public function load($ID) {
 		if (!$this->data = $this->fetch($ID)) {
 			$this->err = "Could not fetch the account with that id.";
@@ -86,6 +94,16 @@ class Account extends ActiveRecord {
 		$params = ["EMAIL"=>$email, "PASSWORD"=>sha1($password)];
 		if (!$this->data = $this->fetchBy($params) ) {
 			
+			return false;
+		}
+
+		$this->AccountID = $this->data['ACCOUNTID'];
+
+		return true;
+	}
+
+	public function loadByUserID($UserID) {
+		if (!$this->data = $this->fetchBy(["USERID"=>$UserID])) {
 			return false;
 		}
 

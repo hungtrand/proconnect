@@ -1,19 +1,15 @@
 <?php
-// include "../sqlConnection.php";
-
 abstract class RecordSet {
 	private $db;
-	private $PrimaryKey;
-	private $TableName;
-	private $Columns;
 	private $Limit;
-	private $err;
+	public $err;
 
-	function __construct($TableName, $PrimaryKey, $Columns) {
+	function __construct() {
 		$this->db = connect('ProConnect');
-		$this->PrimaryKey = $PrimaryKey;
-		$this->Columns = $Columns;
 	}
+
+	abstract public function getData();
+	abstract protected function getColumns();
 
 	public function setLimit($intLimit) {
 		if (!isset($intLimit) || !is_int($intLimit)) return false;
@@ -25,10 +21,12 @@ abstract class RecordSet {
 
 	protected function fetch() {
 		$sqlLimit = '';
+		$cols = $this->getColumns();
+
 		if (isset($this->Limit) && is_int($this->Limit)) 
 			$sqlLimit = " LIMIT ". (string)$this->Limit;
 
-		$sql = 'SELECT ' . implode(', ', $this->Columns);
+		$sql = 'SELECT ' . implode(', ', $cols);
 		$sql .=' FROM '.$this->TableName.$sqlLimit;
 
 		if ($stmt = $this->db->prepare($sql)) {
@@ -57,6 +55,8 @@ abstract class RecordSet {
 
 	protected function fetchBy($params, $Logic = "AND") {
 		$sqlLimit = '';
+		$cols = $this->getColumns();
+
 		if (isset($this->Limit) && is_int($this->Limit)) 
 			$sqlLimit = " LIMIT ". (string)$this->Limit;
 
@@ -68,7 +68,7 @@ abstract class RecordSet {
 			$delimiter = $Logic." ";
 		}
 
-		$sql = 'SELECT ' . implode(', ', $this->Columns);
+		$sql = 'SELECT ' . implode(', ', $cols);
 		$sql .=' FROM '.$this->TableName.$cond.$sqlLimit;
 		if ($stmt = $this->db->prepare($sql)) {
 

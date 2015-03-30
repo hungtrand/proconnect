@@ -15,18 +15,17 @@
 abstract class ActiveRecord {
 	private $db;
 	private $id;
-	private $Columns;
 	public $err;
 
 	function __construct() {
 		$this->db = connect('ProConnect');
-		$this->Columns = array_keys($this->getData());
 	}
 
 	abstract public function getData();
 	abstract public function getID();
 	abstract protected function getPrimaryKey();
 	abstract protected function getTableName();
+	abstract protected function getColumns();
 
 	// TODO call fetch and save the new ID to the extended class
 	abstract public function load($ID); 
@@ -39,8 +38,9 @@ abstract class ActiveRecord {
 		$data = $this->getData();
 		$table = $this->getTableName();
 		$pk = $this->getPrimaryKey();
+		$cols = $this->getColumns();
 
-		$sql = 'SELECT ' . implode(', ', $this->Columns);
+		$sql = 'SELECT ' . implode(', ', $cols);
 		$sql .=' FROM '.$table.' WHERE '.$pk.'= ? LIMIT 1 ';
 
 		if ($stmt = $this->db->prepare($sql)) {
@@ -77,13 +77,14 @@ abstract class ActiveRecord {
 
 		$table = $this->getTableName();
 		$pk = $this->getPrimaryKey();
+		$cols = $this->getColumns();
 
 		foreach($params as $param=>$paramVal) {
 			$cond .= $delimiter . $param . ' = ? ';
 			$delimiter = $Logic." ";
 		}
 
-		$sql = 'SELECT ' . implode(', ', $this->Columns);
+		$sql = 'SELECT ' . implode(', ', $cols);
 		$sql .=' FROM '.$table.$cond.' LIMIT 1 ';
 		if ($stmt = $this->db->prepare($sql)) {
 
@@ -121,8 +122,9 @@ abstract class ActiveRecord {
 
 		$table = $this->getTableName();
 		$pk = $this->getPrimaryKey();
+		$cols = $this->getColumns();
 
-		if ($data[$pk]) {
+		if (isset($data[$pk])) {
 			$this->err="Cannot insert a new record with existing ID.";
 			return false;
 		}
@@ -170,6 +172,7 @@ abstract class ActiveRecord {
 
 		$table = $this->getTableName();
 		$pk = $this->getPrimaryKey();
+		$cols = $this->getColumns();
 
 		$setStmt = "SET ";
 		$delimiter = "";
@@ -237,10 +240,6 @@ abstract class ActiveRecord {
 		} else {
 			return false;
 		}
-	}
-
-	public static function getColumns() {
-		return $this->Columns;
 	}
 }
 ?>

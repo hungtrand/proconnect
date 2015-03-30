@@ -9,12 +9,14 @@
 	Load education data from the database
 */
 class Education extends ActiveRecord {
-	private $data = ['EDUID'=>'', 'SCHOOL'=>'', 'DEGREE'=>'', 'FIELDOFSTUDY'=>'',
-				'ACTIVITIES'=>'', 'USERID'=>'', 'GPA'=>'', 
-				'YEARSTART'=>'', 'YEAREND'=>''];
-	private $EduID;
 	public static $TableName = 'Education';
 	public static $PrimaryKey = 'EDUID';
+	public static $Columns = ['EDUID', 'SCHOOL', 'DEGREE', 
+							'FIELDOFSTUDY', 'ACTIVITIES', 'USERID', 
+							'GPA', 'YEARSTART', 'YEAREND', 'DESCRIPTION'];
+	
+	private $data = [];
+	private $EduID;
 	public $err;
 
 	function __construct($ID = null) {
@@ -38,7 +40,7 @@ class Education extends ActiveRecord {
 
 	// OVERRIDE
 	public function getID() {
-		return $this->UserID;
+		return $this->EduID;
 	}
 
 	// OVERRIDE
@@ -49,6 +51,11 @@ class Education extends ActiveRecord {
 	// OVERRIDE
 	protected function getTableName() {
 		return self::$TableName;
+	}
+
+	// OVERRIDE
+	protected function getColumns() {
+		return self::$Columns;
 	}
 
 	// OVERRIDE
@@ -91,12 +98,16 @@ class Education extends ActiveRecord {
 		return $this->data['GPA'];
 	}
 
-	public function getDateStart() {
-		return $this->data['DATESTART'];
+	public function getYearStart() {
+		return $this->data['YEARSTART'];
 	}
 
-	public function getDateEnd() {
-		return $this->data['DATEEND'];
+	public function getYearEnd() {
+		return $this->data['YEAREND'];
+	}
+
+	public function getDescription() {
+		return $this->data['DESCRIPTION'];
 	}
 
 	// SET METHODS
@@ -144,6 +155,12 @@ class Education extends ActiveRecord {
 
 	public function setYearEnd($intVal) {
 		$this->data['YEAREND'] = $intVal;
+
+		return true;
+	}
+
+	public function setDescription($txtVal) {
+		$this->data['DESCRIPTION'] = $txtVal;
 
 		return true;
 	}

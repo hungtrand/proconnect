@@ -5,12 +5,14 @@ require_once __DIR__."/ActiveRecord.php";
 //$u->update(['Username'=>'Feb2015']); echo $u->get('Username'); // For Testing
 
 class Experience extends ActiveRecord {
-	private $data = ['EXPID'=>'', 'COMPANYNAME'=>'', 'TITLE'=>'', 'LOCATION'=>'',
-				'DESCRIPTION'=>'', 'USERID'=>'', 'DATECREATED'=>'', 
-				'STARTMONTH'=>null, 'STARTYEAR'=>null, 'ENDMONTH'=>null,'ENDYEAR'=>null];
-	private $ExpID
 	public static $TableName = 'Experience';
 	public static $PrimaryKey = 'EXPID';
+	public static $Columns = ['EXPID', 'COMPANYNAME', 'TITLE', 'LOCATION',
+				'DESCRIPTION', 'USERID', 'DATECREATED', 
+				'STARTMONTH', 'STARTYEAR', 'ENDMONTH','ENDYEAR'];
+	
+	private $data = [];
+	private $ExpID;
 	public $err;
 
 	function __construct($ID = null) {
@@ -44,7 +46,11 @@ class Experience extends ActiveRecord {
 	// OVERRIDE
 	protected function getTableName() {
 		return self::$TableName;
-	}	
+	}
+
+	protected function getColumns() {
+		return self::$Columns;
+	}
 
 	// OVERRIDE
 	public function load($ID) {
