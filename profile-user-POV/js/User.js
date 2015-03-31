@@ -171,7 +171,6 @@ User.prototype = {
 		//do ajax call to modify existing data
 
 
-
 		this.updateData(jQForm,newData);
 		this.updateView();
 	},
@@ -492,7 +491,8 @@ User.prototype = {
 		//update skill
 		if (typeof(this.userData.skill)==="object"){
 			$("#skill-title b").text("Top skills");	//show top skill
-			$("#skill-top-list").show();
+			$("#skill-top-list").html("").show();
+			$("#skill-more-list").html("");
 			$(".skill-more").hide();
 
 			// console.log(this.userData.skill);

@@ -283,7 +283,7 @@ $(document).ready(function(){
 				       */
 						label: "Yes, I'm sure",
 						className: 'btn-primary',
-						callback: user.removeEntry($(that).parent("form"));
+						callback: user.removeEntry($(that).parent("form"))
 					},
 					/**
 				     * this usage demonstrates that if no label property is
