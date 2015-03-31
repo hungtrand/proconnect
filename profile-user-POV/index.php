@@ -1,6 +1,7 @@
-<?php
-  include '../signout/php/session_check_signout.php';
-?>
+<!--<?php
+  // include '../signout/php/session_check_signout.php';
+?>-->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -75,9 +76,10 @@
             <li><a href="#signup">Join Today</a></li>
             <li><a href="../signout/php/session_signout.php">Sign Out</a></li>
           </ul>
-        </div><!--/.nav-collapse -->
+        </div>
       </div>
     </nav>
+    
 
     <div id="main-container" class="container-fluid">
       <div class="row">
