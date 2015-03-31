@@ -121,7 +121,7 @@ $(document).ready(function(){
 			// console.log($(this).parent("div").attr("id"));
 
 			//pass json object to model for processing
-			// try{ 
+			try{ 
 				validateForm($(this));				//validate this form according to form name
 
 				var editing = ($(this).attr("editing") === "true") ? true : false;
@@ -132,14 +132,17 @@ $(document).ready(function(){
 					user.addData($(this),data);
 				}
 
-			// } catch(e) {
-			// 	if(typeof(e) === "string") {
-			// 		//display error
-			// 		console.log(e); //debug only
-			// 	} else {
-			// 		throw e;
-			// 	}
-			// }
+			} catch(e) {
+				if(typeof(e) === "string") {
+					//display error
+			 	$(this).find(".alert-msg").text(e);
+				$(this).find(".alert-danger").show();
+
+					console.log(e); //debug only
+				} else {
+					throw e;
+				}
+			}
 
 			// console.log(data);
 			$(this).siblings("div.loading").show();//show loading gif					
@@ -158,6 +161,14 @@ $(document).ready(function(){
 			switch(formName){
 				case "user-info-edit":
 					// console.log("user-info-edit");
+					if(IsName($("#first-name-input").val()) === false){
+						throw "Invalid name.";
+					}
+
+					if(IsEmail($("#email-input").val()) === false){
+						throw "Invalid email.";
+					}
+
 					// console.log( jQFormEle.find(":input[required]:visible").css("border-color","red") );
 				break;
 				case "summary-edit":
@@ -167,7 +178,7 @@ $(document).ready(function(){
 				case "skills-endorsements-edit":
 					console.log("skills-endorsements-edit");
 
-				break;
+				break;first-name-input
 				case "experience-edit":
 					console.log("experience-edit");
 
@@ -243,14 +254,14 @@ $(document).ready(function(){
 				}
 			}
 
-			// function IsEmail(email) {
-		 //        var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-		 //        if(!regex.test(email)) {
-		 //           return false;
-		 //        }else{
-		 //           return true;
-		 //        }
-		 //    }
+			function IsEmail(email) {
+		        var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+		        if(!regex.test(email)) {
+		           return false;
+		        }else{
+		           return true;
+		        }
+		    }
 		}
 	});
 

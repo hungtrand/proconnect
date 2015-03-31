@@ -514,8 +514,11 @@ User.prototype = {
 		}
 	
 		//update eperiences
-		// $("#user-experiences").append();
+		//clear data form
+		$("#user-experiences").html("");
 		$.each(this.userData.experiences,function(i,exp){
+			// $("#user-experiences").html("");
+
 			// exp["company-location"]
 			var endTime = (exp["work-present"] === "") ? exp["work-end-month"] + " " + exp['work-end-year'] : exp["work-present"];
 			var workTime = exp['work-start-month'] + " " + exp['work-start-year'] + " &#8213 " + endTime;
@@ -534,6 +537,8 @@ User.prototype = {
 		
 
 		//update projects
+		//clear displaying entries
+		$("#user-projects").html("");
 		$.each(this.userData.projects,function(key,proj){
 
 			//format project title
@@ -548,6 +553,7 @@ User.prototype = {
 
 			if(memberCount > 1) { //there is more than 1 user other than default
 				var memberBlocks = "";
+
 
 				$.each(proj['team-member'],function(name,member){
 					var memberName = (member['direct-URL'] === "") ? "<b>" + name + "</b>" : "<a href='" + member['direct-URL'] + "'>" + name + "</a>";
@@ -579,6 +585,8 @@ User.prototype = {
 		});
 
 		//update education
+		//clear displaying entries
+		$("#user-education").html("");
 		$.each(this.userData.education,function(key,edu){
 			var schoolTime = (edu["school-year-ended"] === "") ? edu["school-year-started"] : 
 																 edu["school-year-started"] + " &#8213 " + edu["school-year-ended"];

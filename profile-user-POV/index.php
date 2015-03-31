@@ -1,6 +1,6 @@
-<!--<?php
-  // include '../signout/php/session_check_signout.php';
-?>-->
+<?php
+   // include '../signout/php/session_check_signout.php';
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -79,7 +79,6 @@
         </div>
       </div>
     </nav>
-    
 
     <div id="main-container" class="container-fluid">
       <div class="row">
