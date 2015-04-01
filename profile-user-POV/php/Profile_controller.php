@@ -12,7 +12,7 @@ require_once __DIR__."/Profile_view.php";
 
 // Check if logged in
 session_start();
-$home = 'Location: '.__DIR__.'/../../';
+$home = 'Location: ../../';
 if (!$UData = json_decode($_SESSION['__USERDATA__'], true)) {
 	header($home);
 	die();
