@@ -14,7 +14,8 @@ require_once __DIR__."/Profile_view.php";
 session_start();
 $home = 'Location: ../../';
 if (!$UData = json_decode($_SESSION['__USERDATA__'], true)) {
-	header($home);
+	//header($home);
+	echo 'Session Timed Out. <a href="/signin/">Sign back in</a>';
 	die();
 }
 
