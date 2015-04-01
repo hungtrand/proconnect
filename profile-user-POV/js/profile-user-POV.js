@@ -149,7 +149,7 @@ $(document).ready(function(){
 
 			// console.log(data);
 			$(this).siblings("div.loading").show();//show loading gif					
-			//on success
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              			//on success
 			//turn off gif loader
 			
 		}
@@ -163,13 +163,30 @@ $(document).ready(function(){
 
 			switch(formName){
 				case "user-info-edit":
-					// console.log("user-info-edit");
+					console.log("user-info-edit");
+
 					if(IsName($("#first-name-input").val()) === false){
-						throw "Invalid name.";
+						throw "Invalid First Name.";
 					}
 
-					if(IsEmail($("#email-input").val()) === false){
-						throw "Invalid email.";
+					if(IsName($("#last-name-input").val()) === false) {
+						throw "Invalid Last Name."
+					}
+
+					if(IsName($("#middle-initial-input").val()) === false) {
+						throw "Invalid Middle Initial."
+					}
+
+					if(IsEmail($("#email-input").val()) === false) {
+						throw "Invalid Email.";
+					}
+
+					if(IsEmail($("#alt-email-input").val()) === false) {
+						throw "Invalid Alternate Email.";
+					}
+
+					if(IsNumber($("#phone-input").val()) === false) {
+						throw "Invalid Phone Number";
 					}
 
 					// console.log( jQFormEle.find(":input[required]:visible").css("border-color","red") );
@@ -177,21 +194,75 @@ $(document).ready(function(){
 				case "summary-edit":
 					console.log("summary-edit");
 
+					if(wordCount($("#summary-textarea").val()) > 1000) {
+						throw "Maximum amount of characters have been reached." + wordCount($("#summary-textarea").val());
+					}
+
 				break;
 				case "skills-endorsements-edit":
 					console.log("skills-endorsements-edit");
 
-				break;first-name-input
+					if($("#skill-list-edit li").length >= 50) {
+						throw "You have reached the limit for adding skills.";
+					}
+
+					console.log($("#skill-list-edit li").length);
+
+				break;//first-name-input
 				case "experience-edit":
 					console.log("experience-edit");
+
+					if(IsNumber($("#work-start-year").val()) === false) {
+						throw "Invalid Start Year.";
+					}
+
+					if(IsNumber($("#work-end-year").val()) === false) {
+						throw "Invalid End Year.";
+					}
+
+					if(compareDate($("#work-start-month").val(), $("#work-end-month").val(), $("#work-start-year").val(), $("#work-end-year").val() )) {
+						throw "Invalid Data Organization";
+					}
 
 				break;
 				case "project-edit":
 					console.log("project-edit");
 
+					if(wordCount($("#project-description").val()) > 1000) {
+						throw "Maximum amount of words have been reached." + wordCount($("#project-description").val());
+					}
+
 				break;
 				case "education-edit":
 					console.log("education-edit");
+
+					if(IsWord($("#school-name").val()) === false) {
+						throw "Invalid School Name";
+					}
+
+					if(IsWord($("#degree").val()) === false) {
+						throw "Invalid Degree Name";
+					}
+
+					if(IsWord($("#field-of-study").val()) === false) {
+						throw "Invalid Field Of Study Name";
+					}
+
+					if(IsWord($("#grade").val()) === false) {
+						throw "Invalid Grade Name";
+					}
+
+					if(compareYear($("#school-year-started").val(), $("#school-year-ended").val())) {
+						throw "Invalid Date Organization";
+					}
+
+					if(wordCount($("#activities").val()) > 1000) {
+						throw "Maximum amount of words have been reached." + wordCount($("#project-description").val());
+					}
+
+					if(wordCount($("#education-description").val()) > 1000) {
+						throw "Maximum amount of words have been reached." + wordCount($("#project-description").val());
+					}
 
 				break;
 			}
@@ -248,12 +319,65 @@ $(document).ready(function(){
 
 			// return true;
 
+			function wordCount(message)
+			{
+				var regex = /\s+/gi;
+				var counter = message.trim().replace(regex, ' ').split(' ').length;
+				return counter;
+			}
+
+			function compareYear(year1, year2)
+			{
+				if(parseInt(year1) < parseInt(year2)) {
+					return false;
+				}
+				else {
+					return true;
+				}
+			}
+
+			function compareMonth(month1, month2)
+			{
+				if(parseInt(month1) < parseInt(month2)) {
+					return false;
+				}
+				else {
+					return true;
+				}
+			}
+
+			function compareDate(month1, month2, year1, year2) {
+				if(compareYear(year1, year2) === false) {
+					return false;
+				}
+				else {
+					if(compareMonth(month1, month2) === false)
+					{
+						return false;
+					}
+					else
+					{
+						return true;
+					}
+				}
+			}
+
 			function IsName(name) {
 			var regex =/^[a-z ,.'-]+$/i;
 				if(!regex.test(name)) {
 				   	return false;
 				}else{
 				   	return true;
+				}
+			}
+
+			function IsWord(word) {
+				var regex = /^[a-z ,.']+$/;
+				if(!regex.test(word)) {
+					return false;
+				}
+				else {
+					return true;
 				}
 			}
 
@@ -264,6 +388,16 @@ $(document).ready(function(){
 		        }else{
 		           return true;
 		        }
+		    }
+
+		    function IsNumber(number) {
+		    	var regex = /^[0-9]+$/;
+		    	if(!regex.test(number)) {
+		    		return false;
+		    	}
+		    	else {
+		    		return true;
+		    	}
 		    }
 		}
 	});

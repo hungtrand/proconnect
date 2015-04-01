@@ -226,7 +226,7 @@
                         <span class="sr-only">Error:</span>
                         <span class="alert-msg"></span>
                       </div>
-                      <textarea name="summary" class="form-control" rows="10"></textarea> <br><br>
+                      <textarea name="summary" class="form-control" id="summary-textarea" rows="10"></textarea> <br><br>
                       <button type="submit" class="btn btn-primary save-btn">Save</button>
                       <button type="button" class="btn btn-default cancel-btn">Cancel</button>
                     </form>
