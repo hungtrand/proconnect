@@ -1,6 +1,12 @@
 <?php
-  include '../signout/php/session_check_signout.php';
+//error_reporting(E_ALL); // debug
+//ini_set("display_errors", 1); // debug
+include '../signout/php/session_check_signout.php';
+
+$UData = json_decode($_SESSION['__USERDATA__'], true);
+$FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -58,25 +64,78 @@
 
   <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a id= "logo" class="navbar-brand" href="#"><img src="../image/proconnect/logo_text.png" /></a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="#about">What is ProConnect?</a></li>
-            <li><a href="#signup">Join Today</a></li>
-            <li><a href="../signout/php/session_signout.php">Sign Out</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
+    <nav class="navbar navbar-inverse navbar-fixed-top affix" data-spy="affix" data-offset-top="60 " data-offset-bottom="200">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-right-links">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a id="logo" class="navbar-brand" href="#"><img src="../image/proconnect/logo_text.png" /></a>
+
+                <form class="navbar-form navbar-left text-center" role="search">
+                    <div class="form-group">
+                      <input type="text" size="40" class="form-control" placeholder="Search for people, companies, jobs...">
+                    </div>
+                    <button type="submit" class="btn btn-primary">&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                </form>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="nav-right-links">
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#"><span class="glyphicon glyphicon-envelope"></span></a>
+                    </li>
+
+                    <li>
+                        <a href="#"><span class="glyphicon glyphicon-flag"></span></a>
+                    </li>
+
+                    <li>
+                        <a href="#"><span class="glyphicon glyphicon-user"></span></a>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?=$FullName?> <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Account & Settings</a></li>
+                            <li><a href="#">Job Posting</a></li>
+                            <li class="divider"></li>
+                            <li><a href="../signout/php/session_signout.php">Sign Out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div><!-- /.navbar-collapse -->
+
+            <style>.subNav a { color: #ccc !important; }</style>
+            <ul class="nav nav-pills subNav">
+                <li role="presentation"><a href="../profile-user-POV/">
+                    Home</a>
+                </li>
+                <li role="presentation"><a href="../profile-user-POV/">
+                    Profile</a>
+                </li>
+                <li role="presentation"><a href="../connections/">
+                    Connections</a>
+                </li>
+                <li role="presentation"><a href="#">
+                    Education</a>
+                </li>
+                <li role="presentation"><a href="#">
+                    Jobs</a>
+                </li>
+                <li role="presentation"><a href="#">
+                    Interests</a>
+                </li>
+            </ul>
+        </div><!-- /.container-fluid -->
     </nav>
 
     <div id="main-container" class="container-fluid">
@@ -138,7 +197,13 @@
                         <div class="loading">
                           <img src="../image/ajax-loader.gif">
                         </div>
-                        <form class="editable-form" action="javascript:void(0)" method="POST">
+                        <form class="editable-form" method="POST">
+                          <!-- Error Alert -->
+                          <div class="alert alert-danger" role="alert">
+                            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                            <span class="sr-only">Error:</span>
+                            <span class="alert-msg"></span>
+                          </div>
                           <!-- User Name -->
                           <div class="form-group form-inline">
                             <div class="form-group">
@@ -180,7 +245,7 @@
 
                           <!-- Address -->
                          <!--  <label for="address">Address</label>
-                          <textarea id="address" class="form-control" rows="2"></textarea> <br><br> -->
+                          <textarea id="address" class="form-control" name="user-address" rows="2"></textarea> <br><br> -->
                           <button type="submit" class="btn btn-primary save-btn" value="save">Save</button>
                           <button type="button" class="btn btn-default cancel-btn" value="cancel" for="user-info-edit">Cancel</button>
                         </form>  
@@ -213,7 +278,13 @@
                       </div>
                     <!-- <b><h4>Summary</h4></b> -->
                     <form class="editable-form">
-                      <textarea name="user-description" class="form-control" rows="10"></textarea> <br><br>
+                      <!-- Error Alert -->
+                      <div class="alert alert-danger" role="alert">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span>
+                        <span class="alert-msg"></span>
+                      </div>
+                      <textarea name="summary" class="form-control" rows="10"></textarea> <br><br>
                       <button type="submit" class="btn btn-primary save-btn">Save</button>
                       <button type="button" class="btn btn-default cancel-btn">Cancel</button>
                     </form>
@@ -221,7 +292,7 @@
               </div>
               
               <div class="add-star" >
-                <button id="user-info-edit-btn" class="add-btn" for="summary-description" edit="true" >Edit Summary</button>
+                <button  class="add-btn" for="summary-description" edit="true" >Edit Summary</button>
               </div>
           </div>
       </div>
@@ -235,29 +306,31 @@
                         <h3>Skills and Endorsements</h3>
                   </header>
                  <!--   <h4>Top Skills</h4> -->
-                  <div id="skills-endorsements" class="normal-view editable" for="skills-endorsements-edit"> 
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                   
-                    <div class="panel panel-default">
-                      <!-- Default panel contents -->
-                      <!-- List group -->
-                        <div id="skill-title" class="panel-heading"><b></b></div>
-
-                        <ul id="skill-top-list" class="list-group">
-                          <!-- <li class="list-group-item "><span class="badge colored-badge">12</span>Cras justo odio</li> -->
-                        </ul> 
-
-                        <div id="skill-more-title" class="panel-footer skill-more">
-                          <b><span class="first-name"></span> also know about...</b>
-                        </div>
-
+                  <div id="skills-endorsements" class="normal-view "> 
+                    <div class="editable" for="skills-endorsements-edit">
+                      <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                     
+                      <div class="panel panel-default ">
                         <!-- Default panel contents -->
                         <!-- List group -->
-                        
-                        <div id="skill-more-list" class="panel-body skill-more">
+                          <div id="skill-title" class="panel-heading"><b></b></div>
+
+                          <ul id="skill-top-list" class="list-group">
+                            <!-- <li class="list-group-item "><span class="badge colored-badge">12</span>Cras justo odio</li> -->
+                          </ul> 
+
+                          <div id="skill-more-title" class="panel-footer skill-more">
+                            <b><span class="first-name"></span> also know about...</b>
+                          </div>
+
+                          <!-- Default panel contents -->
+                          <!-- List group -->
                           
-                        </div>
-                    </div>
+                          <div id="skill-more-list" class="panel-body skill-more">
+                            
+                          </div>
+                      </div>
+                    </div>  
                   </div>
 
 
@@ -268,6 +341,12 @@
                     </div>
                     <!-- <b><h4>Summary</h4></b> -->
                     <form class="editable-form">
+                      <!-- Error Alert -->
+                      <div class="alert alert-danger" role="alert">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span>
+                        <span class="alert-msg"></span>
+                      </div>
 
                       <div class="form-group">
                         <input name="skill" type="text" class="form-control typeahead" id="skill-input" placeholder="What are you areas of expertise?">
@@ -276,12 +355,12 @@
 
                       <div class="playground form-group well well-sm"> <!-- contentEditable="true" -->
 
-                        <ul class="sortable grid">
-                          <li class="">
+                        <ul id="skill-list-edit" class="sortable grid">
+                          <!-- <li entry-index="" >
                             <span class="badge">12</span>
                             <span class="skill-pill-name">asda</span>
                             <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                          </li>
+                          </li> -->
                         </ul>
                       </div>
                       <b style="float:right">Drag to reorder</b>
@@ -309,23 +388,29 @@
                     <div class="loading">
                         <img src="../image/ajax-loader.gif">
                       </div>
-                    <form class="editable-form">
+                    <form class="editable-form" >
+                      <!-- Error Alert -->
+                      <div class="alert alert-danger" role="alert">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span>
+                        <span class="alert-msg"></span>
+                      </div>
                       <!-- Position Title -->
                       <div class="form-group ">
                         <label for="position-title">Position Title</label>
                         <abbr title="Required" class="required">*</abbr>
-                        <input name="position-title" type="text" class="form-control" id="position-title" value="place holder" required>
+                        <input name="position-title" type="text" class="form-control" id="position-title" required>
                       </div>
                       <!-- Company Name -->
                        <div class="form-group ">
                         <label for="company-name">Company Name</label>
                         <abbr title="Required" class="required">*</abbr>
-                        <input name="company-name" type="text" class="form-control" id="company-name" value="Company Name" required>
+                        <input name="company-name" type="text" class="form-control" id="company-name" required>
                       </div>
                       <!-- Location -->
                       <div class="form-group ">
                         <label for="company-location">Location</label>
-                        <input name="company-location" type="text" class="form-control" id="company-location" value="Location">
+                        <input name="company-location" type="text" class="form-control" id="company-location" >
                       </div>
 
                       <!-- Time Period -->
@@ -350,7 +435,7 @@
                         <input name="work-start-year" type="text" class="form-control short-input" id="work-start-year" placeholder="Year" maxlength="4" required> &#8213 
 
                         <div class="form-group work-time-right-block">
-                          <span id="work-present"> present</span>
+                          <span id="work-present"> current</span>
 
                           <div id="work-end-time-explicit" >
                             <select name="work-end-month" type="month" class="form-control" id="work-end-month"> 
@@ -392,7 +477,7 @@
                   </div>
               </div>
               <div class="add-star">
-                <button id="user-info-edit-btn" class="add-btn" for="experience-edit">Add Eperience</button>
+                <button class="add-btn" for="experience-edit">Add Eperience</button>
               </div>
           </div>
       </div>
@@ -409,28 +494,43 @@
                       <img src="../image/ajax-loader.gif">
                     </div>
                     <form class="editable-form">
+                      <!-- Error Alert -->
+                      <div class="alert alert-danger" role="alert">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span>
+                        <span class="alert-msg"></span>
+                      </div>
                       <!-- Project Name -->
                       <div class="form-group ">
                         <label for="project-name">Name</label>
                         <abbr title="Required" class="required">*</abbr>
-                        <input name="project-name" type="text" class="form-control" id="project-name" value="ProConnect" required>
+                        <input name="project-name" type="text" class="form-control" id="project-name" required>
                       </div>
                       <!-- Project URL -->
                        <div class="form-group ">
                         <label for="project-url">Project URL</label>
-                        <input name="project-url" type="text" class="form-control" id="project-url" value="URL">
+                        <input name="project-url" type="text" class="form-control" id="project-url">
                       </div>
                       <!-- Team Members -->
                       <label for="project-team-members">Team Members</label>
                       
                       <div id="project-team-editable-block" class="form-group well well-sm"> <!-- contentEditable="true" -->
 
-                        <ul class="sortable grid">
-                          <li class="no-sort" index="0">
-                            <!-- team member icon goes here-->
-                            <span class="skill-pill-name">you</span>
+                        <ul id="project-team-list" class='sortable grid'>  
+                          <!-- <li class='no-sort' index='0'>
+                            
+                            <img src="https://static.licdn.com/scds/common/u/images/themes/katy/ghosts/person/ghost_person_30x30_v1.png">
+                            <span class="skill-pill-name">You</span>
                             <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            
                           </li>
+                          <li index='0'>
+                            
+                            <img src="https://static.licdn.com/scds/common/u/images/themes/katy/ghosts/person/ghost_person_30x30_v1.png">
+                            <span class="skill-pill-name">You</span>
+                            <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            
+                          </li> -->
                         </ul>
 
                       
@@ -449,19 +549,18 @@
                     </form>  
                   </div>
                   <div id="user-projects" class="normal-view">
-                    <div>
-                      <div class="editable" for="project-edit" link="Tmemers" entry-number="">
+                    <!-- <div>
+                      <div class="editable" for="project-edit" link="Tmemers" index="">
                         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                        <!-- <i class="glyphicon glyphicon-link"></i> -->
+                        <!-- <i class="glyphicon glyphicon-link"></i> 
                         <h4>Project Name</h4>
                         
-                        <!-- <h5>Date Range</h5> -->
+                        <!-- <h5>Date Range</h5> 
                         <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.
                         </p>
                       </div>
                       <div class="team-members-container row" name="team-members" id="Tmemers">
 
-                        <!-- REPEATABLE -->
                         <div class="team-member-block col-md-6">
                           <div class="col-md-2">
                             <img src="http://vignette2.wikia.nocookie.net/farmville/images/d/da/38x38-icon.png/revision/latest?cb=20120530023501" class="team-member-mini-image">
@@ -472,13 +571,13 @@
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> -->
 
                      <!--  </div> -->
-                    </div>
+                  </div>
                 </div>  
               <div class="add-star">
-                <button id="user-info-edit-btn" class="add-btn" for="project-edit">Add Project</button>
+                <button class="add-btn" for="project-edit">Add Project</button>
               </div>
           </div>
       </div>
@@ -495,27 +594,33 @@
                       <img src="../image/ajax-loader.gif">
                     </div>
                     <form class="editable-form">
+                      <!-- Error Alert -->
+                      <div class="alert alert-danger" role="alert">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span>
+                        <span class="alert-msg"></span>
+                      </div>
                       <!-- School -->
                       <div class="form-group">
                         <label for="school-name">School</label>
                         <abbr title="Required" class="required">*</abbr>
-                        <input name="school-name" type="text" class="form-control" id="school-name" value="Some value" required>
+                        <input name="school-name" type="text" class="form-control" id="school-name" required>
                       </div>
                       <!-- Degree -->
                        <div class="form-group">
                         <label for="degree">Degree</label>
-                        <input name="degree" type="text" class="form-control" id="degree" value="Bachelor of Science (BS)">
+                        <input name="degree" type="text" class="form-control" id="degree" >
                       </div>
                       <!-- Field of Study -->
                       <div class="form-group">
                         <label for="field-of-study">Field of Study</label>
-                        <input name="field-of-study" type="text" class="form-control" id="field-of-study" value="Computer Science">
+                        <input name="field-of-study" type="text" class="form-control" id="field-of-study" >
                       </div>
 
                       <!-- Grade -->
                       <div class="form-group">
                         <label for="grade">Grade</label>
-                        <input name="grade" type="text" class="form-control" id="grade" value="SHIT">
+                        <input name="grade" type="text" class="form-control" id="grade" >
                       </div>
 
                       <!-- Time Period -->
@@ -576,7 +681,7 @@
 
               </div>
               <div class="add-star">
-                <button id="user-info-edit-btn" class="add-btn" for="education-edit">Add Education</button>
+                <button class="add-btn" for="education-edit">Add Education</button>
               </div>
           </div>
       </div>

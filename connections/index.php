@@ -1,5 +1,10 @@
 <?php
-// include '../signout/php/session_check_signout.php';
+//error_reporting(E_ALL); // debug
+//ini_set("display_errors", 1); // debug
+include '../signout/php/session_check_signout.php';
+
+$UData = json_decode($_SESSION['__USERDATA__'], true);
+$FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 ?>
 
 <!DOCTYPE html>
@@ -77,7 +82,9 @@
                     </li>
 
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">John Doe <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <?=$FullName?> <span class="caret"></span>
+                        </a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="#">Account & Settings</a></li>
                             <li><a href="#">Job Posting</a></li>
@@ -88,15 +95,15 @@
                 </ul>
 
             </div><!-- /.navbar-collapse -->
-
-            <ul class="nav nav-pills">
-                <li role="presentation"><a href="#">
+            <style>.subNav a { color: #ccc !important; }</style>
+            <ul class="nav nav-pills subNav">
+                <li role="presentation"><a href="../profile-user-POV/">
                     Home</a>
                 </li>
-                <li role="presentation"><a href="#">
+                <li role="presentation"><a href="../profile-user-POV/">
                     Profile</a>
                 </li>
-                <li role="presentation"><a href="#">
+                <li role="presentation"><a href="../connections/">
                     Connections</a>
                 </li>
                 <li role="presentation"><a href="#">
@@ -169,9 +176,11 @@
 
                 <hr />
 
-                <div id="ConnListing" style="height: 2000px;">
+                <div id="ConnListing">
 
                 </div>
+
+                <div id="ConnectionsListEndAlert" class="alert alert-info hidden text-center"></div>
                
             </div>
 
@@ -179,8 +188,12 @@
             <div id="fixed-right-section" class="col col-md-4 affix hidden-print hidden-xs hidden-sm" role="complimentary" data-spy="affix" data-offset-top="60 " data-offset-bottom="200">
                 <div class="well">
                     <h3 class="text-primary" style="overflow: auto;">Suggestions</h3>
-                </div>
+					<hr />
 
+					<div id="SuggListing" >
+
+					</div>
+                </div>
             </div>
         </div>
         <!-- /.row -->
@@ -190,7 +203,7 @@
         <!-- Footer -->
         <footer>
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12 text-center">
                     <p>Copyright &copy; ProConnect 2015</p>
                 </div>
                 <!-- /.col-lg-12 -->
@@ -206,11 +219,12 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Add New Connection</h4>
+                    <h4 class="modal-title text-primary">Add New Connection</h4>
+                    <p class="text-info">Please enter the email of the new connection you want to add:</p>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal">
-                        <div class="form-group">
+                    <form id="NewConnectionSearchForm" class="form-horizontal" action="php/SearchNewConnection_controller.php">
+                        <!-- <div class="form-group">
                             <label class="col-sm-2 control-label">Name</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" name="NewConnName" />
@@ -229,29 +243,38 @@
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" name="NewConnLocation" />
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Email</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" name="NewConnEmail" />
+                            <div class="col-sm-9 input-group">
+                                <input type="text" class="form-control keywords" name="NewConnKeywords" />
+
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary submit" type="button">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                  </span>
                             </div>
                         </div>
                     </form>
+
+                    <div class="searchResults"></div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save</button>
+                    <div id="NewConnectionSearchAlert" class="alert alert-warning hidden"></div>
+                    <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
     <script type="text/template" id="ConnectionTemplate">
-    <div id="UserConnection" class="col col-xs-12">
+    <div class="UserConnection" class="col col-xs-12">
+        <input type="hidden" class="UserID" name="UserID" value="" />
         <div class="row">
             <div class="col col-xs-4">
-                <img width="100px" src="../users/1/images/androidEating.jpg" class="img-rounded" />
+                <img width="100px" src="../image/user_img.png" class="img-rounded" />
             </div>
 
             <div class="col col-xs-8">
@@ -263,8 +286,8 @@
                     <li role="presentation"><a href="#">
                         <span class="glyphicon glyphicon-envelope"><span>&nbsp;Home</a>
                     </li>
-                    <li role="presentation"><a href="#">
-                        <span class="glyphicon glyphicon-retweet"><span>&nbsp;Connect</a>
+                    <li role="presentation"><a class="removeConnection" href="#">
+                        <span class="glyphicon glyphicon-remove"><span>&nbsp;Remove</a>
                     </li>
                 </ul>
             </div>
@@ -273,8 +296,34 @@
         <hr />
     </div>
     </script>
+	
+	<script type="text/template" id="SuggestionTemplate">
+    <div class="NewUserConnection" class="col col-xs-12">
+        <input type="hidden" class="UserID" name="UserID" value="" />
+        <div class="row">
+            <div class="col col-xs-3">
+                <img width="50px" src="../image/user_img.png" class="img-rounded" />
+            </div>
 
+            <div class="col col-xs-9">
+                <h5 class="text-primary ConnectionName" style="margin-top: 0px; margin-bottom: 7px;">John Doe</h5>
+                <p class="ConnectionWork" style= "font-size: 12px;"><span class="ConnectionJob"></span>&nbsp;at&nbsp;<span class="ConnectionCompany"></span></p>
+                   <a class="addNewConnection" href="#" style= "font-size: 12px;">
+                   <span class="glyphicon glyphicon-retweet">&nbsp;<span class="txt">Connect</span></a>
+                    &nbsp;&#8226;
+				   <a class="dismissConnection" href="#" style= "font-size: 12px; color: gray;">Skip</a>
+            </div>
+        </div>
+
+        <hr />
+    </div>
+    </script>
+
+    <script src="js/UserConnection.js"></script>
+    <script src="js/NewConnection.js"></script>
+    <script src="js/SuggestionList.js"></script>
     <script src="js/ConnectionList.js"></script>
+    <script src="js/NewConnectionSearch.js"></script>
     <script src="js/index.js"></script>
 </body>
 

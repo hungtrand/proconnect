@@ -38,13 +38,13 @@ header {
 }
 
 
-.container {
+/*.container {
 padding-right: 15px;
 padding-left: 100px;
 margin-right: auto;
 margin-left: auto;
 
-}
+}*/
 
 .colored-badge{
 	background-color: #1ba8e5; 
@@ -106,6 +106,10 @@ margin-left: auto;
 	color: #14548B;
 }
 
+.editable-form > div.alert-danger{
+	display: none;
+}
+
 .edit-view {
 	background-color: #D4D4D4;
 	border: 1px solid #B4B4B4;
@@ -114,6 +118,7 @@ margin-left: auto;
 	margin-bottom: 40px;
 	padding: 15px;
 	display: none;
+	position: relative;
 }
 
 div[for="skills-endorsements-edit"] > .panel,.list-group{
@@ -136,10 +141,15 @@ div[for="skills-endorsements-edit"] > .panel,.list-group{
 
 .loading{
 	display: none;
+	position: absolute;
+	margin-left: calc(50% - 32px);
+	top: 50%;
+	transform: translate(0,-50%)
+	
 }
 
 #main-container {
-	margin-top: 20px;
+	margin-top: 70px;
 }
 
 /*nav{
@@ -159,12 +169,12 @@ div[for="skills-endorsements-edit"] > .panel,.list-group{
 	height: 40px;*/
 }
 
-.navbar-inverse {
+/*.navbar-inverse {
 	background: #333;
 	background-image: -webkit-linear-gradient(top, #555555 0%,#515151 18%,#373737 85%,#333333 100%);
 	vertical-align: center;
-}
-
+}*/
+/*
 #navbar{
 	float: right;
 	margin-right: 90px;
@@ -184,7 +194,7 @@ div[for="skills-endorsements-edit"] > .panel,.list-group{
 .navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover {
 	color: #0077B5;
 }
-
+*/
 
 #logo{
 	color: #D7D7D7;
@@ -251,16 +261,24 @@ div[for="skills-endorsements-edit"] > .panel,.list-group{
 }
 
 .sortable li {
-	margin-right: 5px;
+	margin-right: 7px;
+	margin-bottom: 7px;
 	list-style: none;
 	/*border: 1px solid red;*/
 	background-color: #ccc;
 	/*width: 60px;*/
 	line-height: 30px;
-	height: 30px;
+	/*height: 30px;*/
 	padding: 0px 5px 0px 10px;
 	float: left;
 	cursor: move;
+}
+
+.sortable li img {
+	margin-right: 5px;
+	margin-left: -5px;
+	max-height: 30px;
+	max-width: 30px;
 }
 
 .skill-bean {
@@ -279,6 +297,7 @@ div[for="skills-endorsements-edit"] > .panel,.list-group{
 
 .sortable-placeholder {
 	width: 80px;
+	height: 30px;
 	border: 1px dashed gray;
 }
 

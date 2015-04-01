@@ -1,91 +1,180 @@
 <?php
- //include "../sqlConnection.php"; // For testing
- //$u = new Experience(1); echo $u->get('Description').'\n'; // For testing
-// $u->update(['Username'=>'Feb2015']); echo $u->get('Username'); // For Testing
+//include "../sqlConnection.php"; // For testing
+require_once __DIR__."/ActiveRecord.php";
+//$u = new Experience(1); echo $u->get('Description').'\n'; // For testing
+//$u->update(['Username'=>'Feb2015']); echo $u->get('Username'); // For Testing
 
-/*
-	The user class retrieve data of Account from the provided AccountID
-	@params: $AccountID
-	$data: an associated array that act as the main property of the class Account
-			this array holds all data from the database of instance user with AccountID
-			the key is the exact name of column in database, and the value is the field value
-	@update: public function update allow Account to update its own data
-			after updating, the object Account would reload itself with new data
-*/
-class Experience {
-	private $data;
-	private $db;
+class Experience extends ActiveRecord {
+	public static $TableName = 'Experience';
+	public static $PrimaryKey = 'EXPID';
+	public static $Columns = ['EXPID', 'COMPANYNAME', 'TITLE', 'LOCATION',
+				'DESCRIPTION', 'USERID', 'DATECREATED', 
+				'STARTMONTH', 'STARTYEAR', 'ENDMONTH','ENDYEAR'];
+	
+	private $data = [];
+	private $ExpID;
+	public $err;
 
-	function __construct($ExperienceID) {
-		$this->db = connect('ProConnect');
+	function __construct($ID = null) {
+		parent::__construct();
 
-		$this->load($ExperienceID);
+		if (isset($ID)) {
+			$this->ExpID = $ID;
+			if (!$this->data = $this->fetch($ID)) {
+				$this->err = "Record not found.";
+				return false;
+			};
+		}
 	}
 
-	private function load($ExperienceID) {
-		$sql = 'SELECT `ExperienceID`, `CompanyName`, `Title`, `Location`,
-				`TimePeriod`, `Description`, `DateCreated`
-				FROM `Experience` WHERE `ExperienceID` = ? LIMIT 1 ';
+	/* Implementing Abstract Methods */
+	// OVERRIDE
+	public function getData() {
+		return $this->data;
+	}
 
-		if ($stmt = $this->db->prepare($sql)) {
+	// OVERRIDE
+	public function getID() {
+		return $this->ExpID;
+	}
 
-			try {
-				$stmt->bindParam(1, $ExperienceID);
+	// OVERRIDE
+	protected function getPrimaryKey() {
+		return self::$PrimaryKey;
+	}
 
-				$stmt->execute();
-				$rs = $stmt->fetch(PDO::FETCH_ASSOC);
-				
-				foreach ($rs as $col => $value) {
-					$this->data[strtoupper($col)] = $value;
-				}
-			} catch (Exception $e) {
-				echo $e->getMessage();
-				return false;
-			}
-			
+	// OVERRIDE
+	protected function getTableName() {
+		return self::$TableName;
+	}
 
-			if (is_array($this->data)) return true;
-		} else {
+	protected function getColumns() {
+		return self::$Columns;
+	}
+
+	// OVERRIDE
+	public function load($ID) {
+		if (!$ID) return false;
+
+		if (!$this->data = $this->fetch($ID)) {
+			$this->err = "Could not fetch experience from id.";
 			return false;
 		}
+
+		$this->ExpID = $ID;
+
+		return true;
+	}
+	/* End of Implementing Abstract Methods */
+
+	// Get methods
+	public function getCompanyName() {
+		return $this->data['COMPANYNAME'];
 	}
 
-	public function get($field) {
-		return $this->data[strtoupper($field)];
+	public function getUserID() {
+		return $this->data['USERID'];
 	}
 
-	public function update($newData) {
-		$setStmt = "SET ";
-		$delimiter = "";
+	public function getTitle() {
+		return $this->data['TITLE'];
+	}
 
-		foreach($newData as $col => $value) {
-			$setStmt .= $delimiter . $col . ' = ? ';
-			$delimiter = ", ";
-		}
+	public function getLocation() {
+		return $this->data['LOCATION'];
+	}
 
-		$sql = "UPDATE `Experience` " . $setStmt . "WHERE `ExperienceID` = ? ";
+	public function getDescription() {
+		return $this->data['DESCRIPTION'];
+	}
 
-		if ($stmt = $this->db->prepare($sql)) {
+	public function getDateCreated() {
+		return $this->data['DATECREATED'];
+	}
 
-			try {
-				$i = 1;
-				foreach($newData as $col => $value) {
-					$stmt->bindParam($i, $value);
-					$i++;
-				}
+	public function getStartMonth() {
+		return $this->data['STARTMONTH'];
+	}
 
-				$stmt->bindParam($i, $this->get('ExperienceID'));
-				$stmt->execute();
-				$this->load($this->get('ExperienceID'));
-			} catch (Exception $e) {
-				echo $e->getMessage();
-				return false;
-			}			
+	public function getStartYear() {
+		return $this->data['STARTYEAR'];
+	}
 
-			return true;
-		} else {
-			return false;
-		}
+	public function getEndMonth() {
+		return $this->data['ENDMONTH'];
+	}
+
+	public function getEndYear() {
+		return $this->data['ENDYEAR'];
+	}
+
+	// Set methods
+	public function setCompanyName($strVal) {
+		$this->data['COMPANYNAME'] = $strVal;
+
+		return true;
+	}
+
+	public function setUserID($intVal) {
+		$this->data['USERID'] = $intVal;
+
+		return true;
+	}
+
+	public function setTitle($strVal) {
+		$this->data['TITLE'] = $strVal;
+
+		return true;
+	}
+
+	public function setLocation($strVal) {
+		$this->data['LOCATION'] = $strVal;
+
+		return true;
+	}
+
+	public function setDescription($strVal) {
+		$this->data['DESCRIPTION'] = $strVal;
+
+		return true;
+	}
+
+	public function setStartMonth($intVal) {
+		$this->data['STARTMONTH'] = $intVal;
+
+		return true;
+	}
+
+	public function setStartYear($intVal) {
+		$this->data['STARTYEAR'] = $intVal;
+
+		return true;
+	}
+
+	public function setStartDate($intMonth, $intYear) {
+		$this->data['STARTMONTH'] = $intVal;
+		$this->data['STARTYEAR'] = $intYear;
+
+		return true;
+	}
+
+	public function setEndMonth($intVal) {
+		$this->data['ENDMONTH'] = $intVal;
+
+		return true;
+	}
+
+	public function setEndYear($intVal) {
+		$this->data['ENDYEAR'] = $intVal;
+
+		return true;
+	}
+
+	public function setEndDate($intMonth, $intYear) {
+		$this->data['ENDMONTH'] = $intMonth;
+		$this->data['ENDYEAR'] = $intYear;
+
+		return true;
 	}
 }
 ?>
