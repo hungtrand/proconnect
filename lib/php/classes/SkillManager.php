@@ -46,7 +46,8 @@ class SkillManager extends RecordSet {
 	}
 
 	public function getAll() {
-		if (!isset($this->data) || count($this->data) < 1) return false;
+		if (!isset($this->data) || count($this->data) < 1|| !$this->data) 
+			return false;
 
 		$arr = [];
 		foreach ($this->data as $row) {

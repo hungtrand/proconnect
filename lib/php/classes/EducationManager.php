@@ -9,8 +9,8 @@ class EducationManager extends RecordSet {
 	protected $TableName;
 	protected $Columns;
 
-	private $User;
-	private $data;
+	protected $User;
+	protected $data;
 
 	public $err;
 
@@ -39,6 +39,16 @@ class EducationManager extends RecordSet {
 		return true;
 	}
 
+	public function loadCurrent() {
+		$cond = "WHERE USERID = ? AND (YEAREND >= ? OR YEAREND IS NULL) ";
+		$cond .="ORDER BY YEARSTART DESC LIMIT 1 ";
+
+		$params = ['USERID'=>$this->User->getID(), 'YEAREND'=>date("Y")];
+		if (!$this->data = $this->fetchCustom($cond, $params)) return false;
+
+		return true;
+	}
+
 	public function getData() {
 		if (!isset($this->data) || count($this->data) < 1) return false;
 
@@ -46,7 +56,8 @@ class EducationManager extends RecordSet {
 	}
 
 	public function getAll() {
-		if (!isset($this->data) || count($this->data) < 1) return false;
+		if (!isset($this->data) || count($this->data) < 1 || !$this->data) 
+			return false;
 
 		$arr = [];
 		foreach ($this->getData() as $row) {

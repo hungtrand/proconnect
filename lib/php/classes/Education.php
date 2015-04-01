@@ -63,7 +63,7 @@ class Education extends ActiveRecord {
 		if (!$ID) return false;
 
 		if (!$this->data = $this->fetch($ID)) {
-			$this->err = "Could fetch the user with that id.";
+			$this->err = "Could not fetch education from id.";
 			return false;
 		}
 

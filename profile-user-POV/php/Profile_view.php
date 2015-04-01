@@ -1,5 +1,7 @@
 <?php
-class Profile_View {
+require_once __DIR__."/../../lib/php/interfaces.php";
+
+class Profile_View implements view {
 	private $FinalView;
 
 	private $PersonalInfo;

@@ -40,7 +40,7 @@ abstract class ActiveRecord {
 		$pk = $this->getPrimaryKey();
 		$cols = $this->getColumns();
 
-		$sql = 'SELECT ' . implode(', ', $cols);
+		$sql = 'SELECT ' . $table.'.'.implode(', '.$table.'.', $cols);
 		$sql .=' FROM '.$table.' WHERE '.$pk.'= ? LIMIT 1 ';
 
 		if ($stmt = $this->db->prepare($sql)) {
@@ -84,7 +84,7 @@ abstract class ActiveRecord {
 			$delimiter = $Logic." ";
 		}
 
-		$sql = 'SELECT ' . implode(', ', $cols);
+		$sql = 'SELECT ' . $table.'.'.implode(', '.$table.'.', $cols);
 		$sql .=' FROM '.$table.$cond.' LIMIT 1 ';
 		if ($stmt = $this->db->prepare($sql)) {
 

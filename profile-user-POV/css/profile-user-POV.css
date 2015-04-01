@@ -38,13 +38,13 @@ header {
 }
 
 
-.container {
+/*.container {
 padding-right: 15px;
 padding-left: 100px;
 margin-right: auto;
 margin-left: auto;
 
-}
+}*/
 
 .colored-badge{
 	background-color: #1ba8e5; 
@@ -143,7 +143,7 @@ div[for="skills-endorsements-edit"] > .panel,.list-group{
 }
 
 #main-container {
-	margin-top: 20px;
+	margin-top: 70px;
 }
 
 /*nav{
@@ -163,12 +163,12 @@ div[for="skills-endorsements-edit"] > .panel,.list-group{
 	height: 40px;*/
 }
 
-.navbar-inverse {
+/*.navbar-inverse {
 	background: #333;
 	background-image: -webkit-linear-gradient(top, #555555 0%,#515151 18%,#373737 85%,#333333 100%);
 	vertical-align: center;
-}
-
+}*/
+/*
 #navbar{
 	float: right;
 	margin-right: 90px;
@@ -188,7 +188,7 @@ div[for="skills-endorsements-edit"] > .panel,.list-group{
 .navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover {
 	color: #0077B5;
 }
-
+*/
 
 #logo{
 	color: #D7D7D7;

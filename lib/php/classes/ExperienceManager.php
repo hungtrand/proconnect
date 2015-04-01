@@ -9,8 +9,8 @@ class ExperienceManager extends RecordSet {
 	protected $TableName;
 	protected $Columns;
 
-	private $User;
-	private $data;
+	protected $User;
+	protected $data;
 
 	public $err;
 
@@ -39,6 +39,16 @@ class ExperienceManager extends RecordSet {
 		return true;
 	}
 
+	public function loadCurrent() {
+		$cond = "WHERE USERID = ? AND ENDMONTH IS NULL AND ENDYEAR IS NULL ";
+		$cond .="ORDER BY STARTYEAR DESC, STARTMONTH DESC LIMIT 1 ";
+
+		$params = ['USERID'=>$this->User->getID()];
+		if (!$this->data = $this->fetchCustom($cond, $params)) return false;
+
+		return true;
+	}
+
 	public function getData() {
 		if (!isset($this->data) || count($this->data) < 1) return false;
 
@@ -46,7 +56,8 @@ class ExperienceManager extends RecordSet {
 	}
 
 	public function getAll() {
-		if (!isset($this->data) || count($this->data) < 1) return false;
+		if (!isset($this->data) || count($this->data) < 1 || !$this->data) 
+			return false;
 
 		$arr = [];
 		foreach ($this->data as $row) {

@@ -6,7 +6,6 @@ function SuggestionList(container) {
 		{ "Name": "Duncan Adam", "JobTitle": "Auditor",  "CompanyName": "Pandora, Inc.", "Location": "Mountain View"}
 	];
 
-	this.ConnTemplate;
 	this.container = container;
 	this.init();
 }
@@ -15,20 +14,30 @@ SuggestionList.prototype = {
 	constructor: SuggestionList,
 
 	init: function() {
-		this.ConnTemplate = $('#SuggestionTemplate').html();
+
+	},
+
+	fetch: function(page) {
+		if (!page) page = 1;
+		var data = {
+			page: page
+		}
+
+		$.ajax({
+			url: 'php/Suggestions_controller.php',
+			type: 'POST',
+			data: data
+		}).done(function(json) {
+
+		});
 	},
 
 	load: function() {
 
 		for (var i = 0, l=this.data.length; i < l; i++) {
-			var conn = $(this.ConnTemplate);
-			var connData = this.data[i];
-			conn.find('.ConnectionName').text(connData['Name']);
-			conn.find('.ConnectionJob').text(connData['JobTitle']);
-			conn.find('.ConnectionCompany').text(connData['CompanyName']);
-			conn.find('.ConnectionLocation').text(connData['Location']);
+			var conn = new NewConnection(this.data[i]);
 
-			this.container.append(conn);
+			this.container.append(conn.getView());
 		}
 	}
 }

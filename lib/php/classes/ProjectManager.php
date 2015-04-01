@@ -9,8 +9,8 @@ class ProjectManager extends RecordSet {
 	protected $TableName;
 	protected $Columns;
 
-	private $User;
-	private $data;
+	protected $User;
+	protected $data;
 
 	public $err;
 
@@ -46,7 +46,8 @@ class ProjectManager extends RecordSet {
 	}
 
 	public function getAll() {
-		if (!isset($this->data) || count($this->data) < 1) return false;
+		if (!isset($this->data) || count($this->data) < 1 || !$this->data) 
+			return false;
 
 		$arr = [];
 		foreach ($this->data as $row) {
