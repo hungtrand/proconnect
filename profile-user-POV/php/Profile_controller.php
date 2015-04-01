@@ -18,7 +18,7 @@ if (!isset($_SESSION['__USERDATA__'])) {
 	echo 'Session Timed Out. <a href="/signin/">Sign back in</a>';
 	die();
 }
-$UData = json_decode($_SESSION['__USERDATA__'], true)
+$UData = json_decode($_SESSION['__USERDATA__'], true);
 // Check if data valid or still exists in the database
 $uid = $UData['USERID'];
 if (!$User = new User($uid)) {
