@@ -1,6 +1,7 @@
 <?php
-  include '../signout/php/session_check_signout.php';
+   // include '../signout/php/session_check_signout.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -130,8 +131,6 @@
                 </li>
             </ul>
         </div><!-- /.container-fluid -->
-
-        
     </nav>
 
     <div id="main-container" class="container-fluid">

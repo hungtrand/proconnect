@@ -118,6 +118,7 @@ margin-left: auto;
 	margin-bottom: 40px;
 	padding: 15px;
 	display: none;
+	position: relative;
 }
 
 div[for="skills-endorsements-edit"] > .panel,.list-group{
@@ -140,6 +141,11 @@ div[for="skills-endorsements-edit"] > .panel,.list-group{
 
 .loading{
 	display: none;
+	position: absolute;
+	margin-left: calc(50% - 32px);
+	top: 50%;
+	transform: translate(0,-50%)
+	
 }
 
 #main-container {
