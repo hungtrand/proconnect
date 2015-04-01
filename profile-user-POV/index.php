@@ -1,5 +1,10 @@
 <?php
-   // include '../signout/php/session_check_signout.php';
+error_reporting(E_ALL); // debug
+ini_set("display_errors", 1); // debug
+include '../signout/php/session_check_signout.php';
+
+$UData = json_decode($_SESSION['__USERDATA__'], true);
+$FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 ?>
 
 <!DOCTYPE html>
@@ -97,7 +102,7 @@
                     </li>
 
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">John Doe <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?=FullName?> <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="#">Account & Settings</a></li>
                             <li><a href="#">Job Posting</a></li>
