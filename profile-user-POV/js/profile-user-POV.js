@@ -73,6 +73,9 @@ $(document).ready(function(){
 			user.fetchMember($("#project-team-members").val());
 			//store the original memberlist
 			//add new member entry to existing model
+			if(user.oMemberList === ""){
+				
+			}
 
 			//update Form
 
