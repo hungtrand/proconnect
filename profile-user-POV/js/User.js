@@ -98,7 +98,7 @@ User.prototype = {
 		// var newData = {"some":"data"};
 
 		$.ajax({
-			url: "php/dummy.php",
+			url: "php/Profile_controller.php",
 			method: 'POST',
 			contentType: 'text/plain',
 			error: function(xhr,status,error) {
@@ -471,7 +471,8 @@ User.prototype = {
 		// console.log("updateView " + this.userData.personalInfo.first-name);
 		//update user info
 		$(".first-name").text(this.userData.personalInfo["first-name"]);
-		$("#user-mi").text(this.userData.personalInfo["middle-initial"]+'.');
+        if(this.userData.personalInfo["middle-initial"])
+		  $("#user-mi").text(this.userData.personalInfo["middle-initial"]+'.');
 		$("#user-last").text(this.userData.personalInfo["last-name"]);
 		$("#user-address").text(this.userData.personalInfo["user-address"]).parent("cite").attr("title",this.userData.personalInfo["user-address"]);
 		$("#user-email").text(this.userData.personalInfo["email-address"]);
