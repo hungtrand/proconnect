@@ -128,7 +128,9 @@ $(document).ready(function(){
 				validateForm($(this));				//validate this form according to form name
 
 				var editing = ($(this).attr("editing") === "true") ? true : false;
-
+				// console.log(data);
+				$(this).siblings("div.loading").show();//show loading gif
+					
 				if(editing) {
 					user.setData($(this),data);
 				} else {
@@ -147,8 +149,7 @@ $(document).ready(function(){
 				}
 			}
 
-			// console.log(data);
-			$(this).siblings("div.loading").show();//show loading gif					
+							
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               			//on success
 			//turn off gif loader
 			
@@ -266,58 +267,6 @@ $(document).ready(function(){
 
 				break;
 			}
-			// var first= that.FirstInput.val().trim();
-			// var last = that.LastInput.val().trim();
-			// var email= that.EmailInput.val().trim();
-			// var password = that.PasswordInput.val(); 
-			// var confpassword = that.ConfPasswordInput.val();
-
-			
-			// if(first== "" || IsName(first)==false){
-			//     that.FirstInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
-			// 	that.Alert.text("Please enter valid first name");
-			// 	that.Alert.show();
-			// 	that.FirstInput.val("");
-
-			//     return false;
-			// }
-
-			// if(last== "" || IsName(first)==false){
-			//     that.LastInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
-			// 	that.Alert.text("Please enter valid last name");
-			// 	that.Alert.show();
-			// 	that.LastInput.val("");
-
-			//     return false;
-			// }
-
-			// if(email== "" || IsEmail(email)==false){
-			//     that.EmailInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
-			// 	that.Alert.text("Please enter a valid email address ");
-			// 	that.Alert.show();
-			// 	that.EmailInput.val("");
-
-			//     return false;
-			// }
-
-			// if(password=="" || IsPassword(password)==false){
-			//     that.PasswordInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
-			// 	that.Alert.text("Password has to be 6-20 in length ");
-			// 	that.Alert.show();
-			// 	that.PasswordInput.val("");
-
-			//     return false;
-			// }
-
-			// if (password !== confpassword) {
-			// 	that.ConfPasswordInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
-			// 	that.Alert.text("The passwords don't match. Please type again. ");
-			// 	that.PasswordInput.val("");
-
-			// 	return false;
-			// }
-
-			// return true;
 
 			function wordCount(message)
 			{
