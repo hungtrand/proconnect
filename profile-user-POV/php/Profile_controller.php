@@ -13,12 +13,12 @@ require_once __DIR__."/Profile_view.php";
 // Check if logged in
 session_start();
 $home = 'Location: ../../';
-if (!$UData = json_decode($_SESSION['__USERDATA__'], true)) {
+if (!isset($_SESSION['__USERDATA__'])) {
 	//header($home);
 	echo 'Session Timed Out. <a href="/signin/">Sign back in</a>';
 	die();
 }
-
+$UData = json_decode($_SESSION['__USERDATA__'], true)
 // Check if data valid or still exists in the database
 $uid = $UData['USERID'];
 if (!$User = new User($uid)) {
