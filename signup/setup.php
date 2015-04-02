@@ -47,23 +47,28 @@
                 <form id="SetUpForm" action="php/user_setup.php" class="text-left" novalidate>
 					<div class="form-group">				
 						<label for="country">Country</label> <br />
-						<select id="country" class="form-control" type="text" name="country" placeholder="Country" required>
-						  <option>United States</option>
-						  <option>2</option>
-						  <option>3</option>
-						  <option>4</option>
-						  <option>5</option>
-						</select>
+						 <label class="radio-inline">
+						  <input class= "country-option" type="radio" name="inlineRadioOptions-country" id="inlineRadio1-country" value="United States" checked> United States
+						</label>
+						<label class="radio-inline">
+						  <input class= "country-option" type="radio" name="inlineRadioOptions-country" id="inlineRadio2-country" value="Other" > Other
+						</label>
 					</div>
+					
                     <div class="form-group" id="zipcode-group" >
                         <label for="zipcode">Zip Code</label> <br />
                         <input class="form-control" id="zipcode" type="text" name="zipcode" placeholder="Zip Code" required>
                     </div>
-
-                    <div class="form-group" id="postalcode-group" style = "display: none;">
+					
+					<div id = "other-country-group" style = "display: none;">
+					<div class="form-group" id="countryname-group" >
+                        <input class="form-control" id="country-name" type="text" name="country-name" placeholder="Country" required>
+                    </div>
+                    <div class="form-group" id="postalcode-group" >
                         <label for="postal-code">Postal Code</label> <br />
                         <input class="form-control" id="postal-code" type="text" name="postal-code" placeholder="Postal Code" required>
                     </div>
+					</div>
 
                     <div class="form-group">
                         <label for="address">Address</label> <br />
