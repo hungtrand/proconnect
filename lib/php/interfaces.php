@@ -4,4 +4,8 @@ interface manager {
 	public function getAll();
 	public function getTop($num);
 }
+
+interface view {
+	public function getView();
+}
 ?>

@@ -1,17 +1,19 @@
 <?php
-//include "../sqlConnection.php"; // For testing
+require_once __DIR__."/../sqlConnection.php"; // For testing
 require_once __DIR__."/Email.php";
 require_once __DIR__."/Account.php";
-//$aa = new AccountAdmin();
+require_once __DIR__."/User.php";
+
+/*$aa = new AccountAdmin();
 //echo $aa->UpdatePassword("abc");
-/* Test scripts
+// Test scripts
 $u = ["FirstName"=>"Iron", "LastName"=>"Man", 
 		"Username"=>"iman", "Password"=>"robots",
-		"Email"=>"hungtrand0929@gmail.com"];
+		"Email"=>"hung_duy_tran@yahoo.com"];
 
 $aa->signup($u);
-echo $aa->err;
-*/
+echo $aa->err;*/
+
 /*
 	Account admin
 	Responsibilities: Account signup, Account validation, send verification email, login, logout
@@ -47,66 +49,41 @@ class AccountAdmin {
 			return false;
 		}
 
-		if ($this->AccountExists($data['Username'], $data['Email'])) {
+		$newAcc = new Account();
+
+		if ($newAcc->loadByEmail($data['Email'])) {
 			$this->err = "Account already exists";
 			return false;
 		}
 		// End of validation
 
-		$insertedID = 0;
-
-		$sql = 'INSERT INTO `User` (`FirstName`, `LastName`)
-				VALUES (?, ?)';
-
-		if ($stmt = $this->db->prepare($sql)) {
-
-			try {
-				$stmt->bindParam(1, $data['FirstName']);
-				$stmt->bindParam(2, $data['LastName']);
-
-				$stmt->execute();
-				$insertedID = $this->db->lastInsertId();
-			} catch (Exception $e) {
-				$this->err = $e->getMessage();
-				return false;
-			}
-
-		} else {
-			$this->err = "signup err: fail to prepare the database.";
+		$newUser = new User();
+		$newUser->setName($data['FirstName'], $data['LastName'], '');
+		if (!$newUser->save()) {
+			$this->err = "Cannot save new User. Err: ".$newUser->err;
 			return false;
-		}
+		} 
 
-		if ($insertedID == 0) return false;
+		$newAcc = new Account();
+		$newAcc->setUsername($data['Email']);
+		$newAcc->setEmail($data['Email']);
+		$newAcc->setPassword($data['Password']);
+		$newAcc->setUserID($newUser->getID());
+		$newAcc->setVerificationKey($data['Email']);
+		$newAcc->setActive(true);
+		$newAcc->setVerified(false);
 
-		$sql = 'INSERT INTO `Account` (`Username`, `Password`, `Email`, 
-										`UserID`, `VerificationKey`)
-				VALUES (?, ?, ?, ?, ?)';
-
-		$VerificationKey = sha1(mt_rand(10000,99999). str_replace(' ', '', date("Y-m-d H:i:s")).$data['Email']);
-		$data['Password'] = sha1($data['Password']);
-		if ($stmt = $this->db->prepare($sql)) {
-
-			$data['Password'] = sha1($data['Password']);
-			try {
-				$stmt->bindParam(1, $data['Username']);
-				$stmt->bindParam(2, $data['Password']);
-				$stmt->bindParam(3, $data['Email']);
-				$stmt->bindParam(4, $insertedID);
-				$stmt->bindParam(5, $VerificationKey);
-
-				$stmt->execute();
-			} catch (Exception $e) {
-				$this->err = $e->getMessage();
-				return false;
-			}
-		} else {
+		//echo "\n".json_encode($newAcc->getData())."\n";
+		if (!$newAcc->save()) {
+			$this->err = "Cannot save new account. Err: ".$newAcc->err;
 			return false;
 		}
 
 		// send email with verification link
-		$mailVar = ["{{FullName}}" => $data['FirstName'].' '.$data['LastName'], 
-					"{{VerificationLink}}" => "http://71.6.84.70:8080/signup/EmailVerification.php?Email=".urlencode($data['Email'])."&VerificationKey=".urlencode($VerificationKey)];
-		$m = new Email(["EMAILTO"=>$data['Email']]);
+		$mailVar = ["{{FullName}}" => $newUser->getName(), 
+					"{{VerificationLink}}" => "http://71.6.84.70:8080/signup/EmailVerification.php?Email="
+					.urlencode($newAcc->getEmail())."&VerificationKey=".urlencode($newAcc->getVerificationKey())];
+		$m = new Email(["EMAILTO"=>$newAcc->getEmail()]);
 		$m->loadTemplate(1, $mailVar);
 		$m->send();
 
@@ -114,27 +91,16 @@ class AccountAdmin {
 	}
 	
 	public function ForgotPassword($email){
+		$acc = new Account();
 
-		if (!$this->AccountExists($email, $email)) return false;
-		$VerificationKey = sha1(mt_rand(10000,99999). str_replace(' ', '', date("Y-m-d H:i:s")).$email);
-		$sql = 'UPDATE `Account` SET ForgotPasswordKey = ? WHERE `Email` = ? ';
-
-		if ($stmt = $this->db->prepare($sql)) {
-
-			try {
-				$stmt->bindParam(1, $VerificationKey);
-				$stmt->bindParam(2, $email);
-				$stmt->execute();
-			} catch (Exception $e) {
-				$this->err = $e->getMessage();
-				return false;
-			}
-		} else {
-			$this->err = "verify Err: failed to update database.";
-			return false;
-		}
+		if (!$acc->loadByEmail($email)) return false;
+		
+		$acc->setForgotPasswordKey($email);
+		$acc->update();
 				
-		$mailVar = ["{{VerificationLink}}"=>"http://71.6.84.70:8080/signin/php/ForgotPasswordVerification.php?Email=".$email."&ForgotPasswordKey=".urlencode($VerificationKey)];
+		$ForgotPasswordKey = $acc->getForgotPasswordKey();
+
+		$mailVar = ["{{VerificationLink}}"=>"http://71.6.84.70:8080/signin/php/ForgotPasswordVerification.php?Email=".$email."&ForgotPasswordKey=".urlencode($ForgotPasswordKey)];
 		$m = new Email(["EMAILTO"=>$email]);
 		$m->loadTemplate(2, $mailVar);
 		$m->send();
@@ -146,199 +112,70 @@ class AccountAdmin {
 	public function VerifyForgotPasswordKey($email,$ForgotPasswordKey){
 		if (!(isset($email) && isset($ForgotPasswordKey))) return false;
 
-		$sql = 'SELECT `AccountID` FROM `Account`
-				WHERE `Email` LIKE ? AND `ForgotPasswordKey` = ? ';
-
-		if ($stmt = $this->db->prepare($sql)) {
-
-			try {
-				$stmt->bindParam(1, $email);
-				$stmt->bindParam(2, $ForgotPasswordKey);
-
-				$stmt->execute();
-				$rs = $stmt->fetch(PDO::FETCH_ASSOC);
-				
-				//echo json_encode($rs);
-				$id = $rs['AccountID'];
-			} catch (Exception $e) {
-				$this->err = $e->getMessage();
-				return false;
-			}
-		} else {
-			$this->err = "verify Err: failed to prepare database.";
+		$acc = new Account();
+		if ( !$acc->loadByEmail($email) ) {
+			$this->err = "Account does not exist with that email.";
 			return false;
 		}
 
-		if(isset($id)){
+		$actualKey = $acc->getForgotPasswordKey();
+
+		if ($actualKey == $ForgotPasswordKey)
 			return true;
-		} else {
+		else
 			return false;
-		}
-
 	}
 
 	public function UpdatePassword($Email, $ForgotPasswordKey, $newPassword){
 		//$email = ?;
 		if(!isset($ForgotPasswordKey) || !isset($Email) || !isset($newPassword)) return false;
 
-		$this->err = "";
+		if ( !$this->VerifyForgotPasswordKey($Email, $ForgotPasswordKey) )return false;
 
-		$sql = 'SELECT `AccountID` FROM `Account`
-				WHERE `ForgotPasswordKey` = ? AND `Email` = ? ';
-		
-		$AccountID = 0;
-		if ($stmt = $this->db->prepare($sql)) {
+		$acc = new Account();
+		$acc->loadByEmail($Email);
+		$acc->setPassword($newPassword);
 
-			try {
-				
-				$stmt->bindParam(1, $ForgotPasswordKey);
-				$stmt->bindParam(2, $Email);
-				
-				$stmt->execute();
-				$rs = $stmt->fetch(PDO::FETCH_ASSOC);
-				$AccountID = $rs['AccountID'];
-			} catch (Exception $e) {
-				$this->err = $e->getMessage();
-				return false;
-			}
-
-		} else {
-			$this->err = "verify Err: Insufficient information provided.";
-			return false;
-		}
-
-		if ($AccountID <= 0) {
-			$this->err = "verify Err: Incorrect information provided.";
-			return false;
-		}
-
-		$newPassword = sha1($newPassword);
-		$acc = new Account($AccountID);
-		
-		if ($acc->get('AccountID') > 0) {
-
-			$acc->update(['Password'=>$newPassword]);
-			return true;
-		} else {
-			$this->err = "verify Err: failed to update database.";
-			return false;
-		}
+		return $acc->update();
 	}
 
-	public function AccountExists($username, $email) {
-		$sql = 'SELECT COUNT(`AccountID`) AS cnt FROM `Account` 
-				WHERE `Username` LIKE ? OR `Email` LIKE ? ';
-		$cnt;
+	public function AccountExists($email) {
+		$acc = new Account();
 
-		if ($stmt = $this->db->prepare($sql)) {
-
-			try {
-				$stmt->bindParam(1, $username);
-				$stmt->bindParam(2, $email);
-
-				$stmt->execute();
-				$rs = $stmt->fetch(PDO::FETCH_ASSOC);
-				$cnt = $rs['cnt'];
-			} catch (Exception $e) {
-				$this->err = $e->getMessage();
-				return false;
-			}
-		} else {
-			$this->err = "exists err: fail to prepare the database.";
-			return false;
-		}
-
-		if (!isset($cnt)) return false;
-		elseif ($cnt == 0) {
-			return false;
-		} else {
-			return true;
-		}
+		return $acc->loadByEmail($email);
 	}
 
 	public function getAccount($login, $password) {
 		if (!(isset($login) && isset($password))) return false;
 
-		$sql = 'SELECT `AccountID` FROM `Account` 
-				WHERE (`Username` LIKE ? OR `Email` LIKE ?) 
-				AND `Password` = ? AND `Active` = 1 ';
+		$acc = new Account();
 
-		$password = sha1($password);
-		if ($stmt = $this->db->prepare($sql)) {
-
-			try {
-				$stmt->bindParam(1, $login);
-				$stmt->bindParam(2, $login);
-				$stmt->bindParam(3, $password);
-
-				$stmt->execute();
-				$rs = $stmt->fetch(PDO::FETCH_ASSOC);
-				$id = $rs['AccountID'];
-			} catch (Exception $e) {
-				$this->err = $e->getMessage();
-				return false;
-			}
-		} else {
+		if ( !$acc->loadByLogin($login, $password) ) {
+			$this->err = $acc->err;
 			return false;
 		}
 
-		if (!isset($id)) return false;
-		else {
-			return new Account($id);
-		}
+		return $acc;
 	}
 
 	public function verifyAccount($email, $VerificationKey) {
-		if (!(isset($email) && isset($VerificationKey))) return false;
 
-		$sql = 'SELECT `AccountID` FROM `Account`
-				WHERE `Email` LIKE ? AND `VerificationKey` = ? 
-        		AND `Active` = 1 AND `Verified` = 0;';
-
-		if ($stmt = $this->db->prepare($sql)) {
-
-			try {
-				$stmt->bindParam(1, $email);
-				$stmt->bindParam(2, $VerificationKey);
-
-				$stmt->execute();
-				$rs = $stmt->fetch(PDO::FETCH_ASSOC);
-				
-				//echo json_encode($rs);
-				$id = $rs['AccountID'];
-			} catch (Exception $e) {
-				$this->err = $e->getMessage();
-				return false;
-			}
-		} else {
-			$this->err = "verify Err: failed to prepare database.";
+		$acc = new Account();
+		if ( !$acc->loadByEmail($email)) {
+			$this->err = $acc->err;
 			return false;
 		}
 
-		if (!isset($id)) {
-			$this->err = "verify Err: failed to obtain associated account.";
-			return false;
-		} 
+		$actualKey = $acc->getVerificationKey();
 
-		$acc = new Account($id);
-		if (!$acc->get("AccountID")) return false;
-
-		$sql = 'UPDATE `Account` SET `Verified` = 1, `Active` = 1 WHERE `AccountID` = ? ';
-		
-		if ($stmt = $this->db->prepare($sql)) {
-
-			try {
-				$stmt->bindParam(1, $id);
-
-				$stmt->execute();
-			} catch (Exception $e) {
-				$this->err = $e->getMessage();
-				return false;
-			}
-		} else {
-			$this->err = "verify Err: failed to update database.";
+		if ( $actualKey != $VerificationKey) {
+			$this->err = "Invalid Key";
 			return false;
 		}
+
+		$acc->setVerified(true);
+		$acc->setActive(true);
+		$acc->update();
 
 		return $acc;
 	}

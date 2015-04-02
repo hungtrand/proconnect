@@ -77,8 +77,6 @@ function User(){
 	// 	}
 	// };
 	this.userData = "";
-	
-
 
 	this.temporaryData = "";	// meant to hold any temporary data
 	this.oMemberList = "";// meant to hold any temporary data

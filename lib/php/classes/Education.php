@@ -1,85 +1,168 @@
 <?php
  //include "../sqlConnection.php"; // For testing
+ require_once __DIR__."/ActiveRecord.php";
+
  //$u = new Education(1); echo $u->get('School').'\n'; // For testing
  //$u->update(['Grade'=>'3.8']); echo $u->get('Grade'); // For Testing
 
 /*
 	Load education data from the database
 */
-class Education {
-	private $data;
-	private $db;
+class Education extends ActiveRecord {
+	public static $TableName = 'Education';
+	public static $PrimaryKey = 'EDUID';
+	public static $Columns = ['EDUID', 'SCHOOL', 'DEGREE', 
+							'FIELDOFSTUDY', 'ACTIVITIES', 'USERID', 
+							'GPA', 'YEARSTART', 'YEAREND', 'DESCRIPTION'];
+	
+	private $data = [];
+	private $EduID;
+	public $err;
 
-	function __construct($ID) {
-		$this->db = connect('ProConnect');
+	function __construct($ID = null) {
 
-		$this->load($ID);
+		parent::__construct();
+
+		if (isset($ID)) {
+			$this->EduID = $ID;
+			if (!$this->data = $this->fetch($ID)) {
+				$this->err = "Record not found.";
+				return false;
+			};
+		}
 	}
 
-	private function load($ID) {
-		$sql = 'SELECT `EduID`, `School`, `Degree`, `FieldOfStudy`,
-				`Grade`, `Activities`, `UserID`
-				FROM `Education` WHERE `EduID` = ? LIMIT 1 ';
+	/* Implementing Abstract Methods */
+	// OVERRIDE
+	public function getData() {
+		return $this->data;
+	}
 
-		if ($stmt = $this->db->prepare($sql)) {
+	// OVERRIDE
+	public function getID() {
+		return $this->EduID;
+	}
 
-			try {
-				$stmt->bindParam(1, $ID);
+	// OVERRIDE
+	protected function getPrimaryKey() {
+		return self::$PrimaryKey;
+	}
 
-				$stmt->execute();
-				$rs = $stmt->fetch(PDO::FETCH_ASSOC);
+	// OVERRIDE
+	protected function getTableName() {
+		return self::$TableName;
+	}
 
-				foreach ($rs as $col => $value) {
-					$this->data[strtoupper($col)] = $value;
-				}
-			} catch (Exception $e) {
-				echo $e->getMessage();
-				return false;
-			}
-			
+	// OVERRIDE
+	protected function getColumns() {
+		return self::$Columns;
+	}
 
-			if (is_array($this->data)) return true;
-		} else {
+	// OVERRIDE
+	public function load($ID) {
+		if (!$ID) return false;
+
+		if (!$this->data = $this->fetch($ID)) {
+			$this->err = "Could not fetch education from id.";
 			return false;
 		}
+
+		$this->EduID = $ID;
+
+		return true;
+	}
+	/* End of Implementing Abstract Methods */
+
+	// GET METHODS
+	public function getSchool() {
+		return $this->data['SCHOOL'];
 	}
 
-	public function get($field) {
-		return $this->data[strtoupper($field)];
+	public function getDegree() {
+		return $this->data['DEGREE'];
 	}
 
-	public function update($newData) {
-		$setStmt = "SET ";
-		$delimiter = "";
+	public function getFieldOfStudy() {
+		return $this->data['FIELDOFSTUDY'];
+	}
 
-		foreach($newData as $col => $value) {
-			$setStmt .= $delimiter . $col . ' = ? ';
-			$delimiter = ", ";
-		}
+	public function getActivities() {
+		return $this->data['ACTIVITIES'];
+	}
 
-		$sql = "UPDATE `Education` " . $setStmt . "WHERE `EduID` = ? ";
+	public function getUserID() {
+		return $this->data['USERID'];
+	}
 
-		if ($stmt = $this->db->prepare($sql)) {
+	public function getGPA() {
+		return $this->data['GPA'];
+	}
 
-			try {
-				$i = 1;
-				foreach($newData as $col => $value) {
-					$stmt->bindParam($i, $value);
-					$i++;
-				}
+	public function getYearStart() {
+		return $this->data['YEARSTART'];
+	}
 
-				$stmt->bindParam($i, $this->get('EduID'));
-				$stmt->execute();
-				$this->load($this->get('EduID'));
-			} catch (Exception $e) {
-				echo $e->getMessage();
-				return false;
-			}			
+	public function getYearEnd() {
+		return $this->data['YEAREND'];
+	}
 
-			return true;
-		} else {
-			return false;
-		}
+	public function getDescription() {
+		return $this->data['DESCRIPTION'];
+	}
+
+	// SET METHODS
+	public function setSchool($strVal) {
+		$this->data['SCHOOL'] = $strVal;
+
+		return true;
+	}
+
+	public function setDegree($strVal) {
+		$this->data['DEGREE'] = $strVal;
+
+		return true;
+	}
+
+	public function setFieldOfStudy($strVal) {
+		$this->data['FIELDOFSTUDY'] = $strVal;
+
+		return true;
+	}
+
+	public function setActivities($strVal) {
+		$this->data['ACTIVITIES'] = $strVal;
+
+		return true;
+	}
+
+	public function setUserID($intVal) {
+		$this->data['USERID'] = $intVal;
+
+		return true;
+	}
+
+	public function setGPA($decVal) {
+		$this->data['GPA'] = $decVal;
+
+		return true;
+	}
+
+	public function setYearStart($intVal) {
+		$this->data['YEARSTART'] = $intVal;
+
+		return true;
+	}
+
+	public function setYearEnd($intVal) {
+		$this->data['YEAREND'] = $intVal;
+
+		return true;
+	}
+
+	public function setDescription($txtVal) {
+		$this->data['DESCRIPTION'] = $txtVal;
+
+		return true;
 	}
 }
 ?>

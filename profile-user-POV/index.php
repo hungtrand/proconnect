@@ -1,5 +1,10 @@
 <?php
-   // include '../signout/php/session_check_signout.php';
+//error_reporting(E_ALL); // debug
+//ini_set("display_errors", 1); // debug
+// include '../signout/php/session_check_signout.php';
+
+$UData = json_decode($_SESSION['__USERDATA__'], true);
+$FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 ?>
 
 <!DOCTYPE html>
@@ -59,25 +64,78 @@
 
   <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a id= "logo" class="navbar-brand" href="#"><img src="../image/proconnect/logo_text.png" /></a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="#about">What is ProConnect?</a></li>
-            <li><a href="#signup">Join Today</a></li>
-            <li><a href="../signout/php/session_signout.php">Sign Out</a></li>
-          </ul>
-        </div>
-      </div>
+    <nav class="navbar navbar-inverse navbar-fixed-top affix" data-spy="affix" data-offset-top="60 " data-offset-bottom="200">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-right-links">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a id="logo" class="navbar-brand" href="#"><img src="../image/proconnect/logo_text.png" /></a>
+
+                <form class="navbar-form navbar-left text-center" role="search">
+                    <div class="form-group">
+                      <input type="text" size="40" class="form-control" placeholder="Search for people, companies, jobs...">
+                    </div>
+                    <button type="submit" class="btn btn-primary">&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                </form>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="nav-right-links">
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#"><span class="glyphicon glyphicon-envelope"></span></a>
+                    </li>
+
+                    <li>
+                        <a href="#"><span class="glyphicon glyphicon-flag"></span></a>
+                    </li>
+
+                    <li>
+                        <a href="#"><span class="glyphicon glyphicon-user"></span></a>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?=$FullName?> <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Account & Settings</a></li>
+                            <li><a href="#">Job Posting</a></li>
+                            <li class="divider"></li>
+                            <li><a href="../signout/php/session_signout.php">Sign Out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div><!-- /.navbar-collapse -->
+
+            <style>.subNav a { color: #ccc !important; }</style>
+            <ul class="nav nav-pills subNav">
+                <li role="presentation"><a href="../profile-user-POV/">
+                    Home</a>
+                </li>
+                <li role="presentation"><a href="../profile-user-POV/">
+                    Profile</a>
+                </li>
+                <li role="presentation"><a href="../connections/">
+                    Connections</a>
+                </li>
+                <li role="presentation"><a href="#">
+                    Education</a>
+                </li>
+                <li role="presentation"><a href="#">
+                    Jobs</a>
+                </li>
+                <li role="presentation"><a href="#">
+                    Interests</a>
+                </li>
+            </ul>
+        </div><!-- /.container-fluid -->
     </nav>
 
     <div id="main-container" class="container-fluid">

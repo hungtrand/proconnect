@@ -1,4 +1,4 @@
-function UserConnection(data) {
+function NewConnection(data) {
 	this.container;
 	this.btnConnect;
 	this.btnDismiss;
@@ -8,17 +8,16 @@ function UserConnection(data) {
 	this.init(data);
 }
 
-UserConnection.prototype = {
+NewConnection.prototype = {
 	constructor: this,
 
 	init: function(data) {
 		var that = this;
 		that.data = data;
-		that.ConnTemplate = $('#ConnectionTemplate').html();
+		that.ConnTemplate = $('#SuggestionTemplate').html();
 
 		var conn = $(that.ConnTemplate);
 
-		this.data = data;
 		conn.find('.UserID').val(data['UserID']);
 		conn.find('.ConnectionName').text(data['Name']);
 		conn.find('.ConnectionJob').text(data['JobTitle']);
@@ -27,23 +26,30 @@ UserConnection.prototype = {
 
 		that.container = conn;
 
-		that.btnConnect = that.container.find('.removeConnection');
+		that.btnConnect = that.container.find('.addNewConnection');
 		that.btnConnect.on('click', function(e) {
 			e.preventDefault();
-			that.remove(function(returnedData) {
-				that.confirmRemove(returnedData);
+			that.connect(function(returnedData) {
+				that.confirmConnect(returnedData);
 			});
+		});
+
+		that.btnDismiss = that.container.find('.dismissConnection');
+		that.btnDismiss.on('click', function(e) {
+			e.preventDefault();
+			console.log('asdfafd');
+			that.dismiss();
 		});
 	},
 
-	remove: function(callback) {
+	connect: function(callback) {
 		var that = this;
 		var data = {
 			'UserID': this.data['UserID']
 		}
 
 		$.ajax({
-			url: 'php/removeConnection_controller.php',
+			url: 'php/NewConnection_controller.php',
 			data: data,
 			type: 'POST'
 		}).done(function(json) {
@@ -51,27 +57,21 @@ UserConnection.prototype = {
 				json = $.parseJSON(json)
 				callback(json);
 			} catch (e) {
-				that.failRemove(json);
+				that.failConnect(json);
 			}
 			
 		}).fail(function(e) {
-			that.failRemove();
+			that.failConnect();
 		});
 	},
 
-	confirmRemove: function(json) {
+	confirmConnect: function(json) {
 		var that = this;
 		if (json['success'] == 1)
-			that.btnConnect.replaceWith('<span class="label label-success">Removed</label>');
-
-		setTimeout(function() {
-			that.container.fadeOut('800', function() {
-				$(this).remove();
-			});
-		}, 500);
+			that.btnConnect.replaceWith('<span class="label label-success">connected</label>');
 	},
 
-	failRemove: function(msg) {
+	failConnect: function(msg) {
 		if (!msg) msg = "Failed";
 
 		var that = this;
@@ -79,6 +79,13 @@ UserConnection.prototype = {
 		setTimeout(function() {
 			that.btnConnect.find('.txt').text('Connect').toggleClass('text-danger', false);
 		}, 3000);
+	},
+
+	dismiss: function() {
+		var that = this;
+		that.container.fadeOut('600', function() {
+			$(this).remove();
+		});
 	},
 
 	getView: function() {

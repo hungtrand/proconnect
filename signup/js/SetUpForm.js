@@ -30,7 +30,7 @@ SetUpForm.prototype = {
 			
 			that.Alert.html(that.waitingGif);
 			that.Alert.show();
-		//	that.signup();
+			that.submit();
 		});
 
 		that.CountryInput.on('keyup', function(e) { that.reset(); });
@@ -49,28 +49,23 @@ SetUpForm.prototype = {
 		that.EndYearStudentInput.on('keyup', function(e) { that.reset(); });
 	},
 
-	/*signup: function() {
+	submit: function() {
 		var that = this;
 
 		$.ajax({
 			url: that.theForm.prop('action'),
 			type: 'POST',
-			data: {
-				"first": that.FirstInput.val().trim(),
-				"last": that.LastInput.val().trim(),
-				"email": that.EmailInput.val().trim(),
-				"password": that.PasswordInput.val()
-			}
+			data: that.theForm.serialize()
 		})
 		.done(function(response) {
+			console.log(response);
 			try {
 				var json = $.parseJSON(response);
-
 				that.Alert.toggleClass('alert-danger', false)
 				.toggleClass('alert-success', true)
-				.text('Signed Up Successfully.');
+				.text('Saved Successfully.');
 
-				window.location.href = "/signup/email-confirmation.html";
+				window.location.href = "/profile-user-POV/";
 			} catch (err) {
 				that.Alert.text(response);
 				return false;
@@ -78,9 +73,10 @@ SetUpForm.prototype = {
 			
 		})
 		.fail(function(msg) {
+			console.log(msg);
 			that.Alert.text(msg);
 		});
-	},*/
+	},
 
 	validate: function() {
 		var that = this;
@@ -99,8 +95,8 @@ SetUpForm.prototype = {
 		var startSeeker= that.StartYearSeekerInput.val();
 		var endSeeker= that.EndYearSeekerInput.val();
 		var school= that.SchoolInput.val();
-		var startStudent= that.StartYearStudentInput.val();
-		var endStudent= that.EndYearStudentInput.val();
+		var startStudent= parseInt(that.StartYearStudentInput.val());
+		var endStudent= parseInt(that.EndYearStudentInput.val());
 
 		if(country!= "United States"){
 			if(postal== ""){
@@ -211,14 +207,14 @@ SetUpForm.prototype = {
 				that.StartYearStudentInput.val("");
 				return false;
 			}
-			if(endStudent==""){
+			/*if(endStudent==""){
 				that.EndYearStudentInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
 				that.Alert.text("Please enter end year ");
 				that.Alert.show();
 				that.EndYearStudentInput.val("");
 				return false;
-			}
-			if(endStudent<startStudent){
+			}*/
+			if(!isNaN(endStudent) && !isNaN(startStudent) && endStudent<startStudent){
 				that.EndYearStudentInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
 				that.Alert.text("End year has to be later than start year");
 				that.Alert.show();

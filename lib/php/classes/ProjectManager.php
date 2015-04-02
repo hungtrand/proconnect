@@ -1,10 +1,10 @@
 <?php
 //require_once "../sqlConnection.php"; // for testing
 //require_once __DIR__."/User.php"; // for testing
-require_once __DIR__."/Education.php";
+require_once __DIR__."/Project.php";
 require_once __DIR__."/RecordSet.php";
 
-class EducationManager extends RecordSet {
+class ProjectManager extends RecordSet {
 	protected $PrimaryKey;
 	protected $TableName;
 	protected $Columns;
@@ -15,9 +15,9 @@ class EducationManager extends RecordSet {
 	public $err;
 
 	function __construct($User) {
-		$this->PrimaryKey = Education::$PrimaryKey;
-		$this->TableName = Education::$TableName;
-		$this->Columns = Education::$Columns;
+		$this->PrimaryKey = Project::$PrimaryKey;
+		$this->TableName = Project::$TableName;
+		$this->Columns = Project::$Columns;
 		$this->User = $User;
 
 		parent::__construct();
@@ -39,16 +39,6 @@ class EducationManager extends RecordSet {
 		return true;
 	}
 
-	public function loadCurrent() {
-		$cond = "WHERE USERID = ? AND (YEAREND >= ? OR YEAREND IS NULL) ";
-		$cond .="ORDER BY YEARSTART DESC LIMIT 1 ";
-
-		$params = ['USERID'=>$this->User->getID(), 'YEAREND'=>date("Y")];
-		if (!$this->data = $this->fetchCustom($cond, $params)) return false;
-
-		return true;
-	}
-
 	public function getData() {
 		if (!isset($this->data) || count($this->data) < 1) return false;
 
@@ -60,9 +50,9 @@ class EducationManager extends RecordSet {
 			return false;
 
 		$arr = [];
-		foreach ($this->getData() as $row) {
+		foreach ($this->data as $row) {
 			$id = $row[$this->PrimaryKey];
-			$obj = new Education($id);
+			$obj = new Project($id);
 			array_push($arr, $obj);
 		}
 
@@ -72,19 +62,20 @@ class EducationManager extends RecordSet {
 }
 //Test
 /*$u = new User(10);
-$edu = new Education();
-$edu->setSchool('Alameda College');
-$edu->setFieldOfStudy('Computer Science');
-$edu->setUserID($u->getID());
-$edu->setGPA(3.9);
-$edu->setYearStart(2011);
-$edu->setYearEnd(2013);
+$proj = new Project();
+$proj->setProjectTitle('UAV (Cloud Seeding)');
+$proj->setOccupation('Firmware Developer');
+$proj->setUserID($u->getID());
+$proj->setDescription("Program an autonomous airplane to make it rain.");
+$proj->setStartMonth(11);
+$proj->setStartYear(2013);
 
-$edu->save();
+$proj->save();
+echo $proj->err;
 
-$em = new EducationManager($u);
+$pm = new ProjectManager($u);
 echo "\n";
-echo json_encode($em->getData());
-echo $em->err;
+echo json_encode($pm->getData());
+echo $pm->err;
 echo"\n";*/
 ?>
