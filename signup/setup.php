@@ -30,6 +30,7 @@
     <link href="css/setup.css" rel="stylesheet">
     
     <!-- JavaScript link -->
+    <script type="text/javascript" src="../lib/js/StatesList.js"></script>
 	    <script type="text/javascript" src="js/setUp.js"></script>
     <script type="text/javascript" src="js/SetUpForm.js"></script>
     <script type="text/javascript" src="js/SetUpMain.js"></script>
