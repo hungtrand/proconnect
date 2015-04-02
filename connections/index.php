@@ -18,7 +18,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Connecttions - ProConnect</title>
+    <title>Connections - ProConnect</title>
     
     <script src="../lib/jquery/jquery-2.1.3.min.js"></script>
 
