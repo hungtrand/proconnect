@@ -1,86 +1,86 @@
 "use strict"
+function User(){
+	// this.personalInfo = {
+	// 	"first-name":"",
+	// 	"last-name":"",
+	// 	"middle-initial":"",
+	// 	"email-address":"",
+	// 	"alt-email-address":"",
+	// 	"phone-number":"",
+	// 	"phone-number-type":"",
+	// 	"user-address":"",
+	// 	"summary":""
+	// };
+	// this.experiences = {
+	// 	"0":{
+	// 		"position-title":"place holder",
+	// 		"company-name":"Company Name",
+	// 		"company-location":"Location",
+	// 		"work-start-month":"1",
+	// 		"work-start-year":"asd",
+	// 		"work-end-month":"",
+	// 		"work-end-year":"",
+	// 		"work-present":"current",
+	// 		"experience-description":"something something something really long"
+	// 	},
+	// 	"1":{
+	// 		"position-title":"place holder",
+	// 		"company-name":"Company Name",
+	// 		"company-location":"Location",
+	// 		"work-start-month":"1",
+	// 		"work-start-year":"asd",
+	// 		"work-end-month":"",
+	// 		"work-end-year":"",
+	// 		"work-present":"current",
+	// 		"experience-description":"something something something really long"
+	// 	},
+	// };
+	// this.skills = Array("skill","skillssssssss","ski","skillasdasdasdwq asdasdasd","skill","skill","skill","skill");
+	// this.projects = {
+	// 	"0":{
+	// 		"project-name":"ProConnect",
+	// 		"project-url":"URL",
+	// 		"team-member": {
+	// 			"0":"me"
+	// 		},
+	// 		"project-description":""
+	// 	},
+	// 	"1":{
+	// 		"project-name":"ProConnect",
+	// 		"project-url":"URL",
+	// 		"team-member": {
+	// 			"0":"me"
+	// 		},
+	// 		"project-description":""
+	// 	}
 
-function User() {
-    // this.personalInfo = {
-    // 	"first-name":"",
-    // 	"last-name":"",
-    // 	"middle-initial":"",
-    // 	"email-address":"",
-    // 	"alt-email-address":"",
-    // 	"phone-number":"",
-    // 	"phone-number-type":"",
-    // 	"user-address":"",
-    // 	"summary":""
-    // };
-    // this.experiences = {
-    // 	"0":{
-    // 		"position-title":"place holder",
-    // 		"company-name":"Company Name",
-    // 		"company-location":"Location",
-    // 		"work-start-month":"1",
-    // 		"work-start-year":"asd",
-    // 		"work-end-month":"",
-    // 		"work-end-year":"",
-    // 		"work-present":"current",
-    // 		"experience-description":"something something something really long"
-    // 	},
-    // 	"1":{
-    // 		"position-title":"place holder",
-    // 		"company-name":"Company Name",
-    // 		"company-location":"Location",
-    // 		"work-start-month":"1",
-    // 		"work-start-year":"asd",
-    // 		"work-end-month":"",
-    // 		"work-end-year":"",
-    // 		"work-present":"current",
-    // 		"experience-description":"something something something really long"
-    // 	},
-    // };
-    // this.skills = Array("skill","skillssssssss","ski","skillasdasdasdwq asdasdasd","skill","skill","skill","skill");
-    // this.projects = {
-    // 	"0":{
-    // 		"project-name":"ProConnect",
-    // 		"project-url":"URL",
-    // 		"team-member": {
-    // 			"0":"me"
-    // 		},
-    // 		"project-description":""
-    // 	},
-    // 	"1":{
-    // 		"project-name":"ProConnect",
-    // 		"project-url":"URL",
-    // 		"team-member": {
-    // 			"0":"me"
-    // 		},
-    // 		"project-description":""
-    // 	}
+		
+	// };
+	// this.education = {
+	// 	"0":{
+	// 		"school-name":"Some value",
+	// 		"degree":"Bachelor of Science (BS)",
+	// 		"field-of-study":"Computer Science",
+	// 		"grade":"SHIT",
+	// 		"school-year-started":"",
+	// 		"school-year-ended":"",
+	// 		"activities":""
+	// 	},
+	// 	"1":{
+	// 		"school-name":"Some value",
+	// 		"degree":"Bachelor of Science (BS)",
+	// 		"field-of-study":"Computer Science",
+	// 		"grade":"SHIT",
+	// 		"school-year-started":"",
+	// 		"school-year-ended":"",
+	// 		"activities":""
+	// 	}
+	// };
+	this.userData = "";
 
-
-    // };
-    // this.education = {
-    // 	"0":{
-    // 		"school-name":"Some value",
-    // 		"degree":"Bachelor of Science (BS)",
-    // 		"field-of-study":"Computer Science",
-    // 		"grade":"SHIT",
-    // 		"school-year-started":"",
-    // 		"school-year-ended":"",
-    // 		"activities":""
-    // 	},
-    // 	"1":{
-    // 		"school-name":"Some value",
-    // 		"degree":"Bachelor of Science (BS)",
-    // 		"field-of-study":"Computer Science",
-    // 		"grade":"SHIT",
-    // 		"school-year-started":"",
-    // 		"school-year-ended":"",
-    // 		"activities":""
-    // 	}
-    // };
-    this.userData = "";
-    this.temporaryData = ""; // meant to hold any temporary data
-    this.oMemberList = "";
-    this.oSkillList = "";
+	this.temporaryData = "";	// meant to hold any temporary data
+	this.oMemberList = "";// meant to hold any temporary data
+	this.oSkillList = "";// meant to hold any temporary data
 }
 
 User.prototype = {
@@ -98,7 +98,7 @@ User.prototype = {
 		// var newData = {"some":"data"};
 
 		$.ajax({
-			url: "php/Profile_controller.php",
+			url: "php/dummy.php",
 			method: 'POST',
 			contentType: 'text/plain',
 			error: function(xhr,status,error) {
@@ -171,15 +171,51 @@ User.prototype = {
 	setData: function(jQForm,newData){
 		//do ajax call to modify existing data
 
+		//update the user data
+		var formName = jQForm.parent("div").attr("id");
+		console.log(formName);
+
+
+		/*switch(formName){
+			case "user-info-edit": //update user info
+				$.each(newData,function(k,newValue){
+					$.each(that.userData.personalInfo,function(name,v){
+						if(name === k) {
+							// console.log("old data is: " + value);
+							// console.log("new data is: " + v);
+							that.userData.personalInfo[name] = newValue;
+							// console.log(name + ": " + that.userData.personalInfo[name]);
+							return false; //break out of the each loop
+						}
+					});
+				});
+			break;
+			case "summary-edit":
+				// console.log("summary-edit");
+				$.each(newData,function(k,newValue){
+					$.each(that.userData.personalInfo,function(name,v){
+						if(name === k) {
+							// console.log("old data is: " + value);
+							// console.log("new data is: " + v);
+							that.userData.personalInfo[name] = newValue;
+							// console.log(name + ": " + that.userData.personalInfo[name]);
+							return false; //break out of the each loop
+						}
+					});
+				});
+				// console.log(this.userData.personalInfo);
+			break;
+		}*/
 
 		this.updateData(jQForm,newData);
-		this.updateView();
+		this.updateView();									//updata view
 	},
 
 	//mutator - add new entries
 	addData: function(jQForm,newData){
 		//do ajax call to add data to server
 
+		//update the user data
 		this.updateData(jQForm,newData);
 		this.updateView();
 	},
@@ -471,8 +507,7 @@ User.prototype = {
 		// console.log("updateView " + this.userData.personalInfo.first-name);
 		//update user info
 		$(".first-name").text(this.userData.personalInfo["first-name"]);
-        if(this.userData.personalInfo["middle-initial"])
-		  $("#user-mi").text(this.userData.personalInfo["middle-initial"]+'.');
+		$("#user-mi").text(this.userData.personalInfo["middle-initial"]+'.');
 		$("#user-last").text(this.userData.personalInfo["last-name"]);
 		$("#user-address").text(this.userData.personalInfo["user-address"]).parent("cite").attr("title",this.userData.personalInfo["user-address"]);
 		$("#user-email").text(this.userData.personalInfo["email-address"]);
@@ -610,3 +645,4 @@ User.prototype = {
 	}
 
 }
+

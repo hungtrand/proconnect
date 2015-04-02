@@ -1,7 +1,7 @@
 <?php
 //error_reporting(E_ALL); // debug
 //ini_set("display_errors", 1); // debug
-include '../signout/php/session_check_signout.php';
+// include '../signout/php/session_check_signout.php';
 
 $UData = json_decode($_SESSION['__USERDATA__'], true);
 $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
@@ -284,7 +284,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                         <span class="sr-only">Error:</span>
                         <span class="alert-msg"></span>
                       </div>
-                      <textarea name="summary" class="form-control" rows="10"></textarea> <br><br>
+                      <textarea name="summary" class="form-control" id="summary-textarea" rows="10"></textarea> <br><br>
                       <button type="submit" class="btn btn-primary save-btn">Save</button>
                       <button type="button" class="btn btn-default cancel-btn">Cancel</button>
                     </form>
