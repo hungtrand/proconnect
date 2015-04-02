@@ -44,7 +44,7 @@
             <div class ="formContainer col col-xs-12 col-sm-10 col-md-4 col-lg-4 col-sm-offset-1 col-md-offset-4 col-lg-offset-4">
                 <header class="text-center"><a href= "../"><img id= "logo" src = "../image/proconnect/logo_text.png"></a></header>
                 
-                <form id="SetUpForm" action="php/user_setup.php" class="text-left" novalidate>
+                <form id="SetUpForm" action="php/Setup_controller.php" class="text-left" novalidate>
 					<div class="form-group">				
 						<label for="country">Country</label> <br />
 						 <label class="radio-inline">
@@ -83,13 +83,16 @@
 					<div class="form-group">
 						  <label class="control-label" for="usertype">I am currently</label> <br />
 						 <label class="radio-inline">
-						  <input class= "signup-option" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="employed" checked> Employed
+						  <input class= "signup-option" type="radio" name="EmploymentStatus" id="inlineRadio1" value="employed" checked> Employed
 						</label>
 						<label class="radio-inline">
-						  <input class= "signup-option" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="looking" > Job Seeker
+						  <input class= "signup-option" type="radio" name="EmploymentStatus" id="inlineRadio2" value="looking" > Job Seeker
 						</label>
 						<label class="radio-inline">
-						  <input class= "signup-option" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="student" > Student
+						  <input class= "signup-option" type="radio" name="EmploymentStatus" id="inlineRadio3" value="student" > Student
+						</label>
+						<label class="radio-inline">
+						  <input class= "signup-option" type="radio" name="EmploymentStatus" id="inlineRadio4" value="none" > None
 						</label>
 					</div>
 					<!--For employed-->	 
@@ -133,7 +136,7 @@
 						  <label class="control-label" for="timePeriod">Time period</label>
 						  <div class="row">
 						    <div class="col-md-5">
-							<select class="form-control" id= "start-yearpicker-seeker" name="start-yearpicker" required>
+							<select class="form-control" id= "start-yearpicker-seeker" name="start-year-seeker" required>
 									<option value="" selected>-</option>
 									<option value="2015">2015</option><option value="2014">2014</option><option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option><option value="2009">2009</option><option value="2008">2008</option><option value="2007">2007</option><option value="2006">2006</option><option value="2005">2005</option><option value="2004">2004</option><option value="2003">2003</option><option value="2002">2002</option><option value="2001">2001</option><option value="2000">2000</option>
 									<option value="1999">1999</option><option value="1998">1998</option><option value="1997">1997</option><option value="1996">1996</option><option value="1995">1995</option><option value="1994">1994</option><option value="1993">1993</option><option value="1992">1992</option><option value="1991">1991</option><option value="1990">1990</option>
@@ -146,7 +149,7 @@
 							<div class="col-md-2 text-center">to </div>
 							
 							  <div class="col-md-5">
-							<select class="form-control" id= "end-yearpicker-seeker" name="end-yearpicker"  required>
+							<select class="form-control" id= "end-yearpicker-seeker" name="end-year-seeker"  required>
 									<option value="" selected>-</option>
 									<option value="2015">2015</option><option value="2014">2014</option><option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option><option value="2009">2009</option><option value="2008">2008</option><option value="2007">2007</option><option value="2006">2006</option><option value="2005">2005</option><option value="2004">2004</option><option value="2003">2003</option><option value="2002">2002</option><option value="2001">2001</option><option value="2000">2000</option>
 									<option value="1999">1999</option><option value="1998">1998</option><option value="1997">1997</option><option value="1996">1996</option><option value="1995">1995</option><option value="1994">1994</option><option value="1993">1993</option><option value="1992">1992</option><option value="1991">1991</option><option value="1990">1990</option>
@@ -174,7 +177,7 @@
 						  <label class="control-label" for="timePeriod">Time period</label>
 						  <div class="row">
 						    <div class="col-md-5">
-							<select class="form-control" id= "start-yearpicker-student" name="start-yearpicker" required>
+							<select class="form-control" id= "start-yearpicker-student" name="start-year-student" required>
 									<option value="" selected>-</option>
 									<option value="2015">2015</option><option value="2014">2014</option><option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option><option value="2009">2009</option><option value="2008">2008</option><option value="2007">2007</option><option value="2006">2006</option><option value="2005">2005</option><option value="2004">2004</option><option value="2003">2003</option><option value="2002">2002</option><option value="2001">2001</option><option value="2000">2000</option>
 									<option value="1999">1999</option><option value="1998">1998</option><option value="1997">1997</option><option value="1996">1996</option><option value="1995">1995</option><option value="1994">1994</option><option value="1993">1993</option><option value="1992">1992</option><option value="1991">1991</option><option value="1990">1990</option>
@@ -187,7 +190,7 @@
 							<div class="col-md-2 text-center">to </div>
 							
 							  <div class="col-md-5">
-							<select class="form-control" id= "end-yearpicker-student" name="end-yearpicker"  required>
+							<select class="form-control" id= "end-yearpicker-student" name="end-year-student"  required>
 									<option value="" selected>-</option>
 									<option value="2015">2015</option><option value="2014">2014</option><option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option><option value="2009">2009</option><option value="2008">2008</option><option value="2007">2007</option><option value="2006">2006</option><option value="2005">2005</option><option value="2004">2004</option><option value="2003">2003</option><option value="2002">2002</option><option value="2001">2001</option><option value="2000">2000</option>
 									<option value="1999">1999</option><option value="1998">1998</option><option value="1997">1997</option><option value="1996">1996</option><option value="1995">1995</option><option value="1994">1994</option><option value="1993">1993</option><option value="1992">1992</option><option value="1991">1991</option><option value="1990">1990</option>

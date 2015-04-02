@@ -77,9 +77,10 @@ function User(){
 	// 	}
 	// };
 	this.userData = "";
+
 	this.temporaryData = "";	// meant to hold any temporary data
-	this.oMemberList = "";
-	this.oSkillList = "";
+	this.oMemberList = "";// meant to hold any temporary data
+	this.oSkillList = "";// meant to hold any temporary data
 }
 
 User.prototype = {
@@ -170,15 +171,51 @@ User.prototype = {
 	setData: function(jQForm,newData){
 		//do ajax call to modify existing data
 
+		//update the user data
+		var formName = jQForm.parent("div").attr("id");
+		console.log(formName);
+
+
+		/*switch(formName){
+			case "user-info-edit": //update user info
+				$.each(newData,function(k,newValue){
+					$.each(that.userData.personalInfo,function(name,v){
+						if(name === k) {
+							// console.log("old data is: " + value);
+							// console.log("new data is: " + v);
+							that.userData.personalInfo[name] = newValue;
+							// console.log(name + ": " + that.userData.personalInfo[name]);
+							return false; //break out of the each loop
+						}
+					});
+				});
+			break;
+			case "summary-edit":
+				// console.log("summary-edit");
+				$.each(newData,function(k,newValue){
+					$.each(that.userData.personalInfo,function(name,v){
+						if(name === k) {
+							// console.log("old data is: " + value);
+							// console.log("new data is: " + v);
+							that.userData.personalInfo[name] = newValue;
+							// console.log(name + ": " + that.userData.personalInfo[name]);
+							return false; //break out of the each loop
+						}
+					});
+				});
+				// console.log(this.userData.personalInfo);
+			break;
+		}*/
 
 		this.updateData(jQForm,newData);
-		this.updateView();
+		this.updateView();									//updata view
 	},
 
 	//mutator - add new entries
 	addData: function(jQForm,newData){
 		//do ajax call to add data to server
 
+		//update the user data
 		this.updateData(jQForm,newData);
 		this.updateView();
 	},

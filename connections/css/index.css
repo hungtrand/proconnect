@@ -8,6 +8,8 @@ footer {
 
 #fixed-right-section {
 	position: fixed;
+	height: 80%;
+	overflow: auto;
 	right: 20px;
 }
 

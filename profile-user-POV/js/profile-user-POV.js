@@ -1,6 +1,6 @@
-$(document).ready(function(){
+$(document).ready(function() {
 
-	/*
+    /*
 		This script act as the control
 	*/
 
@@ -73,6 +73,9 @@ $(document).ready(function(){
 			user.fetchMember($("#project-team-members").val());
 			//store the original memberlist
 			//add new member entry to existing model
+			if(user.oMemberList === ""){
+				
+			}
 
 			//update Form
 
@@ -125,7 +128,9 @@ $(document).ready(function(){
 				validateForm($(this));				//validate this form according to form name
 
 				var editing = ($(this).attr("editing") === "true") ? true : false;
-
+				// console.log(data);
+				$(this).siblings("div.loading").show();//show loading gif
+					
 				if(editing) {
 					user.setData($(this),data);
 				} else {
@@ -144,9 +149,8 @@ $(document).ready(function(){
 				}
 			}
 
-			// console.log(data);
-			$(this).siblings("div.loading").show();//show loading gif					
-			//on success
+							
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              			//on success
 			//turn off gif loader
 			
 		}
@@ -160,13 +164,30 @@ $(document).ready(function(){
 
 			switch(formName){
 				case "user-info-edit":
-					// console.log("user-info-edit");
+					console.log("user-info-edit");
+
 					if(IsName($("#first-name-input").val()) === false){
-						throw "Invalid name.";
+						throw "Invalid First Name.";
 					}
 
-					if(IsEmail($("#email-input").val()) === false){
-						throw "Invalid email.";
+					if(IsName($("#last-name-input").val()) === false) {
+						throw "Invalid Last Name."
+					}
+
+					if(IsName($("#middle-initial-input").val()) === false) {
+						throw "Invalid Middle Initial."
+					}
+
+					if(IsEmail($("#email-input").val()) === false) {
+						throw "Invalid Email.";
+					}
+
+					if(IsEmail($("#alt-email-input").val()) === false) {
+						throw "Invalid Alternate Email.";
+					}
+
+					if(IsNumber($("#phone-input").val()) === false) {
+						throw "Invalid Phone Number";
 					}
 
 					// console.log( jQFormEle.find(":input[required]:visible").css("border-color","red") );
@@ -174,76 +195,121 @@ $(document).ready(function(){
 				case "summary-edit":
 					console.log("summary-edit");
 
+					if(wordCount($("#summary-textarea").val()) > 1000) {
+						throw "Maximum amount of characters have been reached." + wordCount($("#summary-textarea").val());
+					}
+
 				break;
 				case "skills-endorsements-edit":
 					console.log("skills-endorsements-edit");
 
-				break;first-name-input
+					if($("#skill-list-edit li").length >= 50) {
+						throw "You have reached the limit for adding skills.";
+					}
+
+					console.log($("#skill-list-edit li").length);
+
+				break;//first-name-input
 				case "experience-edit":
 					console.log("experience-edit");
+
+					if(IsNumber($("#work-start-year").val()) === false) {
+						throw "Invalid Start Year.";
+					}
+
+					if(IsNumber($("#work-end-year").val()) === false) {
+						throw "Invalid End Year.";
+					}
+
+					if(compareDate($("#work-start-month").val(), $("#work-end-month").val(), $("#work-start-year").val(), $("#work-end-year").val() )) {
+						throw "Invalid Data Organization";
+					}
 
 				break;
 				case "project-edit":
 					console.log("project-edit");
 
+					if(wordCount($("#project-description").val()) > 1000) {
+						throw "Maximum amount of words have been reached." + wordCount($("#project-description").val());
+					}
+
 				break;
 				case "education-edit":
 					console.log("education-edit");
 
+					if(IsWord($("#school-name").val()) === false) {
+						throw "Invalid School Name";
+					}
+
+					if(IsWord($("#degree").val()) === false) {
+						throw "Invalid Degree Name";
+					}
+
+					if(IsWord($("#field-of-study").val()) === false) {
+						throw "Invalid Field Of Study Name";
+					}
+
+					if(IsWord($("#grade").val()) === false) {
+						throw "Invalid Grade Name";
+					}
+
+					if(compareYear($("#school-year-started").val(), $("#school-year-ended").val())) {
+						throw "Invalid Date Organization";
+					}
+
+					if(wordCount($("#activities").val()) > 1000) {
+						throw "Maximum amount of words have been reached." + wordCount($("#project-description").val());
+					}
+
+					if(wordCount($("#education-description").val()) > 1000) {
+						throw "Maximum amount of words have been reached." + wordCount($("#project-description").val());
+					}
+
 				break;
 			}
-			// var first= that.FirstInput.val().trim();
-			// var last = that.LastInput.val().trim();
-			// var email= that.EmailInput.val().trim();
-			// var password = that.PasswordInput.val(); 
-			// var confpassword = that.ConfPasswordInput.val();
 
-			
-			// if(first== "" || IsName(first)==false){
-			//     that.FirstInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
-			// 	that.Alert.text("Please enter valid first name");
-			// 	that.Alert.show();
-			// 	that.FirstInput.val("");
+			function wordCount(message)
+			{
+				var regex = /\s+/gi;
+				var counter = message.trim().replace(regex, ' ').split(' ').length;
+				return counter;
+			}
 
-			//     return false;
-			// }
+			function compareYear(year1, year2)
+			{
+				if(parseInt(year1) < parseInt(year2)) {
+					return false;
+				}
+				else {
+					return true;
+				}
+			}
 
-			// if(last== "" || IsName(first)==false){
-			//     that.LastInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
-			// 	that.Alert.text("Please enter valid last name");
-			// 	that.Alert.show();
-			// 	that.LastInput.val("");
+			function compareMonth(month1, month2)
+			{
+				if(parseInt(month1) < parseInt(month2)) {
+					return false;
+				}
+				else {
+					return true;
+				}
+			}
 
-			//     return false;
-			// }
-
-			// if(email== "" || IsEmail(email)==false){
-			//     that.EmailInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
-			// 	that.Alert.text("Please enter a valid email address ");
-			// 	that.Alert.show();
-			// 	that.EmailInput.val("");
-
-			//     return false;
-			// }
-
-			// if(password=="" || IsPassword(password)==false){
-			//     that.PasswordInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
-			// 	that.Alert.text("Password has to be 6-20 in length ");
-			// 	that.Alert.show();
-			// 	that.PasswordInput.val("");
-
-			//     return false;
-			// }
-
-			// if (password !== confpassword) {
-			// 	that.ConfPasswordInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
-			// 	that.Alert.text("The passwords don't match. Please type again. ");
-			// 	that.PasswordInput.val("");
-
-			// 	return false;
-			// }
-
-			// return true;
+			function compareDate(month1, month2, year1, year2) {
+				if(compareYear(year1, year2) === false) {
+					return false;
+				}
+				else {
+					if(compareMonth(month1, month2) === false)
+					{
+						return false;
+					}
+					else
+					{
+						return true;
+					}
+				}
+			}
 
 			function IsName(name) {
 			var regex =/^[a-z ,.'-]+$/i;
@@ -254,6 +320,16 @@ $(document).ready(function(){
 				}
 			}
 
+			function IsWord(word) {
+				var regex = /^[a-z ,.']+$/;
+				if(!regex.test(word)) {
+					return false;
+				}
+				else {
+					return true;
+				}
+			}
+
 			function IsEmail(email) {
 		        var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 		        if(!regex.test(email)) {
@@ -261,6 +337,16 @@ $(document).ready(function(){
 		        }else{
 		           return true;
 		        }
+		    }
+
+		    function IsNumber(number) {
+		    	var regex = /^[0-9]+$/;
+		    	if(!regex.test(number)) {
+		    		return false;
+		    	}
+		    	else {
+		    		return true;
+		    	}
 		    }
 		}
 	});
@@ -372,6 +458,5 @@ $(document).ready(function(){
 
 
 	// $("#sortable").append("<li class=\"ui-state-default col-md-3\"><div class=\"team-member-block team-member-block-edit-view col-md-6\"><div class=\"team-member-block-description\"> <p>You</p></div></div><button type=\"button\" class=\"close\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button></li>");
-
 
 });

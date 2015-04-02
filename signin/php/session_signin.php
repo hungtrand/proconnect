@@ -21,16 +21,21 @@ $accAdm = new AccountAdmin();
 $acc = $accAdm->getAccount($login, $password);
 
 if ($acc) {
-	$user = new User($acc->get('UserID'));
+	// SIGNED IN, LOG LASTLOGIN
+	$acc->setLastLogin();
+	$acc->update();
+	
+	$user = new User($acc->getUserID());
 
 	session_start();
 
 	$_SESSION['__USERDATA__'] = json_encode($user->getData());
 	echo $_SESSION['__USERDATA__'];
 
-	$FullName = $user->get('FirstName') . ' ' . $user->get('LastName');
+	$FullName = $user->getName();
 	setcookie("__USER_FULL_NAME__", $FullName, time()+60*60*24*365, '/');
 } else {
+	echo $accAdm->err."\n";
 	echo "Account not found.";
 }
 
