@@ -85,7 +85,6 @@ try {
 			$edu = new Education();
 			$edu->setSchool($School);
 			$edu->setYearStart($startYearStudent);
-			$edu->setMonthStart($startYearStudent);
 			$edu->setYearEnd($endYearStudent);
 			$edu->setUserID($uid);
 
