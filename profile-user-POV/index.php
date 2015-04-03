@@ -256,22 +256,22 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 						
 						<div class="form-group" id="zipcode-group" >
 							<label for="zipcode">Zip Code</label> <br />
-							<input class="form-control" id="zipcode" type="text" name="zipcode" placeholder="Zip Code" required>
+							<input class="form-control" id="zipcode-input" type="text" name="zipcode" placeholder="Zip Code" required>
 						</div>
 						
 						<div id = "other-country-group" style = "display: none;">
 						<div class="form-group" id="countryname-group" >
-							<input class="form-control" id="country-name" type="text" name="country-name" placeholder="Country" required>
+							<input class="form-control" id="country-name-input" type="text" name="country-name" placeholder="Country" required>
 						</div>
 						<div class="form-group" id="postalcode-group" >
 							<label for="postal-code">Postal Code</label> <br />
-							<input class="form-control" id="postal-code" type="text" name="postal-code" placeholder="Postal Code" required>
+							<input class="form-control" id="postal-code-input" type="text" name="postal-code" placeholder="Postal Code" required>
 						</div>
 						</div>
 
 						<div class="form-group">
 							<label for="address">Address</label> <br />
-							<input class="form-control" id="address" type="text" name="address" placeholder="Address" required>
+							<input class="form-control" id="address-input" type="text" name="address" placeholder="Address" required>
 						</div>
                         
 							<button type="submit" class="btn btn-primary save-btn" value="save">Save</button>
