@@ -19,7 +19,7 @@
 	 sl.getStates(function(data) {
 	 	console.log(data);
 	 });
-	 sl.getCities('CA', function(data) {
+	 sl.getCities('SC', function(data) {
 	 	console.log(data);
 	 });
 
