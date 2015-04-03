@@ -130,16 +130,16 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 						
 						<div class="form-group" id="zipcode-group" >
 							<label for="zipcode">Zip Code</label> <br />
-							<input class="form-control" id="zipcode-input" type="text" name="zipcode" placeholder="Zip Code" required>
+							<input class="form-control" id="zipcode-input" type="text" name="zipcode" placeholder="Zip Code">
 						</div>
 						
 						<div id = "other-country-group" style = "display: none;">
 						<div class="form-group" id="countryname-group" >
-							<input class="form-control" id="country-name-input" type="text" name="country-name" placeholder="Country" required>
+							<input class="form-control" id="country-name-input" type="text" name="country-name" placeholder="Country">
 						</div>
 						<div class="form-group" id="postalcode-group" >
 							<label for="postal-code">Postal Code</label> <br />
-							<input class="form-control" id="postal-code-input" type="text" name="postal-code" placeholder="Postal Code" required>
+							<input class="form-control" id="postal-code-input" type="text" name="postal-code" placeholder="Postal Code">
 						</div>
 						</div>
 
