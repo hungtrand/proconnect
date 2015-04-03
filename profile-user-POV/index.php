@@ -244,9 +244,37 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                           </div>
 
                           <!-- Address -->
-                         <!--  <label for="address">Address</label>
-                          <textarea id="address" class="form-control" name="user-address" rows="2"></textarea> <br><br> -->
-                          <button type="submit" class="btn btn-primary save-btn" value="save">Save</button>
+                         <div class="form-group">				
+							<label for="country">Country</label> <br />
+							 <label class="radio-inline">
+							  <input class= "country-option" type="radio" name="inlineRadioOptions-country" id="inlineRadio1-country" value="United States" checked> United States
+							</label>
+							<label class="radio-inline">
+							  <input class= "country-option" type="radio" name="inlineRadioOptions-country" id="inlineRadio2-country" value="Other" > Other
+							</label>
+						</div>
+						
+						<div class="form-group" id="zipcode-group" >
+							<label for="zipcode">Zip Code</label> <br />
+							<input class="form-control" id="zipcode" type="text" name="zipcode" placeholder="Zip Code" required>
+						</div>
+						
+						<div id = "other-country-group" style = "display: none;">
+						<div class="form-group" id="countryname-group" >
+							<input class="form-control" id="country-name" type="text" name="country-name" placeholder="Country" required>
+						</div>
+						<div class="form-group" id="postalcode-group" >
+							<label for="postal-code">Postal Code</label> <br />
+							<input class="form-control" id="postal-code" type="text" name="postal-code" placeholder="Postal Code" required>
+						</div>
+						</div>
+
+						<div class="form-group">
+							<label for="address">Address</label> <br />
+							<input class="form-control" id="address" type="text" name="address" placeholder="Address" required>
+						</div>
+                        
+							<button type="submit" class="btn btn-primary save-btn" value="save">Save</button>
                           <button type="button" class="btn btn-default cancel-btn" value="cancel" for="user-info-edit">Cancel</button>
                         </form>  
                       </div>
