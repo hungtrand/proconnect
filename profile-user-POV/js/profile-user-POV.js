@@ -7,6 +7,7 @@ $(document).ready(function() {
 	//initialize model
 	var user = new User();
 	user.init();
+	
 
 	//serialize object to JSON
 	$.fn.serializeObject = function()
@@ -62,7 +63,23 @@ $(document).ready(function() {
 		//display edit view
 		$(target).fadeIn().find("form").attr( "link", $(this).attr("link") ).attr("editing","true"); 
 	});
-
+	
+		//controls address field
+		var country_options = $(".country-option");
+		 for(var i = 0; i<country_options.length; i++){
+			 country_options[i].addEventListener("click",function(){
+				var value = this.value;
+				if(value == "United States"){
+					$("#zipcode-group").show();
+					$("#other-country-group").hide();
+				}
+				else{
+					$("#zipcode-group").hide();
+					$("#other-country-group").show();
+				}
+			});
+		}
+	
 	//handle edit-form submition
 	$(".editable-form").on("submit", function(e){
 		

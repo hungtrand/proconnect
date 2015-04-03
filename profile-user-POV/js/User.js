@@ -387,6 +387,10 @@ User.prototype = {
 				form.find("#alt-email-input").val(this.userData.personalInfo["alt-email-address"]);
 				form.find("#phone-input").val(this.userData.personalInfo["phone-number"]);
 				form.find("#phone-number-type").val(this.userData.personalInfo["phone-number-type"]);
+				form.find("#zipcode-input").val(this.userData.personalInfo["zipcode"]);
+				form.find("#country-name-input").val(this.userData.personalInfo["country-name"]);
+				form.find("#postal-code-input").val(this.userData.personalInfo["postal-code"]);
+				form.find("#address-input").val(this.userData.personalInfo["user-address"]);
 			break;
 
 			case "#summary-edit":
@@ -492,7 +496,7 @@ User.prototype = {
 				$("#school-year-started").val(edu["school-year-started"]);
 				$("#school-year-ended").val(edu["school-year-ended"]);
 				$("#activities").val(edu["activities"]);
-				$("#education-description").val(edu["education-description"]);
+				$("#education-description").val(edu["address"]);
 
 			break;
 
@@ -504,7 +508,7 @@ User.prototype = {
 
 	//update view
 	updateView: function(){
-		// console.log("updateView " + this.userData.personalInfo.first-name);
+		 console.log("updateView " + this.userData.personalInfo["user-address"]);
 		//update user info
 		$(".first-name").text(this.userData.personalInfo["first-name"]);
 		$("#user-mi").text(this.userData.personalInfo["middle-initial"]+'.');
@@ -513,6 +517,7 @@ User.prototype = {
 		$("#user-email").text(this.userData.personalInfo["email-address"]);
 		$("#user-phone").text(this.userData.personalInfo["phone-number"]);
 		$("#user-home").text(this.userData.personalInfo["user-address"]);
+		
 
 		//update summary description
 		if(this.userData.personalInfo["summary"] !== "") {
