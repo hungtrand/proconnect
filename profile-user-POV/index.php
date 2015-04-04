@@ -10,8 +10,6 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
   $page_title = "Edit Profile"; //require for front end
   include '../header/header.php';
 ?>
-
-
     <div id="main-container" class="container-fluid">
       <div class="row">
           <div class="col col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
