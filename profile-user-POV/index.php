@@ -110,10 +110,19 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                           <label for="phone-input">Phone</label>
                           <div class="form-group form-inline">
                             <input name="phone-number" type="text" class="form-control" id="phone-input" placeholder="#(###) ###-#### ">
-                            <select name="phone-number-type" type="text" class="form-control" id="phone-number-type"> 
-                              <option value="home">Home</option>
-                              <option value="work">Work</option>
-                              <option value="mobile">Mobile</option>
+                           
+                          <div class="btn-group">
+                                <button type="button" class="btn btn-primary" id="phone-color">
+                                    Home</button>
+                                <button type="button" class="btn btn-primary dropdown-toggle" id="phone-caret-color" data-toggle="dropdown">
+                                    <span class="caret" ></span><span class="sr-only">Home</span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><option value="home">Home</option></li>
+                                    <li><option value="work">Work</option></li>
+                                    <li><option value="mobile">Mobile</option></li>
+                                </ul>
+                            </div>
                             </select>
                           </div>
 

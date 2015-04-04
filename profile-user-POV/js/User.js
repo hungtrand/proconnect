@@ -175,16 +175,15 @@ User.prototype = {
 		var formName = jQForm.parent("div").attr("id");
 		console.log(formName);
 
-
-		/*switch(formName){
+		switch(formName){
 			case "user-info-edit": //update user info
 				$.each(newData,function(k,newValue){
 					$.each(that.userData.personalInfo,function(name,v){
 						if(name === k) {
-							// console.log("old data is: " + value);
-							// console.log("new data is: " + v);
+							console.log("old data is: " + value);
+							console.log("new data is: " + v);
 							that.userData.personalInfo[name] = newValue;
-							// console.log(name + ": " + that.userData.personalInfo[name]);
+							console.log(name + ": " + that.userData.personalInfo[name]);
 							return false; //break out of the each loop
 						}
 					});
@@ -205,7 +204,7 @@ User.prototype = {
 				});
 				// console.log(this.userData.personalInfo);
 			break;
-		}*/
+		}
 
 		this.updateData(jQForm,newData);
 		this.updateView();									//updata view
