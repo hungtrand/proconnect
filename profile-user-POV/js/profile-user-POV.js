@@ -80,6 +80,7 @@ $(document).ready(function() {
 			});
 		}
 	
+
 	//handle edit-form submition
 	$(".editable-form").on("submit", function(e){
 		
@@ -202,7 +203,24 @@ $(document).ready(function() {
 					if(IsNumber($("#phone-input").val()) === false) {
 						throw "Invalid Phone Number";
 					}
-
+					if ($("#inlineRadio2-country").prop("checked")) {
+							if($("#country-name-input").val() == ""){
+								throw "Enter country.";
+							}
+							if($("#postal-code-input").val()== ""){
+								throw "Enter postal code.";
+							}
+					}
+					else{
+							if($("#zipcode-input").val()== ""){
+								throw "Enter zipcode.";
+							}
+							else{
+								if(IsZipcode($("#zipcode-input").val()) === false) {
+									throw "Invalid Zipcode.";
+								}
+							}
+					}
 					// console.log( jQFormEle.find(":input[required]:visible").css("border-color","red") );
 				break;
 				case "summary-edit":
@@ -361,7 +379,16 @@ $(document).ready(function() {
 		    		return true;
 		    	}
 		    }
-		}
+			
+			function IsZipcode(zipcode) {
+				var regex =/^\d{5}$/;
+					if(!regex.test(zipcode)) {
+						return false;
+					}else{
+						return true;
+					}
+				}
+			}
 	});
 
 	//handle remove entry link
