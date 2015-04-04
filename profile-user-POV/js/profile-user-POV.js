@@ -148,6 +148,8 @@ $(document).ready(function() {
 				var editing = ($(this).attr("editing") === "true") ? true : false;
 				// console.log(data);
 				$(this).siblings("div.loading").show();//show loading gif
+
+				console.log(editing);
 					
 				if(editing) {
 					user.setData($(this),data);

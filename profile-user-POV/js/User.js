@@ -98,7 +98,6 @@ User.prototype = {
 		// var newData = {"some":"data"};
 
 		$.ajax({
-			// url: "php/Profile_controller.php",
 			url: "php/dummy.php",
 			method: 'POST',
 			contentType: 'text/plain',
@@ -169,42 +168,80 @@ User.prototype = {
 	},
 
 	//mutator - edit the existing entries
-	//NOTE: Throw an error is there is a failure to set data, otherwise return nothing
 	setData: function(jQForm,newData){
 		//do ajax call to modify existing data
+
+		var that = this;
 
 		//update the user data
 		var formName = jQForm.parent("div").attr("id");
 		console.log(formName);
 
+
+
 		switch(formName){
 			case "user-info-edit": //update user info
 				$.each(newData,function(k,newValue){
+						console.log(newValue);
 					$.each(that.userData.personalInfo,function(name,v){
-						if(name === k) {
-							console.log("old data is: " + value);
-							console.log("new data is: " + v);
+						if(name === k)
+						{
 							that.userData.personalInfo[name] = newValue;
-							console.log(name + ": " + that.userData.personalInfo[name]);
-							return false; //break out of the each loop
+							return false;
 						}
 					});
 				});
 			break;
 			case "summary-edit":
-				// console.log("summary-edit");
 				$.each(newData,function(k,newValue){
 					$.each(that.userData.personalInfo,function(name,v){
 						if(name === k) {
-							// console.log("old data is: " + value);
-							// console.log("new data is: " + v);
 							that.userData.personalInfo[name] = newValue;
-							// console.log(name + ": " + that.userData.personalInfo[name]);
 							return false; //break out of the each loop
 						}
 					});
 				});
 				// console.log(this.userData.personalInfo);
+			break;
+			case "skills-endorsements-edit":
+				$.each(newData,function(k,newValue){
+					$.each(that.userData.personalInfo,function(name,v){
+						if(name === k) {
+							that.userData.personalInfo[name] = newValue;
+							return false; //break out of the each loop
+						}
+					});
+				});
+			break;
+			case "experience-edit":
+				$.each(newData,function(k,newValue){
+					$.each(that.userData.personalInfo,function(name,v){
+						if(name === k) {
+							that.userData.personalInfo[name] = newValue;
+							return false; //break out of the each loop
+						}
+					});
+				});
+			break;
+			case "project-edit":
+				$.each(newData,function(k,newValue){
+					$.each(that.userData.personalInfo,function(name,v){
+						if(name === k) {
+							that.userData.personalInfo[name] = newValue;
+							return false; //break out of the each loop
+						}
+					});
+				});
+			break;
+			case "education-edit":
+				$.each(newData,function(k,newValue){
+					$.each(that.userData.personalInfo,function(name,v){
+						if(name === k) {
+							that.userData.personalInfo[name] = newValue;
+							return false; //break out of the each loop
+						}
+					});
+				});
 			break;
 		}
 
@@ -225,7 +262,7 @@ User.prototype = {
 	 * update model 
 	 * object - new data
 	 * bool isNew - signal new data
-	 * NOTE: This function does not handle data validation, the calling functions should handle that.
+	 * NOTE: This function does not handle data validation, the calling functions should handle.
 	 */
 	updateData: function(jQFormEle,newData) {
 		// function addMembers(memberList,projObj) {
@@ -412,12 +449,6 @@ User.prototype = {
 		            count++;
 	            });
 				skillList.html(beans);
-				$(".sortable").sortable({
-					items: ':not(.no-sort)'
-				}).bind('sortupdate', function() {
-			    	//Triggered when the user stopped sorting and the DOM position has changed.
-				});
-
 			break;
 
 			case "#experience-edit":
@@ -474,15 +505,17 @@ User.prototype = {
 
 				}
 
-				 // console.log(teamMembers);
-				$("#project-team-list").html(teamMembers);
-
+				//START HERE
 				//enable sortable - Needs to figure this out
-				$(".sortable").sortable({
-					items: ':not(.no-sort)'
-				}).bind('sortupdate', function() {
-			    	//Triggered when the user stopped sorting and the DOM position has changed.
-				});
+				// $(".sortable").sortable({
+				// 	items: ':not(.no-sort)'
+				// }).bind('sortupdate', function() {
+			 //    	//Triggered when the user stopped sorting and the DOM position has changed.
+				// });
+
+				// console.log(teamMembers);
+				$("#project-team-list").html(teamMembers);
+				
 	     		$("#project-description").val(proj["project-description"]);
 
 			break;
