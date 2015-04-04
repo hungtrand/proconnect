@@ -153,23 +153,19 @@ $(document).ready(function() {
 				} else {
 					user.addData($(this),data);
 				}
-
+				//reset form
+				$(this).find("button.cancel-btn").trigger("click");
 			} catch(e) {
 				if(typeof(e) === "string") {
+				
 					//display error
-			 	$(this).find(".alert-msg").text(e);
-				$(this).find(".alert-danger").show();
-
-					console.log(e); //debug only
+				 	$(this).find(".alert-msg").text(e);
+					$(this).find(".alert-danger").show();
+					// console.log(e); //debug only
 				} else {
 					throw e;
 				}
 			}
-
-							
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              			//on success
-			//turn off gif loader
-			
 		}
 		
 		$("a.remove-entry-link").hide(); //hide delete entry link
@@ -430,6 +426,9 @@ $(document).ready(function() {
 		$(this).parent("form").attr("editing","false")
 
 		//console.log(link);
+
+		//turn off gif loader
+		$(target).find("div.loading").hide();
 
 		//repopulate the page
 		$(".editable").fadeIn(50);  //show all editable components
