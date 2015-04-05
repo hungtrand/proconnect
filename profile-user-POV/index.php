@@ -214,7 +214,9 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                   <header>
                         <h3>Skills and Endorsements</h3>
                   </header>
-                 <!--   <h4>Top Skills</h4> -->
+                  <!-- Success message goes here -->
+                  
+                  <!-- normal-view -->
                   <div id="skills-endorsements" class="normal-view "> 
                     <div class="editable" for="skills-endorsements-edit">
                       <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>

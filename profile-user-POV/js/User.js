@@ -90,6 +90,17 @@ User.prototype = {
 		this.fetchData();	//fetch data 
 	},
 
+	tempAddNewSkill: function(newSkill) { //temporary add new skill, will store the original
+		if(this.oSkillList === ""){
+			this.oSkillList = this.userData["skill"];
+			console.log(this.oSkillList);
+		} 
+	},
+
+	restoreSkill: function() {
+
+	},
+
 	//talk to backend
 	fetchData: function() { // START_HERE
 		var that = this;
@@ -138,6 +149,7 @@ User.prototype = {
 
 		console.log(name);
 
+		return name;
 		//do an ajax call to fetch member object
 		//if no member exist, still return an empty object
 
@@ -171,102 +183,59 @@ User.prototype = {
 	setData: function(jQForm,newData){
 		//do ajax call to modify existing data
 
-		var that = this;
-
-		//update the user data
-		var formName = jQForm.parent("div").attr("id");
-		console.log(formName);
-
-
-
-		switch(formName){
-			case "user-info-edit": //update user info
-				$.each(newData,function(k,newValue){
-						console.log(newValue);
-					$.each(that.userData.personalInfo,function(name,v){
-						if(name === k)
-						{
-							that.userData.personalInfo[name] = newValue;
-							return false;
-						}
-					});
-				});
-			break;
-			case "summary-edit":
-				$.each(newData,function(k,newValue){
-					$.each(that.userData.personalInfo,function(name,v){
-						if(name === k) {
-							that.userData.personalInfo[name] = newValue;
-							return false; //break out of the each loop
-						}
-					});
-				});
-				// console.log(this.userData.personalInfo);
-			break;
-			case "skills-endorsements-edit":
-				//this function is straight forward, just swap the new data into the old data slot.
-				//no need to a loop. console the newData object.
-				$.each(newData,function(k,newValue){
-					$.each(that.userData.personalInfo,function(name,v){
-						if(name === k) {
-							that.userData.personalInfo[name] = newValue;
-							return false; //break out of the each loop
-						}
-					});
-				});
-			break;
-			case "experience-edit":
-				//you need to check for which entry is this data trying to edit.
-				//there is a variable called "for-index" inside the newData variable that stores
-				//the entry number
-				$.each(newData,function(k,newValue){
-					$.each(that.userData.personalInfo,function(name,v){
-						if(name === k) {
-							that.userData.personalInfo[name] = newValue;
-							return false; //break out of the each loop
-						}
-					});
-				});
-			break;
-			case "project-edit":
-			//you need to check for which entry is this data trying to edit.
-				//there is a variable called "for-index" inside the newData variable that stores
-				//the entry number
-				$.each(newData,function(k,newValue){
-					$.each(that.userData.personalInfo,function(name,v){
-						if(name === k) {
-							that.userData.personalInfo[name] = newValue;
-							return false; //break out of the each loop
-						}
-					});
-				});
-			break;
-			case "education-edit":
-			//you need to check for which entry is this data trying to edit.
-				//there is a variable called "for-index" inside the newData variable that stores
-				//the entry number
-				$.each(newData,function(k,newValue){
-					$.each(that.userData.personalInfo,function(name,v){
-						if(name === k) {
-							that.userData.personalInfo[name] = newValue;
-							return false; //break out of the each loop
-						}
-					});
-				});
-			break;
-		}
-
-		this.updateData(jQForm,newData);
+		this.updateCachedData(jQForm,newData);
 		this.updateView();									//updata view
 	},
 
 	//mutator - add new entries
 	addData: function(jQForm,newData){
-		//do ajax call to add data to server
+		var that = this;
+		var formName = jQForm.parent("div").attr("id");
 
-		//update the user data
-		this.updateData(jQForm,newData);
-		this.updateView();
+		var dataToSave = {
+			"editing":false,
+			"form-id":formName,
+			"data":newData,
+		};
+
+		$.ajax({
+			url: "php/dummy2.php",
+			data: dataToSave,
+			method: 'POST',
+			error: function(xhr,status,error) {
+				bootbox.dialog({
+						title: "<div style='text-align:center;'><b style='color:red;'>Error!</b></div>",
+						message: "<div style='text-align:center;'><b>Please view the console for more detail.</b></div>",
+						buttons: {
+							"Close": {
+								className: 'btn-primary'
+							}
+						}
+					});
+				console.log(status + ": " + error);
+			}
+		}).done(function(oData){
+			var data = JSON.parse(oData);
+			jQForm.siblings("div.loading").hide();		//hide loading gif
+
+			//check for error message
+			if(data["error"] === undefined){		//no error
+		    
+				that.updateCachedData(jQForm,newData);
+				that.updateView();	
+				$("#"+formName).find("button.cancel-btn").trigger("click"); //clear form data
+				$("a.remove-entry-link").hide(); //hide delete entry link
+
+				//show sucess message
+				// $(ele).
+			} else {						//yes error
+				// console.log(data );
+				that.showErrorInForm(data["error"], $("#"+formName));
+			}
+
+		});
+
+
 	},
 
 	/*
@@ -275,7 +244,7 @@ User.prototype = {
 	 * bool isNew - signal new data
 	 * NOTE: This function does not handle data validation, the calling functions should handle.
 	 */
-	updateData: function(jQFormEle,newData) {
+	updateCachedData: function(jQFormEle,newData) {
 		// function addMembers(memberList,projObj) {
 		// 	projObj["team-member"] = memberList;
 
@@ -699,7 +668,19 @@ User.prototype = {
           "</div>" );
 		});
 
-	}
+	},
+
+	// throw error for specific form
+	showErrorInForm:function(error,jQueryForm) {
+		if(typeof(error) === "string") {
+			//display error
+		 	jQueryForm.find(".alert-msg").text(error);
+			jQueryForm.find(".alert-danger").show();
+			// console.log(e); //debug only
+		} else {
+			throw error;
+		}
+	},
 
 }
 

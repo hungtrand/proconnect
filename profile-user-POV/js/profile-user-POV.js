@@ -90,11 +90,8 @@ $(document).ready(function() {
 
 			//add user to model 
 			user.fetchMember($("#project-team-members").val());
-			//store the original memberlist
-			//add new member entry to existing model
-			if(user.oMemberList === ""){
-				
-			}
+
+
 
 			//update Form
 
@@ -104,8 +101,13 @@ $(document).ready(function() {
 
 		} else if($("#skill-input").val() !== "") {			//form submission for new skills, NOT a save button event
 			//check for duplicate
+
 			//add new skill 
 			
+
+			//add new member entry to existing model
+			user.tempAddNewSkill();
+
 			//update Form
 
 			//clear input text
@@ -152,30 +154,23 @@ $(document).ready(function() {
 				$(this).siblings("div.loading").show();//show loading gif
 
 				// console.log(editing);
-					
+				
 				if(editing) {
 					user.setData($(this),data);
 				} else {
 					user.addData($(this),data);
+
 				}
-				//reset form
-				$(this).find("button.cancel-btn").trigger("click");
+
+				//msg - string if there is error, boolean if otherwise
+				if(typeof(msg) === "string") {
+					throw msg;
+				}
 			} catch(e) {
-				if(typeof(e) === "string") {
-				
-					//display error
-				 	$(this).find(".alert-msg").text(e);
-					$(this).find(".alert-danger").show();
-					// console.log(e); //debug only
-				} else {
-					throw e;
-				}
+				user.showErrorInForm(e,$(this));
 			}
 		}
 		
-		$("a.remove-entry-link").hide(); //hide delete entry link
-		
-
 		//RETURNS NOTHING. BUT WILL THROW AN ERROR IF ANY FIELD IS WRONG	
 		function validateForm(jQFormEle){ //NEED TO BE IMPLEMENTED
 			var formName = jQFormEle.parent("div").attr("id");
@@ -259,7 +254,7 @@ $(document).ready(function() {
 					}
 
 					if(compareDate($("#work-start-month").val(), $("#work-end-month").val(), $("#work-start-year").val(), $("#work-end-year").val() )) {
-						throw "Invalid Data Organization";
+						throw "Invalid Date Range";
 					}
 
 				break;
