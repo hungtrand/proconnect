@@ -125,6 +125,20 @@ div[for="skills-endorsements-edit"] > .panel,.list-group{
 	border-radius: 0px;
 }
 
+#phone-color{
+	color : black !important;
+	background-color: white !important;
+	border-color: white !important;
+	border-right-color: gray !important;
+}
+
+#phone-caret-color {
+	color : black !important;
+	background-color: white !important;
+	border-color: white !important;	
+	border-left-color: gray !important;
+}
+
 #glyphicon-picture {
 	font-size: 27px;
 	/*float: left;*/

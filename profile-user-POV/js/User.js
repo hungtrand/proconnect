@@ -98,7 +98,6 @@ User.prototype = {
 		// var newData = {"some":"data"};
 
 		$.ajax({
-			// url: "php/Profile_controller.php",
 			url: "php/dummy.php",
 			method: 'POST',
 			contentType: 'text/plain',
@@ -169,45 +168,93 @@ User.prototype = {
 	},
 
 	//mutator - edit the existing entries
-	//NOTE: Throw an error is there is a failure to set data, otherwise return nothing
 	setData: function(jQForm,newData){
 		//do ajax call to modify existing data
+
+		var that = this;
 
 		//update the user data
 		var formName = jQForm.parent("div").attr("id");
 		console.log(formName);
 
 
-		/*switch(formName){
+
+		switch(formName){
 			case "user-info-edit": //update user info
 				$.each(newData,function(k,newValue){
+						console.log(newValue);
 					$.each(that.userData.personalInfo,function(name,v){
-						if(name === k) {
-							// console.log("old data is: " + value);
-							// console.log("new data is: " + v);
+						if(name === k)
+						{
 							that.userData.personalInfo[name] = newValue;
-							// console.log(name + ": " + that.userData.personalInfo[name]);
-							return false; //break out of the each loop
+							return false;
 						}
 					});
 				});
 			break;
 			case "summary-edit":
-				// console.log("summary-edit");
 				$.each(newData,function(k,newValue){
 					$.each(that.userData.personalInfo,function(name,v){
 						if(name === k) {
-							// console.log("old data is: " + value);
-							// console.log("new data is: " + v);
 							that.userData.personalInfo[name] = newValue;
-							// console.log(name + ": " + that.userData.personalInfo[name]);
 							return false; //break out of the each loop
 						}
 					});
 				});
 				// console.log(this.userData.personalInfo);
 			break;
-		}*/
+			case "skills-endorsements-edit":
+				//this function is straight forward, just swap the new data into the old data slot.
+				//no need to a loop. console the newData object.
+				$.each(newData,function(k,newValue){
+					$.each(that.userData.personalInfo,function(name,v){
+						if(name === k) {
+							that.userData.personalInfo[name] = newValue;
+							return false; //break out of the each loop
+						}
+					});
+				});
+			break;
+			case "experience-edit":
+				//you need to check for which entry is this data trying to edit.
+				//there is a variable called "for-index" inside the newData variable that stores
+				//the entry number
+				$.each(newData,function(k,newValue){
+					$.each(that.userData.personalInfo,function(name,v){
+						if(name === k) {
+							that.userData.personalInfo[name] = newValue;
+							return false; //break out of the each loop
+						}
+					});
+				});
+			break;
+			case "project-edit":
+			//you need to check for which entry is this data trying to edit.
+				//there is a variable called "for-index" inside the newData variable that stores
+				//the entry number
+				$.each(newData,function(k,newValue){
+					$.each(that.userData.personalInfo,function(name,v){
+						if(name === k) {
+							that.userData.personalInfo[name] = newValue;
+							return false; //break out of the each loop
+						}
+					});
+				});
+			break;
+			case "education-edit":
+			//you need to check for which entry is this data trying to edit.
+				//there is a variable called "for-index" inside the newData variable that stores
+				//the entry number
+				$.each(newData,function(k,newValue){
+					$.each(that.userData.personalInfo,function(name,v){
+						if(name === k) {
+							that.userData.personalInfo[name] = newValue;
+							return false; //break out of the each loop
+						}
+					});
+				});
+			break;
+		}
 
 		this.updateData(jQForm,newData);
 		this.updateView();									//updata view
@@ -226,7 +273,7 @@ User.prototype = {
 	 * update model 
 	 * object - new data
 	 * bool isNew - signal new data
-	 * NOTE: This function does not handle data validation, the calling functions should handle that.
+	 * NOTE: This function does not handle data validation, the calling functions should handle.
 	 */
 	updateData: function(jQFormEle,newData) {
 		// function addMembers(memberList,projObj) {
@@ -389,10 +436,10 @@ User.prototype = {
 				form.find("#alt-email-input").val(this.userData.personalInfo["alt-email-address"]);
 				form.find("#phone-input").val(this.userData.personalInfo["phone-number"]);
 				form.find("#phone-number-type").val(this.userData.personalInfo["phone-number-type"]);
-				form.find("#zipcode-input").val(this.userData.personalInfo["zipcode"]);
-				form.find("#country-name-input").val(this.userData.personalInfo["country-name"]);
-				form.find("#postal-code-input").val(this.userData.personalInfo["postal-code"]);
-				form.find("#address-input").val(this.userData.personalInfo["user-address"]);
+				form.find("#zipcode-input").val(this.userData.personalInfo["user-address"]["zipcode-input"]);
+				form.find("#country-name-input").val(this.userData.personalInfo["user-address"]["country-input"]);
+				form.find("#postal-code-input").val(this.userData.personalInfo["user-address"]["postal-code-input"]);
+				form.find("#address-input").val(this.userData.personalInfo["user-address"]["address-input"]);
 			break;
 
 			case "#summary-edit":
@@ -413,12 +460,6 @@ User.prototype = {
 		            count++;
 	            });
 				skillList.html(beans);
-				$(".sortable").sortable({
-					items: ':not(.no-sort)'
-				}).bind('sortupdate', function() {
-			    	//Triggered when the user stopped sorting and the DOM position has changed.
-				});
-
 			break;
 
 			case "#experience-edit":
@@ -475,15 +516,17 @@ User.prototype = {
 
 				}
 
-				 // console.log(teamMembers);
-				$("#project-team-list").html(teamMembers);
-
+				//START HERE
 				//enable sortable - Needs to figure this out
-				$(".sortable").sortable({
-					items: ':not(.no-sort)'
-				}).bind('sortupdate', function() {
-			    	//Triggered when the user stopped sorting and the DOM position has changed.
-				});
+				// $(".sortable").sortable({
+				// 	items: ':not(.no-sort)'
+				// }).bind('sortupdate', function() {
+			 //    	//Triggered when the user stopped sorting and the DOM position has changed.
+				// });
+
+				// console.log(teamMembers);
+				$("#project-team-list").html(teamMembers);
+				
 	     		$("#project-description").val(proj["project-description"]);
 
 			break;
@@ -519,10 +562,13 @@ User.prototype = {
 		$(".first-name").text(this.userData.personalInfo["first-name"]);
 		$("#user-mi").text(this.userData.personalInfo["middle-initial"]+'.');
 		$("#user-last").text(this.userData.personalInfo["last-name"]);
-		$("#user-address").text(this.userData.personalInfo["user-address"]).parent("cite").attr("title",this.userData.personalInfo["user-address"]);
+		$("#user-address").text(this.userData.personalInfo["user-address"]["address-input"]);
+			$("#user-address").append(" ");
+			$("#user-address").append(this.userData.personalInfo["user-address"]["country-input"]);
 		$("#user-email").text(this.userData.personalInfo["email-address"]);
 		$("#user-phone").text(this.userData.personalInfo["phone-number"]);
-		$("#user-home").text(this.userData.personalInfo["user-address"]);
+		$("#user-home").text(this.userData.personalInfo["phone-number"]);
+
 		
 
 		//update summary description
