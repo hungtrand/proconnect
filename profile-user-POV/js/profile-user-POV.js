@@ -214,6 +214,8 @@ $(document).ready(function() {
 							}
 					}
 					else{
+								$("#country-name-input").val("United States");
+								console.log($("#country-name-input").val());
 							if($("#zipcode-input").val()== ""){
 								throw "Enter zipcode.";
 							}

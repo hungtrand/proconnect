@@ -425,10 +425,10 @@ User.prototype = {
 				form.find("#alt-email-input").val(this.userData.personalInfo["alt-email-address"]);
 				form.find("#phone-input").val(this.userData.personalInfo["phone-number"]);
 				form.find("#phone-number-type").val(this.userData.personalInfo["phone-number-type"]);
-				form.find("#zipcode-input").val(this.userData.personalInfo["zipcode"]);
-				form.find("#country-name-input").val(this.userData.personalInfo["country-name"]);
-				form.find("#postal-code-input").val(this.userData.personalInfo["postal-code"]);
-				form.find("#address-input").val(this.userData.personalInfo["user-address"]);
+				form.find("#zipcode-input").val(this.userData.personalInfo["user-address"]["zipcode-input"]);
+				form.find("#country-name-input").val(this.userData.personalInfo["user-address"]["country-input"]);
+				form.find("#postal-code-input").val(this.userData.personalInfo["user-address"]["postal-code-input"]);
+				form.find("#address-input").val(this.userData.personalInfo["user-address"]["address-input"]);
 			break;
 
 			case "#summary-edit":
@@ -551,10 +551,13 @@ User.prototype = {
 		$(".first-name").text(this.userData.personalInfo["first-name"]);
 		$("#user-mi").text(this.userData.personalInfo["middle-initial"]+'.');
 		$("#user-last").text(this.userData.personalInfo["last-name"]);
-		$("#user-address").text(this.userData.personalInfo["user-address"]).parent("cite").attr("title",this.userData.personalInfo["user-address"]);
+		$("#user-address").text(this.userData.personalInfo["user-address"]["address-input"]);
+			$("#user-address").append(" ");
+			$("#user-address").append(this.userData.personalInfo["user-address"]["country-input"]);
 		$("#user-email").text(this.userData.personalInfo["email-address"]);
 		$("#user-phone").text(this.userData.personalInfo["phone-number"]);
-		$("#user-home").text(this.userData.personalInfo["user-address"]);
+		$("#user-home").text(this.userData.personalInfo["phone-number"]);
+
 		
 
 		//update summary description

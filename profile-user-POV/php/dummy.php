@@ -9,7 +9,7 @@
 					"alt-email-address" => "fake@fake.fake",
 					"phone-number" => "fake",
 					"phone-number-type" => "home",
-					"user-address" => "new address",
+					"user-address" => ["country-input"=>"fake country","zipcode-input"=>"fake zip code", "postal-code-input"=>"fake postal code","address-input"=>"fake address"],
 					"summary" => "fakeasdasdasdqhk3fjk2qejklfqkl;"
 				],
 				"experiences" => [
