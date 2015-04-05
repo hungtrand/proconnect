@@ -86,7 +86,8 @@ $(document).ready(function() {
 		
 		e.preventDefault();
 
-		if($("#project-team-members").val() !== ""){ //form submission for new members
+		if($("#project-team-members").val() !== ""){ 		//form submission for new members, NOT a save button event
+
 			//add user to model 
 			user.fetchMember($("#project-team-members").val());
 			//store the original memberlist
@@ -101,7 +102,7 @@ $(document).ready(function() {
 	 		$("#project-team-members").val("");//clear field
 			console.log("adding new teammate");
 
-		} else if($("#skill-input").val() !== "") {	//form submission for new skills
+		} else if($("#skill-input").val() !== "") {			//form submission for new skills, NOT a save button event
 			//check for duplicate
 			//add new skill 
 			
@@ -113,6 +114,7 @@ $(document).ready(function() {
 		} else {									//all other form submission
 			var data = $(this).serializeObject();	//grab data in json object format
 
+			//for-index is used to reference which entry to edit, undefined if there isn't any
 			data["for-index"] = $(this).attr("for-index");	//grab for-index, undefined if there isn't any
 
 			if( $(this).parent("div").attr("id") === "skills-endorsements-edit") { //grabbing skill data
@@ -149,7 +151,7 @@ $(document).ready(function() {
 				// console.log(data);
 				$(this).siblings("div.loading").show();//show loading gif
 
-				console.log(editing);
+				// console.log(editing);
 					
 				if(editing) {
 					user.setData($(this),data);

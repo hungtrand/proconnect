@@ -204,6 +204,8 @@ User.prototype = {
 				// console.log(this.userData.personalInfo);
 			break;
 			case "skills-endorsements-edit":
+				//this function is straight forward, just swap the new data into the old data slot.
+				//no need to a loop. console the newData object.
 				$.each(newData,function(k,newValue){
 					$.each(that.userData.personalInfo,function(name,v){
 						if(name === k) {
@@ -214,6 +216,9 @@ User.prototype = {
 				});
 			break;
 			case "experience-edit":
+				//you need to check for which entry is this data trying to edit.
+				//there is a variable called "for-index" inside the newData variable that stores
+				//the entry number
 				$.each(newData,function(k,newValue){
 					$.each(that.userData.personalInfo,function(name,v){
 						if(name === k) {
@@ -224,6 +229,9 @@ User.prototype = {
 				});
 			break;
 			case "project-edit":
+			//you need to check for which entry is this data trying to edit.
+				//there is a variable called "for-index" inside the newData variable that stores
+				//the entry number
 				$.each(newData,function(k,newValue){
 					$.each(that.userData.personalInfo,function(name,v){
 						if(name === k) {
@@ -234,6 +242,9 @@ User.prototype = {
 				});
 			break;
 			case "education-edit":
+			//you need to check for which entry is this data trying to edit.
+				//there is a variable called "for-index" inside the newData variable that stores
+				//the entry number
 				$.each(newData,function(k,newValue){
 					$.each(that.userData.personalInfo,function(name,v){
 						if(name === k) {
