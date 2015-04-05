@@ -1,10 +1,14 @@
 <?php
 //error_reporting(E_ALL); // debug
 //ini_set("display_errors", 1); // debug
-include '../signout/php/session_check_signout.php';
+// include '../signout/php/session_check_signout.php';
 
 $UData = json_decode($_SESSION['__USERDATA__'], true);
 $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
+
+$page_title = "Connecttions - ProConnect"; //required for front end
+
+
 ?>
 
 <!DOCTYPE html>
@@ -38,8 +42,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../js/ie10-viewport-bug-workaround.js"></script>
 
-    <!-- Custom CSS -->
-    <link href="css/index.css" rel="stylesheet">
+    
 
 </head>
 
@@ -116,9 +119,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                     Interests</a>
                 </li>
             </ul>
-        </div><!-- /.container-fluid -->
-
-        
+        </div><!-- /.container-fluid -->       
     </nav>
 
     <!-- Page Content -->
@@ -325,6 +326,8 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
     <script src="js/ConnectionList.js"></script>
     <script src="js/NewConnectionSearch.js"></script>
     <script src="js/index.js"></script>
+    <!-- Custom CSS -->
+    <link href="css/index.css" rel="stylesheet">
 </body>
-
+    
 </html>

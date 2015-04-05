@@ -98,7 +98,8 @@ User.prototype = {
 		// var newData = {"some":"data"};
 
 		$.ajax({
-			url: "php/Profile_controller.php",
+			// url: "php/Profile_controller.php",
+			url: "php/dummy.php",
 			method: 'POST',
 			contentType: 'text/plain',
 			error: function(xhr,status,error) {
@@ -168,6 +169,7 @@ User.prototype = {
 	},
 
 	//mutator - edit the existing entries
+	//NOTE: Throw an error is there is a failure to set data, otherwise return nothing
 	setData: function(jQForm,newData){
 		//do ajax call to modify existing data
 
@@ -224,7 +226,7 @@ User.prototype = {
 	 * update model 
 	 * object - new data
 	 * bool isNew - signal new data
-	 * NOTE: This function does not handle data validation, the calling functions should handle.
+	 * NOTE: This function does not handle data validation, the calling functions should handle that.
 	 */
 	updateData: function(jQFormEle,newData) {
 		// function addMembers(memberList,projObj) {
@@ -387,6 +389,10 @@ User.prototype = {
 				form.find("#alt-email-input").val(this.userData.personalInfo["alt-email-address"]);
 				form.find("#phone-input").val(this.userData.personalInfo["phone-number"]);
 				form.find("#phone-number-type").val(this.userData.personalInfo["phone-number-type"]);
+				form.find("#zipcode-input").val(this.userData.personalInfo["zipcode"]);
+				form.find("#country-name-input").val(this.userData.personalInfo["country-name"]);
+				form.find("#postal-code-input").val(this.userData.personalInfo["postal-code"]);
+				form.find("#address-input").val(this.userData.personalInfo["user-address"]);
 			break;
 
 			case "#summary-edit":
@@ -407,6 +413,12 @@ User.prototype = {
 		            count++;
 	            });
 				skillList.html(beans);
+				$(".sortable").sortable({
+					items: ':not(.no-sort)'
+				}).bind('sortupdate', function() {
+			    	//Triggered when the user stopped sorting and the DOM position has changed.
+				});
+
 			break;
 
 			case "#experience-edit":
@@ -463,17 +475,15 @@ User.prototype = {
 
 				}
 
-				//START HERE
-				//enable sortable - Needs to figure this out
-				// $(".sortable").sortable({
-				// 	items: ':not(.no-sort)'
-				// }).bind('sortupdate', function() {
-			 //    	//Triggered when the user stopped sorting and the DOM position has changed.
-				// });
-
-				// console.log(teamMembers);
+				 // console.log(teamMembers);
 				$("#project-team-list").html(teamMembers);
-				
+
+				//enable sortable - Needs to figure this out
+				$(".sortable").sortable({
+					items: ':not(.no-sort)'
+				}).bind('sortupdate', function() {
+			    	//Triggered when the user stopped sorting and the DOM position has changed.
+				});
 	     		$("#project-description").val(proj["project-description"]);
 
 			break;
@@ -492,7 +502,7 @@ User.prototype = {
 				$("#school-year-started").val(edu["school-year-started"]);
 				$("#school-year-ended").val(edu["school-year-ended"]);
 				$("#activities").val(edu["activities"]);
-				$("#education-description").val(edu["education-description"]);
+				$("#education-description").val(edu["address"]);
 
 			break;
 
@@ -504,7 +514,7 @@ User.prototype = {
 
 	//update view
 	updateView: function(){
-		// console.log("updateView " + this.userData.personalInfo.first-name);
+		 console.log("updateView " + this.userData.personalInfo["user-address"]);
 		//update user info
 		$(".first-name").text(this.userData.personalInfo["first-name"]);
 		$("#user-mi").text(this.userData.personalInfo["middle-initial"]+'.');
@@ -513,6 +523,7 @@ User.prototype = {
 		$("#user-email").text(this.userData.personalInfo["email-address"]);
 		$("#user-phone").text(this.userData.personalInfo["phone-number"]);
 		$("#user-home").text(this.userData.personalInfo["user-address"]);
+		
 
 		//update summary description
 		if(this.userData.personalInfo["summary"] !== "") {
