@@ -77,10 +77,9 @@ function User(){
 	// 	}
 	// };
 	this.userData = "";
-
 	this.temporaryData = "";	// meant to hold any temporary data
-	this.oMemberList = "";// meant to hold any temporary data
-	this.oSkillList = "";// meant to hold any temporary data
+	// this.oMemberList = "";// meant to hold any temporary data
+	// this.oSkillList = "";// meant to hold any temporary data
 }
 
 User.prototype = {
@@ -101,8 +100,8 @@ User.prototype = {
 
 	},
 
-	//talk to backend
-	fetchData: function() { // START_HERE
+	//talk to backend to get initiate a user data object
+	fetchData: function() { 
 		var that = this;
 		//do an ajax call to get user data
 		// console.log("doing ajax call");
@@ -143,13 +142,54 @@ User.prototype = {
 		// this.updateView();	
 	}, 
 
+
+	//NEED WORK HERE
 	//accessor 
-	//expected to return object about a member 
+	//Expected to return object about a member if any, otherwise return false
+	//NOTE: this function does not handle members with the same name, this feature will be added with typeahead
 	fetchMember: function(name){
 
-		console.log(name);
+		var dataToSend = {"team-member-name":name};
 
-		return name;
+		// $.ajax({
+		// 	beforeSend: function(jqXHR,settings){
+		// 		jQForm.siblings("div.loading").show();//show loading gif
+		// 	},
+		// 	url: "php/dummy2.php",
+		// 	data: dataToSave,
+		// 	method: 'POST',
+		// 	error: function(xhr,status,error) {
+		// 		bootbox.dialog({
+		// 				title: "<div style='text-align:center;'><b style='color:red;'>Error!</b></div>",
+		// 				message: "<div style='text-align:center;'><b>Please view the console for more detail.</b></div>",
+		// 				buttons: {
+		// 					"Close": {
+		// 						className: 'btn-primary'
+		// 					}
+		// 				}
+		// 			});
+		// 		console.log(status + ": " + error);
+		// 	}
+		// }).done(function(oData){
+		// 	// console.log(oData );
+		// 	var data = JSON.parse(oData); //may require error handling	
+		// 	jQForm.siblings("div.loading").hide();							//hide loading gif
+
+		// 	//check for error message
+		// 	if(data["error"] === undefined){								//no error
+		    
+		// 		that.updateCachedData(jQForm,newData);
+		// 		that.updateView();	
+		// 		$("#"+formName).find("button.cancel-btn").trigger("click"); //clear form data
+		// 		$("a.remove-entry-link").hide(); 							//hide delete entry link
+
+		// 		//show sucess message
+		// 		// $(ele).
+		// 	} else {														//yes error
+		// 		that.showErrorInForm(data["error"], $("#"+formName));
+		// 	}
+		// });
+
 		//do an ajax call to fetch member object
 		//if no member exist, still return an empty object
 
@@ -163,27 +203,43 @@ User.prototype = {
 		// 			}
 		// 		};
 		// return template;
+		return name;
 
 	},
 
 	//mutator
-	removeEntry: function(entryElement){
-		//get entry index
-		console.log(entryElement.attr("for-index"));
+	//NOTE: This method take advantage of the modifyData method to send a request to server with a difference set of data
+	removeEntry: function(jQueryForm){
+		var that = this;
+		return function(){
+			console.log(jQueryForm);
+			//get entry index
+			var data = { 
+						"for-index" : jQueryForm.attr("for-index"), 
+						   "remove" : true,	
+						"entry-data": "" //incase the data is needed along with the index.
+						};
+			
+			console.log(data);
 
-		//do an ajax call to the server to remove entry
 
+			//do an ajax call to the server to remove entry
+			that.modifyData(jQueryForm,data,true);
 
-		//on success, modify model
-		//switch case for what entry this is
-		//should only be for projects, experiences, and educations
+			//on success, modify model
+			//switch case for what entry this is
+			//should only be for projects, experiences, and educations
+		}
 	},
 
-	//mutator - modify data including add or edit to both server and cached model
+	//mutator - modify data including add/edit/remove to both server and cached model
+	// when adding - "editing" flag will be false
+	// when editing - "editing" flag will be true
+	// when remove - "editing" flag will be true AND "remove" flag will be true,
+	//				 there will also be a "for-index" variable stored in "data": {} to signal which index to remove
 	modifyData: function(jQForm,newData,editing){
 		var that = this;
 		var formName = jQForm.parent("div").attr("id");
-
 		var dataToSave = {
 			"editing":editing,
 			"form-id":formName,
@@ -191,6 +247,9 @@ User.prototype = {
 		};
 
 		$.ajax({
+			beforeSend: function(jqXHR,settings){
+				jQForm.siblings("div.loading").show();//show loading gif
+			},
 			url: "php/dummy2.php",
 			data: dataToSave,
 			method: 'POST',
@@ -208,23 +267,24 @@ User.prototype = {
 			}
 		}).done(function(oData){
 			// console.log(oData );
-			var data = JSON.parse(oData);
-			jQForm.siblings("div.loading").hide();		//hide loading gif
+			var data = JSON.parse(oData); //may require error handling	
+			jQForm.siblings("div.loading").hide();							//hide loading gif
 
 			//check for error message
-			if(data["error"] === undefined){		//no error
+			if(data["error"] === undefined){								//no error
 		    
 				that.updateCachedData(jQForm,newData);
 				that.updateView();	
 				$("#"+formName).find("button.cancel-btn").trigger("click"); //clear form data
-				$("a.remove-entry-link").hide(); //hide delete entry link
+				$("a.remove-entry-link").hide(); 							//hide delete entry link
 
 				//show sucess message
 				// $(ele).
-			} else {								//yes error
+			} else {														//yes error
 				that.showErrorInForm(data["error"], $("#"+formName));
 			}
 		});
+
 	},
 
 	/*
@@ -302,6 +362,8 @@ User.prototype = {
 				if(forIndex === "new") {				//new entry
 					this.userData.experiences[this.userData.experiences.length] = newData;
 					// console.log(this.userData.experiences);
+				} else if(newData["remove"] === true){	//remove entry
+					this.userData.experiences.splice(forIndex,1);
 				} else if( /[0-9]/.test(forIndex) ) {	//edit entry
 					// console.log(newData);
 
@@ -337,6 +399,8 @@ User.prototype = {
 					that.userData.projects[that.userData.experiences.length] = newData;
 					// addMembers(members,that.userData.projects[that.userData.experiences.length]);
 					// console.log(this.userData.experiences);
+				} else if(newData["remove"] === true){ //remove entry
+					this.userData.projects.splice(forIndex,1);
 				} else if( /[0-9]/.test(forIndex) ) {	//edit entry
 					$.each(newData,function(k,newValue){
 						$.each(that.userData.projects[forIndex],function(name,v){
@@ -358,6 +422,8 @@ User.prototype = {
 				if(forIndex === "new") {				//new entry
 					this.userData.education[this.userData.experiences.length] = newData;
 					// console.log(this.userData.experiences);
+				} else if(newData["remove"] === true){ //remove entry
+					this.userData.education.splice(forIndex,1);
 				} else if( /[0-9]/.test(forIndex) ) {	//edit entry
 					$.each(newData,function(k,newValue){
 						$.each(that.userData.education[forIndex],function(name,v){
@@ -541,9 +607,8 @@ User.prototype = {
 			$("#user-summary").text("Say something about yourself!");
 		}
 
-
 		//update skill
-		if (typeof(this.userData.skill)==="object"){
+		if ($.isEmptyObject(this.userData.skill) === false){ //if not an empty object
 			$("#skill-title b").text("Top skills");	//show top skill
 			$("#skill-top-list").html("").show();
 			$("#skill-more-list").html("");
