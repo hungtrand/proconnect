@@ -173,7 +173,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 
               <div class="well well-sm ">
                   <header>
-                        <h3>Summary</h3>
+                        <h2>Summary</h2>
                   </header>
                   <div id="summary-description" class="normal-view" > 
                     <div class="editable" for="summary-edit">
@@ -212,10 +212,10 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 
               <div class="well well-sm ">
                   <header>
-                        <h3>Skills and Endorsements</h3>
+                        <h2>Skills and Endorsements</h2>
                   </header>
                   <!-- Success message goes here -->
-                  
+
                   <!-- normal-view -->
                   <div id="skills-endorsements" class="normal-view "> 
                     <div class="editable" for="skills-endorsements-edit">
@@ -293,7 +293,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
           <div class="col col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
               <div class="well well-sm">
                   <header>
-                    <h3>Experience</h3>
+                    <h2>Experience</h2>
                   </header>
                   <div id="experience-edit" class="edit-view" entry-number="">
                     <div class="loading">
@@ -398,7 +398,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
           <div class="col col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
               <div class="well well-sm">
                   <header>
-                    <h3>Projects</h3>
+                    <h2>Projects</h2>
                   </header>
                   <div id="project-edit" class="edit-view" entry-number="">
                     <div class="loading">
@@ -498,7 +498,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
           <div class="col col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
               <div class="well well-sm">
                   <header>
-                    <h3>Education</h3>
+                    <h2>Education</h2>
                   </header>
                   <div id="education-edit" class="edit-view" entry-number="">
                     <div class="loading">

@@ -38,6 +38,8 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="/js/ie10-viewport-bug-workaround.js"></script>
 
+    <link rel="stylesheet" href="/header/header.css">
+
 </head>
 
 <body>
@@ -92,7 +94,6 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                 </ul>
 
             </div><!-- /.navbar-collapse -->
-            <style>.subNav a { color: #ccc !important; }</style>
             <ul class="nav nav-pills subNav">
                 <li role="presentation"><a href="../profile-user-POV/">
                     Home</a>

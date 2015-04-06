@@ -179,21 +179,13 @@ User.prototype = {
 		//should only be for projects, experiences, and educations
 	},
 
-	//mutator - edit the existing entries
-	setData: function(jQForm,newData){
-		//do ajax call to modify existing data
-
-		this.updateCachedData(jQForm,newData);
-		this.updateView();									//updata view
-	},
-
-	//mutator - add new entries
-	addData: function(jQForm,newData){
+	//mutator - modify data including add or edit to both server and cached model
+	modifyData: function(jQForm,newData,editing){
 		var that = this;
 		var formName = jQForm.parent("div").attr("id");
 
 		var dataToSave = {
-			"editing":false,
+			"editing":editing,
 			"form-id":formName,
 			"data":newData,
 		};
@@ -215,6 +207,7 @@ User.prototype = {
 				console.log(status + ": " + error);
 			}
 		}).done(function(oData){
+			// console.log(oData );
 			var data = JSON.parse(oData);
 			jQForm.siblings("div.loading").hide();		//hide loading gif
 
@@ -228,8 +221,7 @@ User.prototype = {
 
 				//show sucess message
 				// $(ele).
-			} else {						//yes error
-				// console.log(data );
+			} else {								//yes error
 				that.showErrorInForm(data["error"], $("#"+formName));
 			}
 
@@ -526,7 +518,9 @@ User.prototype = {
 
 	//update view
 	updateView: function(){
-		 console.log("updateView " + this.userData.personalInfo["user-address"]);
+		var that = this;
+		 // console.log("updateView " + this.userData.personalInfo["user-address"]);
+		
 		//update user info
 		$(".first-name").text(this.userData.personalInfo["first-name"]);
 		$("#user-mi").text(this.userData.personalInfo["middle-initial"]+'.');
@@ -590,20 +584,23 @@ User.prototype = {
 			$("#user-experiences").append(
 				"<div class=\"editable\" for=\"experience-edit\" index='" + i + "'>" +
 					"<span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span>" +
-					"<h4>" + exp['position-title'] + "</h4>" + 
-		          	"<h5>" + exp['company-name'] + "</h5>" +
+					"<h3>" + exp['position-title'] + "</h3>" + 
+		          	"<h4>" + exp['company-name'] + "</h4>" +
  		          	"<h5>" + workTime + "</h5>" + 
 		          	"<p>" + exp['experience-description'] + "</p>" +
 	        	"</div>");
+			if(parseInt(i) < that.userData.experiences.length-1) {
+				$("#user-experiences").append("<hr>");
+			}
 
 		});
-		
 
-		//update projects
 		//clear displaying entries
 		$("#user-projects").html("");
+		//update projects
 		$.each(this.userData.projects,function(key,proj){
 
+			// console.log();
 			//format project title
 			var projTitle = (proj['project-url'] === "") ? proj['project-name'] : '<a href="' + proj['project-url'] + '">' + proj['project-name'] +'</a>';
 
@@ -640,32 +637,41 @@ User.prototype = {
             "<div>" + 
               "<div class='editable' for='project-edit' link='" + 'elmo' + key +  "' index='" + key + "'>" + 
                 "<span class='glyphicon glyphicon-pencil' aria-hidden='true'></span>" +
-                "<h4>" + projTitle + "</h4>" +
+                "<h3>" + projTitle + "</h3>" +
                 "<p name='description'>" + proj['project-description'] +"</p>" +
               "</div>" + teamMemberBlock +
             "</div>");
 
-		});
+            //add horizontal line
+			if(parseInt(key) < that.userData.projects.length-1) {
+				$("#user-projects").append("<hr>");
+			}
 
-		//update education
+		});
+	
 		//clear displaying entries
 		$("#user-education").html("");
+		//update education
 		$.each(this.userData.education,function(key,edu){
 			var schoolTime = (edu["school-year-ended"] === "") ? edu["school-year-started"] : 
 																 edu["school-year-started"] + " &#8213 " + edu["school-year-ended"];
 			// console.log(schoolTime);
 			$("#user-education").append(
-		   "<div class='editable' for='education-edit' index='" + key + "'>" + 
-              "<span class='glyphicon glyphicon-pencil' aria-hidden='true'></span>" +
-              "<h4>" + edu['school-name'] + "</h4>" +
-              "<h5>" + edu['degree'] + "<span> " + edu['grade'] + "</span></h5>" +
-              "<h5>" + schoolTime + "</h5>" +
-              "<h5>" + edu['field-of-study'] + "</h5>" +
-              "<p>" + edu['education-description']+ "</p>" +
-              "<h5 style='color:#888';>Activities and Societies:</h5>" +
-              "<p>" + edu['activities'] + "</p>" +
-            "</div>" +
-          "</div>" );
+								   "<div class='editable' for='education-edit' index='" + key + "'>" + 
+						              "<span class='glyphicon glyphicon-pencil' aria-hidden='true'></span>" +
+						              "<h3>" + edu['school-name'] + "</h3>" +
+						              "<h4>" + edu['degree'] + "<span> " + edu['grade'] + "</span></h4>" +
+						              "<h4>" + edu['field-of-study'] + "</h4>" +
+						              "<h5>" + schoolTime + "</h5>" +
+						              "<p>" + edu['education-description']+ "</p>" +
+						              "<h5 style='color:#888';>Activities and Societies:</h5>" +
+						              "<p>" + edu['activities'] + "</p>" +
+						            "</div>" +
+						          "</div>" );
+
+			if(parseInt(key) < that.userData.education.length-1) {
+				$("#user-education").append("<hr>");
+			}
 		});
 
 	},

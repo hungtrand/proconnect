@@ -91,8 +91,6 @@ $(document).ready(function() {
 			//add user to model 
 			user.fetchMember($("#project-team-members").val());
 
-
-
 			//update Form
 
 			//clear input text
@@ -154,13 +152,7 @@ $(document).ready(function() {
 				$(this).siblings("div.loading").show();//show loading gif
 
 				// console.log(editing);
-				
-				if(editing) {
-					user.setData($(this),data);
-				} else {
-					user.addData($(this),data);
-
-				}
+				user.modifyData($(this),data,editing);
 
 				//msg - string if there is error, boolean if otherwise
 				if(typeof(msg) === "string") {
@@ -483,7 +475,6 @@ $(document).ready(function() {
 
 	//enable team member or skill deletion 
 	$("ul.sortable").on("click","button.close",function(){
-
 		//remove entry from model
 		$(this).parent("li").remove();
 	});
