@@ -224,10 +224,7 @@ User.prototype = {
 			} else {								//yes error
 				that.showErrorInForm(data["error"], $("#"+formName));
 			}
-
 		});
-
-
 	},
 
 	/*
