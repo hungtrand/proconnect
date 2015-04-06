@@ -240,6 +240,9 @@ User.prototype = {
 	modifyData: function(jQForm,newData,editing){
 		var that = this;
 		var formName = jQForm.parent("div").attr("id");
+
+		var successMsg = jQForm.parent("div").siblings("div.alert-success")
+
 		var dataToSave = {
 			"editing":editing,
 			"form-id":formName,
@@ -266,8 +269,9 @@ User.prototype = {
 				console.log(status + ": " + error);
 			}
 		}).done(function(oData){
-			// console.log(oData );
-			var data = JSON.parse(oData); //may require error handling	
+
+			// console.log(oData);
+			var data = JSON.parse(oData); 		//may require error handling	
 			jQForm.siblings("div.loading").hide();							//hide loading gif
 
 			//check for error message
@@ -277,6 +281,9 @@ User.prototype = {
 				that.updateView();	
 				$("#"+formName).find("button.cancel-btn").trigger("click"); //clear form data
 				$("a.remove-entry-link").hide(); 							//hide delete entry link
+
+				successMsg.show();
+				successMsg.find(".alert-msg").text("Success!");
 
 				//show sucess message
 				// $(ele).
@@ -697,7 +704,7 @@ User.prototype = {
 
 			$("#user-projects").append(
             "<div>" + 
-              "<div class='editable' for='project-edit' link='" + 'elmo' + key +  "' index='" + key + "'>" + 
+                "<div class='editable' for='project-edit' link='" + 'elmo' + key +  "' index='" + key + "'>" + 
                 "<span class='glyphicon glyphicon-pencil' aria-hidden='true'></span>" +
                 "<h3>" + projTitle + "</h3>" +
                 "<p name='description'>" + proj['project-description'] +"</p>" +

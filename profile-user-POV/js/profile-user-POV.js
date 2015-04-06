@@ -141,9 +141,9 @@ $(document).ready(function() {
 
 				var editing = ($(this).attr("editing") === "true") ? true : false;
 				
-
 				// console.log(editing);
 				user.modifyData($(this),data,editing);	//modify data
+
 			} catch(e) {
 				user.showErrorInForm(e,$(this));
 			}
