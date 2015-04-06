@@ -98,7 +98,7 @@ User.prototype = {
 		// var newData = {"some":"data"};
 
 		$.ajax({
-			url: "php/dummy.php",
+			url: "php/Profile_controller.php",
 			method: 'POST',
 			contentType: 'text/plain',
 			error: function(xhr,status,error) {
