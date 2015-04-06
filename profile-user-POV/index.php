@@ -64,6 +64,13 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                   </div>
                   <br>
 
+                  <div class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-hide="alert" aria-label="Close"><span class="dimissible-color"aria-hidden="true">&times;</span></button>
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only"></span>
+                    <span class="alert-msg"></span>
+                  </div>
+
                   <!-- User Info -->
                   <div id="user-info-edit" class="edit-view">
                         <div class="loading">
@@ -173,8 +180,17 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 
               <div class="well well-sm ">
                   <header>
-                        <h3>Summary</h3>
+                        <h2>Summary</h2>
                   </header>
+
+
+                  <div class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-hide="alert" aria-label="Close"><span class="dimissible-color"aria-hidden="true">&times;</span></button>
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only"></span>
+                    <span class="alert-msg"></span>
+                  </div>
+
                   <div id="summary-description" class="normal-view" > 
                     <div class="editable" for="summary-edit">
                       <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
@@ -212,9 +228,18 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 
               <div class="well well-sm ">
                   <header>
-                        <h3>Skills and Endorsements</h3>
+                        <h2>Skills and Endorsements</h2>
                   </header>
-                 <!--   <h4>Top Skills</h4> -->
+                  <!-- Success message goes here -->
+
+                  <div class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-hide="alert" aria-label="Close"><span class="dimissible-color"aria-hidden="true">&times;</span></button>
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only"></span>
+                    <span class="alert-msg"></span>
+                  </div>
+
+                  <!-- normal-view -->
                   <div id="skills-endorsements" class="normal-view "> 
                     <div class="editable" for="skills-endorsements-edit">
                       <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
@@ -291,8 +316,16 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
           <div class="col col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
               <div class="well well-sm">
                   <header>
-                    <h3>Experience</h3>
+                    <h2>Experience</h2>
                   </header>
+
+                  <div class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-hide="alert" aria-label="Close"><span class="dimissible-color"aria-hidden="true">&times;</span></button>
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only"></span>
+                    <span class="alert-msg"></span>
+                  </div>
+
                   <div id="experience-edit" class="edit-view" entry-number="">
                     <div class="loading">
                         <img src="../image/ajax-loader.gif">
@@ -396,8 +429,16 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
           <div class="col col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
               <div class="well well-sm">
                   <header>
-                    <h3>Projects</h3>
+                    <h2>Projects</h2>
                   </header>
+
+                  <div class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-hide="alert" aria-label="Close"><span class="dimissible-color"aria-hidden="true">&times;</span></button>
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only"></span>
+                    <span class="alert-msg"></span>
+                  </div>
+
                   <div id="project-edit" class="edit-view" entry-number="">
                     <div class="loading">
                       <img src="../image/ajax-loader.gif">
@@ -496,8 +537,16 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
           <div class="col col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
               <div class="well well-sm">
                   <header>
-                    <h3>Education</h3>
+                    <h2>Education</h2>
                   </header>
+
+                  <div class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-hide="alert" aria-label="Close"><span class="dimissible-color"aria-hidden="true">&times;</span></button>
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only"></span>
+                    <span class="alert-msg"></span>
+                  </div>
+                  
                   <div id="education-edit" class="edit-view" entry-number="">
                     <div class="loading">
                       <img src="../image/ajax-loader.gif">

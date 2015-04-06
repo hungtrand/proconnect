@@ -77,10 +77,9 @@ function User(){
 	// 	}
 	// };
 	this.userData = "";
-
 	this.temporaryData = "";	// meant to hold any temporary data
-	this.oMemberList = "";// meant to hold any temporary data
-	this.oSkillList = "";// meant to hold any temporary data
+	// this.oMemberList = "";// meant to hold any temporary data
+	// this.oSkillList = "";// meant to hold any temporary data
 }
 
 User.prototype = {
@@ -90,8 +89,19 @@ User.prototype = {
 		this.fetchData();	//fetch data 
 	},
 
-	//talk to backend
-	fetchData: function() { // START_HERE
+	tempAddNewSkill: function(newSkill) { //temporary add new skill, will store the original
+		if(this.oSkillList === ""){
+			this.oSkillList = this.userData["skill"];
+			console.log(this.oSkillList);
+		} 
+	},
+
+	restoreSkill: function() {
+
+	},
+
+	//talk to backend to get initiate a user data object
+	fetchData: function() { 
 		var that = this;
 		//do an ajax call to get user data
 		// console.log("doing ajax call");
@@ -132,11 +142,53 @@ User.prototype = {
 		// this.updateView();	
 	}, 
 
+
+	//NEED WORK HERE
 	//accessor 
-	//expected to return object about a member 
+	//Expected to return object about a member if any, otherwise return false
+	//NOTE: this function does not handle members with the same name, this feature will be added with typeahead
 	fetchMember: function(name){
 
-		console.log(name);
+		var dataToSend = {"team-member-name":name};
+
+		// $.ajax({
+		// 	beforeSend: function(jqXHR,settings){
+		// 		jQForm.siblings("div.loading").show();//show loading gif
+		// 	},
+		// 	url: "php/dummy2.php",
+		// 	data: dataToSave,
+		// 	method: 'POST',
+		// 	error: function(xhr,status,error) {
+		// 		bootbox.dialog({
+		// 				title: "<div style='text-align:center;'><b style='color:red;'>Error!</b></div>",
+		// 				message: "<div style='text-align:center;'><b>Please view the console for more detail.</b></div>",
+		// 				buttons: {
+		// 					"Close": {
+		// 						className: 'btn-primary'
+		// 					}
+		// 				}
+		// 			});
+		// 		console.log(status + ": " + error);
+		// 	}
+		// }).done(function(oData){
+		// 	// console.log(oData );
+		// 	var data = JSON.parse(oData); //may require error handling	
+		// 	jQForm.siblings("div.loading").hide();							//hide loading gif
+
+		// 	//check for error message
+		// 	if(data["error"] === undefined){								//no error
+		    
+		// 		that.updateCachedData(jQForm,newData);
+		// 		that.updateView();	
+		// 		$("#"+formName).find("button.cancel-btn").trigger("click"); //clear form data
+		// 		$("a.remove-entry-link").hide(); 							//hide delete entry link
+
+		// 		//show sucess message
+		// 		// $(ele).
+		// 	} else {														//yes error
+		// 		that.showErrorInForm(data["error"], $("#"+formName));
+		// 	}
+		// });
 
 		//do an ajax call to fetch member object
 		//if no member exist, still return an empty object
@@ -151,122 +203,95 @@ User.prototype = {
 		// 			}
 		// 		};
 		// return template;
+		return name;
 
 	},
 
 	//mutator
-	removeEntry: function(entryElement){
-		//get entry index
-		console.log(entryElement.attr("for-index"));
-
-		//do an ajax call to the server to remove entry
-
-
-		//on success, modify model
-		//switch case for what entry this is
-		//should only be for projects, experiences, and educations
-	},
-
-	//mutator - edit the existing entries
-	setData: function(jQForm,newData){
-		//do ajax call to modify existing data
-
+	//NOTE: This method take advantage of the modifyData method to send a request to server with a difference set of data
+	removeEntry: function(jQueryForm){
 		var that = this;
+		return function(){
+			console.log(jQueryForm);
+			//get entry index
+			var data = { 
+						"for-index" : jQueryForm.attr("for-index"), 
+						   "remove" : true,	
+						"entry-data": "" //incase the data is needed along with the index.
+						};
+			
+			console.log(data);
 
-		//update the user data
-		var formName = jQForm.parent("div").attr("id");
-		console.log(formName);
 
+			//do an ajax call to the server to remove entry
+			that.modifyData(jQueryForm,data,true);
 
-
-		switch(formName){
-			case "user-info-edit": //update user info
-				$.each(newData,function(k,newValue){
-						console.log(newValue);
-					$.each(that.userData.personalInfo,function(name,v){
-						if(name === k)
-						{
-							that.userData.personalInfo[name] = newValue;
-							return false;
-						}
-					});
-				});
-			break;
-			case "summary-edit":
-				$.each(newData,function(k,newValue){
-					$.each(that.userData.personalInfo,function(name,v){
-						if(name === k) {
-							that.userData.personalInfo[name] = newValue;
-							return false; //break out of the each loop
-						}
-					});
-				});
-				// console.log(this.userData.personalInfo);
-			break;
-			case "skills-endorsements-edit":
-				//this function is straight forward, just swap the new data into the old data slot.
-				//no need to a loop. console the newData object.
-				$.each(newData,function(k,newValue){
-					$.each(that.userData.personalInfo,function(name,v){
-						if(name === k) {
-							that.userData.personalInfo[name] = newValue;
-							return false; //break out of the each loop
-						}
-					});
-				});
-			break;
-			case "experience-edit":
-				//you need to check for which entry is this data trying to edit.
-				//there is a variable called "for-index" inside the newData variable that stores
-				//the entry number
-				$.each(newData,function(k,newValue){
-					$.each(that.userData.personalInfo,function(name,v){
-						if(name === k) {
-							that.userData.personalInfo[name] = newValue;
-							return false; //break out of the each loop
-						}
-					});
-				});
-			break;
-			case "project-edit":
-			//you need to check for which entry is this data trying to edit.
-				//there is a variable called "for-index" inside the newData variable that stores
-				//the entry number
-				$.each(newData,function(k,newValue){
-					$.each(that.userData.personalInfo,function(name,v){
-						if(name === k) {
-							that.userData.personalInfo[name] = newValue;
-							return false; //break out of the each loop
-						}
-					});
-				});
-			break;
-			case "education-edit":
-			//you need to check for which entry is this data trying to edit.
-				//there is a variable called "for-index" inside the newData variable that stores
-				//the entry number
-				$.each(newData,function(k,newValue){
-					$.each(that.userData.personalInfo,function(name,v){
-						if(name === k) {
-							that.userData.personalInfo[name] = newValue;
-							return false; //break out of the each loop
-						}
-					});
-				});
-			break;
+			//on success, modify model
+			//switch case for what entry this is
+			//should only be for projects, experiences, and educations
 		}
-
-		this.updateData(jQForm,newData);
-		this.updateView();									//updata view
 	},
 
-	//mutator - add new entries
-	addData: function(jQForm,newData){
-		//do ajax call to add data to server
+	//mutator - modify data including add/edit/remove to both server and cached model
+	// when adding - "editing" flag will be false
+	// when editing - "editing" flag will be true
+	// when remove - "editing" flag will be true AND "remove" flag will be true,
+	//				 there will also be a "for-index" variable stored in "data": {} to signal which index to remove
+	modifyData: function(jQForm,newData,editing){
+		var that = this;
+		var formName = jQForm.parent("div").attr("id");
 
-		//update the user data
-		this.updateData(jQForm,newData);
-		this.updateView();
+		var successMsg = jQForm.parent("div").siblings("div.alert-success")
+
+		var dataToSave = {
+			"editing":editing,
+			"form-id":formName,
+			"data":newData,
+		};
+
+		$.ajax({
+			beforeSend: function(jqXHR,settings){
+				jQForm.siblings("div.loading").show();//show loading gif
+			},
+			url: "php/dummy2.php",
+			data: dataToSave,
+			method: 'POST',
+			error: function(xhr,status,error) {
+				bootbox.dialog({
+						title: "<div style='text-align:center;'><b style='color:red;'>Error!</b></div>",
+						message: "<div style='text-align:center;'><b>Please view the console for more detail.</b></div>",
+						buttons: {
+							"Close": {
+								className: 'btn-primary'
+							}
+						}
+					});
+				console.log(status + ": " + error);
+			}
+		}).done(function(oData){
+
+			// console.log(oData);
+			var data = JSON.parse(oData); 		//may require error handling	
+			jQForm.siblings("div.loading").hide();							//hide loading gif
+
+			//check for error message
+			if(data["error"] === undefined){								//no error
+		    
+				that.updateCachedData(jQForm,newData);
+				that.updateView();	
+				$("#"+formName).find("button.cancel-btn").trigger("click"); //clear form data
+				$("a.remove-entry-link").hide(); 							//hide delete entry link
+
+				successMsg.find(".alert-msg").text("Success!");
+				successMsg.show();
+
+				//show sucess message
+				// $(ele).
+			} else {														//yes error
+				that.showErrorInForm(data["error"], $("#"+formName));
+			}
+		});
+
 	},
 
 	/*
@@ -275,7 +300,7 @@ User.prototype = {
 	 * bool isNew - signal new data
 	 * NOTE: This function does not handle data validation, the calling functions should handle.
 	 */
-	updateData: function(jQFormEle,newData) {
+	updateCachedData: function(jQFormEle,newData) {
 		// function addMembers(memberList,projObj) {
 		// 	projObj["team-member"] = memberList;
 
@@ -344,6 +369,8 @@ User.prototype = {
 				if(forIndex === "new") {				//new entry
 					this.userData.experiences[this.userData.experiences.length] = newData;
 					// console.log(this.userData.experiences);
+				} else if(newData["remove"] === true){	//remove entry
+					this.userData.experiences.splice(forIndex,1);
 				} else if( /[0-9]/.test(forIndex) ) {	//edit entry
 					// console.log(newData);
 
@@ -379,6 +406,8 @@ User.prototype = {
 					that.userData.projects[that.userData.experiences.length] = newData;
 					// addMembers(members,that.userData.projects[that.userData.experiences.length]);
 					// console.log(this.userData.experiences);
+				} else if(newData["remove"] === true){ //remove entry
+					this.userData.projects.splice(forIndex,1);
 				} else if( /[0-9]/.test(forIndex) ) {	//edit entry
 					$.each(newData,function(k,newValue){
 						$.each(that.userData.projects[forIndex],function(name,v){
@@ -400,6 +429,8 @@ User.prototype = {
 				if(forIndex === "new") {				//new entry
 					this.userData.education[this.userData.experiences.length] = newData;
 					// console.log(this.userData.experiences);
+				} else if(newData["remove"] === true){ //remove entry
+					this.userData.education.splice(forIndex,1);
 				} else if( /[0-9]/.test(forIndex) ) {	//edit entry
 					$.each(newData,function(k,newValue){
 						$.each(that.userData.education[forIndex],function(name,v){
@@ -557,7 +588,9 @@ User.prototype = {
 
 	//update view
 	updateView: function(){
-		 console.log("updateView " + this.userData.personalInfo["user-address"]);
+		var that = this;
+		 // console.log("updateView " + this.userData.personalInfo["user-address"]);
+		
 		//update user info
 		$(".first-name").text(this.userData.personalInfo["first-name"]);
 		$("#user-mi").text(this.userData.personalInfo["middle-initial"]+'.');
@@ -581,9 +614,8 @@ User.prototype = {
 			$("#user-summary").text("Say something about yourself!");
 		}
 
-
 		//update skill
-		if (typeof(this.userData.skill)==="object"){
+		if ($.isEmptyObject(this.userData.skill) === false){ //if not an empty object
 			$("#skill-title b").text("Top skills");	//show top skill
 			$("#skill-top-list").html("").show();
 			$("#skill-more-list").html("");
@@ -621,20 +653,23 @@ User.prototype = {
 			$("#user-experiences").append(
 				"<div class=\"editable\" for=\"experience-edit\" index='" + i + "'>" +
 					"<span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span>" +
-					"<h4>" + exp['position-title'] + "</h4>" + 
-		          	"<h5>" + exp['company-name'] + "</h5>" +
+					"<h3>" + exp['position-title'] + "</h3>" + 
+		          	"<h4>" + exp['company-name'] + "</h4>" +
  		          	"<h5>" + workTime + "</h5>" + 
 		          	"<p>" + exp['experience-description'] + "</p>" +
 	        	"</div>");
+			if(parseInt(i) < that.userData.experiences.length-1) {
+				$("#user-experiences").append("<hr>");
+			}
 
 		});
-		
 
-		//update projects
 		//clear displaying entries
 		$("#user-projects").html("");
+		//update projects
 		$.each(this.userData.projects,function(key,proj){
 
+			// console.log();
 			//format project title
 			var projTitle = (proj['project-url'] === "") ? proj['project-name'] : '<a href="' + proj['project-url'] + '">' + proj['project-name'] +'</a>';
 
@@ -669,37 +704,58 @@ User.prototype = {
 
 			$("#user-projects").append(
             "<div>" + 
-              "<div class='editable' for='project-edit' link='" + 'elmo' + key +  "' index='" + key + "'>" + 
+                "<div class='editable' for='project-edit' link='" + 'elmo' + key +  "' index='" + key + "'>" + 
                 "<span class='glyphicon glyphicon-pencil' aria-hidden='true'></span>" +
-                "<h4>" + projTitle + "</h4>" +
+                "<h3>" + projTitle + "</h3>" +
                 "<p name='description'>" + proj['project-description'] +"</p>" +
               "</div>" + teamMemberBlock +
             "</div>");
 
-		});
+            //add horizontal line
+			if(parseInt(key) < that.userData.projects.length-1) {
+				$("#user-projects").append("<hr>");
+			}
 
-		//update education
+		});
+	
 		//clear displaying entries
 		$("#user-education").html("");
+		//update education
 		$.each(this.userData.education,function(key,edu){
 			var schoolTime = (edu["school-year-ended"] === "") ? edu["school-year-started"] : 
 																 edu["school-year-started"] + " &#8213 " + edu["school-year-ended"];
 			// console.log(schoolTime);
 			$("#user-education").append(
-		   "<div class='editable' for='education-edit' index='" + key + "'>" + 
-              "<span class='glyphicon glyphicon-pencil' aria-hidden='true'></span>" +
-              "<h4>" + edu['school-name'] + "</h4>" +
-              "<h5>" + edu['degree'] + "<span> " + edu['grade'] + "</span></h5>" +
-              "<h5>" + schoolTime + "</h5>" +
-              "<h5>" + edu['field-of-study'] + "</h5>" +
-              "<p>" + edu['education-description']+ "</p>" +
-              "<h5 style='color:#888';>Activities and Societies:</h5>" +
-              "<p>" + edu['activities'] + "</p>" +
-            "</div>" +
-          "</div>" );
+								   "<div class='editable' for='education-edit' index='" + key + "'>" + 
+						              "<span class='glyphicon glyphicon-pencil' aria-hidden='true'></span>" +
+						              "<h3>" + edu['school-name'] + "</h3>" +
+						              "<h4>" + edu['degree'] + "<span> " + edu['grade'] + "</span></h4>" +
+						              "<h4>" + edu['field-of-study'] + "</h4>" +
+						              "<h5>" + schoolTime + "</h5>" +
+						              "<p>" + edu['education-description']+ "</p>" +
+						              "<h5 style='color:#888';>Activities and Societies:</h5>" +
+						              "<p>" + edu['activities'] + "</p>" +
+						            "</div>" +
+						          "</div>" );
+
+			if(parseInt(key) < that.userData.education.length-1) {
+				$("#user-education").append("<hr>");
+			}
 		});
 
-	}
+	},
+
+	// throw error for specific form
+	showErrorInForm:function(error,jQueryForm) {
+		if(typeof(error) === "string") {
+			//display error
+		 	jQueryForm.find(".alert-msg").text(error);
+			jQueryForm.find(".alert-danger").show();
+			// console.log(e); //debug only
+		} else {
+			throw error;
+		}
+	},
 
 }
 

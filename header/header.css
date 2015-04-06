@@ -1,0 +1,13 @@
+.subNav a { 
+	color: #ccc !important;  
+}
+
+hr {
+	border-top: 1px solid #ddd !important;
+	margin-top: 12px;
+	margin-bottom: 12px;
+}
+
+h3 {
+	margin-top: 12px;
+}
