@@ -27,12 +27,6 @@ $(document).ready(function() {
 	   return o;
 	};
 	
-	// //enable sortable
-	// $(".sortable").sortable({
-	// 	items: ':not(.no-sort)'
-	// }).bind('sortupdate', function() {
- //    	//Triggered when the user stopped sorting and the DOM position has changed.
-	// });
 	
 	//enable edit view
 	$(".normal-view").on("click",".editable",function(){
@@ -64,38 +58,36 @@ $(document).ready(function() {
 		$(target).fadeIn().find("form").attr( "link", $(this).attr("link") ).attr("editing","true"); 
 	});
 	
-		//controls address field
-		var country_options = $(".country-option");
-		 for(var i = 0; i<country_options.length; i++){
-			 country_options[i].addEventListener("click",function(){
-				var value = this.value;
-				if(value == "United States"){
-					$("#zipcode-group").show();
-					$("#other-country-group").hide();
-				}
-				else{
-					$("#zipcode-group").hide();
-					$("#other-country-group").show();
-				}
-			});
-		}
+	//controls address field
+	var country_options = $(".country-option");
+	 for(var i = 0; i<country_options.length; i++){
+		 country_options[i].addEventListener("click",function(){
+			var value = this.value;
+			if(value == "United States"){
+				$("#zipcode-group").show();
+				$("#other-country-group").hide();
+			}
+			else{
+				$("#zipcode-group").hide();
+				$("#other-country-group").show();
+			}
+		});
+	}
 	
-
 	//handle edit-form submition
 	$(".editable-form").on("submit", function(e){
-		
 		e.preventDefault();
 
 		if($("#project-team-members").val() !== ""){ 		//form submission for new members, NOT a save button event
 
 			//add user to model 
-			user.fetchMember($("#project-team-members").val());
+			var newMember = user.fetchMember($("#project-team-members").val());
 
-			//update Form
+			//add member directly to form
 
 			//clear input text
 	 		$("#project-team-members").val("");//clear field
-			console.log("adding new teammate");
+			// console.log("adding new teammate");
 
 		} else if($("#skill-input").val() !== "") {			//form submission for new skills, NOT a save button event
 			//check for duplicate
@@ -148,17 +140,9 @@ $(document).ready(function() {
 				validateForm($(this));				//validate this form according to form name
 
 				var editing = ($(this).attr("editing") === "true") ? true : false;
-				// console.log(data);
-				$(this).siblings("div.loading").show();//show loading gif
-
+				
 				// console.log(editing);
-				user.modifyData($(this),data,editing);
-
-				//msg - string if there is error, boolean if otherwise
-				if(typeof(msg) === "string") {
-					throw msg;
-				}
-					
+				user.modifyData($(this),data,editing);	//modify data
 
 			} catch(e) {
 				user.showErrorInForm(e,$(this));
@@ -454,6 +438,11 @@ $(document).ready(function() {
 		$(this).parent("form").attr("editing","false")
 
 		//console.log(link);
+
+		//clear project member list
+		if($(this).parent("form").find("ul.sortable").length > 0) {
+			$(this).parent("form").find("ul.sortable > li").remove();
+		}
 
 		//turn off gif loader
 		$(target).find("div.loading").hide();
