@@ -1,15 +1,6 @@
-<?php
-//error_reporting(E_ALL); // debug
-//ini_set("display_errors", 1); // debug
-// include '../signout/php/session_check_signout.php';
-
-$UData = json_decode($_SESSION['__USERDATA__'], true);
-$FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
-?>
-
 <!DOCTYPE html>
 <html lang="en">
-
+     
 <head>
 
     <meta charset="utf-8">
@@ -24,7 +15,10 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-  
+    
+    <!-- JQuery UI -->
+    <!-- <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css"> -->
+    <!-- // <script src="http://code.jquery.com/ui/1.11.3/jquery-ui.js"></script> -->
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -38,7 +32,8 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="/js/ie10-viewport-bug-workaround.js"></script>
 
-    <link rel="stylesheet" href="/header/header.css">
+    <!-- Custom Header CSS -->
+    <link href="/header/css/header.css" rel="stylesheet"> 
 
 </head>
 
@@ -94,7 +89,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                 </ul>
 
             </div><!-- /.navbar-collapse -->
-            <ul class="nav nav-pills subNav">
+            <ul class="nav navbar-nav nav-pills subNav">
                 <li role="presentation"><a href="../profile-user-POV/">
                     Home</a>
                 </li>
@@ -116,5 +111,3 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
             </ul>
         </div><!-- /.container-fluid -->       
     </nav>
-
-   

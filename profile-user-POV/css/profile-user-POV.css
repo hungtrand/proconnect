@@ -21,6 +21,17 @@
 	border-top: none;
 }
 
+/*
+    color for the x symbol of the dismissible alerts
+*/
+.dimissible-color {
+	color: black !important;
+}
+
+/*
+	dismissible alerts hide;
+*/
+
 /*.align-top {
 	vertical-align: top;
 }
@@ -107,6 +118,10 @@ margin-left: auto;
 }
 
 .editable-form > div.alert-danger{
+	display: none;
+}
+
+div.alert-success {
 	display: none;
 }
 
