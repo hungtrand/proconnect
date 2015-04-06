@@ -220,8 +220,8 @@ User.prototype = {
 				$("#"+formName).find("button.cancel-btn").trigger("click"); //clear form data
 				$("a.remove-entry-link").hide(); //hide delete entry link
 
-				successMsg.show();
 				successMsg.find(".alert-msg").text("Success!");
+				successMsg.show();
 
 				//show sucess message
 				// $(ele).

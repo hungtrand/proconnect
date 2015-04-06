@@ -164,6 +164,12 @@ $(document).ready(function() {
 				user.showErrorInForm(e,$(this));
 			}
 		}
+
+		$(function(){
+    		$("[data-hide]").on("click", function(){
+        		$("." + $(this).attr("data-hide")).hide();
+    		});
+		});
 		
 		//RETURNS NOTHING. BUT WILL THROW AN ERROR IF ANY FIELD IS WRONG	
 		function validateForm(jQFormEle){ //NEED TO BE IMPLEMENTED

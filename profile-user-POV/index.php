@@ -65,7 +65,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                   <br>
 
                   <div class="alert alert-success alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span class="dimissible-color"aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-hide="alert" aria-label="Close"><span class="dimissible-color"aria-hidden="true">&times;</span></button>
                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                     <span class="sr-only"></span>
                     <span class="alert-msg"></span>
@@ -185,9 +185,9 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 
 
                   <div class="alert alert-success alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span class="dimissible-color"aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-hide="alert" aria-label="Close"><span class="dimissible-color"aria-hidden="true">&times;</span></button>
                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                    <span class="sr-only"><strong>Success:</strong></span>
+                    <span class="sr-only"></span>
                     <span class="alert-msg"></span>
                   </div>
 
@@ -233,7 +233,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                   <!-- Success message goes here -->
 
                   <div class="alert alert-success alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span class="dimissible-color"aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-hide="alert" aria-label="Close"><span class="dimissible-color"aria-hidden="true">&times;</span></button>
                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                     <span class="sr-only"></span>
                     <span class="alert-msg"></span>
@@ -320,7 +320,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                   </header>
 
                   <div class="alert alert-success alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span class="dimissible-color"aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-hide="alert" aria-label="Close"><span class="dimissible-color"aria-hidden="true">&times;</span></button>
                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                     <span class="sr-only"></span>
                     <span class="alert-msg"></span>
@@ -433,7 +433,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                   </header>
 
                   <div class="alert alert-success alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span class="dimissible-color"aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-hide="alert" aria-label="Close"><span class="dimissible-color"aria-hidden="true">&times;</span></button>
                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                     <span class="sr-only"></span>
                     <span class="alert-msg"></span>
@@ -541,7 +541,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                   </header>
 
                   <div class="alert alert-success alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span class="dimissible-color"aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-hide="alert" aria-label="Close"><span class="dimissible-color"aria-hidden="true">&times;</span></button>
                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                     <span class="sr-only"></span>
                     <span class="alert-msg"></span>
