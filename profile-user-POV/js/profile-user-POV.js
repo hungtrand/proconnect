@@ -158,6 +158,8 @@ $(document).ready(function() {
 				if(typeof(msg) === "string") {
 					throw msg;
 				}
+					
+
 			} catch(e) {
 				user.showErrorInForm(e,$(this));
 			}
