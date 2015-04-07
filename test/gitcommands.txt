@@ -1,3 +1,10 @@
 git status = checks folders if updated since last time in the folder
 
-testest
+To upload:
+1. git status = Check status
+2. git pull origin master = get all new stuff
+3. git status = check status
+4. git add --all 
+5. git commit -m "Message of commit"
+6. git status
+7. git push origin master
