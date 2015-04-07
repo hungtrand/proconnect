@@ -13,3 +13,5 @@ fgdhgdhgds
 switch branches
 1. git branch (location) = for new branch
 2. git checkout (location) = switch to existing location
+jhfgdgrfghtrht
+grfdhtgreag
