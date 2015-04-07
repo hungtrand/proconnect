@@ -1,0 +1,3 @@
+git status = checks folders if updated since last time in the folder
+
+testest
