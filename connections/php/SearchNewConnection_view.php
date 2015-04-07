@@ -13,11 +13,10 @@ class SearchNewConnection_view implements view {
 		return $this->FinalView;
 	}
 
-	public function load($Accounts) {
-		if (!is_array($Accounts) || count($Accounts) < 1) return false;
+	public function load($Profiles) {
+		if (!is_array($Profiles) || count($Profiles) < 1) return false;
 
-		foreach ($Accounts as $a) {
-			$profile = new Profile($a->getUserID());
+		foreach ($Profiles as $profile) {
 
 			$out = [
 				'UserID'=>$profile->getID(),

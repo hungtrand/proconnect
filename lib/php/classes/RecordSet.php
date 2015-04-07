@@ -6,6 +6,7 @@ abstract class RecordSet {
 
 	function __construct() {
 		$this->db = connect('ProConnect');
+		$this->db->setAttribute(PDO::ATTR_CASE, PDO::CASE_UPPER);
 	}
 
 	abstract public function getData();

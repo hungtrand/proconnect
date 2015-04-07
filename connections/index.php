@@ -6,7 +6,7 @@
 $UData = json_decode($_SESSION['__USERDATA__'], true);
 $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 
-$page_title = "Connecttions - ProConnect"; //required for front end
+$page_title = "Connections - ProConnect"; //required for front end
 include '../header/header.php';
 ?>
 
