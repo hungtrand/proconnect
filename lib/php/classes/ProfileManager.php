@@ -19,8 +19,6 @@ class ProfileManager extends RecordSet {
 		$this->Columns = Profile::$Columns;
 
 		parent::__construct();
-
-		$this->load();
 	}
 
 	// OVERRIDE
@@ -65,6 +63,43 @@ class ProfileManager extends RecordSet {
 
 		return true;
 
+	}
+
+	public function loadSuggestionsByCommon($UserID, $page, $numRows) {
+		if (!is_integer($page) || !is_integer($numRows) || !is_integer($UserID)) {
+			$this->err = "Parameters are of wrong types";
+			return false;
+		}
+
+		$offset = $page * $numRows - $numRows;
+
+		$sql = 'Call sp_select_common_connections(?, ?, ?);';
+		if ($stmt = $this->db->prepare($sql)) {
+
+			try {
+				$stmt->bindParam(1, $UserID);
+				$stmt->bindParam(2, $offset);
+				$stmt->bindParam(3, $numRows);
+				//echo $sql;
+				$stmt->execute();
+				
+				if ( $rs = $stmt->fetchAll(PDO::FETCH_ASSOC) ){
+					$this->data = $rs;
+				} else {
+					$this->err = "No Data found.";
+					return false;
+				}
+				
+				
+			} catch (Exception $e) {
+				$this->err = $e->getMessage();
+				return false;
+			}
+		} else {
+			return false;
+		}
+
+		return true;
 	}
 
 	public function getData() {
