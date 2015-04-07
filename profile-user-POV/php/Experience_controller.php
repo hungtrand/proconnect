@@ -15,8 +15,8 @@ if (!$UData = json_decode($_SESSION['__USERDATA__'], true)) {
 }
 
 // Check if data valid or still exists in the database
-$uid = $UData['EXPID'];
-if (!$User = new Experience($uid)) {
+$uid = $UData['USERID'];
+if (!$User = new USER($uid)) {
 	echo "The Id is not in the database";
 	die();
 }
@@ -32,6 +32,7 @@ if (!$User = new Experience($uid)) {
 	$endyear= 0;
 	$status= false;
 	$description = null;
+	$id = 0;
 	
 	// testing  
 	// $uid = 3;
@@ -67,9 +68,10 @@ if (!$User = new Experience($uid)) {
 	
 
 	try{
-		$exp = new Experience($uid);
+		$exp = new Experience();
 	//	var_dump($exp->getData());
-		
+		if($exp->load($id) == true){
+		$exp = new Experience($id);
 		$exp->setTitle($title);
 		$exp->setCompanyName($compName);
 		$exp->setLocation($location);
@@ -81,11 +83,26 @@ if (!$User = new Experience($uid)) {
 		
 		$exp->update();
 		
+		} else {
+			
+			$exp = new Experience();
+			$exp->setUserID($uid);
+			$exp->setTitle($title);
+			$exp->setCompanyName($compName);
+			$exp->setLocation($location);
+			$exp->setStartMonth($startmonth);
+			$exp->setStartYear($startyear);
+			$exp->setEndMonth($endmonth);
+			$exp->setEndYear($endyear);
+			$exp->setDescription($description);
+			$exp->save();	
+			return true;
+		}
 	// testing	
 	//	$expData = $exp->getData();
 	//	var_dump($expData);
 		
-		return true;
+	
 
 	
 	} catch(Exception $e){

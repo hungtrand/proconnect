@@ -16,8 +16,8 @@ if (!$UData = json_decode($_SESSION['__USERDATA__'], true)) {
 }
 
 // Check if data valid or still exists in the database
-$uid = $UData['EDUID'];
-if (!$User = new Education($uid)) {
+$uid = $UData['USERID'];
+if (!$User = new USER($uid)) {
 	echo "The Id is not in the database";
 	die();
 }
@@ -30,8 +30,8 @@ if (!$User = new Education($uid)) {
 	$end = 0;
 	$activity = null;
 	$description = null;
+	$id = 0; 
 	//$uid = $UData[3];
-	
 
 
 	if(isset($_POST['school-name'])) {
@@ -59,8 +59,13 @@ if (!$User = new Education($uid)) {
 		$description = trim($_POST['education-description']);
 	}
 
+
 	try{
-		$educ = new Education($uid);
+
+
+		$educ = new Education();
+		if($educ->load($id) == true){
+			$educ = new Education($id);
 		//var_dump($educ->getData());
 		
 		$educ->setSchool($name);
@@ -72,15 +77,29 @@ if (!$User = new Education($uid)) {
 		$educ->setYearEnd($end);
 		$educ->setDescription($description);
 		$educ->update();
+		die();
+		}
+		else {
 		
-		//$educ->save();
-		$eduData = $educ->getData();
+		$educ = new Education();
+		$educ->setUserID($uid);
+		$educ->setSchool($name);
+		$educ->setDegree($degree);
+		$educ->setFieldOfStudy($study);
+		$educ->setActivities($activity);
+		$educ->setGPA($grade);
+		$educ->setYearStart($start);
+		$educ->setYearEnd($end);
+		$educ->setDescription($description);
+
+		$educ->save();
+		//$eduData = $educ->getData();
 		
 		//
 		//var_dump($eduData);
 		
 		return true;
-
+		}
 	
 	} catch(Exception $e){
 		echo $e->getMessage();
