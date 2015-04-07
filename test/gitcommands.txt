@@ -9,3 +9,6 @@ To upload:
 6. git status
 7. git push origin master
 fgdhgdhgds
+
+switch branches
+1. git branch (location) = could just be master as well
