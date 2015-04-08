@@ -220,22 +220,19 @@ User.prototype = {
 						"entry-data": "" //incase the data is needed along with the index.
 						};
 			
-			console.log(data);
-
-
+			// console.log(data);
 			//do an ajax call to the server to remove entry
-			that.modifyData(jQueryForm,data,true);
-
 			//on success, modify model
 			//switch case for what entry this is
 			//should only be for projects, experiences, and educations
+			that.modifyData(jQueryForm,data,true);
 		}
 	},
 
 	//mutator - modify data including add/edit/remove to both server and cached model
 	// when adding - "editing" flag will be false
 	// when editing - "editing" flag will be true
-	// when remove - "editing" flag will be true AND "remove" flag will be true,
+	// when removing - "editing" flag will be true AND "remove" flag will be true,
 	//				 there will also be a "for-index" variable stored in "data": {} to signal which index to remove
 	modifyData: function(jQForm,newData,editing){
 		var that = this;
@@ -282,11 +279,9 @@ User.prototype = {
 				$("#"+formName).find("button.cancel-btn").trigger("click"); //clear form data
 				$("a.remove-entry-link").hide(); 							//hide delete entry link
 
-				successMsg.find(".alert-msg").text("Success!");
+				successMsg.find(".alert-msg").text("Success!");				//show sucess message
 				successMsg.show();
-
-				//show sucess message
-				// $(ele).
+				
 			} else {														//yes error
 				that.showErrorInForm(data["error"], $("#"+formName));
 			}
