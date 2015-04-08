@@ -10,20 +10,30 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
   $page_title = "Edit Profile"; //require for front end
   include '../header/header.php';
 ?>
+
     <div id="main-container" class="container-fluid">
       <div class="row">
           <div class="col col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
               <div class="well well-sm">
                   <div class="row normal-view">
-                      <div id="profile-image-block" class="col col-sm-6 col-md-4 col-lg-3">
+                   
+					<div id="profile-image-block" class="col col-sm-6 col-md-4 col-lg-3">
                           <div id="profile-image" class="outer-ref" >
-                            <img src="http://placehold.it/380x500" alt="" class="img-responsive profile-image" />
-                            <div id="change-image-block" > 
-                              <span id="glyphicon-picture" class="glyphicon glyphicon-picture" aria-hidden="true"></span>
-                              <span id="change-photo-text">Change Photo</span>
-                            </div>
+                           <img src="http://placehold.it/380x500" alt="" class="img-responsive profile-image" id="preview"/>
+							<div id="picture-edit">
+								<form class="editable-form">
+									<div id="change-image-block" type = "file"> 							                        
+									 <span id="glyphicon-picture" class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+									 <span id="change-photo-text">Change Photo</span>
+									 <input id= "input-25" type= "file" class>
+									 <button type="submit" id = "picture-submit"class="btn btn-primary save-btn" value="save" style = "display: none;">Save</button>
+									</div>
+								</form>
+							</div>
                           </div>
+						  
                       </div>
+							
                       <div class="col-sm-6 col-md-8 editable" for="user-info-edit">
                           <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 

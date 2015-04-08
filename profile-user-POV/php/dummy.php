@@ -1,7 +1,9 @@
 <?php
 	//fake data
 	$data = [	
+	
 				"personalInfo" => [	//this entry should always be present and have static key name
+					"picture" =>"../../image/user_img.png",
 					"first-name" => "fake",
 					"last-name" => "fake",
 					"middle-initial" => "f",
