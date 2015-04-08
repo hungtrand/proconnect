@@ -328,6 +328,11 @@ User.prototype = {
 		var formName = jQFormEle.parent("div").attr("id");
 
 		switch(formName){
+			case "picture-edit": //update user info
+
+				that.userData.personalInfo["picture"] =  $('#preview').attr('src');
+				
+			break;
 			case "user-info-edit": //update user info
 				$.each(newData,function(k,newValue){
 					$.each(that.userData.personalInfo,function(name,v){
@@ -456,6 +461,7 @@ User.prototype = {
 		var form = $(formWrapperID).find("form"); 	//gather the form
 
 		switch (formWrapperID) {
+			
 			case "#user-info-edit":
 
 				// console.log(this.userData.personalInfo);
@@ -589,9 +595,8 @@ User.prototype = {
 	//update view
 	updateView: function(){
 		var that = this;
-		 // console.log("updateView " + this.userData.personalInfo["user-address"]);
-		
 		//update user info
+		 $('#preview').attr('src', this.userData.personalInfo["picture"]);
 		$(".first-name").text(this.userData.personalInfo["first-name"]);
 		$("#user-mi").text(this.userData.personalInfo["middle-initial"]+'.');
 		$("#user-last").text(this.userData.personalInfo["last-name"]);
