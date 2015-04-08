@@ -1,6 +1,6 @@
 <?php
 abstract class RecordSet {
-	private $db;
+	protected $db;
 	private $Limit;
 	public $err;
 
