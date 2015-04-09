@@ -27,6 +27,23 @@ $(document).ready(function() {
 	   return o;
 	};
 	
+	// function formReset(form){
+	// 	var link = '#' + $(form).parent("form").attr("link");
+	// 	target = $(form).parent("form").parent("div");
+	// 	$(target).fadeOut(50);				 //close editable view
+	// 	$(target).find("form").trigger("reset"); //reset form
+	// 	$(target).find("a.remove-entry-link").hide(); //hide delete entry link
+	// 	//clear temporary data
+	// 	$(form).parent("form").attr("editing","false")
+
+	// 	//turn off gif loader
+	// 	$(target).find("div.loading").hide();
+
+	// 	//repopulate the page
+	// 	$(".editable").fadeIn(50);  //show all editable components
+	// 	$(link).fadeIn();			//fade link items in
+	// }
+	
 	//preview profile picture
 	function readURL(input) {
 		  if (input.files && input.files[0]) {
@@ -39,6 +56,8 @@ $(document).ready(function() {
 		   		reader.readAsDataURL(input.files[0]);
 		   }
     }
+
+
 
     //enable image edit
     $("#input-25").change(function() {
@@ -166,7 +185,7 @@ $(document).ready(function() {
 				user.showErrorInForm(e,$(this));
 			}
 		}
-
+		
 		$(function(){
     		$("[data-hide]").on("click", function(){
         		$("." + $(this).attr("data-hide")).hide();
@@ -446,7 +465,7 @@ $(document).ready(function() {
 
 	//handle edit-form cancel 
 	$(".cancel-btn").on("click",function(){
-		// var target = "#" + $(this).attr("for"); //grab target
+		var target = "#" + $(this).attr("for"); //grab target
 		var link = '#' + $(this).parent("form").attr("link");
 		target = $(this).parent("form").parent("div");
 		$(target).fadeOut(50);				 //close editable view
@@ -462,13 +481,15 @@ $(document).ready(function() {
 			$(this).parent("form").find("ul.sortable > li").remove();
 		}
 
-		//turn off gif loader
+		// turn off gif loader
 		$(target).find("div.loading").hide();
 
 		//repopulate the page
 		$(".editable").fadeIn(50);  //show all editable components
 		$(link).fadeIn();			//fade link items in
 	});
+
+	
 
 	//enable add new 
 	$(".add-btn").on("click",function(){

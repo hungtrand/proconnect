@@ -90,11 +90,17 @@ User.prototype = {
 	},
 
 	storeImage: function(imgFile){
-
+		var that = this;
 		var fm = new FormData();
 		fm.append('file', imgFile);
 
+		// console.log(fm);
+
+		//NOT GONNA WORRY ABOUT PROGRESS BAR FOR NOW!
 		$.ajax({
+			beforeSend: function(){
+				// $("#img-progress-bar").css({"width":"10%","display":"block"});
+			},
 		  	xhr: function()
 		  	{
 			    var xhr = new window.XMLHttpRequest();
@@ -103,9 +109,9 @@ User.prototype = {
 			      if (evt.lengthComputable) {
 			        var percentComplete = evt.loaded / evt.total;
 			        //Do something with upload progress
-			        console.log(percentComplete);
+			        // console.log(percentComplete);
 			      } else {
-			      	console.log(evt)
+			      	// console.log(evt)
 			      }
 			    }, false);
 			    //Download progress
@@ -116,22 +122,32 @@ User.prototype = {
 			    //     console.log(percentComplete);
 			    //   }
 			    // }, false);
-		    	// return xhr;
+		    	return xhr;
 		  },
-		  error: function(xhr,status,error) {
-		  	console.log(xhr);
-		  	console.log(status + ": " + error );
-		  },
+		  
 		  contentType: false,
 		  processData: false,
 		  method: 'POST',
-		  url: "dummy2.php",
-		  data: {"hello":"to me"},
-		  success: function(data){
-			console.log(data);
-		  }
-		}).done(function(data){
-			console.log(data);
+		  url: "php/dummy2.php",
+		  data: fm,
+		  error: function(xhr,status,error) {
+		  	// console.log(xhr);
+		  	console.log(status + ": " + error );
+		  },
+		})
+		.done(function(d){
+			try{
+				var data = JSON.parse(d); //expecting data to return with {"img-url": some URL}
+
+				// var newURL = data['img-url']; <---------- please use this when merging
+				var newURL = "../../image/user_img.png";
+				//store URL in userData
+				// console.log(data);
+				that.userData.personalInfo["picture"] = newURL; 
+				that.updateView();
+			} catch (e){
+				console.log(e);
+			}
 		});
 	},
 

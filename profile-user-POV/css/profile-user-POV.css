@@ -282,6 +282,7 @@ div[for="skills-endorsements-edit"] > .panel,.list-group{
 	width: 90%;
 	position: absolute;
 	top: 40%;
+	display: none;
 }
 
 #project-team-members {
