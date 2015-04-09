@@ -93,7 +93,63 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                         <div class="loading">
                           <img src="../image/ajax-loader.gif">
                         </div>
-                        
+                        <form class="editable-form" method="POST">
+                          <!-- Error Alert -->
+                          <div class="alert alert-danger" role="alert">
+                            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                            <span class="sr-only">Error:</span>
+                            <span class="alert-msg"></span>
+                          </div>
+                          <!-- User Name -->
+                          <div class="form-group form-inline">
+                            <div class="form-group">
+                              <label for="first-name-input">First</label>
+                              <abbr title="Required" class="required">*</abbr>
+                              <input name="first-name" type="text" class="form-control" id="first-name-input" placeholder="First" required>
+                            </div>
+                            <div class="form-group">
+                              <label for="last-name-input">Last</label>
+                              <abbr title="Required" class="required">*</abbr>
+                              <input name="last-name" type="text" class="form-control" id="last-name-input" placeholder="Last" required>
+                            </div>
+                            <div class="form-group">
+                              <label for="middle-initial-input">M.I.</label>
+                              <input name="middle-intial" type="text" class="form-control" id="middle-initial-input" placeholder="M.I." style="width:50px;" maxlength="1">
+                            </div>
+                          </div>
+                          <!-- Email Address -->
+                           <div class="form-group">
+                            <label for="email-input">Email</label>
+                            <abbr title="Required" class="required">*</abbr>
+                            <input name="email-address" type="text" class="form-control" id="email-input" value="" required>
+                          </div>
+                          <!-- Alternate Email Address -->
+                           <div class="form-group">
+                            <label for="alt-email-input">Alternate Email</label>
+                            <input name="alt-email-address" type="text" class="form-control" id="alt-email-input" value="">
+                          </div>
+                          <!-- Phone -->
+                          <label for="phone-input">Phone</label>
+                          <div class="form-group form-inline">
+                            <input name="phone-number" type="text" class="form-control" id="phone-input" placeholder="#(###) ###-#### ">
+                           
+                          <div class="btn-group">
+                                <button type="button" class="btn btn-primary" id="phone-color">
+                                    Home</button>
+                                <button type="button" class="btn btn-primary dropdown-toggle" id="phone-caret-color" data-toggle="dropdown">
+                                    <span class="caret" ></span><span class="sr-only">Home</span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><option value="home">Home</option></li>
+                                    <li><option value="work">Work</option></li>
+                                    <li><option value="mobile">Mobile</option></li>
+                                </ul>
+                            </div>
+                            </select>
+                          </div>
+
+                          <!-- Address -->
+                         <div class="form-group">				
 							<label for="country">Country</label> <br />
 							 <label class="radio-inline">
 							  <input class= "country-option" type="radio" name="inlineRadioOptions-country" id="inlineRadio1-country" value="United States" checked> United States
