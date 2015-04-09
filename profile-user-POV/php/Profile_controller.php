@@ -26,30 +26,127 @@ if (!$User = new User($uid)) {
 	die();
 }
 
-//$User = new User(10); // For Testing
+// $User = new User(10); // For Testing
+$editing = false;
+if (isset($_POST['editing'])) {
+	$editing = $_POST['editing'];
+}
 
-// get all info for profile
-$Acc = new Account();
-$Acc->loadByUserID($User->getID());
+$mode = "exit";
 
-$ExpMgr = new ExperienceManager($User);
-$AllExp = $ExpMgr->getAll();
+if ($editing) {
+	$mode = "edit";
+} else {
+	$mode = 'load';
+}
 
-$EduMgr = new EducationManager($User);
-$AllEdu = $EduMgr->getAll();
+try {
+	switch ($mode) {
+		case "edit":
+			$firstname = '';
+			$lastname = '';
+			$middleintial = '';
+			$emailaddress = '';
+			$altemailaddress = '';
+			$phonetype = 'Home';
+			$country = '';
+			$zipcode = '';
+			$countryname = '';
+			$postalcode = '';
+			$address = '';
 
-$ProjMgr = new ProjectManager($User);
-$AllProj = $ProjMgr->getAll();
+			// acquiring data
+			if (isset($_POST["first-name"]))
+				$firstname = $_POST["first-name"];
+			if (isset($_POST["last-name"]))
+				$lastname = $_POST["last-name"];
+			if (isset($_POST["middle-initial"]))
+				$middleintial = $_POST["middle-initial"];
+			if (isset($_POST["email-address"]))
+				$emailaddress = $_POST["email-address"];
+			if (isset($_POST["alt-email-address"]))
+				$altemailaddress = $_POST["alt-email-address"];
+			if (isset($_POST["phone-number"]))
+				$phonenumber = $_POST["phone-number"];
+			if (isset($_POST["phone-type"]))
+				$phonetype = $_POST["phone-type"];
+			if (isset($_POST["inlineRadioOptions-country"]))
+				$country = $_POST["inlineRadioOptions-country"];
+			if (isset($_POST["zipcode"]))
+				$zipcode = $_POST["zipcode"];
+			if (isset($_POST["country-name"]))
+				$countryname = $_POST["country-name"];
+			if (isset($_POST["postal-code"]))
+				$postalcode = $_POST["postal-code"];
+			if (isset($_POST["address"]))
+				$address = $_POST["address"];
+			// End of data acquiring
 
-$SkillMgr = new SkillManager($User);
-$AllSkills = $SkillMgr->getAll();
+			// validate first
+			if (!($firstname && $lastname && $emailaddress)) {
+				echo "Some fields are required.";
+				die();
+			}
 
-// Start Producing View here
-$view = new Profile_View();
-$view->loadPersonalInfo($User, $Acc);
-$view->loadExperience($AllExp);
-$view->loadProjects($AllProj);
-$view->loadEducation($AllEdu);	
+			if (strtolower($country) != 'united states') {
+				$country = $countryname;
+				$zipcode = $postalcode;
+			}
 
-echo json_encode($view->getView());
+
+			// Start updating
+			$Acc = new Account();
+			$Acc->loadByUserID($User->getID());
+			$Acc->setEmail($emailaddress);
+			$Acc->setEmail_Alt($altemailaddress);
+
+			$User->setName($firstname, $lastname, $middleintial);
+			$User->setPhone($phonenumber, $phonetype);
+			$User->setAddress($address, '', '', $zipcode, $country);
+
+			if ($Acc->update() && $User->update()) {
+				echo json_encode(['success'=>1]);
+			} else {
+				echo $Acc->err ."\n<br />\n" . $User->err;
+			};
+
+			
+		break;
+		case "load":
+			// get all info for profile
+			$Acc = new Account();
+			$Acc->loadByUserID($User->getID());
+
+			$ExpMgr = new ExperienceManager($User);
+			$AllExp = $ExpMgr->getAll();
+
+			$EduMgr = new EducationManager($User);
+			$AllEdu = $EduMgr->getAll();
+
+			$ProjMgr = new ProjectManager($User);
+			$AllProj = $ProjMgr->getAll();
+
+			$SkillMgr = new SkillManager($User);
+			$AllSkills = $SkillMgr->getAll();
+
+			// Start Producing View here
+			$view = new Profile_View();
+			$view->loadPersonalInfo($User, $Acc);
+			$view->loadExperience($AllExp);
+			$view->loadProjects($AllProj);
+			$view->loadEducation($AllEdu);
+			$view->loadSkills($AllSkills);	
+
+			echo json_encode($view->getView());
+			break;
+		default:
+			echo "What are you trying to do?";
+			die();
+		break;
+	}
+	
+} catch(Exception $e){
+	echo $e->getMessage();
+	die();
+}
 ?>

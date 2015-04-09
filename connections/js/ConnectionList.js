@@ -1,7 +1,6 @@
 function ConnectionList(container) {
 	this.data = [];
 
-	this.ConnTemplate;
 	this.container = container;
 	this.page = 0;
 	this.Alert;
@@ -14,7 +13,6 @@ ConnectionList.prototype = {
 	constructor: ConnectionList,
 
 	init: function() {
-		this.ConnTemplate = $('#ConnectionTemplate').html();
 		this.Alert = $('#ConnectionsListEndAlert');
 	},
 

@@ -3,8 +3,8 @@
 //ini_set("display_errors", 1); // debug
 require_once __DIR__."/../../lib/php/sqlConnection.php";
 require_once __DIR__."/../../lib/php/classes/User.php";
-require_once __DIR__."/../../lib/php/classes/AccountManager.php";
-require_once __DIR__."/SearchNewConnection_view.php";
+require_once __DIR__."/../../lib/php/classes/ProfileManager.php";
+require_once __DIR__."/UserCard_view.php";
 
 // Check if logged in
 session_start();
@@ -33,16 +33,18 @@ $keywords = explode(" ", $keywords);
 $rowsaPage = 10;
 
 try {
-	$am = new AccountManager($User);
-	$accs = [];
-	if (!$am->loadBySearch($keywords, $page, $rowsaPage)) {
+	$pm = new ProfileManager();
+	$profiles = [];
+	if (!$pm->loadBySearch($keywords, $page, $rowsaPage)) {
 		echo "No results found.";
 		die();
 	};
-	$accs = $am->getAll();
+	//var_dump($pm->getData()); // Debug
+	$profiles = $pm->getAll();
 //echo var_dump($keywords).var_dump($page).var_dump($rowsaPage);
-	$view = new SearchNewConnection_view();
-	$view->load($accs);
+
+	$view = new UserCard_view();
+	$view->load($profiles);
 	$data = $view->getView();
 
 	//echo "\n".json_encode($am->getData())."\n";

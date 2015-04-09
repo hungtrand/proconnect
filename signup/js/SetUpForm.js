@@ -1,7 +1,8 @@
 function SetUpForm(SetUpForm) {
 	this.theForm = SetUpForm;
-	this.CountryInput = SetUpForm.find('#country');
+
 	this.ZipcodeInput = SetUpForm.find('#zipcode');
+	this.CountryInput = SetUpForm.find('#country-name');
 	this.PostalInput = SetUpForm.find('#postal-code');
 	this.AddressInput = SetUpForm.find('#address');
 	this.PhonenumberInput = SetUpForm.find('#phonenumber');
@@ -98,7 +99,15 @@ SetUpForm.prototype = {
 		var startStudent= parseInt(that.StartYearStudentInput.val());
 		var endStudent= parseInt(that.EndYearStudentInput.val());
 
-		if(country!= "United States"){
+		if ($("#inlineRadio2-country").prop("checked")) {
+			if(country== ""){
+				that.CountryInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
+				that.Alert.text("Please enter Country ");
+				that.Alert.show();
+				that.CountryInput.val("");
+
+				return false;
+			}
 			if(postal== ""){
 				that.PostalInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
 				that.Alert.text("Please enter Postal Code ");
@@ -137,7 +146,6 @@ SetUpForm.prototype = {
 		}
 		
 		if ($("#inlineRadio1").prop("checked")) {
-			console.log("employed check")
 			if(jobtitle==""){
 				that.JobTitleInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
 				that.Alert.text("Please enter job title ");

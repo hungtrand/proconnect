@@ -1,17 +1,20 @@
 $(document).ready(function(){
-		$("#country").change(function(){
-			var value = this.value;
+	var country_options = $(".country-option");
+	 for(var i = 0; i<country_options.length; i++){
+	     country_options[i].addEventListener("click",function(){
+	     	var value = this.value;
 			if(value == "United States"){
 				$("#zipcode-group").show();
-				$("#postalcode-group").hide();
+				$("#other-country-group").hide();
 			}
 			else{
 				$("#zipcode-group").hide();
-				$("#postalcode-group").show();
+				$("#other-country-group").show();
 			}
 		});
 
-
+	}
+	
 
 	var signup_options = $(".signup-option");
 	for(var i = 0; i<signup_options.length; i++){

@@ -7,6 +7,7 @@ $(document).ready(function() {
 	//initialize model
 	var user = new User();
 	user.init();
+	
 
 	//serialize object to JSON
 	$.fn.serializeObject = function()
@@ -26,13 +27,21 @@ $(document).ready(function() {
 	   return o;
 	};
 	
-	// //enable sortable
-	// $(".sortable").sortable({
-	// 	items: ':not(.no-sort)'
-	// }).bind('sortupdate', function() {
- //    	//Triggered when the user stopped sorting and the DOM position has changed.
-	// });
-	
+	//preview profile picture
+	function readURL(input) {
+		  if (input.files && input.files[0]) {
+		   var reader = new FileReader();
+		   reader.onload = function(e) {
+			   $('#preview').attr('src', e.target.result);
+			   $( "#picture-submit" ).trigger( "click" );
+		   }
+
+		   reader.readAsDataURL(input.files[0]);
+		   }
+		   }
+		   $("#input-25").change(function() {
+		   readURL(this);
+	   });
 	//enable edit view
 	$(".normal-view").on("click",".editable",function(){
 		var target = "#" + $(this).attr("for");			//grab target
@@ -61,37 +70,76 @@ $(document).ready(function() {
 		$(target).find("a.remove-entry-link").show();
 		//display edit view
 		$(target).fadeIn().find("form").attr( "link", $(this).attr("link") ).attr("editing","true"); 
+		$(target).find('input:text, textarea, input:radio, input:checkbox, select').first().focus();
 	});
-
+	
+	//controls address field
+	var country_options = $(".country-option");
+	 for(var i = 0; i<country_options.length; i++){
+		 country_options[i].addEventListener("click",function(){
+			var value = this.value;
+			if(value == "United States"){
+				$("#zipcode-group").show();
+				$("#other-country-group").hide();
+			}
+			else{
+				$("#zipcode-group").hide();
+				$("#other-country-group").show();
+			}
+		});
+	}
+	
 	//handle edit-form submition
 	$(".editable-form").on("submit", function(e){
-		
 		e.preventDefault();
 
-		if($("#project-team-members").val() !== ""){ //form submission for new members
-			//add user to model 
-			user.fetchMember($("#project-team-members").val());
-			//store the original memberlist
+		if($("#skill-input").val() !== "") {			//form submission for new skills, NOT a save button event
+			var data = $(this).serializeObject();	
+			data["for-index"] = $(this).attr("for-index");
+
+			var newSkill = $("#skill-input").val();
+			var skillList = {};
+			$.each($(this).find("ul#skill-list-edit li"),function(i,li){
+				var skillName = $(li).find("span.skill-pill-name").text();
+				var endorsementNum = $(li).find("span.badge").text();
+				if(newSkill === skillName)
+				{
+					throw "skill already exist";
+				}
+				skillList[skillName] = endorsementNum;
+			});
+			// console.log("OMG" + $(this).siblings("div").next().find("ul").attr("id"));
+
+			skillList[newSkill] = "";
+			data["skill"] = skillList;
+
+			user.tempAddNewSkill(data["skill"]);
+			var editing = ($(this).attr("editing") === "true") ? true : false;
+
+			if($("#skill-input").val() === "")
+			{
+				user.modifyData($(this), data, editing);
+			}
+			else
+			{
+				// user.updateCachedData($(this), data);
+				user.updateEditForm($(this));
+			}
+
+			//add new skill
+			
+
 			//add new member entry to existing model
 
 			//update Form
 
 			//clear input text
-	 		$("#project-team-members").val("");//clear field
-			console.log("adding new teammate");
-
-		} else if($("#skill-input").val() !== "") {	//form submission for new skills
-			//check for duplicate
-			//add new skill 
-			
-			//update Form
-
-			//clear input text
 			$("#skill-input").val("");
-			console.log("adding new skill");
+			//console.log("adding new skill");
 		} else {									//all other form submission
 			var data = $(this).serializeObject();	//grab data in json object format
 
+			//for-index is used to reference which entry to edit, undefined if there isn't any
 			data["for-index"] = $(this).attr("for-index");	//grab for-index, undefined if there isn't any
 
 			if( $(this).parent("div").attr("id") === "skills-endorsements-edit") { //grabbing skill data
@@ -100,10 +148,10 @@ $(document).ready(function() {
 				$.each($(this).find("ul#skill-list-edit li"),function(i,li){
 					var skillName = $(li).find("span.skill-pill-name").text();
 					var endorsementNum = $(li).find("span.badge").text();
-					console.log(skillName + ": " + endorsementNum);
+					//console.log(skillName + ": " + endorsementNum);
 					skillList[skillName] = endorsementNum;
 				});
-				data["skill"] = skillList;	
+				data["skill"] = JSON.stringify(skillList);	// Convert to string for easy decoding in PHP
 			} else if( $(this).parent("div").attr("id") === "project-edit" ) {		//grabbing team members
 				// console.log("project-edit hellow");
 				var memberList = {};
@@ -125,132 +173,209 @@ $(document).ready(function() {
 				validateForm($(this));				//validate this form according to form name
 
 				var editing = ($(this).attr("editing") === "true") ? true : false;
-
-				if(editing) {
-					user.setData($(this),data);
-				} else {
-					user.addData($(this),data);
-				}
+				
+				 //console.log(data);
+				user.modifyData($(this),data,editing);	//modify data
 
 			} catch(e) {
-				if(typeof(e) === "string") {
-					//display error
-			 	$(this).find(".alert-msg").text(e);
-				$(this).find(".alert-danger").show();
-
-					console.log(e); //debug only
-				} else {
-					throw e;
-				}
+				user.showErrorInForm(e,$(this));
 			}
-
-			// console.log(data);
-			$(this).siblings("div.loading").show();//show loading gif					
-			//on success
-			//turn off gif loader
-			
 		}
-		
-		$("a.remove-entry-link").hide(); //hide delete entry link
-		
 
+		$(function(){
+    		$("[data-hide]").on("click", function(){
+        		$("." + $(this).attr("data-hide")).hide();
+    		});
+		});
+		
 		//RETURNS NOTHING. BUT WILL THROW AN ERROR IF ANY FIELD IS WRONG	
 		function validateForm(jQFormEle){ //NEED TO BE IMPLEMENTED
 			var formName = jQFormEle.parent("div").attr("id");
 
 			switch(formName){
 				case "user-info-edit":
-					// console.log("user-info-edit");
+					//console.log("user-info-edit");
+
 					if(IsName($("#first-name-input").val()) === false){
-						throw "Invalid name.";
+						throw "Invalid First Name.";
 					}
 
-					if(IsEmail($("#email-input").val()) === false){
-						throw "Invalid email.";
+					if(IsName($("#last-name-input").val()) === false) {
+						throw "Invalid Last Name."
 					}
 
+					if($("#middle-initial-input").val() != '' && IsName($("#middle-initial-input").val()) === false) {
+						throw "Invalid Middle Initial."
+					}
+
+					if(IsEmail($("#email-input").val()) === false) {
+						throw "Invalid Email.";
+					}
+
+					/*if(IsEmail($("#alt-email-input").val()) === false) {
+						throw "Invalid Alternate Email.";
+					}*/
+
+					if($("#phone-input").val() != '' && IsNumber($("#phone-input").val()) === false) {
+						throw "Invalid Phone Number";
+					}
+					if ($("#inlineRadio2-country").prop("checked")) {
+							if($("#country-name-input").val() == ""){
+								throw "Enter country.";
+							}
+							if($("#postal-code-input").val()== ""){
+								throw "Enter postal code.";
+							}
+					}
+					else{
+								$("#country-name-input").val("United States");
+								//console.log($("#country-name-input").val());
+							if($("#zipcode-input").val()== ""){
+								//throw "Enter zipcode.";
+							}
+							else{
+								if(IsZipcode($("#zipcode-input").val()) === false) {
+									throw "Invalid Zipcode.";
+								}
+							}
+					}
 					// console.log( jQFormEle.find(":input[required]:visible").css("border-color","red") );
 				break;
 				case "summary-edit":
-					console.log("summary-edit");
+					//console.log("summary-edit");
+
+					if(wordCount($("#summary-textarea").val()) > 1000) {
+						throw "Maximum amount of characters have been reached." + wordCount($("#summary-textarea").val());
+					}
 
 				break;
 				case "skills-endorsements-edit":
-					console.log("skills-endorsements-edit");
+					//console.log("skills-endorsements-edit");
 
-				break;first-name-input
+					if($("#skill-list-edit li").length >= 50) {
+						throw "You have reached the limit for adding skills.";
+					}
+
+					//console.log($("#skill-list-edit li").length);
+
+				break;//first-name-input
 				case "experience-edit":
-					console.log("experience-edit");
+					//console.log("experience-edit");
+
+					if(IsNumber($("#work-start-year").val()) === false) {
+						throw "Invalid Start Year.";
+					}
+
+					if(IsNumber($("#work-end-year").val()) === false) {
+						throw "Invalid End Year.";
+					}
+
+					if(compareDate($("#work-start-month").val(), $("#work-end-month").val(), $("#work-start-year").val(), $("#work-end-year").val() )) {
+						throw "Invalid Date Range";
+					}
 
 				break;
 				case "project-edit":
-					console.log("project-edit");
+					//console.log("project-edit");
+
+					if(wordCount($("#project-description").val()) > 1000) {
+						throw "Maximum amount of words have been reached." + wordCount($("#project-description").val());
+					}
 
 				break;
 				case "education-edit":
-					console.log("education-edit");
+					//console.log("education-edit");
+
+					if(IsWord($("#school-name").val()) === false) {
+						throw "Invalid School Name";
+					}
+
+					if(IsWord($("#degree").val()) === false) {
+						throw "Invalid Degree Name";
+					}
+
+					if(IsWord($("#field-of-study").val()) === false) {
+						throw "Invalid Field Of Study Name";
+					}
+
+					if(IsWord($("#grade").val()) === false) {
+						throw "Invalid Grade Name";
+					}
+
+					if(compareYear($("#school-year-started").val(), $("#school-year-ended").val())) {
+						throw "Invalid Date Organization";
+					}
+
+					if(wordCount($("#activities").val()) > 1000) {
+						throw "Maximum amount of words have been reached." + wordCount($("#project-description").val());
+					}
+
+					if(wordCount($("#education-description").val()) > 1000) {
+						throw "Maximum amount of words have been reached." + wordCount($("#project-description").val());
+					}
 
 				break;
 			}
-			// var first= that.FirstInput.val().trim();
-			// var last = that.LastInput.val().trim();
-			// var email= that.EmailInput.val().trim();
-			// var password = that.PasswordInput.val(); 
-			// var confpassword = that.ConfPasswordInput.val();
 
-			
-			// if(first== "" || IsName(first)==false){
-			//     that.FirstInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
-			// 	that.Alert.text("Please enter valid first name");
-			// 	that.Alert.show();
-			// 	that.FirstInput.val("");
+			function wordCount(message)
+			{
+				var regex = /\s+/gi;
+				var counter = message.trim().replace(regex, ' ').split(' ').length;
+				return counter;
+			}
 
-			//     return false;
-			// }
+			function compareYear(year1, year2)
+			{
+				if(parseInt(year1) < parseInt(year2)) {
+					return false;
+				}
+				else {
+					return true;
+				}
+			}
 
-			// if(last== "" || IsName(first)==false){
-			//     that.LastInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
-			// 	that.Alert.text("Please enter valid last name");
-			// 	that.Alert.show();
-			// 	that.LastInput.val("");
+			function compareMonth(month1, month2)
+			{
+				if(parseInt(month1) < parseInt(month2)) {
+					return false;
+				}
+				else {
+					return true;
+				}
+			}
 
-			//     return false;
-			// }
-
-			// if(email== "" || IsEmail(email)==false){
-			//     that.EmailInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
-			// 	that.Alert.text("Please enter a valid email address ");
-			// 	that.Alert.show();
-			// 	that.EmailInput.val("");
-
-			//     return false;
-			// }
-
-			// if(password=="" || IsPassword(password)==false){
-			//     that.PasswordInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
-			// 	that.Alert.text("Password has to be 6-20 in length ");
-			// 	that.Alert.show();
-			// 	that.PasswordInput.val("");
-
-			//     return false;
-			// }
-
-			// if (password !== confpassword) {
-			// 	that.ConfPasswordInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
-			// 	that.Alert.text("The passwords don't match. Please type again. ");
-			// 	that.PasswordInput.val("");
-
-			// 	return false;
-			// }
-
-			// return true;
+			function compareDate(month1, month2, year1, year2) {
+				if(compareYear(year1, year2) === false) {
+					return false;
+				}
+				else {
+					if(compareMonth(month1, month2) === false)
+					{
+						return false;
+					}
+					else
+					{
+						return true;
+					}
+				}
+			}
 
 			function IsName(name) {
-			var regex =/^[a-z ,.'-]+$/i;
+			var regex =/^[a-zA-Z0-9 ,.'-]+$/i;
 				if(!regex.test(name)) {
 				   	return false;
 				}else{
 				   	return true;
+				}
+			}
+
+			function IsWord(word) {
+				var regex = /^[a-zA-Z0-9 ,.']+$/i;
+				if(!regex.test(word)) {
+					return false;
+				}
+				else {
+					return true;
 				}
 			}
 
@@ -262,7 +387,26 @@ $(document).ready(function() {
 		           return true;
 		        }
 		    }
-		}
+
+		    function IsNumber(number) {
+		    	var regex = /^[0-9]+$/;
+		    	if(!regex.test(number)) {
+		    		return false;
+		    	}
+		    	else {
+		    		return true;
+		    	}
+		    }
+			
+			function IsZipcode(zipcode) {
+				var regex =/^\d{5}$/;
+					if(!regex.test(zipcode)) {
+						return false;
+					}else{
+						return true;
+					}
+				}
+			}
 	});
 
 	//handle remove entry link
@@ -328,6 +472,14 @@ $(document).ready(function() {
 
 		//console.log(link);
 
+		//clear project member list
+		if($(this).parent("form").find("ul.sortable").length > 0) {
+			$(this).parent("form").find("ul.sortable > li").remove();
+		}
+
+		//turn off gif loader
+		$(target).find("div.loading").hide();
+
 		//repopulate the page
 		$(".editable").fadeIn(50);  //show all editable components
 		$(link).fadeIn();			//fade link items in
@@ -342,9 +494,14 @@ $(document).ready(function() {
 		if(forTarget !== '#true') { 		//handle editview on add
 			//display edit view
 			$(target).find("form.editable-form").attr("for-index","new");
+			$(target).find("form.editable-form").find('.DataID').val(0);
+			$(target).find("form.editable-form").find('input:text, textarea').val('');
+			$(target).find("form.editable-form").find('input:radio, input:checkbox').removeAttr('checked');
+			$(target).find("form.editable-form").find('select').removeAttr('selected');
 			$(target).fadeIn(); //.css("display","block").
+			$(target).find('input:text, textarea, input:radio, input:checkbox, select').first().focus();
 		} else {				
-			console.log(target);	//if add btn is doing an edit action 
+			//console.log(target);	//if add btn is doing an edit action 
 			//NOTE: target should be the live view id, not edit view id
 			$(target).find("div.editable").trigger("click");	
 		}
@@ -353,7 +510,6 @@ $(document).ready(function() {
 
 	//enable team member or skill deletion 
 	$("ul.sortable").on("click","button.close",function(){
-
 		//remove entry from model
 		$(this).parent("li").remove();
 	});
@@ -372,5 +528,7 @@ $(document).ready(function() {
 
 
 	// $("#sortable").append("<li class=\"ui-state-default col-md-3\"><div class=\"team-member-block team-member-block-edit-view col-md-6\"><div class=\"team-member-block-description\"> <p>You</p></div></div><button type=\"button\" class=\"close\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button></li>");
+
+	
 
 });
