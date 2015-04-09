@@ -89,6 +89,52 @@ User.prototype = {
 		this.fetchData();	//fetch data 
 	},
 
+	storeImage: function(imgFile){
+
+		var fm = new FormData();
+		fm.append('file', imgFile);
+
+		$.ajax({
+		  	xhr: function()
+		  	{
+			    var xhr = new window.XMLHttpRequest();
+			    //Upload progress
+			    xhr.upload.addEventListener("progress", function(evt){
+			      if (evt.lengthComputable) {
+			        var percentComplete = evt.loaded / evt.total;
+			        //Do something with upload progress
+			        console.log(percentComplete);
+			      } else {
+			      	console.log(evt)
+			      }
+			    }, false);
+			    //Download progress
+			    // xhr.addEventListener("progress", function(evt){
+			    //   if (evt.lengthComputable) {
+			    //     var percentComplete = evt.loaded / evt.total;
+			    //     //Do something with download progress
+			    //     console.log(percentComplete);
+			    //   }
+			    // }, false);
+		    	// return xhr;
+		  },
+		  error: function(xhr,status,error) {
+		  	console.log(xhr);
+		  	console.log(status + ": " + error );
+		  },
+		  contentType: false,
+		  processData: false,
+		  method: 'POST',
+		  url: "dummy2.php",
+		  data: {"hello":"to me"},
+		  success: function(data){
+			console.log(data);
+		  }
+		}).done(function(data){
+			console.log(data);
+		});
+	},
+
 	tempAddNewSkill: function(newSkill) { //temporary add new skill, will store the original
 		if(this.oSkillList === ""){
 			this.oSkillList = this.userData["skill"];

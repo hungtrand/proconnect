@@ -30,18 +30,22 @@ $(document).ready(function() {
 	//preview profile picture
 	function readURL(input) {
 		  if (input.files && input.files[0]) {
-		   var reader = new FileReader();
-		   reader.onload = function(e) {
-			   $('#preview').attr('src', e.target.result);
-			   $( "#picture-submit" ).trigger( "click" );
+		   		var reader = new FileReader();
+		   		reader.onload = function(e) {
+		   			console.log(e);
+				   $('#preview').attr('src', e.target.result);
+				   $( "#picture-submit" ).trigger( "click" );
+		   		}
+		   		reader.readAsDataURL(input.files[0]);
 		   }
+    }
 
-		   reader.readAsDataURL(input.files[0]);
-		   }
-		   }
-		   $("#input-25").change(function() {
-		   readURL(this);
-	   });
+    //enable image edit
+    $("#input-25").change(function() {
+	   	// readURL(this);
+	   	user.storeImage( this.files[0] );
+	});
+
 	//enable edit view
 	$(".normal-view").on("click",".editable",function(){
 		var target = "#" + $(this).attr("for");			//grab target
