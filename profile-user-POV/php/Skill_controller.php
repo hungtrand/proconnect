@@ -26,6 +26,8 @@ if (!$User = new USER($uid)) {
 	$skillname = null;
 	$endrosements = 0;
 	$orderPosition = 0;
+	$skillid = -1;
+	$mode = "exit";
 
 	if(isset($_POST['skill'])){
 		$skillname = trim($_POST['skill']);
@@ -36,20 +38,53 @@ if (!$User = new USER($uid)) {
 	if(isset($_POST['orderPositions'])){
 		$orderPosition = trim($_POST['orderPosition']);
 	}
-
+	if(isset($_POST['remove']) && $skillid > 0){
+		$mode = 'delete';
+	} elseif($skillid > 0){
+		$mode = 'edit';
+	}elseif($skillid == 0){
+		$mode = 'insert';
+	}
 	try{
-		
-		$sk = new skill();
-		$sk->setUserID($uid);
-		$sk->setSkillName($skillname);
-		$sk->setEndorsements($endrosements);
-		$sk->setOrderPosition($orderPosition);
-		$sk->save();
-
+		swtich($mode){
+			case 'delete':
+				$sk = new skill();
+				if($sk->load($skillid) == true){
+					$sk->delete();
+					echo json_encode(['success'=>1]);
+				}else {
+					echo "Cannot delete. This record no longer exists!";
+				}
+				break;
+			case 'edit':
+				$sk = new skill();
+				if($sk->load($skillid)== true){
+					$sk->setSkillName($skillname);
+					$sk->setEndorsements($endrosements);
+					$sk->setOrderPosition($orderPosition);
+					$sk->update();
+					echo json_encode(['success'=>1]);
+				} else{
+					echo "Cannot save. Retry again!";
+				}
+				break;
+			case 'insert':
+				$sk = new Skill();
+				$sk->setUserID($uid);
+				$sk->setSkillName($skillname);
+				$sk->setEndorsements($endrosements);
+				$sk->setOrderPosition($orderPosition);
+				$sk->save();
+				echo json_encode(json_encode($sk->getData()));
+				break;
+			default:
+				echo "What are you trying to do?";
+				die();
+				break;
+		}
 
 	} catch(Exception $e){
 		echo $e->getMessage();
 		die();
 	}
-
 ?>
