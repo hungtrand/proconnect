@@ -766,7 +766,6 @@ User.prototype = {
 		$("#user-experiences").html("");
 		$.each(this.userData.experiences,function(i,exp){
 			// $("#user-experiences").html("");
-
 			// exp["company-location"]
 			var endTime = (exp["work-present"] === "") ? exp["work-end-month"] + " " + exp['work-end-year'] : exp["work-present"];
 			var workTime = exp['work-start-month'] + " " + exp['work-start-year'] + " &#8213 " + endTime;
