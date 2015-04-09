@@ -54,7 +54,7 @@ CREATE TABLE `Account` (
 
 LOCK TABLES `Account` WRITE;
 /*!40000 ALTER TABLE `Account` DISABLE KEYS */;
-INSERT INTO `Account` VALUES (6,'hung.d.tran@sjsu.edu','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-02-27 09:57:00','2015-04-09 14:41:06','',7,'hung.d.tran@sjsu.edu','','','','','4f1f9bc6dc9fe6e8f2f3a9e58bc1d970f74da755','\0','5f7248c66d52a9f170ab0fb3d5815a4a4f8defde'),(9,'hungtrand0929@gmail.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-03-01 20:32:24','2015-04-08 19:03:30','',10,'hungtrand0929@gmail.com','','','','','12864cd03656bdeaab0a69705f18c57daf92fadd','\0','795198ed9949c68e031440f7ce7a0032b166bee7'),(18,'hung_duy_tran@yahoo.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','0000-00-00 00:00:00','2015-04-06 19:39:25','',26,'hung_duy_tran@yahoo.com','','','','','f090df75b81fa64d6fc11b6988d981d0b0e3caf3','\0','8022e9e673d13062d33cf709ebb7e982963969e9'),(19,'bill@quriousdesigns.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-04-05 17:20:13','2015-04-05 10:21:48','',27,'bill@quriousdesigns.com','','','','','ee0f25847aa96e3868f5cf2af4ff9bfe9db2925c','\0',NULL),(20,'larry@proconnect.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-04-06 18:33:39',NULL,'',28,'page@proconnect.com','','','','','bcb2ae9a08c1ae7bef2892fed190e044ba10f705','\0',NULL),(21,'steve@proconnect.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-04-06 18:34:34',NULL,'',29,'jobs@proconnect.com','','','','','c43f320842fec2cd3f19112f62064d2492b34d44','\0',NULL),(22,'mark@proconnect.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-04-06 18:35:28',NULL,'',30,'mark@proconnect.com','','','','','a913b264f71e3072ef36a369d5f0631e68c75113','\0',NULL),(23,'eric@proconnect.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-04-06 18:36:30',NULL,'',31,'eric@proconnect.com','','','','','ec8097fe400beb0ab7547583de9fc98024a97405','\0',NULL),(24,'jeff@proconnect.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-04-06 18:37:59',NULL,'',32,'jeff@proconnect.com','','','','','4b291e98e9bee88c1f11c973c2140c745c6b038d','\0',NULL),(25,'natasha@blackwidow.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-04-06 18:41:39',NULL,'',33,'natasha@blackwidow.com','','','','','fb177e862247c363920681a3e3f9949f730db302','\0',NULL),(26,'wilson@deadpool.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-04-06 18:42:45',NULL,'',34,'wilson@deadpool.com','','','','','70135c84c5df50f34515e24d4cb8eeaea0fb1ea2','\0',NULL),(27,'barton@hawkeye.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-04-06 18:43:59',NULL,'',35,'barton@hawkeye.com','','','','','e35e7054dd1fbea39b83ae24a7701aff539d435a','\0',NULL);
+INSERT INTO `Account` VALUES (6,'hung.d.tran@sjsu.edu','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-02-27 09:57:00','2015-04-06 16:12:20','',7,'hung.d.tran@sjsu.edu','','','','','4f1f9bc6dc9fe6e8f2f3a9e58bc1d970f74da755','\0','5f7248c66d52a9f170ab0fb3d5815a4a4f8defde'),(9,'hungtrand0929@gmail.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-03-01 20:32:24','2015-04-06 16:06:53','',10,'hungtrand0929@gmail.com','','','','','12864cd03656bdeaab0a69705f18c57daf92fadd','\0','795198ed9949c68e031440f7ce7a0032b166bee7'),(18,'hung_duy_tran@yahoo.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','0000-00-00 00:00:00','2015-04-06 19:39:25','',26,'hung_duy_tran@yahoo.com','','','','','f090df75b81fa64d6fc11b6988d981d0b0e3caf3','\0','8022e9e673d13062d33cf709ebb7e982963969e9'),(19,'bill@quriousdesigns.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-04-05 17:20:13','2015-04-05 10:21:48','',27,'bill@quriousdesigns.com','','','','','ee0f25847aa96e3868f5cf2af4ff9bfe9db2925c','\0',NULL),(20,'larry@proconnect.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-04-06 18:33:39',NULL,'',28,'page@proconnect.com','','','','','bcb2ae9a08c1ae7bef2892fed190e044ba10f705','\0',NULL),(21,'steve@proconnect.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-04-06 18:34:34',NULL,'',29,'jobs@proconnect.com','','','','','c43f320842fec2cd3f19112f62064d2492b34d44','\0',NULL),(22,'mark@proconnect.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-04-06 18:35:28',NULL,'',30,'mark@proconnect.com','','','','','a913b264f71e3072ef36a369d5f0631e68c75113','\0',NULL),(23,'eric@proconnect.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-04-06 18:36:30',NULL,'',31,'eric@proconnect.com','','','','','ec8097fe400beb0ab7547583de9fc98024a97405','\0',NULL),(24,'jeff@proconnect.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-04-06 18:37:59',NULL,'',32,'jeff@proconnect.com','','','','','4b291e98e9bee88c1f11c973c2140c745c6b038d','\0',NULL),(25,'natasha@blackwidow.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-04-06 18:41:39',NULL,'',33,'natasha@blackwidow.com','','','','','fb177e862247c363920681a3e3f9949f730db302','\0',NULL),(26,'wilson@deadpool.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-04-06 18:42:45',NULL,'',34,'wilson@deadpool.com','','','','','70135c84c5df50f34515e24d4cb8eeaea0fb1ea2','\0',NULL),(27,'barton@hawkeye.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-04-06 18:43:59',NULL,'',35,'barton@hawkeye.com','','','','','e35e7054dd1fbea39b83ae24a7701aff539d435a','\0',NULL);
 /*!40000 ALTER TABLE `Account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -77,7 +77,7 @@ CREATE TABLE `Connections` (
   KEY `fk_Connections_User_TargetUser_idx` (`TargetUserID`),
   CONSTRAINT `fk_Connections_User_InitUser` FOREIGN KEY (`InitUserID`) REFERENCES `User` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Connections_User_TargetUser` FOREIGN KEY (`TargetUserID`) REFERENCES `User` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -86,7 +86,7 @@ CREATE TABLE `Connections` (
 
 LOCK TABLES `Connections` WRITE;
 /*!40000 ALTER TABLE `Connections` DISABLE KEYS */;
-INSERT INTO `Connections` VALUES (18,10,7,'','2015-04-01 01:12:27',NULL),(21,10,26,'','2015-04-02 22:58:01',NULL),(23,27,10,'','2015-04-06 07:00:00',NULL),(24,7,27,'','2015-04-06 07:00:00',NULL),(25,10,28,'','2015-04-06 07:00:00',NULL),(26,10,29,'','2015-04-06 07:00:00',NULL),(27,30,10,'','2015-04-07 02:57:03',NULL);
+INSERT INTO `Connections` VALUES (18,10,7,'','2015-04-01 01:12:27',NULL),(21,10,26,'','2015-04-02 22:58:01',NULL),(23,27,10,'','2015-04-06 07:00:00',NULL),(24,7,27,'','2015-04-06 07:00:00',NULL);
 /*!40000 ALTER TABLE `Connections` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -112,7 +112,7 @@ CREATE TABLE `Education` (
   UNIQUE KEY `EduID_UNIQUE` (`EduID`),
   KEY `fk_Education_User_idx` (`UserID`),
   CONSTRAINT `fk_Education_User` FOREIGN KEY (`UserID`) REFERENCES `User` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -121,7 +121,7 @@ CREATE TABLE `Education` (
 
 LOCK TABLES `Education` WRITE;
 /*!40000 ALTER TABLE `Education` DISABLE KEYS */;
-INSERT INTO `Education` VALUES (1,'San Jose State University','Master','Software Engineering','',7,4.000,2013,2016,''),(3,'Alameda College',NULL,'Computer Science',NULL,10,3.900,2011,2013,NULL),(37,'UC Berkeley','Bachelor of Science','Computer Science','Trees',7,4.000,2015,2016,'Trees related');
+INSERT INTO `Education` VALUES (1,'San Jose State University',NULL,'Software Engineering',NULL,7,4.000,2013,2016,NULL),(2,'Berkeley City College',NULL,'Computer Science',NULL,7,3.800,2011,2013,NULL),(3,'Alameda College',NULL,'Computer Science',NULL,10,3.900,2011,2013,NULL);
 /*!40000 ALTER TABLE `Education` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -210,7 +210,7 @@ CREATE TABLE `Experience` (
   PRIMARY KEY (`ExpID`),
   KEY `fk_Experience_User_idx` (`UserID`),
   CONSTRAINT `fk_Experience_User` FOREIGN KEY (`UserID`) REFERENCES `User` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -219,7 +219,7 @@ CREATE TABLE `Experience` (
 
 LOCK TABLES `Experience` WRITE;
 /*!40000 ALTER TABLE `Experience` DISABLE KEYS */;
-INSERT INTO `Experience` VALUES (1,'Google Inc.','Web Application Developer','Mountain View',NULL,'2015-03-30 02:37:26',11,2013,NULL,NULL,10),(3,'Google Inc.','Software Engineer',NULL,NULL,'2015-03-30 10:43:42',NULL,NULL,NULL,NULL,10),(4,'Microsoft, Inc.','CEO',NULL,NULL,'2015-04-05 17:22:52',NULL,NULL,NULL,NULL,27),(5,'Qurious Designs','Manager','San Jose, CA','2test','2015-04-09 13:38:09',2,2011,4,2015,7);
+INSERT INTO `Experience` VALUES (1,'Google Inc.','Web Application Developer','Mountain View',NULL,'2015-03-30 02:37:26',11,2013,NULL,NULL,10),(3,'Google Inc.','Software Engineer',NULL,NULL,'2015-03-30 10:43:42',NULL,NULL,NULL,NULL,10),(4,'Microsoft, Inc.','CEO',NULL,NULL,'2015-04-05 17:22:52',NULL,NULL,NULL,NULL,27);
 /*!40000 ALTER TABLE `Experience` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -465,7 +465,7 @@ CREATE TABLE `Projects` (
   PRIMARY KEY (`ProjectID`),
   KEY `fk_Projects_User_idx` (`UserID`),
   CONSTRAINT `fk_Projects_User` FOREIGN KEY (`UserID`) REFERENCES `User` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -474,7 +474,7 @@ CREATE TABLE `Projects` (
 
 LOCK TABLES `Projects` WRITE;
 /*!40000 ALTER TABLE `Projects` DISABLE KEYS */;
-INSERT INTO `Projects` VALUES (1,'UAV (Cloud Seeding)',NULL,'Firmware Developer','Program an autonomous airplane to make it rain.',10,11,2013,NULL,NULL,'2015-03-30 02:48:49'),(2,'Mars Expedition 2','Mars.net','Pilot','Fly it to the moon',7,11,2014,NULL,NULL,'2015-04-09 22:25:48');
+INSERT INTO `Projects` VALUES (1,'UAV (Cloud Seeding)',NULL,'Firmware Developer','Program an autonomous airplane to make it rain.',10,11,2013,NULL,NULL,'2015-03-30 02:48:49');
 /*!40000 ALTER TABLE `Projects` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -496,7 +496,7 @@ CREATE TABLE `Skills` (
   UNIQUE KEY `SkillID_UNIQUE` (`SkillID`),
   KEY `fk_Skills_User_idx` (`UserID`),
   CONSTRAINT `fk_Skills_User` FOREIGN KEY (`UserID`) REFERENCES `User` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -505,7 +505,7 @@ CREATE TABLE `Skills` (
 
 LOCK TABLES `Skills` WRITE;
 /*!40000 ALTER TABLE `Skills` DISABLE KEYS */;
-INSERT INTO `Skills` VALUES (1,'PHP',0,1,10,'2015-03-30 02:53:34'),(4,'JAVA',1,1,7,'2015-04-09 21:39:09'),(5,'C',3,1,7,'2015-04-09 21:39:09'),(16,'C++',0,1,7,'2015-04-09 22:17:09');
+INSERT INTO `Skills` VALUES (1,'PHP)',0,1,10,'2015-03-30 02:53:34');
 /*!40000 ALTER TABLE `Skills` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -533,7 +533,6 @@ CREATE TABLE `User` (
   `PhoneType` varchar(45) DEFAULT NULL,
   `EmploymentStatus` varchar(45) DEFAULT NULL,
   `Country` varchar(45) DEFAULT NULL,
-  `ProfileImage` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`UserID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -544,7 +543,7 @@ CREATE TABLE `User` (
 
 LOCK TABLES `User` WRITE;
 /*!40000 ALTER TABLE `User` DISABLE KEYS */;
-INSERT INTO `User` VALUES (7,'Bruce','','Wayne','Male','2015-03-25 00:00:00','','','','','2015-02-27 09:57:00','This is my summar','5555555555','Mobile',NULL,'United States',NULL),(10,'Hung',NULL,'Tran',NULL,NULL,'1 Washington Sq.',NULL,NULL,NULL,'2015-03-01 20:32:24',NULL,'555-555-5555','Home','employed','United States',NULL),(26,'Tony','','Stark','','0000-00-00 00:00:00','','','','','2015-03-29 22:26:37',NULL,NULL,NULL,NULL,NULL,NULL),(27,'Bill','','Gates',NULL,NULL,'123 Qurious st',NULL,NULL,NULL,'2015-04-05 17:20:13',NULL,'555-555-5555','Home','employed',NULL,NULL),(28,'Larry','','Page',NULL,NULL,NULL,NULL,NULL,NULL,'2015-04-06 18:33:39',NULL,NULL,NULL,NULL,NULL,NULL),(29,'Steve','','Jobs',NULL,NULL,NULL,NULL,NULL,NULL,'2015-04-06 18:34:34',NULL,NULL,NULL,NULL,NULL,NULL),(30,'Mark','','Zuckerberg',NULL,NULL,NULL,NULL,NULL,NULL,'2015-04-06 18:35:28',NULL,NULL,NULL,NULL,NULL,NULL),(31,'Eric','','Schmidt',NULL,NULL,NULL,NULL,NULL,NULL,'2015-04-06 18:36:30',NULL,NULL,NULL,NULL,NULL,NULL),(32,'Jeff','','Weiner',NULL,NULL,NULL,NULL,NULL,NULL,'2015-04-06 18:37:59',NULL,NULL,NULL,NULL,NULL,NULL),(33,'Natasha','','Romanova',NULL,NULL,NULL,NULL,NULL,NULL,'2015-04-06 18:41:39',NULL,NULL,NULL,NULL,NULL,NULL),(34,'Wilson','','Wade',NULL,NULL,NULL,NULL,NULL,NULL,'2015-04-06 18:42:45',NULL,NULL,NULL,NULL,NULL,NULL),(35,'Barton','','Clint',NULL,NULL,NULL,NULL,NULL,NULL,'2015-04-06 18:43:59',NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `User` VALUES (7,'Bruce','','Wayne','Male','2015-03-25 00:00:00','','','','','2015-02-27 09:57:00',NULL,NULL,NULL,NULL,NULL),(10,'Hung',NULL,'Tran',NULL,NULL,'1 Washington Sq.',NULL,NULL,NULL,'2015-03-01 20:32:24',NULL,'555-555-5555','Home','employed','United States'),(26,'Tony','','Stark','','0000-00-00 00:00:00','','','','','2015-03-29 22:26:37',NULL,NULL,NULL,NULL,NULL),(27,'Bill','','Gates',NULL,NULL,'123 Qurious st',NULL,NULL,NULL,'2015-04-05 17:20:13',NULL,'555-555-5555','Home','employed',NULL),(28,'Larry','','Page',NULL,NULL,NULL,NULL,NULL,NULL,'2015-04-06 18:33:39',NULL,NULL,NULL,NULL,NULL),(29,'Steve','','Jobs',NULL,NULL,NULL,NULL,NULL,NULL,'2015-04-06 18:34:34',NULL,NULL,NULL,NULL,NULL),(30,'Mark','','Zuckerberg',NULL,NULL,NULL,NULL,NULL,NULL,'2015-04-06 18:35:28',NULL,NULL,NULL,NULL,NULL),(31,'Eric','','Schmidt',NULL,NULL,NULL,NULL,NULL,NULL,'2015-04-06 18:36:30',NULL,NULL,NULL,NULL,NULL),(32,'Jeff','','Weiner',NULL,NULL,NULL,NULL,NULL,NULL,'2015-04-06 18:37:59',NULL,NULL,NULL,NULL,NULL),(33,'Natasha','','Romanova',NULL,NULL,NULL,NULL,NULL,NULL,'2015-04-06 18:41:39',NULL,NULL,NULL,NULL,NULL),(34,'Wilson','','Wade',NULL,NULL,NULL,NULL,NULL,NULL,'2015-04-06 18:42:45',NULL,NULL,NULL,NULL,NULL),(35,'Barton','','Clint',NULL,NULL,NULL,NULL,NULL,NULL,'2015-04-06 18:43:59',NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `User` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -609,4 +608,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-04-09 16:09:39
+-- Dump completed on 2015-04-06 19:39:56
