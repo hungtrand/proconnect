@@ -144,7 +144,8 @@ $(document).ready(function() {
 			// console.log("adding new teammate");
 
 		} else if($("#skill-input").val() !== "") {			//form submission for new skills, NOT a save button event
-			//check for duplicate									//all other form submission
+			//check for duplicate
+			//all other form submission
 			var data = $(this).serializeObject();	
 			data["for-index"] = $(this).attr("for-index");
 
