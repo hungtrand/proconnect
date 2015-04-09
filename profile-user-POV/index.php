@@ -18,18 +18,25 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                   <div class="row normal-view">
                    
 					<div id="profile-image-block" class="col col-sm-6 col-md-4 col-lg-3">
+						<div id="progress-block" style= "z-index: 1;">
+							<div class="progress">
+							  <div id="img-progress-bar" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+								<span class="sr-only"></span>
+							  </div>
+							</div>
+						</div>
                           <div id="profile-image" class="outer-ref" >
                            <img src="http://placehold.it/380x500" alt="" class="img-responsive profile-image" id="preview"/>
-							<div id="picture-edit">
-								<form class="editable-form">
-									<div id="change-image-block" type = "file"> 							                        
-									 <span id="glyphicon-picture" class="glyphicon glyphicon-picture" aria-hidden="true"></span>
-									 <span id="change-photo-text">Change Photo</span>
-									 <input id= "input-25" type= "file" class>
-									 <button type="submit" id = "picture-submit"class="btn btn-primary save-btn" value="save" style = "display: none;">Save</button>
-									</div>
-								</form>
-							</div>
+              							<div id="picture-edit">
+              								<form class="editable-form">
+              									<div id="change-image-block" type = "file"> 							                        
+              									 <span id="glyphicon-picture" class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+              									 <span id="change-photo-text">Change Photo</span>
+              									 <input id= "input-25" type= "file" class>
+              									 <button type="submit" id = "picture-submit"class="btn btn-primary save-btn" value="save" style = "display: none;">Save</button>
+              									</div>
+              								</form>
+              							</div>
                           </div>
 						  
                       </div>

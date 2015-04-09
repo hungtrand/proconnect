@@ -142,7 +142,7 @@ include '../header/header.php';
                                 <input type="text" class="form-control keywords" name="NewConnKeywords" />
 
                                 <span class="input-group-btn">
-                                    <button class="btn btn-primary submit" type="button">
+                                    <button class="btn btn-primary submit" type="button" title="Search">
                                         <span class="glyphicon glyphicon-search"></span>
                                     </button>
                                   </span>
