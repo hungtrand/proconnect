@@ -16,7 +16,8 @@ class Profile_View implements view {
 			"experiences"=>[],
 			"skill"=>[],
 			"projects"=>[],
-			"education"=>[]
+			"education"=>[],
+			"skill"=>[]
 		];
 	}
 
@@ -91,6 +92,20 @@ class Profile_View implements view {
 		}
 
 		$this->FinalView['projects'] = $data;
+	}
+
+	public function loadSkills($arrSkills) {
+		if (!isset($arrSkills) || count($arrSkills) < 1) return false;
+		$data = [];
+
+		foreach ($arrSkills as $skill) {
+			$SkillName = $skill->getSkillName();
+			$nEndorse = $skill->getEndorsements();
+			if (!array_key_exists($SkillName, $data))
+				$data[$SkillName] = $nEndorse;
+		}
+
+		$this->FinalView['skill'] = $data;
 	}
 
 	public function loadEducation($arrEdu) {

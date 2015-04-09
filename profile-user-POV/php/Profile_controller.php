@@ -134,7 +134,8 @@ try {
 			$view->loadPersonalInfo($User, $Acc);
 			$view->loadExperience($AllExp);
 			$view->loadProjects($AllProj);
-			$view->loadEducation($AllEdu);	
+			$view->loadEducation($AllEdu);
+			$view->loadSkills($AllSkills);	
 
 			echo json_encode($view->getView());
 			break;
