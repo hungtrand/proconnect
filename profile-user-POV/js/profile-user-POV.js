@@ -27,21 +27,44 @@ $(document).ready(function() {
 	   return o;
 	};
 	
+	// function formReset(form){
+	// 	var link = '#' + $(form).parent("form").attr("link");
+	// 	target = $(form).parent("form").parent("div");
+	// 	$(target).fadeOut(50);				 //close editable view
+	// 	$(target).find("form").trigger("reset"); //reset form
+	// 	$(target).find("a.remove-entry-link").hide(); //hide delete entry link
+	// 	//clear temporary data
+	// 	$(form).parent("form").attr("editing","false")
+
+	// 	//turn off gif loader
+	// 	$(target).find("div.loading").hide();
+
+	// 	//repopulate the page
+	// 	$(".editable").fadeIn(50);  //show all editable components
+	// 	$(link).fadeIn();			//fade link items in
+	// }
+	
 	//preview profile picture
 	function readURL(input) {
 		  if (input.files && input.files[0]) {
-		   var reader = new FileReader();
-		   reader.onload = function(e) {
-			   $('#preview').attr('src', e.target.result);
-			   $( "#picture-submit" ).trigger( "click" );
+		   		var reader = new FileReader();
+		   		reader.onload = function(e) {
+		   			console.log(e);
+				   $('#preview').attr('src', e.target.result);
+				   $( "#picture-submit" ).trigger( "click" );
+		   		}
+		   		reader.readAsDataURL(input.files[0]);
 		   }
+    }
 
-		   reader.readAsDataURL(input.files[0]);
-		   }
-		   }
-		   $("#input-25").change(function() {
-		   readURL(this);
-	   });
+
+
+    //enable image edit
+    $("#input-25").change(function() {
+	   	// readURL(this);
+	   	user.storeImage( this.files[0] );
+	});
+
 	//enable edit view
 	$(".normal-view").on("click",".editable",function(){
 		var target = "#" + $(this).attr("for");			//grab target
@@ -93,24 +116,48 @@ $(document).ready(function() {
 		e.preventDefault();
 
 		if($("#project-team-members").val() !== ""){ 		//form submission for new members, NOT a save button event
-
-			//add user to model 
-			var newMember = user.fetchMember($("#project-team-members").val());
-
-			//add member directly to form
-
-			//clear input text
+			
 	 		$("#project-team-members").val("");//clear field
 			// console.log("adding new teammate");
 
 		} else if($("#skill-input").val() !== "") {			//form submission for new skills, NOT a save button event
-			//check for duplicate
+			//check for duplicate									//all other form submission
+			var data = $(this).serializeObject();	
+			data["for-index"] = $(this).attr("for-index");
 
-			//add new skill 
+			var newSkill = $("#skill-input").val();
+			var skillList = {};
+			$.each($(this).find("ul#skill-list-edit li"),function(i,li){
+				var skillName = $(li).find("span.skill-pill-name").text();
+				var endorsementNum = $(li).find("span.badge").text();
+				if(newSkill === skillName)
+				{
+					throw "skill already exist";
+				}
+				skillList[skillName] = endorsementNum;
+			});
+			// console.log("OMG" + $(this).siblings("div").next().find("ul").attr("id"));
+
+			skillList[newSkill] = "";
+			data["skill"] = skillList;
+
+			user.tempAddNewSkill(data["skill"]);
+			var editing = ($(this).attr("editing") === "true") ? true : false;
+
+			if($("#skill-input").val() === "")
+			{
+				user.modifyData($(this), data, editing);
+			}
+			else
+			{
+				// user.updateCachedData($(this), data);
+				user.updateEditForm($(this));
+			}
+
+			//add new skill
 			
 
 			//add new member entry to existing model
-			user.tempAddNewSkill();
 
 			//update Form
 
@@ -162,7 +209,7 @@ $(document).ready(function() {
 				user.showErrorInForm(e,$(this));
 			}
 		}
-
+		
 		$(function(){
     		$("[data-hide]").on("click", function(){
         		$("." + $(this).attr("data-hide")).hide();
@@ -442,9 +489,17 @@ $(document).ready(function() {
 
 	//handle edit-form cancel 
 	$(".cancel-btn").on("click",function(){
+		// console.log("OMG" + $(this).siblings("div").next().find("ul").attr("id"));
 		// var target = "#" + $(this).attr("for"); //grab target
+		var site = "#" + $(this).parent("form").parent("div").attr("id");
+		if(site === "#skills-endorsements-edit")
+		{
+			user.restoreSkill();
+		}
+		// var target = "#" + $(this).attr("for"); //grab target
+
 		var link = '#' + $(this).parent("form").attr("link");
-		target = $(this).parent("form").parent("div");
+		var target = $(this).parent("form").parent("div");
 		$(target).fadeOut(50);				 //close editable view
 		$(target).find("form").trigger("reset"); //reset form
 		$(target).find("a.remove-entry-link").hide(); //hide delete entry link
@@ -458,13 +513,15 @@ $(document).ready(function() {
 			$(this).parent("form").find("ul.sortable > li").remove();
 		}
 
-		//turn off gif loader
+		// turn off gif loader
 		$(target).find("div.loading").hide();
 
 		//repopulate the page
 		$(".editable").fadeIn(50);  //show all editable components
 		$(link).fadeIn();			//fade link items in
 	});
+
+	
 
 	//enable add new 
 	$(".add-btn").on("click",function(){
@@ -486,6 +543,15 @@ $(document).ready(function() {
 
 	//enable team member or skill deletion 
 	$("ul.sortable").on("click","button.close",function(){
+		// var ul = document.getElementById("skill-list-edit");
+		// var li = document.createElement("li");
+		// li.appendChild(document.createTextNode("For"));
+		// li.setAttribute("id", "element 4");
+		// ul.appendChild(li);
+		// alert(li.id);
+		// var entry = document.createElement('li');
+		// entry.appendChild(document.createTextNode("four"));
+		// $(this).parent("li").parent("ul").appendChild(entry);
 		//remove entry from model
 		$(this).parent("li").remove();
 	});
@@ -504,7 +570,5 @@ $(document).ready(function() {
 
 
 	// $("#sortable").append("<li class=\"ui-state-default col-md-3\"><div class=\"team-member-block team-member-block-edit-view col-md-6\"><div class=\"team-member-block-description\"> <p>You</p></div></div><button type=\"button\" class=\"close\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button></li>");
-
-	
 
 });

@@ -1,6 +1,6 @@
 <?php
-//error_reporting(E_ALL); // debug
-//ini_set("display_errors", 1); // debug
+error_reporting(E_ALL); // debug
+ini_set("display_errors", 1); // debug
 require_once __DIR__."/../../lib/php/sqlConnection.php";
 require_once __DIR__."/../../lib/php/classes/User.php";
 require_once __DIR__."/../../lib/php/classes/ProfileManager.php";
@@ -14,34 +14,30 @@ if (!$UData = json_decode($_SESSION['__USERDATA__'], true)) {
 }
 
 // Check if data valid or still exists in the database
-$uid = $UData['USERID'];
-//$uid = 10;
+$uid = (int)$UData['USERID'];
+
 if (!$User = new User($uid)) {
 	header($home);
 	die();
 }
-
-//$User = new User(10); // For Testing
-if (isset($_POST['keywords'])) $keywords = $_POST['keywords'];
-else $keywords = "";
-
+/*$uid = 7;
+$User = new User($uid);*/ // For Testing
 if (isset($_POST['page'])) $page = (int)$_POST['page'];
 else $page = 1;
-
-$keywords = explode(" ", $keywords);
 
 $rowsaPage = 10;
 
 try {
 	$pm = new ProfileManager();
 	$profiles = [];
-	if (!$pm->loadBySearch($keywords, $page, $rowsaPage)) {
+	if (!$pm->loadSuggestionsByCommon($uid, $page, $rowsaPage)) {
+		//echo $pm->err; // debug
 		echo "No results found.";
 		die();
 	};
+	//echo $pm->err."!!!\n";
 	//var_dump($pm->getData()); // Debug
 	$profiles = $pm->getAll();
-//echo var_dump($keywords).var_dump($page).var_dump($rowsaPage);
 
 	$view = new UserCard_view();
 	$view->load($profiles);

@@ -89,15 +89,81 @@ User.prototype = {
 		this.fetchData();	//fetch data 
 	},
 
+	storeImage: function(imgFile){
+		var that = this;
+		var fm = new FormData();
+		fm.append('file', imgFile);
+
+		// console.log(fm);
+
+		//NOT GONNA WORRY ABOUT PROGRESS BAR FOR NOW!
+		$.ajax({
+			beforeSend: function(){
+				// $("#img-progress-bar").css({"width":"10%","display":"block"});
+			},
+		  	xhr: function()
+		  	{
+			    var xhr = new window.XMLHttpRequest();
+			    //Upload progress
+			    xhr.upload.addEventListener("progress", function(evt){
+			      if (evt.lengthComputable) {
+			        var percentComplete = evt.loaded / evt.total;
+			        //Do something with upload progress
+			        // console.log(percentComplete);
+			      } else {
+			      	// console.log(evt)
+			      }
+			    }, false);
+			    //Download progress
+			    // xhr.addEventListener("progress", function(evt){
+			    //   if (evt.lengthComputable) {
+			    //     var percentComplete = evt.loaded / evt.total;
+			    //     //Do something with download progress
+			    //     console.log(percentComplete);
+			    //   }
+			    // }, false);
+		    	return xhr;
+		  },
+		  
+		  contentType: false,
+		  processData: false,
+		  method: 'POST',
+		  url: "php/dummy2.php",
+		  data: fm,
+		  error: function(xhr,status,error) {
+		  	// console.log(xhr);
+		  	console.log(status + ": " + error );
+		  },
+		})
+		.done(function(d){
+			try{
+				var data = JSON.parse(d); //expecting data to return with {"img-url": some URL}
+
+				// var newURL = data['img-url']; <---------- please use this when merging
+				var newURL = "../../image/user_img.png";
+				//store URL in userData
+				// console.log(data);
+				that.userData.personalInfo["picture"] = newURL; 
+				that.updateView();
+			} catch (e){
+				console.log(e);
+			}
+		});
+	},
+
 	tempAddNewSkill: function(newSkill) { //temporary add new skill, will store the original
-		if(this.oSkillList === ""){
+		this.tempSkillList = newSkill;
+		
+		if($.isEmptyObject(this.oSkillList)){
 			this.oSkillList = this.userData["skill"];
-			console.log(this.oSkillList);
-		} 
+		}
+		// this.userData.skill = newSkill;
 	},
 
 	restoreSkill: function() {
-
+		console.log(this.userData["skill"]);
+		this.userData["skill"] = this.oSkillList;
+		console.log(this.userData["skill"]);
 	},
 
 	//talk to backend to get initiate a user data object
@@ -108,6 +174,7 @@ User.prototype = {
 		// var newData = {"some":"data"};
 
 		$.ajax({
+			// url: "php/Profile_controller.php",
 			url: "php/dummy.php",
 			method: 'POST',
 			contentType: 'text/plain',
@@ -220,22 +287,19 @@ User.prototype = {
 						"entry-data": "" //incase the data is needed along with the index.
 						};
 			
-			console.log(data);
-
-
+			// console.log(data);
 			//do an ajax call to the server to remove entry
-			that.modifyData(jQueryForm,data,true);
-
 			//on success, modify model
 			//switch case for what entry this is
 			//should only be for projects, experiences, and educations
+			that.modifyData(jQueryForm,data,true);
 		}
 	},
 
 	//mutator - modify data including add/edit/remove to both server and cached model
 	// when adding - "editing" flag will be false
 	// when editing - "editing" flag will be true
-	// when remove - "editing" flag will be true AND "remove" flag will be true,
+	// when removing - "editing" flag will be true AND "remove" flag will be true,
 	//				 there will also be a "for-index" variable stored in "data": {} to signal which index to remove
 	modifyData: function(jQForm,newData,editing){
 		var that = this;
@@ -282,11 +346,9 @@ User.prototype = {
 				$("#"+formName).find("button.cancel-btn").trigger("click"); //clear form data
 				$("a.remove-entry-link").hide(); 							//hide delete entry link
 
-				successMsg.find(".alert-msg").text("Success!");
+				successMsg.find(".alert-msg").text("Success!");				//show sucess message
 				successMsg.show();
-
-				//show sucess message
-				// $(ele).
+				
 			} else {														//yes error
 				that.showErrorInForm(data["error"], $("#"+formName));
 			}
@@ -364,6 +426,7 @@ User.prototype = {
 			case "skills-endorsements-edit":
 				// console.log("skills-endorsements-edit");
 				// console.log(this.userData.skill);
+				console.log("Hello");
 				this.userData.skill = newData.skill;
 				// console.log(newData);
 				// console.log(this.userData.skill);
@@ -590,6 +653,33 @@ User.prototype = {
 			break;
 		}
 
+	},
+
+	updateEditForm: function(form) {
+		var that = this;
+		var formName = "#" + form.parent("div").attr("id");
+		// switch(formName){
+		// 	case "#skills-endorsements-edit":
+				if($.isEmptyObject(this.tempSkillList.skill) === false) {
+
+				var skillList = form.find("#skill-list-edit");
+				var count = 0;
+				var beans = "";
+				$.each(this.tempSkillList,function(skillName,endorsementNum){
+				    beans += "<li entry-index='" + count + "' >" +
+		                "<span class='badge'>" + endorsementNum + "</span> " +
+		                "<span class='skill-pill-name'>" + skillName + "</span>" +
+		                "<button type='button' class='close' aria-label='Close'><span aria-hidden='true'>&times;</span></button>" +
+		              "</li>";
+		            count++;
+	            });
+				skillList.html(beans);
+				}
+		// 	break;
+		// 	default:
+		// 	break;
+		// }
+		
 	},
 
 	//update view

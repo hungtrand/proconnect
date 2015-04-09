@@ -249,7 +249,7 @@ div[for="skills-endorsements-edit"] > .panel,.list-group{
 .outer-ref{
 	position: relative;
 	width: 100%;
-	height: 200px;
+	/*height: 200px;*/
 }
 
 .team-member-block {
@@ -282,6 +282,7 @@ div[for="skills-endorsements-edit"] > .panel,.list-group{
 	width: 90%;
 	position: absolute;
 	top: 40%;
+	display: none;
 }
 
 #project-team-members {

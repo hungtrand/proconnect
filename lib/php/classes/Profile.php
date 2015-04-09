@@ -8,7 +8,7 @@ require_once __DIR__."/EducationManager.php";
 class Profile extends ViewRecord {
 	public static $TableName = 'vw_PersonalInfo';
 	public static $PrimaryKey = 'USERID';
-	public static $Columns = ['USERID', 'FIRSTNAME', 'MIDDLENAME', 'LASTNAME'
+	public static $Columns = ['USERID', 'FIRSTNAME', 'MIDDLENAME', 'LASTNAME', 'NAME'
 							, 'GENDER', 'BIRTHDAY', 'ADDRESS', 'CITY', 'STATE', 'ZIP'
 							, 'SUMMARY', 'PHONE', 'PHONETYPE', 'EMPLOYMENTSTATUS'
 							, 'COUNTRY', 'ACCOUNTID', 'EMAIL', 'EMAIL_ALT'
@@ -109,7 +109,7 @@ class Profile extends ViewRecord {
 	// Get methods
 	public function getName($isFullName=null) {
 		if ($isFullName)
-			return $this->data['FIRSTNAME'].' '.$this->data['MIDDLENAME'].' '.$this->data['LASTNAME'];
+			return $this->data['NAME'];
 		else
 			return $this->data['FIRSTNAME'].' '.$this->data['LASTNAME'];
 	}
