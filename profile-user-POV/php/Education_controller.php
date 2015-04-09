@@ -3,9 +3,9 @@
 //ini_set("display_errors", 1); // debug
 
 require_once __DIR__."/../../lib/php/sqlConnection.php";
-require_once __DIR__."/../../lib/php/classes/Account.php";
 require_once __DIR__."/../../lib/php/classes/User.php";
 require_once __DIR__."/../../lib/php/classes/Education.php";
+require_once __DIR__."/Education_view.php";
 
 
 // checking if logged in
@@ -122,7 +122,9 @@ try{
 
 			$educ->save();
 
-			echo json_encode(json_encode($educ->getData()));
+			$view = new Education_view();
+			$view->load($educ);
+			echo json_encode(json_encode($view->getView()));
 		break;
 		default:
 			echo "What are you trying to do?";
@@ -135,4 +137,3 @@ try{
 	die();
 }
 ?>
-

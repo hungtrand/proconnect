@@ -114,7 +114,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                             </div>
                             <div class="form-group">
                               <label for="middle-initial-input">M.I.</label>
-                              <input name="middle-intial" type="text" class="form-control" id="middle-initial-input" placeholder="M.I." style="width:50px;" maxlength="1">
+                              <input name="middle-initial" type="text" class="form-control" id="middle-initial-input" placeholder="M.I." style="width:50px;" maxlength="1">
                             </div>
                           </div>
                           <!-- Email Address -->
@@ -133,19 +133,13 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                           <div class="form-group form-inline">
                             <input name="phone-number" type="text" class="form-control" id="phone-input" placeholder="#(###) ###-#### ">
                            
-                          <div class="btn-group">
-                                <button type="button" class="btn btn-primary" id="phone-color">
-                                    Home</button>
-                                <button type="button" class="btn btn-primary dropdown-toggle" id="phone-caret-color" data-toggle="dropdown">
-                                    <span class="caret" ></span><span class="sr-only">Home</span>
-                                </button>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><option value="home">Home</option></li>
-                                    <li><option value="work">Work</option></li>
-                                    <li><option value="mobile">Mobile</option></li>
-                                </ul>
+                          <div class="form-group">
+                              <select class="form-control" id="phone-color" name="phone-type">
+                                <option value="Home">Home</option>
+                                <option value="Work">Work</option>
+                                <option value="Mobile">Mobile</option>
+                              </select>
                             </div>
-                            </select>
                           </div>
 
                           <!-- Address -->
@@ -176,7 +170,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 
 						<div class="form-group">
 							<label for="address">Address</label> <br />
-							<input class="form-control" id="address-input" type="text" name="address" placeholder="Address" required>
+							<input class="form-control" id="address-input" type="text" name="address" placeholder="Address">
 						</div>
                         
 							<button type="submit" class="btn btn-primary save-btn" value="save">Save</button>
@@ -292,7 +286,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                     </div>
                     <!-- <b><h4>Summary</h4></b> -->
                     <form class="editable-form" action="php/Skill_controller.php">
-                      <input id="SkillID" name="SkillID" type="hidden" value="" />
+                      <input id="SkillID" name="SkillID" class="DataID" type="hidden" value="" />
                       <!-- Error Alert -->
                       <div class="alert alert-danger" role="alert">
                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -349,7 +343,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                         <img src="../image/ajax-loader.gif">
                       </div>
                     <form class="editable-form" action="php/Experience_controller.php">
-                      <input id="ExpID" name="ExpID" type="hidden" value="" />
+                      <input id="ExpID" name="ExpID" class="DataID" type="hidden" value="" />
                       <!-- Error Alert -->
                       <div class="alert alert-danger" role="alert">
                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -463,7 +457,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                       <img src="../image/ajax-loader.gif">
                     </div>
                     <form class="editable-form" action="php/Project_controller.php">
-                      <input id="ProjectID" name="ProjectID" type="hidden" value="" />
+                      <input id="ProjectID" name="ProjectID" class="DataID" type="hidden" value="" />
                       <!-- Error Alert -->
                       <div class="alert alert-danger" role="alert">
                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -572,7 +566,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                       <img src="../image/ajax-loader.gif">
                     </div>
                     <form class="editable-form" action="php/Education_controller.php">
-                      <input id="EduID" type="hidden" name="EduID" value="0" />
+                      <input id="EduID" name="EduID" class="DataID" type="hidden" value="0" />
                       <!-- Error Alert -->
                       <div class="alert alert-danger" role="alert">
                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>

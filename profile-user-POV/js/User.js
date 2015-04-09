@@ -162,8 +162,8 @@ User.prototype = {
 
 	tempAddNewMember: function(newMember) {
 		this.tempMemberList = newMember;
-		if()
-	}
+		//if()
+	},
 
 	restoreSkill: function() {
 		console.log(this.userData["skill"]);
@@ -180,7 +180,7 @@ User.prototype = {
 
 		$.ajax({
 			// url: "php/Profile_controller.php",
-			url: "php/dummy.php",
+			url: "php/Profile_controller.php",
 			method: 'POST',
 			contentType: 'text/plain',
 			error: function(xhr,status,error) {
@@ -288,6 +288,7 @@ User.prototype = {
 			//get entry index
 			var data = jQueryForm.serializeObject();
 			data["remove"] = true;
+			data['for-index'] = jQueryForm.attr('for-index');
 			
 			// console.log(data);
 			//do an ajax call to the server to remove entry
@@ -334,19 +335,21 @@ User.prototype = {
 
 			// console.log(oData);
 			try {
-				var data = $.parseJSON(oData); 		//may require error handling	
+				var data = $.parseJSON(oData.trim()); 		//may require error handling	
+				if (typeof data != 'object') data = $.parseJSON(data); // not sure why this shit is needed !!!
 				jQForm.siblings("div.loading").hide();							//hide loading gif
 
 				//check for error message
 				if(data["error"] === undefined){								//no error
-			    
-					that.updateCachedData(jQForm,oData);
+			    	console.log(data);
+					that.updateCachedData(jQForm,newData, data);
 					that.updateView();	
 					$("#"+formName).find("button.cancel-btn").trigger("click"); //clear form data
 					$("a.remove-entry-link").hide(); 							//hide delete entry link
 
 					successMsg.find(".alert-msg").text("Success!");
 					successMsg.show();
+					successMsg.fadeOut(7000, function() { successMsg.hide(); });
 
 					//show sucess message
 					// $(ele).
@@ -354,7 +357,7 @@ User.prototype = {
 					that.showErrorInForm(data["error"], $("#"+formName));
 				}
 			} catch(e) {
-				console.log(e);
+				console.log(e); console.log(oData);
 				that.showErrorInForm(oData, $("#"+formName));
 			}
 			
@@ -368,7 +371,7 @@ User.prototype = {
 	 * bool isNew - signal new data
 	 * NOTE: This function does not handle data validation, the calling functions should handle.
 	 */
-	updateCachedData: function(jQFormEle,newData) {
+	updateCachedData: function(jQFormEle,newData, ajaxSuccessData) {
 		// function addMembers(memberList,projObj) {
 		// 	projObj["team-member"] = memberList;
 
@@ -441,7 +444,9 @@ User.prototype = {
 				var forIndex = newData["for-index"];
 				delete newData["for-index"];
 				if(forIndex === "new") {				//new entry
-					this.userData.experiences[this.userData.experiences.length] = newData;
+					if (typeof ajaxSuccessData == "object") {
+						this.userData.experiences[this.userData.experiences.length] = ajaxSuccessData;
+					}
 					// console.log(this.userData.experiences);
 				} else if(newData["remove"] === true){	//remove entry
 					this.userData.experiences.splice(forIndex,1);
@@ -501,7 +506,16 @@ User.prototype = {
 				var forIndex = newData["for-index"];
 				delete newData["for-index"];
 				if(forIndex === "new") {				//new entry
-					this.userData.education[this.userData.education.length] = newData;
+					// if new entry is inserted into database database will return json of this new object
+					// this new json object will server-processed data so it's more accuratte
+					// this data often would also include the id for the new entry
+					// this is is useful if the user go on and modify the just-inserted entry 
+					// the id will be useful sothat  we know what to save or delete on server-side
+					//console.log(ajaxSuccessData);
+					//console.log(typeof ajaxSuccessData);
+					if (typeof ajaxSuccessData == "object") {
+						this.userData.education[this.userData.education.length] = ajaxSuccessData;
+					}
 					// console.log(this.userData.experiences);
 				} else if(newData["remove"] === true){ //remove entry
 					this.userData.education.splice(forIndex,1);
@@ -573,6 +587,7 @@ User.prototype = {
 				// console.log(formWrapperID + " index is: " +index);
 				var exp = this.userData.experiences[index];
 				//console.log(exp);
+				$("#ExpID").val(exp["ExpID"]);
 				$("#position-title").val(exp['position-title']);
 				$("#company-name").val(exp['company-name']);
 				$("#company-location").val(exp['company-location']);
@@ -698,7 +713,10 @@ User.prototype = {
 		//update user info
 		 $('#preview').attr('src', this.userData.personalInfo["picture"]);
 		$(".first-name").text(this.userData.personalInfo["first-name"]);
-		$("#user-mi").text(this.userData.personalInfo["middle-initial"]+'.');
+
+		if (this.userData.personalInfo["middle-initial"])
+			$("#user-mi").text(this.userData.personalInfo["middle-initial"]+'.');
+		
 		$("#user-last").text(this.userData.personalInfo["last-name"]);
 		$("#user-address").text(this.userData.personalInfo["user-address"]["address-input"]);
 			$("#user-address").append(" ");
