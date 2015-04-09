@@ -162,6 +162,7 @@ User.prototype = {
 
 	tempAddNewMember: function(newMember) {
 		this.tempMemberList = newMember;
+		// if()
 	},
 
 	restoreSkill: function() {
@@ -179,7 +180,7 @@ User.prototype = {
 
 		$.ajax({
 			// url: "php/Profile_controller.php",
-			url: "php/Profile_controller.php",
+			url: "php/dummy.php",
 			method: 'POST',
 			contentType: 'text/plain',
 			error: function(xhr,status,error) {
@@ -285,9 +286,11 @@ User.prototype = {
 		return function(){
 			console.log(jQueryForm);
 			//get entry index
-			var data = jQueryForm.serializeObject();
-			data["remove"] = true;
-			data['for-index'] = jQueryForm.attr('for-index');
+			var data = { 
+						"for-index" : jQueryForm.attr("for-index"), 
+						   "remove" : true,	
+						"entry-data": "" //incase the data is needed along with the index.
+						};
 			
 			// console.log(data);
 			//do an ajax call to the server to remove entry
@@ -309,14 +312,18 @@ User.prototype = {
 
 		var successMsg = jQForm.parent("div").siblings("div.alert-success")
 
-		newData["editing"] = editing;
+		var dataToSave = {
+			"editing":editing,
+			"form-id":formName,
+			"data":newData,
+		};
 
 		$.ajax({
 			beforeSend: function(jqXHR,settings){
 				jQForm.siblings("div.loading").show();//show loading gif
 			},
-			url: jQForm.attr("action"),
-			data: newData,
+			url: "php/dummy2.php",
+			data: dataToSave,
 			method: 'POST',
 			error: function(xhr,status,error) {
 				bootbox.dialog({
@@ -333,33 +340,23 @@ User.prototype = {
 		}).done(function(oData){
 
 			// console.log(oData);
-			try {
-				var data = $.parseJSON(oData.trim()); 		//may require error handling	
-				if (typeof data != 'object') data = $.parseJSON(data); // not sure why this shit is needed !!!
-				jQForm.siblings("div.loading").hide();							//hide loading gif
+			var data = JSON.parse(oData); 		//may require error handling	
+			jQForm.siblings("div.loading").hide();							//hide loading gif
 
-				//check for error message
-				if(data["error"] === undefined){								//no error
-			    	console.log(data);
-					that.updateCachedData(jQForm,newData, data);
-					that.updateView();	
-					$("#"+formName).find("button.cancel-btn").trigger("click"); //clear form data
-					$("a.remove-entry-link").hide(); 							//hide delete entry link
+			//check for error message
+			if(data["error"] === undefined){								//no error
+		    
+				that.updateCachedData(jQForm,newData);
+				that.updateView();	
+				$("#"+formName).find("button.cancel-btn").trigger("click"); //clear form data
+				$("a.remove-entry-link").hide(); 							//hide delete entry link
 
-					successMsg.find(".alert-msg").text("Success!");
-					successMsg.show();
-					successMsg.fadeOut(7000, function() { successMsg.hide(); });
-
-					//show sucess message
-					// $(ele).
-				} else {														//yes error
-					that.showErrorInForm(data["error"], $("#"+formName));
-				}
-			} catch(e) {
-				console.log(e); console.log(oData);
-				that.showErrorInForm(oData, $("#"+formName));
+				successMsg.find(".alert-msg").text("Success!");				//show sucess message
+				successMsg.show();
+				
+			} else {														//yes error
+				that.showErrorInForm(data["error"], $("#"+formName));
 			}
-			
 		});
 
 	},
@@ -370,7 +367,7 @@ User.prototype = {
 	 * bool isNew - signal new data
 	 * NOTE: This function does not handle data validation, the calling functions should handle.
 	 */
-	updateCachedData: function(jQFormEle,newData, ajaxSuccessData) {
+	updateCachedData: function(jQFormEle,newData) {
 		// function addMembers(memberList,projObj) {
 		// 	projObj["team-member"] = memberList;
 
@@ -443,9 +440,7 @@ User.prototype = {
 				var forIndex = newData["for-index"];
 				delete newData["for-index"];
 				if(forIndex === "new") {				//new entry
-					if (typeof ajaxSuccessData == "object") {
-						this.userData.experiences[this.userData.experiences.length] = ajaxSuccessData;
-					}
+					this.userData.experiences[this.userData.experiences.length] = newData;
 					// console.log(this.userData.experiences);
 				} else if(newData["remove"] === true){	//remove entry
 					this.userData.experiences.splice(forIndex,1);
@@ -505,16 +500,7 @@ User.prototype = {
 				var forIndex = newData["for-index"];
 				delete newData["for-index"];
 				if(forIndex === "new") {				//new entry
-					// if new entry is inserted into database database will return json of this new object
-					// this new json object will server-processed data so it's more accuratte
-					// this data often would also include the id for the new entry
-					// this is is useful if the user go on and modify the just-inserted entry 
-					// the id will be useful sothat  we know what to save or delete on server-side
-					//console.log(ajaxSuccessData);
-					//console.log(typeof ajaxSuccessData);
-					if (typeof ajaxSuccessData == "object") {
-						this.userData.education[this.userData.education.length] = ajaxSuccessData;
-					}
+					this.userData.education[this.userData.experiences.length] = newData;
 					// console.log(this.userData.experiences);
 				} else if(newData["remove"] === true){ //remove entry
 					this.userData.education.splice(forIndex,1);
@@ -586,7 +572,6 @@ User.prototype = {
 				// console.log(formWrapperID + " index is: " +index);
 				var exp = this.userData.experiences[index];
 				//console.log(exp);
-				$("#ExpID").val(exp["ExpID"]);
 				$("#position-title").val(exp['position-title']);
 				$("#company-name").val(exp['company-name']);
 				$("#company-location").val(exp['company-location']);
@@ -657,7 +642,7 @@ User.prototype = {
 				var index =  form.attr("for-index");
 				var edu = this.userData.education[index];
 
-				$("#EduID").val(edu["EduID"]);
+
 				$("#school-name").val(edu["school-name"]);
 				$("#degree").val(edu["degree"]);
 				$("#field-of-study").val(edu["field-of-study"]);
@@ -712,10 +697,7 @@ User.prototype = {
 		//update user info
 		 $('#preview').attr('src', this.userData.personalInfo["picture"]);
 		$(".first-name").text(this.userData.personalInfo["first-name"]);
-
-		if (this.userData.personalInfo["middle-initial"])
-			$("#user-mi").text(this.userData.personalInfo["middle-initial"]+'.');
-		
+		$("#user-mi").text(this.userData.personalInfo["middle-initial"]+'.');
 		$("#user-last").text(this.userData.personalInfo["last-name"]);
 		$("#user-address").text(this.userData.personalInfo["user-address"]["address-input"]);
 			$("#user-address").append(" ");
