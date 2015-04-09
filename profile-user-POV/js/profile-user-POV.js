@@ -105,8 +105,6 @@ $(document).ready(function() {
 			// console.log("adding new teammate");
 
 		} else if($("#skill-input").val() !== "") {			//form submission for new skills, NOT a save button event
-			//check for duplicate
-			//all other form submission
 			var data = $(this).serializeObject();	
 			data["for-index"] = $(this).attr("for-index");
 
@@ -126,11 +124,23 @@ $(document).ready(function() {
 			skillList[newSkill] = "";
 			data["skill"] = skillList;
 
-			//add new skill 
+			user.tempAddNewSkill(data["skill"]);
+			var editing = ($(this).attr("editing") === "true") ? true : false;
+
+			if($("#skill-input").val() === "")
+			{
+				user.modifyData($(this), data, editing);
+			}
+			else
+			{
+				// user.updateCachedData($(this), data);
+				user.updateEditForm($(this));
+			}
+
+			//add new skill
 			
 
 			//add new member entry to existing model
-			user.tempAddNewSkill();
 
 			//update Form
 
