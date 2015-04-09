@@ -491,14 +491,13 @@ $(document).ready(function() {
 	$(".cancel-btn").on("click",function(){
 		// console.log("OMG" + $(this).siblings("div").next().find("ul").attr("id"));
 		// var target = "#" + $(this).attr("for"); //grab target
-		// var site = "#" + $(this).parent("form").parent("div").attr("id");
+		var site = "#" + $(this).parent("form").parent("div").attr("id");
 		if(site === "#skills-endorsements-edit")
 		{
 			user.restoreSkill();
 		}
 		// var target = "#" + $(this).attr("for"); //grab target
 
-		console.log(target);
 		var link = '#' + $(this).parent("form").attr("link");
 		var target = $(this).parent("form").parent("div");
 		$(target).fadeOut(50);				 //close editable view
