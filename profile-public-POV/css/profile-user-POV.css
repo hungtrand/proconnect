@@ -1,0 +1,409 @@
+.add-star {
+	width: 100%;
+	margin-top: -20px;
+	margin-bottom: 20px;
+	text-align: center;
+	height: 45px;
+	max-height: 45px;
+	box-shadow: 0 1px 2px #ccc;
+}
+
+.add-star > button{
+	background-color: ;
+	font-size: 16px;
+	border: 0px;
+	background-color: inherit;
+	width: 100%;
+	height: 100%;
+	color: #337ab7;
+	box-shadow: 0 1px 2px #ccc;
+	border: 1px solid rgb(196, 190, 190);
+	border-top: none;
+}
+
+/*
+    color for the x symbol of the dismissible alerts
+*/
+.dimissible-color {
+	color: black !important;
+}
+
+/*
+	dismissible alerts hide;
+*/
+
+/*.align-top {
+	vertical-align: top;
+}
+*/
+body {
+  padding-top: 50px;
+  padding-left:0px;
+  /*background-image: url("../image/signout_background.png");*/
+  font: arial;
+  background-color: #E8E8E8;
+}
+
+header {
+	margin-bottom: 25px;
+}
+
+
+/*.container {
+padding-right: 15px;
+padding-left: 100px;
+margin-right: auto;
+margin-left: auto;
+
+}*/
+
+.colored-badge{
+	background-color: #1ba8e5; 
+}
+
+.close {
+	padding: 3px !important;
+ 	margin-left: 10px;
+}
+
+
+#change-image-block {
+	width: 100%;
+	padding-top: 5px;
+	height: 40px;
+	text-align: center;
+	color: white;
+	font-size: 17px;
+	bottom: 0px;
+	position: absolute;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+#change-image-block:hover {
+	cursor: pointer;
+	background-color: rgba(0, 0, 0, 0.8);
+}
+
+#change-photo-text {
+	vertical-align: 20%;
+}
+#input-25{
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  background: none repeat scroll 0 0 transparent;
+  cursor: inherit;
+  display: block;
+  }
+
+.editable {
+	/*width: 100%;
+	height: 100%;
+	z-index: 1;*/
+	/*background-color: rgba(0,0,0,0.1);*/
+	position: relative;
+	border: 1px solid rgba(0,0,0,0);
+}
+
+/*.editable:hover, .editable *:hover {
+	cursor: pointer;
+	background-color: rgba(62, 146, 219, 0.41);
+	border: 1px solid #337ab7;
+}*/
+
+.editable > span.glyphicon {
+	font-size: 24px;
+	position: absolute;
+	right: 0px;
+	display: hidden;
+	color: #337ab7;
+	z-index: 1;
+}
+
+/*.editable > span.glyphicon:hover { 
+	cursor: pointer;
+	color: #14548B;
+}*/
+
+/*.editable-form > div.alert-danger{
+	display: none;
+}*/
+
+div.alert-success {
+	display: none;
+}
+
+.edit-view {
+	background-color: #D4D4D4;
+	border: 1px solid #B4B4B4;
+	margin: 0 -9px;
+	border-width: 1px 0;
+	margin-bottom: 40px;
+	padding: 15px;
+	display: none;
+	position: relative;
+}
+
+div[for="skills-endorsements-edit"] > .panel,.list-group{
+	border-radius: 0px;
+}
+
+#phone-color{
+	color : black !important;
+	background-color: white !important;
+	border-color: white !important;
+	border-right-color: gray !important;
+}
+
+#phone-caret-color {
+	color : black !important;
+	background-color: white !important;
+	border-color: white !important;	
+	border-left-color: gray !important;
+}
+
+#glyphicon-picture {
+	font-size: 27px;
+	/*float: left;*/
+}
+
+.glyphicon {  
+	margin-bottom: 10px;
+	margin-right: 10px;
+}
+
+.glyphicon-picture {
+	margin-right: 5px;
+}
+
+.loading{
+	display: none;
+	position: absolute;
+	margin-left: calc(50% - 32px);
+	top: 50%;
+	transform: translate(0,-50%)
+	
+}
+
+#main-container {
+	margin-top: 70px;
+}
+
+/*nav{
+	height: 40px;
+}
+
+.navbar {
+	min-height: 50px;
+}
+
+.navbar-brand {
+	/*background-image: url(../../image/proconnect/logo_text.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	float: left;
+	width: 250px;
+	height: 40px;*/
+}
+
+/*.navbar-inverse {
+	background: #333;
+	background-image: -webkit-linear-gradient(top, #555555 0%,#515151 18%,#373737 85%,#333333 100%);
+	vertical-align: center;
+}*/
+/*
+#navbar{
+	float: right;
+	margin-right: 90px;
+}
+
+.navbar-inverse .navbar-nav>li{
+	height: 40px;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+	color: #D7D7D7;
+	height: 40px;
+	padding: 10px;
+	font-size: 13px;
+}
+
+.navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover {
+	color: #0077B5;
+}
+*/
+
+#logo{
+	color: #D7D7D7;
+}
+
+.normal-view {
+	/*display: none;*/
+}
+
+.outer-ref{
+	position: relative;
+	width: 100%;
+	/*height: 200px;*/
+}
+
+.team-member-block {
+	/*min-height: 28px;*/
+}
+
+.team-member-block-edit-view {
+	/*vertical-align: center;*/
+}
+
+.team-member-mini-image {
+	max-width: 38px;
+}
+
+.team-member-block-description p {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.profile-image {
+	width: 80%;
+	margin: auto;
+	max-height: 200px;
+}
+#profile-image-block{
+	position: relative;
+}
+#progress-block{
+	width: 90%;
+	position: absolute;
+	top: 40%;
+	display: none;
+}
+
+#project-team-members {
+	border: none;
+	box-shadow: none;
+}
+
+#project-team-editable-block {
+	background-color: white;
+	border-radius: 4px;
+}
+
+.remove-entry-link {
+	display: none;
+}
+
+.required {
+	color: #900;
+	font-weight: bold;
+	border-bottom: none !important;
+	cursor: default !important;
+}
+
+.short-input{
+	width: 60px !important;
+}
+
+.sortable {
+	padding-left: 0px;
+}
+
+.sortable li {
+	margin-right: 7px;
+	margin-bottom: 7px;
+	list-style: none;
+	/*border: 1px solid red;*/
+	background-color: #ccc;
+	/*width: 60px;*/
+	line-height: 30px;
+	/*height: 30px;*/
+	padding: 0px 5px 0px 10px;
+	float: left;
+	cursor: move;
+}
+
+.sortable li img {
+	margin-right: 5px;
+	margin-left: -5px;
+	max-height: 30px;
+	max-width: 30px;
+}
+
+.skill-bean {
+	border: 1px solid #ccc;
+	padding: 5px;
+	border-radius: 4px;
+	background-color: #f0f0f0;
+	margin: 5px;
+	display: inline-block;
+}
+
+.sortable-dragging {
+	border: 1px solid gray;
+
+}
+
+.sortable-placeholder {
+	width: 80px;
+	height: 30px;
+	border: 1px dashed gray;
+}
+
+
+small {
+	display: block;
+	line-height: 1.428571429;
+	color: #999;
+}
+
+.playground {
+	height: 200px;
+	overflow: scroll;
+}
+
+.well {
+	border-radius: 0px;
+	background-color: white;
+	box-shadow: 0 1px 1px #ccc;
+}
+/*
+#work-time-form .form-group .form-inline{
+	vertical-align: top;
+}
+*/
+
+#work-present{
+	display: none;
+	position: absolute;
+	padding-top: 6px;
+}
+
+.work-time-right-block {
+	padding-top: 19px;
+	position: relative;
+}
+
+
+
+#sortable { 
+	list-style-type: none; 
+	margin: 0; 
+	padding: 0; 
+}
+
+#sortable li { 
+	margin: 0 5px 5px 5px; 
+	padding: 5px; 
+	float: left;
+}
+
+.hide-temp{
+	display: none;
+}
+
