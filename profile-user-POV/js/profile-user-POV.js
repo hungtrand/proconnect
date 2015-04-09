@@ -93,18 +93,7 @@ $(document).ready(function() {
 	$(".editable-form").on("submit", function(e){
 		e.preventDefault();
 
-		if($("#project-team-members").val() !== ""){ 		//form submission for new members, NOT a save button event
-
-			//add user to model 
-			var newMember = user.fetchMember($("#project-team-members").val());
-
-			//add member directly to form
-
-			//clear input text
-	 		$("#project-team-members").val("");//clear field
-			// console.log("adding new teammate");
-
-		} else if($("#skill-input").val() !== "") {			//form submission for new skills, NOT a save button event
+		if($("#skill-input").val() !== "") {			//form submission for new skills, NOT a save button event
 			var data = $(this).serializeObject();	
 			data["for-index"] = $(this).attr("for-index");
 
@@ -146,7 +135,7 @@ $(document).ready(function() {
 
 			//clear input text
 			$("#skill-input").val("");
-			console.log("adding new skill");
+			//console.log("adding new skill");
 		} else {									//all other form submission
 			var data = $(this).serializeObject();	//grab data in json object format
 
@@ -159,10 +148,10 @@ $(document).ready(function() {
 				$.each($(this).find("ul#skill-list-edit li"),function(i,li){
 					var skillName = $(li).find("span.skill-pill-name").text();
 					var endorsementNum = $(li).find("span.badge").text();
-					console.log(skillName + ": " + endorsementNum);
+					//console.log(skillName + ": " + endorsementNum);
 					skillList[skillName] = endorsementNum;
 				});
-				data["skill"] = skillList;	
+				data["skill"] = JSON.stringify(skillList);	// Convert to string for easy decoding in PHP
 			} else if( $(this).parent("div").attr("id") === "project-edit" ) {		//grabbing team members
 				// console.log("project-edit hellow");
 				var memberList = {};
@@ -185,7 +174,7 @@ $(document).ready(function() {
 
 				var editing = ($(this).attr("editing") === "true") ? true : false;
 				
-				 console.log(data);
+				 //console.log(data);
 				user.modifyData($(this),data,editing);	//modify data
 
 			} catch(e) {
@@ -205,7 +194,7 @@ $(document).ready(function() {
 
 			switch(formName){
 				case "user-info-edit":
-					console.log("user-info-edit");
+					//console.log("user-info-edit");
 
 					if(IsName($("#first-name-input").val()) === false){
 						throw "Invalid First Name.";
@@ -240,7 +229,7 @@ $(document).ready(function() {
 					}
 					else{
 								$("#country-name-input").val("United States");
-								console.log($("#country-name-input").val());
+								//console.log($("#country-name-input").val());
 							if($("#zipcode-input").val()== ""){
 								//throw "Enter zipcode.";
 							}
@@ -253,7 +242,7 @@ $(document).ready(function() {
 					// console.log( jQFormEle.find(":input[required]:visible").css("border-color","red") );
 				break;
 				case "summary-edit":
-					console.log("summary-edit");
+					//console.log("summary-edit");
 
 					if(wordCount($("#summary-textarea").val()) > 1000) {
 						throw "Maximum amount of characters have been reached." + wordCount($("#summary-textarea").val());
@@ -261,17 +250,17 @@ $(document).ready(function() {
 
 				break;
 				case "skills-endorsements-edit":
-					console.log("skills-endorsements-edit");
+					//console.log("skills-endorsements-edit");
 
 					if($("#skill-list-edit li").length >= 50) {
 						throw "You have reached the limit for adding skills.";
 					}
 
-					console.log($("#skill-list-edit li").length);
+					//console.log($("#skill-list-edit li").length);
 
 				break;//first-name-input
 				case "experience-edit":
-					console.log("experience-edit");
+					//console.log("experience-edit");
 
 					if(IsNumber($("#work-start-year").val()) === false) {
 						throw "Invalid Start Year.";
@@ -287,7 +276,7 @@ $(document).ready(function() {
 
 				break;
 				case "project-edit":
-					console.log("project-edit");
+					//console.log("project-edit");
 
 					if(wordCount($("#project-description").val()) > 1000) {
 						throw "Maximum amount of words have been reached." + wordCount($("#project-description").val());
@@ -295,7 +284,7 @@ $(document).ready(function() {
 
 				break;
 				case "education-edit":
-					console.log("education-edit");
+					//console.log("education-edit");
 
 					if(IsWord($("#school-name").val()) === false) {
 						throw "Invalid School Name";
@@ -512,7 +501,7 @@ $(document).ready(function() {
 			$(target).fadeIn(); //.css("display","block").
 			$(target).find('input:text, textarea, input:radio, input:checkbox, select').first().focus();
 		} else {				
-			console.log(target);	//if add btn is doing an edit action 
+			//console.log(target);	//if add btn is doing an edit action 
 			//NOTE: target should be the live view id, not edit view id
 			$(target).find("div.editable").trigger("click");	
 		}

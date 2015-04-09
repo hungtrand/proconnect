@@ -198,7 +198,7 @@ User.prototype = {
 			var succeeded = false;
 			 // try{
 					that.temporaryData = JSON.parse(data);
-					console.log( that.temporaryData );
+					//console.log( that.temporaryData );
 					that.userData = that.temporaryData; 	//store as user data
 					succeeded = true;
 			// } catch (e){
@@ -310,7 +310,6 @@ User.prototype = {
 		var successMsg = jQForm.parent("div").siblings("div.alert-success")
 
 		newData["editing"] = editing;
-
 		$.ajax({
 			beforeSend: function(jqXHR,settings){
 				jQForm.siblings("div.loading").show();//show loading gif
@@ -340,7 +339,7 @@ User.prototype = {
 
 				//check for error message
 				if(data["error"] === undefined){								//no error
-			    	console.log(data);
+			    	//console.log(data);
 					that.updateCachedData(jQForm,newData, data);
 					that.updateView();	
 					$("#"+formName).find("button.cancel-btn").trigger("click"); //clear form data
@@ -434,8 +433,16 @@ User.prototype = {
 			case "skills-endorsements-edit":
 				// console.log("skills-endorsements-edit");
 				// console.log(this.userData.skill);
-				console.log("Hello");
-				this.userData.skill = newData.skill;
+				//console.log("Hello");
+				if (typeof newData.skill != 'object') {
+					try {
+						var skills = $.parseJSON(newData.skill);
+						this.userData.skill = skills;
+					} catch(e) {
+						console.log("No more skills");
+					}
+				}
+				
 				// console.log(newData);
 				// console.log(this.userData.skill);
 			break;
@@ -481,7 +488,7 @@ User.prototype = {
 				// delete newData["team-member"];		//delete so 
 
 				if(forIndex === "new") {				//new entry
-					that.userData.projects[that.userData.experiences.length] = newData;
+					that.userData.projects[that.userData.projects.length] = newData;
 					// addMembers(members,that.userData.projects[that.userData.experiences.length]);
 					// console.log(this.userData.experiences);
 				} else if(newData["remove"] === true){ //remove entry
@@ -609,6 +616,7 @@ User.prototype = {
 				var proj = this.userData.projects[index];
 				var teamMembers = "";
 
+				$("#ProjectID").val(proj["ProjectID"]);
 				$("#project-name").val(proj['project-name']);
 				$("#project-url").val(proj['project-url']);
 
@@ -680,7 +688,7 @@ User.prototype = {
 		var formName = "#" + form.parent("div").attr("id");
 		switch(formName){
 		case "#skills-endorsements-edit":
-				if($.isEmptyObject(this.tempSkillList.skill) === false) {
+				if($.isEmptyObject(this.tempSkillList) === false) {
 
 				var skillList = form.find("#skill-list-edit");
 				var count = 0;
@@ -698,7 +706,7 @@ User.prototype = {
 			break;
 
 		case "#project-edit":
-			console.log("HELLO");
+			//console.log("HELLO");
 		break;
 			default:
 			break;
@@ -792,7 +800,7 @@ User.prototype = {
 
 			// console.log();
 			//format project title
-			var projTitle = (proj['project-url'] === "") ? proj['project-name'] : '<a href="' + proj['project-url'] + '">' + proj['project-name'] +'</a>';
+			var projTitle = (proj['project-url'] === "") ? proj['project-name'] : '<a target="_blank" href="' + proj['project-url'] + '">' + proj['project-name'] +'</a>';
 
 			var teamMemberBlock = "";
 
@@ -806,7 +814,7 @@ User.prototype = {
 
 
 				$.each(proj['team-member'],function(name,member){
-					var memberName = (member['direct-URL'] === "") ? "<b>" + name + "</b>" : "<a href='" + member['direct-URL'] + "'>" + name + "</a>";
+					var memberName = (member['direct-URL'] === "") ? "<b>" + name + "</b>" : "<a target='_blank' href='" + member['direct-URL'] + "'>" + name + "</a>";
 					memberBlocks += "<div class='team-member-block col-md-6'>" +
 	                  "<div class='col-md-2'>" +
 	                    "<img src='" + member['icon-URL'] + "' class='team-member-mini-image'>" +
