@@ -27,44 +27,21 @@ $(document).ready(function() {
 	   return o;
 	};
 	
-	// function formReset(form){
-	// 	var link = '#' + $(form).parent("form").attr("link");
-	// 	target = $(form).parent("form").parent("div");
-	// 	$(target).fadeOut(50);				 //close editable view
-	// 	$(target).find("form").trigger("reset"); //reset form
-	// 	$(target).find("a.remove-entry-link").hide(); //hide delete entry link
-	// 	//clear temporary data
-	// 	$(form).parent("form").attr("editing","false")
-
-	// 	//turn off gif loader
-	// 	$(target).find("div.loading").hide();
-
-	// 	//repopulate the page
-	// 	$(".editable").fadeIn(50);  //show all editable components
-	// 	$(link).fadeIn();			//fade link items in
-	// }
-	
 	//preview profile picture
 	function readURL(input) {
 		  if (input.files && input.files[0]) {
-		   		var reader = new FileReader();
-		   		reader.onload = function(e) {
-		   			console.log(e);
-				   $('#preview').attr('src', e.target.result);
-				   $( "#picture-submit" ).trigger( "click" );
-		   		}
-		   		reader.readAsDataURL(input.files[0]);
+		   var reader = new FileReader();
+		   reader.onload = function(e) {
+			   $('#preview').attr('src', e.target.result);
+			   $( "#picture-submit" ).trigger( "click" );
 		   }
-    }
 
-
-
-    //enable image edit
-    $("#input-25").change(function() {
-	   	// readURL(this);
-	   	user.storeImage( this.files[0] );
-	});
-
+		   reader.readAsDataURL(input.files[0]);
+		   }
+		   }
+		   $("#input-25").change(function() {
+		   readURL(this);
+	   });
 	//enable edit view
 	$(".normal-view").on("click",".editable",function(){
 		var target = "#" + $(this).attr("for");			//grab target
@@ -93,6 +70,7 @@ $(document).ready(function() {
 		$(target).find("a.remove-entry-link").show();
 		//display edit view
 		$(target).fadeIn().find("form").attr( "link", $(this).attr("link") ).attr("editing","true"); 
+		$(target).find('input:text, textarea, input:radio, input:checkbox, select').first().focus();
 	});
 	
 	//controls address field
@@ -116,25 +94,8 @@ $(document).ready(function() {
 		e.preventDefault();
 
 		if($("#project-team-members").val() !== ""){ 		//form submission for new members, NOT a save button event
-			var data = $(this).serializeObject();	
-			data["for-index"] = $(this).attr("for-index");
-			console.log("HELLO");
-			var memberList = {};
-			$.each($(this).find("ul#project-team-list li"),function(i,li){
-				var memName = $(li).find("span.skill-pill-name").text();
 
-				// var imgURL = $(li).find("img").attr("src");	// may be unnecessary
-				var memData = user.userData.projects[ data["for-index"] ]["team-member"][memName];
-				memberList[memName] = memData;
-			});
-			data["team-member"] =  memberList;
-			console.log(data["team-member"]);
-
-			user.tempAddNewMember();
 			//add user to model 
-			var newMember = $("#project-team-members").val();
-			console.log(newMember);
-			user.updateEditForm($(this));
 			var newMember = user.fetchMember($("#project-team-members").val());
 
 			//add member directly to form
@@ -165,23 +126,11 @@ $(document).ready(function() {
 			skillList[newSkill] = "";
 			data["skill"] = skillList;
 
-			user.tempAddNewSkill(data["skill"]);
-			var editing = ($(this).attr("editing") === "true") ? true : false;
-
-			if($("#skill-input").val() === "")
-			{
-				user.modifyData($(this), data, editing);
-			}
-			else
-			{
-				// user.updateCachedData($(this), data);
-				user.updateEditForm($(this));
-			}
-
-			//add new skill
+			//add new skill 
 			
 
 			//add new member entry to existing model
+			user.tempAddNewSkill();
 
 			//update Form
 
@@ -214,7 +163,7 @@ $(document).ready(function() {
 					var memData = user.userData.projects[ data["for-index"] ]["team-member"][memName];
 					memberList[memName] = memData;
 				});
-				data["team-member"] =  memberList;
+				data["team-member"] =  memberList
 				// console.log(data["team-member"]);
 			}	
 
@@ -233,7 +182,7 @@ $(document).ready(function() {
 				user.showErrorInForm(e,$(this));
 			}
 		}
-		
+
 		$(function(){
     		$("[data-hide]").on("click", function(){
         		$("." + $(this).attr("data-hide")).hide();
@@ -256,7 +205,7 @@ $(document).ready(function() {
 						throw "Invalid Last Name."
 					}
 
-					if(IsName($("#middle-initial-input").val()) === false) {
+					if($("#middle-initial-input").val() != '' && IsName($("#middle-initial-input").val()) === false) {
 						throw "Invalid Middle Initial."
 					}
 
@@ -264,11 +213,11 @@ $(document).ready(function() {
 						throw "Invalid Email.";
 					}
 
-					if(IsEmail($("#alt-email-input").val()) === false) {
+					/*if(IsEmail($("#alt-email-input").val()) === false) {
 						throw "Invalid Alternate Email.";
-					}
+					}*/
 
-					if(IsNumber($("#phone-input").val()) === false) {
+					if($("#phone-input").val() != '' && IsNumber($("#phone-input").val()) === false) {
 						throw "Invalid Phone Number";
 					}
 					if ($("#inlineRadio2-country").prop("checked")) {
@@ -283,7 +232,7 @@ $(document).ready(function() {
 								$("#country-name-input").val("United States");
 								console.log($("#country-name-input").val());
 							if($("#zipcode-input").val()== ""){
-								throw "Enter zipcode.";
+								//throw "Enter zipcode.";
 							}
 							else{
 								if(IsZipcode($("#zipcode-input").val()) === false) {
@@ -513,17 +462,9 @@ $(document).ready(function() {
 
 	//handle edit-form cancel 
 	$(".cancel-btn").on("click",function(){
-		// console.log("OMG" + $(this).siblings("div").next().find("ul").attr("id"));
 		// var target = "#" + $(this).attr("for"); //grab target
-		var site = "#" + $(this).parent("form").parent("div").attr("id");
-		if(site === "#skills-endorsements-edit")
-		{
-			user.restoreSkill();
-		}
-		// var target = "#" + $(this).attr("for"); //grab target
-
 		var link = '#' + $(this).parent("form").attr("link");
-		var target = $(this).parent("form").parent("div");
+		target = $(this).parent("form").parent("div");
 		$(target).fadeOut(50);				 //close editable view
 		$(target).find("form").trigger("reset"); //reset form
 		$(target).find("a.remove-entry-link").hide(); //hide delete entry link
@@ -537,15 +478,13 @@ $(document).ready(function() {
 			$(this).parent("form").find("ul.sortable > li").remove();
 		}
 
-		// turn off gif loader
+		//turn off gif loader
 		$(target).find("div.loading").hide();
 
 		//repopulate the page
 		$(".editable").fadeIn(50);  //show all editable components
 		$(link).fadeIn();			//fade link items in
 	});
-
-	
 
 	//enable add new 
 	$(".add-btn").on("click",function(){
@@ -556,7 +495,12 @@ $(document).ready(function() {
 		if(forTarget !== '#true') { 		//handle editview on add
 			//display edit view
 			$(target).find("form.editable-form").attr("for-index","new");
+			$(target).find("form.editable-form").find('.DataID').val(0);
+			$(target).find("form.editable-form").find('input:text, textarea').val('');
+			$(target).find("form.editable-form").find('input:radio, input:checkbox').removeAttr('checked');
+			$(target).find("form.editable-form").find('select').removeAttr('selected');
 			$(target).fadeIn(); //.css("display","block").
+			$(target).find('input:text, textarea, input:radio, input:checkbox, select').first().focus();
 		} else {				
 			console.log(target);	//if add btn is doing an edit action 
 			//NOTE: target should be the live view id, not edit view id
@@ -567,15 +511,6 @@ $(document).ready(function() {
 
 	//enable team member or skill deletion 
 	$("ul.sortable").on("click","button.close",function(){
-		// var ul = document.getElementById("skill-list-edit");
-		// var li = document.createElement("li");
-		// li.appendChild(document.createTextNode("For"));
-		// li.setAttribute("id", "element 4");
-		// ul.appendChild(li);
-		// alert(li.id);
-		// var entry = document.createElement('li');
-		// entry.appendChild(document.createTextNode("four"));
-		// $(this).parent("li").parent("ul").appendChild(entry);
 		//remove entry from model
 		$(this).parent("li").remove();
 	});
@@ -594,5 +529,7 @@ $(document).ready(function() {
 
 
 	// $("#sortable").append("<li class=\"ui-state-default col-md-3\"><div class=\"team-member-block team-member-block-edit-view col-md-6\"><div class=\"team-member-block-description\"> <p>You</p></div></div><button type=\"button\" class=\"close\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button></li>");
+
+	
 
 });

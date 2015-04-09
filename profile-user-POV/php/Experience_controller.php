@@ -1,11 +1,11 @@
 <?php
-error_reporting(E_ALL); // debug
-ini_set("display_errors", 1); // debug
+//error_reporting(E_ALL); // debug
+//ini_set("display_errors", 1); // debug
 
 require_once __DIR__."/../../lib/php/sqlConnection.php";
-require_once __DIR__."/../../lib/php/classes/Account.php";
 require_once __DIR__."/../../lib/php/classes/User.php";
 require_once __DIR__."/../../lib/php/classes/Experience.php";
+require_once __DIR__."/Experience_view.php";
 
 // checking if logged in
 session_start();
@@ -31,21 +31,12 @@ $endyear= 0;
 $status= false;
 $description = null;
 $expid = -1; 
-
-$mode = "exit";
-
-
-if (isset($_POST['remove']) && $expid > 0) {
-	$mode = "delete";
-} elseif ($exp > 0) {
-	$mode = "edit";
-} elseif ($exp == 0) {
-	$mode = 'insert';
-}
 // testing  
 // $uid = 3;
 
-
+if (isset($_POST['ExpID'])) {
+	$expid = (int)$_POST['ExpID'];
+}
 if(isset($_POST['position-title'])) {
 	$title = trim($_POST['position-title']);
 }
@@ -73,6 +64,8 @@ if(isset($_POST['work-present'])){
 if(isset($_POST['experience-description'])) {
 	$description = trim($_POST['experience-description']);
 }
+
+$mode = "exit";
 
 if (isset($_POST['remove']) && $expid > 0) {
 	$mode = "delete";
@@ -128,7 +121,9 @@ try {
 			$exp->setDescription($description);
 			$exp->save();	
 
-			echo json_encode(json_encode($exp->getData()));
+			$view = new Experience_view();
+			$view->load($exp);
+			echo json_encode(json_encode($view->getView()));
 		break;
 		default:
 			echo "What are you trying to do?";

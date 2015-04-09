@@ -1,41 +1,65 @@
 <?php
 //error_reporting(E_ALL); // debug
 //ini_set("display_errors", 1); // debug
+require_once __DIR__."/../../lib/php/sqlConnection.php";
+require_once __DIR__."/../../lib/php/classes/Account.php";
+require_once __DIR__."/../../lib/php/classes/User.php";
+require_once __DIR__."/Profile_view.php";
 
-require_once __DIR__. "/../../lib/php/sqlConnection.php";
-require_once __DIR__. "/../../lib/php/classes/Account.php";
-require_once __DIR__. "/../../lib/php/classes/User.php";
-
-// checking if logged in
-
+// Check if logged in
 session_start();
+$home = 'Location: ../../';
 if (!$UData = json_decode($_SESSION['__USERDATA__'], true)) {
-	echo 'Session Timed Out.';
+	//header($home);
+	echo 'Session Timed Out. <a href="/signin/">Sign back in</a>';
 	die();
 }
 
 // Check if data valid or still exists in the database
 $uid = $UData['USERID'];
-if (!$User = new USER($uid)) {
-	echo "The Id is not in the database";
+if (!$User = new User($uid)) {
+	echo 'Session Timed Out. <a href="/signin/">Sign back in</a>';
 	die();
 }
 
+// $User = new User(10); // For Testing
+if (isset($_POST['editing'])) {
+	$editing = $_POST['editing'];
+}
 
-	$usersummary = null;
+$mode = "exit";
 
-	if(isset($_POST['summary'])){
-		$usersummary = trim($_POST['summary']);
+if ($editing) {
+	$mode = "edit";
+}
+
+try {
+	switch ($mode) {
+		case "edit":
+			$summary = '';
+
+			// acquiring data
+			if (isset($_POST["summary"]))
+				$summary = $_POST["summary"];
+
+			$User->setSummary($summary);
+
+			if ($User->update()) {
+				echo json_encode(['success'=>1]);
+			} else {
+				$User->err;
+			};
+
+			
+		break;
+		default:
+			echo "What are you trying to do?";
+			die();
+		break;
 	}
-
-	try{
-		$summ = new User($uid);
-		$summ->setSummary($usersummary);
-		$summ->update();
-
-	} catch(Exception $e){
-		echo $e->getMessage();
-		die();
-	}
-
+	
+} catch(Exception $e){
+	echo $e->getMessage();
+	die();
+}
 ?>
