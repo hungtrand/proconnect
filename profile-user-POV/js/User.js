@@ -98,6 +98,11 @@ User.prototype = {
 		// this.userData.skill = newSkill;
 	},
 
+	tempAddNewMember: function(newMember) {
+		this.tempMemberList = newMember;
+		if()
+	}
+
 	restoreSkill: function() {
 		console.log(this.userData["skill"]);
 		this.userData["skill"] = this.oSkillList;
@@ -600,8 +605,8 @@ User.prototype = {
 	updateEditForm: function(form) {
 		var that = this;
 		var formName = "#" + form.parent("div").attr("id");
-		// switch(formName){
-		// 	case "#skills-endorsements-edit":
+		switch(formName){
+		case "#skills-endorsements-edit":
 				if($.isEmptyObject(this.tempSkillList.skill) === false) {
 
 				var skillList = form.find("#skill-list-edit");
@@ -617,10 +622,14 @@ User.prototype = {
 	            });
 				skillList.html(beans);
 				}
-		// 	break;
-		// 	default:
-		// 	break;
-		// }
+			break;
+
+		case "#project-edit":
+			console.log("HELLO");
+		break;
+			default:
+			break;
+		}
 		
 	},
 
