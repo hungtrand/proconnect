@@ -214,11 +214,8 @@ User.prototype = {
 		return function(){
 			console.log(jQueryForm);
 			//get entry index
-			var data = { 
-						"for-index" : jQueryForm.attr("for-index"), 
-						   "remove" : true,	
-						"entry-data": "" //incase the data is needed along with the index.
-						};
+			var data = jQueryForm.serializeObject();
+			data["remove"] = true;
 			
 			console.log(data);
 
@@ -243,18 +240,14 @@ User.prototype = {
 
 		var successMsg = jQForm.parent("div").siblings("div.alert-success")
 
-		var dataToSave = {
-			"editing":editing,
-			"form-id":formName,
-			"data":newData,
-		};
+		newData["editing"] = editing;
 
 		$.ajax({
 			beforeSend: function(jqXHR,settings){
 				jQForm.siblings("div.loading").show();//show loading gif
 			},
-			url: "php/dummy2.php",
-			data: dataToSave,
+			url: jQForm.attr("action"),
+			data: newData,
 			method: 'POST',
 			error: function(xhr,status,error) {
 				bootbox.dialog({
@@ -271,25 +264,31 @@ User.prototype = {
 		}).done(function(oData){
 
 			// console.log(oData);
-			var data = JSON.parse(oData); 		//may require error handling	
-			jQForm.siblings("div.loading").hide();							//hide loading gif
+			try {
+				var data = $.parseJSON(oData); 		//may require error handling	
+				jQForm.siblings("div.loading").hide();							//hide loading gif
 
-			//check for error message
-			if(data["error"] === undefined){								//no error
-		    
-				that.updateCachedData(jQForm,newData);
-				that.updateView();	
-				$("#"+formName).find("button.cancel-btn").trigger("click"); //clear form data
-				$("a.remove-entry-link").hide(); 							//hide delete entry link
+				//check for error message
+				if(data["error"] === undefined){								//no error
+			    
+					that.updateCachedData(jQForm,oData);
+					that.updateView();	
+					$("#"+formName).find("button.cancel-btn").trigger("click"); //clear form data
+					$("a.remove-entry-link").hide(); 							//hide delete entry link
 
-				successMsg.find(".alert-msg").text("Success!");
-				successMsg.show();
+					successMsg.find(".alert-msg").text("Success!");
+					successMsg.show();
 
-				//show sucess message
-				// $(ele).
-			} else {														//yes error
-				that.showErrorInForm(data["error"], $("#"+formName));
+					//show sucess message
+					// $(ele).
+				} else {														//yes error
+					that.showErrorInForm(data["error"], $("#"+formName));
+				}
+			} catch(e) {
+				console.log(e);
+				that.showErrorInForm(oData, $("#"+formName));
 			}
+			
 		});
 
 	},
@@ -432,7 +431,7 @@ User.prototype = {
 				var forIndex = newData["for-index"];
 				delete newData["for-index"];
 				if(forIndex === "new") {				//new entry
-					this.userData.education[this.userData.experiences.length] = newData;
+					this.userData.education[this.userData.education.length] = newData;
 					// console.log(this.userData.experiences);
 				} else if(newData["remove"] === true){ //remove entry
 					this.userData.education.splice(forIndex,1);
@@ -574,7 +573,7 @@ User.prototype = {
 				var index =  form.attr("for-index");
 				var edu = this.userData.education[index];
 
-
+				$("#EduID").val(edu["EduID"]);
 				$("#school-name").val(edu["school-name"]);
 				$("#degree").val(edu["degree"]);
 				$("#field-of-study").val(edu["field-of-study"]);
