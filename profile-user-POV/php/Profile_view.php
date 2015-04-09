@@ -56,6 +56,7 @@ class Profile_View implements view {
 			}
 
 			$item = [
+				"ExpID"=>$exp->getID(),
 				"position-title"=>$exp->getTitle().'',
 				"company-name"=>$exp->getCompanyName().'',
 				"company-location"=>$exp->getLocation().'',
@@ -79,6 +80,7 @@ class Profile_View implements view {
 
 		foreach ($arrProjects as $proj) {
 			$item = [
+				"ProjectID"=>$proj->getID(),
 				"project-name"=>$proj->getProjectTitle().'',
 				"project-url"=>$proj->getProjectURL().'',
 				"team-member"=>[],
@@ -97,6 +99,7 @@ class Profile_View implements view {
 
 		foreach ($arrEdu as $edu) {
 			$item = [
+				"EduID"=>$edu->getID(),
 				"school-name"=>$edu->getSchool().'',
 				"degree"=>$edu->getDegree().'',
 				"field-of-study"=>$edu->getFieldOfStudy().'',

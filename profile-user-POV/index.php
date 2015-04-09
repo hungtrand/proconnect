@@ -93,7 +93,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                         <div class="loading">
                           <img src="../image/ajax-loader.gif">
                         </div>
-                        <form class="editable-form" method="POST">
+                        <form class="editable-form" method="POST" action="php/Profile_controller.php">
                           <!-- Error Alert -->
                           <div class="alert alert-danger" role="alert">
                             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -214,12 +214,12 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                       <p id="user-summary"></p>
                     </div>
                   </div>
-                  <div id="summary-edit" class="edit-view" >
+                  <div id="summary-edit" class="edit-view" action="php/Education_controller.php" >
                     <div class="loading">
                         <img src="../image/ajax-loader.gif">
                       </div>
                     <!-- <b><h4>Summary</h4></b> -->
-                    <form class="editable-form">
+                    <form class="editable-form" action="php/Summary_controller.php">
                       <!-- Error Alert -->
                       <div class="alert alert-danger" role="alert">
                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -291,7 +291,8 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                       <img src="../image/ajax-loader.gif">
                     </div>
                     <!-- <b><h4>Summary</h4></b> -->
-                    <form class="editable-form">
+                    <form class="editable-form" action="php/Skill_controller.php">
+                      <input id="SkillID" name="SkillID" type="hidden" value="" />
                       <!-- Error Alert -->
                       <div class="alert alert-danger" role="alert">
                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -347,7 +348,8 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                     <div class="loading">
                         <img src="../image/ajax-loader.gif">
                       </div>
-                    <form class="editable-form" >
+                    <form class="editable-form" action="php/Experience_controller.php">
+                      <input id="ExpID" name="ExpID" type="hidden" value="" />
                       <!-- Error Alert -->
                       <div class="alert alert-danger" role="alert">
                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -460,7 +462,8 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                     <div class="loading">
                       <img src="../image/ajax-loader.gif">
                     </div>
-                    <form class="editable-form">
+                    <form class="editable-form" action="php/Project_controller.php">
+                      <input id="ProjectID" name="ProjectID" type="hidden" value="" />
                       <!-- Error Alert -->
                       <div class="alert alert-danger" role="alert">
                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -568,7 +571,8 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                     <div class="loading">
                       <img src="../image/ajax-loader.gif">
                     </div>
-                    <form class="editable-form">
+                    <form class="editable-form" action="php/Education_controller.php">
+                      <input id="EduID" type="hidden" name="EduID" value="0" />
                       <!-- Error Alert -->
                       <div class="alert alert-danger" role="alert">
                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>

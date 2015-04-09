@@ -225,7 +225,7 @@ $(document).ready(function() {
 
 				var editing = ($(this).attr("editing") === "true") ? true : false;
 				
-				// console.log(editing);
+				 console.log(data);
 				user.modifyData($(this),data,editing);	//modify data
 
 			} catch(e) {
@@ -412,7 +412,7 @@ $(document).ready(function() {
 			}
 
 			function IsName(name) {
-			var regex =/^[a-z ,.'-]+$/i;
+			var regex =/^[a-zA-Z0-9 ,.'-]+$/i;
 				if(!regex.test(name)) {
 				   	return false;
 				}else{
@@ -421,7 +421,7 @@ $(document).ready(function() {
 			}
 
 			function IsWord(word) {
-				var regex = /^[a-z ,.']+$/;
+				var regex = /^[a-zA-Z0-9 ,.']+$/i;
 				if(!regex.test(word)) {
 					return false;
 				}
