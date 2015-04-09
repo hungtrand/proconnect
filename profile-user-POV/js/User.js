@@ -152,14 +152,18 @@ User.prototype = {
 	},
 
 	tempAddNewSkill: function(newSkill) { //temporary add new skill, will store the original
-		if(this.oSkillList === ""){
+		this.tempSkillList = newSkill;
+		
+		if($.isEmptyObject(this.oSkillList)){
 			this.oSkillList = this.userData["skill"];
-			console.log(this.oSkillList);
-		} 
+		}
+		// this.userData.skill = newSkill;
 	},
 
 	restoreSkill: function() {
-
+		console.log(this.userData["skill"]);
+		this.userData["skill"] = this.oSkillList;
+		console.log(this.userData["skill"]);
 	},
 
 	//talk to backend to get initiate a user data object
@@ -170,7 +174,8 @@ User.prototype = {
 		// var newData = {"some":"data"};
 
 		$.ajax({
-			url: "php/Profile_controller.php",
+			// url: "php/Profile_controller.php",
+			url: "php/dummy.php",
 			method: 'POST',
 			contentType: 'text/plain',
 			error: function(xhr,status,error) {
@@ -421,6 +426,7 @@ User.prototype = {
 			case "skills-endorsements-edit":
 				// console.log("skills-endorsements-edit");
 				// console.log(this.userData.skill);
+				console.log("Hello");
 				this.userData.skill = newData.skill;
 				// console.log(newData);
 				// console.log(this.userData.skill);
@@ -647,6 +653,26 @@ User.prototype = {
 			break;
 		}
 
+	},
+
+	updateEditForm: function(form) {
+		var that = this;
+		//console.log(form.parent("div").attr("id"));
+		if($.isEmptyObject(this.tempSkillList.skill) === false) {
+
+				var skillList = form.find("#skill-list-edit");
+				var count = 0;
+				var beans = "";
+				$.each(this.tempSkillList,function(skillName,endorsementNum){
+				    beans += "<li entry-index='" + count + "' >" +
+		                "<span class='badge'>" + endorsementNum + "</span> " +
+		                "<span class='skill-pill-name'>" + skillName + "</span>" +
+		                "<button type='button' class='close' aria-label='Close'><span aria-hidden='true'>&times;</span></button>" +
+		              "</li>";
+		            count++;
+	            });
+				skillList.html(beans);
+		}
 	},
 
 	//update view
