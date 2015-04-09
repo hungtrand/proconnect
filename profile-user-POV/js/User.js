@@ -657,8 +657,10 @@ User.prototype = {
 
 	updateEditForm: function(form) {
 		var that = this;
-		//console.log(form.parent("div").attr("id"));
-		if($.isEmptyObject(this.tempSkillList.skill) === false) {
+		var formName = "#" + form.parent("div").attr("id");
+		// switch(formName){
+		// 	case "#skills-endorsements-edit":
+				if($.isEmptyObject(this.tempSkillList.skill) === false) {
 
 				var skillList = form.find("#skill-list-edit");
 				var count = 0;
@@ -672,7 +674,12 @@ User.prototype = {
 		            count++;
 	            });
 				skillList.html(beans);
-		}
+				}
+		// 	break;
+		// 	default:
+		// 	break;
+		// }
+		
 	},
 
 	//update view

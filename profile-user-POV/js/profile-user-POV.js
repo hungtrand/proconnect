@@ -116,13 +116,7 @@ $(document).ready(function() {
 		e.preventDefault();
 
 		if($("#project-team-members").val() !== ""){ 		//form submission for new members, NOT a save button event
-
-			//add user to model 
-			var newMember = user.fetchMember($("#project-team-members").val());
-
-			//add member directly to form
-
-			//clear input text
+			
 	 		$("#project-team-members").val("");//clear field
 			// console.log("adding new teammate");
 
@@ -577,7 +571,5 @@ $(document).ready(function() {
 
 
 	// $("#sortable").append("<li class=\"ui-state-default col-md-3\"><div class=\"team-member-block team-member-block-edit-view col-md-6\"><div class=\"team-member-block-description\"> <p>You</p></div></div><button type=\"button\" class=\"close\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button></li>");
-
-	
 
 });
