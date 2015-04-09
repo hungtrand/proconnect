@@ -27,7 +27,21 @@ $(document).ready(function() {
 	   return o;
 	};
 	
-	
+	//preview profile picture
+	function readURL(input) {
+		  if (input.files && input.files[0]) {
+		   var reader = new FileReader();
+		   reader.onload = function(e) {
+			   $('#preview').attr('src', e.target.result);
+			   $( "#picture-submit" ).trigger( "click" );
+		   }
+
+		   reader.readAsDataURL(input.files[0]);
+		   }
+		   }
+		   $("#input-25").change(function() {
+		   readURL(this);
+	   });
 	//enable edit view
 	$(".normal-view").on("click",".editable",function(){
 		var target = "#" + $(this).attr("for");			//grab target
@@ -535,5 +549,7 @@ $(document).ready(function() {
 
 
 	// $("#sortable").append("<li class=\"ui-state-default col-md-3\"><div class=\"team-member-block team-member-block-edit-view col-md-6\"><div class=\"team-member-block-description\"> <p>You</p></div></div><button type=\"button\" class=\"close\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button></li>");
+
+	
 
 });
