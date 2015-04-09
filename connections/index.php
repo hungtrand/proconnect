@@ -6,7 +6,7 @@
 $UData = json_decode($_SESSION['__USERDATA__'], true);
 $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 
-$page_title = "Connecttions - ProConnect"; //required for front end
+$page_title = "Connections - ProConnect"; //required for front end
 include '../header/header.php';
 ?>
 
@@ -74,7 +74,7 @@ include '../header/header.php';
             </div>
 
             <!-- Blog Sidebar Widgets Column -->
-            <div id="fixed-right-section" class="col col-md-4 affix hidden-print hidden-xs hidden-sm" role="complimentary" data-spy="affix" data-offset-top="60 " data-offset-bottom="200">
+            <div id="fixed-right-section" class="col col-md-4 affix hidden-print hidden-xs hidden-sm" role="complimentary" data-spy="affix" data-offset-top="200 " data-offset-bottom="200">
                 <div class="well">
                     <h3 class="text-primary" style="overflow: auto;">Suggestions</h3>
 					<hr />
@@ -82,6 +82,8 @@ include '../header/header.php';
 					<div id="SuggListing" >
 
 					</div>
+
+                    <div id="SuggestionsListEndAlert" class="alert alert-info hidden text-center"></div>
                 </div>
             </div>
         </div>
@@ -140,7 +142,7 @@ include '../header/header.php';
                                 <input type="text" class="form-control keywords" name="NewConnKeywords" />
 
                                 <span class="input-group-btn">
-                                    <button class="btn btn-primary submit" type="button">
+                                    <button class="btn btn-primary submit" type="button" title="Search">
                                         <span class="glyphicon glyphicon-search"></span>
                                     </button>
                                   </span>
@@ -161,27 +163,28 @@ include '../header/header.php';
     <script type="text/template" id="ConnectionTemplate">
     <div class="UserConnection" class="col col-xs-12">
         <input type="hidden" class="UserID" name="UserID" value="" />
-        <div class="row">
-            <div class="col col-xs-4">
-                <img width="100px" src="../image/user_img.png" class="img-rounded" />
-            </div>
+        <div class="well well-sm">
+            <div class="row">
+                <div class="col col-xs-4">
+                    <img width="100px" src="../image/user_img.png" class="img-rounded" />
+                </div>
 
-            <div class="col col-xs-8">
-                <h4 class="text-primary ConnectionName">John Doe</h4>
-                <p class="ConnectionWork"><span class="ConnectionJob"></span>&nbsp;at&nbsp;<span class="ConnectionCompany"></span></p>
-                <p class="ConnectionLocation"></p>
+                <div class="col col-xs-8">
+                    <h4 class="text-primary ConnectionName">John Doe</h4>
+                    <p class="ConnectionWork"><span class="ConnectionJob"></span>&nbsp;at&nbsp;<span class="ConnectionCompany"></span></p>
+                    <p class="ConnectionLocation"></p>
 
-                <ul class="nav nav-pills">
-                    <li role="presentation"><a href="#">
-                        <span class="glyphicon glyphicon-envelope"><span>&nbsp;Home</a>
-                    </li>
-                    <li role="presentation"><a class="removeConnection" href="#">
-                        <span class="glyphicon glyphicon-remove"><span>&nbsp;Remove</a>
-                    </li>
-                </ul>
+                    <ul class="nav nav-pills">
+                        <li role="presentation"><a href="#">
+                            <span class="glyphicon glyphicon-envelope"><span>&nbsp;Email</a>
+                        </li>
+                        <li role="presentation"><a class="removeConnection" href="#">
+                            <span class="glyphicon glyphicon-remove"><span>&nbsp;Remove</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-
         <hr />
     </div>
     </script>

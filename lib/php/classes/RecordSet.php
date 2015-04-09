@@ -1,11 +1,12 @@
 <?php
 abstract class RecordSet {
-	private $db;
+	protected $db;
 	private $Limit;
 	public $err;
 
 	function __construct() {
 		$this->db = connect('ProConnect');
+		$this->db->setAttribute(PDO::ATTR_CASE, PDO::CASE_UPPER);
 	}
 
 	abstract public function getData();

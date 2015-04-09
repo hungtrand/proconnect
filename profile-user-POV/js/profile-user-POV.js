@@ -27,7 +27,44 @@ $(document).ready(function() {
 	   return o;
 	};
 	
+	// function formReset(form){
+	// 	var link = '#' + $(form).parent("form").attr("link");
+	// 	target = $(form).parent("form").parent("div");
+	// 	$(target).fadeOut(50);				 //close editable view
+	// 	$(target).find("form").trigger("reset"); //reset form
+	// 	$(target).find("a.remove-entry-link").hide(); //hide delete entry link
+	// 	//clear temporary data
+	// 	$(form).parent("form").attr("editing","false")
+
+	// 	//turn off gif loader
+	// 	$(target).find("div.loading").hide();
+
+	// 	//repopulate the page
+	// 	$(".editable").fadeIn(50);  //show all editable components
+	// 	$(link).fadeIn();			//fade link items in
+	// }
 	
+	//preview profile picture
+	function readURL(input) {
+		  if (input.files && input.files[0]) {
+		   		var reader = new FileReader();
+		   		reader.onload = function(e) {
+		   			console.log(e);
+				   $('#preview').attr('src', e.target.result);
+				   $( "#picture-submit" ).trigger( "click" );
+		   		}
+		   		reader.readAsDataURL(input.files[0]);
+		   }
+    }
+
+
+
+    //enable image edit
+    $("#input-25").change(function() {
+	   	// readURL(this);
+	   	user.storeImage( this.files[0] );
+	});
+
 	//enable edit view
 	$(".normal-view").on("click",".editable",function(){
 		var target = "#" + $(this).attr("for");			//grab target
@@ -195,7 +232,7 @@ $(document).ready(function() {
 				user.showErrorInForm(e,$(this));
 			}
 		}
-
+		
 		$(function(){
     		$("[data-hide]").on("click", function(){
         		$("." + $(this).attr("data-hide")).hide();
@@ -477,13 +514,15 @@ $(document).ready(function() {
 	$(".cancel-btn").on("click",function(){
 		// console.log("OMG" + $(this).siblings("div").next().find("ul").attr("id"));
 		// var target = "#" + $(this).attr("for"); //grab target
-		// var site = "#" + $(this).parent("form").parent("div").attr("id");
-		// if(site === "#skills-endorsements-edit")
-		// {
-		// 	user.restoreSkill();
-		// }
+		var site = "#" + $(this).parent("form").parent("div").attr("id");
+		if(site === "#skills-endorsements-edit")
+		{
+			user.restoreSkill();
+		}
+		// var target = "#" + $(this).attr("for"); //grab target
+
 		var link = '#' + $(this).parent("form").attr("link");
-		target = $(this).parent("form").parent("div");
+		var target = $(this).parent("form").parent("div");
 		$(target).fadeOut(50);				 //close editable view
 		$(target).find("form").trigger("reset"); //reset form
 		$(target).find("a.remove-entry-link").hide(); //hide delete entry link
@@ -497,13 +536,15 @@ $(document).ready(function() {
 			$(this).parent("form").find("ul.sortable > li").remove();
 		}
 
-		//turn off gif loader
+		// turn off gif loader
 		$(target).find("div.loading").hide();
 
 		//repopulate the page
 		$(".editable").fadeIn(50);  //show all editable components
 		$(link).fadeIn();			//fade link items in
 	});
+
+	
 
 	//enable add new 
 	$(".add-btn").on("click",function(){

@@ -2,7 +2,7 @@
 require_once __DIR__."/../../lib/php/interfaces.php";
 require_once __DIR__."/../../lib/php/classes/Profile.php";
 
-class SearchNewConnection_view implements view {
+class UserCard_view implements view {
 	private $FinalView;
 
 	function __construct() {
