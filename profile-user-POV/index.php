@@ -18,6 +18,13 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                   <div class="row normal-view">
                    
 					<div id="profile-image-block" class="col col-sm-6 col-md-4 col-lg-3">
+						<div id="progress-block" style= "z-index: 1;">
+							<div class="progress">
+							  <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
+								<span class="sr-only">45% Complete</span>
+							  </div>
+							</div>
+						</div>
                           <div id="profile-image" class="outer-ref" >
                            <img src="http://placehold.it/380x500" alt="" class="img-responsive profile-image" id="preview"/>
 							<div id="picture-edit">

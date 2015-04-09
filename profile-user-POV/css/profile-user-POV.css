@@ -271,9 +271,17 @@ div[for="skills-endorsements-edit"] > .panel,.list-group{
 }
 
 .profile-image {
-	width: 100%;
+	width: 80%;
 	margin: auto;
 	max-height: 200px;
+}
+#profile-image-block{
+	position: relative;
+}
+#progress-block{
+	width: 90%;
+	position: absolute;
+	top: 40%;
 }
 
 #project-team-members {
