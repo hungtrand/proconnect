@@ -55,20 +55,26 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                     <span class="icon-bar"></span>
                 </button>
 
-                <a id="logo" class="navbar-brand" href="#"><img src="../image/proconnect/logo_text.png" /></a>
+                <a id="logo" class="navbar-brand hidden-xs" href="#">				
+				<img src="../image/proconnect/logo_text.png" />				
+				</a>
+				<a id="logo" class="navbar-brand hidden-sm hidden-md hidden-lg" style = "width:200px;" href="#">				
+				<img style = "width:100%;" src="../image/proconnect/logo_text.png" />				
+				</a>
 
-                <form class="navbar-form navbar-left text-center" role="search">
+
+                <form class="navbar-form navbar-left text-center form-inline" role="search">
                     <div class="form-group">
-                      <input type="text" size="40" class="form-control" placeholder="Search for people, companies, jobs...">
+                      <input type="text" size="40" class="form-control" id= "searchbar" placeholder="Search for people, companies, jobs...">
                     </div>
-                    <button type="submit" class="btn btn-primary">&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                    <button type="submit" class="btn btn-primary hidden-xs">&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;&nbsp;&nbsp;</button>
                 </form>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="nav-right-links">
 
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav nav-pills navbar-right ">
                     <li>
                         <a href="#"><span class="glyphicon glyphicon-envelope"></span></a>
                     </li>
@@ -81,7 +87,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                         <a href="#"><span class="glyphicon glyphicon-user"></span></a>
                     </li>
 
-                    <li class="dropdown">
+                    <li class="dropdown hidden-xs">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             <?=$FullName?> <span class="caret"></span>
                         </a>
@@ -93,9 +99,36 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                         </ul>
                     </li>
                 </ul>
+				 <ul class="nav subNav hidden-sm hidden-md hidden-lg">
+                <li role="presentation"><a href="../profile-user-POV/">
+                    Home</a>
+                </li>
+                <li role="presentation"><a href="../profile-user-POV/">
+                    Profile</a>
+                </li>
+                <li role="presentation"><a href="../connections/">
+                    Connections</a>
+                </li>
+                <li role="presentation"><a href="#">
+                    Education</a>
+                </li>
+                <li role="presentation"><a href="#">
+                    Jobs</a>
+                </li>
+                <li role="presentation"><a href="#">
+                    Interests</a>
+                </li>
+	
+				<li role="presentation"><a href="#">Account & Settings</a></li>
+				<li role="presentation"><a href="#">Job Posting</a></li>
+				<hr>
+				<li role="presentation" id = "signout-menu"><a href="../signout/php/session_signout.php">Sign Out</a></li>
+					
+                </div>
+            </ul>
 
             </div><!-- /.navbar-collapse -->
-            <ul class="nav nav-pills subNav">
+            <ul class="nav nav-pills subNav hidden-xs">
                 <li role="presentation"><a href="../profile-user-POV/">
                     Home</a>
                 </li>
