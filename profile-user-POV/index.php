@@ -26,7 +26,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 							</div>
 						</div>
                           <div id="profile-image" class="outer-ref" >
-                           <img src="http://placehold.it/380x500" alt="" class="img-responsive profile-image" id="preview"/>
+                           <img src="/image/user_img.png" alt="" class="img-responsive profile-image" id="preview"/>
               							<div id="picture-edit">
               								<form class="editable-form">
               									<div id="change-image-block" type = "file"> 							                        
@@ -457,7 +457,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                       <img src="../image/ajax-loader.gif">
                     </div>
                     <form class="editable-form" action="php/Project_controller.php">
-                      <input id="ProjectID" name="ProjectID" class="DataID" type="hidden" value="" />
+                      <input id="ProjectID" name="ProjectID" class="DataID" type="hidden" value="0" />
                       <!-- Error Alert -->
                       <div class="alert alert-danger" role="alert">
                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -476,12 +476,12 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                         <input name="project-url" type="text" class="form-control" id="project-url">
                       </div>
                       <!-- Team Members -->
-                      <label for="project-team-members">Team Members</label>
+<!--                       <label for="project-team-members">Team Members</label>
                       
-                      <div id="project-team-editable-block" class="form-group well well-sm"> <!-- contentEditable="true" -->
+                      <div id="project-team-editable-block" class="form-group well well-sm"> 
 
                         <ul id="project-team-list" class='sortable grid'>  
-                          <!-- <li class='no-sort' index='0'>
+                          <li class='no-sort' index='0'>
                             
                             <img src="https://static.licdn.com/scds/common/u/images/themes/katy/ghosts/person/ghost_person_30x30_v1.png">
                             <span class="skill-pill-name">You</span>
@@ -494,14 +494,14 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                             <span class="skill-pill-name">You</span>
                             <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                             
-                          </li> -->
+                          </li>
                         </ul>
 
                       
                         <input name="new-member-name" type="text" class="form-control" id="project-team-members" placeholder="+Add Member"> 
                         
 
-                      </div>
+                      </div> -->
 
                       <!-- Project Description -->
                       <label for="project-description">Description</label>

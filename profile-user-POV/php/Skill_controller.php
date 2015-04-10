@@ -1,42 +1,38 @@
 <?php
-error_reporting(E_ALL);//debuger
-ini_set("display_errors", 1);//debuger
+// error_reporting(E_ALL);//debuger
+// ini_set("display_errors", 1);//debuger
 
 require_once __DIR__. "/../../lib/php/sqlConnection.php";
 require_once __DIR__. "/../../lib/php/classes/Account.php";
 require_once __DIR__. "/../../lib/php/classes/User.php";
 require_once __DIR__. "/../../lib/php/classes/Skill.php";
+require_once __DIR__. "/../../lib/php/classes/SkillManager.php";
 
 // checking if logged in
-/*
+
 session_start();
 if (!$UData = json_decode($_SESSION['__USERDATA__'], true)) {
 	echo 'Session Timed Out.';
 	die();
 }
-
-// Check if data valid or still exists in the database
 $uid = $UData['USERID'];
+
+// $uid = 7;
+// Check if data valid or still exists in the database
+
 if (!$User = new USER($uid)) {
 	echo "The Id is not in the database";
 	die();
 }
-*/
 
-	$skillname = null;
+	$skills = [];
 	$endrosements = 0;
 	$orderPosition = 0;
 	$skillid = -1;
 	$mode = "exit";
 
 	if(isset($_POST['skill'])){
-		$skillname = trim($_POST['skill']);
-	}
-	if(isset($_POST['endrosements'])){
-		$endrosements = trim($_POST['endrosements']);
-	}
-	if(isset($_POST['orderPositions'])){
-		$orderPosition = trim($_POST['orderPosition']);
+		$skills = json_decode(trim($_POST['skill']));
 	}
 	if(isset($_POST['remove']) && $skillid > 0){
 		$mode = 'delete';
@@ -45,44 +41,35 @@ if (!$User = new USER($uid)) {
 	}elseif($skillid == 0){
 		$mode = 'insert';
 	}
-	try{
-		swtich($mode){
-			case 'delete':
-				$sk = new skill();
-				if($sk->load($skillid) == true){
-					$sk->delete();
-					echo json_encode(['success'=>1]);
-				}else {
-					echo "Cannot delete. This record no longer exists!";
-				}
-				break;
-			case 'edit':
-				$sk = new skill();
-				if($sk->load($skillid)== true){
-					$sk->setSkillName($skillname);
-					$sk->setEndorsements($endrosements);
-					$sk->setOrderPosition($orderPosition);
-					$sk->update();
-					echo json_encode(['success'=>1]);
-				} else{
-					echo "Cannot save. Retry again!";
-				}
-				break;
-			case 'insert':
-				$sk = new Skill();
+	try{		
+		// This for loop update endorsement and insert a new skill if not exists
+		foreach ($skills as $skillname=>$nEndorse) {
+			$sk = new Skill(); 
+
+			// if skill exists then update number of endorsement
+			if ($sk->loadBySkillName($uid, $skillname)) {
+				$sk->setEndorsements($nEndorse);
+				$sk->update();
+			} else { // else add new skill to database
 				$sk->setUserID($uid);
 				$sk->setSkillName($skillname);
-				$sk->setEndorsements($endrosements);
-				$sk->setOrderPosition($orderPosition);
+				$sk->setEndorsements($nEndorse);
+				$sk->setOrderPosition(1);
 				$sk->save();
-				echo json_encode(json_encode($sk->getData()));
-				break;
-			default:
-				echo "What are you trying to do?";
-				die();
-				break;
+			}
+		}
+		
+		// check database to see what skills was not passed and delete them
+		$skm = new SkillManager($User);
+		$dbSkills = $skm->getAll();
+		foreach($dbSkills as $objSkill) {
+			$skillname = $objSkill->getSkillName();
+			if (array_key_exists($skillname, $skills)) continue;
+
+			$objSkill->delete();
 		}
 
+		echo json_encode(['success'=>1]);
 	} catch(Exception $e){
 		echo $e->getMessage();
 		die();

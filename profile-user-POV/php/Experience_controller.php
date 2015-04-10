@@ -1,6 +1,6 @@
 <?php
-//error_reporting(E_ALL); // debug
-//ini_set("display_errors", 1); // debug
+// error_reporting(E_ALL); // debug
+// ini_set("display_errors", 1); // debug
 
 require_once __DIR__."/../../lib/php/sqlConnection.php";
 require_once __DIR__."/../../lib/php/classes/User.php";
@@ -59,7 +59,10 @@ if(isset($_POST['work-end-year'])) {
 	$endyear = trim($_POST['work-end-year']);
 }
 if(isset($_POST['work-present'])){
-	$status= true;
+	if ($_POST['work-present'] == 'true')
+		$status = true;
+	else 
+		$status = false;
 } 
 if(isset($_POST['experience-description'])) {
 	$description = trim($_POST['experience-description']);
@@ -91,8 +94,7 @@ try {
 		case "edit":
 			$exp = new Experience();
 		//	var_dump($exp->getData());
-			if($exp->load($id) == true){
-				$exp = new Experience($id);
+			if($exp->load($expid) == true){
 				$exp->setTitle($title);
 				$exp->setCompanyName($compName);
 				$exp->setLocation($location);
@@ -103,7 +105,8 @@ try {
 				$exp->setDescription($description);
 				
 				$exp->update();
-			
+				
+				echo json_encode(['success'=>1]);
 			} else {
 				echo "Cannot save. Record no longer exists.";
 			}
@@ -137,4 +140,3 @@ try {
 }
 
 ?>
-

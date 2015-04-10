@@ -67,6 +67,22 @@ class Skill extends ActiveRecord {
 	}
 	/* End of Implementing Abstract Methods */
 
+	public function loadBySkillName($UserID, $SkillName) {
+		if(!isset($UserID) || !isset($SkillName) || strlen($SkillName) < 1) {
+			$this->err = "Missing parameters: [load by skill name need id and skill name]";
+			return false;
+		}
+
+		$params = ["USERID"=>$UserID, "SKILLNAME"=>$SkillName];
+		if (!$this->data = $this->fetchBy($params)) {
+			$this->err = "Could not fetch skill".$SkillName."for user ".$UserID;
+			return false;
+		}
+
+		$this->SkillID = $this->data['SKILLID'];
+		return true;
+	}
+
 	// Get methods
 	public function getSkillName() {
 		return $this->data['SKILLNAME'];
