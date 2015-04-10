@@ -1,0 +1,57 @@
+body {
+    padding-top: 100px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    background-color: #E8E8E8;
+}
+
+textarea {
+	resize: none;
+}
+
+.sidebar-icon {
+	float: right;
+	color: black;
+}
+
+#footers {
+	margin-left: -50px;
+}
+
+#fixed-right-section {
+	position: fixed;
+	width: 30%;
+	height: 80%;
+	overflow: auto;
+	right: 37px;
+}
+
+#message-content {
+	border-color: #337AB7;
+}
+
+#message-div {
+	position: relative;
+	overflow: auto;
+	width: 48%;
+	margin-left: 22%;
+}
+
+#message-form {
+	list-style-type: none;
+}
+
+#btnAddConnection {
+	width: 50px;
+	height: 50px;
+	border-radius: 25px;
+	-moz-border-radius: 25px;
+	-webkit-border-radius: 25px;
+	font-size: 20px;
+}
+
+#sidebar {
+	position: fixed;
+	overflow: hidden;
+	left: 60px;
+	height: 73%;
+	width: 20%;
+}

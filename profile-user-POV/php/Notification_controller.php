@@ -25,6 +25,14 @@ if (!$User = new USER($uid)) {
 	$message = null;
 	$type = null;
 	$Assocuser = null;
+	$notcid = -1; //initialize notification ID 
+	$mode = "exit"; // initialize the mode :
+
+	if(isset($_POST['remove']) && $notcid > 0){
+		$mode = 'delete'; 
+	}elseif($notcid == 0){
+		$mode = 'insert';
+	}
 	
 	if(isset($_POST['Message'])){
 		$message = trim($_POST['Message']);
@@ -35,13 +43,30 @@ if (!$User = new USER($uid)) {
 	}
 
 	try{
-		$mess = new Notification();
-		$mess->setUMessage('DotaAllStar!!');
-		$mess->setType('GG');
-		//$mess->setAssocUser($uid);
-		$mess->save();
-
-		return true;
+		switch ($mode) {
+			case 'delete':
+				$noti = new Notification(); //create new notification
+				if($noti->load($notcid) == true){
+					$noti->delete();
+					echo json_encode(['success'=>1]);
+				} else{
+					echo "Cannot delete. This notification is no longer exists!";
+				}
+				break;
+			case 'insert':
+				$noti = new Notification();
+					$noti->setAssocUser($uid);
+					$noti->setUMessage($message);
+					$noti->setType($type);
+					$noti->save();
+					echo json_encode(json_encode($noti->getData()));
+				break;
+			default:
+				echo "What are you trying to do?";
+				die();
+				break;
+		}
+		
 	} catch(Exception $e){
 		echo $e->getMessage();
 		die();

@@ -1,0 +1,12 @@
+<?php
+	//fake data
+	$data = [	
+	
+				"message" => [	//this entry should always be present and have static key name
+					"sender-name" =>"../../image/user_img.png", //<-------- RECENTLY ADDED
+					"sendar-message" => "fake"
+				]];
+
+	print_r( json_encode($data) );
+	// echo "hello from server";
+?>

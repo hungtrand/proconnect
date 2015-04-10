@@ -134,8 +134,7 @@ User.prototype = {
 		  	// console.log(xhr);
 		  	console.log(status + ": " + error );
 		  },
-		})
-		.done(function(d){
+		}).done(function(d){
 			try{
 				var data = JSON.parse(d); //expecting data to return with {"img-url": some URL}
 
@@ -160,10 +159,13 @@ User.prototype = {
 		// this.userData.skill = newSkill;
 	},
 
+<<<<<<< HEAD
+=======
 	tempAddNewMember: function(newMember) {
 		this.tempMemberList = newMember;
 	},
 
+>>>>>>> f98294d3deb407bc8b573e91e0180199183b0caa
 	restoreSkill: function() {
 		console.log(this.userData["skill"]);
 		this.userData["skill"] = this.oSkillList;
@@ -754,7 +756,10 @@ User.prototype = {
 			// console.log(this.userData.skill);
 			var count = 0;
 			$.each(this.userData.skill,function(key, value){
-				// $.each(i,function(name,))
+
+				//check for 0 value
+				value = (value == 0) ? "" : value;
+				
 				if(count < 7){
 					$("#skill-top-list").append("<li class=\"list-group-item\"><span class=\"badge colored-badge\">" + value + "</span>" + key + "</li>");
 				} else {

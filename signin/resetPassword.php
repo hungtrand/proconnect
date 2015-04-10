@@ -68,7 +68,7 @@ $ForgotPasswordKey = $_SESSION['__ForgotPasswordKey__'];
 
             </form>
      
-         <div>
+         </div>
     </div> <!-- /container -->
 
 </body>

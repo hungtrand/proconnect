@@ -50,7 +50,7 @@
 
             </form>
      
-         <div>
+         </div>
     </div> <!-- /container -->
 
 </body>
