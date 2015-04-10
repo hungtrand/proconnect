@@ -59,7 +59,10 @@ if(isset($_POST['work-end-year'])) {
 	$endyear = trim($_POST['work-end-year']);
 }
 if(isset($_POST['work-present'])){
-	$status= true;
+	if ($_POST['work-present'] == 'true')
+		$status = true;
+	else 
+		$status = false;
 } 
 if(isset($_POST['experience-description'])) {
 	$description = trim($_POST['experience-description']);
