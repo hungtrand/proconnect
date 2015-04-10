@@ -116,28 +116,7 @@ $(document).ready(function() {
 		e.preventDefault();
 
 		if($("#project-team-members").val() !== ""){ 		//form submission for new members, NOT a save button event
-			var data = $(this).serializeObject();	
-			data["for-index"] = $(this).attr("for-index");
-			console.log("HELLO");
-			var memberList = {};
-			$.each($(this).find("ul#project-team-list li"),function(i,li){
-				var memName = $(li).find("span.skill-pill-name").text();
-
-				// var imgURL = $(li).find("img").attr("src");	// may be unnecessary
-				var memData = user.userData.projects[ data["for-index"] ]["team-member"][memName];
-				memberList[memName] = memData;
-			});
-			data["team-member"] =  memberList;
-			console.log(data["team-member"]);
-
-			user.tempAddNewMember();
-			//add user to model 
-			var newMember = $("#project-team-members").val();
-			console.log(newMember);
-			user.updateEditForm($(this));
-			var newMember = user.fetchMember($("#project-team-members").val());
-
-			//add member directly to form
+			
 
 			//clear input text
 	 		$("#project-team-members").val("");//clear field
