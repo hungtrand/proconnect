@@ -159,10 +159,13 @@ User.prototype = {
 		// this.userData.skill = newSkill;
 	},
 
+<<<<<<< HEAD
+=======
 	tempAddNewMember: function(newMember) {
 		this.tempMemberList = newMember;
 	},
 
+>>>>>>> f98294d3deb407bc8b573e91e0180199183b0caa
 	restoreSkill: function() {
 		console.log(this.userData["skill"]);
 		this.userData["skill"] = this.oSkillList;
