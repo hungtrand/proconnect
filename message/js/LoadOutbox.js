@@ -1,4 +1,4 @@
-function LoadInbox(container) {
+function LoadOutbox(container) {
 	this.data = "";
 
 	this.container = container;
@@ -6,9 +6,9 @@ function LoadInbox(container) {
 	this.init();
 }
 
-LoadInbox.prototype = {
+LoadOutbox.prototype = {
 
-	constructor: LoadInbox,
+	constructor: LoadOutbox,
 
 	init: function() {
 		this.fetch();
@@ -18,7 +18,7 @@ LoadInbox.prototype = {
 		var that = this;
 
 		$.ajax({
-			url: 'php/dummy.php',
+			url: 'php/dummy2.php',
 			type: 'POST',
 			contentType: 'text/plain'
 		}).done(function(data) {
@@ -60,7 +60,7 @@ LoadInbox.prototype = {
 		for(var i = 1; i < counter+1; i++)
 		{
 			var index = messageIndex + i;
-			var box = new Inbox($(data).attr(index));
+			var box = new Outbox($(data).attr(index));
 			this.container.append(box.getView());
 		}
 	}

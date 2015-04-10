@@ -7,6 +7,10 @@ footer {
     margin: 50px 0;
 }
 
+textarea {
+	resize: none;
+}
+
 .sidebar-icon {
 	float: right;
 	color: black;
@@ -21,17 +25,18 @@ footer {
 	width: 30%;
 	height: 80%;
 	overflow: auto;
-	right: 30px;
+	right: 37px;
 }
 
-#message-content {
+.message-content {
 	border-color: #337AB7;
 }
 
 #message-div {
 	position: relative;
+	overflow: auto;
 	width: 48%;
-	margin-left: 23%;
+	margin-left: 22%;
 }
 
 #message-form {
@@ -49,6 +54,8 @@ footer {
 
 #sidebar {
 	position: fixed;
-	height: 100%;
+	overflow: hidden;
+	left: 60px;
+	height: 66%;
 	width: 20%;
 }
