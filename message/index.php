@@ -48,7 +48,7 @@ include '../header/header.php';
                             <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
                         </span>
                         </div>
-                </div>
+                    </div>
 
                 <div id="message-div" class="col col-xs-4 well">
 
@@ -104,7 +104,7 @@ include '../header/header.php';
                 <h4 class="text-primary ConnectionName"><p class="sender-name">John Doe</p></h4>
             </div>
 
-            <div id="message-text" class="col col-xs-10">
+            <div id="message-text" class="col col-xs-12">
                 <hr />
                 <p class="sender-message">Test</p>
                 <hr />

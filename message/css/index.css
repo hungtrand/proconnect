@@ -3,10 +3,6 @@ body {
     background-color: #E8E8E8;
 }
 
-footer {
-    margin: 50px 0;
-}
-
 textarea {
 	resize: none;
 }
@@ -17,7 +13,7 @@ textarea {
 }
 
 #footers {
-	margin-left: 10px;
+	margin-left: -50px;
 }
 
 #fixed-right-section {
@@ -28,7 +24,7 @@ textarea {
 	right: 37px;
 }
 
-.message-content {
+#message-content {
 	border-color: #337AB7;
 }
 
@@ -56,6 +52,6 @@ textarea {
 	position: fixed;
 	overflow: hidden;
 	left: 60px;
-	height: 66%;
+	height: 73%;
 	width: 20%;
 }
