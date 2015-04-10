@@ -278,6 +278,7 @@ div[for="skills-endorsements-edit"] > .panel,.list-group{
 }
 #profile-image-block{
 	position: relative;
+	height: 182px;
 }
 #progress-block{
 	width: 90%;

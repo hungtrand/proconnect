@@ -25,17 +25,23 @@ if (!$User = new USER($uid)) {
 	die();
 }
 
-
-	$skills = ['JAVA'=>1, 'C'=>3];
+	$skills = [];
 	$endrosements = 0;
 	$orderPosition = 0;
+	$skillid = -1;
+	$mode = "exit";
 
 	if(isset($_POST['skill'])){
 		$skills = json_decode(trim($_POST['skill']));
 	}
-
-	try{
-		
+	if(isset($_POST['remove']) && $skillid > 0){
+		$mode = 'delete';
+	} elseif($skillid > 0){
+		$mode = 'edit';
+	}elseif($skillid == 0){
+		$mode = 'insert';
+	}
+	try{		
 		// This for loop update endorsement and insert a new skill if not exists
 		foreach ($skills as $skillname=>$nEndorse) {
 			$sk = new Skill(); 
@@ -68,5 +74,4 @@ if (!$User = new USER($uid)) {
 		echo $e->getMessage();
 		die();
 	}
-
 ?>
