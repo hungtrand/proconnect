@@ -111,7 +111,7 @@ include '../header/header.php';
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title text-primary">Add New Connection</h4>
-                    <p class="text-info">Please enter the email of the new connection you want to add:</p>
+                    <p class="text-info">Please enter name or email of the new connection you want to add:</p>
                 </div>
                 <div class="modal-body">
                     <form id="NewConnectionSearchForm" class="form-horizontal" action="php/SearchNewConnection_controller.php">

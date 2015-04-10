@@ -87,7 +87,6 @@ margin-left: auto;
 #change-photo-text {
 	vertical-align: 20%;
 }
-
 #input-25{
   position: absolute;
   top: 0;
@@ -111,11 +110,11 @@ margin-left: auto;
 	border: 1px solid rgba(0,0,0,0);
 }
 
-.editable:hover {
+/*.editable:hover, .editable *:hover {
 	cursor: pointer;
 	background-color: rgba(62, 146, 219, 0.41);
 	border: 1px solid #337ab7;
-}
+}*/
 
 .editable > span.glyphicon {
 	font-size: 24px;
@@ -126,14 +125,14 @@ margin-left: auto;
 	z-index: 1;
 }
 
-.editable > span.glyphicon:hover { 
+/*.editable > span.glyphicon:hover { 
 	cursor: pointer;
 	color: #14548B;
-}
+}*/
 
-.editable-form > div.alert-danger{
+/*.editable-form > div.alert-danger{
 	display: none;
-}
+}*/
 
 div.alert-success {
 	display: none;
@@ -276,9 +275,12 @@ div[for="skills-endorsements-edit"] > .panel,.list-group{
 	margin: auto;
 	max-height: 200px;
 }
+
 #profile-image-block{
 	position: relative;
+	margin-top: 20px;
 }
+
 #progress-block{
 	width: 90%;
 	position: absolute;
@@ -422,3 +424,5 @@ small {
 		max-width: 300px;
 	}
 }
+
+

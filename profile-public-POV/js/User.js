@@ -134,7 +134,8 @@ User.prototype = {
 		  	// console.log(xhr);
 		  	console.log(status + ": " + error );
 		  },
-		}).done(function(d){
+		})
+		.done(function(d){
 			try{
 				var data = JSON.parse(d); //expecting data to return with {"img-url": some URL}
 
@@ -159,13 +160,11 @@ User.prototype = {
 		// this.userData.skill = newSkill;
 	},
 
-<<<<<<< HEAD
-=======
 	tempAddNewMember: function(newMember) {
 		this.tempMemberList = newMember;
+		// if()
 	},
 
->>>>>>> f98294d3deb407bc8b573e91e0180199183b0caa
 	restoreSkill: function() {
 		console.log(this.userData["skill"]);
 		this.userData["skill"] = this.oSkillList;
@@ -181,7 +180,7 @@ User.prototype = {
 
 		$.ajax({
 			// url: "php/Profile_controller.php",
-			url: "php/Profile_controller.php",
+			url: "php/dummy.php",
 			method: 'POST',
 			contentType: 'text/plain',
 			error: function(xhr,status,error) {
@@ -200,7 +199,7 @@ User.prototype = {
 			var succeeded = false;
 			 // try{
 					that.temporaryData = JSON.parse(data);
-					//console.log( that.temporaryData );
+					console.log( that.temporaryData );
 					that.userData = that.temporaryData; 	//store as user data
 					succeeded = true;
 			// } catch (e){
@@ -287,9 +286,11 @@ User.prototype = {
 		return function(){
 			console.log(jQueryForm);
 			//get entry index
-			var data = jQueryForm.serializeObject();
-			data["remove"] = true;
-			data['for-index'] = jQueryForm.attr('for-index');
+			var data = { 
+						"for-index" : jQueryForm.attr("for-index"), 
+						   "remove" : true,	
+						"entry-data": "" //incase the data is needed along with the index.
+						};
 			
 			// console.log(data);
 			//do an ajax call to the server to remove entry
@@ -311,13 +312,18 @@ User.prototype = {
 
 		var successMsg = jQForm.parent("div").siblings("div.alert-success")
 
-		newData["editing"] = editing;
+		var dataToSave = {
+			"editing":editing,
+			"form-id":formName,
+			"data":newData,
+		};
+
 		$.ajax({
 			beforeSend: function(jqXHR,settings){
 				jQForm.siblings("div.loading").show();//show loading gif
 			},
-			url: jQForm.attr("action"),
-			data: newData,
+			url: "php/dummy2.php",
+			data: dataToSave,
 			method: 'POST',
 			error: function(xhr,status,error) {
 				bootbox.dialog({
@@ -334,33 +340,23 @@ User.prototype = {
 		}).done(function(oData){
 
 			// console.log(oData);
-			try {
-				var data = $.parseJSON(oData.trim()); 		//may require error handling	
-				if (typeof data != 'object') data = $.parseJSON(data); // not sure why this shit is needed !!!
-				jQForm.siblings("div.loading").hide();							//hide loading gif
+			var data = JSON.parse(oData); 		//may require error handling	
+			jQForm.siblings("div.loading").hide();							//hide loading gif
 
-				//check for error message
-				if(data["error"] === undefined){								//no error
-			    	//console.log(data);
-					that.updateCachedData(jQForm,newData, data);
-					that.updateView();	
-					$("#"+formName).find("button.cancel-btn").trigger("click"); //clear form data
-					$("a.remove-entry-link").hide(); 							//hide delete entry link
+			//check for error message
+			if(data["error"] === undefined){								//no error
+		    
+				that.updateCachedData(jQForm,newData);
+				that.updateView();	
+				$("#"+formName).find("button.cancel-btn").trigger("click"); //clear form data
+				$("a.remove-entry-link").hide(); 							//hide delete entry link
 
-					successMsg.find(".alert-msg").text("Success!");
-					successMsg.show();
-					successMsg.fadeOut(7000, function() { successMsg.hide(); });
-
-					//show sucess message
-					// $(ele).
-				} else {														//yes error
-					that.showErrorInForm(data["error"], $("#"+formName));
-				}
-			} catch(e) {
-				console.log(e); console.log(oData);
-				that.showErrorInForm(oData, $("#"+formName));
+				successMsg.find(".alert-msg").text("Success!");				//show sucess message
+				successMsg.show();
+				
+			} else {														//yes error
+				that.showErrorInForm(data["error"], $("#"+formName));
 			}
-			
 		});
 
 	},
@@ -371,7 +367,7 @@ User.prototype = {
 	 * bool isNew - signal new data
 	 * NOTE: This function does not handle data validation, the calling functions should handle.
 	 */
-	updateCachedData: function(jQFormEle,newData, ajaxSuccessData) {
+	updateCachedData: function(jQFormEle,newData) {
 		// function addMembers(memberList,projObj) {
 		// 	projObj["team-member"] = memberList;
 
@@ -435,16 +431,8 @@ User.prototype = {
 			case "skills-endorsements-edit":
 				// console.log("skills-endorsements-edit");
 				// console.log(this.userData.skill);
-				//console.log("Hello");
-				if (typeof newData.skill != 'object') {
-					try {
-						var skills = $.parseJSON(newData.skill);
-						this.userData.skill = skills;
-					} catch(e) {
-						console.log("No more skills");
-					}
-				}
-				
+				console.log("Hello");
+				this.userData.skill = newData.skill;
 				// console.log(newData);
 				// console.log(this.userData.skill);
 			break;
@@ -452,9 +440,7 @@ User.prototype = {
 				var forIndex = newData["for-index"];
 				delete newData["for-index"];
 				if(forIndex === "new") {				//new entry
-					if (typeof ajaxSuccessData == "object") {
-						this.userData.experiences[this.userData.experiences.length] = ajaxSuccessData;
-					}
+					this.userData.experiences[this.userData.experiences.length] = newData;
 					// console.log(this.userData.experiences);
 				} else if(newData["remove"] === true){	//remove entry
 					this.userData.experiences.splice(forIndex,1);
@@ -490,7 +476,7 @@ User.prototype = {
 				// delete newData["team-member"];		//delete so 
 
 				if(forIndex === "new") {				//new entry
-					that.userData.projects[that.userData.projects.length] = newData;
+					that.userData.projects[that.userData.experiences.length] = newData;
 					// addMembers(members,that.userData.projects[that.userData.experiences.length]);
 					// console.log(this.userData.experiences);
 				} else if(newData["remove"] === true){ //remove entry
@@ -514,16 +500,7 @@ User.prototype = {
 				var forIndex = newData["for-index"];
 				delete newData["for-index"];
 				if(forIndex === "new") {				//new entry
-					// if new entry is inserted into database database will return json of this new object
-					// this new json object will server-processed data so it's more accuratte
-					// this data often would also include the id for the new entry
-					// this is is useful if the user go on and modify the just-inserted entry 
-					// the id will be useful sothat  we know what to save or delete on server-side
-					//console.log(ajaxSuccessData);
-					//console.log(typeof ajaxSuccessData);
-					if (typeof ajaxSuccessData == "object") {
-						this.userData.education[this.userData.education.length] = ajaxSuccessData;
-					}
+					this.userData.education[this.userData.experiences.length] = newData;
 					// console.log(this.userData.experiences);
 				} else if(newData["remove"] === true){ //remove entry
 					this.userData.education.splice(forIndex,1);
@@ -548,149 +525,13 @@ User.prototype = {
 	},
 
 	//accessor
-	loadEditForm: function(formWrapperID) {
-		var form = $(formWrapperID).find("form"); 	//gather the form
-
-		switch (formWrapperID) {
-			
-			case "#user-info-edit":
-
-				// console.log(this.userData.personalInfo);
-				//load values
-				form.find("#first-name-input").val(this.userData.personalInfo["first-name"]);
-				form.find("#last-name-input").val(this.userData.personalInfo["last-name"]);
-				form.find("#middle-initial-input").val(this.userData.personalInfo["middle-initial"]);
-				form.find("#email-input").val(this.userData.personalInfo["email-address"]);
-				form.find("#alt-email-input").val(this.userData.personalInfo["alt-email-address"]);
-				form.find("#phone-input").val(this.userData.personalInfo["phone-number"]);
-				form.find("#phone-number-type").val(this.userData.personalInfo["phone-number-type"]);
-				form.find("#zipcode-input").val(this.userData.personalInfo["user-address"]["zipcode-input"]);
-				form.find("#country-name-input").val(this.userData.personalInfo["user-address"]["country-input"]);
-				form.find("#postal-code-input").val(this.userData.personalInfo["user-address"]["postal-code-input"]);
-				form.find("#address-input").val(this.userData.personalInfo["user-address"]["address-input"]);
-			break;
-
-			case "#summary-edit":
-				form.find("[name='summary']").val(this.userData.personalInfo["summary"]);
-			break;
-
-			case "#skills-endorsements-edit":
-				// console.log(formWrapperID + " index is: " + $(formWrapperID).find("form").attr("for-index"));
-				var skillList = form.find("#skill-list-edit");
-				var count = 0;
-				var beans = "";
-				$.each(this.userData.skill,function(skillName,endorsementNum){
-				    beans += "<li entry-index='" + count + "' >" +
-		                "<span class='badge'>" + endorsementNum + "</span> " +
-		                "<span class='skill-pill-name'>" + skillName + "</span>" +
-		                "<button type='button' class='close' aria-label='Close'><span aria-hidden='true'>&times;</span></button>" +
-		              "</li>";
-		            count++;
-	            });
-				skillList.html(beans);
-			break;
-
-			case "#experience-edit":
-				var index =  form.attr("for-index");
-				// console.log(formWrapperID + " index is: " +index);
-				var exp = this.userData.experiences[index];
-				//console.log(exp);
-				$("#ExpID").val(exp["ExpID"]);
-				$("#position-title").val(exp['position-title']);
-				$("#company-name").val(exp['company-name']);
-				$("#company-location").val(exp['company-location']);
-				$("#work-start-month").val(exp['work-start-month']);
-				$("#work-start-year").val(exp['work-start-year']);
-
-				if(exp['work-present'] === 'current'){
-					$("#work-present-chk").trigger("click");
-				} else {
-					$("#work-end-month").val(exp['work-end-month']);
-					$("#work-end-year").val(exp['work-end-year']);
-				}
-
-				$("#work-description").val(exp['experience-description']);
-			break;
-
-			case "#project-edit":
-				// console.log(formWrapperID + " index is: " + $(formWrapperID).find("form").attr("for-index"));
-				var index =  form.attr("for-index");
-				var proj = this.userData.projects[index];
-				var teamMembers = "";
-
-				$("#ProjectID").val(proj["ProjectID"]);
-				$("#project-name").val(proj['project-name']);
-				$("#project-url").val(proj['project-url']);
-
-				var userImgURL;
-
-				
-				if(proj['team-member'].length === 0) { //project just created
-					// userImgURL = "https://static.licdn.com/scds/common/u/images/themes/katy/ghosts/person/ghost_person_30x30_v1.png";
-					teamMembers += "<li class='no-sort' index='" + 0 + "'>" +
-		                "<img src='https://static.licdn.com/scds/common/u/images/themes/katy/ghosts/person/ghost_person_30x30_v1.png'>" +
-		                "<span class='skill-pill-name'>You</span>" +
-		              "</li>";
-				} else {
-					var index = 0;
-					$.each(proj['team-member'],function(name,detail){
-						var closeBtn = (name === "You") ? "" : "<button type='button' class='close' aria-label='Close'><span aria-hidden='true'>&times;</span></button>";
-						var classes = (name === "You") ? 'no-sort' : "";
-						teamMembers += "<li class='" + classes + "' index='" + index + "'>" +
-						                "<img src='" + detail['icon-URL'] + "'>" +
-						                "<span class='skill-pill-name'>" + name + "</span>" +
-						                closeBtn +
-						              "</li>";
-						index++;
-					});
-
-				}
-
-				//START HERE
-				//enable sortable - Needs to figure this out
-				// $(".sortable").sortable({
-				// 	items: ':not(.no-sort)'
-				// }).bind('sortupdate', function() {
-			 //    	//Triggered when the user stopped sorting and the DOM position has changed.
-				// });
-
-				// console.log(teamMembers);
-				$("#project-team-list").html(teamMembers);
-				
-	     		$("#project-description").val(proj["project-description"]);
-
-			break;
-
-			case "#education-edit":
-				// console.log(formWrapperID + " index is: " + $(formWrapperID).find("form").attr("for-index"));
-
-				var index =  form.attr("for-index");
-				var edu = this.userData.education[index];
-
-				$("#EduID").val(edu["EduID"]);
-				$("#school-name").val(edu["school-name"]);
-				$("#degree").val(edu["degree"]);
-				$("#field-of-study").val(edu["field-of-study"]);
-				$("#grade").val(edu["grade"]);
-				$("#school-year-started").val(edu["school-year-started"]);
-				$("#school-year-ended").val(edu["school-year-ended"]);
-				$("#activities").val(edu["activities"]);
-				$("#education-description").val(edu["address"]);
-
-			break;
-
-			default: 
-			break;
-		}
-
-	},
 
 	updateEditForm: function(form) {
 		var that = this;
 		var formName = "#" + form.parent("div").attr("id");
 		switch(formName){
 		case "#skills-endorsements-edit":
-				if($.isEmptyObject(this.tempSkillList) === false) {
+				if($.isEmptyObject(this.tempSkillList.skill) === false) {
 
 				var skillList = form.find("#skill-list-edit");
 				var count = 0;
@@ -708,7 +549,7 @@ User.prototype = {
 			break;
 
 		case "#project-edit":
-			//console.log("HELLO");
+			console.log("HELLO");
 		break;
 			default:
 			break;
@@ -722,10 +563,7 @@ User.prototype = {
 		//update user info
 		 $('#preview').attr('src', this.userData.personalInfo["picture"]);
 		$(".first-name").text(this.userData.personalInfo["first-name"]);
-
-		if (this.userData.personalInfo["middle-initial"])
-			$("#user-mi").text(this.userData.personalInfo["middle-initial"]+'.');
-		
+		$("#user-mi").text(this.userData.personalInfo["middle-initial"]+'.');
 		$("#user-last").text(this.userData.personalInfo["last-name"]);
 		$("#user-address").text(this.userData.personalInfo["user-address"]["address-input"]);
 			$("#user-address").append(" ");
@@ -756,10 +594,7 @@ User.prototype = {
 			// console.log(this.userData.skill);
 			var count = 0;
 			$.each(this.userData.skill,function(key, value){
-
-				//check for 0 value
-				value = (value == 0) ? "" : value;
-				
+				// $.each(i,function(name,))
 				if(count < 7){
 					$("#skill-top-list").append("<li class=\"list-group-item\"><span class=\"badge colored-badge\">" + value + "</span>" + key + "</li>");
 				} else {
@@ -779,6 +614,7 @@ User.prototype = {
 		$("#user-experiences").html("");
 		$.each(this.userData.experiences,function(i,exp){
 			// $("#user-experiences").html("");
+
 			// exp["company-location"]
 			var endTime = (exp["work-present"] === "") ? exp["work-end-month"] + " " + exp['work-end-year'] : exp["work-present"];
 			var workTime = exp['work-start-month'] + " " + exp['work-start-year'] + " &#8213 " + endTime;
@@ -786,7 +622,7 @@ User.prototype = {
 			// console.log(workTime); index='" + i + "
 			$("#user-experiences").append(
 				"<div class=\"editable\" for=\"experience-edit\" index='" + i + "'>" +
-					"<span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span>" +
+					// "<span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span>" +
 					"<h3>" + exp['position-title'] + "</h3>" + 
 		          	"<h4>" + exp['company-name'] + "</h4>" +
  		          	"<h5>" + workTime + "</h5>" + 
@@ -805,7 +641,7 @@ User.prototype = {
 
 			// console.log();
 			//format project title
-			var projTitle = (proj['project-url'] === "") ? proj['project-name'] : '<a target="_blank" href="' + proj['project-url'] + '">' + proj['project-name'] +'</a>';
+			var projTitle = (proj['project-url'] === "") ? proj['project-name'] : '<a href="' + proj['project-url'] + '">' + proj['project-name'] +'</a>';
 
 			var teamMemberBlock = "";
 
@@ -819,7 +655,7 @@ User.prototype = {
 
 
 				$.each(proj['team-member'],function(name,member){
-					var memberName = (member['direct-URL'] === "") ? "<b>" + name + "</b>" : "<a target='_blank' href='" + member['direct-URL'] + "'>" + name + "</a>";
+					var memberName = (member['direct-URL'] === "") ? "<b>" + name + "</b>" : "<a href='" + member['direct-URL'] + "'>" + name + "</a>";
 					memberBlocks += "<div class='team-member-block col-md-6'>" +
 	                  "<div class='col-md-2'>" +
 	                    "<img src='" + member['icon-URL'] + "' class='team-member-mini-image'>" +
@@ -839,7 +675,7 @@ User.prototype = {
 			$("#user-projects").append(
             "<div>" + 
                 "<div class='editable' for='project-edit' link='" + 'elmo' + key +  "' index='" + key + "'>" + 
-                "<span class='glyphicon glyphicon-pencil' aria-hidden='true'></span>" +
+                // "<span class='glyphicon glyphicon-pencil' aria-hidden='true'></span>" +
                 "<h3>" + projTitle + "</h3>" +
                 "<p name='description'>" + proj['project-description'] +"</p>" +
               "</div>" + teamMemberBlock +
@@ -861,7 +697,7 @@ User.prototype = {
 			// console.log(schoolTime);
 			$("#user-education").append(
 								   "<div class='editable' for='education-edit' index='" + key + "'>" + 
-						              "<span class='glyphicon glyphicon-pencil' aria-hidden='true'></span>" +
+						              // "<span class='glyphicon glyphicon-pencil' aria-hidden='true'></span>" +
 						              "<h3>" + edu['school-name'] + "</h3>" +
 						              "<h4>" + edu['degree'] + "<span> " + edu['grade'] + "</span></h4>" +
 						              "<h4>" + edu['field-of-study'] + "</h4>" +

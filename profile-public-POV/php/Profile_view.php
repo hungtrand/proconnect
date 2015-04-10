@@ -16,8 +16,7 @@ class Profile_View implements view {
 			"experiences"=>[],
 			"skill"=>[],
 			"projects"=>[],
-			"education"=>[],
-			"skill"=>[]
+			"education"=>[]
 		];
 	}
 
@@ -57,7 +56,6 @@ class Profile_View implements view {
 			}
 
 			$item = [
-				"ExpID"=>$exp->getID(),
 				"position-title"=>$exp->getTitle().'',
 				"company-name"=>$exp->getCompanyName().'',
 				"company-location"=>$exp->getLocation().'',
@@ -81,7 +79,6 @@ class Profile_View implements view {
 
 		foreach ($arrProjects as $proj) {
 			$item = [
-				"ProjectID"=>$proj->getID(),
 				"project-name"=>$proj->getProjectTitle().'',
 				"project-url"=>$proj->getProjectURL().'',
 				"team-member"=>[],
@@ -94,27 +91,12 @@ class Profile_View implements view {
 		$this->FinalView['projects'] = $data;
 	}
 
-	public function loadSkills($arrSkills) {
-		if (!isset($arrSkills) || count($arrSkills) < 1) return false;
-		$data = [];
-
-		foreach ($arrSkills as $skill) {
-			$SkillName = $skill->getSkillName();
-			$nEndorse = $skill->getEndorsements();
-			if (!array_key_exists($SkillName, $data))
-				$data[$SkillName] = $nEndorse;
-		}
-
-		$this->FinalView['skill'] = $data;
-	}
-
 	public function loadEducation($arrEdu) {
 		if (!isset($arrEdu) || count($arrEdu) < 1) return false;
 		$data = [];
 
 		foreach ($arrEdu as $edu) {
 			$item = [
-				"EduID"=>$edu->getID(),
 				"school-name"=>$edu->getSchool().'',
 				"degree"=>$edu->getDegree().'',
 				"field-of-study"=>$edu->getFieldOfStudy().'',

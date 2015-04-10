@@ -17,34 +17,34 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
               <div class="well well-sm">
                   <div class="row normal-view">
                    
-					<div id="profile-image-block" class="col col-sm-6 col-md-4 col-lg-3">
-						<div id="progress-block" style= "z-index: 1;">
-							<div class="progress">
-							  <div id="img-progress-bar" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
-								<span class="sr-only"></span>
-							  </div>
-							</div>
-						</div>
+            					<div id="profile-image-block" class="col col-sm-6 col-md-4 col-lg-3">
+            						<div id="progress-block" style= "z-index: 1;">
+            							<div class="progress">
+            							  <div id="img-progress-bar" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+            								<span class="sr-only"></span>
+            							  </div>
+            							</div>
+            						</div>
                           <div id="profile-image" class="outer-ref" >
-                           <img src="/image/user_img.png" alt="" class="img-responsive profile-image" id="preview"/>
+                           <img src="http://placehold.it/380x500" alt="" class="img-responsive profile-image" id="preview"/>
               							<div id="picture-edit">
-              								<form class="editable-form">
+              								<!-- <form class="editable-form">
               									<div id="change-image-block" type = "file"> 							                        
               									 <span id="glyphicon-picture" class="glyphicon glyphicon-picture" aria-hidden="true"></span>
               									 <span id="change-photo-text">Change Photo</span>
               									 <input id= "input-25" type= "file" class>
               									 <button type="submit" id = "picture-submit"class="btn btn-primary save-btn" value="save" style = "display: none;">Save</button>
               									</div>
-              								</form>
+              								</form> -->
               							</div>
                           </div>
 						  
                       </div>
 							
                       <div class="col-sm-6 col-md-8 editable" for="user-info-edit">
-                          <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                          <!-- <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> -->
 
-                          <h4><span id="user-first" class="first-name"></span> <span id="user-mi"></span> <span id="user-last"></span></h4>
+                          <h2><span id="user-first" class="first-name"></span> <span id="user-mi"></span> <span id="user-last"></span></h2>
                           <small><cite title=""><span id="user-address"></span><i class="glyphicon glyphicon-map-marker">
                           </i></cite></small>
                           <p>
@@ -52,29 +52,29 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                               <br />
                               <!-- <i class="glyphicon glyphicon-globe"></i><span id><a href="http://www.jquery2dotnet.com">www.jquery2dotnet.com</a></span>
                               <br /> -->
-                              <i class="glyphicon glyphicon-phone"></i><span id="user-phone">phone #</span>
+                              <i class="glyphicon glyphicon-phone"></i><span id="user-phone"></span>
                               <br />
-                               <i class="glyphicon glyphicon-home"></i><span id="user-home">somewhere someplace</span>
+                               <i class="glyphicon glyphicon-home"></i><span id="user-home"></span>
                               <br />
                               <!-- <i class="glyphicon glyphicon-education"></i><span id="user-education">somewhere someplace</span>
                               <br /> -->
                           </p>
                           
                       </div>
-                      <div class="col-sm-6 col-md-8">
+                      <div class="col-xs-6 col-sm-6 col-md-8 col-md-offset-3">
                       <!-- Split button -->
                           <div class="btn-group">
                               <button type="button" class="btn btn-primary">
-                                  Social</button>
+                                  Send a message</button>
                               <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                                   <span class="caret"></span><span class="sr-only">Social</span>
                               </button>
                               <ul class="dropdown-menu" role="menu">
-                                  <li><a href="#">Twitter</a></li>
+                                  <li><a href="#">View Experience</a></li>
                                   <li><a href="https://plus.google.com/+Jquery2dotnet/posts">Google +</a></li>
                                   <li><a href="https://www.facebook.com/jquery2dotnet">Facebook</a></li>
                                   <li class="divider"></li>
-                                  <li><a href="#">Github</a></li>
+                                  <li><a href="#">View Skills</a></li>
                               </ul>
                           </div>
                       </div>
@@ -89,11 +89,11 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                   </div>
 
                   <!-- User Info -->
-                  <div id="user-info-edit" class="edit-view">
+          <div id="user-info-edit" class="edit-view">
                         <div class="loading">
                           <img src="../image/ajax-loader.gif">
                         </div>
-                        <form class="editable-form" method="POST" action="php/Profile_controller.php">
+                        <form class="editable-form" method="POST">
                           <!-- Error Alert -->
                           <div class="alert alert-danger" role="alert">
                             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -114,7 +114,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                             </div>
                             <div class="form-group">
                               <label for="middle-initial-input">M.I.</label>
-                              <input name="middle-initial" type="text" class="form-control" id="middle-initial-input" placeholder="M.I." style="width:50px;" maxlength="1">
+                              <input name="middle-intial" type="text" class="form-control" id="middle-initial-input" placeholder="M.I." style="width:50px;" maxlength="1">
                             </div>
                           </div>
                           <!-- Email Address -->
@@ -133,13 +133,19 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                           <div class="form-group form-inline">
                             <input name="phone-number" type="text" class="form-control" id="phone-input" placeholder="#(###) ###-#### ">
                            
-                          <div class="form-group">
-                              <select class="form-control" id="phone-color" name="phone-type">
-                                <option value="Home">Home</option>
-                                <option value="Work">Work</option>
-                                <option value="Mobile">Mobile</option>
-                              </select>
+                          <div class="btn-group">
+                                <button type="button" class="btn btn-primary" id="phone-color">
+                                    Home</button>
+                                <button type="button" class="btn btn-primary dropdown-toggle" id="phone-caret-color" data-toggle="dropdown">
+                                    <span class="caret" ></span><span class="sr-only">Home</span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><option value="home">Home</option></li>
+                                    <li><option value="work">Work</option></li>
+                                    <li><option value="mobile">Mobile</option></li>
+                                </ul>
                             </div>
+                            </select>
                           </div>
 
                           <!-- Address -->
@@ -170,7 +176,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 
 						<div class="form-group">
 							<label for="address">Address</label> <br />
-							<input class="form-control" id="address-input" type="text" name="address" placeholder="Address">
+							<input class="form-control" id="address-input" type="text" name="address" placeholder="Address" required>
 						</div>
                         
 							<button type="submit" class="btn btn-primary save-btn" value="save">Save</button>
@@ -191,9 +197,8 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 
               <div class="well well-sm ">
                   <header>
-                        <h2>Summary</h2>
+                        <h3>Summary</h3>
                   </header>
-
 
                   <div class="alert alert-success alert-dismissible" role="alert">
                     <button type="button" class="close" data-hide="alert" aria-label="Close"><span class="dimissible-color"aria-hidden="true">&times;</span></button>
@@ -204,16 +209,16 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 
                   <div id="summary-description" class="normal-view" > 
                     <div class="editable" for="summary-edit">
-                      <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                      <!-- <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> -->
                       <p id="user-summary"></p>
                     </div>
                   </div>
-                  <div id="summary-edit" class="edit-view" action="php/Education_controller.php" >
+                  <div id="summary-edit" class="edit-view" >
                     <div class="loading">
                         <img src="../image/ajax-loader.gif">
                       </div>
                     <!-- <b><h4>Summary</h4></b> -->
-                    <form class="editable-form" action="php/Summary_controller.php">
+                    <form class="editable-form">
                       <!-- Error Alert -->
                       <div class="alert alert-danger" role="alert">
                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -227,9 +232,9 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                   </div>
               </div>
               
-              <div class="add-star" >
+              <!-- <div class="add-star" >
                 <button  class="add-btn" for="summary-description" edit="true" >Edit Summary</button>
-              </div>
+              </div> -->
           </div>
       </div>
 
@@ -239,7 +244,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 
               <div class="well well-sm ">
                   <header>
-                        <h2>Skills and Endorsements</h2>
+                        <h3>Skills and Endorsements</h3>
                   </header>
                   <!-- Success message goes here -->
 
@@ -253,7 +258,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                   <!-- normal-view -->
                   <div id="skills-endorsements" class="normal-view "> 
                     <div class="editable" for="skills-endorsements-edit">
-                      <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                      <!-- <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> -->
                      
                       <div class="panel panel-default ">
                         <!-- Default panel contents -->
@@ -277,16 +282,13 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                       </div>
                     </div>  
                   </div>
-
-
                   <!-- edit-view -->
                   <div id="skills-endorsements-edit" class="edit-view " > 
                     <div class="loading">
                       <img src="../image/ajax-loader.gif">
                     </div>
                     <!-- <b><h4>Summary</h4></b> -->
-                    <form class="editable-form" action="php/Skill_controller.php">
-                      <input id="SkillID" name="SkillID" class="DataID" type="hidden" value="" />
+                    <form class="editable-form">
                       <!-- Error Alert -->
                       <div class="alert alert-danger" role="alert">
                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -314,12 +316,11 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                       <button type="button" class="btn btn-default cancel-btn">Cancel</button>
                     </form>
                   </div>
-                  
               </div>
               
-              <div class="add-star" >
+              <!-- <div class="add-star" >
                 <button id="skills-endorsements-edit-btn" class="add-btn" for="skills-endorsements" edit="true">Add Skill</button>
-              </div>
+              </div> -->
           </div>
       </div>
 
@@ -328,7 +329,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
           <div class="col col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
               <div class="well well-sm">
                   <header>
-                    <h2>Experience</h2>
+                    <h3>Experience</h3>
                   </header>
 
                   <div class="alert alert-success alert-dismissible" role="alert">
@@ -342,8 +343,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                     <div class="loading">
                         <img src="../image/ajax-loader.gif">
                       </div>
-                    <form class="editable-form" action="php/Experience_controller.php">
-                      <input id="ExpID" name="ExpID" class="DataID" type="hidden" value="" />
+                    <form class="editable-form" >
                       <!-- Error Alert -->
                       <div class="alert alert-danger" role="alert">
                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -431,9 +431,9 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                   <div id="user-experiences" class="normal-view outer-ref">
                   </div>
               </div>
-              <div class="add-star">
+              <!-- <div class="add-star">
                 <button class="add-btn" for="experience-edit">Add Eperience</button>
-              </div>
+              </div> -->
           </div>
       </div>
 
@@ -442,7 +442,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
           <div class="col col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
               <div class="well well-sm">
                   <header>
-                    <h2>Projects</h2>
+                    <h3>Projects</h3>
                   </header>
 
                   <div class="alert alert-success alert-dismissible" role="alert">
@@ -456,8 +456,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                     <div class="loading">
                       <img src="../image/ajax-loader.gif">
                     </div>
-                    <form class="editable-form" action="php/Project_controller.php">
-                      <input id="ProjectID" name="ProjectID" class="DataID" type="hidden" value="0" />
+                    <form class="editable-form">
                       <!-- Error Alert -->
                       <div class="alert alert-danger" role="alert">
                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -476,12 +475,12 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                         <input name="project-url" type="text" class="form-control" id="project-url">
                       </div>
                       <!-- Team Members -->
-<!--                       <label for="project-team-members">Team Members</label>
+                      <label for="project-team-members">Team Members</label>
                       
-                      <div id="project-team-editable-block" class="form-group well well-sm"> 
+                      <div id="project-team-editable-block" class="form-group well well-sm"> <!-- contentEditable="true" -->
 
                         <ul id="project-team-list" class='sortable grid'>  
-                          <li class='no-sort' index='0'>
+                          <!-- <li class='no-sort' index='0'>
                             
                             <img src="https://static.licdn.com/scds/common/u/images/themes/katy/ghosts/person/ghost_person_30x30_v1.png">
                             <span class="skill-pill-name">You</span>
@@ -494,14 +493,14 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                             <span class="skill-pill-name">You</span>
                             <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                             
-                          </li>
+                          </li> -->
                         </ul>
 
                       
                         <input name="new-member-name" type="text" class="form-control" id="project-team-members" placeholder="+Add Member"> 
                         
 
-                      </div> -->
+                      </div>
 
                       <!-- Project Description -->
                       <label for="project-description">Description</label>
@@ -540,10 +539,10 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                      <!--  </div> -->
                   </div>
                 </div>  
-              <div class="add-star">
+              <!-- <div class="add-star">
                 <button class="add-btn" for="project-edit">Add Project</button>
               </div>
-          </div>
+ -->          </div>
       </div>
 
       <!-- Education -->
@@ -551,7 +550,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
           <div class="col col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
               <div class="well well-sm">
                   <header>
-                    <h2>Education</h2>
+                    <h3>Education</h3>
                   </header>
 
                   <div class="alert alert-success alert-dismissible" role="alert">
@@ -565,8 +564,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                     <div class="loading">
                       <img src="../image/ajax-loader.gif">
                     </div>
-                    <form class="editable-form" action="php/Education_controller.php">
-                      <input id="EduID" name="EduID" class="DataID" type="hidden" value="0" />
+                    <form class="editable-form">
                       <!-- Error Alert -->
                       <div class="alert alert-danger" role="alert">
                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -653,9 +651,9 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                   </div>
 
               </div>
-              <div class="add-star">
+              <!-- <div class="add-star">
                 <button class="add-btn" for="education-edit">Add Education</button>
-              </div>
+              </div> -->
           </div>
       </div>
 
@@ -669,8 +667,9 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
     <!-- Sortable script -->
     <script src="../js/jquery.sortable.min.js"></script>
     <!-- Custom Script -->
-    <script src="js/User.js"></script>
-    <script src="js/profile-user-POV.js"></script>
+    <script src="js/PublicUser.js"></script>
+    <script src="js/init.js"></script>
+    <!-- // <script src="js/profile-user-POV.js"></script> -->
   </body>
 
 
