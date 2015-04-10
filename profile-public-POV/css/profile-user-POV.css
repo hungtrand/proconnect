@@ -275,9 +275,12 @@ div[for="skills-endorsements-edit"] > .panel,.list-group{
 	margin: auto;
 	max-height: 200px;
 }
+
 #profile-image-block{
 	position: relative;
+	margin-top: 20px;
 }
+
 #progress-block{
 	width: 90%;
 	position: absolute;
@@ -406,4 +409,20 @@ small {
 .hide-temp{
 	display: none;
 }
+
+@media (max-width: 768px) { 
+	.profile-image {
+		width: 100%;
+		max-height: 350px;
+		max-width: 350px;
+	}
+}
+
+@media (min-width: 798px) and (max-width: 992px) { 
+	.profile-image {
+		max-height: 300px;
+		max-width: 300px;
+	}
+}
+
 

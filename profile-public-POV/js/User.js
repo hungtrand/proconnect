@@ -525,140 +525,6 @@ User.prototype = {
 	},
 
 	//accessor
-	loadEditForm: function(formWrapperID) {
-		var form = $(formWrapperID).find("form"); 	//gather the form
-
-		switch (formWrapperID) {
-			
-			case "#user-info-edit":
-
-				// console.log(this.userData.personalInfo);
-				//load values
-				form.find("#first-name-input").val(this.userData.personalInfo["first-name"]);
-				form.find("#last-name-input").val(this.userData.personalInfo["last-name"]);
-				form.find("#middle-initial-input").val(this.userData.personalInfo["middle-initial"]);
-				form.find("#email-input").val(this.userData.personalInfo["email-address"]);
-				form.find("#alt-email-input").val(this.userData.personalInfo["alt-email-address"]);
-				form.find("#phone-input").val(this.userData.personalInfo["phone-number"]);
-				form.find("#phone-number-type").val(this.userData.personalInfo["phone-number-type"]);
-				form.find("#zipcode-input").val(this.userData.personalInfo["user-address"]["zipcode-input"]);
-				form.find("#country-name-input").val(this.userData.personalInfo["user-address"]["country-input"]);
-				form.find("#postal-code-input").val(this.userData.personalInfo["user-address"]["postal-code-input"]);
-				form.find("#address-input").val(this.userData.personalInfo["user-address"]["address-input"]);
-			break;
-
-			case "#summary-edit":
-				form.find("[name='summary']").val(this.userData.personalInfo["summary"]);
-			break;
-
-			case "#skills-endorsements-edit":
-				// console.log(formWrapperID + " index is: " + $(formWrapperID).find("form").attr("for-index"));
-				var skillList = form.find("#skill-list-edit");
-				var count = 0;
-				var beans = "";
-				$.each(this.userData.skill,function(skillName,endorsementNum){
-				    beans += "<li entry-index='" + count + "' >" +
-		                "<span class='badge'>" + endorsementNum + "</span> " +
-		                "<span class='skill-pill-name'>" + skillName + "</span>" +
-		                "<button type='button' class='close' aria-label='Close'><span aria-hidden='true'>&times;</span></button>" +
-		              "</li>";
-		            count++;
-	            });
-				skillList.html(beans);
-			break;
-
-			case "#experience-edit":
-				var index =  form.attr("for-index");
-				// console.log(formWrapperID + " index is: " +index);
-				var exp = this.userData.experiences[index];
-				//console.log(exp);
-				$("#position-title").val(exp['position-title']);
-				$("#company-name").val(exp['company-name']);
-				$("#company-location").val(exp['company-location']);
-				$("#work-start-month").val(exp['work-start-month']);
-				$("#work-start-year").val(exp['work-start-year']);
-
-				if(exp['work-present'] === 'current'){
-					$("#work-present-chk").trigger("click");
-				} else {
-					$("#work-end-month").val(exp['work-end-month']);
-					$("#work-end-year").val(exp['work-end-year']);
-				}
-
-				$("#work-description").val(exp['experience-description']);
-			break;
-
-			case "#project-edit":
-				// console.log(formWrapperID + " index is: " + $(formWrapperID).find("form").attr("for-index"));
-				var index =  form.attr("for-index");
-				var proj = this.userData.projects[index];
-				var teamMembers = "";
-
-				$("#project-name").val(proj['project-name']);
-				$("#project-url").val(proj['project-url']);
-
-				var userImgURL;
-
-				
-				if(proj['team-member'].length === 0) { //project just created
-					// userImgURL = "https://static.licdn.com/scds/common/u/images/themes/katy/ghosts/person/ghost_person_30x30_v1.png";
-					teamMembers += "<li class='no-sort' index='" + 0 + "'>" +
-		                "<img src='https://static.licdn.com/scds/common/u/images/themes/katy/ghosts/person/ghost_person_30x30_v1.png'>" +
-		                "<span class='skill-pill-name'>You</span>" +
-		              "</li>";
-				} else {
-					var index = 0;
-					$.each(proj['team-member'],function(name,detail){
-						var closeBtn = (name === "You") ? "" : "<button type='button' class='close' aria-label='Close'><span aria-hidden='true'>&times;</span></button>";
-						var classes = (name === "You") ? 'no-sort' : "";
-						teamMembers += "<li class='" + classes + "' index='" + index + "'>" +
-						                "<img src='" + detail['icon-URL'] + "'>" +
-						                "<span class='skill-pill-name'>" + name + "</span>" +
-						                closeBtn +
-						              "</li>";
-						index++;
-					});
-
-				}
-
-				//START HERE
-				//enable sortable - Needs to figure this out
-				// $(".sortable").sortable({
-				// 	items: ':not(.no-sort)'
-				// }).bind('sortupdate', function() {
-			 //    	//Triggered when the user stopped sorting and the DOM position has changed.
-				// });
-
-				// console.log(teamMembers);
-				$("#project-team-list").html(teamMembers);
-				
-	     		$("#project-description").val(proj["project-description"]);
-
-			break;
-
-			case "#education-edit":
-				// console.log(formWrapperID + " index is: " + $(formWrapperID).find("form").attr("for-index"));
-
-				var index =  form.attr("for-index");
-				var edu = this.userData.education[index];
-
-
-				$("#school-name").val(edu["school-name"]);
-				$("#degree").val(edu["degree"]);
-				$("#field-of-study").val(edu["field-of-study"]);
-				$("#grade").val(edu["grade"]);
-				$("#school-year-started").val(edu["school-year-started"]);
-				$("#school-year-ended").val(edu["school-year-ended"]);
-				$("#activities").val(edu["activities"]);
-				$("#education-description").val(edu["address"]);
-
-			break;
-
-			default: 
-			break;
-		}
-
-	},
 
 	updateEditForm: function(form) {
 		var that = this;
@@ -756,7 +622,7 @@ User.prototype = {
 			// console.log(workTime); index='" + i + "
 			$("#user-experiences").append(
 				"<div class=\"editable\" for=\"experience-edit\" index='" + i + "'>" +
-					"<span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span>" +
+					// "<span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span>" +
 					"<h3>" + exp['position-title'] + "</h3>" + 
 		          	"<h4>" + exp['company-name'] + "</h4>" +
  		          	"<h5>" + workTime + "</h5>" + 
@@ -809,7 +675,7 @@ User.prototype = {
 			$("#user-projects").append(
             "<div>" + 
                 "<div class='editable' for='project-edit' link='" + 'elmo' + key +  "' index='" + key + "'>" + 
-                "<span class='glyphicon glyphicon-pencil' aria-hidden='true'></span>" +
+                // "<span class='glyphicon glyphicon-pencil' aria-hidden='true'></span>" +
                 "<h3>" + projTitle + "</h3>" +
                 "<p name='description'>" + proj['project-description'] +"</p>" +
               "</div>" + teamMemberBlock +
@@ -831,7 +697,7 @@ User.prototype = {
 			// console.log(schoolTime);
 			$("#user-education").append(
 								   "<div class='editable' for='education-edit' index='" + key + "'>" + 
-						              "<span class='glyphicon glyphicon-pencil' aria-hidden='true'></span>" +
+						              // "<span class='glyphicon glyphicon-pencil' aria-hidden='true'></span>" +
 						              "<h3>" + edu['school-name'] + "</h3>" +
 						              "<h4>" + edu['degree'] + "<span> " + edu['grade'] + "</span></h4>" +
 						              "<h4>" + edu['field-of-study'] + "</h4>" +

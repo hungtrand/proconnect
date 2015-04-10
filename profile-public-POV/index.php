@@ -44,7 +44,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                       <div class="col-sm-6 col-md-8 editable" for="user-info-edit">
                           <!-- <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> -->
 
-                          <h4><span id="user-first" class="first-name"></span> <span id="user-mi"></span> <span id="user-last"></span></h4>
+                          <h2><span id="user-first" class="first-name"></span> <span id="user-mi"></span> <span id="user-last"></span></h2>
                           <small><cite title=""><span id="user-address"></span><i class="glyphicon glyphicon-map-marker">
                           </i></cite></small>
                           <p>
@@ -61,7 +61,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                           </p>
                           
                       </div>
-                      <div class="col-sm-6 col-md-8">
+                      <div class="col-xs-6 col-sm-6 col-md-8 col-md-offset-3">
                       <!-- Split button -->
                           <div class="btn-group">
                               <button type="button" class="btn btn-primary">
@@ -89,7 +89,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                   </div>
 
                   <!-- User Info -->
-                  <div id="user-info-edit" class="edit-view">
+          <div id="user-info-edit" class="edit-view">
                         <div class="loading">
                           <img src="../image/ajax-loader.gif">
                         </div>
@@ -197,9 +197,8 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 
               <div class="well well-sm ">
                   <header>
-                        <h2>Summary</h2>
+                        <h3>Summary</h3>
                   </header>
-
 
                   <div class="alert alert-success alert-dismissible" role="alert">
                     <button type="button" class="close" data-hide="alert" aria-label="Close"><span class="dimissible-color"aria-hidden="true">&times;</span></button>
@@ -245,7 +244,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 
               <div class="well well-sm ">
                   <header>
-                        <h2>Skills and Endorsements</h2>
+                        <h3>Skills and Endorsements</h3>
                   </header>
                   <!-- Success message goes here -->
 
@@ -283,8 +282,6 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                       </div>
                     </div>  
                   </div>
-
-
                   <!-- edit-view -->
                   <div id="skills-endorsements-edit" class="edit-view " > 
                     <div class="loading">
@@ -319,12 +316,11 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                       <button type="button" class="btn btn-default cancel-btn">Cancel</button>
                     </form>
                   </div>
-                  
               </div>
               
-              <div class="add-star" >
+              <!-- <div class="add-star" >
                 <button id="skills-endorsements-edit-btn" class="add-btn" for="skills-endorsements" edit="true">Add Skill</button>
-              </div>
+              </div> -->
           </div>
       </div>
 
@@ -333,7 +329,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
           <div class="col col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
               <div class="well well-sm">
                   <header>
-                    <h2>Experience</h2>
+                    <h3>Experience</h3>
                   </header>
 
                   <div class="alert alert-success alert-dismissible" role="alert">
@@ -435,9 +431,9 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                   <div id="user-experiences" class="normal-view outer-ref">
                   </div>
               </div>
-              <div class="add-star">
+              <!-- <div class="add-star">
                 <button class="add-btn" for="experience-edit">Add Eperience</button>
-              </div>
+              </div> -->
           </div>
       </div>
 
@@ -446,7 +442,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
           <div class="col col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
               <div class="well well-sm">
                   <header>
-                    <h2>Projects</h2>
+                    <h3>Projects</h3>
                   </header>
 
                   <div class="alert alert-success alert-dismissible" role="alert">
@@ -543,10 +539,10 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                      <!--  </div> -->
                   </div>
                 </div>  
-              <div class="add-star">
+              <!-- <div class="add-star">
                 <button class="add-btn" for="project-edit">Add Project</button>
               </div>
-          </div>
+ -->          </div>
       </div>
 
       <!-- Education -->
@@ -554,7 +550,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
           <div class="col col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
               <div class="well well-sm">
                   <header>
-                    <h2>Education</h2>
+                    <h3>Education</h3>
                   </header>
 
                   <div class="alert alert-success alert-dismissible" role="alert">
@@ -655,9 +651,9 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                   </div>
 
               </div>
-              <div class="add-star">
+              <!-- <div class="add-star">
                 <button class="add-btn" for="education-edit">Add Education</button>
-              </div>
+              </div> -->
           </div>
       </div>
 
@@ -671,8 +667,9 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
     <!-- Sortable script -->
     <script src="../js/jquery.sortable.min.js"></script>
     <!-- Custom Script -->
-    <script src="js/User.js"></script>
-    <script src="js/profile-user-POV.js"></script>
+    <script src="js/PublicUser.js"></script>
+    <script src="js/init.js"></script>
+    <!-- // <script src="js/profile-user-POV.js"></script> -->
   </body>
 
 
