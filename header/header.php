@@ -55,10 +55,10 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                     <span class="icon-bar"></span>
                 </button>
 
-                <a id="logo" class="navbar-brand hidden-xs" href="#">				
+                <a id="logo" class="navbar-brand hidden-xs hidden-sm " href="#">				
 				<img src="../image/proconnect/logo_text.png" />				
 				</a>
-				<a id="logo" class="navbar-brand hidden-sm hidden-md hidden-lg" style = "width:200px;" href="#">				
+				<a id="logo" class="navbar-brand hidden-md hidden-lg" style = "width:200px;" href="#">				
 				<img style = "width:100%;" src="../image/proconnect/logo_text.png" />				
 				</a>
 
@@ -67,7 +67,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                     <div class="form-group">
                       <input type="text" size="40" class="form-control" id= "searchbar" placeholder="Search for people, companies, jobs...">
                     </div>
-                    <button type="submit" class="btn btn-primary hidden-xs">&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                    <button type="submit" class="btn btn-primary hidden-xs hidden-sm ">&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;&nbsp;&nbsp;</button>
                 </form>
             </div>
 
