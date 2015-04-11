@@ -40,6 +40,8 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
     <script src="/js/ie10-viewport-bug-workaround.js"></script>
 
     <link rel="stylesheet" href="/header/header.css">
+    <script src="/header/header.js"></script>
+	
 
 </head>
 
@@ -75,8 +77,8 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
             <div class="collapse navbar-collapse" id="nav-right-links">
 
                 <ul class="nav navbar-nav nav-pills navbar-right ">
-                    <li>
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-envelope"></span><span class="badge">2</span></a>
+                    <li class="notification-list" id="message">
+                        <a href="#" class="dropdown-toggle notification-menu" id= "message-menu" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-envelope"></span><span class="badge">2</span></a>
 						  <ul class="dropdown-menu" role="menu">
 							<li><a href="#">Action</a></li>
 							<li><a href="#">Another action</a></li>
@@ -87,8 +89,8 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 				 </li>
 				
 
-                    <li>
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-flag"></span><span class="badge">1</span></a>
+                    <li class="notification-list" id="notification">
+                        <a href="#" class="dropdown-toggle notification-menu" id= "notification-menu" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-flag"></span><span class="badge">1</span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="#">Action</a></li>
 								<li><a href="#">Another action</a></li>
@@ -98,8 +100,8 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 							</ul>
 				   </li>
 
-                    <li>
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user"></span><span class="badge">5</span></a>
+                    <li class="notification-list" id="connection">
+                        <a href="#" class="dropdown-toggle notification-menu" id= "connection-menu" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user"></span><span class="badge">5</span></a>
 						<ul class="dropdown-menu" role="menu">
 								<li><a href="#">Action</a></li>
 								<li><a href="#">Another action</a></li>
