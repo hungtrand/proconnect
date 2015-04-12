@@ -12,8 +12,22 @@ textarea {
 	color: black;
 }
 
+.dropdown-menu-nav {
+	padding-top: 20px;
+	right: 26px;
+}
+
 #footers {
 	margin-left: -50px;
+}
+
+@media screen and (max-width: 767px) {
+  .row-offcanvas {
+    position: relative;
+    -webkit-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+  }
 }
 
 #fixed-right-section {
@@ -50,8 +64,64 @@ textarea {
 
 #sidebar {
 	position: fixed;
-	overflow: hidden;
+	overflow: auto;
 	left: 60px;
 	height: 73%;
 	width: 20%;
+}
+
+#sidebar li {
+  list-style: none;
+}
+
+#sidebar a {
+  border-bottom: 1px solid #393939;
+  display: block;
+  margin: 0;
+  padding: 8px 12px;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+#sidebar input {
+  border-bottom: 1px solid #393939;
+  display: block;
+  margin: 0;
+  padding: 8px 12px;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+@media only screen and (max-width: 860px) {
+	#fixed-right-section {
+		display: none;
+	}
+	#sidebar {
+		left: 10px;
+		width: 95%;
+		height: auto;
+		position: relative;
+	}
+	#small-navigator li:hover > ul {
+		display: block;
+	}
+	#small-navigator li:hover #sidebar {
+		height: 100%;
+	}
+	#message-form {
+  		display: none;
+  		height: auto;
+  		filter: alpha(opacity=95);
+  		opacity: 0.95;
+  		position: relative;
+  		width: auto;
+  		z-index: 200;
+	}
+	#message-form a {
+		background-color: #EEEEEE;
+	}
+	#message-div {
+		margin-left: 10px;
+		width: 95%;
+	}
 }

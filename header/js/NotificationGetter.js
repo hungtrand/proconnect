@@ -4,7 +4,11 @@ var NotificationGetter = (function() {
 
 			timeBetweenEachAjax = ( timeBetweenEachAjax === undefined ) ? 1000 : timeBetweenEachAjax; //default time is 1 second
 
-			var interval = window.setInterval(function(){
+			getResponse();																			  //query response right away
+
+			var interval = window.setInterval(getResponse,timeBetweenEachAjax);						  //query a response
+
+			function getResponse() {
 				$.ajax({
 					url: "/header/php/dummy.php",			//<------ must be hard link
 					data: {"userID":123},			//<------ may not be necessary
@@ -25,7 +29,7 @@ var NotificationGetter = (function() {
 						clearInterval(interval);				//stop querying since there is an error
 					}
 				});
-			},timeBetweenEachAjax);
+			}
 		}
 	}
 })();
