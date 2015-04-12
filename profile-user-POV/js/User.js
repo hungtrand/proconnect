@@ -128,7 +128,7 @@ User.prototype = {
 		  contentType: false,
 		  processData: false,
 		  method: 'POST',
-		  url: "php/dummy2.php",
+		  url: "php/dummy.php",
 		  data: fm,
 		  error: function(xhr,status,error) {
 		  	// console.log(xhr);
@@ -179,7 +179,7 @@ User.prototype = {
 
 		$.ajax({
 			// url: "php/Profile_controller.php",
-			url: "php/Profile_controller.php",
+			url: "php/dummy.php",
 			method: 'POST',
 			contentType: 'text/plain',
 			error: function(xhr,status,error) {
@@ -198,7 +198,7 @@ User.prototype = {
 			var succeeded = false;
 			 // try{
 					that.temporaryData = JSON.parse(data);
-					//console.log( that.temporaryData );
+					console.log( that.temporaryData );
 					that.userData = that.temporaryData; 	//store as user data
 					succeeded = true;
 			// } catch (e){
@@ -332,7 +332,7 @@ User.prototype = {
 		}).done(function(oData){
 
 			// console.log(oData);
-			try {
+			//try {
 				var data = $.parseJSON(oData.trim()); 		//may require error handling	
 				if (typeof data != 'object') data = $.parseJSON(data); // not sure why this shit is needed !!!
 				jQForm.siblings("div.loading").hide();							//hide loading gif
@@ -354,10 +354,10 @@ User.prototype = {
 				} else {														//yes error
 					that.showErrorInForm(data["error"], $("#"+formName));
 				}
-			} catch(e) {
+			/*} catch(e) {
 				console.log(e); console.log(oData);
 				that.showErrorInForm(oData, $("#"+formName));
-			}
+			}*/
 			
 		});
 
