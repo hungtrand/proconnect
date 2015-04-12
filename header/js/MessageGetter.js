@@ -7,7 +7,7 @@ var MessageGetter = (function() {
 				success: function(data){
 					try {
 						var messages = JSON.parse(data);
-						// console.log(notifications);
+						console.log(data);
 
 						if(displayCallback !== undefined){
 							displayCallback(messages);

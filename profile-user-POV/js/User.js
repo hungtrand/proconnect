@@ -179,7 +179,7 @@ User.prototype = {
 
 		$.ajax({
 			// url: "php/Profile_controller.php",
-			url: "php/Profile_controller.php",
+			url: "php/dummy.php",
 			method: 'POST',
 			contentType: 'text/plain',
 			error: function(xhr,status,error) {
