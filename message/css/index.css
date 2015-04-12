@@ -120,6 +120,9 @@ textarea {
 	#message-form a {
 		background-color: #EEEEEE;
 	}
+	#message-form a:hover {
+		background-color: #DDDDDD;
+	}
 	#message-div {
 		margin-left: 10px;
 		width: 95%;
