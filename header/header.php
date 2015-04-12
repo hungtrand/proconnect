@@ -80,7 +80,10 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
             <div class="collapse navbar-collapse" id="nav-right-links">
 
                 <ul class="nav navbar-nav nav-pills navbar-right ">
-                    
+                    <li id = "return" style = "display: none;">
+                        <a href="#"><span class="glyphicon glyphicon-menu-left"></span></a>
+					</li>
+					
 					<li class="notification-list" id="message">
                         <a href="#" class="dropdown-toggle notification-menu" id= "message-menu" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-envelope"></span><span class="badge">2</span></a>
 						  <ul class="dropdown-menu" role="menu">

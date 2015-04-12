@@ -34,11 +34,5 @@ var md = 768;
 			$("#caret-menu").attr("aria-expanded","false");
 			$("#caret").removeClass("open");
 		});
-		
-		$("#message").click(function(){
-			if(window.outerWidth < md) {
-			$("#return").show();
-			}
-		});
 	
 });

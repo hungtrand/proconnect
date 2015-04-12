@@ -42,12 +42,16 @@ margin-top:15px;
   margin-right: 30px;
   margin-top: 10px;
 }
+.nav {
+  padding-left: 50px;
+ }
 }
 
 .container-fluid {
 position: relative;
 }
+@media (max-width: 767px){
 .nav {
   padding-left: 0px;
-  }
- 
+ }
+}
