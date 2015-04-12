@@ -56,6 +56,7 @@ ProfileImageUploader.prototype = {
 		    }
 
 		    that.btnUpload.removeAttr('disabled').toggleClass('btn-default btn-success');;
+			that.modal.find('#NewImageContainer label').toggleClass('label-default label-info');
 		});
 
 		that.btnUpload.on("click", function(e) {
@@ -95,6 +96,7 @@ ProfileImageUploader.prototype = {
 			if (that.StatusDiv.find('#uploadedFile').length > 0) {
 				var newUrl = that.StatusDiv.find('#uploadedFile').val();
 				that.CurrentImage.attr('src', newUrl);
+				that.modal.find('#NewImageContainer label').toggleClass('label-default label-info');
 				setTimeout(function() {
 					that.StatusDiv.find('.label-success').fadeOut('3000', function() {
 						$(this).remove();
