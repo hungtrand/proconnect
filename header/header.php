@@ -42,7 +42,6 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
     <link rel="stylesheet" href="/header/header.css">
     <script src="/header/header.js"></script>
 	
-
     <script type="text/javascript" src="/header/js/NotificationGetter.js"></script>
     <script type="text/javascript" src="/header/js/MessageGetter.js"></script>
     <script type="text/javascript" src="/header/js/header.js"></script>

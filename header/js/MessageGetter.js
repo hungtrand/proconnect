@@ -3,7 +3,8 @@ var MessageGetter = (function() {
 		get: function(categoryID, displayCallback) {
 			$.ajax({
 				url: "/header/php/dummy.php",			//<------ must be hard link
-				data: {"userID":123,"categoryID":categoryID},			//<------ may not be necessary
+				data: {"userID":1234,"categoryID":categoryID},			//<------ may not be necessary
+				method: "POST",
 				success: function(data){
 					try {
 						var messages = JSON.parse(data);

@@ -418,7 +418,7 @@ small {
 	}
 }
 
-@media (min-width: 798px) and (max-width: 992px) { 
+@media (min-width: 768px) and (max-width: 992px) { 
 	.profile-image {
 		max-height: 300px;
 		max-width: 300px;
