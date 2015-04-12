@@ -1,4 +1,30 @@
 $(document).ready(function() {
+
+		if(window.innerWidth < 862) {
+			var tempSmall = $("#sidebar-small-temp").html();
+			console.log(tempSmall);
+			$("#nav-container").append(tempSmall);
+		}
+		else {
+			console.log("Hello");
+			var tempLarge = $("#sidebar-large-temp").html();
+			$("#nav-container").append(tempLarge);
+		}
+
+	$(window).resize(function() {
+		$("#nav-container").empty();
+		if(window.innerWidth < 862) {
+			var tempSmall = $("#sidebar-small-temp").html();
+			console.log(tempSmall);
+			$("#nav-container").append(tempSmall);
+		}
+		else {
+			console.log("Hello");
+			var tempLarge = $("#sidebar-large-temp").html();
+			$("#nav-container").append(tempLarge);
+		}
+	});
+
 	var initbox = $("#main-inbox");
 
 	var newMsgForm = $("#main-new");
