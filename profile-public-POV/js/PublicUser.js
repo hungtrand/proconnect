@@ -114,7 +114,7 @@ PublicUser.prototype = {
 		var that = this;
 		// console.log("doing ajax call");
 		// var newData = {"some":"data"};
-		
+
 		//do an ajax call to get user data
 		$.ajax({
 			// url: "php/Profile_controller.php",
