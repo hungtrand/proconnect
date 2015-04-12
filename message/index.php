@@ -20,35 +20,35 @@ include '../header/header.php';
                 <div id="ConnectionsHeader" class="row">
                 
                     <div class="col col-xs-8">
-                        <h2 class="text-info">ProConnect Message Center</h2>            
+                        <h2 class="text-info">ProConnecting</h2>            
                     </div>
+
                 </div>            
 
-                <div class="col col-xs-4 well" id="sidebar">
+                <div class="col col-xs-4 col col-sm-12 well" id="sidebar" role="navigation">
                 
                     <div id="sidebar-content">
                         
                         <a href="#" id="main-new" class="list-group-item" value="New Message">New<span class="sidebar-icon glyphicon glyphicon-pencil"></span></a>
 
                         <hr />
-                    
-                        <ul class="list-group" id="message-form">
-                            <li><a href="#" id="main-inbox" class="list-group-item" value="Inbox">Inbox<span class="sidebar-icon glyphicon glyphicon-envelope"></span></a></li>
-                            <li><a href="#" id="main-outbox" class="list-group-item" value="Outbox">Outbox<span class="sidebar-icon glyphicon glyphicon-envelope"></span></a></li>
-                            <li><a href="#" id="main-archive" class="list-group-item" value="Archive">Archive<span class="sidebar-icon glyphicon glyphicon-envelope"></span></a></li>
-                            <li><a href="#" id="main-trash" class="list-group-item" value="Trash">Trash<span class="sidebar-icon glyphicon glyphicon-trash"></span></a></li>              
-                        </ul>
-                    </div>
 
-                    <hr />
+                        <div id="nav-container">
+                            
+                        </div>
 
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for...">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-                        </span>
+                        <hr />
+
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search for...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                            </span>
                         </div>
                     </div>
+                    
+                </div>
+
 
                 <div id="message-div" class="col col-xs-4 well">
 
@@ -57,7 +57,7 @@ include '../header/header.php';
                     
                 </div>
                 
-                <div id="fixed-right-section" class="col col-xs-4 hidden-print hidden-xs hidden-sm" role="complimentary">
+                <div id="fixed-right-section" class="col col-xs-4" role="complimentary">
                 <div class="well">
                     <h3 class="text-primary" style="margin-top: 8px; margin-bottom: 19px;">Suggestions</h3>
                     <hr />
@@ -118,6 +118,28 @@ include '../header/header.php';
             </div>
         </div>
     </div>
+</script>
+
+<script type="text/template" id="sidebar-small-temp">
+    <ul class="list-group" id="small-navigator">
+        <li ><a href="#" class="list-group-item"><span>Message Nav</span></a>
+            <ul class="list-group" id="message-form">
+                <li><a href="#" class="list-group-item" id="main-inbox" value="Inbox">Inbox<span class="sidebar-icon glyphicon glyphicon-envelope"></span></a></li>
+                <li><a href="#" class="list-group-item" id="main-outbox" value="Outbox">Outbox<span class="sidebar-icon glyphicon glyphicon-envelope"></span></a></li>
+                <li><a href="#" class="list-group-item" id="main-archive" value="Archive">Archive<span class="sidebar-icon glyphicon glyphicon-envelope"></span></a></li>
+                <li><a href="#" class="list-group-item" id="main-trash" value="Trash">Trash<span class="sidebar-icon glyphicon glyphicon-trash"></span></a></li>                                    
+            </ul>
+        </li>                                  
+    </ul>
+</script>
+
+<script type="text/template" id="sidebar-large-temp">
+    <ul class="list-group" id="message-form">
+        <li><a href="#" class="list-group-item" id="main-inbox" value="Inbox">Inbox<span class="sidebar-icon glyphicon glyphicon-envelope"></span></a></li>
+        <li><a href="#" class="list-group-item" id="main-outbox" value="Outbox">Outbox<span class="sidebar-icon glyphicon glyphicon-envelope"></span></a></li>
+        <li><a href="#" class="list-group-item" id="main-archive" value="Archive">Archive<span class="sidebar-icon glyphicon glyphicon-envelope"></span></a></li>
+        <li><a href="#" class="list-group-item" id="main-trash" value="Trash">Trash<span class="sidebar-icon glyphicon glyphicon-trash"></span></a></li>                                    
+    </ul>
 </script>
 
   <!-- Custom modal handler
