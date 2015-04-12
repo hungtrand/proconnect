@@ -732,7 +732,9 @@ User.prototype = {
 		$("#user-phone").text(this.userData.personalInfo["phone-number"]);
 		$("#user-home").text(this.userData.personalInfo["phone-number"]);
 
-		
+		if (this.userData.personalInfo['profile-image']) {
+			$('.profile-image').attr('src', this.userData.personalInfo['profile-image']);
+		}
 
 		//update summary description
 		if(this.userData.personalInfo["summary"] !== "") {

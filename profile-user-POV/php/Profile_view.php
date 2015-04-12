@@ -39,7 +39,8 @@ class Profile_View implements view {
 			"phone-number"=>$User->getPhone().'',
 			"phone-number-type"=>$User->getPhoneType().'',
 			"user-address"=>$address.'',
-			"summary"=>$User->getSummary().''
+			"summary"=>$User->getSummary().'',
+			'profile-image'=>'/users/'.$User->getID().'/images/'.$User->getProfileImage().''
 		];
 
 		$this->FinalView['personalInfo'] = $data;
