@@ -7,6 +7,23 @@ textarea {
 	resize: none;
 }
 
+.ConnectionName {
+	margin-top: 5px;	
+}
+.message-subject {
+	margin-top: -5px;
+}
+
+.message-time {
+	margin-top: -5px;
+	margin-bottom: -10px;
+}
+
+.message-text {
+	overflow: auto;
+	height: auto;
+}
+
 .sidebar-icon {
 	float: right;
 	color: black;
@@ -18,16 +35,7 @@ textarea {
 }
 
 #footers {
-	margin-left: -50px;
-}
-
-@media screen and (max-width: 767px) {
-  .row-offcanvas {
-    position: relative;
-    -webkit-transition: all 0.25s ease-out;
-    -moz-transition: all 0.25s ease-out;
-    transition: all 0.25s ease-out;
-  }
+	margin-left: -36px;
 }
 
 #fixed-right-section {
@@ -75,7 +83,6 @@ textarea {
 }
 
 #sidebar a {
-  border-bottom: 1px solid #393939;
   display: block;
   margin: 0;
   padding: 8px 12px;
@@ -84,7 +91,6 @@ textarea {
 }
 
 #sidebar input {
-  border-bottom: 1px solid #393939;
   display: block;
   margin: 0;
   padding: 8px 12px;
