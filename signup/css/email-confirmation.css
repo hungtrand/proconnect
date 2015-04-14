@@ -1,8 +1,9 @@
 body {
   padding-top: 50px;
   padding-left:0px;
-  background-image: url("../../image/signout_background.png");
+  background: url("../../image/signout_background.png" ) no-repeat center fixed transparent;
   font: arial;
+
 }
 .starter-template {
   font-size: 20px;

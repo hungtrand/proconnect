@@ -128,14 +128,13 @@ User.prototype = {
 		  contentType: false,
 		  processData: false,
 		  method: 'POST',
-		  url: "php/dummy2.php",
+		  url: "php/dummy.php",
 		  data: fm,
 		  error: function(xhr,status,error) {
 		  	// console.log(xhr);
 		  	console.log(status + ": " + error );
 		  },
-		})
-		.done(function(d){
+		}).done(function(d){
 			try{
 				var data = JSON.parse(d); //expecting data to return with {"img-url": some URL}
 
@@ -160,6 +159,7 @@ User.prototype = {
 		// this.userData.skill = newSkill;
 	},
 
+
 	tempAddNewMember: function(newMember) {
 		this.tempMemberList = newMember;
 	},
@@ -178,8 +178,8 @@ User.prototype = {
 		// var newData = {"some":"data"};
 
 		$.ajax({
-			// url: "php/Profile_controller.php",
 			url: "php/Profile_controller.php",
+			// url: "php/dummy.php",
 			method: 'POST',
 			contentType: 'text/plain',
 			error: function(xhr,status,error) {
@@ -198,7 +198,7 @@ User.prototype = {
 			var succeeded = false;
 			 // try{
 					that.temporaryData = JSON.parse(data);
-					//console.log( that.temporaryData );
+					console.log( that.temporaryData );
 					that.userData = that.temporaryData; 	//store as user data
 					succeeded = true;
 			// } catch (e){
@@ -332,7 +332,7 @@ User.prototype = {
 		}).done(function(oData){
 
 			// console.log(oData);
-			try {
+			//try {
 				var data = $.parseJSON(oData.trim()); 		//may require error handling	
 				if (typeof data != 'object') data = $.parseJSON(data); // not sure why this shit is needed !!!
 				jQForm.siblings("div.loading").hide();							//hide loading gif
@@ -354,10 +354,10 @@ User.prototype = {
 				} else {														//yes error
 					that.showErrorInForm(data["error"], $("#"+formName));
 				}
-			} catch(e) {
+			/*} catch(e) {
 				console.log(e); console.log(oData);
 				that.showErrorInForm(oData, $("#"+formName));
-			}
+			}*/
 			
 		});
 
@@ -756,7 +756,10 @@ User.prototype = {
 			// console.log(this.userData.skill);
 			var count = 0;
 			$.each(this.userData.skill,function(key, value){
-				// $.each(i,function(name,))
+
+				//check for 0 value
+				value = (value == 0) ? "" : value;
+				
 				if(count < 7){
 					$("#skill-top-list").append("<li class=\"list-group-item\"><span class=\"badge colored-badge\">" + value + "</span>" + key + "</li>");
 				} else {

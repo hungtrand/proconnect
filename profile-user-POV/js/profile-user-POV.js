@@ -44,6 +44,7 @@ $(document).ready(function() {
 	   });
 	//enable edit view
 	$(".normal-view").on("click",".editable",function(){
+		console.log("hello");
 		var target = "#" + $(this).attr("for");			//grab target
 		var targetLink = '#' + $(this).attr("link");	//grab link
 		var indexNum = $(this).attr("index");			//grab index
@@ -528,8 +529,6 @@ $(document).ready(function() {
 
 
 	// $("#sortable").append("<li class=\"ui-state-default col-md-3\"><div class=\"team-member-block team-member-block-edit-view col-md-6\"><div class=\"team-member-block-description\"> <p>You</p></div></div><button type=\"button\" class=\"close\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button></li>");
-
-	
 	$('#change-image-block').on('click', function() {
 		var uploader = new ProfileImageUploader();
 		uploader.onClose(function(newImagePath) {

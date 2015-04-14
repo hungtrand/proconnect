@@ -1,0 +1,136 @@
+body {
+    padding-top: 100px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    background-color: #E8E8E8;
+}
+
+textarea {
+	resize: none;
+}
+
+.ConnectionName {
+	margin-top: 5px;	
+}
+.message-subject {
+	margin-top: -5px;
+}
+
+.message-time {
+	margin-top: -5px;
+	margin-bottom: -10px;
+}
+
+.message-text {
+	overflow: auto;
+	height: auto;
+}
+
+.sidebar-icon {
+	float: right;
+	color: black;
+}
+
+.dropdown-menu-nav {
+	padding-top: 20px;
+	right: 26px;
+}
+
+#footers {
+	margin-left: -36px;
+}
+
+#fixed-right-section {
+	position: fixed;
+	width: 30%;
+	height: 80%;
+	overflow: auto;
+	right: 37px;
+}
+
+#message-content {
+	border-color: #337AB7;
+}
+
+#message-div {
+	position: relative;
+	overflow: auto;
+	width: 48%;
+	margin-left: 22%;
+}
+
+#message-form {
+	list-style-type: none;
+}
+
+#btnAddConnection {
+	width: 50px;
+	height: 50px;
+	border-radius: 25px;
+	-moz-border-radius: 25px;
+	-webkit-border-radius: 25px;
+	font-size: 20px;
+}
+
+#sidebar {
+	position: fixed;
+	overflow: auto;
+	left: 60px;
+	height: 73%;
+	width: 20%;
+}
+
+#sidebar li {
+  list-style: none;
+}
+
+#sidebar a {
+  display: block;
+  margin: 0;
+  padding: 8px 12px;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+#sidebar input {
+  display: block;
+  margin: 0;
+  padding: 8px 12px;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+@media only screen and (max-width: 860px) {
+	#fixed-right-section {
+		display: none;
+	}
+	#sidebar {
+		left: 10px;
+		width: 95%;
+		height: auto;
+		position: relative;
+	}
+	#small-navigator li:hover > ul {
+		display: block;
+	}
+	#small-navigator li:hover #sidebar {
+		height: 100%;
+	}
+	#message-form {
+  		display: none;
+  		height: auto;
+  		filter: alpha(opacity=95);
+  		opacity: 0.95;
+  		position: relative;
+  		width: auto;
+  		z-index: 200;
+	}
+	#message-form a {
+		background-color: #EEEEEE;
+	}
+	#message-form a:hover {
+		background-color: #DDDDDD;
+	}
+	#message-div {
+		margin-left: 10px;
+		width: 95%;
+	}
+}

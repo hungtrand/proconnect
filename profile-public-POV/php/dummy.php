@@ -45,8 +45,8 @@
 				"skill" => [
 					"skill" => "3", //skill title => "endorsement number, empty string is default"
 					"skillssssssss" => "3",
-					"ski" => "3",
-					"skillasdasdasdwq asdasdasd" => "",
+					"ski" => "0",
+					"skillasdasdasdwq asdasdasd" => "0",
 					"skilla" => "3",
 					"skills" => "3",
 					"skilld" => "3",

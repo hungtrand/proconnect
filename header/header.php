@@ -6,7 +6,6 @@
 $UData = json_decode($_SESSION['__USERDATA__'], true);
 $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,6 +39,12 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
     <script src="/js/ie10-viewport-bug-workaround.js"></script>
 
     <link rel="stylesheet" href="/header/header.css">
+    <script src="/header/js/hoverHandler.js"></script>
+	
+
+    <script type="text/javascript" src="/header/js/NotificationGetter.js"></script>
+    <script type="text/javascript" src="/header/js/MessageGetter.js"></script>
+    <script type="text/javascript" src="/header/js/header.js"></script>
 
 </head>
 
@@ -55,10 +60,10 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                     <span class="icon-bar"></span>
                 </button>
 
-                <a id="logo" class="navbar-brand hidden-xs" href="#">				
+                <a id="logo" class="navbar-brand hidden-xs hidden-sm " href="#">				
 				<img src="../image/proconnect/logo_text.png" />				
 				</a>
-				<a id="logo" class="navbar-brand hidden-sm hidden-md hidden-lg" style = "width:200px;" href="#">				
+				<a id="logo" class="navbar-brand hidden-md hidden-lg" style = "width:200px;" href="#">				
 				<img style = "width:100%;" src="../image/proconnect/logo_text.png" />				
 				</a>
 
@@ -67,7 +72,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                     <div class="form-group">
                       <input type="text" size="40" class="form-control" id= "searchbar" placeholder="Search for people, companies, jobs...">
                     </div>
-                    <button type="submit" class="btn btn-primary hidden-xs">&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                    <button type="submit" class="btn btn-primary hidden-xs hidden-sm ">&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;&nbsp;&nbsp;</button>
                 </form>
             </div>
 
@@ -75,23 +80,50 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
             <div class="collapse navbar-collapse" id="nav-right-links">
 
                 <ul class="nav navbar-nav nav-pills navbar-right ">
-                    <li>
-                        <a href="#"><span class="glyphicon glyphicon-envelope"></span></a>
-                    </li>
+                    <li id = "return" style = "display: none;">
+                        <a href="#"><span class="glyphicon glyphicon-menu-left"></span></a>
+					</li>
+					
+					<li class="notification-list" id="message">
+                        <a href="#" class="dropdown-toggle notification-menu" id= "message-menu" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-envelope"></span><span class="badge">2</span></a>
+						  <ul class="dropdown-menu" role="menu">
+								<li role="presentation" class="dropdown-header"><strong>Messages</strong><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></li>
+								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+								<li role="presentation" class="divider"></li>
+								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+								<li role="presentation" class="divider"></li>
+						  </ul>
+					</li>
+				
 
-                    <li>
-                        <a href="#"><span class="glyphicon glyphicon-flag"></span></a>
-                    </li>
+                    <li class="notification-list" id="notification">
+                        <a href="#" class="dropdown-toggle notification-menu" id= "notification-menu" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-flag"></span><span class="badge">1</span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li role="presentation" class="dropdown-header"><strong>Notifications</strong><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></li>
+								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+								<li role="presentation" class="divider"></li>
+								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+								<li role="presentation" class="divider"></li>
+							</ul>
+				   </li>
 
-                    <li>
-                        <a href="#"><span class="glyphicon glyphicon-user"></span></a>
-                    </li>
+                    <li class="notification-list" id="connection">
+                        <a href="#" class="dropdown-toggle notification-menu" id= "connection-menu" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user"></span><span class="badge">5</span></a>
+						<ul class="dropdown-menu" role="menu">
+								<li role="presentation" class="dropdown-header"><strong>Add Connections</strong><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></li>
+								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+								<li role="presentation" class="divider"></li>
+								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+								<li role="presentation" class="divider"></li>
+						</ul>
+				   </li>
 
-                    <li class="dropdown hidden-xs">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            <?=$FullName?> <span class="caret"></span>
+                    <li class="dropdown hidden-xs" id="caret">
+                        <a href="#" class="dropdown-toggle" id="caret-menu" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <?=$FullName?> <span class="glyphicon glyphicon-cog"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu">
+							<li role="presentation" class="dropdown-header"><strong>Account & Settings</strong><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></li>
                             <li><a href="#">Account & Settings</a></li>
                             <li><a href="#">Job Posting</a></li>
                             <li class="divider"></li>
