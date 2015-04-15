@@ -8,4 +8,7 @@ $(document).ready(function(){
 	// MessageGetter.get("someID",function(data){
 	// 	//display data
 	// });
+
+	var item = new MediaItem();
+	console.log( item.html() );
 });

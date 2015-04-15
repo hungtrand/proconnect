@@ -43,6 +43,7 @@ $FullName = "HELLLLO";
 	
     <script type="text/javascript" src="/header/js/NotificationGetter.js"></script>
     <script type="text/javascript" src="/header/js/MessageGetter.js"></script>
+    <script type="text/javascript" src="/header/js/MediaItem.js"></script>
     <script type="text/javascript" src="/header/js/header.js"></script>
 
 </head>
@@ -75,6 +76,21 @@ $FullName = "HELLLLO";
                 </form>
             </div>
 
+          <!--   <li class="media" style="max-width: 400px;overflow:scroll;">
+                                <a href="#">
+                                <div class="media-left">
+                                  
+                                    <img class="media-object" src="/image/user_img.png" alt="..." style="max-width: 61px;">
+                                </div> 
+                                <div class="media-body"style="text-overflow:ellipsis;">
+                                  <h4 class="media-heading" >Media heading</h4>
+                                  asdasdasdasdasdadjkfabjhsgblaerglaerjbkgawbjblkjefgesbfjlkvsdjfbgleksjbae;kvj
+                                  asdbhjavfgkajgvhewlfjawgeuflawbvlwRVLAWRVSBDHJ,BWKGFWBDFJL
+                                </div>
+                              </a>
+
+                            </li>
+ -->
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="nav-right-links">
 
@@ -86,18 +102,52 @@ $FullName = "HELLLLO";
 					<li class="notification-list" id="message">
                         <a href="#" class="dropdown-toggle notification-menu" id= "message-menu" data-toggle="dropdown" role="button" aria-expanded="false">
                             <span class="glyphicon glyphicon-envelope"></span>
-                            <span class="badge">2</span></a>
-						    <ul class="dropdown-menu" role="menu">
-								<li role="presentation" class="dropdown-header">
-                                    <strong>Messages</strong>
-                                    <span class="glyphicon glyphicon-triangle-right" aria-hidden="true">
-                                </li>
-								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-								<li role="presentation" class="divider"></li>
-								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-								<li role="presentation" class="divider"></li>
-						    </ul>
+                            <span class="badge">2</span>
+                        </a>
+					    <ul class="dropdown-menu media-list" role="menu">
+							<!-- <li role="presentation" class="dropdown-header">
+                                <strong>Messages</strong> 
+                                <span class="glyphicon glyphicon-triangle-right" aria-hidden="true">
+                            </li> -->
+                            <li class="media" style="max-width:100%;">
+                                <a href="#">
+                                <div class="media-left">
+                                  
+                                    <img class="media-object" src="/image/user_img.png" alt="..." style="max-width: 48px;">
+                                </div> 
+                                <div class="media-body"style="text-overflow:ellipsis; max-width:150px;">
+                                  <h4 class="media-heading" >Media heading d1</h4>
+                                  asdasdasdasdasdadjkfabjhsgblaerglaerjbkgawbjblkjefgesbfjlkvsdjfbgleksjbae;kvj
+                                  asdbhjavfgkajgvhewlfjawgeuflawbvlwRVLAWRVSBDHJ,BWKGFWBDFJL
+                                </div>
+
+                              </a>
+
+                            </li>
+							<!-- <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="#" style="border-bottom:1px solid red;">
+                                    <div style="margin: 10px 0px;">Action</div>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="#" style="border-bottom:1px solid red;">
+                                    <div style="margin: 10px 0px;">Action</div>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="#" style="border-bottom:1px solid red;">
+                                    <div style="margin: 10px 0px;">Action</div>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="#" style="border-bottom:1px solid red;">
+                                    <div style="margin: 10px 0px;">Action</div>
+                                </a>
+                            </li> -->
+					    </ul> 
 					</li>
+                    <!-- <li role="presentation" class="divider"></li> -->
+                    <!-- <li role="presentation" class="divider"></li> -->
 				
                     <li class="notification-list" id="notification">
                         <a href="#" class="dropdown-toggle notification-menu" id= "notification-menu" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -151,39 +201,41 @@ $FullName = "HELLLLO";
                     </li>
                 </ul>
 				
-            <ul class="nav subNav hidden-sm hidden-md hidden-lg">
-                <li role="presentation">
-                    <a href="../profile-user-POV/">Home</a>
-                </li>
-                <li role="presentation">
-                    <a href="../profile-user-POV/">Profile</a>
-                </li>
-                <li role="presentation">
-                    <a href="../connections/">Connections</a>
-                </li>
-                <li role="presentation">
-                    <a href="#">Education</a>
-                </li>
-                <li role="presentation">
-                    <a href="#">Jobs</a>
-                </li>
-                <li role="presentation">
-                    <a href="#">Interests</a>
-                </li>
-	
-				<li role="presentation">
-                    <a href="#">Account & Settings</a>
-                </li>
-				<li role="presentation">
-                    <a href="#">Job Posting</a>
-                </li>
-				<hr>
-				<li role="presentation" id="signout-menu">
-                    <a href="../signout/php/session_signout.php">Sign Out</a>
-                </li>
-            </ul>
+                <ul class="nav subNav hidden-sm hidden-md hidden-lg">
+                    <li role="presentation">
+                        <a href="../profile-user-POV/">Home</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="../profile-user-POV/">Profile</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="../connections/">Connections</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#">Education</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#">Jobs</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#">Interests</a>
+                    </li>
+    	
+    				<li role="presentation">
+                        <a href="#">Account & Settings</a>
+                    </li>
+    				<li role="presentation">
+                        <a href="#">Job Posting</a>
+                    </li>
+    				<hr>
+    				<li role="presentation" id="signout-menu">
+                        <a href="../signout/php/session_signout.php">Sign Out</a>
+                    </li>
+                </ul>
 
             </div><!-- /.navbar-collapse -->
+
+            <!-- Normal Menu View -->
             <ul class="nav nav-pills subNav hidden-xs">
                 <li role="presentation"><a href="../profile-user-POV/">
                     Home</a>
