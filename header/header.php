@@ -39,7 +39,7 @@ $FullName = "HELLLLO";
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="/js/ie10-viewport-bug-workaround.js"></script>
 
-    <link rel="stylesheet" href="/header/header.css">
+    <link rel="stylesheet" href="/header/css/header.css">
     <script src="/header/js/hoverHandler.js"></script>
 	
     <script type="text/javascript" src="/header/js/NotificationGetter.js"></script>
@@ -60,10 +60,10 @@ $FullName = "HELLLLO";
                     <span class="icon-bar"></span>
                 </button>
 
-                <a id="logo" class="navbar-brand hidden-xs hidden-sm " href="#">				
+                <a class="logo navbar-brand hidden-xs hidden-sm " href="#">				
 				<img src="../image/proconnect/logo_text.png" />				
 				</a>
-				<a id="logo" class="navbar-brand hidden-md hidden-lg" style = "width:200px;" href="#">				
+				<a class="logo navbar-brand hidden-md hidden-lg" style = "width:200px;" href="#">				
 				<img style = "width:100%;" src="../image/proconnect/logo_text.png" />				
 				</a>
 
@@ -80,11 +80,17 @@ $FullName = "HELLLLO";
             <div class="collapse navbar-collapse" id="nav-right-links">
 
                 <ul class="nav navbar-nav nav-pills navbar-right ">
-                    
+                    <li id = "return" style = "display: none;">
+                        <a href="#"><span class="glyphicon glyphicon-menu-left"></span></a>
+					</li>
+					
 					<li class="notification-list" id="message">
                         <a href="#" class="dropdown-toggle notification-menu" id= "message-menu" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-envelope"></span><span class="badge">2</span></a>
 						  <ul class="dropdown-menu" role="menu">
-								<li role="presentation" class="dropdown-header"><strong>Messages</strong><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></li>
+								<li role="presentation" class="dropdown-header">
+                                    <strong>Messages</strong>
+                                    <span class="glyphicon glyphicon-triangle-right" aria-hidden="true">
+                                </li>
 								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
 								<li role="presentation" class="divider"></li>
 								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
@@ -92,7 +98,6 @@ $FullName = "HELLLLO";
 						  </ul>
 					</li>
 				
-
                     <li class="notification-list" id="notification">
                         <a href="#" class="dropdown-toggle notification-menu" id= "notification-menu" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-flag"></span><span class="badge">1</span></a>
 							<ul class="dropdown-menu" role="menu">
@@ -105,12 +110,22 @@ $FullName = "HELLLLO";
 				   </li>
 
                     <li class="notification-list" id="connection">
-                        <a href="#" class="dropdown-toggle notification-menu" id= "connection-menu" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user"></span><span class="badge">5</span></a>
+                        <a href="#" class="dropdown-toggle notification-menu" id= "connection-menu" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <span class="glyphicon glyphicon-user"></span>
+                            <span class="badge">5</span>
+                        </a>
 						<ul class="dropdown-menu" role="menu">
-								<li role="presentation" class="dropdown-header"><strong>Add Connections</strong><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></li>
-								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+								<li role="presentation" class="dropdown-header">
+                                    <strong>Add Connections</strong>
+                                    <span class="glyphicon glyphicon-triangle-right" aria-hidden="true">
+                                </li>
+								<li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="#">Action</a>
+                                </li>
 								<li role="presentation" class="divider"></li>
-								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+								<li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="#">Action</a>
+                                </li>
 								<li role="presentation" class="divider"></li>
 						</ul>
 				   </li>

@@ -238,9 +238,9 @@ div[for="skills-endorsements-edit"] > .panel,.list-group{
 }
 */
 
-#logo{
+/*#logo{
 	color: #D7D7D7;
-}
+}*/
 
 .normal-view {
 	/*display: none;*/
@@ -391,8 +391,6 @@ small {
 	padding-top: 19px;
 	position: relative;
 }
-
-
 
 #sortable { 
 	list-style-type: none; 
