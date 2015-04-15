@@ -44,6 +44,7 @@ $(document).ready(function() {
 	   });
 	//enable edit view
 	$(".normal-view").on("click",".editable",function(){
+		console.log("hello");
 		var target = "#" + $(this).attr("for");			//grab target
 		var targetLink = '#' + $(this).attr("link");	//grab link
 		var indexNum = $(this).attr("index");			//grab index

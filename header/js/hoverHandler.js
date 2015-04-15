@@ -1,18 +1,21 @@
 $(document).ready(function() {
 	var md = 768;
 	$("#message").hover(function(){
+		console.log(window.outerWidth);
 		if(window.outerWidth >= md) {
-		$("#message-menu").attr("aria-expanded","true");
-		$("#message").addClass("open");
+			$("#message-menu").attr("aria-expanded","true");
+			$("#message").addClass("open");
 		}
 	},function(){
+		if(window.outerWidth >= md) {
 		$("#message-menu").attr("aria-expanded","false");
 		$("#message").removeClass("open");
+		}
 	});
 	$("#notification").hover(function(){
 		if(window.outerWidth >= md) {
-		$("#notification-menu").attr("aria-expanded","true");
-		$("#notification").addClass("open");
+			$("#notification-menu").attr("aria-expanded","true");
+			$("#notification").addClass("open");
 		}
 	},function(){
 		$("#notification-menu").attr("aria-expanded","false");
