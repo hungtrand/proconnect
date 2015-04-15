@@ -80,7 +80,7 @@ class Feed extends ActiveRecord {
 		return $this->data['EXTERNALURL'];
 	}
 
-	public function getInternalLURL() {
+	public function getInternalURL() {
 		return $this->data['INTERNALURL'];
 	}
 

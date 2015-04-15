@@ -10,7 +10,7 @@ class Profile extends ViewRecord {
 	public static $PrimaryKey = 'USERID';
 	public static $Columns = ['USERID', 'FIRSTNAME', 'MIDDLENAME', 'LASTNAME', 'NAME'
 							, 'GENDER', 'BIRTHDAY', 'ADDRESS', 'CITY', 'STATE', 'ZIP'
-							, 'SUMMARY', 'PHONE', 'PHONETYPE', 'EMPLOYMENTSTATUS'
+							, 'SUMMARY', 'PROFILEIMAGE', 'PHONE', 'PHONETYPE', 'EMPLOYMENTSTATUS'
 							, 'COUNTRY', 'ACCOUNTID', 'EMAIL', 'EMAIL_ALT'
 							, 'USERNAME', 'PASSWORD', 'ACTIVE', 'VERIFIED'];
 	public static $PseudoColumns = ['TITLE', 'ORGANIZATION', 'LOCATION'];
@@ -164,6 +164,10 @@ class Profile extends ViewRecord {
 
 	public function getSummary() {
 		return $this->data['SUMMARY'];
+	}
+
+	public function getProfileImage() {
+		return $this->data['PROFILEIMAGE'];
 	}
 
 	public function getEmploymentStatus() {

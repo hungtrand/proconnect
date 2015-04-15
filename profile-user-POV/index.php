@@ -26,7 +26,7 @@ ini_set("display_errors", 1); // debug
 							</div>
 						</div>
                           <div id="profile-image" class="outer-ref" >
-                           <img src="/image/user_img.png" alt="" class="img-responsive profile-image" id="preview"/>
+                           <img src="/image/user_img.png" alt="" class="img-responsive profile-image img-rounded" id="preview"/>
               							<div id="picture-edit">
               								<form class="editable-form">
               									<a id="change-image-block"> 							                        

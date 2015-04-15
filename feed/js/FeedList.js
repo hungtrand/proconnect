@@ -1,10 +1,4 @@
-function SuggestionList(container) {
-	/*this.data = [
-		{ "Name": "Adrian Adam", "JobTitle": "Developer", "CompanyName": "Google, Inc.", "Location": "Mountain View"},
-		{ "Name": "Bryan Adam", "JobTitle": "Writer",  "CompanyName": "Microsoft, Inc.", "Location": "Mountain View"},
-		{ "Name": "Collins Adam", "JobTitle": "Manager",  "CompanyName": "Dropbox, Inc.", "Location": "Mountain View"},
-		{ "Name": "Duncan Adam", "JobTitle": "Auditor",  "CompanyName": "Pandora, Inc.", "Location": "Mountain View"}
-	];*/
+function FeedList(container) {
 	this.data = [];
 
 	this.container = container;
@@ -15,11 +9,11 @@ function SuggestionList(container) {
 	this.init();
 }
 
-SuggestionList.prototype = {
-	constructor: SuggestionList,
+FeedList.prototype = {
+	constructor: this,
 
 	init: function() {
-		this.Alert = $('#SuggestionsListEndAlert');
+		this.Alert = $('#FeedListEndAlert');
 	},
 
 	fetch: function(callback) {
@@ -30,7 +24,7 @@ SuggestionList.prototype = {
 		}
 
 		$.ajax({
-			url: '/connections/php/FetchSuggestions_controller.php',
+			url: 'php/FeedList_controller.php',
 			type: 'POST',
 			data: data
 		}).done(function(json) {
@@ -83,9 +77,9 @@ SuggestionList.prototype = {
 
 		for (var i = 0, l=json.length; i < l; i++) {
 			that.data.push(json[i]);
-			var conn = new NewConnection(json[i]);
+			var feed = new Feed(json[i]);
 
-			this.container.append(conn.getView());
+			that.container.append(feed.getView());
 		}
 	}
 }

@@ -1,7 +1,7 @@
 <?php
 //error_reporting(E_ALL); // debug
 //ini_set("display_errors", 1); // debug
-// include '../signout/php/session_check_signout.php';
+include '../signout/php/session_check_signout.php';
 
 $UData = json_decode($_SESSION['__USERDATA__'], true);
 $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
@@ -18,7 +18,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
     <meta name="author" content="">
 
     <title><?php echo $page_title; ?></title>
-    
+    <link rel="icon" type="image/png" href="/favicon.ico">
     <script src="/lib/jquery/jquery-2.1.3.min.js"></script>
 
 
@@ -132,7 +132,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                     </li>
                 </ul>
 				 <ul class="nav subNav hidden-sm hidden-md hidden-lg">
-                <li role="presentation"><a href="../profile-user-POV/">
+                <li role="presentation"><a href="../feed/">
                     Home</a>
                 </li>
                 <li role="presentation"><a href="../profile-user-POV/">
@@ -161,7 +161,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 
             </div><!-- /.navbar-collapse -->
             <ul class="nav nav-pills subNav hidden-xs">
-                <li role="presentation"><a href="../profile-user-POV/">
+                <li role="presentation"><a href="../feed/">
                     Home</a>
                 </li>
                 <li role="presentation"><a href="../profile-user-POV/">

@@ -1,5 +1,5 @@
 <?php
- include "../sqlConnection.php"; // For testing
+ //require_once "../sqlConnection.php"; // For testing
  require_once __DIR__."/ActiveRecord.php";
 
 class Feed2User extends ActiveRecord {
@@ -89,13 +89,13 @@ class Feed2User extends ActiveRecord {
 
 	// SET METHODS
 	public function setFeedID($intVal) {
-		$this->data['FEEDID'] = $intVal;
+		$this->data['FEEDID'] = (int) $intVal;
 
 		return true;
 	}
 
 	public function setUserID($intVal) {
-		$this->data['USERID'] = $intVal;
+		$this->data['USERID'] = (int) $intVal;
 
 		return true;
 	}
@@ -114,10 +114,10 @@ class Feed2User extends ActiveRecord {
 	}
 }
 
-$f = new Feed2User(1);
+/*$f = new Feed2User(1);
 // $f->setFeedID(1);
 // $f->setUserID(7);
 $f->setStatus("READ");
 $f->setLiked(true);
-$f->update();
+$f->update();*/
 ?>

@@ -3,6 +3,7 @@
 	//ini_set("display_errors", 1); // debug
 	require_once __DIR__."/../../lib/php/sqlConnection.php";
 	require_once __DIR__."/../../lib/php/classes/User.php";
+	require_once __DIR__."/../../lib/php/classes/Profile.php";
 
 	session_start();
 	if (!$UData = json_decode($_SESSION['__USERDATA__'], true)) {
@@ -71,6 +72,9 @@
     	chmod(UPLOAD_DIR . $FileName, 0775);
     	$User->setProfileImage($FileName);
     	$User->update();
+
+    	$profile = new Profile($User->getID());
+		$_SESSION['__USERDATA__'] = json_encode($profile->getData());
     } else {
     	$rs = '<div class="label label-danger">Unable to save file.</div>';
     }

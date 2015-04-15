@@ -1,4 +1,4 @@
-function ProfileImageUploader() {
+function ProfileImageUploader(CurrentImageSrc) {
 	this.modal;
 	this.UploadForm;
 	this.UploadActionURL;
@@ -8,13 +8,13 @@ function ProfileImageUploader() {
 	this.onCloseHandlers = []; // array of handlers
 	this.show = false;
 
-	this.init();
+	this.init(CurrentImageSrc);
 }
 
 ProfileImageUploader.prototype = {
 	constructor: this,
 
-	init: function() {
+	init: function(CurrentImageSrc) {
 		var that = this;
 
 		$.ajax({
@@ -24,6 +24,7 @@ ProfileImageUploader.prototype = {
 			that.modal = $(modal);
 			that.bindModalEventHandlers();
 			if (that.show) that.modal.modal('show');
+			if (CurrentImageSrc) that.CurrentImage.attr('src', CurrentImageSrc);
 		});
 	}, 
 
