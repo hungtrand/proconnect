@@ -1,10 +1,10 @@
 <?php
-require_once "../sqlConnection.php"; // for testing
-require_once __DIR__."/User.php"; // for testing
-require_once __DIR__."/Education.php";
+//require_once "../sqlConnection.php"; // for testing
+//require_once __DIR__."/User.php"; // for testing
+require_once __DIR__."/Notification.php";
 require_once __DIR__."/RecordSet.php";
 
-class EducationManager extends RecordSet {
+class NotificationManager extends RecordSet {
 	protected $PrimaryKey;
 	protected $TableName;
 	protected $Columns;
@@ -15,9 +15,9 @@ class EducationManager extends RecordSet {
 	public $err;
 
 	function __construct($User) {
-		$this->PrimaryKey = Education::$PrimaryKey;
-		$this->TableName = Education::$TableName;
-		$this->Columns = Education::$Columns;
+		$this->PrimaryKey = Notification::$PrimaryKey;
+		$this->TableName = Notification::$TableName;
+		$this->Columns = Notification::$Columns;
 		$this->User = $User;
 
 		parent::__construct();
@@ -38,7 +38,7 @@ class EducationManager extends RecordSet {
 
 		return true;
 	}
-
+/*
 	public function loadCurrent() {
 		$cond = "WHERE USERID = ? AND (YEAREND >= ? OR YEAREND IS NULL) ";
 		$cond .="ORDER BY YEARSTART DESC LIMIT 1 ";
@@ -48,7 +48,7 @@ class EducationManager extends RecordSet {
 
 		return true;
 	}
-
+*/
 	public function getData() {
 		if (!isset($this->data) || count($this->data) < 1) return false;
 
@@ -62,7 +62,7 @@ class EducationManager extends RecordSet {
 		$arr = [];
 		foreach ($this->getData() as $row) {
 			$id = $row[$this->PrimaryKey];
-			$obj = new Education($id);
+			$obj = new Notification($id);
 			array_push($arr, $obj);
 		}
 
@@ -71,19 +71,20 @@ class EducationManager extends RecordSet {
 	
 }
 //Test
-/*$u = new User(10);
-$edu = new Education();
-$edu->load(6);
-//$edu->setSchool('Alameda College');
-//$edu->setFieldOfStudy('Computer Science');
-//$edu->setUserID($u->getID());
+/*
+$u = new User(10);
+$du = new Notification();
+$du->load(6);
+//$du->setMessage('Alameda College');
+//$du->setType('Computer Science');
+//$du->setUserID($u->getID());
 //$edu->setGPA(3.9);
 //$edu->setYearStart(2011);
 //$edu->setYearEnd(2013);
 
-$edu->delete();
+$du->delete();
 
-$em = new EducationManager($u);
+$em = new NotificationManager($u);
 echo "\n";
 echo json_encode($em->getData());
 echo $em->err;
