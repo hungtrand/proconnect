@@ -1,6 +1,6 @@
 <?php
-error_reporting(E_ALL); //Debug
-ini_set("display_errors", 1); //Debug
+//error_reporting(E_ALL); //Debug
+//ini_set("display_errors", 1); //Debug
 	require_once __DIR__."/../../lib/php/sqlConnection.php";
 	require_once __DIR__."/../../lib/php/classes/Notification.php";
 	require_once __DIR__."/../../lib/php/classes/User.php";
@@ -27,7 +27,7 @@ ini_set("display_errors", 1); //Debug
 	$notiViewID = -1;
 	$mode = "exit";
 	$notiID = -1;
-
+	$noid = new NotificationManager();
 	if(isset($_POST['USERID']){
 		$urID = (int)$_POST['USERID'];
 	}
@@ -69,8 +69,8 @@ ini_set("display_errors", 1); //Debug
 
 			case "insert":
 			$notiView = new NotificationView();
-			$notiView->setNotificationID();
-			$notiView->setUserID();
+			$notiView->setNotificationID($noid);
+			$notiView->setUserID($uid);
 			$notiView->save();
 
 		}

@@ -1,6 +1,6 @@
 <?php
-require_once "../sqlConnection.php"; // for testing
-require_once __DIR__."/User.php"; // for testing
+//require_once "../sqlConnection.php"; // for testing
+//require_once __DIR__."/User.php"; // for testing
 require_once __DIR__."/Education.php";
 require_once __DIR__."/RecordSet.php";
 
