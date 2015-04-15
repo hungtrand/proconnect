@@ -17,6 +17,10 @@ h3 {
 	position: relative;
 }
 
+.dropdown-menu li {
+	width: 100px;
+}
+
 .dropdown-header {
 	background-color:black;
 	color:#E8E8E8;
