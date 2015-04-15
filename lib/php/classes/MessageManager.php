@@ -1,10 +1,10 @@
 <?php
 //require_once "../sqlConnection.php"; // for testing
 //require_once __DIR__."/User.php"; // for testing
-require_once __DIR__."/Education.php";
+require_once __DIR__."/Message.php";
 require_once __DIR__."/RecordSet.php";
 
-class EducationManager extends RecordSet {
+class MessageManager extends RecordSet {
 	protected $PrimaryKey;
 	protected $TableName;
 	protected $Columns;
@@ -15,9 +15,9 @@ class EducationManager extends RecordSet {
 	public $err;
 
 	function __construct($User) {
-		$this->PrimaryKey = Education::$PrimaryKey;
-		$this->TableName = Education::$TableName;
-		$this->Columns = Education::$Columns;
+		$this->PrimaryKey = Message::$PrimaryKey;
+		$this->TableName = Message::$TableName;
+		$this->Columns = Message::$Columns;
 		$this->User = $User;
 
 		parent::__construct();
@@ -40,10 +40,10 @@ class EducationManager extends RecordSet {
 	}
 
 	public function loadCurrent() {
-		$cond = "WHERE USERID = ? AND (YEAREND >= ? OR YEAREND IS NULL) ";
-		$cond .="ORDER BY YEARSTART DESC LIMIT 1 ";
+		$cond = "WHERE USERID = ? AND DATECREATED IS NOT NULL ";
+		$cond .="ORDER BY DATECREATED DESC LIMIT 1 ";
 
-		$params = ['USERID'=>$this->User->getID(), 'YEAREND'=>date("Y")];
+		$params = ['USERID'=>$this->User->getID()];
 		if (!$this->data = $this->fetchCustom($cond, $params)) return false;
 
 		return true;
@@ -60,9 +60,9 @@ class EducationManager extends RecordSet {
 			return false;
 
 		$arr = [];
-		foreach ($this->getData() as $row) {
+		foreach ($this->data as $row) {
 			$id = $row[$this->PrimaryKey];
-			$obj = new Education($id);
+			$obj = new Message($id);
 			array_push($arr, $obj);
 		}
 
@@ -71,21 +71,20 @@ class EducationManager extends RecordSet {
 	
 }
 //Test
-/*$u = new User(10);
-$edu = new Education();
-$edu->load(6);
-//$edu->setSchool('Alameda College');
-//$edu->setFieldOfStudy('Computer Science');
-//$edu->setUserID($u->getID());
-//$edu->setGPA(3.9);
-//$edu->setYearStart(2011);
-//$edu->setYearEnd(2013);
+/*$u = new User('10');
+$mes = new Message('10');
+$mes->setMessageID('khanh nguyen testing');
+$mes->setSubject('testng1');
+$mes->setBody('testing 2');
+$mes->setCreator($u->getID());
+echo $u->getID();
+$mes->setDateCreated('10-20-2015');
 
-$edu->delete();
+$mes->save();
 
-$em = new EducationManager($u);
+$mesm = new MessageManager($u);
 echo "\n";
-echo json_encode($em->getData());
-echo $em->err;
+echo json_encode($mesm->getData());
+echo $mesm->err;
 echo"\n";*/
 ?>
