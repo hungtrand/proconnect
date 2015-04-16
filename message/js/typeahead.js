@@ -34,7 +34,7 @@ typeahead.prototype = {
 				alert("OMG");
 			}
 			});
-		}, 300);
+		}, 750);
 
 
 		$(".typeahead").typeahead({

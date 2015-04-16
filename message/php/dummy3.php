@@ -47,7 +47,7 @@
 					"sender-href" => "https://www.google.com/",
 					"message-subject" => "dugout",
 					"message-time" => "April 5, 2015, 12:45 PM",
-					"sender-message" => "These are the messages for your Inbox",
+					"sender-message" => "These are the messages for your Archive",
 					"total-messages" => "11"
 				],
 				"message5" =>

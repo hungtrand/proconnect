@@ -19,24 +19,25 @@ NewMessage.prototype = {
 		that.subject = $("#recipient-subject-textarea").val();
 		that.bodyContent =$("#summary-textarea").val();
 		that.sendBtn = $(".send-btn");
+
 		that.sendBtn.on('click', function(ev) {
 			ev.preventDefault();
-				$(".loading").show();
-			that.sendMsg( function(callback) {
-				that.confirmSent(callback);
-			});
+			if($("#recipient-textarea").val().length===0) {
+				alert("Cannot send message, recipient's name is empty");
+			} else if($("#summary-textarea").val().length===0) {
+				alert("Cannot send message, the message body is empty");
+			} else {
+				$("#loading-sent").show();
+				that.sendMsg( function(callback) {
+					that.confirmSent(callback);
+				});				
+			}
 		});
+
 		that.cancelBtn = $(".cancel-btn");
 		that.cancelBtn.on('click', function(ev) {
 			ev.preventDefault();
-			$("#message-div").empty();
-			var initbox = $("#main-inbox");
-			var iniValue = initbox.attr("value");
-			var iniInbox = $("#update-message-frame").html();
-			var iniEdit = $(iniInbox);
-			iniEdit.find(".message-frame-name").text(iniValue);
-			$("#message-div").append(iniEdit);
-			var iniMessages = new LoadMessages($('.message-frame-display'), iniValue, 1);
+			that.cancelMsg();
 		})
 	},
 
@@ -63,9 +64,15 @@ NewMessage.prototype = {
 		var that = this;
 		setTimeout(function() {
 			$(that.container).fadeOut('800', function() {
-				$(".loading").hide();
+				$("#loading-sent").hide();
 				that.cancelBtn.trigger('click');
 			})
-		}, 2500);
+		}, 1500);
+	},
+
+	cancelMsg: function() {
+		$("#message-frame-display").empty();
+		var iniMessages = new LoadMessages($('.message-frame-display'), "Inbox", 1);
+		iniMessages.load()
 	}
 }

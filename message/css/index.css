@@ -1,14 +1,28 @@
 body {
     padding-top: 100px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
-    background-color: #E8E8E8;
+    background: url("../../image/Mehheh.jpg") fixed center no-repeat;
+  background-size: 100%;
 }
-
 textarea {
 	resize: none;
 }
-.loading {
+#remove-trash {
 	display: none;
-	position: absolute;
+	margin-top: -51px;
+	margin-bottom: 17px
+}
+#loading-main {
+	display: none;
+	position: static;
+	margin-left: calc(50% - 32px);
+	top: 50%;
+}
+#nav-container {
+	margin-bottom: -5px;
+}
+#loading-sent {
+	display: none;
+	position: static;
 	margin-left: calc(50% - 32px);
 	top: 50%;
 }
@@ -40,7 +54,9 @@ textarea {
 .message-subject {
 	margin-top: -5px;
 }
-
+.new-message-btn {
+	margin-bottom: 15px;
+}
 .message-time {
 	margin-top: -5px;
 	margin-bottom: -10px;
@@ -58,9 +74,6 @@ textarea {
 .dropdown-menu-nav {
 	padding-top: 20px;
 	right: 26px;
-}
-#footers {
-	margin-left: -36px;
 }
 #fixed-right-section {
 	position: fixed;
@@ -93,12 +106,9 @@ textarea {
 	-webkit-border-radius: 25px;
 	font-size: 20px;
 }
-#search-form-size {
-	width: 90%;
-}
 
 #sidebar {
-	position: fixed;
+	position: relative;
 	left: 59px;
 	height: 73%;
 	width: 20%;
@@ -107,7 +117,6 @@ textarea {
 #sidebar li {
   list-style: none;
 }
-
 #sidebar ul {
 	width: 100%;
 	height: 500%;
@@ -119,13 +128,25 @@ textarea {
 	height: 38%;
 	overflow: auto;	
 }
-
+#searching {
+	width: calc(100% - 40px);
+}
+#sidebar {
+	position: fixed;
+	width: 20%;
+	margin-right: -16%;
+}
 #sidebar a {
   display: block;
   margin: 0;
   padding: 8px 12px;
   text-decoration: none;
   font-weight: normal;
+}
+.sender-href img {
+	max-width: 50px;
+	max-height: 50px;
+	border-radius: 25px;
 }
 
 #sidebar input {
@@ -140,14 +161,10 @@ textarea {
 	#fixed-right-section {
 		display: none;
 	}
-	#search-form-size {
-		width: auto;
-	}
 	#sidebar {
-		left: 10px;
-		width: 95%;
+		width: 100%;
 		height: auto;
-		position: relative;
+		position: static;
 	}
 	#small-navigator li:hover > ul {
 		display: block;
@@ -171,7 +188,7 @@ textarea {
 		background-color: #DDDDDD;
 	}
 	#message-div {
-		margin-left: 10px;
-		width: 95%;
+		margin-left: 0px;
+		width: 100%;
 	}
 }
