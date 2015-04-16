@@ -111,7 +111,6 @@ $FullName = "HELLLLO";
                                 <strong>Messages</strong> 
                                 <span class="glyphicon glyphicon-triangle-right" aria-hidden="true">
                             </li>
-                           
                             <!-- <li class="media">
                                 <a href="#">
                                     <div class="media-left">
@@ -126,20 +125,21 @@ $FullName = "HELLLLO";
                                     <div class="media-right time-ago">1s</div>
                                 </a>    
                             </li> -->
-                            <li class="media" style="">
-                                <a class="landing-destination" href="#">
-                                    <div class="media-left">
-                                        <img href="www.google.com" class="media-object" src="/image/user_img.png" alt="..." style="max-width: 48px;">
-                                    </div> 
-                                    <div class="media-body">
-                                      <h4 class="media-heading" >Media heading</h4>
-                                      <p> title long long long long long </p>
-                                      asdasdasdasdasdadjkfabjhsgblaerglaerjbkgawbjblkjefgesbfjlkvsdjfbgleksjbae;kvj
-                                      asdbhjavfgkajgvhewlfjawgeuflawbvlwRVLAWRVSBDHJ,BWKGFWBDFJL
-                                    </div>
-                                    <div class="media-right time-ago">1d</div>
-                                </a>
-                            </li>
+                            <template id="MediaItem">
+                                <li class="media" style="">
+                                    <a class="landing-destination" href="#">
+                                        <div class="media-left">
+                                            <img href="" class="media-object" src="/image/user_img.png" alt="..." style="max-width: 48px;">
+                                        </div> 
+                                        <div class="media-body">
+                                          <h4 class="media-heading" >Media heading</h4>
+                                          <p> title long long long long long </p>
+                                          message here
+                                        </div>
+                                        <div class="media-right time-ago">lorem</div>
+                                    </a>
+                                </li>
+                            </template>
                         
 							<!-- <li role="presentation">
                                 <a role="menuitem" tabindex="-1" href="#" style="border-bottom:1px solid red;">
@@ -171,7 +171,7 @@ $FullName = "HELLLLO";
                             <span class="glyphicon glyphicon-flag"></span>
                             <span class="badge">1</span>
                         </a>
-							<ul class="dropdown-menu" role="menu">
+							<ul class="dropdown-menu media-list" role="menu">
 								<li role="presentation" class="dropdown-header"><strong>Notifications</strong><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></li>
 								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
 								<li role="presentation" class="divider"></li>

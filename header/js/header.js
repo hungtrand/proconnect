@@ -7,12 +7,15 @@ $(document).ready(function(){
 	
 	//get message
 	$(".navi-menu").on("click", function() {
+		var that = this;
 		var specialID = $(this).attr("id");
 		MessageGetter.get(specialID,function(data){
 			//display data
 			$.each(data,function(key,value){
-				// console.log(value);
-				console.log(MediaItemFactory.makeItem(specialID,value).html() );
+				var newItem = MediaItemFactory.makeItem(specialID,value);
+				$(that).siblings("ul.media-list").children().last().after(newItem);
+				// console.log(MediaItemFactory.makeItem(specialID,value) );
+				// $("#message").append(MediaItemFactory.makeItem(specialID,value));
 			});
 			// var item = new MediaItem(data);
 			// console.log( item.html() );

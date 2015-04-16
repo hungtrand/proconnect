@@ -35,7 +35,7 @@ h3 {
 }
 
 #nav-right-links .media-list li {
-	width: 300px;
+	min-width: 300px;
 }
 
 #nav-right-links a.landing-destination{
@@ -46,7 +46,7 @@ h3 {
 #nav-right-links .media-body, #nav-right-links .media-body p{
 	overflow: hidden;
 	text-overflow: ellipsis; 
-	max-width: 175px;
+	max-width: 200px;
 }
 
 #nav-right-links .media-list .media-right{
@@ -55,6 +55,11 @@ h3 {
 
 .notification-list .media {
 	margin-top: 0px;
+}
+
+.time-ago {
+	position: relative;
+	padding-left: 0px !important;
 }
 
 @media (min-width: 768px){

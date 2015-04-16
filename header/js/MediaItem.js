@@ -55,7 +55,10 @@ function MessageItem(options){
 	// console.log(options);
 
 	//fill in the required fields
-	var modTemplate = new MediaItem();
+	// var modTemplate = new MediaItem();
+	var modTemplate = $(document.getElementById("MediaItem").content.cloneNode(true));
+
+	// console.log( modTemplate.content.cloneNode(true) );
 
 	modTemplate.find("a.landing-destination").attr("href","http:www.google.com");
 	modTemplate.find("img.media-object").on("click",function(){
