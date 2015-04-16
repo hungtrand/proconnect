@@ -6,16 +6,16 @@ var MessageGetter = (function() {
 				data: {"userID":1234,"categoryID":categoryID},			//<------ may not be necessary
 				method: "POST",
 				success: function(data){
-					try {
+					// try {
 						var messages = JSON.parse(data);
 						console.log(data);
 
 						if(displayCallback !== undefined){
 							displayCallback(messages);
 						}
-					} catch (e) {
-						console.log(e);
-					}
+					// } catch (e) {
+					// 	console.log(e);
+					// }
 				},
 				error: function(qXHR, textStatus,errorThrown ) {
 					console.log(textStatus + ": " + errorThrown);
