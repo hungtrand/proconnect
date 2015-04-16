@@ -13,19 +13,18 @@ include '../header/header.php';
     <div id="loading-main">
         <img src="../image/ajax-loader.gif">
     </div>
-    <div class="container">
-
-        <div class="row">
-
-            <div class="col col-md-12">
-
-                <div id="ConnectionsHeader" class="row">
+    <div id="ConnectionsHeader" class="row">
                 
                     <div class="col col-xs-8">
                         <h2 class="text-info" style="color: #DDDDDD;">ProConnecting</h2>            
                     </div>
 
-                </div>            
+                </div>  
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col col-md-12">          
 
                 <div class="col col-xs-4 col col-sm-12 well" id="sidebar" role="navigation">
                 
