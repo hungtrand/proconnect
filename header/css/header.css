@@ -12,12 +12,10 @@ h3 {
 	margin-top: 12px;
 }
 
-.navbar-nav>li>.dropdown-menu {
+.navbar-nav> li>.dropdown-menu {
   border-width: 7px;
   border-color: rgb(8, 8, 8);
 }
-
-
 
 .container-fluid {
 	position: relative;
