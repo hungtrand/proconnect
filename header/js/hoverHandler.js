@@ -1,7 +1,6 @@
 $(document).ready(function() {
 	var md = 768;
 	$("#message").hover(function(){
-		console.log(window.outerWidth);
 		if(window.outerWidth >= md) {
 			$("#message-menu").attr("aria-expanded","true");
 			$("#message").addClass("open");
@@ -38,9 +37,9 @@ $(document).ready(function() {
 		$("#caret").removeClass("open");
 	});
 	
-	$("#message").click(function(){
-		if(window.outerWidth < md) {
-		$("#return").show();
-		}
-	});
+	// $("#message").click(function(){
+	// 	if(window.outerWidth < md) {
+	// 	$("#return").show();
+	// 	}
+	// });
 });

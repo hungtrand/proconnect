@@ -6,6 +6,7 @@
 // $UData = json_decode($_SESSION['__USERDATA__'], true);
 // $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 $FullName = "HELLLLO";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,8 +40,7 @@ $FullName = "HELLLLO";
     <script src="/js/ie10-viewport-bug-workaround.js"></script>
 
     <link rel="stylesheet" href="/header/css/header.css">
-    <script src="/header/js/hoverHandler.js"></script>
-	
+    <!-- <link rel="import" href="/lib/templates/centered-loading-gif.html"></link> -->
     <script type="text/javascript" src="/header/js/NotificationGetter.js"></script>
     <script type="text/javascript" src="/header/js/MessageGetter.js"></script>
     <script type="text/javascript" src="/header/js/MediaItem.js"></script>
@@ -49,6 +49,36 @@ $FullName = "HELLLLO";
 </head>
 
 <body>
+    <!-- Load Templates -->
+    <?php require($_SERVER["DOCUMENT_ROOT"] . '/lib/templates/centered-loading-gif.php') ?>
+    <!-- 
+    <template id="LoadingBlock">
+        <div id="iam-loading" >
+            <div>
+              <img src="/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif">
+            </div>
+            <style>
+              #iam-loading {
+                position: relative; 
+                width: 100%;
+                min-height: 50px;
+              }
+              #iam-loading div {
+                display: block;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-right: -50%;
+                -webkit-transform: translate(-50%,-50%);
+                -ms-transform: translate(-50%,-50%);
+                transform: translate(-50%,-50%);
+              }
+            </style>
+      </div>
+      <script type="text/javascript">
+
+      </script>
+    </template> -->
     <nav class="navbar navbar-inverse navbar-fixed-top affix" data-spy="affix" data-offset-top="60 " data-offset-bottom="200">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -67,7 +97,6 @@ $FullName = "HELLLLO";
 				<img style = "width:100%;" src="../image/proconnect/logo_text.png" />				
 				</a>
 
-
                 <form class="navbar-form navbar-left text-center form-inline" role="search">
                     <div class="form-group">
                       <input type="text" size="40" class="form-control" id= "searchbar" placeholder="Search for people, companies, jobs...">
@@ -76,21 +105,20 @@ $FullName = "HELLLLO";
                 </form>
             </div>
 
-          <!--   <li class="media" style="max-width: 400px;overflow:scroll;">
-                                <a href="#">
-                                <div class="media-left">
-                                  
-                                    <img class="media-object" src="/image/user_img.png" alt="..." style="max-width: 61px;">
-                                </div> 
-                                <div class="media-body"style="text-overflow:ellipsis;">
-                                  <h4 class="media-heading" >Media heading</h4>
-                                  asdasdasdasdasdadjkfabjhsgblaerglaerjbkgawbjblkjefgesbfjlkvsdjfbgleksjbae;kvj
-                                  asdbhjavfgkajgvhewlfjawgeuflawbvlwRVLAWRVSBDHJ,BWKGFWBDFJL
-                                </div>
-                              </a>
+            <!--<li class="media" style="max-width: 400px;overflow:scroll;">
+                <a href="#">
+                <div class="media-left">
+                  
+                    <img class="media-object" src="/image/user_img.png" alt="..." style="max-width: 61px;">
+                </div> 
+                <div class="media-body"style="text-overflow:ellipsis;">
+                  <h4 class="media-heading" >Media heading</h4>
+                  asdasdasdasdasdadjkfabjhsgblaerglaerjbkgawbjblkjefgesbfjlkvsdjfbgleksjbae;kvj
+                  asdbhjavfgkajgvhewlfjawgeuflawbvlwRVLAWRVSBDHJ,BWKGFWBDFJL
+                </div>
+              </a>
 
-                            </li>
- -->
+            </li>-->
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="nav-right-links">
 
@@ -99,11 +127,13 @@ $FullName = "HELLLLO";
                         <a href="#"><span class="glyphicon glyphicon-menu-left"></span></a>
 					</li> -->
 
-					<li class="notification-list" id="message">
+					<li class="notification-list notification-icon" id="message">
+
                         <a href="#" class="dropdown-toggle notification-menu navi-menu" id="message-menu" data-toggle="dropdown" role="button" aria-expanded="false">
                             <span class="glyphicon glyphicon-envelope"></span>
                             <span class="badge"></span>
                         </a>
+
 
                         <!-- Message Items -->
 					    <ul class="dropdown-menu media-list dropdown-menu-right" role="menu">
@@ -111,20 +141,7 @@ $FullName = "HELLLLO";
                                 <strong>Messages</strong> 
                                 <span class="glyphicon glyphicon-triangle-right" aria-hidden="true">
                             </li>
-                            <!-- <li class="media">
-                                <a href="#">
-                                    <div class="media-left">
-                                        <a href="">
-                                            <img class="media-object" src="/image/user_img.png" alt="..." style="max-width: 48px;">
-                                        </a>    
-                                    </div> 
-                                    <div class="media-body">
-                                      <h4 class="media-heading">asdasdasdasdasdasd</h4>
-                                      asdasdasdas
-                                    </div>
-                                    <div class="media-right time-ago">1s</div>
-                                </a>    
-                            </li> -->
+                            
                             <template id="MediaItem">
                                 <li class="media" style="">
                                     <a class="landing-destination" href="#">
@@ -166,26 +183,26 @@ $FullName = "HELLLLO";
                     <!-- <li role="presentation" class="divider"></li> -->
                     <!-- <li role="presentation" class="divider"></li> -->
 				
-                    <li class="notification-list" id="notification">
+                    <li class="notification-list notification-icon" id="notification">
                         <a href="#" class="dropdown-toggle notification-menu navi-menu" id= "notification-menu" data-toggle="dropdown" role="button" aria-expanded="false">
                             <span class="glyphicon glyphicon-flag"></span>
                             <span class="badge">1</span>
                         </a>
-							<ul class="dropdown-menu media-list" role="menu">
-								<li role="presentation" class="dropdown-header"><strong>Notifications</strong><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></li>
-								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-								<li role="presentation" class="divider"></li>
-								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-								<li role="presentation" class="divider"></li>
-							</ul>
+						<ul class="dropdown-menu media-list" role="menu">
+							<li role="presentation" class="dropdown-header"><strong>Notifications</strong><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></li>
+							<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+							<li role="presentation" class="divider"></li>
+							<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+							<li role="presentation" class="divider"></li>
+						</ul>
 				   </li>
 
-                    <li class="notification-list" id="connection">
+                    <li class="notification-list notification-icon" id="connection">
                         <a href="#" class="dropdown-toggle notification-menu navi-menu" id= "connection-menu" data-toggle="dropdown" role="button" aria-expanded="false">
                             <span class="glyphicon glyphicon-user"></span>
                             <span class="badge">5</span>
                         </a>
-						<ul class="dropdown-menu" role="menu">
+						<ul class="dropdown-menu media-list" role="menu">
 								<li role="presentation" class="dropdown-header">
                                     <strong>Add Connections</strong>
                                     <span class="glyphicon glyphicon-triangle-right" aria-hidden="true">
@@ -205,7 +222,7 @@ $FullName = "HELLLLO";
                         <a href="#" class="dropdown-toggle" id="caret-menu" data-toggle="dropdown" role="button" aria-expanded="false">
                             <?=$FullName?> <span class="glyphicon glyphicon-cog"></span>
                         </a>
-                        <ul class="dropdown-menu" role="menu">
+                        <ul class="dropdown-menu " role="menu">
 							<li role="presentation" class="dropdown-header">
                                 <strong>Account & Settings</strong>
                                 <span class="glyphicon glyphicon-triangle-right" aria-hidden="true">
