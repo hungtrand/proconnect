@@ -1,7 +1,11 @@
 <?php
  //require_once "../sqlConnection.php"; // For testing
  require_once __DIR__."/ActiveRecord.php";
-
+/**
+*	Feed2User - performs logic for user's feed.
+*	@params: $ID (userid)
+*	Responsibilities: getting or setting the data of user's feed to database. 
+*/
 class Feed2User extends ActiveRecord {
 	public static $TableName = 'Feed2User';
 	public static $PrimaryKey = 'UFID';

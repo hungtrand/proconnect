@@ -4,6 +4,11 @@ require_once __DIR__."/ActiveRecord.php";
 //$u = new Experience(1); echo $u->get('Description').'\n'; // For testing
 //$u->update(['Username'=>'Feb2015']); echo $u->get('Username'); // For Testing
 
+/**
+*	Connection - performs logic for connections of the users, 
+*	@params: @ID - UserID
+*	Responsibilities: Make connection from a user to another user. User can find the other user by first name, last name. Adding other to current user connection.  
+*/
 class Connection extends ActiveRecord {
 	public static $TableName = 'Connections';
 	public static $PrimaryKey = 'CONNID';

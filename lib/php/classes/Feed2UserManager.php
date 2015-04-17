@@ -4,6 +4,12 @@
 require_once __DIR__."/Feed2User.php";
 require_once __DIR__."/RecordSet.php";
 
+/**
+*	Feed2UserManager - performs the users' feed class which helps other class to be able to access user's feed data through this manager class. 
+* 	@params: $User
+*	Responsibilities: load the user's feed data or get the data from database. 
+*/
+
 class Feed2UserManager extends RecordSet {
 	protected $PrimaryKey;
 	protected $TableName;

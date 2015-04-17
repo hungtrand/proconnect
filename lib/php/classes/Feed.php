@@ -2,6 +2,13 @@
  // include "../sqlConnection.php"; // For testing
  require_once __DIR__."/ActiveRecord.php";
 
+
+/**
+*	Feed - This class performs a logic for users' feed.
+*	@params: $ID (userid)
+*	Responsibilities: getting or settingup user's data to database, such as context, imageurl. externalurl, internalurl, user, type. 
+*/
+
 class Feed extends ActiveRecord {
 	public static $TableName = 'Feed';
 	public static $PrimaryKey = 'FEEDID';

@@ -4,6 +4,12 @@
 require_once __DIR__."/Experience.php";
 require_once __DIR__."/RecordSet.php";
 
+/**
+*	ExperienceManager - perform management for Experience class which helps others class to be able to access Experience data through this manager class.
+*	@params: $User
+*	Responsiblities: load the user's data or get the data from database. 
+*/
+
 class ExperienceManager extends RecordSet {
 	protected $PrimaryKey;
 	protected $TableName;
