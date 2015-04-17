@@ -57,23 +57,12 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];*/
 
                             <div class="form-group">
                                 <a id="btnAttachImg" class="btn btn-default btnAttachImg"><span class="glyphicon glyphicon-picture"></span></a>
-                                <a id="btnAttachLink" class="btn btn-default btnAttachLink"><span class="glyphicon glyphicon-link"></span></a>
                                 <button id="btnSharePost" class="btn btn-primary pull-right">Share</button>
                                 <hr/>
                                 <div class="hiddenInputs">
                                     <input type="file" class="hidden" id="FeedImage" name="FeedImage" /><!-- temp image / not yet uploaded -->
                                     <!-- uploaded image link only populate when upload then reset after sumission -->
                                     <input type="text" class="hidden" id="ImageURL" name="ImageURL" value="" />
-                                    <div id="AttachedLinks" class="AttachedLinks" style="display:none;"></div>
-
-                                    <div class="input-group" style="display:none;">
-                                        <span class="input-group-addon"><span class="glyphicon glyphicon-link"></span></span>
-                                        <input type="text" name="ExternalLink" id="ExternalLink" class="form-control" 
-                                        placeholder="Example: https://www.proconnect.com" value="" />
-                                        <span class="input-group-addon">
-                                            <a id="btnAddLink"><span class="glyphicon glyphicon-plus"></span></a>
-                                        </span>
-                                    </div>
 
                                     <div id="AlertNewPost" class="alert alert-info" style="display: none;"></div>
                                     
@@ -178,6 +167,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];*/
     <script src="../connections/js/NewConnection.js"></script>
     <script src="../connections/js/SuggestionList.js"></script>
     <script src="../lib/js/FileUpload.js"></script>
+    <script src="../lib/ckeditor/ckeditor.js"></script>
     <script src="js/NewPost.js"></script>
     <script src="js/Feed.js"></script>
     <script src="js/FeedList.js"></script>

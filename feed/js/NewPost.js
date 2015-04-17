@@ -37,6 +37,29 @@ NewPost.prototype = {
 		that.inputExternalLink = that.container.find('#ExternalLink');
 		that.Alert = that.container.find('#AlertNewPost');
 
+		// replace textbox with CKEditor
+		CKEDITOR.replace("ContentMessage", {
+			toolbarGroups: [
+				//{ name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
+				// { name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
+				//{ name: 'editing', groups: [ 'find', 'selection', 'spellchecker' ] },
+				//{ name: 'forms' },
+				'/',
+				{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+				{ name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ] },
+				{ name: 'links' },
+				//{ name: 'insert' },
+				'/',
+				// { name: 'styles' },
+				// { name: 'colors' },
+				// { name: 'tools', groups: ['mode'] },
+				// { name: 'others' },
+				//{ name: 'about' }
+			]
+
+			// NOTE: Remember to leave 'toolbar' property with the default value (null).
+		});
+
 		that.bindEvents();
 	},
 
