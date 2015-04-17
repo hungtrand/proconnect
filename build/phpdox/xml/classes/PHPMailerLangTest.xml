@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PHPMailerLangTest" namespace="" name="PHPMailerLangTest" abstract="false" final="false" start="22" end="76">
+  <file path="/var/www/html/ProConnect/lib/PHPMailer/test" file="phpmailerLangTest.php" realpath="/var/www/html/ProConnect/lib/PHPMailer/test/phpmailerLangTest.php" size="2340" time="2015-02-27T01:22:45-08:00" unixtime="1425028965" sha1="59db3de72dd4ac0d99be7af2da277284ca9f036a" relative="lib/PHPMailer/test/phpmailerLangTest.php"/>
+  <docblock>
+    <description compact="PHPMailer - PHP email transport unit test class Performs authentication tests"/>
+  </docblock>
+  <extends full="PHPUnit_Framework_TestCase" namespace="" name="PHPUnit_Framework_TestCase"/>
+  <member name="Mail" type="{unknown}" visibility="public" line="29">
+    <docblock>
+      <description compact="Holds a phpmailer instance."/>
+      <private/>
+      <var type="object">
+        <type full="PHPMailer" namespace="" name="PHPMailer"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="INCLUDE_DIR" type="string" default="'../'" visibility="public" line="34">
+    <docblock>
+      <description/>
+      <var description="Default include path" type="string"/>
+    </docblock>
+  </member>
+  <method name="setUp" start="39" end="42" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Run before each test is started."/>
+    </docblock>
+  </method>
+  <method name="testTranslations" start="49" end="75" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Test language files for missing and excess translations All languages are compared with English"/>
+      <group value="languages"/>
+    </docblock>
+    <inline>
+      <comment value="Only look at language files, ignore anything else in there" line="59"/>
+      <comment value="Extract language code" line="61"/>
+      <comment value="Language strings get put in here" line="62"/>
+      <comment value="Get language strings" line="63"/>
+    </inline>
+  </method>
+</class>

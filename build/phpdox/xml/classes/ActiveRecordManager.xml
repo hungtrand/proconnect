@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="ActiveRecordManager" namespace="" name="ActiveRecordManager" abstract="true" final="false" start="5" end="106">
+  <file path="/var/www/html/ProConnect/lib/php/classes" file="ActiveRecordManager.php" realpath="/var/www/html/ProConnect/lib/php/classes/ActiveRecordManager.php" size="2047" time="2015-04-09T11:38:33-07:00" unixtime="1428604713" sha1="781f5668fe01c5ad648d05f4fa0e75f2e831b8ff" relative="lib/php/classes/ActiveRecordManager.php"/>
+  <implements full="manager" namespace="" name="manager"/>
+  <member name="User" type="{unknown}" visibility="private" line="6"/>
+  <member name="db" type="{unknown}" visibility="private" line="7"/>
+  <constructor name="__construct" start="9" end="12" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="TableName" byreference="false" type="{unknown}"/>
+    <parameter name="PrimaryKey" byreference="false" type="{unknown}"/>
+  </constructor>
+  <method name="getOne" start="14" end="42" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getAll" start="44" end="72" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getTop" start="74" end="105" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="num" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="$stmt-&gt;bindParam(2, $num);" line="86"/>
+    </inline>
+  </method>
+  <interface full="manager" namespace="" name="manager">
+    <method name="getOne" start="3" end="3" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getAll" start="4" end="4" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getTop" start="5" end="5" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="num" byreference="false" type="{unknown}"/>
+    </method>
+  </interface>
+</class>

@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="POP3" namespace="" name="POP3" abstract="false" final="false" start="30" end="397">
+  <file path="/var/www/html/ProConnect/lib/PHPMailer" file="class.pop3.php" realpath="/var/www/html/ProConnect/lib/PHPMailer/class.pop3.php" size="10731" time="2015-02-27T01:22:45-08:00" unixtime="1425028965" sha1="ba064518af8ca9303bbc814004fae8628dbd19b4" relative="lib/PHPMailer/class.pop3.php"/>
+  <docblock>
+    <description compact="PHPMailer POP-Before-SMTP Authentication Class.">Specifically for PHPMailer to use for RFC1939 POP-before-SMTP authentication.
+Does not support APOP.</description>
+    <package value="PHPMailer"/>
+    <author value="Richard Davey (original author) &lt;rich@corephp.co.uk&gt;"/>
+    <author value="Marcus Bointon (Synchro/coolbru) &lt;phpmailer@synchromedia.co.uk&gt;"/>
+    <author value="Jim Jagielski (jimjag) &lt;jimjag@gmail.com&gt;"/>
+    <author value="Andy Prevost (codeworxtech) &lt;codeworxtech@users.sourceforge.net&gt;"/>
+  </docblock>
+  <member name="Version" type="string" default="'5.2.9'" visibility="public" line="37">
+    <docblock>
+      <description compact="The POP3 PHPMailer Version number."/>
+      <type value="string"/>
+      <access value="public"/>
+    </docblock>
+  </member>
+  <member name="POP3_PORT" type="integer" default="110" visibility="public" line="44">
+    <docblock>
+      <description compact="Default POP3 port number."/>
+      <type value="integer"/>
+      <access value="public"/>
+    </docblock>
+  </member>
+  <member name="POP3_TIMEOUT" type="integer" default="30" visibility="public" line="51">
+    <docblock>
+      <description compact="Default timeout in seconds."/>
+      <type value="integer"/>
+      <access value="public"/>
+    </docblock>
+  </member>
+  <member name="CRLF" type="string" default="&quot;\r\n&quot;" visibility="public" line="59">
+    <docblock>
+      <description compact="POP3 Carriage Return + Line Feed."/>
+      <type value="string"/>
+      <access value="public"/>
+      <deprecated value="Use the constant instead"/>
+    </docblock>
+  </member>
+  <member name="do_debug" type="integer" default="0" visibility="public" line="67">
+    <docblock>
+      <description compact="Debug display level.">Options: 0 = no, 1+ = yes</description>
+      <type value="integer"/>
+      <access value="public"/>
+    </docblock>
+  </member>
+  <member name="host" type="{unknown}" visibility="public" line="74">
+    <docblock>
+      <description compact="POP3 mail server hostname."/>
+      <type value="string"/>
+      <access value="public"/>
+    </docblock>
+  </member>
+  <member name="port" type="{unknown}" visibility="public" line="81">
+    <docblock>
+      <description compact="POP3 port number."/>
+      <type value="integer"/>
+      <access value="public"/>
+    </docblock>
+  </member>
+  <member name="tval" type="{unknown}" visibility="public" line="88">
+    <docblock>
+      <description compact="POP3 Timeout Value in seconds."/>
+      <type value="integer"/>
+      <access value="public"/>
+    </docblock>
+  </member>
+  <member name="username" type="{unknown}" visibility="public" line="95">
+    <docblock>
+      <description compact="POP3 username"/>
+      <type value="string"/>
+      <access value="public"/>
+    </docblock>
+  </member>
+  <member name="password" type="{unknown}" visibility="public" line="102">
+    <docblock>
+      <description compact="POP3 password."/>
+      <type value="string"/>
+      <access value="public"/>
+    </docblock>
+  </member>
+  <member name="pop_conn" type="{unknown}" visibility="private" line="109">
+    <docblock>
+      <description compact="Resource handle for the POP3 connection socket."/>
+      <type value="resource"/>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <member name="connected" type="{unknown}" default="false" visibility="private" line="116">
+    <docblock>
+      <description compact="Are we connected?"/>
+      <type value="boolean"/>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <member name="errors" type="array" visibility="private" line="123">
+    <docblock>
+      <description compact="Error container."/>
+      <type value="array"/>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <constant name="CRLF" value="&quot;\r\n&quot;">
+    <docblock>
+      <description compact="Line break constant"/>
+    </docblock>
+  </constant>
+  <method name="popBeforeSmtp" start="140" end="150" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Simple static wrapper for all-in-one POP before SMTP"/>
+      <param variable="$host"/>
+      <param type="boolean" variable="$port"/>
+      <param type="boolean" variable="$tval"/>
+      <param type="string" variable="$username"/>
+      <param type="string" variable="$password"/>
+      <param type="integer" variable="$debug_level"/>
+      <return type="boolean"/>
+    </docblock>
+    <parameter name="host" byreference="false" type="{unknown}"/>
+    <parameter name="port" byreference="false" type="{unknown}" default="false"/>
+    <parameter name="tval" byreference="false" type="{unknown}" default="false"/>
+    <parameter name="username" byreference="false" type="string" default="''"/>
+    <parameter name="password" byreference="false" type="string" default="''"/>
+    <parameter name="debug_level" byreference="false" type="integer" default="0"/>
+  </method>
+  <method name="authorise" start="165" end="197" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Authenticate with a POP3 server.">A connect, login, disconnect sequence
+appropriate for POP-before SMTP authorisation.</description>
+      <access value="public"/>
+      <param description="The hostname to connect to" type="string" variable="$host"/>
+      <param description="The port number to connect to" type="object" variable="$port">
+        <type full="integer|boolean" namespace="" name="integer|boolean"/>
+      </param>
+      <param description="The timeout value" type="object" variable="$timeout">
+        <type full="integer|boolean" namespace="" name="integer|boolean"/>
+      </param>
+      <param type="string" variable="$username"/>
+      <param type="string" variable="$password"/>
+      <param type="integer" variable="$debug_level"/>
+      <return type="boolean"/>
+    </docblock>
+    <parameter name="host" byreference="false" type="{unknown}"/>
+    <parameter name="port" byreference="false" type="{unknown}" default="false"/>
+    <parameter name="timeout" byreference="false" type="{unknown}" default="false"/>
+    <parameter name="username" byreference="false" type="string" default="''"/>
+    <parameter name="password" byreference="false" type="string" default="''"/>
+    <parameter name="debug_level" byreference="false" type="integer" default="0"/>
+    <inline>
+      <comment value="If no port value provided, use default" line="168"/>
+      <comment value="If no timeout value provided, use default" line="174"/>
+      <comment value="Reset the error log" line="183"/>
+      <comment value="connect" line="185"/>
+      <comment value="We need to disconnect regardless of whether the login succeeded" line="194"/>
+    </inline>
+  </method>
+  <method name="connect" start="207" end="256" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Connect to a POP3 server."/>
+      <access value="public"/>
+      <param type="string" variable="$host"/>
+      <param type="object" variable="$port">
+        <type full="integer|boolean" namespace="" name="integer|boolean"/>
+      </param>
+      <param type="integer" variable="$tval"/>
+      <return type="boolean"/>
+    </docblock>
+    <parameter name="host" byreference="false" type="{unknown}"/>
+    <parameter name="port" byreference="false" type="{unknown}" default="false"/>
+    <parameter name="tval" byreference="false" type="integer" default="30"/>
+    <inline>
+      <comment value="Are we already connected?" line="209"/>
+      <comment value="On Windows this will raise a PHP Warning error if the hostname doesn't exist." line="214"/>
+      <comment value="Rather than suppress it with @fsockopen, capture it cleanly instead" line="215"/>
+      <comment value="connect to the POP3 server" line="222"/>
+      <comment value="Timeout (seconds)" line="229"/>
+      <comment value="Restore the error handler" line="230"/>
+      <comment value="Did we connect?" line="233"/>
+      <comment value="It would appear not..." line="235"/>
+      <comment value="Increase the stream time-out" line="244"/>
+      <comment value="Get the POP3 server response" line="247"/>
+      <comment value="Check for the +OK" line="249"/>
+      <comment value="The connection is established and the POP3 server is talking" line="251"/>
+    </inline>
+  </method>
+  <method name="login" start="266" end="290" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Log in to the POP3 server.">Does not support APOP (RFC 2828, 4949).</description>
+      <access value="public"/>
+      <param type="string" variable="$username"/>
+      <param type="string" variable="$password"/>
+      <return type="boolean"/>
+    </docblock>
+    <parameter name="username" byreference="false" type="string" default="''"/>
+    <parameter name="password" byreference="false" type="string" default="''"/>
+    <inline>
+      <comment value="Send the Username" line="278"/>
+      <comment value="Send the Password" line="282"/>
+    </inline>
+  </method>
+  <method name="disconnect" start="296" end="306" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Disconnect from the POP3 server."/>
+      <access value="public"/>
+    </docblock>
+    <inline>
+      <comment value="The QUIT command may cause the daemon to exit, which will kill our connection" line="299"/>
+      <comment value="So ignore errors here" line="300"/>
+    </inline>
+  </method>
+  <method name="getResponse" start="315" end="322" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Get a response from the POP3 server.">$size is the maximum number of bytes to retrieve</description>
+      <param type="integer" variable="$size"/>
+      <return type="string"/>
+      <access value="private"/>
+    </docblock>
+    <parameter name="size" byreference="false" type="integer" default="128"/>
+  </method>
+  <method name="sendString" start="330" end="339" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Send raw data to the POP3 server."/>
+      <param type="string" variable="$string"/>
+      <return type="integer"/>
+      <access value="private"/>
+    </docblock>
+    <parameter name="string" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Show client messages when debug &gt;= 2" line="333"/>
+    </inline>
+  </method>
+  <method name="checkResponse" start="348" end="360" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Checks the POP3 server response.">Looks for for +OK or -ERR.</description>
+      <param type="string" variable="$string"/>
+      <return type="boolean"/>
+      <access value="private"/>
+    </docblock>
+    <parameter name="string" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setError" start="367" end="377" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Add an error to the internal error store.">Also display debug output if it's enabled.</description>
+      <param variable="$error"/>
+    </docblock>
+    <parameter name="error" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="catchWarning" start="387" end="396" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="POP3 connection error handler."/>
+      <param type="integer" variable="$errno"/>
+      <param type="string" variable="$errstr"/>
+      <param type="string" variable="$errfile"/>
+      <param type="integer" variable="$errline"/>
+      <access value="private"/>
+    </docblock>
+    <parameter name="errno" byreference="false" type="{unknown}"/>
+    <parameter name="errstr" byreference="false" type="{unknown}"/>
+    <parameter name="errfile" byreference="false" type="{unknown}"/>
+    <parameter name="errline" byreference="false" type="{unknown}"/>
+  </method>
+</class>

@@ -40,11 +40,19 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];*/
                     </div>
                 </div>
 
-                <div id="FeedToolbar" class="well well-sm">
-                    <div id="NewPost" class="row">
+                <div id="NewPost" class="well well-sm">
+                    <div class="row">
                         <form id="formNewPost" action="feed_controller.php" class="col col-xs-12" style="display: none;">
                             <div class="form-group">
-                                <textarea class="form-control" id="ContentMessage" name="ContentMessage" rows="5"></textarea>
+                                <div class="media">
+                                    <div class="media-body">
+                                        <textarea class="form-control" id="ContentMessage" name="ContentMessage" rows="5" placeholder="share, inspire, motivate,..."></textarea>
+                                    </div>
+
+                                    <div class="media-right">
+                                        <img src="" id="ImagePreview" class="thumbnail" style="max-height: 150px; display: none;" alt="No Image Preview Available" />
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="form-group">
@@ -53,15 +61,18 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];*/
                                 <button id="btnSharePost" class="btn btn-primary pull-right">Share</button>
                                 <hr/>
                                 <div class="hiddenInputs">
-                                    <input type="file" class="hidden" id="FeedImage" name="FeedImage" />
-                                    <div id="AttachedImages" class="AttachedImages" style="display:none;">
-                                        
-                                    </div>
+                                    <input type="file" class="hidden" id="FeedImage" name="FeedImage" /><!-- temp image / not yet uploaded -->
+                                    <!-- uploaded image link only populate when upload then reset after sumission -->
+                                    <input type="text" class="hidden" id="ImageURL" name="ImageURL" value="" />
+                                    <div id="AttachedLinks" class="AttachedLinks" style="display:none;"></div>
 
                                     <div class="input-group" style="display:none;">
                                         <span class="input-group-addon"><span class="glyphicon glyphicon-link"></span></span>
                                         <input type="text" name="ExternalLink" id="ExternalLink" class="form-control" 
                                         placeholder="Example: https://www.proconnect.com" value="" />
+                                        <span class="input-group-addon">
+                                            <a id="btnAddLink"><span class="glyphicon glyphicon-plus"></span></a>
+                                        </span>
                                     </div>
 
                                     <div id="AlertNewPost" class="alert alert-info" style="display: none;"></div>
@@ -69,12 +80,16 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];*/
                                 </div>
                             </div>
                         </form>
+                    </div>
 
-                        <div class="col col-xs-4 col-xs-offset-8 text-right">
-                             <button id="btnPostMode" class="btn btn-danger" title="New Post">Post</button>
-
+                    <div class="row">
+                         <div class="col col-xs-10">
+                            <blockquote>A person who never made a mistake never tried anything new.</blockquote>
                         </div>
-                        
+
+                        <div class="col col-xs-2 text-right">
+                             <button id="btnPostMode" class="btn btn-danger" title="New Post">Post</button>
+                        </div>
                     </div>
                 </div>
 
@@ -87,7 +102,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];*/
 
             <!-- Right suggestions column -->
             <!-- Blog Sidebar Widgets Column -->
-            <div id="fixed-right-section" class="col col-md-4 affix hidden-print hidden-xs hidden-sm" role="complimentary" data-spy="affix" data-offset-top="200 " data-offset-bottom="200">
+            <div id="fixed-right-section" class="col col-md-4 affix hidden-print hidden-xs hidden-sm" style="position: fixed;" role="complimentary" data-spy="affix" data-offset-top="200 ">
                 <div class="well">
                     <h3 class="text-primary" style="overflow: auto;">Suggestions</h3>
                     <hr />
@@ -126,14 +141,15 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];*/
     </script>
 
     <script type="text/template" id="FeedTemplate">
-        <div class="media feed well well-sm">
+        <div class="media feed">
             <div class="media-left">
                 <a href="#">
                   <img class="media-object creatorImage thumbnail" style="object-fit: cover;" width="100px" height="100px" src="{{CreatorImage}}" alt="{{UserName}}">
                 </a>
             </div>
-            <div class="media-body">
+            <div class="media-body well well-sm">
                 <h4 class="media-heading contentHeading">{{User}} shared: </h4>
+                <hr />
                 <div class="feed-content">
                     <div class="media">
                         <div class="media-body contentMessage">
@@ -142,7 +158,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];*/
 
                          <div class="media-right media-middle">
                             <a href="#" class="contentImageLink">
-                              <img class="media-object contentImage" height="150px" src=".{{ImageURL}}" />
+                              <img class="media-object contentImage" style="max-height: 150px;" src=".{{ImageURL}}" />
                             </a>
                         </div>
                     </div>
@@ -161,6 +177,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];*/
 
     <script src="../connections/js/NewConnection.js"></script>
     <script src="../connections/js/SuggestionList.js"></script>
+    <script src="../lib/js/FileUpload.js"></script>
     <script src="js/NewPost.js"></script>
     <script src="js/Feed.js"></script>
     <script src="js/FeedList.js"></script>

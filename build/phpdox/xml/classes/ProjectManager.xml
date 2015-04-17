@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="ProjectManager" namespace="" name="ProjectManager" abstract="false" final="false" start="7" end="62">
+  <file path="/var/www/html/ProConnect/lib/php/classes" file="ProjectManager.php" realpath="/var/www/html/ProConnect/lib/php/classes/ProjectManager.php" size="1673" time="2015-04-09T11:38:33-07:00" unixtime="1428604713" sha1="dabdfbbf86775c69d71e100692f8f2b18f655f65" relative="lib/php/classes/ProjectManager.php"/>
+  <extends full="RecordSet" namespace="" name="RecordSet"/>
+  <member name="PrimaryKey" type="{unknown}" visibility="protected" line="8"/>
+  <member name="TableName" type="{unknown}" visibility="protected" line="9"/>
+  <member name="Columns" type="{unknown}" visibility="protected" line="10"/>
+  <member name="User" type="{unknown}" visibility="protected" line="12"/>
+  <member name="data" type="{unknown}" visibility="protected" line="13"/>
+  <member name="err" type="{unknown}" visibility="public" line="15"/>
+  <constructor name="__construct" start="17" end="26" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="User" byreference="false" type="{unknown}"/>
+  </constructor>
+  <method name="getColumns" start="29" end="31" abstract="false" final="false" static="false" visibility="protected"/>
+  <method name="load" start="33" end="40" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="User" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getData" start="42" end="46" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getAll" start="48" end="60" abstract="false" final="false" static="false" visibility="public"/>
+  <parent full="RecordSet" namespace="" name="RecordSet">
+    <member name="db" type="{unknown}" visibility="protected" line="3"/>
+    <member name="err" type="{unknown}" visibility="public" line="5"/>
+    <constructor name="__construct" start="7" end="10" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getData" start="12" end="12" abstract="true" final="false" static="false" visibility="public"/>
+    <method name="getColumns" start="13" end="13" abstract="true" final="false" static="false" visibility="protected"/>
+    <method name="setLimit" start="15" end="21" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="intLimit" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="fetch" start="23" end="55" abstract="false" final="false" static="false" visibility="protected"/>
+    <method name="fetchBy" start="57" end="105" abstract="false" final="false" static="false" visibility="protected">
+      <parameter name="params" byreference="false" type="{unknown}"/>
+      <parameter name="Logic" byreference="false" type="string" default="&quot;AND&quot;"/>
+    </method>
+    <method name="fetchCustom" start="107" end="141" abstract="false" final="false" static="false" visibility="protected">
+      <parameter name="cond" byreference="false" type="{unknown}"/>
+      <parameter name="params" byreference="false" type="{unknown}" default="null"/>
+      <inline>
+        <comment value="echo $sql;" line="123"/>
+      </inline>
+    </method>
+  </parent>
+</class>

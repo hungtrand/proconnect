@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="EasyPeasyICS" namespace="" name="EasyPeasyICS" abstract="false" final="false" start="20" end="148">
+  <file path="/var/www/html/ProConnect/lib/PHPMailer/extras" file="EasyPeasyICS.php" realpath="/var/www/html/ProConnect/lib/PHPMailer/extras/EasyPeasyICS.php" size="4064" time="2015-02-27T01:22:45-08:00" unixtime="1425028965" sha1="8525a15ed6ea1d2a3b5dc5ab1b4ca4ce0ece4193" relative="lib/PHPMailer/extras/EasyPeasyICS.php"/>
+  <docblock>
+    <description compact="Class EasyPeasyICS.">Simple ICS data generator</description>
+    <package value="phpmailer"/>
+    <subpackage value="easypeasyics"/>
+  </docblock>
+  <member name="calendarName" type="{unknown}" visibility="protected" line="26">
+    <docblock>
+      <description compact="The name of the calendar"/>
+      <type value="string"/>
+    </docblock>
+  </member>
+  <member name="events" type="array" visibility="protected" line="31">
+    <docblock>
+      <description compact="The array of events to add to this calendar"/>
+      <type value="array"/>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="37" end="40" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Constructor"/>
+      <param type="string" variable="$calendarName"/>
+    </docblock>
+    <parameter name="calendarName" byreference="false" type="string" default="&quot;&quot;"/>
+  </constructor>
+  <method name="addEvent" start="52" end="67" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add an event to this calendar."/>
+      <param description="The start date and time as a unix timestamp" type="string" variable="$start"/>
+      <param description="The end date and time as a unix timestamp" type="string" variable="$end"/>
+      <param description="A summary or title for the event" type="string" variable="$summary"/>
+      <param description="A description of the event" type="string" variable="$description"/>
+      <param description="A URL for the event" type="string" variable="$url"/>
+      <param description="A unique identifier for the event - generated automatically if not provided" type="string" variable="$uid"/>
+      <return description="An array of event details, including any generated UID" type="array"/>
+    </docblock>
+    <parameter name="start" byreference="false" type="{unknown}"/>
+    <parameter name="end" byreference="false" type="{unknown}"/>
+    <parameter name="summary" byreference="false" type="string" default="''"/>
+    <parameter name="description" byreference="false" type="string" default="''"/>
+    <parameter name="url" byreference="false" type="string" default="''"/>
+    <parameter name="uid" byreference="false" type="string" default="''"/>
+  </method>
+  <method name="getEvents" start="72" end="75" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return description="Get the array of events." type="array"/>
+    </docblock>
+  </method>
+  <method name="clearEvents" start="80" end="83" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Clear all events."/>
+    </docblock>
+  </method>
+  <method name="getName" start="89" end="92" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the name of the calendar."/>
+      <return type="string"/>
+    </docblock>
+  </method>
+  <method name="setName" start="98" end="101" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set the name of the calendar."/>
+      <param variable="$name"/>
+    </docblock>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="render" start="108" end="147" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Render and optionally output a vcal string."/>
+      <param description="Whether to output the calendar data directly (the default)." type="object" variable="$output">
+        <type full="bool" namespace="" name="bool"/>
+      </param>
+      <return description="The complete rendered vlal" type="string"/>
+    </docblock>
+    <parameter name="output" byreference="false" type="{unknown}" default="true"/>
+    <inline>
+      <comment value="Add header" line="110"/>
+      <comment value="Add events" line="117"/>
+      <comment value="Add footer" line="131"/>
+      <comment value="Output" line="136"/>
+      <comment value="Filename needs quoting if it contains spaces" line="138"/>
+    </inline>
+  </method>
+</class>

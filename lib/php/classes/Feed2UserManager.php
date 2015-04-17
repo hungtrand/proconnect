@@ -37,7 +37,7 @@ class Feed2UserManager extends RecordSet {
 		return true;
 	}
 
-	public function loadPage($page, $numRows, $orderby="DATECREATED") {
+	public function loadPage($page, $numRows, $orderby="DATECREATED DESC") {
 		if (!is_integer($page) || !is_integer($numRows)) {
 			$this->err = "Parameters must be integers";
 			return false;

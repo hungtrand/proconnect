@@ -75,11 +75,12 @@ FeedList.prototype = {
 			return false;
 		}
 
-		for (var i = 0, l=json.length; i < l; i++) {
+		for (var i = json.length, l=-1; i > l; i--) {
 			that.data.push(json[i]);
 			var feed = new Feed(json[i]);
 
-			that.container.append(feed.getView());
+			var ele = feed.getView();
+			that.container.prepend(ele);
 		}
 	}
 }

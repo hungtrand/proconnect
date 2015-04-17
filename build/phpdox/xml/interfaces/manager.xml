@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface xmlns="http://xml.phpdox.net/src" full="manager" namespace="" name="manager" abstract="false" final="false" start="2" end="6">
+  <file path="/var/www/html/ProConnect/lib/php" file="interfaces.php" realpath="/var/www/html/ProConnect/lib/php/interfaces.php" size="163" time="2015-04-09T11:38:33-07:00" unixtime="1428604713" sha1="be04c89561175fae152776b78e4edbb2154d2e44" relative="lib/php/interfaces.php"/>
+  <method name="getOne" start="3" end="3" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getAll" start="4" end="4" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getTop" start="5" end="5" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="num" byreference="false" type="{unknown}"/>
+  </method>
+  <implementor full="ActiveRecordManager" namespace="" name="ActiveRecordManager"/>
+</interface>

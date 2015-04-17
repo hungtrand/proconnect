@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="ActiveRecord" namespace="" name="ActiveRecord" abstract="true" final="false" start="15" end="244">
+  <file path="/var/www/html/ProConnect/lib/php/classes" file="ActiveRecord.php" realpath="/var/www/html/ProConnect/lib/php/classes/ActiveRecord.php" size="5375" time="2015-04-09T11:38:33-07:00" unixtime="1428604713" sha1="3721a135f1d97f45be3d9dcc8bac963265adc19e" relative="lib/php/classes/ActiveRecord.php"/>
+  <member name="db" type="{unknown}" visibility="private" line="16"/>
+  <member name="id" type="{unknown}" visibility="private" line="17"/>
+  <member name="err" type="{unknown}" visibility="public" line="18"/>
+  <constructor name="__construct" start="20" end="22" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getData" start="24" end="24" abstract="true" final="false" static="false" visibility="public"/>
+  <method name="getID" start="25" end="25" abstract="true" final="false" static="false" visibility="public"/>
+  <method name="getPrimaryKey" start="26" end="26" abstract="true" final="false" static="false" visibility="protected"/>
+  <method name="getTableName" start="27" end="27" abstract="true" final="false" static="false" visibility="protected"/>
+  <method name="getColumns" start="28" end="28" abstract="true" final="false" static="false" visibility="protected"/>
+  <method name="load" start="31" end="31" abstract="true" final="false" static="false" visibility="public">
+    <parameter name="ID" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="reload" start="33" end="35" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="fetch" start="37" end="71" abstract="false" final="false" static="false" visibility="protected">
+    <parameter name="ID" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="fetchBy" start="73" end="118" abstract="false" final="false" static="false" visibility="protected">
+    <parameter name="params" byreference="false" type="{unknown}"/>
+    <parameter name="Logic" byreference="false" type="string" default="&quot;AND&quot;"/>
+    <inline>
+      <comment value="echo $sql.&quot;\n&quot;.json_encode($params).&quot;\n&quot;;" line="97"/>
+    </inline>
+  </method>
+  <method name="save" start="120" end="168" abstract="false" final="false" static="false" visibility="public">
+    <inline>
+      <comment value="echo &quot;\n&quot;.$sql.&quot;\n&quot;;" line="150"/>
+    </inline>
+  </method>
+  <method name="update" start="170" end="215" abstract="false" final="false" static="false" visibility="public">
+    <inline>
+      <comment value="echo json_encode($data);" line="171"/>
+      <comment value="echo $sql; //for testing" line="203"/>
+    </inline>
+  </method>
+  <method name="delete" start="217" end="243" abstract="false" final="false" static="false" visibility="public"/>
+  <extender full="Message" namespace="" name="Message"/>
+  <extender full="Project" namespace="" name="Project"/>
+  <extender full="Notification" namespace="" name="Notification"/>
+  <extender full="Skill" namespace="" name="Skill"/>
+  <extender full="UserConnection" namespace="" name="UserConnection"/>
+  <extender full="Feed" namespace="" name="Feed"/>
+  <extender full="Feed2User" namespace="" name="Feed2User"/>
+  <extender full="User" namespace="" name="User"/>
+  <extender full="Education" namespace="" name="Education"/>
+  <extender full="Account" namespace="" name="Account"/>
+  <extender full="Connection" namespace="" name="Connection"/>
+  <extender full="Experience" namespace="" name="Experience"/>
+</class>

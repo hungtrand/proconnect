@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="UserCard_view" namespace="" name="UserCard_view" abstract="false" final="false" start="5" end="35">
+  <file path="/var/www/html/ProConnect/connections/php" file="UserCard_view.php" realpath="/var/www/html/ProConnect/connections/php/UserCard_view.php" size="746" time="2015-04-09T11:38:33-07:00" unixtime="1428604713" sha1="eac650a4f7161d08cf45b736aa0b738ea4598299" relative="connections/php/UserCard_view.php"/>
+  <implements full="view" namespace="" name="view"/>
+  <member name="FinalView" type="{unknown}" visibility="private" line="6"/>
+  <constructor name="__construct" start="8" end="10" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getView" start="12" end="14" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="load" start="16" end="34" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="Profiles" byreference="false" type="{unknown}"/>
+  </method>
+  <interface full="view" namespace="" name="view">
+    <method name="getView" start="9" end="9" abstract="false" final="false" static="false" visibility="public"/>
+  </interface>
+</class>

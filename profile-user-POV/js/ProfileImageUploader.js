@@ -22,6 +22,14 @@ ProfileImageUploader.prototype = {
 			type: 'POST'
 		}).done(function(modal) {
 			that.modal = $(modal);
+			that.modal.modal(); // initialize Bootstrap modal
+			that.UploadForm = that.modal.find('.formUpload');
+			that.UploadActionURL = that.UploadForm.attr('action');
+			that.StatusDiv = that.modal.find('.uploadStatus');
+			that.CurrentImage = that.modal.find('.CurrentImage');
+			that.NewImage = that.modal.find('.NewImage');
+			that.btnUpload = that.modal.find('#btnUpload');
+
 			that.bindModalEventHandlers();
 			if (that.show) that.modal.modal('show');
 			if (CurrentImageSrc) that.CurrentImage.attr('src', CurrentImageSrc);
@@ -37,14 +45,8 @@ ProfileImageUploader.prototype = {
 
 	bindModalEventHandlers: function() {
 		var that = this;
-		that.modal.modal(); // initialize Bootstrap modal
-		that.UploadForm = that.modal.find('.formUpload');
-		that.UploadActionURL = that.UploadForm.attr('action');
-		that.StatusDiv = that.modal.find('.uploadStatus');
-		that.CurrentImage = that.modal.find('.CurrentImage');
-		that.NewImage = that.modal.find('.NewImage');
-		that.btnUpload = that.modal.find('#btnUpload');
 
+		// On file selection, show a preview of the image before the actual upload
 		that.UploadForm.find('input[type="file"]').on('change', function(evt) {
 			var tgt = evt.target || window.event.srcElement, files = tgt.files;
 
@@ -60,18 +62,22 @@ ProfileImageUploader.prototype = {
 			that.modal.find('#NewImageContainer label').toggleClass('label-default label-info');
 		});
 
+		// submit file on btnUpload click
 		that.btnUpload.on("click", function(e) {
 			e.preventDefault();
 
 			that.upload();
 		});
 
+		// On modal close, update the profile image on the profile page with new image
+		// Also execute all the callback functions that was saved
 		that.modal.on('hidden.bs.modal', function() {
 			var newImage = '';
 			if (that.StatusDiv.find('#uploadedFile').length > 0) {
 				newImage = that.StatusDiv.find('#uploadedFile').val();
 			}
 
+			// Execute callbacks
 			for (var i=0, l=that.onCloseHandlers.length; i<l; i++) {
 				that.onCloseHandlers[i](newImage);
 			}
@@ -80,6 +86,7 @@ ProfileImageUploader.prototype = {
 		});
 	},
 
+	// Attach/save callback functions into object property to execute later
 	onClose: function(callback) {
 		var that = this;
 

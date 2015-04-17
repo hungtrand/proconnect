@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Email" namespace="" name="Email" abstract="false" final="false" start="16" end="196">
+  <file path="/var/www/html/ProConnect/lib/php/classes" file="Email.php" realpath="/var/www/html/ProConnect/lib/php/classes/Email.php" size="5514" time="2015-04-09T11:38:33-07:00" unixtime="1428604713" sha1="9a1075e78c1bc4d08b821ef8cbb1725e967e87ea" relative="lib/php/classes/Email.php"/>
+  <member name="EQID" type="{unknown}" visibility="public" line="17"/>
+  <member name="EmailSubject" type="{unknown}" visibility="public" line="18"/>
+  <member name="EmailBody" type="{unknown}" visibility="public" line="19"/>
+  <member name="EmailTo" type="{unknown}" visibility="public" line="20"/>
+  <member name="EmailCC" type="{unknown}" visibility="public" line="21"/>
+  <member name="EmailBCC" type="{unknown}" visibility="public" line="22"/>
+  <member name="EmailFrom" type="{unknown}" visibility="public" line="23"/>
+  <member name="EmailReplyTo" type="{unknown}" visibility="public" line="24"/>
+  <member name="Status" type="{unknown}" visibility="public" line="25"/>
+  <member name="SentDate" type="{unknown}" visibility="public" line="26"/>
+  <member name="data" type="{unknown}" visibility="public" line="28"/>
+  <member name="err" type="{unknown}" visibility="private" line="29"/>
+  <constructor name="__construct" start="31" end="37" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="params" byreference="false" type="{unknown}" default="null"/>
+  </constructor>
+  <method name="loadTemplate" start="39" end="74" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="ID" byreference="false" type="{unknown}"/>
+    <parameter name="Variables" byreference="false" type="{unknown}" default="null"/>
+  </method>
+  <method name="replaceVariables" start="77" end="82" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="Variables" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="compose" start="84" end="112" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="params" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="log" start="114" end="142" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="send" start="144" end="195" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="params" byreference="false" type="{unknown}" default="null"/>
+    <inline>
+      <comment value="$mail-&gt;SMTPDebug = 3;                               // Enable verbose debug output" line="151"/>
+      <comment value="Set mailer to use SMTP" line="153"/>
+      <comment value="Specify main and backup SMTP servers" line="154"/>
+      <comment value="Enable SMTP authentication" line="155"/>
+      <comment value="SMTP username" line="156"/>
+      <comment value="SMTP password" line="157"/>
+      <comment value="Enable TLS encryption, `ssl` also accepted" line="158"/>
+      <comment value="TCP port to connect to" line="159"/>
+      <comment value="$mail-&gt;addAddress('joe@example.net', 'Joe User');     // Add a recipient" line="163"/>
+      <comment value="Name is optional" line="164"/>
+      <comment value="$mail-&gt;addAttachment('/var/tmp/file.tar.gz');         // Add attachments" line="175"/>
+      <comment value="$mail-&gt;addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name" line="176"/>
+      <comment value="Set email format to HTML" line="177"/>
+      <comment value="$mail-&gt;AltBody = 'This is the body in plain text for non-HTML mail clients';" line="181"/>
+    </inline>
+  </method>
+</class>
