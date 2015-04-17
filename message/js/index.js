@@ -42,7 +42,7 @@ $(window).load(function() {
 				$(".message-frame-display").empty();
 				$("#message-nav-footer").remove();
 				var value = $(this).attr("value");
-				var textbox = $(".message-textfield").empty();
+				var textbox = $("#message-textfield").html();
 				$(".message-frame-name").text(value);
 				$(".message-frame-display").append(textbox);
 				if(window.innerWidth < 862) {
