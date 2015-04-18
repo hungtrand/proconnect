@@ -5,10 +5,12 @@
 	require_once __DIR__."/ActiveRecord.php";
 	require_once __DIR__."/User.php";
 
-	/**
-	*This is Notification Relationship class for NotificationView Table in SQL
-	*/
-
+	
+/**
+*	NotificationView - performs logic for NotificationView class. 
+*	@params: $UserID
+*	Responsibilities: This is Notification Relationship class for NotificationView Table in SQL   
+*/	
 	class NotificationView extends ActiveRecord{
 		public static $PrimaryKey = 'NotificationViewID';
 		public static $TableName = 'NotificationView';

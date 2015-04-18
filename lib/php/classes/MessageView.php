@@ -1,6 +1,12 @@
 <?php
 require_once __DIR__."/ActiveRecord.php";
 
+
+/**
+*	MessageView - performs logic for MessageView class. 
+*	@params: $UserID
+*	Responsibilities: set information for a message (like messageID, USERID, Date created, notificationID ), and also get information about the message.   
+*/
 class MessageView extends ActiveRecord{
 	public static $TableName = 'MessageView';
 	public static $PrimaryKey = 'MessageViewID';
