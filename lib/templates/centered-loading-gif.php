@@ -24,18 +24,18 @@
     </div>
   </template>
   <script type="text/javascript">
-      var IamLoading = (function(){
+      // var IamLoading = (function(){
 
-        //stamp out template
-        var IamLoadingDiv = $(document.getElementById("LoadingBlock").content.cloneNode(true));
-        return {
-          show: function(jQueryParent){
-            IamLoadingDiv.after(jQueryParent); //jQueryParent.children().first().after(IamLoadingDiv);
-          },
-          remove: function(jQueryParent){
-            jQueryParent.find("div#iam-loading").remove();
-          } 
-        }
-      })();
+      //   //stamp out template
+      //   var IamLoadingDiv = $(document.getElementById("LoadingBlock").content.cloneNode(true));
+      //   return {
+      //     show: function(jQueryParent){
+      //       IamLoadingDiv.after(jQueryParent); //jQueryParent.children().first().after(IamLoadingDiv);
+      //     },
+      //     remove: function(jQueryParent){
+      //       jQueryParent.find("div#iam-loading").remove();
+      //     } 
+      //   }
+      // })();
   </script>
 </div>

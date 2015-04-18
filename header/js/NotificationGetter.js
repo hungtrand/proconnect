@@ -4,7 +4,6 @@ var NotificationGetter = (function() {
 
 			timeBetweenEachAjax = timeBetweenEachAjax || 1000; //default time is 1 second
 
-			console.log(timeBetweenEachAjax);
 			getResponse();																			  //query response right away
 
 			var interval = window.setInterval(getResponse,timeBetweenEachAjax);						  //query a response
@@ -12,7 +11,7 @@ var NotificationGetter = (function() {
 			function getResponse() {
 				$.ajax({
 					url: "/header/php/dummy.php",													  //<------ must be hard link
-					data: {"userID":123},															  //<------ may not be necessary
+					data: {"userID":"notification-getter"},															  //<------ may not be necessary
 					method: "POST",
 					success: function(data){
 							// console.log(data);

@@ -28,25 +28,58 @@ var MediaItemFactory = (function(){
 })();
 
 
-function MediaItem() {
-	this.srcObject = $('<li class="media">' +
-                            '<a class="landing-destination" href="#">' +
-                                '<div class="media-left">' +
-									'<img class="media-object" src="" alt="" style="max-width: 48px;">' +
-                                '</div>' +
-                                '<div class="media-body" >' +
-                                  '<h4 class="media-heading" >Media heading</h4>' +
-                                  '<p class="snippet-zone"></p>' +
-                                '</div>' +
-                                '<div class="media-right time-ago">de</div>' +
-                            '</a>' +
-                    	'</li>');
+function MediaItem(options) {
+	var baseItem = $(document.getElementById("MediaItem").content.cloneNode(true)); //get base item
+	var imgURL = options["user-img-url"] || '/image/user_img.png';
+	var userURL = options["user-url"] || '#';
+
+
+	if( options["isNewMessage"] === true) {
+		baseItem.find("li").addClass("new-item");
+	}
+
+	//allow redirect to user page
+	baseItem.find("img.media-object").on("click",function(e){
+		e.preventDefault();
+		//send user to another user public POV
+		window.location.href = userURL;
+	}).attr("src",imgURL);
+
+	//handle new message clearing
+	baseItem.find("a").on("click",function(e){
+
+		//START HERE
+
+		if($(this).parent("li").hasClass("new-item") === true){
+			var notificationNumberDisplay = $(this).closest("li.notification-icon").find("span.notification-number");
+			var newAmount = notificationNumberDisplay.text() - 1;
+			// var newParsedAmount = (newAmount < 0);
+			//decrement notification amount
+			//NOTE: This step is purposely done before the ajax due to the non-volatile nature of the procure 
+			//and to guarantee usability
+
+			console.log(newAmount);
+
+			//do an ajax call to server to signal new message has been open
+			$.ajax({
+				url: "/header/php/dummy.php",			//<------ must be hard link
+				data: {"openedID":"messageID"},			//<------ flag a message has been selected and give message id
+				method: "POST",
+				error: function(qXHR, textStatus,errorThrown ) {
+					console.log(textStatus + ": " + errorThrown);
+				}
+			});
+		} 
+
+		e.preventDefault();
+	});
+	return baseItem;
 }
 
 function MessageItem(options){
+	var modTemplate = new MediaItem(options);
 
-	var imgURL = options["user-img-url"] || '/image/user_img.png';
-	var userURL = options["user-url"] || '#';
+	
 	var snippet = options["optional-snippet"] || "";
 	var message = options["message"] || "";
 	var date = options["date"] || ""; // may add date difference 
@@ -56,33 +89,27 @@ function MessageItem(options){
 
 	//fill in the required fields
 	// var modTemplate = new MediaItem();
-	var modTemplate = $(document.getElementById("MediaItem").content.cloneNode(true));
+	
 
-	// console.log( modTemplate.content.cloneNode(true) );
 
-	modTemplate.find("a.landing-destination").attr("href","http:www.google.com");
-	modTemplate.find("img.media-object").on("click",function(){
-		console.log(this);
-		//send user to another user public POV
-	}).attr("src",imgURL);
-	modTemplate.find(".media-heading").val(options["user-name"]);
-	console.log(modTemplate.find(".media-heading"));
-	modTemplate.find("p.snippet-zone").val(snippet);
+	modTemplate.find("a.landing-destination").attr("href","../message/");
+
+	modTemplate.find(".media-heading").text(options["user-name"]);
+	modTemplate.find("p.snippet-zone").text(snippet);
 	modTemplate.find("p.snippet-zone").after(message);
 	modTemplate.find(".time-ago").text(date);
-
-	// console.log(modTemplate);
-	// options[""]
-
-	// this.html = this.mediaTemplate().html();
 
 	return modTemplate;
 }
 
 function NotificationItem(options) {
+	var baseItem = new MediaItem(options);
 
+	return baseItem;
 }
 
 function NewConnectionItem(options) {
+	var baseItem = new MediaItem(options);
 
+	return baseItem;
 }

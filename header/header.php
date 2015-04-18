@@ -42,6 +42,7 @@ $FullName = "HELLLLO";
     <link rel="stylesheet" href="/header/css/header.css">
     <!-- <link rel="import" href="/lib/templates/centered-loading-gif.html"></link> -->
     <script type="text/javascript" src="/header/js/NotificationGetter.js"></script>
+    <script type="text/javascript" src="/header/js/NotificationHandler.js"></script>
     <script type="text/javascript" src="/header/js/MessageGetter.js"></script>
     <script type="text/javascript" src="/header/js/MediaItem.js"></script>
     <script type="text/javascript" src="/header/js/header.js"></script>
@@ -49,36 +50,21 @@ $FullName = "HELLLLO";
 </head>
 
 <body>
-    <!-- Load Templates -->
-    <?php require($_SERVER["DOCUMENT_ROOT"] . '/lib/templates/centered-loading-gif.php') ?>
-    <!-- 
-    <template id="LoadingBlock">
-        <div id="iam-loading" >
-            <div>
-              <img src="/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif">
-            </div>
-            <style>
-              #iam-loading {
-                position: relative; 
-                width: 100%;
-                min-height: 50px;
-              }
-              #iam-loading div {
-                display: block;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                margin-right: -50%;
-                -webkit-transform: translate(-50%,-50%);
-                -ms-transform: translate(-50%,-50%);
-                transform: translate(-50%,-50%);
-              }
-            </style>
-      </div>
-      <script type="text/javascript">
-
-      </script>
-    </template> -->
+    <template id="MediaItem">
+        <li class="media custom-media-item">
+            <a class="landing-destination" href="#">
+                <div class="media-left">
+                    <img href="" class="media-object" src="/image/user_img.png" alt="..." style="max-width: 48px;">
+                </div> 
+                <div class="media-body">
+                  <h4 class="media-heading" >Media heading</h4>
+                  <p class="snippet-zone"> title long long long long long </p>
+                  message here
+                </div>
+                <div class="media-right time-ago">lorem</div>
+            </a>
+        </li>
+    </template>
     <nav class="navbar navbar-inverse navbar-fixed-top affix" data-spy="affix" data-offset-top="60 " data-offset-bottom="200">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -131,9 +117,8 @@ $FullName = "HELLLLO";
 
                         <a href="#" class="dropdown-toggle notification-menu navi-menu" id="message-menu" data-toggle="dropdown" role="button" aria-expanded="false">
                             <span class="glyphicon glyphicon-envelope"></span>
-                            <span class="badge"></span>
+                            <span class="badge notification-number"></span>
                         </a>
-
 
                         <!-- Message Items -->
 					    <ul class="dropdown-menu media-list dropdown-menu-right" role="menu">
@@ -141,43 +126,26 @@ $FullName = "HELLLLO";
                                 <strong>Messages</strong> 
                                 <span class="glyphicon glyphicon-triangle-right" aria-hidden="true">
                             </li>
-                            
-                            <template id="MediaItem">
-                                <li class="media" style="">
-                                    <a class="landing-destination" href="#">
-                                        <div class="media-left">
-                                            <img href="" class="media-object" src="/image/user_img.png" alt="..." style="max-width: 48px;">
-                                        </div> 
-                                        <div class="media-body">
-                                          <h4 class="media-heading" >Media heading</h4>
-                                          <p> title long long long long long </p>
-                                          message here
-                                        </div>
-                                        <div class="media-right time-ago">lorem</div>
-                                    </a>
-                                </li>
-                            </template>
-                        
-							<!-- <li role="presentation">
-                                <a role="menuitem" tabindex="-1" href="#" style="border-bottom:1px solid red;">
-                                    <div style="margin: 10px 0px;">Action</div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a role="menuitem" tabindex="-1" href="#" style="border-bottom:1px solid red;">
-                                    <div style="margin: 10px 0px;">Action</div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a role="menuitem" tabindex="-1" href="#" style="border-bottom:1px solid red;">
-                                    <div style="margin: 10px 0px;">Action</div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a role="menuitem" tabindex="-1" href="#" style="border-bottom:1px solid red;">
-                                    <div style="margin: 10px 0px;">Action</div>
+                            <div id="iam-loading" >
+                                <div>
+                                  <img src="/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif">
+                                </div>
+                            </div>
+                            <!-- <li class="media custom-media-item new-item">
+                                <a class="landing-destination" href="#">
+                                    <div class="media-left">
+                                        <img href="" class="media-object" src="/image/user_img.png" alt="..." style="max-width: 48px;">
+                                    </div> 
+                                    <div class="media-body">
+                                      <h4 class="media-heading" >Media heading</h4>
+                                      <p> title long long long long long </p>
+                                      message here
+                                    </div>
+                                    <div class="media-right time-ago">lorem</div>
                                 </a>
                             </li> -->
+                            
+                            
 					    </ul> 
 					</li>
                     <!-- <li role="presentation" class="divider"></li> -->
@@ -186,35 +154,33 @@ $FullName = "HELLLLO";
                     <li class="notification-list notification-icon" id="notification">
                         <a href="#" class="dropdown-toggle notification-menu navi-menu" id= "notification-menu" data-toggle="dropdown" role="button" aria-expanded="false">
                             <span class="glyphicon glyphicon-flag"></span>
-                            <span class="badge">1</span>
+                            <span class="badge notification-number"></span>
                         </a>
 						<ul class="dropdown-menu media-list" role="menu">
 							<li role="presentation" class="dropdown-header"><strong>Notifications</strong><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></li>
-							<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-							<li role="presentation" class="divider"></li>
-							<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-							<li role="presentation" class="divider"></li>
+                            <div id="iam-loading" >
+                                <div>
+                                  <img src="/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif">
+                                </div>
+                            </div>
 						</ul>
 				   </li>
 
                     <li class="notification-list notification-icon" id="connection">
-                        <a href="#" class="dropdown-toggle notification-menu navi-menu" id= "connection-menu" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <a href="#" class="dropdown-toggle notification-menu navi-menu" id="connection-menu" data-toggle="dropdown" role="button" aria-expanded="false">
                             <span class="glyphicon glyphicon-user"></span>
-                            <span class="badge">5</span>
+                            <span class="badge notification-number"></span>
                         </a>
 						<ul class="dropdown-menu media-list" role="menu">
 								<li role="presentation" class="dropdown-header">
                                     <strong>Add Connections</strong>
                                     <span class="glyphicon glyphicon-triangle-right" aria-hidden="true">
                                 </li>
-								<li role="presentation">
-                                    <a role="menuitem" tabindex="-1" href="#">Action</a>
-                                </li>
-								<li role="presentation" class="divider"></li>
-								<li role="presentation">
-                                    <a role="menuitem" tabindex="-1" href="#">Action</a>
-                                </li>
-								<li role="presentation" class="divider"></li>
+                                <div id="iam-loading" >
+                                    <div>
+                                      <img src="/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif">
+                                    </div>
+                                </div>  
 						</ul>
 				   </li>
 
