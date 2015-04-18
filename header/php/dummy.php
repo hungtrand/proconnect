@@ -1,6 +1,7 @@
 <?php
+	
 	if($_POST["userID"] == "notification-getter") {
-		$data = array("messages" => 0,
+		$data = array("messages" => 1,
 					"notification" => 2, 
 					"new-connection" => 1);  //expected return data for notification numbers
 	} else if($_POST["userID"] == "message-getter") {

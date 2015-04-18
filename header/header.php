@@ -42,9 +42,9 @@ $FullName = "HELLLLO";
     <link rel="stylesheet" href="/header/css/header.css">
     <!-- <link rel="import" href="/lib/templates/centered-loading-gif.html"></link> -->
     <script type="text/javascript" src="/header/js/NotificationGetter.js"></script>
-    <script type="text/javascript" src="/header/js/NotificationHandler.js"></script>
+    <!-- // <script type="text/javascript" src="/header/js/NotificationHandler.js"></script> -->
     <script type="text/javascript" src="/header/js/MessageGetter.js"></script>
-    <script type="text/javascript" src="/header/js/MediaItem.js"></script>
+    <script type="text/javascript" src="/header/js/MediaItemFactory.js"></script>
     <script type="text/javascript" src="/header/js/header.js"></script>
 
 </head>
@@ -57,9 +57,9 @@ $FullName = "HELLLLO";
                     <img href="" class="media-object" src="/image/user_img.png" alt="..." style="max-width: 48px;">
                 </div> 
                 <div class="media-body">
-                  <h4 class="media-heading" >Media heading</h4>
-                  <p class="snippet-zone"> title long long long long long </p>
-                  message here
+                  <h4 class="media-heading" >Media Heading</h4>
+                  <p class="snippet-zone"> Message Title </p>
+                  Message Here
                 </div>
                 <div class="media-right time-ago">lorem</div>
             </a>
@@ -69,7 +69,7 @@ $FullName = "HELLLLO";
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-right-links">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mobile-view-menu">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -91,22 +91,8 @@ $FullName = "HELLLLO";
                 </form>
             </div>
 
-            <!--<li class="media" style="max-width: 400px;overflow:scroll;">
-                <a href="#">
-                <div class="media-left">
-                  
-                    <img class="media-object" src="/image/user_img.png" alt="..." style="max-width: 61px;">
-                </div> 
-                <div class="media-body"style="text-overflow:ellipsis;">
-                  <h4 class="media-heading" >Media heading</h4>
-                  asdasdasdasdasdadjkfabjhsgblaerglaerjbkgawbjblkjefgesbfjlkvsdjfbgleksjbae;kvj
-                  asdbhjavfgkajgvhewlfjawgeuflawbvlwRVLAWRVSBDHJ,BWKGFWBDFJL
-                </div>
-              </a>
-
-            </li>-->
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="nav-right-links">
+            <div class="collapse navbar-collapse" id="mobile-view-menu">
 
                 <ul class="nav navbar-nav nav-pills navbar-right ">
                     <!-- <li id = "return" style = "display: none;">
@@ -131,33 +117,20 @@ $FullName = "HELLLLO";
                                   <img src="/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif">
                                 </div>
                             </div>
-                            <!-- <li class="media custom-media-item new-item">
-                                <a class="landing-destination" href="#">
-                                    <div class="media-left">
-                                        <img href="" class="media-object" src="/image/user_img.png" alt="..." style="max-width: 48px;">
-                                    </div> 
-                                    <div class="media-body">
-                                      <h4 class="media-heading" >Media heading</h4>
-                                      <p> title long long long long long </p>
-                                      message here
-                                    </div>
-                                    <div class="media-right time-ago">lorem</div>
-                                </a>
-                            </li> -->
-                            
-                            
 					    </ul> 
 					</li>
                     <!-- <li role="presentation" class="divider"></li> -->
-                    <!-- <li role="presentation" class="divider"></li> -->
-				
+
                     <li class="notification-list notification-icon" id="notification">
                         <a href="#" class="dropdown-toggle notification-menu navi-menu" id= "notification-menu" data-toggle="dropdown" role="button" aria-expanded="false">
                             <span class="glyphicon glyphicon-flag"></span>
                             <span class="badge notification-number"></span>
                         </a>
 						<ul class="dropdown-menu media-list" role="menu">
-							<li role="presentation" class="dropdown-header"><strong>Notifications</strong><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></li>
+							<li role="presentation" class="dropdown-header">
+                                <strong>Notifications</strong>
+                                <span class="glyphicon glyphicon-triangle-right" aria-hidden="true">
+                            </li>
                             <div id="iam-loading" >
                                 <div>
                                   <img src="/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif">
@@ -200,41 +173,6 @@ $FullName = "HELLLLO";
                         </ul>
                     </li>
                 </ul>
-				
-                <ul class="nav subNav hidden-sm hidden-md hidden-lg">
-                    <li role="presentation">
-                        <a href="../profile-user-POV/">Home</a>
-                    </li>
-                    <li role="presentation">
-                        <a href="../profile-user-POV/">Profile</a>
-                    </li>
-                    <li role="presentation">
-                        <a href="../connections/">Connections</a>
-                    </li>
-                    <li role="presentation">
-                        <a href="#">Education</a>
-                    </li>
-                    <li role="presentation">
-                        <a href="#">Jobs</a>
-                    </li>
-                    <li role="presentation">
-                        <a href="#">Interests</a>
-                    </li>
-    	
-    				<li role="presentation">
-                        <a href="#">Account & Settings</a>
-                    </li>
-    				<li role="presentation">
-                        <a href="#">Job Posting</a>
-                    </li>
-    				<hr>
-    				<li role="presentation" id="signout-menu">
-                        <a href="../signout/php/session_signout.php">Sign Out</a>
-                    </li>
-                </ul>
-
-            </div><!-- /.navbar-collapse -->
-
             <!-- Normal Menu View -->
             <ul class="nav nav-pills subNav hidden-xs">
                 <li role="presentation"><a href="../profile-user-POV/">
@@ -256,6 +194,41 @@ $FullName = "HELLLLO";
                     Interests</a>
                 </li>
             </ul>
+
+            <!-- Mobile Menu View -->
+            <ul class="nav subNav hidden-sm hidden-md hidden-lg">
+                    <li role="presentation">
+                        <a href="../profile-user-POV/">Home</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="../profile-user-POV/">Profile</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="../connections/">Connections</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#">Education</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#">Jobs</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#">Interests</a>
+                    </li>
+        
+                    <li role="presentation">
+                        <a href="#">Account & Settings</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#">Job Posting</a>
+                    </li>
+                    <hr>
+                    <li role="presentation" id="signout-menu">
+                        <a href="../signout/php/session_signout.php">Sign Out</a>
+                    </li>
+                </ul>
+
+            </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->       
     </nav>
 

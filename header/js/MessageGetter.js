@@ -14,7 +14,7 @@ var MessageGetter = (function() {
 			}).done(function(data){
 					// try {
 						var messages = JSON.parse(data);
-						console.log(data);
+						// console.log(data);
 
 						if(displayCallback !== undefined){
 							displayCallback(messages);

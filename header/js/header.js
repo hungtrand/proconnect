@@ -1,8 +1,7 @@
 $(document).ready(function(){
 
-	//get notification every 15 seconds
-	NotificationGetter.get(5000,function(data){
-
+	//get notification every 10 seconds
+	NotificationGetter.get(10000,function(data){
 		//display data
 		$.each(data,function(i,v){
 			if(v > 0) {
@@ -20,10 +19,9 @@ $(document).ready(function(){
 		});
 	});
 	
-	//get message
+	//get messages
 	function fillMessages(parent) {
 		var specialID = $(parent).attr("id");
-		// console.log(specialID);
 		MessageGetter.get(specialID,function(jqXHR,obj){
 			//clear existing items 
 			$(parent).siblings("ul").find(".custom-media-item").remove();
@@ -46,9 +44,7 @@ $(document).ready(function(){
 	}
 
 	
-	//Link notification hover handler
-	// var messageIconHandler = new NotificationHandler($("#message-menu"));
-	// console.log(messageIconHandler);
+	/* Link notification hover handler */
 	$(".notification-icon").hover(function(){
 		// $(this).find("ul.media-list").fadeIn(500);
 		var notificationNum = parseInt($(this).find("span.notification-number").text());
