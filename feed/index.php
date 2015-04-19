@@ -10,7 +10,9 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];*/
   $page_title = "Feeds"; //require for front end
   include '../header/header.php';
 ?>
-    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="../lib/lightbox/ekko-lightbox.min.css" />
+    <link rel="stylesheet" type="text/css" href="../lib/lightbox/dark.css" />
     <div id="main-container" class="container">
         <div class="row">
             <!-- Left main content -->
@@ -146,7 +148,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];*/
                         </div>
 
                          <div class="media-right media-middle">
-                            <a href="#" class="contentImageLink">
+                            <a class="contentImageLink" data-toggle="lightbox" href="{{ImageURL}}">
                               <img class="media-object contentImage" style="max-height: 150px;" src=".{{ImageURL}}" />
                             </a>
                         </div>
@@ -168,6 +170,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];*/
     <script src="../connections/js/SuggestionList.js"></script>
     <script src="../lib/js/FileUpload.js"></script>
     <script src="../lib/ckeditor/ckeditor.js"></script>
+    <script src="../lib/lightbox/ekko-lightbox.min.js"></script>
     <script src="js/NewPost.js"></script>
     <script src="js/Feed.js"></script>
     <script src="js/FeedList.js"></script>

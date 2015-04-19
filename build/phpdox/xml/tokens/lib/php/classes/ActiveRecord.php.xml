@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <source xmlns="http://xml.phpdox.net/token">
-  <file xmlns="http://xml.phpdox.net/src" path="/var/www/html/ProConnect/lib/php/classes" file="ActiveRecord.php" realpath="/var/www/html/ProConnect/lib/php/classes/ActiveRecord.php" size="5375" time="2015-04-09T11:38:33-07:00" unixtime="1428604713" sha1="3721a135f1d97f45be3d9dcc8bac963265adc19e" relative="lib/php/classes/ActiveRecord.php"/>
+  <file xmlns="http://xml.phpdox.net/src" path="/var/www/html/ProConnect/lib/php/classes" file="ActiveRecord.php" realpath="/var/www/html/ProConnect/lib/php/classes/ActiveRecord.php" size="5398" time="2015-04-18T23:20:40-07:00" unixtime="1429424440" sha1="be8a7daa95bb9afc031f64ddec06faf5f8889d97" relative="lib/php/classes/ActiveRecord.php"/>
   <line no="1">
     <token name="T_OPEN_TAG">&lt;?php</token>
   </line>
@@ -17,31 +17,31 @@
   </line>
   <line no="5"/>
   <line no="6">
-    <token name="T_COMMENT">/*</token>
+    <token name="T_DOC_COMMENT">/**</token>
   </line>
   <line no="7">
-    <token name="T_COMMENT">	The user class retrieve data of Account from the provided AccountID</token>
+    <token name="T_DOC_COMMENT">*	ActiveRecord - The user class retrieve data of Account from the provided AccountID</token>
   </line>
   <line no="8">
-    <token name="T_COMMENT">	@params: $AccountID</token>
+    <token name="T_DOC_COMMENT">*	@params: $AccountID</token>
   </line>
   <line no="9">
-    <token name="T_COMMENT">	$data: an associated array that act as the main property of the class Account</token>
+    <token name="T_DOC_COMMENT">*	$data: an associated array that act as the main property of the class Account</token>
   </line>
   <line no="10">
-    <token name="T_COMMENT">			this array holds all data from the database of instance user with AccountID</token>
+    <token name="T_DOC_COMMENT">*			this array holds all data from the database of instance user with AccountID</token>
   </line>
   <line no="11">
-    <token name="T_COMMENT">			the key is the exact name of column in database, and the value is the field value</token>
+    <token name="T_DOC_COMMENT">*			the key is the exact name of column in database, and the value is the field value</token>
   </line>
   <line no="12">
-    <token name="T_COMMENT">	@update: public function update allow Account to update its own data</token>
+    <token name="T_DOC_COMMENT">*	@update: public function update allow Account to update its own data</token>
   </line>
   <line no="13">
-    <token name="T_COMMENT">			after updating, the object Account would reload itself with new data</token>
+    <token name="T_DOC_COMMENT">*			after updating, the object Account would reload itself with new data</token>
   </line>
   <line no="14">
-    <token name="T_COMMENT">*/</token>
+    <token name="T_DOC_COMMENT">*/</token>
   </line>
   <line no="15">
     <token name="T_ABSTRACT">abstract</token>

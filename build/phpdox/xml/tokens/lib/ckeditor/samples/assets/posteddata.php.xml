@@ -1,0 +1,296 @@
+<?xml version="1.0"?>
+<source xmlns="http://xml.phpdox.net/token">
+  <file xmlns="http://xml.phpdox.net/src" path="/var/www/html/ProConnect/lib/ckeditor/samples/assets" file="posteddata.php" realpath="/var/www/html/ProConnect/lib/ckeditor/samples/assets/posteddata.php" size="1443" time="2015-02-10T16:17:33-08:00" unixtime="1423613853" sha1="d612b135b6a838f86e5cd78c273066deb915832f" relative="lib/ckeditor/samples/assets/posteddata.php"/>
+  <line no="1">
+    <token name="T_INLINE_HTML">&lt;!DOCTYPE html&gt;</token>
+  </line>
+  <line no="2">
+    <token name="T_OPEN_TAG">&lt;?php</token>
+  </line>
+  <line no="3">
+    <token name="T_COMMENT">/*</token>
+  </line>
+  <line no="4">
+    <token name="T_COMMENT">Copyright (c) 2003-2014, CKSource - Frederico Knabben. All rights reserved.</token>
+  </line>
+  <line no="5">
+    <token name="T_COMMENT">For licensing, see LICENSE.md or http://ckeditor.com/license</token>
+  </line>
+  <line no="6">
+    <token name="T_COMMENT">*/</token>
+  </line>
+  <line no="7">
+    <token name="T_CLOSE_TAG">?&gt;</token>
+  </line>
+  <line no="8">
+    <token name="T_INLINE_HTML">&lt;html&gt;</token>
+  </line>
+  <line no="9">
+    <token name="T_INLINE_HTML">&lt;head&gt;</token>
+  </line>
+  <line no="10">
+    <token name="T_INLINE_HTML">	&lt;meta charset="utf-8"&gt;</token>
+  </line>
+  <line no="11">
+    <token name="T_INLINE_HTML">	&lt;title&gt;Sample &amp;mdash; CKEditor&lt;/title&gt;</token>
+  </line>
+  <line no="12">
+    <token name="T_INLINE_HTML">	&lt;link rel="stylesheet" href="sample.css"&gt;</token>
+  </line>
+  <line no="13">
+    <token name="T_INLINE_HTML">&lt;/head&gt;</token>
+  </line>
+  <line no="14">
+    <token name="T_INLINE_HTML">&lt;body&gt;</token>
+  </line>
+  <line no="15">
+    <token name="T_INLINE_HTML">	&lt;h1 class="samples"&gt;</token>
+  </line>
+  <line no="16">
+    <token name="T_INLINE_HTML">		CKEditor &amp;mdash; Posted Data</token>
+  </line>
+  <line no="17">
+    <token name="T_INLINE_HTML">	&lt;/h1&gt;</token>
+  </line>
+  <line no="18">
+    <token name="T_INLINE_HTML">	&lt;table border="1" cellspacing="0" id="outputSample"&gt;</token>
+  </line>
+  <line no="19">
+    <token name="T_INLINE_HTML">		&lt;colgroup&gt;&lt;col width="120"&gt;&lt;/colgroup&gt;</token>
+  </line>
+  <line no="20">
+    <token name="T_INLINE_HTML">		&lt;thead&gt;</token>
+  </line>
+  <line no="21">
+    <token name="T_INLINE_HTML">			&lt;tr&gt;</token>
+  </line>
+  <line no="22">
+    <token name="T_INLINE_HTML">				&lt;th&gt;Field&amp;nbsp;Name&lt;/th&gt;</token>
+  </line>
+  <line no="23">
+    <token name="T_INLINE_HTML">				&lt;th&gt;Value&lt;/th&gt;</token>
+  </line>
+  <line no="24">
+    <token name="T_INLINE_HTML">			&lt;/tr&gt;</token>
+  </line>
+  <line no="25">
+    <token name="T_INLINE_HTML">		&lt;/thead&gt;</token>
+  </line>
+  <line no="26">
+    <token name="T_OPEN_TAG">&lt;?php</token>
+  </line>
+  <line no="27"/>
+  <line no="28">
+    <token name="T_IF">if</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_PHPDOX_EXCLAMATION_MARK">!</token>
+    <token name="T_EMPTY">empty</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_VARIABLE">$_POST</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+  </line>
+  <line no="29">
+    <token name="T_PHPDOX_OPEN_CURLY">{</token>
+  </line>
+  <line no="30">
+    <token name="T_WHITESPACE">	</token>
+    <token name="T_FOREACH">foreach</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_VARIABLE">$_POST</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_AS">as</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_VARIABLE">$key</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_DOUBLE_ARROW">=&gt;</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_VARIABLE">$value</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+  </line>
+  <line no="31">
+    <token name="T_WHITESPACE">	</token>
+    <token name="T_PHPDOX_OPEN_CURLY">{</token>
+  </line>
+  <line no="32">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_IF">if</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_EXCLAMATION_MARK">!</token>
+    <token name="T_STRING">is_string</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_VARIABLE">$value</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_BOOLEAN_AND">&amp;&amp;</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_EXCLAMATION_MARK">!</token>
+    <token name="T_STRING">is_numeric</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_VARIABLE">$value</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_BOOLEAN_OR">||</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_EXCLAMATION_MARK">!</token>
+    <token name="T_STRING">is_string</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_VARIABLE">$key</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+  </line>
+  <line no="33">
+    <token name="T_WHITESPACE">			</token>
+    <token name="T_CONTINUE">continue</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="34"/>
+  <line no="35">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_IF">if</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">get_magic_quotes_gpc</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+  </line>
+  <line no="36">
+    <token name="T_WHITESPACE">			</token>
+    <token name="T_VARIABLE">$value</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">htmlspecialchars</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">stripslashes</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_STRING_CAST">(string)</token>
+    <token name="T_VARIABLE">$value</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="37">
+    <token name="T_WHITESPACE">		</token>
+    <token name="T_ELSE">else</token>
+  </line>
+  <line no="38">
+    <token name="T_WHITESPACE">			</token>
+    <token name="T_VARIABLE">$value</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">htmlspecialchars</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING_CAST">(string)</token>
+    <token name="T_VARIABLE">$value</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="39">
+    <token name="T_CLOSE_TAG">?&gt;</token>
+  </line>
+  <line no="40">
+    <token name="T_INLINE_HTML">		&lt;tr&gt;</token>
+  </line>
+  <line no="41">
+    <token name="T_INLINE_HTML">			&lt;th style="vertical-align: top"&gt;</token>
+    <token name="T_OPEN_TAG">&lt;?php </token>
+    <token name="T_ECHO">echo</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">htmlspecialchars</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING_CAST">(string)</token>
+    <token name="T_VARIABLE">$key</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CLOSE_TAG">?&gt;</token>
+    <token name="T_INLINE_HTML">&lt;/th&gt;</token>
+  </line>
+  <line no="42">
+    <token name="T_INLINE_HTML">			&lt;td&gt;&lt;pre class="samples"&gt;</token>
+    <token name="T_OPEN_TAG">&lt;?php </token>
+    <token name="T_ECHO">echo</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_VARIABLE">$value</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CLOSE_TAG">?&gt;</token>
+    <token name="T_INLINE_HTML">&lt;/pre&gt;&lt;/td&gt;</token>
+  </line>
+  <line no="43">
+    <token name="T_INLINE_HTML">		&lt;/tr&gt;</token>
+  </line>
+  <line no="44">
+    <token name="T_INLINE_HTML">	</token>
+    <token name="T_OPEN_TAG">&lt;?php</token>
+  </line>
+  <line no="45">
+    <token name="T_WHITESPACE">	</token>
+    <token name="T_PHPDOX_CLOSE_CURLY">}</token>
+  </line>
+  <line no="46">
+    <token name="T_PHPDOX_CLOSE_CURLY">}</token>
+  </line>
+  <line no="47">
+    <token name="T_CLOSE_TAG">?&gt;</token>
+  </line>
+  <line no="48">
+    <token name="T_INLINE_HTML">	&lt;/table&gt;</token>
+  </line>
+  <line no="49">
+    <token name="T_INLINE_HTML">	&lt;div id="footer"&gt;</token>
+  </line>
+  <line no="50">
+    <token name="T_INLINE_HTML">		&lt;hr&gt;</token>
+  </line>
+  <line no="51">
+    <token name="T_INLINE_HTML">		&lt;p&gt;</token>
+  </line>
+  <line no="52">
+    <token name="T_INLINE_HTML">			CKEditor - The text editor for the Internet - &lt;a class="samples" href="http://ckeditor.com/"&gt;http://ckeditor.com&lt;/a&gt;</token>
+  </line>
+  <line no="53">
+    <token name="T_INLINE_HTML">		&lt;/p&gt;</token>
+  </line>
+  <line no="54">
+    <token name="T_INLINE_HTML">		&lt;p id="copy"&gt;</token>
+  </line>
+  <line no="55">
+    <token name="T_INLINE_HTML">			Copyright &amp;copy; 2003-2014, &lt;a class="samples" href="http://cksource.com/"&gt;CKSource&lt;/a&gt; - Frederico Knabben. All rights reserved.</token>
+  </line>
+  <line no="56">
+    <token name="T_INLINE_HTML">		&lt;/p&gt;</token>
+  </line>
+  <line no="57">
+    <token name="T_INLINE_HTML">	&lt;/div&gt;</token>
+  </line>
+  <line no="58">
+    <token name="T_INLINE_HTML">&lt;/body&gt;</token>
+  </line>
+  <line no="59">
+    <token name="T_INLINE_HTML">&lt;/html&gt;</token>
+  </line>
+  <line no="60"/>
+</source>

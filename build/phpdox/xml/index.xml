@@ -20,41 +20,41 @@
     <class name="EasyPeasyICS" src="lib/PHPMailer/extras/EasyPeasyICS.php" description="Class EasyPeasyICS." xml="classes/EasyPeasyICS.xml"/>
     <interface name="manager" src="lib/php/interfaces.php" xml="interfaces/manager.xml"/>
     <interface name="view" src="lib/php/interfaces.php" xml="interfaces/view.xml"/>
-    <class name="ActiveRecordManager" src="lib/php/classes/ActiveRecordManager.php" xml="classes/ActiveRecordManager.xml"/>
+    
     <class name="ViewRecord" src="lib/php/classes/ViewRecord.php" xml="classes/ViewRecord.xml"/>
-    <class name="Message" src="lib/php/classes/Message.php" xml="classes/Message.xml"/>
+    
     <class name="Project" src="lib/php/classes/Project.php" xml="classes/Project.xml"/>
     <class name="NotificationManager" src="lib/php/classes/NotificationManager.php" xml="classes/NotificationManager.xml"/>
-    <class name="Notification" src="lib/php/classes/Notification.php" xml="classes/Notification.xml"/>
+    
     <class name="ViewRecordSet" src="lib/php/classes/ViewRecordSet.php" xml="classes/ViewRecordSet.xml"/>
     <class name="Skill" src="lib/php/classes/Skill.php" xml="classes/Skill.xml"/>
-    <class name="Profile" src="lib/php/classes/Profile.php" xml="classes/Profile.xml"/>
+    
     <class name="RecordSet" src="lib/php/classes/RecordSet.php" xml="classes/RecordSet.xml"/>
     <class name="UserConnection" src="lib/php/classes/UserConnection.php" xml="classes/UserConnection.xml"/>
     <class name="SkillManager" src="lib/php/classes/SkillManager.php" xml="classes/SkillManager.xml"/>
-    <class name="Lookup_CitiesManager" src="lib/php/classes/Lookup_CitiesManager.php" xml="classes/Lookup_CitiesManager.xml"/>
-    <class name="ConnectionManager" src="lib/php/classes/ConnectionManager.php" xml="classes/ConnectionManager.xml"/>
-    <class name="Feed" src="lib/php/classes/Feed.php" xml="classes/Feed.xml"/>
-    <class name="Feed2User" src="lib/php/classes/Feed2User.php" xml="classes/Feed2User.xml"/>
+    
+    
+    
+    
     <class name="UserConnectionManager" src="lib/php/classes/UserConnectionManager.php" xml="classes/UserConnectionManager.xml"/>
     <class name="User" src="lib/php/classes/User.php" xml="classes/User.xml"/>
-    <class name="Education" src="lib/php/classes/Education.php" xml="classes/Education.xml"/>
+    
     <class name="Uploader" src="lib/php/classes/Uploader.php" xml="classes/Uploader.xml"/>
     
-    <class name="MessageManager" src="lib/php/classes/MessageManager.php" xml="classes/MessageManager.xml"/>
+    
     <class name="Projects" src="lib/php/classes/Projects.php" xml="classes/Projects.xml"/>
     <class name="ProjectManager" src="lib/php/classes/ProjectManager.php" xml="classes/ProjectManager.xml"/>
-    <class name="ActiveRecord" src="lib/php/classes/ActiveRecord.php" xml="classes/ActiveRecord.xml"/>
-    <class name="Connection" src="lib/php/classes/Connection.php" xml="classes/Connection.xml"/>
-    <class name="ExperienceManager" src="lib/php/classes/ExperienceManager.php" xml="classes/ExperienceManager.xml"/>
-    <class name="Email" src="lib/php/classes/Email.php" xml="classes/Email.xml"/>
-    <class name="Feed2UserManager" src="lib/php/classes/Feed2UserManager.php" xml="classes/Feed2UserManager.xml"/>
-    <class name="EducationManager" src="lib/php/classes/EducationManager.php" xml="classes/EducationManager.xml"/>
     
-    <class name="ProfileManager" src="lib/php/classes/ProfileManager.php" xml="classes/ProfileManager.xml"/>
-    <class name="Experience" src="lib/php/classes/Experience.php" xml="classes/Experience.xml"/>
-    <class name="AccountManager" src="lib/php/classes/AccountManager.php" xml="classes/AccountManager.xml"/>
-    <class name="Lookup_StatesManager" src="lib/php/classes/Lookup_StatesManager.php" xml="classes/Lookup_StatesManager.xml"/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <class name="Exception" xml="classes/Exception.xml"/>
-  <class name="Account" src="lib/php/classes/Account.php" description="Account - Model (MVC) - fetch &amp; stores email, password, alternate email, verification key, password reset key, account type and login timestamps" xml="classes/Account.xml"/><class name="AccountAdmin" src="lib/php/classes/AccountAdmin.php" description="AccountAdmin - performs logic for user sign up, sign in, reset password, and email verification. AccountAdmin also communicates with System_Email package to send out email regarding the user’s account changes." xml="classes/AccountAdmin.xml"/></namespace>
+  <class name="Account" src="lib/php/classes/Account.php" description="Account - Model (MVC) - fetch &amp; stores email, password, alternate email, verification key, password reset key, account type and login timestamps" xml="classes/Account.xml"/><class name="AccountAdmin" src="lib/php/classes/AccountAdmin.php" description="AccountAdmin - performs logic for user sign up, sign in, reset password, and email verification. AccountAdmin also communicates with System_Email package to send out email regarding the user’s account changes." xml="classes/AccountAdmin.xml"/><class name="ActiveRecordManager" src="lib/php/classes/ActiveRecordManager.php" description="ActiveRecordManager - abstract class. Manage to get data from sql database." xml="classes/ActiveRecordManager.xml"/><class name="Message" src="lib/php/classes/Message.php" description="Message - performs logic for Message class." xml="classes/Message.xml"/><class name="Notification" src="lib/php/classes/Notification.php" description="Notification - performs logic for Notification class." xml="classes/Notification.xml"/><class name="Profile" src="lib/php/classes/Profile.php" description="Profile - performs logic for Profile class." xml="classes/Profile.xml"/><class name="MessageViewManager" src="lib/php/classes/MessageViewManager.php" description="MessageViewManager - performs logic for MessageViewManager class." xml="classes/MessageViewManager.xml"/><class name="Lookup_CitiesManager" src="lib/php/classes/Lookup_CitiesManager.php" description="lookup_CitiesManager - performs logic for lookup_CitiesManager class." xml="classes/Lookup_CitiesManager.xml"/><class name="ConnectionManager" src="lib/php/classes/ConnectionManager.php" description="ConnectionManager - performs management of the Connection class." xml="classes/ConnectionManager.xml"/><class name="Feed" src="lib/php/classes/Feed.php" description="Feed - This class performs a logic for users' feed." xml="classes/Feed.xml"/><class name="Feed2User" src="lib/php/classes/Feed2User.php" description="Feed2User - performs logic for user's feed." xml="classes/Feed2User.xml"/><class name="Education" src="lib/php/classes/Education.php" description="Education - performs logic for Education class.  Store data to or Load education data from the database." xml="classes/Education.xml"/><class name="MessageManager" src="lib/php/classes/MessageManager.php" description="MessageManager - performs logic for MessageManager class." xml="classes/MessageManager.xml"/><class name="ActiveRecord" src="lib/php/classes/ActiveRecord.php" description="ActiveRecord - The user class retrieve data of Account from the provided AccountID" xml="classes/ActiveRecord.xml"/><class name="Connection" src="lib/php/classes/Connection.php" description="Connection - performs logic for connections of the users," xml="classes/Connection.xml"/><class name="ExperienceManager" src="lib/php/classes/ExperienceManager.php" description="ExperienceManager - perform management for Experience class which helps others class to be able to access Experience data through this manager class." xml="classes/ExperienceManager.xml"/><class name="Email" src="lib/php/classes/Email.php" description="Email - The Email class will initiate an instance of an empty Email &#9;&#9;Change its properties and call send method to send the email" xml="classes/Email.xml"/><class name="MessageView" src="lib/php/classes/MessageView.php" description="MessageView - performs logic for MessageView class." xml="classes/MessageView.xml"/><class name="Feed2UserManager" src="lib/php/classes/Feed2UserManager.php" description="Feed2UserManager - performs the users' feed class which helps other class to be able to access user's feed data through this manager class." xml="classes/Feed2UserManager.xml"/><class name="EducationManager" src="lib/php/classes/EducationManager.php" description="EducationManager - performs management for Education class which help others class to be able to access Education data through this manager class." xml="classes/EducationManager.xml"/><class name="ProfileManager" src="lib/php/classes/ProfileManager.php" description="ProfileManager - performs logic for ProfileManager class." xml="classes/ProfileManager.xml"/><class name="Experience" src="lib/php/classes/Experience.php" description="Experience - performs logic for experience class." xml="classes/Experience.xml"/><class name="AccountManager" src="lib/php/classes/AccountManager.php" description="AccountManager - performs management of the Account" xml="classes/AccountManager.xml"/><class name="Lookup_StatesManager" src="lib/php/classes/Lookup_StatesManager.php" description="lookup_StatesManager - performs logic for lookup_StatesManager class." xml="classes/Lookup_StatesManager.xml"/></namespace>
 </index>

@@ -1,66 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.net/src" full="Experience" namespace="" name="Experience" abstract="false" final="false" start="7" end="179">
-  <file path="/var/www/html/ProConnect/lib/php/classes" file="Experience.php" realpath="/var/www/html/ProConnect/lib/php/classes/Experience.php" size="3426" time="2015-04-09T11:38:33-07:00" unixtime="1428604713" sha1="76fb8ba876aa0be28c9bb0677e11937bf17121c2" relative="lib/php/classes/Experience.php"/>
+<class xmlns="http://xml.phpdox.net/src" full="Experience" namespace="" name="Experience" abstract="false" final="false" start="12" end="184">
+  <file path="/var/www/html/ProConnect/lib/php/classes" file="Experience.php" realpath="/var/www/html/ProConnect/lib/php/classes/Experience.php" size="3703" time="2015-04-18T23:20:40-07:00" unixtime="1429424440" sha1="89af566b42d6822123dfe08bf3346c6385bdde01" relative="lib/php/classes/Experience.php"/>
+  <docblock>
+    <description compact="Experience - performs logic for experience class.">@params: $ID (userid)
+Responsiblities: get or setup the user's data to database, such as companyname, title, location,
+					user's description of this experience, starting month and year, ending month and year.</description>
+  </docblock>
   <extends full="ActiveRecord" namespace="" name="ActiveRecord"/>
-  <member name="TableName" type="string" default="'Experience'" visibility="public" line="8"/>
-  <member name="PrimaryKey" type="string" default="'EXPID'" visibility="public" line="9"/>
-  <member name="Columns" type="array" visibility="public" line="10"/>
-  <member name="data" type="array" visibility="private" line="14"/>
-  <member name="ExpID" type="{unknown}" visibility="private" line="15"/>
-  <member name="err" type="{unknown}" visibility="public" line="16"/>
-  <constructor name="__construct" start="18" end="28" abstract="false" final="false" static="false" visibility="public">
+  <member name="TableName" type="string" default="'Experience'" visibility="public" line="13"/>
+  <member name="PrimaryKey" type="string" default="'EXPID'" visibility="public" line="14"/>
+  <member name="Columns" type="array" visibility="public" line="15"/>
+  <member name="data" type="array" visibility="private" line="19"/>
+  <member name="ExpID" type="{unknown}" visibility="private" line="20"/>
+  <member name="err" type="{unknown}" visibility="public" line="21"/>
+  <constructor name="__construct" start="23" end="33" abstract="false" final="false" static="false" visibility="public">
     <parameter name="ID" byreference="false" type="{unknown}" default="null"/>
   </constructor>
-  <method name="getData" start="32" end="34" abstract="false" final="false" static="false" visibility="public"/>
-  <method name="getID" start="37" end="39" abstract="false" final="false" static="false" visibility="public"/>
-  <method name="getPrimaryKey" start="42" end="44" abstract="false" final="false" static="false" visibility="protected"/>
-  <method name="getTableName" start="47" end="49" abstract="false" final="false" static="false" visibility="protected"/>
-  <method name="getColumns" start="51" end="53" abstract="false" final="false" static="false" visibility="protected"/>
-  <method name="load" start="56" end="67" abstract="false" final="false" static="false" visibility="public">
+  <method name="getData" start="37" end="39" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getID" start="42" end="44" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getPrimaryKey" start="47" end="49" abstract="false" final="false" static="false" visibility="protected"/>
+  <method name="getTableName" start="52" end="54" abstract="false" final="false" static="false" visibility="protected"/>
+  <method name="getColumns" start="56" end="58" abstract="false" final="false" static="false" visibility="protected"/>
+  <method name="load" start="61" end="72" abstract="false" final="false" static="false" visibility="public">
     <parameter name="ID" byreference="false" type="{unknown}"/>
   </method>
-  <method name="getCompanyName" start="71" end="73" abstract="false" final="false" static="false" visibility="public"/>
-  <method name="getUserID" start="75" end="77" abstract="false" final="false" static="false" visibility="public"/>
-  <method name="getTitle" start="79" end="81" abstract="false" final="false" static="false" visibility="public"/>
-  <method name="getLocation" start="83" end="85" abstract="false" final="false" static="false" visibility="public"/>
-  <method name="getDescription" start="87" end="89" abstract="false" final="false" static="false" visibility="public"/>
-  <method name="getDateCreated" start="91" end="93" abstract="false" final="false" static="false" visibility="public"/>
-  <method name="getStartMonth" start="95" end="97" abstract="false" final="false" static="false" visibility="public"/>
-  <method name="getStartYear" start="99" end="101" abstract="false" final="false" static="false" visibility="public"/>
-  <method name="getEndMonth" start="103" end="105" abstract="false" final="false" static="false" visibility="public"/>
-  <method name="getEndYear" start="107" end="109" abstract="false" final="false" static="false" visibility="public"/>
-  <method name="setCompanyName" start="112" end="116" abstract="false" final="false" static="false" visibility="public">
+  <method name="getCompanyName" start="76" end="78" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getUserID" start="80" end="82" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getTitle" start="84" end="86" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getLocation" start="88" end="90" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getDescription" start="92" end="94" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getDateCreated" start="96" end="98" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getStartMonth" start="100" end="102" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getStartYear" start="104" end="106" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getEndMonth" start="108" end="110" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getEndYear" start="112" end="114" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="setCompanyName" start="117" end="121" abstract="false" final="false" static="false" visibility="public">
     <parameter name="strVal" byreference="false" type="{unknown}"/>
   </method>
-  <method name="setUserID" start="118" end="122" abstract="false" final="false" static="false" visibility="public">
+  <method name="setUserID" start="123" end="127" abstract="false" final="false" static="false" visibility="public">
     <parameter name="intVal" byreference="false" type="{unknown}"/>
   </method>
-  <method name="setTitle" start="124" end="128" abstract="false" final="false" static="false" visibility="public">
+  <method name="setTitle" start="129" end="133" abstract="false" final="false" static="false" visibility="public">
     <parameter name="strVal" byreference="false" type="{unknown}"/>
   </method>
-  <method name="setLocation" start="130" end="134" abstract="false" final="false" static="false" visibility="public">
+  <method name="setLocation" start="135" end="139" abstract="false" final="false" static="false" visibility="public">
     <parameter name="strVal" byreference="false" type="{unknown}"/>
   </method>
-  <method name="setDescription" start="136" end="140" abstract="false" final="false" static="false" visibility="public">
+  <method name="setDescription" start="141" end="145" abstract="false" final="false" static="false" visibility="public">
     <parameter name="strVal" byreference="false" type="{unknown}"/>
   </method>
-  <method name="setStartMonth" start="142" end="146" abstract="false" final="false" static="false" visibility="public">
+  <method name="setStartMonth" start="147" end="151" abstract="false" final="false" static="false" visibility="public">
     <parameter name="intVal" byreference="false" type="{unknown}"/>
   </method>
-  <method name="setStartYear" start="148" end="152" abstract="false" final="false" static="false" visibility="public">
+  <method name="setStartYear" start="153" end="157" abstract="false" final="false" static="false" visibility="public">
     <parameter name="intVal" byreference="false" type="{unknown}"/>
   </method>
-  <method name="setStartDate" start="154" end="159" abstract="false" final="false" static="false" visibility="public">
+  <method name="setStartDate" start="159" end="164" abstract="false" final="false" static="false" visibility="public">
     <parameter name="intMonth" byreference="false" type="{unknown}"/>
     <parameter name="intYear" byreference="false" type="{unknown}"/>
   </method>
-  <method name="setEndMonth" start="161" end="165" abstract="false" final="false" static="false" visibility="public">
+  <method name="setEndMonth" start="166" end="170" abstract="false" final="false" static="false" visibility="public">
     <parameter name="intVal" byreference="false" type="{unknown}"/>
   </method>
-  <method name="setEndYear" start="167" end="171" abstract="false" final="false" static="false" visibility="public">
+  <method name="setEndYear" start="172" end="176" abstract="false" final="false" static="false" visibility="public">
     <parameter name="intVal" byreference="false" type="{unknown}"/>
   </method>
-  <method name="setEndDate" start="173" end="178" abstract="false" final="false" static="false" visibility="public">
+  <method name="setEndDate" start="178" end="183" abstract="false" final="false" static="false" visibility="public">
     <parameter name="intMonth" byreference="false" type="{unknown}"/>
     <parameter name="intYear" byreference="false" type="{unknown}"/>
   </method>

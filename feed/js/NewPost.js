@@ -101,7 +101,7 @@ NewPost.prototype = {
 	changeMode: function(newMode) {
 		var that = this;
 		if (newMode == that.mode) return;
-		if (that.mode=='active' && CKEDITOR.instances.ContentMessage.getData().trim() == '') return;
+		if (that.mode=='active' && CKEDITOR.instances.ContentMessage.getData().trim() != '') return;
 
 		if (newMode) that.mode = newMode;
 		else
@@ -127,7 +127,7 @@ NewPost.prototype = {
 		var uploadedImageURL = '';
 
 		function saveFeed() {
-			uploadedImageURL = that.processedImageURL;
+			uploadedImageURL = that.processedImageURL.val();
 			var feed = new Feed();
 			feed.setContentMessage(contentMsg);
 			feed.setFeedLink(that.inputExternalLink.val());

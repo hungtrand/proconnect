@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class xmlns="http://xml.phpdox.net/src" full="ActiveRecord" namespace="" name="ActiveRecord" abstract="true" final="false" start="15" end="244">
-  <file path="/var/www/html/ProConnect/lib/php/classes" file="ActiveRecord.php" realpath="/var/www/html/ProConnect/lib/php/classes/ActiveRecord.php" size="5375" time="2015-04-09T11:38:33-07:00" unixtime="1428604713" sha1="3721a135f1d97f45be3d9dcc8bac963265adc19e" relative="lib/php/classes/ActiveRecord.php"/>
+  <file path="/var/www/html/ProConnect/lib/php/classes" file="ActiveRecord.php" realpath="/var/www/html/ProConnect/lib/php/classes/ActiveRecord.php" size="5398" time="2015-04-18T23:20:40-07:00" unixtime="1429424440" sha1="be8a7daa95bb9afc031f64ddec06faf5f8889d97" relative="lib/php/classes/ActiveRecord.php"/>
+  <docblock>
+    <description compact="ActiveRecord - The user class retrieve data of Account from the provided AccountID"/>
+    <params value=": $AccountID">$data: an associated array that act as the main property of the class Account
+		this array holds all data from the database of instance user with AccountID
+		the key is the exact name of column in database, and the value is the field value</params>
+    <update value=": public function update allow Account to update its own data">after updating, the object Account would reload itself with new data</update>
+  </docblock>
   <member name="db" type="{unknown}" visibility="private" line="16"/>
   <member name="id" type="{unknown}" visibility="private" line="17"/>
   <member name="err" type="{unknown}" visibility="public" line="18"/>
@@ -37,15 +44,11 @@
   </method>
   <method name="delete" start="217" end="243" abstract="false" final="false" static="false" visibility="public"/>
   <extender full="Message" namespace="" name="Message"/>
-  <extender full="Project" namespace="" name="Project"/>
   <extender full="Notification" namespace="" name="Notification"/>
-  <extender full="Skill" namespace="" name="Skill"/>
-  <extender full="UserConnection" namespace="" name="UserConnection"/>
   <extender full="Feed" namespace="" name="Feed"/>
   <extender full="Feed2User" namespace="" name="Feed2User"/>
-  <extender full="User" namespace="" name="User"/>
   <extender full="Education" namespace="" name="Education"/>
-  <extender full="Account" namespace="" name="Account"/>
   <extender full="Connection" namespace="" name="Connection"/>
+  <extender full="MessageView" namespace="" name="MessageView"/>
   <extender full="Experience" namespace="" name="Experience"/>
 </class>

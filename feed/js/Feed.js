@@ -32,11 +32,23 @@ Feed.prototype = {
 		var heading = that.data['Creator'] + ' shared: ';
 		feed.find('.creatorImage').attr('src', that.data['CreatorImage']);
 		feed.find('.contentHeading').text(heading);
-		feed.find('.contentImageLink').attr('href', 'FeedLink');
+		feed.find('.contentImageLink').attr('href', that.data['ImageURL'])
+			.attr('data-title', that.data['ContentMessage']);
 		feed.find('.contentImage').attr('src', that.data['ImageURL']);
 		feed.find('.contentMessage').html(that.data['ContentMessage']);
 
 		that.container = feed;
+		that.bindEvents();
+	},
+
+	bindEvents: function() {
+		var that = this;
+
+		that.container.find('.contentImageLink').on('click', function(e) {
+			e.preventDefault();
+
+			$(this).ekkoLightbox();
+		});
 	},
 
 	setImageURL: function(strVal) {
