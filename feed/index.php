@@ -149,7 +149,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];*/
 
                          <div class="media-right media-middle">
                             <a class="contentImageLink" data-toggle="lightbox" href="{{ImageURL}}">
-                              <img class="media-object contentImage" style="max-height: 150px;" src=".{{ImageURL}}" />
+                              <img class="media-object contentImage thumbnail" style="max-height: 150px;" src=".{{ImageURL}}" />
                             </a>
                         </div>
                     </div>
