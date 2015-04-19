@@ -5,6 +5,11 @@ require_once __DIR__."/User.php";
 require_once __DIR__."/ExperienceManager.php";
 require_once __DIR__."/EducationManager.php";
 
+/**
+*	Profile - performs logic for Profile class. 
+*	@params: $UserID
+*	Responsibilities: get info from a user's profile such as userid, first name, last name, birthday, gender, .etc.. .  
+*/
 class Profile extends ViewRecord {
 	public static $TableName = 'vw_PersonalInfo';
 	public static $PrimaryKey = 'USERID';

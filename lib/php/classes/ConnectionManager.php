@@ -4,6 +4,14 @@
 require_once __DIR__."/Connection.php";
 require_once __DIR__."/RecordSet.php";
 
+/**
+*	ConnectionManager - performs management of the Connection class.  
+*	@params: $User
+*	Resposibilities: get Data from database, load the user from database by userID, search and load the data from database by keyword,datecreated, or email.
+* 						get the data from database, get all or current user data.  
+*/
+
+
 class ConnectionManager extends RecordSet {
 	protected $PrimaryKey;
 	protected $TableName;

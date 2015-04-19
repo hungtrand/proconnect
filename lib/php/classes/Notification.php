@@ -5,8 +5,10 @@
  //$u = new Education(1); echo $u->get('School').'\n'; // For testing
  //$u->update(['Grade'=>'3.8']); echo $u->get('Grade'); // For Testing
 
-/*
-	Load education data from the database
+/**
+*	Notification - performs logic for Notification class. 
+*	@params: $UserID
+*	Responsibilities: get message info then notify to the associated UserID .   
 */
 class Notification extends ActiveRecord {
 	public static $TableName = 'Notification';

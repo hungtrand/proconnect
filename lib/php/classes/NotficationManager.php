@@ -4,6 +4,11 @@
 require_once __DIR__."/Notification.php";
 require_once __DIR__."/RecordSet.php";
 
+/**
+*	NotificationManager - performs logic for NotificationManager class. 
+*	@params: $UserID
+*	Responsibilities: load the user and get the user data from the database.   
+*/	
 class NotificationManager extends RecordSet {
 	protected $PrimaryKey;
 	protected $TableName;

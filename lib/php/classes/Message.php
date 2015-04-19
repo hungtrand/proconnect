@@ -4,8 +4,10 @@
 
  
 
-/*
-	Load education data from the database
+/**
+*	Message - performs logic for Message class. 
+*	@params: $ID (messageID)
+*	Responsibilities: get attributes in message table or set up attributes in message table,    
 */
 class Message extends ActiveRecord {
 	public static $TableName = 'Message';

@@ -5,8 +5,10 @@
  //$u = new Education(1); echo $u->get('School').'\n'; // For testing
  //$u->update(['Grade'=>'3.8']); echo $u->get('Grade'); // For Testing
 
-/*
-	Load education data from the database
+/**
+*	Education - performs logic for Education class.  Store data to or Load education data from the database. 
+*	@params: $UserID
+*	Responsibilities: setup user's school, degree, fieldofstudy, activites, gpa, yearstarts, yearend, and user's description of this education.  
 */
 class Education extends ActiveRecord {
 	public static $TableName = 'Education';
