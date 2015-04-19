@@ -1,3 +1,4 @@
+// NewPost - the object validate the new post form, upload image and submit form
 function NewPost() {
 	this.mode = "inactive";
 	this.container = $('#NewPost');
@@ -28,7 +29,7 @@ NewPost.prototype = {
 		that.inputContentMessage = that.container.find('#ContentMessage');
 		that.inputFeedImage = that.container.find('#FeedImage');
 		that.imagePreview = that.container.find('#ImagePreview');
-		that.processImageURL = that.container.find('#ImageURL');
+		that.processedImageURL = that.container.find('#ImageURL');
 		that.btnPostMode = that.container.find('#btnPostMode');
 		that.btnPostMode.on('click', function() {that.changeMode('active')});
 		that.btnSharePost = that.container.find('#btnSharePost');
@@ -46,11 +47,11 @@ NewPost.prototype = {
 				//{ name: 'forms' },
 				'/',
 				{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
-				{ name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ] },
+				{ name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align' ] },
 				{ name: 'links' },
 				//{ name: 'insert' },
 				'/',
-				// { name: 'styles' },
+				 { name: 'styles' },
 				// { name: 'colors' },
 				// { name: 'tools', groups: ['mode'] },
 				// { name: 'others' },
@@ -66,19 +67,12 @@ NewPost.prototype = {
 	bindEvents: function() {
 		var that = this;
 
-		that.btnAttachLink.on('click', function(e) {
-			e.stopPropagation();
-			that.inputExternalLink.parent().slideDown('slow');
-			that.inputExternalLink.focus();
-		});
-
 		that.container.on('click', function(e) {
 			e.stopPropagation();
 		});
 
 		$(document).on('click', function(e) {
 			that.changeMode('inactive');
-			that.inputExternalLink.parent().slideUp('slow');
 		});
 
 		that.btnSharePost.on('click', function(e) {
@@ -107,6 +101,7 @@ NewPost.prototype = {
 	changeMode: function(newMode) {
 		var that = this;
 		if (newMode == that.mode) return;
+		if (that.mode=='active' && CKEDITOR.instances.ContentMessage.getData().trim() == '') return;
 
 		if (newMode) that.mode = newMode;
 		else
@@ -127,30 +122,42 @@ NewPost.prototype = {
 
 	saveNewPost: function() {
 		var that = this;
-		if (that.inputContentMessage.val().trim() == '') return false;
+		var contentMsg = CKEDITOR.instances.ContentMessage.getData().trim();
+		if (contentMsg == '' && that.inputFeedImage.val() == '') return false;
 		var uploadedImageURL = '';
-		if (that.inputFeedImage.val() != '') {
-			if (that.uploadImage()) {
-				uploadedImageURL = that.processedImageURL;
-			}
+
+		function saveFeed() {
+			uploadedImageURL = that.processedImageURL;
+			var feed = new Feed();
+			feed.setContentMessage(contentMsg);
+			feed.setFeedLink(that.inputExternalLink.val());
+			feed.setImageURL(uploadedImageURL);
+
+			feed.update(function(json) { 
+				try {
+					that.showAlert('Successfully posted on your network', 'success');
+					that.reset();
+				} catch(e) {
+					that.showAlert(json, 'danger');
+					console.log(json);
+				} 
+
+				// execute all saved functions here
+				that.executeCallback(json);
+			});
 		}
-		var feed = new Feed();
-		feed.setContentMessage(that.inputContentMessage.val());
-		feed.setFeedLink(that.inputExternalLink.val());
-		feed.setImageURL(uploadedImageURL);
 
-		feed.update(function(json) { 
-			try {
-				that.showAlert('Successfully posted on your network', 'success');
-				that.reset();
-			} catch(e) {
-				that.showAlert(json, 'danger');
-				console.log(json);
-			} 
-
-			// execute all saved functions here
-			that.executeCallback(json);
-		});
+		if (that.inputFeedImage.val() != '') {
+			that.uploadImage(function(success) {
+				if (success) {
+					saveFeed();
+				} else {
+					showAlert('Could not upload your image. Image must be less than 10MB.', 'danger');
+				}
+			});
+		} else {
+			saveFeed();
+		}
 	},
 
 	showAlert: function(msg, type) {
@@ -172,7 +179,7 @@ NewPost.prototype = {
 		}, 3000);
 	},	
 
-	uploadImage: function() {
+	uploadImage: function(callback) {
 		var that = this;
 		that.showAlert(that.waitingGif);
 		var success = false;
@@ -180,8 +187,9 @@ NewPost.prototype = {
 
 			if (that.Alert.find('#uploadedFile').length > 0) {
 				var newUrl = that.Alert.find('#uploadedFile').val();
-				that.ImageURL.val(newUrl);
+				that.processedImageURL.val(newUrl);
 				success = true;
+				callback(success);
 				setTimeout(function() {
 					that.Alert.find('.label-success').fadeOut('3000', function() {
 						$(this).remove();
@@ -190,8 +198,6 @@ NewPost.prototype = {
 			}
 			
 		});
-
-		return success;
 	},
 
 	executeCallback: function(data) {
@@ -204,7 +210,7 @@ NewPost.prototype = {
 
 	reset: function() {
 		this.inputExternalLink.val('');
-		this.inputContentMessage.val('');
+		CKEDITOR.instances.ContentMessage.setData('');
 		this.inputFeedImage.val('');
 		this.imagePreview.attr('src', '');
 		this.imagePreview.hide();
