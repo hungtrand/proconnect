@@ -148,5 +148,5 @@ FeedList.prototype = {
 			}, 2000);
 		});
 		
-	},	
+	}
 }

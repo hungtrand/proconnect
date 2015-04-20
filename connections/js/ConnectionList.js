@@ -32,14 +32,13 @@ ConnectionList.prototype = {
 				json = $.parseJSON(json);
 				callback(json);
 			} catch (e) {
-				that.Alert.html(json);
-				that.Alert.toggleClass('hidden', false);
+				that.showAlert(json, 'info');
+				if (json.indexOf('End') > -1) that.page = -1;
 			}
 
 			that.container.find('.waitingGif').remove();
 		}).fail(function() {
-			that.Alert.html("Network or Server Error occurred.");
-			that.Alert.toggleClass('hidden', false);
+			that.showAlert("Network or Server Error occurred.", "danger");
 		});
 	},
 
@@ -59,8 +58,13 @@ ConnectionList.prototype = {
 
 	next: function() {
 		var that = this;
+		if (that.page == -1) {
+			that.showAlert('End of results', 'info');
+			return false;
+		}
+		
 		that.page++;
-		that.toggleClass('hidden', true);
+		that.showAlert(that.waitingGif, "info");
 
 		that.fetch(function(jsonData) {
 			that.appendView(jsonData);
@@ -69,11 +73,6 @@ ConnectionList.prototype = {
 
 	appendView: function(json) {
 		var that = this;
-		if (!json) {
-			that.Alert.html("End of Results");
-			that.Alert.toggleClass('hidden', false);
-			return false;
-		}
 
 		for (var i = 0, l=json.length; i < l; i++) {
 			that.data.push(json[i]);
@@ -81,5 +80,27 @@ ConnectionList.prototype = {
 
 			this.container.append(conn.getView());
 		}
+	},
+
+	showAlert: function(msg, type) {
+		var that = this;
+		that.Alert.html(msg);
+		switch(type) {
+			case 'success':
+				that.Alert.attr('class', 'alert alert-success').slideDown();
+			break;
+			case 'danger':
+				that.Alert.attr('class', 'alert alert-danger').slideDown();
+			default:
+				that.Alert.attr('class', 'alert alert-info').slideDown();
+				
+		}
+
+		$(document).one('click', function() {
+			setTimeout(function() {
+				that.Alert.attr('class', 'alert alert-info').fadeOut(1000);
+			}, 2000);
+		});
+		
 	}
 }
