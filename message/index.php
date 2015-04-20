@@ -177,12 +177,35 @@ include '../header/header.php';
     </ul>
 </script>
 
+<script type="text/template" id="SuggestionTemplate">
+    <div class="NewUserConnection" class="col col-xs-12">
+        <input type="hidden" class="UserID" name="UserID" value="" />
+        <div class="row">
+            <div class="col col-xs-3">
+                <img width="50px" src="../image/user_img.png" class="img-rounded" />
+            </div>
+
+            <div class="col col-xs-9">
+                <h5 class="text-primary ConnectionName" style="margin-top: 0px; margin-bottom: 7px;">John Doe</h5>
+                <p class="ConnectionWork" style= "font-size: 12px;"><span class="ConnectionJob"></span>&nbsp;at&nbsp;<span class="ConnectionCompany"></span></p>
+                   <a class="addNewConnection" href="#" style= "font-size: 12px;">
+                   <span class="glyphicon glyphicon-retweet">&nbsp;<span class="txt">Connect</span></a>
+                    &nbsp;&#8226;
+                   <a class="dismissConnection" href="#" style= "font-size: 12px; color: gray;">Skip</a>
+            </div>
+        </div>
+
+        <hr />
+    </div>
+    </script>
+
   <!-- Custom modal handler -->
   <script src="js/index.js"></script>
   <script src="js/LoadMessages.js"></script>
   <script src="js/SearchMessages.js"></script>
   <script src="js/Messages.js"></script>
-  <script src="js/SuggestionList.js"></script>
+  <script src="../connections/js/NewConnection.js"></script>
+  <script src="../connections/js/SuggestionList.js"></script>
   <script src="js/NewMessage.js"></script>
   <script src="js/readmore.js"></script>
   <script src="js/typeahead.js"></script>
