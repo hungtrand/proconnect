@@ -3,14 +3,15 @@
 //ini_set("display_errors", 1); // debug
 include '../signout/php/session_check_signout.php';
 
-$UData = json_decode($_SESSION['__USERDATA__'], true);
-$FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
+// $UData = json_decode($_SESSION['__USERDATA__'], true);
+// $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
+$FullName = "HELLLLO";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,35 +39,49 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="/js/ie10-viewport-bug-workaround.js"></script>
 
-    <link rel="stylesheet" href="/header/header.css">
-    <script src="/header/js/hoverHandler.js"></script>
-	
-
+    <link rel="stylesheet" href="/header/css/header.css">
+    <!-- <link rel="import" href="/lib/templates/centered-loading-gif.html"></link> -->
     <script type="text/javascript" src="/header/js/NotificationGetter.js"></script>
+    <!-- // <script type="text/javascript" src="/header/js/NotificationHandler.js"></script> -->
     <script type="text/javascript" src="/header/js/MessageGetter.js"></script>
+    <script type="text/javascript" src="/header/js/MediaItemFactory.js"></script>
     <script type="text/javascript" src="/header/js/header.js"></script>
 
 </head>
 
 <body>
+    <template id="MediaItem">
+        <li class="media custom-media-item">
+            <a class="landing-destination" href="#">
+                <div class="media-left">
+                    <img href="" class="media-object" src="/image/user_img.png" alt="..." style="max-width: 48px;">
+                </div> 
+                <div class="media-body">
+                  <h4 class="media-heading" >Media Heading</h4>
+                  <p class="snippet-zone"> Message Title </p>
+                  Message Here
+                </div>
+                <div class="media-right time-ago">lorem</div>
+            </a>
+        </li>
+    </template>
     <nav class="navbar navbar-inverse navbar-fixed-top affix" data-spy="affix" data-offset-top="60 " data-offset-bottom="200">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-right-links">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mobile-view-menu">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
 
-                <a id="logo" class="navbar-brand hidden-xs hidden-sm " href="#">				
+                <a class="logo navbar-brand hidden-xs hidden-sm " href="#">				
 				<img src="../image/proconnect/logo_text.png" />				
 				</a>
-				<a id="logo" class="navbar-brand hidden-md hidden-lg" style = "width:200px;" href="#">				
+				<a class="logo navbar-brand hidden-md hidden-lg" style = "width:200px;" href="#">				
 				<img style = "width:100%;" src="../image/proconnect/logo_text.png" />				
 				</a>
-
 
                 <form class="navbar-form navbar-left text-center form-inline" role="search">
                     <div class="form-group">
@@ -77,44 +92,68 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="nav-right-links">
+            <div class="collapse navbar-collapse" id="mobile-view-menu">
 
                 <ul class="nav navbar-nav nav-pills navbar-right ">
-                    <li id = "return" style = "display: none;">
+                    <!-- <li id = "return" style = "display: none;">
                         <a href="#"><span class="glyphicon glyphicon-menu-left"></span></a>
-					</li>
-					
-					<li class="notification-list" id="message">
-                        <a href="#" class="dropdown-toggle notification-menu" id= "message-menu" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-envelope"></span><span class="badge">2</span></a>
-						  <ul class="dropdown-menu" role="menu">
-								<li role="presentation" class="dropdown-header"><strong>Messages</strong><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></li>
-								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-								<li role="presentation" class="divider"></li>
-								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-								<li role="presentation" class="divider"></li>
-						  </ul>
-					</li>
-				
+					</li> -->
 
-                    <li class="notification-list" id="notification">
-                        <a href="#" class="dropdown-toggle notification-menu" id= "notification-menu" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-flag"></span><span class="badge">1</span></a>
-							<ul class="dropdown-menu" role="menu">
-								<li role="presentation" class="dropdown-header"><strong>Notifications</strong><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></li>
-								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-								<li role="presentation" class="divider"></li>
-								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-								<li role="presentation" class="divider"></li>
-							</ul>
+					<li class="notification-list notification-icon" id="message">
+
+                        <a href="#" class="dropdown-toggle notification-menu navi-menu" id="message-menu" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <span class="glyphicon glyphicon-envelope"></span>
+                            <span class="badge notification-number"></span>
+                        </a>
+
+                        <!-- Message Items -->
+					    <ul class="dropdown-menu media-list dropdown-menu-right" role="menu">
+							<li role="presentation" class="dropdown-header">
+                                <strong>Messages</strong> 
+                                <span class="glyphicon glyphicon-triangle-right" aria-hidden="true">
+                            </li>
+                            <div id="iam-loading" >
+                                <div>
+                                  <img src="/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif">
+                                </div>
+                            </div>
+					    </ul> 
+					</li>
+                    <!-- <li role="presentation" class="divider"></li> -->
+
+                    <li class="notification-list notification-icon" id="notification">
+                        <a href="#" class="dropdown-toggle notification-menu navi-menu" id= "notification-menu" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <span class="glyphicon glyphicon-flag"></span>
+                            <span class="badge notification-number"></span>
+                        </a>
+						<ul class="dropdown-menu media-list" role="menu">
+							<li role="presentation" class="dropdown-header">
+                                <strong>Notifications</strong>
+                                <span class="glyphicon glyphicon-triangle-right" aria-hidden="true">
+                            </li>
+                            <div id="iam-loading" >
+                                <div>
+                                  <img src="/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif">
+                                </div>
+                            </div>
+						</ul>
 				   </li>
 
-                    <li class="notification-list" id="connection">
-                        <a href="#" class="dropdown-toggle notification-menu" id= "connection-menu" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user"></span><span class="badge">5</span></a>
-						<ul class="dropdown-menu" role="menu">
-								<li role="presentation" class="dropdown-header"><strong>Add Connections</strong><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></li>
-								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-								<li role="presentation" class="divider"></li>
-								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-								<li role="presentation" class="divider"></li>
+                    <li class="notification-list notification-icon" id="connection">
+                        <a href="#" class="dropdown-toggle notification-menu navi-menu" id="connection-menu" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <span class="glyphicon glyphicon-user"></span>
+                            <span class="badge notification-number"></span>
+                        </a>
+						<ul class="dropdown-menu media-list" role="menu">
+								<li role="presentation" class="dropdown-header">
+                                    <strong>Add Connections</strong>
+                                    <span class="glyphicon glyphicon-triangle-right" aria-hidden="true">
+                                </li>
+                                <div id="iam-loading" >
+                                    <div>
+                                      <img src="/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif">
+                                    </div>
+                                </div> 
 						</ul>
 				   </li>
 
@@ -122,8 +161,11 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                         <a href="#" class="dropdown-toggle" id="caret-menu" data-toggle="dropdown" role="button" aria-expanded="false">
                             <?=$FullName?> <span class="glyphicon glyphicon-cog"></span>
                         </a>
-                        <ul class="dropdown-menu" role="menu">
-							<li role="presentation" class="dropdown-header"><strong>Account & Settings</strong><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></li>
+                        <ul class="dropdown-menu " role="menu">
+							<li role="presentation" class="dropdown-header">
+                                <strong>Account & Settings</strong>
+                                <span class="glyphicon glyphicon-triangle-right" aria-hidden="true">
+                            </li>
                             <li><a href="#">Account & Settings</a></li>
                             <li><a href="#">Job Posting</a></li>
                             <li class="divider"></li>
@@ -131,8 +173,9 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                         </ul>
                     </li>
                 </ul>
-				 <ul class="nav subNav hidden-sm hidden-md hidden-lg">
-                <li role="presentation"><a href="../feed/">
+            <!-- Normal Menu View -->
+            <ul class="nav nav-pills subNav hidden-xs">
+                <li role="presentation"><a href="../profile-user-POV/">
                     Home</a>
                 </li>
                 <li role="presentation"><a href="../profile-user-POV/">
@@ -150,36 +193,42 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                 <li role="presentation"><a href="#">
                     Interests</a>
                 </li>
-	
-				<li role="presentation"><a href="#">Account & Settings</a></li>
-				<li role="presentation"><a href="#">Job Posting</a></li>
-				<hr>
-				<li role="presentation" id = "signout-menu"><a href="../signout/php/session_signout.php">Sign Out</a></li>
-					
-                </div>
             </ul>
 
+            <!-- Mobile Menu View -->
+            <ul class="nav subNav hidden-sm hidden-md hidden-lg">
+                    <li role="presentation">
+                        <a href="../profile-user-POV/">Home</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="../profile-user-POV/">Profile</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="../connections/">Connections</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#">Education</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#">Jobs</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#">Interests</a>
+                    </li>
+        
+                    <li role="presentation">
+                        <a href="#">Account & Settings</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#">Job Posting</a>
+                    </li>
+                    <hr>
+                    <li role="presentation" id="signout-menu">
+                        <a href="../signout/php/session_signout.php">Sign Out</a>
+                    </li>
+                </ul>
+
             </div><!-- /.navbar-collapse -->
-            <ul class="nav nav-pills subNav hidden-xs">
-                <li role="presentation"><a href="../feed/">
-                    Home</a>
-                </li>
-                <li role="presentation"><a href="../profile-user-POV/">
-                    Profile</a>
-                </li>
-                <li role="presentation"><a href="../connections/">
-                    Connections</a>
-                </li>
-                <li role="presentation"><a href="#">
-                    Education</a>
-                </li>
-                <li role="presentation"><a href="#">
-                    Jobs</a>
-                </li>
-                <li role="presentation"><a href="#">
-                    Interests</a>
-                </li>
-            </ul>
         </div><!-- /.container-fluid -->       
     </nav>
 
