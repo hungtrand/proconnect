@@ -10,9 +10,10 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];*/
   $page_title = "Feeds"; //require for front end
   include '../header/header.php';
 ?>
-    <link rel="stylesheet" type="text/css" href="css/index.css" />
     <link rel="stylesheet" type="text/css" href="../lib/lightbox/ekko-lightbox.min.css" />
     <link rel="stylesheet" type="text/css" href="../lib/lightbox/dark.css" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    
     <div id="main-container" class="container">
         <div class="row">
             <!-- Left main content -->
@@ -88,7 +89,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];*/
 
                 </div>
 
-                <div id="FeedListEndAlert" class="alert alert-info hidden text-center"></div>
+                <div id="FeedListEndAlert" class="alert alert-info hidden text-center" style="margin: 50px 20px;"></div>
             </div>
 
             <!-- Right suggestions column -->
@@ -133,6 +134,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];*/
 
     <script type="text/template" id="FeedTemplate">
         <div class="media feed">
+            <input type="hidden" class="FeedID" name="FeedID" value="" />
             <div class="media-left">
                 <a href="#">
                   <img class="media-object creatorImage thumbnail" style="object-fit: cover;" width="100px" height="100px" src="{{CreatorImage}}" alt="{{UserName}}">
@@ -170,7 +172,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];*/
     <script src="../connections/js/SuggestionList.js"></script>
     <script src="../lib/js/FileUpload.js"></script>
     <script src="../lib/ckeditor/ckeditor.js"></script>
-    <script src="../lib/lightbox/ekko-lightbox.min.js"></script>
+    <script src="../lib/lightbox/ekko-lightbox.js"></script>
     <script src="js/NewPost.js"></script>
     <script src="js/Feed.js"></script>
     <script src="js/FeedList.js"></script>

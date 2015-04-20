@@ -30,6 +30,7 @@ Feed.prototype = {
 		var feed = $(that.template);
 
 		var heading = that.data['Creator'] + ' shared: ';
+		feed.find('.FeedID').val(that.data['FeedID']);
 		feed.find('.creatorImage').attr('src', that.data['CreatorImage']);
 		feed.find('.contentHeading').text(heading);
 		feed.find('.contentImageLink').attr('href', that.data['ImageURL'])

@@ -60,6 +60,21 @@ class Feed2UserManager extends RecordSet {
 
 	}
 
+	public function loadNewer($newerThanID, $orderby="DATECREATED DESC") {
+		if (!is_integer($newerThanID)) {
+			$this->err = "Parameters must be integers";
+			return false;
+		}
+
+		$cond = "WHERE USERID = ? and FEEDID > ? ";
+		$cond.= "ORDER BY ".$orderby;
+		$params = ['USERID'=>$this->User->getID(), 'FEEDID'=>$newerThanID];
+		if (!$this->data = $this->fetchCustom($cond, $params)) return false;
+
+		return true;
+
+	}
+
 	public function getData() {
 		if (!isset($this->data) || count($this->data) < 1) return false;
 

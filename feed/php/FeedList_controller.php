@@ -23,14 +23,20 @@ if (!$User = new User($uid)) {
 }
 
 //$User = new User(10); // For Testing
-if (isset($_POST['page'])) $page = $_POST['page'];
+if (isset($_POST['page'])) $page = (int)$_POST['page'];
 else $page = 1;
-
 $rowsaPage = 10;
+
+if (isset($_POST['afterID'])) $afterID = (int)$_POST['afterID'];
 
 try {
 	$fum = new Feed2UserManager($User);
-	$fum->loadPage($page, $rowsaPage);
+
+	if (is_numeric($afterID))
+		$fum->loadNewer($afterID);
+	else
+		$fum->loadPage($page, $rowsaPage);
+	
 	$feeds = $fum->getAll();
 
 	$view = new FeedList_view();
@@ -45,6 +51,6 @@ try {
 }
 
 if ($data) echo json_encode($data);
-else echo "Nothing new in your network.";
+else echo "End of results.";
 
 ?>

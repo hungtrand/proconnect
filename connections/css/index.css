@@ -22,3 +22,7 @@ footer {
 	-webkit-border-radius: 25px;
 	font-size: 20px;
 }
+
+.ekko-lightbox .modal-dialog {
+	max-width: 900px !important;
+}
