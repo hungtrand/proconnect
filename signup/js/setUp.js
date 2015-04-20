@@ -12,10 +12,8 @@ $(document).ready(function(){
 				$("#other-country-group").show();
 			}
 		});
-
 	}
 	
-
 	var signup_options = $(".signup-option");
 	for(var i = 0; i<signup_options.length; i++){
 	    signup_options[i].addEventListener("click",function(){
@@ -37,6 +35,5 @@ $(document).ready(function(){
 			}
 	    });
 	}
-
 
 });

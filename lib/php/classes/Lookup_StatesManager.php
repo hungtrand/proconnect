@@ -2,6 +2,12 @@
 //require_once "../sqlConnection.php"; // for testing
 require_once __DIR__."/RecordSet.php";
 
+
+/**
+*	lookup_StatesManager - performs logic for lookup_StatesManager class. 
+*	@params: $city
+*	Responsibilities: look for state by city name.   
+*/
 class Lookup_StatesManager extends RecordSet {
 	protected $PrimaryKey;
 	protected $TableName;

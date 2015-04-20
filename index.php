@@ -7,6 +7,7 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>World's Most Professional Connection Network</title>
+	<link rel="icon" type="image/png" href="/favicon.ico">
 
 	<!-- JQuery link -->
 	<script type="text/javascript" src="lib/jquery/jquery-2.1.3.min.js"></script>

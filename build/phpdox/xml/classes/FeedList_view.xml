@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="FeedList_view" namespace="" name="FeedList_view" abstract="false" final="false" start="7" end="57">
+  <file path="/var/www/html/ProConnect/feed/php" file="FeedList_view.php" realpath="/var/www/html/ProConnect/feed/php/FeedList_view.php" size="1403" time="2015-04-15T15:16:24-07:00" unixtime="1429136184" sha1="009ac35d9e0f6f4f095099b5b1a7499ebe61e923" relative="feed/php/FeedList_view.php"/>
+  <implements full="view" namespace="" name="view"/>
+  <member name="FinalView" type="{unknown}" visibility="private" line="8"/>
+  <constructor name="__construct" start="10" end="12" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getView" start="14" end="16" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="load" start="18" end="56" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="feeds2User" byreference="false" type="{unknown}"/>
+  </method>
+  <interface full="view" namespace="" name="view">
+    <method name="getView" start="9" end="9" abstract="false" final="false" static="false" visibility="public"/>
+  </interface>
+</class>

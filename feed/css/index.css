@@ -1,0 +1,41 @@
+body {
+    padding-top: 120px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    background-color: #E8E8E8;
+}
+
+#fixed-right-section {
+	position: fixed;
+	height: 80%;
+	overflow: auto;
+	right: 20px;
+}
+
+#btnPostMode {
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	font-size: 20px;
+	margin: 10px;
+}
+
+blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: .8em 10px;
+  color: #666;
+  font-size: 22px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+blockquote p {
+  display: inline;
+}

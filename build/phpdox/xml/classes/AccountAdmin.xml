@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="AccountAdmin" namespace="" name="AccountAdmin" abstract="false" final="false" start="23" end="184">
+  <file path="/var/www/html/ProConnect/lib/php/classes" file="AccountAdmin.php" realpath="/var/www/html/ProConnect/lib/php/classes/AccountAdmin.php" size="4746" time="2015-04-16T18:30:00-07:00" unixtime="1429234200" sha1="30a995910310071a7a991dad4e7d4bbbd2e54baf" relative="lib/php/classes/AccountAdmin.php"/>
+  <docblock>
+    <description compact="AccountAdmin - performs logic for user sign up, sign in, reset password, and email verification. AccountAdmin also communicates with System_Email package to send out email regarding the user’s account changes.">Responsibilities: Account signup, Account validation, send verification email, login, logout</description>
+  </docblock>
+  <member name="db" type="{unknown}" visibility="private" line="24"/>
+  <member name="err" type="{unknown}" visibility="public" line="25"/>
+  <constructor name="__construct" start="27" end="30" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="signup" start="40" end="93" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="data" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="routine check / Validation" line="43"/>
+      <comment value="End of validation" line="60"/>
+      <comment value="echo &quot;\n&quot;.json_encode($newAcc-&gt;getData()).&quot;\n&quot;;" line="78"/>
+      <comment value="send email with verification link" line="84"/>
+    </inline>
+  </method>
+  <method name="ForgotPassword" start="95" end="112" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="email" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="VerifyForgotPasswordKey" start="114" end="129" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="email" byreference="false" type="{unknown}"/>
+    <parameter name="ForgotPasswordKey" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="UpdatePassword" start="131" end="142" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="Email" byreference="false" type="{unknown}"/>
+    <parameter name="ForgotPasswordKey" byreference="false" type="{unknown}"/>
+    <parameter name="newPassword" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="$email = ?;" line="132"/>
+    </inline>
+  </method>
+  <method name="AccountExists" start="144" end="148" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="email" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getAccount" start="150" end="161" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="login" byreference="false" type="{unknown}"/>
+    <parameter name="password" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="verifyAccount" start="163" end="183" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="email" byreference="false" type="{unknown}"/>
+    <parameter name="VerificationKey" byreference="false" type="{unknown}"/>
+  </method>
+</class>

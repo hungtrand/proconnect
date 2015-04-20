@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Profile" namespace="" name="Profile" abstract="false" final="false" start="13" end="230">
+  <file path="/var/www/html/ProConnect/lib/php/classes" file="Profile.php" realpath="/var/www/html/ProConnect/lib/php/classes/Profile.php" size="5182" time="2015-04-18T23:20:40-07:00" unixtime="1429424440" sha1="e9edeffceadff44f698e3ebb3e008f5356032ee6" relative="lib/php/classes/Profile.php"/>
+  <docblock>
+    <description compact="Profile - performs logic for Profile class."/>
+    <params value=": $UserID">Responsibilities: get info from a user's profile such as userid, first name, last name, birthday, gender, .etc.. .</params>
+  </docblock>
+  <extends full="ViewRecord" namespace="" name="ViewRecord"/>
+  <member name="TableName" type="string" default="'vw_PersonalInfo'" visibility="public" line="14"/>
+  <member name="PrimaryKey" type="string" default="'USERID'" visibility="public" line="15"/>
+  <member name="Columns" type="array" visibility="public" line="16"/>
+  <member name="PseudoColumns" type="array" visibility="public" line="21"/>
+  <member name="data" type="array" visibility="private" line="23"/>
+  <member name="UserID" type="{unknown}" visibility="private" line="24"/>
+  <member name="err" type="{unknown}" visibility="public" line="25"/>
+  <constructor name="__construct" start="27" end="39" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="ID" byreference="false" type="{unknown}" default="null"/>
+  </constructor>
+  <method name="getData" start="43" end="45" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getID" start="48" end="50" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getPrimaryKey" start="53" end="55" abstract="false" final="false" static="false" visibility="protected"/>
+  <method name="getTableName" start="58" end="60" abstract="false" final="false" static="false" visibility="protected"/>
+  <method name="getColumns" start="63" end="65" abstract="false" final="false" static="false" visibility="protected"/>
+  <method name="load" start="68" end="111" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="ID" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Get title, organization and location" line="78"/>
+      <comment value="if there's a current job then display that as connection's information" line="89"/>
+    </inline>
+  </method>
+  <method name="getName" start="115" end="120" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="isFullName" byreference="false" type="{unknown}" default="null"/>
+  </method>
+  <method name="getFirstName" start="122" end="124" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getLastName" start="126" end="128" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getMiddleName" start="130" end="132" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getBirthday" start="134" end="136" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getGender" start="138" end="140" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getAddress" start="142" end="144" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getCity" start="146" end="148" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getState" start="150" end="152" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getZip" start="154" end="156" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getCountry" start="158" end="160" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getPhone" start="162" end="164" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getPhoneType" start="166" end="168" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getSummary" start="170" end="172" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getProfileImage" start="174" end="176" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getEmploymentStatus" start="178" end="180" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getUsername" start="182" end="184" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getPassword" start="186" end="188" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="isActive" start="190" end="196" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getUserID" start="198" end="200" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getEmail" start="202" end="204" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getEmail_Alt" start="206" end="208" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="isVerified" start="210" end="216" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getTitle" start="218" end="220" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getOrganization" start="222" end="224" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getLocation" start="226" end="228" abstract="false" final="false" static="false" visibility="public"/>
+  <parent full="ViewRecord" namespace="" name="ViewRecord">
+    <member name="err" type="{unknown}" visibility="public" line="8"/>
+    <constructor name="__construct" start="10" end="13" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getData" start="15" end="15" abstract="true" final="false" static="false" visibility="public"/>
+    <method name="getID" start="16" end="16" abstract="true" final="false" static="false" visibility="public"/>
+    <method name="getPrimaryKey" start="17" end="17" abstract="true" final="false" static="false" visibility="protected"/>
+    <method name="getTableName" start="18" end="18" abstract="true" final="false" static="false" visibility="protected"/>
+    <method name="getColumns" start="19" end="19" abstract="true" final="false" static="false" visibility="protected"/>
+    <method name="load" start="22" end="22" abstract="true" final="false" static="false" visibility="public">
+    <parameter name="ID" byreference="false" type="{unknown}"/>
+  </method>
+    <method name="reload" start="24" end="26" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="fetch" start="28" end="62" abstract="false" final="false" static="false" visibility="protected">
+    <parameter name="ID" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="echo $sql;" line="41"/>
+    </inline>
+  </method>
+    <method name="fetchBy" start="64" end="109" abstract="false" final="false" static="false" visibility="protected">
+    <parameter name="params" byreference="false" type="{unknown}"/>
+    <parameter name="Logic" byreference="false" type="string" default="&quot;AND&quot;"/>
+    <inline>
+      <comment value="echo $sql.&quot;\n&quot;.json_encode($params).&quot;\n&quot;;" line="88"/>
+    </inline>
+  </method>
+  </parent>
+</class>

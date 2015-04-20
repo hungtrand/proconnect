@@ -2,6 +2,12 @@
 // include "../sqlConnection.php";
 require_once __DIR__."/../interfaces.php";
 
+/**
+*	ActiveRecordManager - abstract class. Manage to get data from sql database.
+*	@params: $TableName, $PrimaryKey
+*	Resposiblities: get the data from database by one ID. or get all the data , or get the very top data.
+*/
+
 abstract class ActiveRecordManager implements manager {
 	private $User;
 	private $db;

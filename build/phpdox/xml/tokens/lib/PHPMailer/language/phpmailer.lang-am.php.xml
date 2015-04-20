@@ -1,0 +1,224 @@
+<?xml version="1.0"?>
+<source xmlns="http://xml.phpdox.net/token">
+  <file xmlns="http://xml.phpdox.net/src" path="/var/www/html/ProConnect/lib/PHPMailer/language" file="phpmailer.lang-am.php" realpath="/var/www/html/ProConnect/lib/PHPMailer/language/phpmailer.lang-am.php" size="2095" time="2015-02-27T01:22:45-08:00" unixtime="1425028965" sha1="476c77ca5871bcef5181f16c68e0a6d0542c1a76" relative="lib/PHPMailer/language/phpmailer.lang-am.php"/>
+  <line no="1">
+    <token name="T_OPEN_TAG">&lt;?php</token>
+  </line>
+  <line no="2">
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="3">
+    <token name="T_DOC_COMMENT"> * Armenian PHPMailer language file: refer to English translation for definitive list</token>
+  </line>
+  <line no="4">
+    <token name="T_DOC_COMMENT"> * @package PHPMailer</token>
+  </line>
+  <line no="5">
+    <token name="T_DOC_COMMENT"> * @author Hrayr Grigoryan &lt;hrayr@bits.am&gt;</token>
+  </line>
+  <line no="6">
+    <token name="T_DOC_COMMENT"> */</token>
+  </line>
+  <line no="7">
+    <token name="T_WHITESPACE"> </token>
+  </line>
+  <line no="8">
+    <token name="T_VARIABLE">$PHPMAILER_LANG</token>
+    <token name="T_PHPDOX_OPEN_SQUARE">[</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'authenticate'</token>
+    <token name="T_PHPDOX_CLOSE_SQUARE">]</token>
+    <token name="T_WHITESPACE">         </token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'SMTP -&#x56B; &#x57D;&#x56D;&#x561;&#x56C;: &#x579;&#x570;&#x561;&#x57B;&#x578;&#x572;&#x57E;&#x565;&#x581; &#x57D;&#x57F;&#x578;&#x582;&#x563;&#x565;&#x56C; &#x56B;&#x57D;&#x56F;&#x578;&#x582;&#x569;&#x575;&#x578;&#x582;&#x576;&#x568;.'</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="9">
+    <token name="T_VARIABLE">$PHPMAILER_LANG</token>
+    <token name="T_PHPDOX_OPEN_SQUARE">[</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'connect_host'</token>
+    <token name="T_PHPDOX_CLOSE_SQUARE">]</token>
+    <token name="T_WHITESPACE">         </token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'SMTP -&#x56B; &#x57D;&#x56D;&#x561;&#x56C;: &#x579;&#x570;&#x561;&#x57B;&#x578;&#x572;&#x57E;&#x565;&#x581; &#x56F;&#x561;&#x57A; &#x570;&#x561;&#x57D;&#x57F;&#x561;&#x57F;&#x565;&#x56C; SMTP &#x57D;&#x565;&#x580;&#x57E;&#x565;&#x580;&#x56B; &#x570;&#x565;&#x57F;.'</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="10">
+    <token name="T_VARIABLE">$PHPMAILER_LANG</token>
+    <token name="T_PHPDOX_OPEN_SQUARE">[</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'data_not_accepted'</token>
+    <token name="T_PHPDOX_CLOSE_SQUARE">]</token>
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'SMTP -&#x56B; &#x57D;&#x56D;&#x561;&#x56C;: &#x57F;&#x57E;&#x575;&#x561;&#x56C;&#x576;&#x565;&#x580;&#x568; &#x568;&#x576;&#x564;&#x578;&#x582;&#x576;&#x57E;&#x561;&#x56E; &#x579;&#x565;&#x576;.'</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="11">
+    <token name="T_VARIABLE">$PHPMAILER_LANG</token>
+    <token name="T_PHPDOX_OPEN_SQUARE">[</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'empty_message'</token>
+    <token name="T_PHPDOX_CLOSE_SQUARE">]</token>
+    <token name="T_WHITESPACE">        </token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'&#x540;&#x561;&#x572;&#x578;&#x580;&#x564;&#x561;&#x563;&#x580;&#x578;&#x582;&#x569;&#x575;&#x578;&#x582;&#x576;&#x568; &#x564;&#x561;&#x57F;&#x561;&#x580;&#x56F; &#x567;'</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="12">
+    <token name="T_VARIABLE">$PHPMAILER_LANG</token>
+    <token name="T_PHPDOX_OPEN_SQUARE">[</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'encoding'</token>
+    <token name="T_PHPDOX_CLOSE_SQUARE">]</token>
+    <token name="T_WHITESPACE">             </token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'&#x53F;&#x578;&#x564;&#x561;&#x57E;&#x578;&#x580;&#x574;&#x561;&#x576; &#x561;&#x576;&#x570;&#x561;&#x575;&#x57F; &#x57F;&#x565;&#x57D;&#x561;&#x56F;: '</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="13">
+    <token name="T_VARIABLE">$PHPMAILER_LANG</token>
+    <token name="T_PHPDOX_OPEN_SQUARE">[</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'execute'</token>
+    <token name="T_PHPDOX_CLOSE_SQUARE">]</token>
+    <token name="T_WHITESPACE">              </token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'&#x549;&#x570;&#x561;&#x57B;&#x578;&#x572;&#x57E;&#x565;&#x581; &#x56B;&#x580;&#x561;&#x56F;&#x561;&#x576;&#x561;&#x581;&#x576;&#x565;&#x56C; &#x570;&#x580;&#x561;&#x574;&#x561;&#x576;&#x568;: '</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="14">
+    <token name="T_VARIABLE">$PHPMAILER_LANG</token>
+    <token name="T_PHPDOX_OPEN_SQUARE">[</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'file_access'</token>
+    <token name="T_PHPDOX_CLOSE_SQUARE">]</token>
+    <token name="T_WHITESPACE">          </token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'&#x556;&#x561;&#x575;&#x56C;&#x568; &#x570;&#x561;&#x57D;&#x561;&#x576;&#x565;&#x56C;&#x56B; &#x579;&#x567;: '</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="15">
+    <token name="T_VARIABLE">$PHPMAILER_LANG</token>
+    <token name="T_PHPDOX_OPEN_SQUARE">[</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'file_open'</token>
+    <token name="T_PHPDOX_CLOSE_SQUARE">]</token>
+    <token name="T_WHITESPACE">            </token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'&#x556;&#x561;&#x575;&#x56C;&#x56B; &#x57D;&#x56D;&#x561;&#x56C;: &#x586;&#x561;&#x575;&#x56C;&#x568; &#x579;&#x570;&#x561;&#x57B;&#x578;&#x572;&#x57E;&#x565;&#x581; &#x562;&#x561;&#x581;&#x565;&#x56C;: '</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="16">
+    <token name="T_VARIABLE">$PHPMAILER_LANG</token>
+    <token name="T_PHPDOX_OPEN_SQUARE">[</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'from_failed'</token>
+    <token name="T_PHPDOX_CLOSE_SQUARE">]</token>
+    <token name="T_WHITESPACE">          </token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'&#x548;&#x582;&#x572;&#x561;&#x580;&#x56F;&#x578;&#x572;&#x56B; &#x570;&#x565;&#x57F;&#x587;&#x575;&#x561;&#x56C; &#x570;&#x561;&#x57D;&#x581;&#x565;&#x576; &#x57D;&#x56D;&#x561;&#x56C; &#x567;: '</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="17">
+    <token name="T_VARIABLE">$PHPMAILER_LANG</token>
+    <token name="T_PHPDOX_OPEN_SQUARE">[</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'instantiate'</token>
+    <token name="T_PHPDOX_CLOSE_SQUARE">]</token>
+    <token name="T_WHITESPACE">          </token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'&#x540;&#x576;&#x561;&#x580;&#x561;&#x57E;&#x578;&#x580; &#x579;&#x567; &#x56F;&#x561;&#x576;&#x579;&#x565;&#x56C; mail &#x586;&#x578;&#x582;&#x576;&#x56F;&#x581;&#x56B;&#x561;&#x576;.'</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="18">
+    <token name="T_VARIABLE">$PHPMAILER_LANG</token>
+    <token name="T_PHPDOX_OPEN_SQUARE">[</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'invalid_address'</token>
+    <token name="T_PHPDOX_CLOSE_SQUARE">]</token>
+    <token name="T_WHITESPACE">      </token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'&#x540;&#x561;&#x57D;&#x581;&#x565;&#x576; &#x57D;&#x56D;&#x561;&#x56C; &#x567;: '</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="19">
+    <token name="T_VARIABLE">$PHPMAILER_LANG</token>
+    <token name="T_PHPDOX_OPEN_SQUARE">[</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'mailer_not_supported'</token>
+    <token name="T_PHPDOX_CLOSE_SQUARE">]</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">' &#x583;&#x578;&#x57D;&#x57F;&#x561;&#x575;&#x56B;&#x576; &#x57D;&#x565;&#x580;&#x57E;&#x565;&#x580;&#x56B; &#x570;&#x565;&#x57F; &#x579;&#x56B; &#x561;&#x577;&#x56D;&#x561;&#x57F;&#x578;&#x582;&#x574;.'</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="20">
+    <token name="T_VARIABLE">$PHPMAILER_LANG</token>
+    <token name="T_PHPDOX_OPEN_SQUARE">[</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'provide_address'</token>
+    <token name="T_PHPDOX_CLOSE_SQUARE">]</token>
+    <token name="T_WHITESPACE">      </token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'&#x531;&#x576;&#x570;&#x580;&#x561;&#x56A;&#x565;&#x577;&#x57F; &#x567; &#x57F;&#x580;&#x561;&#x574;&#x561;&#x564;&#x580;&#x565;&#x56C; &#x563;&#x578;&#x576;&#x565; &#x574;&#x565;&#x56F; &#x57D;&#x57F;&#x561;&#x581;&#x578;&#x572;&#x56B; e-mail &#x570;&#x561;&#x57D;&#x581;&#x565;.'</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="21">
+    <token name="T_VARIABLE">$PHPMAILER_LANG</token>
+    <token name="T_PHPDOX_OPEN_SQUARE">[</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'recipients_failed'</token>
+    <token name="T_PHPDOX_CLOSE_SQUARE">]</token>
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'SMTP -&#x56B; &#x57D;&#x56D;&#x561;&#x56C;: &#x579;&#x56B; &#x570;&#x561;&#x57B;&#x578;&#x572;&#x57E;&#x565;&#x56C; &#x578;&#x582;&#x572;&#x561;&#x580;&#x56F;&#x565;&#x56C; &#x570;&#x565;&#x57F;&#x587;&#x575;&#x561;&#x56C; &#x57D;&#x57F;&#x561;&#x581;&#x578;&#x572;&#x576;&#x565;&#x580;&#x56B; &#x570;&#x561;&#x57D;&#x581;&#x565;&#x576;&#x565;&#x580;&#x56B;&#x576;: '</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="22">
+    <token name="T_VARIABLE">$PHPMAILER_LANG</token>
+    <token name="T_PHPDOX_OPEN_SQUARE">[</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'signing'</token>
+    <token name="T_PHPDOX_CLOSE_SQUARE">]</token>
+    <token name="T_WHITESPACE">              </token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'&#x54D;&#x57F;&#x578;&#x580;&#x561;&#x563;&#x580;&#x574;&#x561;&#x576; &#x57D;&#x56D;&#x561;&#x56C;: '</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="23">
+    <token name="T_VARIABLE">$PHPMAILER_LANG</token>
+    <token name="T_PHPDOX_OPEN_SQUARE">[</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'smtp_connect_failed'</token>
+    <token name="T_PHPDOX_CLOSE_SQUARE">]</token>
+    <token name="T_WHITESPACE">  </token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'SMTP -&#x56B; connect() &#x586;&#x578;&#x582;&#x576;&#x56F;&#x581;&#x56B;&#x561;&#x576; &#x579;&#x56B; &#x570;&#x561;&#x57B;&#x578;&#x572;&#x57E;&#x565;&#x56C;'</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="24">
+    <token name="T_VARIABLE">$PHPMAILER_LANG</token>
+    <token name="T_PHPDOX_OPEN_SQUARE">[</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'smtp_error'</token>
+    <token name="T_PHPDOX_CLOSE_SQUARE">]</token>
+    <token name="T_WHITESPACE">           </token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'SMTP &#x57D;&#x565;&#x580;&#x57E;&#x565;&#x580;&#x56B; &#x57D;&#x56D;&#x561;&#x56C;: '</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="25">
+    <token name="T_VARIABLE">$PHPMAILER_LANG</token>
+    <token name="T_PHPDOX_OPEN_SQUARE">[</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'variable_set'</token>
+    <token name="T_PHPDOX_CLOSE_SQUARE">]</token>
+    <token name="T_WHITESPACE">         </token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'&#x549;&#x56B; &#x570;&#x561;&#x57B;&#x578;&#x572;&#x57E;&#x578;&#x582;&#x574; &#x57D;&#x57F;&#x565;&#x572;&#x56E;&#x565;&#x56C; &#x56F;&#x561;&#x574; &#x57E;&#x565;&#x580;&#x561;&#x583;&#x578;&#x56D;&#x565;&#x56C; &#x583;&#x578;&#x583;&#x578;&#x56D;&#x561;&#x56F;&#x561;&#x576;&#x568;: '</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="26"/>
+</source>

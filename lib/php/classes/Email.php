@@ -9,9 +9,11 @@ require_once __DIR__."/../../PHPMailer/PHPMailerAutoload.php";
 // $m->loadTemplate(1, ['{{FullName}}'=>'Hung Tran', '{{VerificationLink}}'=>'http://www.google.com']);
 // $m->send(); // For Testing
 
-/*
-	The Email class will initiate an instance of an empty Email
-	Change its properties and call send method to send the email
+/**
+*	Email - The Email class will initiate an instance of an empty Email
+*			Change its properties and call send method to send the email
+*	@params - $params
+*	Responsibilities: send the email to user for acount activation information.  
 */
 class Email {
 	public $EQID;

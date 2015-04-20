@@ -7,13 +7,35 @@ textarea {
 	resize: none;
 }
 
+.ConnectionName {
+	margin-top: 5px;	
+}
+.message-subject {
+	margin-top: -5px;
+}
+
+.message-time {
+	margin-top: -5px;
+	margin-bottom: -10px;
+}
+
+.message-text {
+	overflow: auto;
+	height: auto;
+}
+
 .sidebar-icon {
 	float: right;
 	color: black;
 }
 
+.dropdown-menu-nav {
+	padding-top: 20px;
+	right: 26px;
+}
+
 #footers {
-	margin-left: -50px;
+	margin-left: -36px;
 }
 
 #fixed-right-section {
@@ -50,8 +72,65 @@ textarea {
 
 #sidebar {
 	position: fixed;
-	overflow: hidden;
+	overflow: auto;
 	left: 60px;
 	height: 73%;
 	width: 20%;
+}
+
+#sidebar li {
+  list-style: none;
+}
+
+#sidebar a {
+  display: block;
+  margin: 0;
+  padding: 8px 12px;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+#sidebar input {
+  display: block;
+  margin: 0;
+  padding: 8px 12px;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+@media only screen and (max-width: 860px) {
+	#fixed-right-section {
+		display: none;
+	}
+	#sidebar {
+		left: 10px;
+		width: 95%;
+		height: auto;
+		position: relative;
+	}
+	#small-navigator li:hover > ul {
+		display: block;
+	}
+	#small-navigator li:hover #sidebar {
+		height: 100%;
+	}
+	#message-form {
+  		display: none;
+  		height: auto;
+  		filter: alpha(opacity=95);
+  		opacity: 0.95;
+  		position: relative;
+  		width: auto;
+  		z-index: 200;
+	}
+	#message-form a {
+		background-color: #EEEEEE;
+	}
+	#message-form a:hover {
+		background-color: #DDDDDD;
+	}
+	#message-div {
+		margin-left: 10px;
+		width: 95%;
+	}
 }

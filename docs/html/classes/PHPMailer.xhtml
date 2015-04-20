@@ -1,0 +1,852 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - PHPMailer</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">PHPMailer</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#tasks">Tasks</a>
+          </li>
+          <li>
+            <a href="#constants">Constants</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/lib/PHPMailer/class.phpmailer.php.xhtml#line28">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>\</small>PHPMailer</h1>
+        <h4>PHPMailer - PHP email creation and transport class.</h4>
+        <p/>
+        <ul>
+          <li>Author: Marcus Bointon (Synchro/coolbru) &lt;phpmailer@synchromedia.co.uk&gt;</li>
+        </ul>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class PHPMailer
+            {<br/><ul class="none"><li>// constants</li><li>const STOP_MESSAGE = 0;</li><li>const STOP_CONTINUE = 1;</li><li>const STOP_CRITICAL = 2;</li><li>const CRLF = "\r\n";</li></ul><ul class="none"><li>// members</li><li>public string <a href="#members">$Version</a>;
+                    </li><li>public integer <a href="#members">$Priority</a>;
+                    </li><li>public string <a href="#members">$CharSet</a>;
+                    </li><li>public string <a href="#members">$ContentType</a>;
+                    </li><li>public string <a href="#members">$Encoding</a>;
+                    </li><li>public string <a href="#members">$ErrorInfo</a>;
+                    </li><li>public string <a href="#members">$From</a>;
+                    </li><li>public string <a href="#members">$FromName</a>;
+                    </li><li>public string <a href="#members">$Sender</a>;
+                    </li><li>public string <a href="#members">$ReturnPath</a>;
+                    </li><li>public string <a href="#members">$Subject</a>;
+                    </li><li>public string <a href="#members">$Body</a>;
+                    </li><li>public string <a href="#members">$AltBody</a>;
+                    </li><li>public string <a href="#members">$Ical</a>;
+                    </li><li>protected string <a href="#members">$MIMEBody</a>;
+                    </li><li>protected string <a href="#members">$MIMEHeader</a>;
+                    </li><li>protected string <a href="#members">$mailHeader</a>;
+                    </li><li>public integer <a href="#members">$WordWrap</a>;
+                    </li><li>public string <a href="#members">$Mailer</a>;
+                    </li><li>public string <a href="#members">$Sendmail</a>;
+                    </li><li>public <a href="#members">$UseSendmailOptions</a>;
+                    </li><li>public string <a href="#members">$PluginDir</a>;
+                    </li><li>public string <a href="#members">$ConfirmReadingTo</a>;
+                    </li><li>public string <a href="#members">$Hostname</a>;
+                    </li><li>public string <a href="#members">$MessageID</a>;
+                    </li><li>public string <a href="#members">$MessageDate</a>;
+                    </li><li>public string <a href="#members">$Host</a>;
+                    </li><li>public integer <a href="#members">$Port</a>;
+                    </li><li>public string <a href="#members">$Helo</a>;
+                    </li><li>public string <a href="#members">$SMTPSecure</a>;
+                    </li><li>public <a href="#members">$SMTPAuth</a>;
+                    </li><li>public string <a href="#members">$Username</a>;
+                    </li><li>public string <a href="#members">$Password</a>;
+                    </li><li>public string <a href="#members">$AuthType</a>;
+                    </li><li>public string <a href="#members">$Realm</a>;
+                    </li><li>public string <a href="#members">$Workstation</a>;
+                    </li><li>public integer <a href="#members">$Timeout</a>;
+                    </li><li>public integer <a href="#members">$SMTPDebug</a>;
+                    </li><li>public string <a href="#members">$Debugoutput</a>;
+                    </li><li>public <a href="#members">$SMTPKeepAlive</a>;
+                    </li><li>public <a href="#members">$SingleTo</a>;
+                    </li><li>public array <a href="#members">$SingleToArray</a>;
+                    </li><li>public <a href="#members">$do_verp</a>;
+                    </li><li>public <a href="#members">$AllowEmpty</a>;
+                    </li><li>public string <a href="#members">$LE</a>;
+                    </li><li>public string <a href="#members">$DKIM_selector</a>;
+                    </li><li>public string <a href="#members">$DKIM_identity</a>;
+                    </li><li>public string <a href="#members">$DKIM_passphrase</a>;
+                    </li><li>public string <a href="#members">$DKIM_domain</a>;
+                    </li><li>public string <a href="#members">$DKIM_private</a>;
+                    </li><li>public string <a href="#members">$action_function</a>;
+                    </li><li>public string <a href="#members">$XMailer</a>;
+                    </li><li>protected <a href="#members">$smtp</a>;
+                    </li><li>protected array <a href="#members">$to</a>;
+                    </li><li>protected array <a href="#members">$cc</a>;
+                    </li><li>protected array <a href="#members">$bcc</a>;
+                    </li><li>protected array <a href="#members">$ReplyTo</a>;
+                    </li><li>protected array <a href="#members">$all_recipients</a>;
+                    </li><li>protected array <a href="#members">$attachment</a>;
+                    </li><li>protected array <a href="#members">$CustomHeader</a>;
+                    </li><li>protected string <a href="#members">$lastMessageID</a>;
+                    </li><li>protected string <a href="#members">$message_type</a>;
+                    </li><li>protected array <a href="#members">$boundary</a>;
+                    </li><li>protected array <a href="#members">$language</a>;
+                    </li><li>protected integer <a href="#members">$error_count</a>;
+                    </li><li>protected string <a href="#members">$sign_cert_file</a>;
+                    </li><li>protected string <a href="#members">$sign_key_file</a>;
+                    </li><li>protected string <a href="#members">$sign_key_pass</a>;
+                    </li><li>protected <a href="#members">$exceptions</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="PHPMailer" href="../classes/PHPMailer/__construct.xhtml">__construct</a>()
+                    </li><li>public void <a title="PHPMailer" href="../classes/PHPMailer/__destruct.xhtml">__destruct</a>()
+                    </li><li>private boolean <a title="PHPMailer" href="../classes/PHPMailer/mailPassthru.xhtml">mailPassthru</a>()
+                    </li><li>protected void <a title="PHPMailer" href="../classes/PHPMailer/edebug.xhtml">edebug</a>()
+                    </li><li>public void <a title="PHPMailer" href="../classes/PHPMailer/isHTML.xhtml">isHTML</a>()
+                    </li><li>public void <a title="PHPMailer" href="../classes/PHPMailer/isSMTP.xhtml">isSMTP</a>()
+                    </li><li>public void <a title="PHPMailer" href="../classes/PHPMailer/isMail.xhtml">isMail</a>()
+                    </li><li>public void <a title="PHPMailer" href="../classes/PHPMailer/isSendmail.xhtml">isSendmail</a>()
+                    </li><li>public void <a title="PHPMailer" href="../classes/PHPMailer/isQmail.xhtml">isQmail</a>()
+                    </li><li>public boolean <a title="PHPMailer" href="../classes/PHPMailer/addAddress.xhtml">addAddress</a>()
+                    </li><li>public boolean <a title="PHPMailer" href="../classes/PHPMailer/addCC.xhtml">addCC</a>()
+                    </li><li>public boolean <a title="PHPMailer" href="../classes/PHPMailer/addBCC.xhtml">addBCC</a>()
+                    </li><li>public boolean <a title="PHPMailer" href="../classes/PHPMailer/addReplyTo.xhtml">addReplyTo</a>()
+                    </li><li>protected boolean <a title="PHPMailer" href="../classes/PHPMailer/addAnAddress.xhtml">addAnAddress</a>()
+                    </li><li>public boolean <a title="PHPMailer" href="../classes/PHPMailer/setFrom.xhtml">setFrom</a>()
+                    </li><li>public string <a title="PHPMailer" href="../classes/PHPMailer/getLastMessageID.xhtml">getLastMessageID</a>()
+                    </li><li>public static boolean <a title="PHPMailer" href="../classes/PHPMailer/validateAddress.xhtml">validateAddress</a>()
+                    </li><li>public boolean <a title="PHPMailer" href="../classes/PHPMailer/send.xhtml">send</a>()
+                    </li><li>public boolean <a title="PHPMailer" href="../classes/PHPMailer/preSend.xhtml">preSend</a>()
+                    </li><li>public boolean <a title="PHPMailer" href="../classes/PHPMailer/postSend.xhtml">postSend</a>()
+                    </li><li>protected boolean <a title="PHPMailer" href="../classes/PHPMailer/sendmailSend.xhtml">sendmailSend</a>()
+                    </li><li>protected boolean <a title="PHPMailer" href="../classes/PHPMailer/mailSend.xhtml">mailSend</a>()
+                    </li><li>public SMTP <a title="PHPMailer" href="../classes/PHPMailer/getSMTPInstance.xhtml">getSMTPInstance</a>()
+                    </li><li>protected boolean <a title="PHPMailer" href="../classes/PHPMailer/smtpSend.xhtml">smtpSend</a>()
+                    </li><li>public boolean <a title="PHPMailer" href="../classes/PHPMailer/smtpConnect.xhtml">smtpConnect</a>()
+                    </li><li>public void <a title="PHPMailer" href="../classes/PHPMailer/smtpClose.xhtml">smtpClose</a>()
+                    </li><li>public boolean <a title="PHPMailer" href="../classes/PHPMailer/setLanguage.xhtml">setLanguage</a>()
+                    </li><li>public array <a title="PHPMailer" href="../classes/PHPMailer/getTranslations.xhtml">getTranslations</a>()
+                    </li><li>public string <a title="PHPMailer" href="../classes/PHPMailer/addrAppend.xhtml">addrAppend</a>()
+                    </li><li>public string <a title="PHPMailer" href="../classes/PHPMailer/addrFormat.xhtml">addrFormat</a>()
+                    </li><li>public string <a title="PHPMailer" href="../classes/PHPMailer/wrapText.xhtml">wrapText</a>()
+                    </li><li>public integer <a title="PHPMailer" href="../classes/PHPMailer/utf8CharBoundary.xhtml">utf8CharBoundary</a>()
+                    </li><li>public void <a title="PHPMailer" href="../classes/PHPMailer/setWordWrap.xhtml">setWordWrap</a>()
+                    </li><li>public string <a title="PHPMailer" href="../classes/PHPMailer/createHeader.xhtml">createHeader</a>()
+                    </li><li>public string <a title="PHPMailer" href="../classes/PHPMailer/getMailMIME.xhtml">getMailMIME</a>()
+                    </li><li>public string <a title="PHPMailer" href="../classes/PHPMailer/getSentMIMEMessage.xhtml">getSentMIMEMessage</a>()
+                    </li><li>public string <a title="PHPMailer" href="../classes/PHPMailer/createBody.xhtml">createBody</a>()
+                    </li><li>protected string <a title="PHPMailer" href="../classes/PHPMailer/getBoundary.xhtml">getBoundary</a>()
+                    </li><li>protected string <a title="PHPMailer" href="../classes/PHPMailer/endBoundary.xhtml">endBoundary</a>()
+                    </li><li>protected void <a title="PHPMailer" href="../classes/PHPMailer/setMessageType.xhtml">setMessageType</a>()
+                    </li><li>public string <a title="PHPMailer" href="../classes/PHPMailer/headerLine.xhtml">headerLine</a>()
+                    </li><li>public string <a title="PHPMailer" href="../classes/PHPMailer/textLine.xhtml">textLine</a>()
+                    </li><li>public boolean <a title="PHPMailer" href="../classes/PHPMailer/addAttachment.xhtml">addAttachment</a>()
+                    </li><li>public array <a title="PHPMailer" href="../classes/PHPMailer/getAttachments.xhtml">getAttachments</a>()
+                    </li><li>protected string <a title="PHPMailer" href="../classes/PHPMailer/attachAll.xhtml">attachAll</a>()
+                    </li><li>protected string <a title="PHPMailer" href="../classes/PHPMailer/encodeFile.xhtml">encodeFile</a>()
+                    </li><li>public string <a title="PHPMailer" href="../classes/PHPMailer/encodeString.xhtml">encodeString</a>()
+                    </li><li>public string <a title="PHPMailer" href="../classes/PHPMailer/encodeHeader.xhtml">encodeHeader</a>()
+                    </li><li>public boolean <a title="PHPMailer" href="../classes/PHPMailer/hasMultiBytes.xhtml">hasMultiBytes</a>()
+                    </li><li>public boolean <a title="PHPMailer" href="../classes/PHPMailer/has8bitChars.xhtml">has8bitChars</a>()
+                    </li><li>public string <a title="PHPMailer" href="../classes/PHPMailer/base64EncodeWrapMB.xhtml">base64EncodeWrapMB</a>()
+                    </li><li>public string <a title="PHPMailer" href="../classes/PHPMailer/encodeQP.xhtml">encodeQP</a>()
+                    </li><li>public string <a title="PHPMailer" href="../classes/PHPMailer/encodeQPphp.xhtml">encodeQPphp</a>()
+                    </li><li>public string <a title="PHPMailer" href="../classes/PHPMailer/encodeQ.xhtml">encodeQ</a>()
+                    </li><li>public void <a title="PHPMailer" href="../classes/PHPMailer/addStringAttachment.xhtml">addStringAttachment</a>()
+                    </li><li>public boolean <a title="PHPMailer" href="../classes/PHPMailer/addEmbeddedImage.xhtml">addEmbeddedImage</a>()
+                    </li><li>public boolean <a title="PHPMailer" href="../classes/PHPMailer/addStringEmbeddedImage.xhtml">addStringEmbeddedImage</a>()
+                    </li><li>public boolean <a title="PHPMailer" href="../classes/PHPMailer/inlineImageExists.xhtml">inlineImageExists</a>()
+                    </li><li>public boolean <a title="PHPMailer" href="../classes/PHPMailer/attachmentExists.xhtml">attachmentExists</a>()
+                    </li><li>public boolean <a title="PHPMailer" href="../classes/PHPMailer/alternativeExists.xhtml">alternativeExists</a>()
+                    </li><li>public void <a title="PHPMailer" href="../classes/PHPMailer/clearAddresses.xhtml">clearAddresses</a>()
+                    </li><li>public void <a title="PHPMailer" href="../classes/PHPMailer/clearCCs.xhtml">clearCCs</a>()
+                    </li><li>public void <a title="PHPMailer" href="../classes/PHPMailer/clearBCCs.xhtml">clearBCCs</a>()
+                    </li><li>public void <a title="PHPMailer" href="../classes/PHPMailer/clearReplyTos.xhtml">clearReplyTos</a>()
+                    </li><li>public void <a title="PHPMailer" href="../classes/PHPMailer/clearAllRecipients.xhtml">clearAllRecipients</a>()
+                    </li><li>public void <a title="PHPMailer" href="../classes/PHPMailer/clearAttachments.xhtml">clearAttachments</a>()
+                    </li><li>public void <a title="PHPMailer" href="../classes/PHPMailer/clearCustomHeaders.xhtml">clearCustomHeaders</a>()
+                    </li><li>protected void <a title="PHPMailer" href="../classes/PHPMailer/setError.xhtml">setError</a>()
+                    </li><li>public static string <a title="PHPMailer" href="../classes/PHPMailer/rfcDate.xhtml">rfcDate</a>()
+                    </li><li>protected string <a title="PHPMailer" href="../classes/PHPMailer/serverHostname.xhtml">serverHostname</a>()
+                    </li><li>protected string <a title="PHPMailer" href="../classes/PHPMailer/lang.xhtml">lang</a>()
+                    </li><li>public boolean <a title="PHPMailer" href="../classes/PHPMailer/isError.xhtml">isError</a>()
+                    </li><li>public string <a title="PHPMailer" href="../classes/PHPMailer/fixEOL.xhtml">fixEOL</a>()
+                    </li><li>public void <a title="PHPMailer" href="../classes/PHPMailer/addCustomHeader.xhtml">addCustomHeader</a>()
+                    </li><li>public string <a title="PHPMailer" href="../classes/PHPMailer/msgHTML.xhtml">msgHTML</a>()
+                    </li><li>public string <a title="PHPMailer" href="../classes/PHPMailer/html2text.xhtml">html2text</a>()
+                    </li><li>public static string <a title="PHPMailer" href="../classes/PHPMailer/_mime_types.xhtml">_mime_types</a>()
+                    </li><li>public static string <a title="PHPMailer" href="../classes/PHPMailer/filenameToType.xhtml">filenameToType</a>()
+                    </li><li>public static string|array <a title="PHPMailer" href="../classes/PHPMailer/mb_pathinfo.xhtml">mb_pathinfo</a>()
+                    </li><li>public boolean <a title="PHPMailer" href="../classes/PHPMailer/set.xhtml">set</a>()
+                    </li><li>public string <a title="PHPMailer" href="../classes/PHPMailer/secureHeader.xhtml">secureHeader</a>()
+                    </li><li>public static string <a title="PHPMailer" href="../classes/PHPMailer/normalizeBreaks.xhtml">normalizeBreaks</a>()
+                    </li><li>public void <a title="PHPMailer" href="../classes/PHPMailer/sign.xhtml">sign</a>()
+                    </li><li>public string <a title="PHPMailer" href="../classes/PHPMailer/DKIM_QP.xhtml">DKIM_QP</a>()
+                    </li><li>public string <a title="PHPMailer" href="../classes/PHPMailer/DKIM_Sign.xhtml">DKIM_Sign</a>()
+                    </li><li>public string <a title="PHPMailer" href="../classes/PHPMailer/DKIM_HeaderC.xhtml">DKIM_HeaderC</a>()
+                    </li><li>public string <a title="PHPMailer" href="../classes/PHPMailer/DKIM_BodyC.xhtml">DKIM_BodyC</a>()
+                    </li><li>public string <a title="PHPMailer" href="../classes/PHPMailer/DKIM_Add.xhtml">DKIM_Add</a>()
+                    </li><li>public array <a title="PHPMailer" href="../classes/PHPMailer/getToAddresses.xhtml">getToAddresses</a>()
+                    </li><li>public array <a title="PHPMailer" href="../classes/PHPMailer/getCcAddresses.xhtml">getCcAddresses</a>()
+                    </li><li>public array <a title="PHPMailer" href="../classes/PHPMailer/getBccAddresses.xhtml">getBccAddresses</a>()
+                    </li><li>public array <a title="PHPMailer" href="../classes/PHPMailer/getReplyToAddresses.xhtml">getReplyToAddresses</a>()
+                    </li><li>public array <a title="PHPMailer" href="../classes/PHPMailer/getAllRecipientAddresses.xhtml">getAllRecipientAddresses</a>()
+                    </li><li>protected void <a title="PHPMailer" href="../classes/PHPMailer/doCallback.xhtml">doCallback</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="tasks">Tasks</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th style="width:3em;">Line</th>
+              <th>Task</th>
+            </tr>
+          </thead>
+          <tr>
+            <td class="nummeric">+</td>
+            <td>Why is this needed when the SMTP class takes care of it?</td>
+          </tr>
+          <tr>
+            <td class="nummeric">+</td>
+            <td>This should really not be public</td>
+          </tr>
+          <tr>
+            <td class="nummeric">3175+</td>
+            <td>Should this not be using the __set() magic function?</td>
+          </tr>
+        </table>
+        <h2 id="constants">Constants</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="STOP_MESSAGE">STOP_MESSAGE</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td id="STOP_CONTINUE">STOP_CONTINUE</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td id="STOP_CRITICAL">STOP_CRITICAL</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td id="CRLF">CRLF</td>
+              <td>"\r\n"</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>protected</h4>
+          <ul class="members">
+            <li id="CustomHeader">
+              <strong>$CustomHeader</strong>
+              <br/>
+              <span class="indent">The array of custom headers.</span>
+            </li>
+            <li id="MIMEBody">
+              <strong>$MIMEBody</strong>
+              <br/>
+              <span class="indent">The complete compiled MIME message body.</span>
+            </li>
+            <li id="MIMEHeader">
+              <strong>$MIMEHeader</strong>
+              <br/>
+              <span class="indent">The complete compiled MIME message headers.</span>
+            </li>
+            <li id="ReplyTo">
+              <strong>$ReplyTo</strong>
+              <br/>
+              <span class="indent">The array of reply-to names and addresses.</span>
+            </li>
+            <li id="all_recipients">
+              <strong>$all_recipients</strong>
+              <br/>
+              <span class="indent">An array of all kinds of addresses.</span>
+            </li>
+            <li id="attachment">
+              <strong>$attachment</strong>
+              <br/>
+              <span class="indent">The array of attachments.</span>
+            </li>
+            <li id="bcc">
+              <strong>$bcc</strong>
+              <br/>
+              <span class="indent">The array of 'bcc' addresses.</span>
+            </li>
+            <li id="boundary">
+              <strong>$boundary</strong>
+              <br/>
+              <span class="indent">The array of MIME boundary strings.</span>
+            </li>
+            <li id="cc">
+              <strong>$cc</strong>
+              <br/>
+              <span class="indent">The array of 'cc' addresses.</span>
+            </li>
+            <li id="error_count">
+              <strong>$error_count</strong>
+              <br/>
+              <span class="indent">The number of errors encountered.</span>
+            </li>
+            <li id="exceptions">
+              <strong>$exceptions</strong>
+              <br/>
+              <span class="indent">Whether to throw exceptions for errors.</span>
+            </li>
+            <li id="language">
+              <strong>$language</strong>
+              <br/>
+              <span class="indent">The array of available languages.</span>
+            </li>
+            <li id="lastMessageID">
+              <strong>$lastMessageID</strong>
+              <br/>
+              <span class="indent">The most recent Message-ID (including angular brackets).</span>
+            </li>
+            <li id="mailHeader">
+              <strong>$mailHeader</strong>
+              <br/>
+              <span class="indent">Extra headers that createHeader() doesn't fold in.</span>
+            </li>
+            <li id="message_type">
+              <strong>$message_type</strong>
+              <br/>
+              <span class="indent">The message's MIME type.</span>
+            </li>
+            <li id="sign_cert_file">
+              <strong>$sign_cert_file</strong>
+              <br/>
+              <span class="indent">The S/MIME certificate file path.</span>
+            </li>
+            <li id="sign_key_file">
+              <strong>$sign_key_file</strong>
+              <br/>
+              <span class="indent">The S/MIME key file path.</span>
+            </li>
+            <li id="sign_key_pass">
+              <strong>$sign_key_pass</strong>
+              <br/>
+              <span class="indent">The S/MIME password for the key.</span>
+            </li>
+            <li id="smtp">
+              <strong>$smtp</strong>
+              <br/>
+              <span class="indent">An instance of the SMTP sender class.</span>
+            </li>
+            <li id="to">
+              <strong>$to</strong>
+              <br/>
+              <span class="indent">The array of 'to' addresses.</span>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul class="members">
+            <li id="AllowEmpty">
+              <strong>$AllowEmpty</strong>
+              <br/>
+              <span class="indent">Whether to allow sending messages with an empty body.</span>
+            </li>
+            <li id="AltBody">
+              <strong>$AltBody</strong>
+              <br/>
+              <span class="indent">The plain-text message body.</span>
+            </li>
+            <li id="AuthType">
+              <strong>$AuthType</strong>
+              <br/>
+              <span class="indent">SMTP auth type.</span>
+            </li>
+            <li id="Body">
+              <strong>$Body</strong>
+              <br/>
+              <span class="indent">An HTML or plain text message body.</span>
+            </li>
+            <li id="CharSet">
+              <strong>$CharSet</strong>
+              <br/>
+              <span class="indent">The character set of the message.</span>
+            </li>
+            <li id="ConfirmReadingTo">
+              <strong>$ConfirmReadingTo</strong>
+              <br/>
+              <span class="indent">The email address that a reading confirmation should be sent to.</span>
+            </li>
+            <li id="ContentType">
+              <strong>$ContentType</strong>
+              <br/>
+              <span class="indent">The MIME Content-type of the message.</span>
+            </li>
+            <li id="DKIM_domain">
+              <strong>$DKIM_domain</strong>
+              <br/>
+              <span class="indent">DKIM signing domain name.</span>
+            </li>
+            <li id="DKIM_identity">
+              <strong>$DKIM_identity</strong>
+              <br/>
+              <span class="indent">DKIM Identity.</span>
+            </li>
+            <li id="DKIM_passphrase">
+              <strong>$DKIM_passphrase</strong>
+              <br/>
+              <span class="indent">DKIM passphrase.</span>
+            </li>
+            <li id="DKIM_private">
+              <strong>$DKIM_private</strong>
+              <br/>
+              <span class="indent">DKIM private key file path.</span>
+            </li>
+            <li id="DKIM_selector">
+              <strong>$DKIM_selector</strong>
+              <br/>
+              <span class="indent">DKIM selector.</span>
+            </li>
+            <li id="Debugoutput">
+              <strong>$Debugoutput</strong>
+              <br/>
+              <span class="indent">How to handle debug output.</span>
+            </li>
+            <li id="Encoding">
+              <strong>$Encoding</strong>
+              <br/>
+              <span class="indent">The message encoding.</span>
+            </li>
+            <li id="ErrorInfo">
+              <strong>$ErrorInfo</strong>
+              <br/>
+              <span class="indent">Holds the most recent mailer error message.</span>
+            </li>
+            <li id="From">
+              <strong>$From</strong>
+              <br/>
+              <span class="indent">The From email address for the message.</span>
+            </li>
+            <li id="FromName">
+              <strong>$FromName</strong>
+              <br/>
+              <span class="indent">The From name of the message.</span>
+            </li>
+            <li id="Helo">
+              <strong>$Helo</strong>
+              <br/>
+              <span class="indent">The SMTP HELO of the message.</span>
+            </li>
+            <li id="Host">
+              <strong>$Host</strong>
+              <br/>
+              <span class="indent">SMTP hosts.</span>
+            </li>
+            <li id="Hostname">
+              <strong>$Hostname</strong>
+              <br/>
+              <span class="indent">The hostname to use in Message-Id and Received headers and as default HELO string.</span>
+            </li>
+            <li id="Ical">
+              <strong>$Ical</strong>
+              <br/>
+              <span class="indent">An iCal message part body.</span>
+            </li>
+            <li id="LE">
+              <strong>$LE</strong>
+              <br/>
+              <span class="indent">The default line ending.</span>
+            </li>
+            <li id="Mailer">
+              <strong>$Mailer</strong>
+              <br/>
+              <span class="indent">Which method to use to send mail.</span>
+            </li>
+            <li id="MessageDate">
+              <strong>$MessageDate</strong>
+              <br/>
+              <span class="indent">The message Date to be used in the Date header.</span>
+            </li>
+            <li id="MessageID">
+              <strong>$MessageID</strong>
+              <br/>
+              <span class="indent">An ID to be used in the Message-Id header.</span>
+            </li>
+            <li id="Password">
+              <strong>$Password</strong>
+              <br/>
+              <span class="indent">SMTP password.</span>
+            </li>
+            <li id="PluginDir">
+              <strong>$PluginDir</strong>
+              <br/>
+              <span class="indent">Path to PHPMailer plugins.</span>
+            </li>
+            <li id="Port">
+              <strong>$Port</strong>
+              <br/>
+              <span class="indent">The default SMTP server port.</span>
+            </li>
+            <li id="Priority">
+              <strong>$Priority</strong>
+              <br/>
+              <span class="indent">Email priority.</span>
+            </li>
+            <li id="Realm">
+              <strong>$Realm</strong>
+              <br/>
+              <span class="indent">SMTP realm.</span>
+            </li>
+            <li id="ReturnPath">
+              <strong>$ReturnPath</strong>
+              <br/>
+              <span class="indent">The Return-Path of the message.</span>
+            </li>
+            <li id="SMTPAuth">
+              <strong>$SMTPAuth</strong>
+              <br/>
+              <span class="indent">Whether to use SMTP authentication.</span>
+            </li>
+            <li id="SMTPDebug">
+              <strong>$SMTPDebug</strong>
+              <br/>
+              <span class="indent">SMTP class debug output mode.</span>
+            </li>
+            <li id="SMTPKeepAlive">
+              <strong>$SMTPKeepAlive</strong>
+              <br/>
+              <span class="indent">Whether to keep SMTP connection open after each message.</span>
+            </li>
+            <li id="SMTPSecure">
+              <strong>$SMTPSecure</strong>
+              <br/>
+              <span class="indent">The secure connection prefix.</span>
+            </li>
+            <li id="Sender">
+              <strong>$Sender</strong>
+              <br/>
+              <span class="indent">The Sender email (Return-Path) of the message.</span>
+            </li>
+            <li id="Sendmail">
+              <strong>$Sendmail</strong>
+              <br/>
+              <span class="indent">The path to the sendmail program.</span>
+            </li>
+            <li id="SingleTo">
+              <strong>$SingleTo</strong>
+              <br/>
+              <span class="indent">Whether to split multiple to addresses into multiple messages or send them all in one message.</span>
+            </li>
+            <li id="SingleToArray">
+              <strong>$SingleToArray</strong>
+              <br/>
+              <span class="indent">Storage for addresses when SingleTo is enabled.</span>
+            </li>
+            <li id="Subject">
+              <strong>$Subject</strong>
+              <br/>
+              <span class="indent">The Subject of the message.</span>
+            </li>
+            <li id="Timeout">
+              <strong>$Timeout</strong>
+              <br/>
+              <span class="indent">The SMTP server timeout in seconds.</span>
+            </li>
+            <li id="UseSendmailOptions">
+              <strong>$UseSendmailOptions</strong>
+              <br/>
+              <span class="indent">Whether mail() uses a fully sendmail-compatible MTA.</span>
+            </li>
+            <li id="Username">
+              <strong>$Username</strong>
+              <br/>
+              <span class="indent">SMTP username.</span>
+            </li>
+            <li id="Version">
+              <strong>$Version</strong>
+              <br/>
+              <span class="indent">The PHPMailer Version number.</span>
+            </li>
+            <li id="WordWrap">
+              <strong>$WordWrap</strong>
+              <br/>
+              <span class="indent">Word-wrap the message body to this number of chars.</span>
+            </li>
+            <li id="Workstation">
+              <strong>$Workstation</strong>
+              <br/>
+              <span class="indent">SMTP workstation.</span>
+            </li>
+            <li id="XMailer">
+              <strong>$XMailer</strong>
+              <br/>
+              <span class="indent">What to put in the X-Mailer header.</span>
+            </li>
+            <li id="action_function">
+              <strong>$action_function</strong>
+              <br/>
+              <span class="indent">Callback Action function name.</span>
+            </li>
+            <li id="do_verp">
+              <strong>$do_verp</strong>
+              <br/>
+              <span class="indent">Whether to generate VERP addresses on send.</span>
+            </li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="mailPassthru"><a title="PHPMailer" href="../classes/PHPMailer/mailPassthru.xhtml">mailPassthru()</a>
+                — Call mail() in a safe_mode-aware fashion.</li>
+          </ul>
+          <h4>protected</h4>
+          <ul>
+            <li id="addAnAddress"><a title="PHPMailer" href="../classes/PHPMailer/addAnAddress.xhtml">addAnAddress()</a>
+                — Add an address to one of the recipient arrays.</li>
+            <li id="attachAll"><a title="PHPMailer" href="../classes/PHPMailer/attachAll.xhtml">attachAll()</a>
+                — Attach all file, string, and binary attachments to the message.</li>
+            <li id="doCallback"><a title="PHPMailer" href="../classes/PHPMailer/doCallback.xhtml">doCallback()</a>
+                — Perform a callback.</li>
+            <li id="edebug"><a title="PHPMailer" href="../classes/PHPMailer/edebug.xhtml">edebug()</a>
+                — Output debugging info via user-defined method.</li>
+            <li id="encodeFile"><a title="PHPMailer" href="../classes/PHPMailer/encodeFile.xhtml">encodeFile()</a>
+                — Encode a file attachment in requested format.</li>
+            <li id="endBoundary"><a title="PHPMailer" href="../classes/PHPMailer/endBoundary.xhtml">endBoundary()</a>
+                — Return the end of a message boundary.</li>
+            <li id="getBoundary"><a title="PHPMailer" href="../classes/PHPMailer/getBoundary.xhtml">getBoundary()</a>
+                — Return the start of a message boundary.</li>
+            <li id="lang"><a title="PHPMailer" href="../classes/PHPMailer/lang.xhtml">lang()</a>
+                — Get an error message in the current language.</li>
+            <li id="mailSend"><a title="PHPMailer" href="../classes/PHPMailer/mailSend.xhtml">mailSend()</a>
+                — Send mail using the PHP mail() function.</li>
+            <li id="sendmailSend"><a title="PHPMailer" href="../classes/PHPMailer/sendmailSend.xhtml">sendmailSend()</a>
+                — Send mail using the $Sendmail program.</li>
+            <li id="serverHostname"><a title="PHPMailer" href="../classes/PHPMailer/serverHostname.xhtml">serverHostname()</a>
+                — Get the server hostname.</li>
+            <li id="setError"><a title="PHPMailer" href="../classes/PHPMailer/setError.xhtml">setError()</a>
+                — Add an error message to the error container.</li>
+            <li id="setMessageType"><a title="PHPMailer" href="../classes/PHPMailer/setMessageType.xhtml">setMessageType()</a>
+                — Set the message type.</li>
+            <li id="smtpSend"><a title="PHPMailer" href="../classes/PHPMailer/smtpSend.xhtml">smtpSend()</a>
+                — Send mail via SMTP.</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__construct"><a title="PHPMailer" href="../classes/PHPMailer/__construct.xhtml">__construct()</a>
+                — Constructor.</li>
+            <li id="__destruct"><a title="PHPMailer" href="../classes/PHPMailer/__destruct.xhtml">__destruct()</a>
+                — Destructor.</li>
+            <li id="DKIM_Add"><a title="PHPMailer" href="../classes/PHPMailer/DKIM_Add.xhtml">DKIM_Add()</a>
+                — Create the DKIM header and body in a new message header.</li>
+            <li id="DKIM_BodyC"><a title="PHPMailer" href="../classes/PHPMailer/DKIM_BodyC.xhtml">DKIM_BodyC()</a>
+                — Generate a DKIM canonicalization body.</li>
+            <li id="DKIM_HeaderC"><a title="PHPMailer" href="../classes/PHPMailer/DKIM_HeaderC.xhtml">DKIM_HeaderC()</a>
+                — Generate a DKIM canonicalization header.</li>
+            <li id="DKIM_QP"><a title="PHPMailer" href="../classes/PHPMailer/DKIM_QP.xhtml">DKIM_QP()</a>
+                — Quoted-Printable-encode a DKIM header.</li>
+            <li id="DKIM_Sign"><a title="PHPMailer" href="../classes/PHPMailer/DKIM_Sign.xhtml">DKIM_Sign()</a>
+                — Generate a DKIM signature.</li>
+            <li id="_mime_types"><a title="PHPMailer" href="../classes/PHPMailer/_mime_types.xhtml">_mime_types()</a>
+                — Get the MIME type for a file extension.</li>
+            <li id="addAddress"><a title="PHPMailer" href="../classes/PHPMailer/addAddress.xhtml">addAddress()</a>
+                — Add a "To" address.</li>
+            <li id="addAttachment"><a title="PHPMailer" href="../classes/PHPMailer/addAttachment.xhtml">addAttachment()</a>
+                — Add an attachment from a path on the filesystem.</li>
+            <li id="addBCC"><a title="PHPMailer" href="../classes/PHPMailer/addBCC.xhtml">addBCC()</a>
+                — Add a "BCC" address.</li>
+            <li id="addCC"><a title="PHPMailer" href="../classes/PHPMailer/addCC.xhtml">addCC()</a>
+                — Add a "CC" address.</li>
+            <li id="addCustomHeader"><a title="PHPMailer" href="../classes/PHPMailer/addCustomHeader.xhtml">addCustomHeader()</a>
+                — Add a custom header.</li>
+            <li id="addEmbeddedImage"><a title="PHPMailer" href="../classes/PHPMailer/addEmbeddedImage.xhtml">addEmbeddedImage()</a>
+                — Add an embedded (inline) attachment from a file.</li>
+            <li id="addReplyTo"><a title="PHPMailer" href="../classes/PHPMailer/addReplyTo.xhtml">addReplyTo()</a>
+                — Add a "Reply-to" address.</li>
+            <li id="addStringAttachment"><a title="PHPMailer" href="../classes/PHPMailer/addStringAttachment.xhtml">addStringAttachment()</a>
+                — Add a string or binary attachment (non-filesystem).</li>
+            <li id="addStringEmbeddedImage"><a title="PHPMailer" href="../classes/PHPMailer/addStringEmbeddedImage.xhtml">addStringEmbeddedImage()</a>
+                — Add an embedded stringified attachment.</li>
+            <li id="addrAppend"><a title="PHPMailer" href="../classes/PHPMailer/addrAppend.xhtml">addrAppend()</a>
+                — Create recipient headers.</li>
+            <li id="addrFormat"><a title="PHPMailer" href="../classes/PHPMailer/addrFormat.xhtml">addrFormat()</a>
+                — Format an address for use in a message header.</li>
+            <li id="alternativeExists"><a title="PHPMailer" href="../classes/PHPMailer/alternativeExists.xhtml">alternativeExists()</a>
+                — Check if this message has an alternative body set.</li>
+            <li id="attachmentExists"><a title="PHPMailer" href="../classes/PHPMailer/attachmentExists.xhtml">attachmentExists()</a>
+                — Check if an attachment (non-inline) is present.</li>
+            <li id="base64EncodeWrapMB"><a title="PHPMailer" href="../classes/PHPMailer/base64EncodeWrapMB.xhtml">base64EncodeWrapMB()</a>
+                — Encode and wrap long multibyte strings for mail headers without breaking lines within a character.</li>
+            <li id="clearAddresses"><a title="PHPMailer" href="../classes/PHPMailer/clearAddresses.xhtml">clearAddresses()</a>
+                — Clear all To recipients.</li>
+            <li id="clearAllRecipients"><a title="PHPMailer" href="../classes/PHPMailer/clearAllRecipients.xhtml">clearAllRecipients()</a>
+                — Clear all recipient types.</li>
+            <li id="clearAttachments"><a title="PHPMailer" href="../classes/PHPMailer/clearAttachments.xhtml">clearAttachments()</a>
+                — Clear all filesystem, string, and binary attachments.</li>
+            <li id="clearBCCs"><a title="PHPMailer" href="../classes/PHPMailer/clearBCCs.xhtml">clearBCCs()</a>
+                — Clear all BCC recipients.</li>
+            <li id="clearCCs"><a title="PHPMailer" href="../classes/PHPMailer/clearCCs.xhtml">clearCCs()</a>
+                — Clear all CC recipients.</li>
+            <li id="clearCustomHeaders"><a title="PHPMailer" href="../classes/PHPMailer/clearCustomHeaders.xhtml">clearCustomHeaders()</a>
+                — Clear all custom headers.</li>
+            <li id="clearReplyTos"><a title="PHPMailer" href="../classes/PHPMailer/clearReplyTos.xhtml">clearReplyTos()</a>
+                — Clear all ReplyTo recipients.</li>
+            <li id="createBody"><a title="PHPMailer" href="../classes/PHPMailer/createBody.xhtml">createBody()</a>
+                — Assemble the message body.</li>
+            <li id="createHeader"><a title="PHPMailer" href="../classes/PHPMailer/createHeader.xhtml">createHeader()</a>
+                — Assemble message headers.</li>
+            <li id="encodeHeader"><a title="PHPMailer" href="../classes/PHPMailer/encodeHeader.xhtml">encodeHeader()</a>
+                — Encode a header string optimally.</li>
+            <li id="encodeQ"><a title="PHPMailer" href="../classes/PHPMailer/encodeQ.xhtml">encodeQ()</a>
+                — Encode a string using Q encoding.</li>
+            <li id="encodeQP"><a title="PHPMailer" href="../classes/PHPMailer/encodeQP.xhtml">encodeQP()</a>
+                — Encode a string in quoted-printable format.</li>
+            <li id="encodeQPphp"><a title="PHPMailer" href="../classes/PHPMailer/encodeQPphp.xhtml">encodeQPphp()</a>
+                — Backward compatibility wrapper for an old QP encoding function that was removed.</li>
+            <li id="encodeString"><a title="PHPMailer" href="../classes/PHPMailer/encodeString.xhtml">encodeString()</a>
+                — Encode a string in requested format.</li>
+            <li id="filenameToType"><a title="PHPMailer" href="../classes/PHPMailer/filenameToType.xhtml">filenameToType()</a>
+                — Map a file name to a MIME type.</li>
+            <li id="fixEOL"><a title="PHPMailer" href="../classes/PHPMailer/fixEOL.xhtml">fixEOL()</a>
+                — Ensure consistent line endings in a string.</li>
+            <li id="getAllRecipientAddresses"><a title="PHPMailer" href="../classes/PHPMailer/getAllRecipientAddresses.xhtml">getAllRecipientAddresses()</a>
+                — Allows for public read access to 'all_recipients' property.</li>
+            <li id="getAttachments"><a title="PHPMailer" href="../classes/PHPMailer/getAttachments.xhtml">getAttachments()</a>
+                — Return the array of attachments.</li>
+            <li id="getBccAddresses"><a title="PHPMailer" href="../classes/PHPMailer/getBccAddresses.xhtml">getBccAddresses()</a>
+                — Allows for public read access to 'bcc' property.</li>
+            <li id="getCcAddresses"><a title="PHPMailer" href="../classes/PHPMailer/getCcAddresses.xhtml">getCcAddresses()</a>
+                — Allows for public read access to 'cc' property.</li>
+            <li id="getLastMessageID"><a title="PHPMailer" href="../classes/PHPMailer/getLastMessageID.xhtml">getLastMessageID()</a>
+                — Return the Message-ID header of the last email.</li>
+            <li id="getMailMIME"><a title="PHPMailer" href="../classes/PHPMailer/getMailMIME.xhtml">getMailMIME()</a>
+                — Get the message MIME type headers.</li>
+            <li id="getReplyToAddresses"><a title="PHPMailer" href="../classes/PHPMailer/getReplyToAddresses.xhtml">getReplyToAddresses()</a>
+                — Allows for public read access to 'ReplyTo' property.</li>
+            <li id="getSMTPInstance"><a title="PHPMailer" href="../classes/PHPMailer/getSMTPInstance.xhtml">getSMTPInstance()</a>
+                — Get an instance to use for SMTP operations.</li>
+            <li id="getSentMIMEMessage"><a title="PHPMailer" href="../classes/PHPMailer/getSentMIMEMessage.xhtml">getSentMIMEMessage()</a>
+                — Returns the whole MIME message.</li>
+            <li id="getToAddresses"><a title="PHPMailer" href="../classes/PHPMailer/getToAddresses.xhtml">getToAddresses()</a>
+                — Allows for public read access to 'to' property.</li>
+            <li id="getTranslations"><a title="PHPMailer" href="../classes/PHPMailer/getTranslations.xhtml">getTranslations()</a>
+                — Get the array of strings for the current language.</li>
+            <li id="has8bitChars"><a title="PHPMailer" href="../classes/PHPMailer/has8bitChars.xhtml">has8bitChars()</a>
+                — Does a string contain any 8-bit chars (in any charset)?</li>
+            <li id="hasMultiBytes"><a title="PHPMailer" href="../classes/PHPMailer/hasMultiBytes.xhtml">hasMultiBytes()</a>
+                — Check if a string contains multi-byte characters.</li>
+            <li id="headerLine"><a title="PHPMailer" href="../classes/PHPMailer/headerLine.xhtml">headerLine()</a>
+                — Format a header line.</li>
+            <li id="html2text"><a title="PHPMailer" href="../classes/PHPMailer/html2text.xhtml">html2text()</a>
+                — Convert an HTML string into plain text.</li>
+            <li id="inlineImageExists"><a title="PHPMailer" href="../classes/PHPMailer/inlineImageExists.xhtml">inlineImageExists()</a>
+                — Check if an inline attachment is present.</li>
+            <li id="isError"><a title="PHPMailer" href="../classes/PHPMailer/isError.xhtml">isError()</a>
+                — Check if an error occurred.</li>
+            <li id="isHTML"><a title="PHPMailer" href="../classes/PHPMailer/isHTML.xhtml">isHTML()</a>
+                — Sets message type to HTML or plain.</li>
+            <li id="isMail"><a title="PHPMailer" href="../classes/PHPMailer/isMail.xhtml">isMail()</a>
+                — Send messages using PHP's mail() function.</li>
+            <li id="isQmail"><a title="PHPMailer" href="../classes/PHPMailer/isQmail.xhtml">isQmail()</a>
+                — Send messages using qmail.</li>
+            <li id="isSMTP"><a title="PHPMailer" href="../classes/PHPMailer/isSMTP.xhtml">isSMTP()</a>
+                — Send messages using SMTP.</li>
+            <li id="isSendmail"><a title="PHPMailer" href="../classes/PHPMailer/isSendmail.xhtml">isSendmail()</a>
+                — Send messages using $Sendmail.</li>
+            <li id="mb_pathinfo"><a title="PHPMailer" href="../classes/PHPMailer/mb_pathinfo.xhtml">mb_pathinfo()</a>
+                — Multi-byte-safe pathinfo replacement.</li>
+            <li id="msgHTML"><a title="PHPMailer" href="../classes/PHPMailer/msgHTML.xhtml">msgHTML()</a>
+                — Create a message from an HTML string.</li>
+            <li id="normalizeBreaks"><a title="PHPMailer" href="../classes/PHPMailer/normalizeBreaks.xhtml">normalizeBreaks()</a>
+                — Normalize line breaks in a string.</li>
+            <li id="postSend"><a title="PHPMailer" href="../classes/PHPMailer/postSend.xhtml">postSend()</a>
+                — Actually send a message.</li>
+            <li id="preSend"><a title="PHPMailer" href="../classes/PHPMailer/preSend.xhtml">preSend()</a>
+                — Prepare a message for sending.</li>
+            <li id="rfcDate"><a title="PHPMailer" href="../classes/PHPMailer/rfcDate.xhtml">rfcDate()</a>
+                — Return an RFC 822 formatted date.</li>
+            <li id="secureHeader"><a title="PHPMailer" href="../classes/PHPMailer/secureHeader.xhtml">secureHeader()</a>
+                — Strip newlines to prevent header injection.</li>
+            <li id="send"><a title="PHPMailer" href="../classes/PHPMailer/send.xhtml">send()</a>
+                — Create a message and send it.</li>
+            <li id="set"><a title="PHPMailer" href="../classes/PHPMailer/set.xhtml">set()</a>
+                — Set or reset instance properties.</li>
+            <li id="setFrom"><a title="PHPMailer" href="../classes/PHPMailer/setFrom.xhtml">setFrom()</a>
+                — Set the From and FromName properties.</li>
+            <li id="setLanguage"><a title="PHPMailer" href="../classes/PHPMailer/setLanguage.xhtml">setLanguage()</a>
+                — Set the language for error messages.</li>
+            <li id="setWordWrap"><a title="PHPMailer" href="../classes/PHPMailer/setWordWrap.xhtml">setWordWrap()</a>
+                — Set the body wrapping.</li>
+            <li id="sign"><a title="PHPMailer" href="../classes/PHPMailer/sign.xhtml">sign()</a>
+                — Set the public and private key files and password for S/MIME signing.</li>
+            <li id="smtpClose"><a title="PHPMailer" href="../classes/PHPMailer/smtpClose.xhtml">smtpClose()</a>
+                — Close the active SMTP session if one exists.</li>
+            <li id="smtpConnect"><a title="PHPMailer" href="../classes/PHPMailer/smtpConnect.xhtml">smtpConnect()</a>
+                — Initiate a connection to an SMTP server.</li>
+            <li id="textLine"><a title="PHPMailer" href="../classes/PHPMailer/textLine.xhtml">textLine()</a>
+                — Return a formatted mail line.</li>
+            <li id="utf8CharBoundary"><a title="PHPMailer" href="../classes/PHPMailer/utf8CharBoundary.xhtml">utf8CharBoundary()</a>
+                — Find the last character boundary prior to $maxLength in a utf-8 quoted (printable) encoded string.</li>
+            <li id="validateAddress"><a title="PHPMailer" href="../classes/PHPMailer/validateAddress.xhtml">validateAddress()</a>
+                — Check that a string looks like an email address.</li>
+            <li id="wrapText"><a title="PHPMailer" href="../classes/PHPMailer/wrapText.xhtml">wrapText()</a>
+                — Word-wrap message.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.7.0 - Copyright (C) 2010 - 2015 by Arne Blankerts</span>
+    </footer>
+  </body>
+</html>

@@ -25,7 +25,7 @@ class User extends ActiveRecord {
 	public static $PrimaryKey = 'USERID';
 	public static $Columns = ['USERID', 'FIRSTNAME', 'MIDDLENAME', 'LASTNAME',
 				'GENDER', 'BIRTHDAY', 'ADDRESS', 'CITY', 'STATE', 'ZIP', 'COUNTRY',
-				'PHONE', 'PHONETYPE', 'SUMMARY', 'EMPLOYMENTSTATUS'];
+				'PHONE', 'PHONETYPE', 'SUMMARY', 'EMPLOYMENTSTATUS', 'PROFILEIMAGE'];
 	
 	private $data = [];
 	private $UserID;
@@ -147,6 +147,10 @@ class User extends ActiveRecord {
 		return $this->data['EMPLOYMENTSTATUS'];
 	}
 
+	public function getProfileImage() {
+		return $this->data['PROFILEIMAGE'];
+	}
+
 	public function setName($FirstName, $LastName, $MidName) {
 		$this->data['FIRSTNAME'] = $FirstName;
 		$this->data['LASTNAME'] = $LastName;
@@ -190,6 +194,12 @@ class User extends ActiveRecord {
 
 	public function setEmploymentStatus($strStatus) {
 		$this->data['EMPLOYMENTSTATUS'] = $strStatus;
+
+		return true;
+	}
+
+	public function setProfileImage($strURL) {
+		$this->data['PROFILEIMAGE'] = $strURL;
 
 		return true;
 	}

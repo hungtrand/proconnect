@@ -1,0 +1,652 @@
+<?xml version="1.0"?>
+<source xmlns="http://xml.phpdox.net/token">
+  <file xmlns="http://xml.phpdox.net/src" path="/var/www/html/ProConnect/connections" file="index.php" realpath="/var/www/html/ProConnect/connections/index.php" size="9722" time="2015-04-09T11:38:33-07:00" unixtime="1428604713" sha1="c4eee57dcf356e1d8069e8df5e43308b9e5b5150" relative="connections/index.php"/>
+  <line no="1">
+    <token name="T_OPEN_TAG">&lt;?php</token>
+  </line>
+  <line no="2">
+    <token name="T_COMMENT">//error_reporting(E_ALL); // debug</token>
+  </line>
+  <line no="3">
+    <token name="T_COMMENT">//ini_set("display_errors", 1); // debug</token>
+  </line>
+  <line no="4">
+    <token name="T_COMMENT">// include '../signout/php/session_check_signout.php';</token>
+  </line>
+  <line no="5"/>
+  <line no="6">
+    <token name="T_VARIABLE">$UData</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">json_decode</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_VARIABLE">$_SESSION</token>
+    <token name="T_PHPDOX_OPEN_SQUARE">[</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'__USERDATA__'</token>
+    <token name="T_PHPDOX_CLOSE_SQUARE">]</token>
+    <token name="T_PHPDOX_COMMA">,</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_STRING">true</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="7">
+    <token name="T_VARIABLE">$FullName</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_VARIABLE">$UData</token>
+    <token name="T_PHPDOX_OPEN_SQUARE">[</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'FIRSTNAME'</token>
+    <token name="T_PHPDOX_CLOSE_SQUARE">]</token>
+    <token name="T_PHPDOX_DOT">.</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">' '</token>
+    <token name="T_PHPDOX_DOT">.</token>
+    <token name="T_VARIABLE">$UData</token>
+    <token name="T_PHPDOX_OPEN_SQUARE">[</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'LASTNAME'</token>
+    <token name="T_PHPDOX_CLOSE_SQUARE">]</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="8"/>
+  <line no="9">
+    <token name="T_VARIABLE">$page_title</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">"Connections - ProConnect"</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_COMMENT">//required for front end</token>
+  </line>
+  <line no="10">
+    <token name="T_INCLUDE">include</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'../header/header.php'</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="11">
+    <token name="T_CLOSE_TAG">?&gt;</token>
+  </line>
+  <line no="12"/>
+  <line no="13">
+    <token name="T_INLINE_HTML">    &lt;!-- Page Content --&gt;</token>
+  </line>
+  <line no="14">
+    <token name="T_INLINE_HTML">    &lt;div class="container"&gt;</token>
+  </line>
+  <line no="15"/>
+  <line no="16">
+    <token name="T_INLINE_HTML">        &lt;div class="row"&gt;</token>
+  </line>
+  <line no="17"/>
+  <line no="18">
+    <token name="T_INLINE_HTML">            &lt;!-- Blog Entries Column --&gt;</token>
+  </line>
+  <line no="19">
+    <token name="T_INLINE_HTML">            &lt;div class="col col-md-8"&gt;</token>
+  </line>
+  <line no="20">
+    <token name="T_INLINE_HTML">                &lt;div id="ConnectionsHeader" class="row"&gt;</token>
+  </line>
+  <line no="21">
+    <token name="T_INLINE_HTML">                    &lt;div class="col col-xs-8"&gt;</token>
+  </line>
+  <line no="22">
+    <token name="T_INLINE_HTML">                        &lt;h2 class="text-info"&gt;ProConnection Connections&lt;/h2&gt;</token>
+  </line>
+  <line no="23">
+    <token name="T_INLINE_HTML">                    &lt;/div&gt;</token>
+  </line>
+  <line no="24"/>
+  <line no="25">
+    <token name="T_INLINE_HTML">                    &lt;div class="col col-xs-4 text-right"&gt;</token>
+  </line>
+  <line no="26">
+    <token name="T_INLINE_HTML">                        &lt;button id="btnAddConnection" class="btn btn-danger" title="Add New Connection" data-toggle="modal" data-target="#modalNewConnection"&gt;&lt;span class="glyphicon glyphicon-plus"&gt;&lt;/span&gt;&lt;/button&gt;</token>
+  </line>
+  <line no="27">
+    <token name="T_INLINE_HTML">                    &lt;/div&gt;</token>
+  </line>
+  <line no="28">
+    <token name="T_INLINE_HTML">                    </token>
+  </line>
+  <line no="29">
+    <token name="T_INLINE_HTML">                &lt;/div&gt;</token>
+  </line>
+  <line no="30"/>
+  <line no="31">
+    <token name="T_INLINE_HTML">                &lt;div id="FilterTools" class="row well"&gt;</token>
+  </line>
+  <line no="32">
+    <token name="T_INLINE_HTML">                    &lt;div class="col col-xs-4"&gt;</token>
+  </line>
+  <line no="33">
+    <token name="T_INLINE_HTML">                        &lt;div class="btn-group"&gt;</token>
+  </line>
+  <line no="34">
+    <token name="T_INLINE_HTML">                            &lt;button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"&gt;</token>
+  </line>
+  <line no="35">
+    <token name="T_INLINE_HTML">                            Sort &lt;span class="caret"&gt;&lt;/span&gt;</token>
+  </line>
+  <line no="36">
+    <token name="T_INLINE_HTML">                            &lt;/button&gt;</token>
+  </line>
+  <line no="37">
+    <token name="T_INLINE_HTML">                            &lt;ul class="dropdown-menu" role="menu"&gt;</token>
+  </line>
+  <line no="38">
+    <token name="T_INLINE_HTML">                                &lt;li&gt;&lt;a href="#"&gt;By Recent Conversation&lt;/a&gt;&lt;/li&gt;</token>
+  </line>
+  <line no="39">
+    <token name="T_INLINE_HTML">                                &lt;li&gt;&lt;a href="#"&gt;By First Name&lt;/a&gt;&lt;/li&gt;</token>
+  </line>
+  <line no="40">
+    <token name="T_INLINE_HTML">                                &lt;li&gt;&lt;a href="#"&gt;By Last Name&lt;/a&gt;&lt;/li&gt;</token>
+  </line>
+  <line no="41">
+    <token name="T_INLINE_HTML">                                &lt;li&gt;&lt;a href="#"&gt;By Date Joined&lt;/a&gt;&lt;/li&gt;</token>
+  </line>
+  <line no="42">
+    <token name="T_INLINE_HTML">                            &lt;/ul&gt;</token>
+  </line>
+  <line no="43">
+    <token name="T_INLINE_HTML">                        &lt;/div&gt;</token>
+  </line>
+  <line no="44">
+    <token name="T_INLINE_HTML">                    &lt;/div&gt;</token>
+  </line>
+  <line no="45"/>
+  <line no="46">
+    <token name="T_INLINE_HTML">                    &lt;div class="col col-xs-4"&gt;</token>
+  </line>
+  <line no="47">
+    <token name="T_INLINE_HTML">                        &lt;div class="btn-group"&gt;</token>
+  </line>
+  <line no="48">
+    <token name="T_INLINE_HTML">                            &lt;button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"&gt;</token>
+  </line>
+  <line no="49">
+    <token name="T_INLINE_HTML">                            Filter &lt;span class="caret"&gt;&lt;/span&gt;</token>
+  </line>
+  <line no="50">
+    <token name="T_INLINE_HTML">                            &lt;/button&gt;</token>
+  </line>
+  <line no="51">
+    <token name="T_INLINE_HTML">                            &lt;ul class="dropdown-menu" role="menu"&gt;</token>
+  </line>
+  <line no="52">
+    <token name="T_INLINE_HTML">                                &lt;li&gt;&lt;a href="#"&gt;All Contacts&lt;/a&gt;&lt;/li&gt;</token>
+  </line>
+  <line no="53">
+    <token name="T_INLINE_HTML">                                &lt;li&gt;&lt;a href="#"&gt;Companies&lt;/a&gt;&lt;/li&gt;</token>
+  </line>
+  <line no="54">
+    <token name="T_INLINE_HTML">                            &lt;/ul&gt;</token>
+  </line>
+  <line no="55">
+    <token name="T_INLINE_HTML">                        &lt;/div&gt;</token>
+  </line>
+  <line no="56">
+    <token name="T_INLINE_HTML">                    &lt;/div&gt;</token>
+  </line>
+  <line no="57"/>
+  <line no="58">
+    <token name="T_INLINE_HTML">                    &lt;div class="col col-xs-4 text-right"&gt;</token>
+  </line>
+  <line no="59">
+    <token name="T_INLINE_HTML">                        &lt;button class="btn btn-sm btn-default"&gt;</token>
+  </line>
+  <line no="60">
+    <token name="T_INLINE_HTML">                            Search</token>
+  </line>
+  <line no="61">
+    <token name="T_INLINE_HTML">                            &lt;span class="glyphicon glyphicon-search"&gt;&lt;/span&gt;</token>
+  </line>
+  <line no="62">
+    <token name="T_INLINE_HTML">                        &lt;/button&gt;</token>
+  </line>
+  <line no="63">
+    <token name="T_INLINE_HTML">                    &lt;/div&gt;</token>
+  </line>
+  <line no="64">
+    <token name="T_INLINE_HTML">                &lt;/div&gt;</token>
+  </line>
+  <line no="65"/>
+  <line no="66">
+    <token name="T_INLINE_HTML">                &lt;hr /&gt;</token>
+  </line>
+  <line no="67"/>
+  <line no="68">
+    <token name="T_INLINE_HTML">                &lt;div id="ConnListing"&gt;</token>
+  </line>
+  <line no="69"/>
+  <line no="70">
+    <token name="T_INLINE_HTML">                &lt;/div&gt;</token>
+  </line>
+  <line no="71"/>
+  <line no="72">
+    <token name="T_INLINE_HTML">                &lt;div id="ConnectionsListEndAlert" class="alert alert-info hidden text-center"&gt;&lt;/div&gt;</token>
+  </line>
+  <line no="73">
+    <token name="T_INLINE_HTML">               </token>
+  </line>
+  <line no="74">
+    <token name="T_INLINE_HTML">            &lt;/div&gt;</token>
+  </line>
+  <line no="75"/>
+  <line no="76">
+    <token name="T_INLINE_HTML">            &lt;!-- Blog Sidebar Widgets Column --&gt;</token>
+  </line>
+  <line no="77">
+    <token name="T_INLINE_HTML">            &lt;div id="fixed-right-section" class="col col-md-4 affix hidden-print hidden-xs hidden-sm" role="complimentary" data-spy="affix" data-offset-top="200 " data-offset-bottom="200"&gt;</token>
+  </line>
+  <line no="78">
+    <token name="T_INLINE_HTML">                &lt;div class="well"&gt;</token>
+  </line>
+  <line no="79">
+    <token name="T_INLINE_HTML">                    &lt;h3 class="text-primary" style="overflow: auto;"&gt;Suggestions&lt;/h3&gt;</token>
+  </line>
+  <line no="80">
+    <token name="T_INLINE_HTML">					&lt;hr /&gt;</token>
+  </line>
+  <line no="81"/>
+  <line no="82">
+    <token name="T_INLINE_HTML">					&lt;div id="SuggListing" &gt;</token>
+  </line>
+  <line no="83"/>
+  <line no="84">
+    <token name="T_INLINE_HTML">					&lt;/div&gt;</token>
+  </line>
+  <line no="85"/>
+  <line no="86">
+    <token name="T_INLINE_HTML">                    &lt;div id="SuggestionsListEndAlert" class="alert alert-info hidden text-center"&gt;&lt;/div&gt;</token>
+  </line>
+  <line no="87">
+    <token name="T_INLINE_HTML">                &lt;/div&gt;</token>
+  </line>
+  <line no="88">
+    <token name="T_INLINE_HTML">            &lt;/div&gt;</token>
+  </line>
+  <line no="89">
+    <token name="T_INLINE_HTML">        &lt;/div&gt;</token>
+  </line>
+  <line no="90">
+    <token name="T_INLINE_HTML">        &lt;!-- /.row --&gt;</token>
+  </line>
+  <line no="91"/>
+  <line no="92">
+    <token name="T_INLINE_HTML">        &lt;hr&gt;</token>
+  </line>
+  <line no="93"/>
+  <line no="94">
+    <token name="T_INLINE_HTML">        &lt;!-- Footer --&gt;</token>
+  </line>
+  <line no="95">
+    <token name="T_INLINE_HTML">        &lt;footer&gt;</token>
+  </line>
+  <line no="96">
+    <token name="T_INLINE_HTML">            &lt;div class="row"&gt;</token>
+  </line>
+  <line no="97">
+    <token name="T_INLINE_HTML">                &lt;div class="col-lg-12 text-center"&gt;</token>
+  </line>
+  <line no="98">
+    <token name="T_INLINE_HTML">                    &lt;p&gt;Copyright &amp;copy; ProConnect 2015&lt;/p&gt;</token>
+  </line>
+  <line no="99">
+    <token name="T_INLINE_HTML">                &lt;/div&gt;</token>
+  </line>
+  <line no="100">
+    <token name="T_INLINE_HTML">                &lt;!-- /.col-lg-12 --&gt;</token>
+  </line>
+  <line no="101">
+    <token name="T_INLINE_HTML">            &lt;/div&gt;</token>
+  </line>
+  <line no="102">
+    <token name="T_INLINE_HTML">            &lt;!-- /.row --&gt;</token>
+  </line>
+  <line no="103">
+    <token name="T_INLINE_HTML">        &lt;/footer&gt;</token>
+  </line>
+  <line no="104"/>
+  <line no="105">
+    <token name="T_INLINE_HTML">    &lt;/div&gt;</token>
+  </line>
+  <line no="106">
+    <token name="T_INLINE_HTML">    &lt;!-- /.container --&gt;</token>
+  </line>
+  <line no="107"/>
+  <line no="108">
+    <token name="T_INLINE_HTML">    &lt;div id="modalNewConnection" class="modal fade" role="dialog"&gt;</token>
+  </line>
+  <line no="109">
+    <token name="T_INLINE_HTML">        &lt;div class="modal-dialog"&gt;</token>
+  </line>
+  <line no="110">
+    <token name="T_INLINE_HTML">            &lt;div class="modal-content"&gt;</token>
+  </line>
+  <line no="111">
+    <token name="T_INLINE_HTML">                &lt;div class="modal-header"&gt;</token>
+  </line>
+  <line no="112">
+    <token name="T_INLINE_HTML">                    &lt;button type="button" class="close" data-dismiss="modal" aria-label="Close"&gt;&lt;span aria-hidden="true"&gt;&amp;times;&lt;/span&gt;&lt;/button&gt;</token>
+  </line>
+  <line no="113">
+    <token name="T_INLINE_HTML">                    &lt;h4 class="modal-title text-primary"&gt;Add New Connection&lt;/h4&gt;</token>
+  </line>
+  <line no="114">
+    <token name="T_INLINE_HTML">                    &lt;p class="text-info"&gt;Please enter name or email of the new connection you want to add:&lt;/p&gt;</token>
+  </line>
+  <line no="115">
+    <token name="T_INLINE_HTML">                &lt;/div&gt;</token>
+  </line>
+  <line no="116">
+    <token name="T_INLINE_HTML">                &lt;div class="modal-body"&gt;</token>
+  </line>
+  <line no="117">
+    <token name="T_INLINE_HTML">                    &lt;form id="NewConnectionSearchForm" class="form-horizontal" action="php/SearchNewConnection_controller.php"&gt;</token>
+  </line>
+  <line no="118">
+    <token name="T_INLINE_HTML">                        &lt;!-- &lt;div class="form-group"&gt;</token>
+  </line>
+  <line no="119">
+    <token name="T_INLINE_HTML">                            &lt;label class="col-sm-2 control-label"&gt;Name&lt;/label&gt;</token>
+  </line>
+  <line no="120">
+    <token name="T_INLINE_HTML">                            &lt;div class="col-sm-10"&gt;</token>
+  </line>
+  <line no="121">
+    <token name="T_INLINE_HTML">                                &lt;input type="text" class="form-control" name="NewConnName" /&gt;</token>
+  </line>
+  <line no="122">
+    <token name="T_INLINE_HTML">                            &lt;/div&gt;</token>
+  </line>
+  <line no="123">
+    <token name="T_INLINE_HTML">                        &lt;/div&gt;</token>
+  </line>
+  <line no="124"/>
+  <line no="125">
+    <token name="T_INLINE_HTML">                        &lt;div class="form-group"&gt;</token>
+  </line>
+  <line no="126">
+    <token name="T_INLINE_HTML">                            &lt;label class="col-sm-2 control-label"&gt;Company&lt;/label&gt;</token>
+  </line>
+  <line no="127">
+    <token name="T_INLINE_HTML">                            &lt;div class="col-sm-10"&gt;</token>
+  </line>
+  <line no="128">
+    <token name="T_INLINE_HTML">                                &lt;input type="text" class="form-control" name="NewConnCompany" /&gt;</token>
+  </line>
+  <line no="129">
+    <token name="T_INLINE_HTML">                            &lt;/div&gt;</token>
+  </line>
+  <line no="130">
+    <token name="T_INLINE_HTML">                        &lt;/div&gt;</token>
+  </line>
+  <line no="131"/>
+  <line no="132">
+    <token name="T_INLINE_HTML">                        &lt;div class="form-group"&gt;</token>
+  </line>
+  <line no="133">
+    <token name="T_INLINE_HTML">                            &lt;label class="col-sm-2 control-label"&gt;Location&lt;/label&gt;</token>
+  </line>
+  <line no="134">
+    <token name="T_INLINE_HTML">                            &lt;div class="col-sm-10"&gt;</token>
+  </line>
+  <line no="135">
+    <token name="T_INLINE_HTML">                                &lt;input type="text" class="form-control" name="NewConnLocation" /&gt;</token>
+  </line>
+  <line no="136">
+    <token name="T_INLINE_HTML">                            &lt;/div&gt;</token>
+  </line>
+  <line no="137">
+    <token name="T_INLINE_HTML">                        &lt;/div&gt; --&gt;</token>
+  </line>
+  <line no="138"/>
+  <line no="139">
+    <token name="T_INLINE_HTML">                        &lt;div class="form-group"&gt;</token>
+  </line>
+  <line no="140">
+    <token name="T_INLINE_HTML">                            &lt;label class="col-sm-2 control-label"&gt;Email&lt;/label&gt;</token>
+  </line>
+  <line no="141">
+    <token name="T_INLINE_HTML">                            &lt;div class="col-sm-9 input-group"&gt;</token>
+  </line>
+  <line no="142">
+    <token name="T_INLINE_HTML">                                &lt;input type="text" class="form-control keywords" name="NewConnKeywords" /&gt;</token>
+  </line>
+  <line no="143"/>
+  <line no="144">
+    <token name="T_INLINE_HTML">                                &lt;span class="input-group-btn"&gt;</token>
+  </line>
+  <line no="145">
+    <token name="T_INLINE_HTML">                                    &lt;button class="btn btn-primary submit" type="button" title="Search"&gt;</token>
+  </line>
+  <line no="146">
+    <token name="T_INLINE_HTML">                                        &lt;span class="glyphicon glyphicon-search"&gt;&lt;/span&gt;</token>
+  </line>
+  <line no="147">
+    <token name="T_INLINE_HTML">                                    &lt;/button&gt;</token>
+  </line>
+  <line no="148">
+    <token name="T_INLINE_HTML">                                  &lt;/span&gt;</token>
+  </line>
+  <line no="149">
+    <token name="T_INLINE_HTML">                            &lt;/div&gt;</token>
+  </line>
+  <line no="150">
+    <token name="T_INLINE_HTML">                        &lt;/div&gt;</token>
+  </line>
+  <line no="151">
+    <token name="T_INLINE_HTML">                    &lt;/form&gt;</token>
+  </line>
+  <line no="152"/>
+  <line no="153">
+    <token name="T_INLINE_HTML">                    &lt;div class="searchResults"&gt;&lt;/div&gt;</token>
+  </line>
+  <line no="154">
+    <token name="T_INLINE_HTML">                &lt;/div&gt;</token>
+  </line>
+  <line no="155">
+    <token name="T_INLINE_HTML">                &lt;div class="modal-footer"&gt;</token>
+  </line>
+  <line no="156">
+    <token name="T_INLINE_HTML">                    &lt;div id="NewConnectionSearchAlert" class="alert alert-warning hidden"&gt;&lt;/div&gt;</token>
+  </line>
+  <line no="157">
+    <token name="T_INLINE_HTML">                    &lt;!-- &lt;button type="button" class="btn btn-default" data-dismiss="modal"&gt;Close&lt;/button&gt; --&gt;</token>
+  </line>
+  <line no="158">
+    <token name="T_INLINE_HTML">                &lt;/div&gt;</token>
+  </line>
+  <line no="159">
+    <token name="T_INLINE_HTML">            &lt;/div&gt;&lt;!-- /.modal-content --&gt;</token>
+  </line>
+  <line no="160">
+    <token name="T_INLINE_HTML">        &lt;/div&gt;&lt;!-- /.modal-dialog --&gt;</token>
+  </line>
+  <line no="161">
+    <token name="T_INLINE_HTML">    &lt;/div&gt;&lt;!-- /.modal --&gt;</token>
+  </line>
+  <line no="162"/>
+  <line no="163">
+    <token name="T_INLINE_HTML">    &lt;script type="text/template" id="ConnectionTemplate"&gt;</token>
+  </line>
+  <line no="164">
+    <token name="T_INLINE_HTML">    &lt;div class="UserConnection" class="col col-xs-12"&gt;</token>
+  </line>
+  <line no="165">
+    <token name="T_INLINE_HTML">        &lt;input type="hidden" class="UserID" name="UserID" value="" /&gt;</token>
+  </line>
+  <line no="166">
+    <token name="T_INLINE_HTML">        &lt;div class="well well-sm"&gt;</token>
+  </line>
+  <line no="167">
+    <token name="T_INLINE_HTML">            &lt;div class="row"&gt;</token>
+  </line>
+  <line no="168">
+    <token name="T_INLINE_HTML">                &lt;div class="col col-xs-4"&gt;</token>
+  </line>
+  <line no="169">
+    <token name="T_INLINE_HTML">                    &lt;img width="100px" src="../image/user_img.png" class="img-rounded" /&gt;</token>
+  </line>
+  <line no="170">
+    <token name="T_INLINE_HTML">                &lt;/div&gt;</token>
+  </line>
+  <line no="171"/>
+  <line no="172">
+    <token name="T_INLINE_HTML">                &lt;div class="col col-xs-8"&gt;</token>
+  </line>
+  <line no="173">
+    <token name="T_INLINE_HTML">                    &lt;h4 class="text-primary ConnectionName"&gt;John Doe&lt;/h4&gt;</token>
+  </line>
+  <line no="174">
+    <token name="T_INLINE_HTML">                    &lt;p class="ConnectionWork"&gt;&lt;span class="ConnectionJob"&gt;&lt;/span&gt;&amp;nbsp;at&amp;nbsp;&lt;span class="ConnectionCompany"&gt;&lt;/span&gt;&lt;/p&gt;</token>
+  </line>
+  <line no="175">
+    <token name="T_INLINE_HTML">                    &lt;p class="ConnectionLocation"&gt;&lt;/p&gt;</token>
+  </line>
+  <line no="176"/>
+  <line no="177">
+    <token name="T_INLINE_HTML">                    &lt;ul class="nav nav-pills"&gt;</token>
+  </line>
+  <line no="178">
+    <token name="T_INLINE_HTML">                        &lt;li role="presentation"&gt;&lt;a href="#"&gt;</token>
+  </line>
+  <line no="179">
+    <token name="T_INLINE_HTML">                            &lt;span class="glyphicon glyphicon-envelope"&gt;&lt;span&gt;&amp;nbsp;Email&lt;/a&gt;</token>
+  </line>
+  <line no="180">
+    <token name="T_INLINE_HTML">                        &lt;/li&gt;</token>
+  </line>
+  <line no="181">
+    <token name="T_INLINE_HTML">                        &lt;li role="presentation"&gt;&lt;a class="removeConnection" href="#"&gt;</token>
+  </line>
+  <line no="182">
+    <token name="T_INLINE_HTML">                            &lt;span class="glyphicon glyphicon-remove"&gt;&lt;span&gt;&amp;nbsp;Remove&lt;/a&gt;</token>
+  </line>
+  <line no="183">
+    <token name="T_INLINE_HTML">                        &lt;/li&gt;</token>
+  </line>
+  <line no="184">
+    <token name="T_INLINE_HTML">                    &lt;/ul&gt;</token>
+  </line>
+  <line no="185">
+    <token name="T_INLINE_HTML">                &lt;/div&gt;</token>
+  </line>
+  <line no="186">
+    <token name="T_INLINE_HTML">            &lt;/div&gt;</token>
+  </line>
+  <line no="187">
+    <token name="T_INLINE_HTML">        &lt;/div&gt;</token>
+  </line>
+  <line no="188">
+    <token name="T_INLINE_HTML">        &lt;hr /&gt;</token>
+  </line>
+  <line no="189">
+    <token name="T_INLINE_HTML">    &lt;/div&gt;</token>
+  </line>
+  <line no="190">
+    <token name="T_INLINE_HTML">    &lt;/script&gt;</token>
+  </line>
+  <line no="191">
+    <token name="T_INLINE_HTML">	</token>
+  </line>
+  <line no="192">
+    <token name="T_INLINE_HTML">	&lt;script type="text/template" id="SuggestionTemplate"&gt;</token>
+  </line>
+  <line no="193">
+    <token name="T_INLINE_HTML">    &lt;div class="NewUserConnection" class="col col-xs-12"&gt;</token>
+  </line>
+  <line no="194">
+    <token name="T_INLINE_HTML">        &lt;input type="hidden" class="UserID" name="UserID" value="" /&gt;</token>
+  </line>
+  <line no="195">
+    <token name="T_INLINE_HTML">        &lt;div class="row"&gt;</token>
+  </line>
+  <line no="196">
+    <token name="T_INLINE_HTML">            &lt;div class="col col-xs-3"&gt;</token>
+  </line>
+  <line no="197">
+    <token name="T_INLINE_HTML">                &lt;img width="50px" src="../image/user_img.png" class="img-rounded" /&gt;</token>
+  </line>
+  <line no="198">
+    <token name="T_INLINE_HTML">            &lt;/div&gt;</token>
+  </line>
+  <line no="199"/>
+  <line no="200">
+    <token name="T_INLINE_HTML">            &lt;div class="col col-xs-9"&gt;</token>
+  </line>
+  <line no="201">
+    <token name="T_INLINE_HTML">                &lt;h5 class="text-primary ConnectionName" style="margin-top: 0px; margin-bottom: 7px;"&gt;John Doe&lt;/h5&gt;</token>
+  </line>
+  <line no="202">
+    <token name="T_INLINE_HTML">                &lt;p class="ConnectionWork" style= "font-size: 12px;"&gt;&lt;span class="ConnectionJob"&gt;&lt;/span&gt;&amp;nbsp;at&amp;nbsp;&lt;span class="ConnectionCompany"&gt;&lt;/span&gt;&lt;/p&gt;</token>
+  </line>
+  <line no="203">
+    <token name="T_INLINE_HTML">                   &lt;a class="addNewConnection" href="#" style= "font-size: 12px;"&gt;</token>
+  </line>
+  <line no="204">
+    <token name="T_INLINE_HTML">                   &lt;span class="glyphicon glyphicon-retweet"&gt;&amp;nbsp;&lt;span class="txt"&gt;Connect&lt;/span&gt;&lt;/a&gt;</token>
+  </line>
+  <line no="205">
+    <token name="T_INLINE_HTML">                    &amp;nbsp;&amp;#8226;</token>
+  </line>
+  <line no="206">
+    <token name="T_INLINE_HTML">				   &lt;a class="dismissConnection" href="#" style= "font-size: 12px; color: gray;"&gt;Skip&lt;/a&gt;</token>
+  </line>
+  <line no="207">
+    <token name="T_INLINE_HTML">            &lt;/div&gt;</token>
+  </line>
+  <line no="208">
+    <token name="T_INLINE_HTML">        &lt;/div&gt;</token>
+  </line>
+  <line no="209"/>
+  <line no="210">
+    <token name="T_INLINE_HTML">        &lt;hr /&gt;</token>
+  </line>
+  <line no="211">
+    <token name="T_INLINE_HTML">    &lt;/div&gt;</token>
+  </line>
+  <line no="212">
+    <token name="T_INLINE_HTML">    &lt;/script&gt;</token>
+  </line>
+  <line no="213"/>
+  <line no="214">
+    <token name="T_INLINE_HTML">    &lt;script src="js/UserConnection.js"&gt;&lt;/script&gt;</token>
+  </line>
+  <line no="215">
+    <token name="T_INLINE_HTML">    &lt;script src="js/NewConnection.js"&gt;&lt;/script&gt;</token>
+  </line>
+  <line no="216">
+    <token name="T_INLINE_HTML">    &lt;script src="js/SuggestionList.js"&gt;&lt;/script&gt;</token>
+  </line>
+  <line no="217">
+    <token name="T_INLINE_HTML">    &lt;script src="js/ConnectionList.js"&gt;&lt;/script&gt;</token>
+  </line>
+  <line no="218">
+    <token name="T_INLINE_HTML">    &lt;script src="js/NewConnectionSearch.js"&gt;&lt;/script&gt;</token>
+  </line>
+  <line no="219">
+    <token name="T_INLINE_HTML">    &lt;script src="js/index.js"&gt;&lt;/script&gt;</token>
+  </line>
+  <line no="220">
+    <token name="T_INLINE_HTML">    &lt;!-- Custom CSS --&gt;</token>
+  </line>
+  <line no="221">
+    <token name="T_INLINE_HTML">    &lt;link href="css/index.css" rel="stylesheet"&gt;</token>
+  </line>
+  <line no="222">
+    <token name="T_INLINE_HTML">&lt;/body&gt;</token>
+  </line>
+  <line no="223">
+    <token name="T_INLINE_HTML">    </token>
+  </line>
+  <line no="224">
+    <token name="T_INLINE_HTML">&lt;/html&gt;</token>
+  </line>
+  <line no="225"/>
+</source>

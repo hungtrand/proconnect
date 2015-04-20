@@ -49,7 +49,7 @@ NewConnection.prototype = {
 		}
 
 		$.ajax({
-			url: 'php/NewConnection_controller.php',
+			url: '/connections/php/NewConnection_controller.php',
 			data: data,
 			type: 'POST'
 		}).done(function(json) {

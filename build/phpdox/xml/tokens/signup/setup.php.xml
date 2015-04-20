@@ -1,0 +1,672 @@
+<?xml version="1.0"?>
+<source xmlns="http://xml.phpdox.net/token">
+  <file xmlns="http://xml.phpdox.net/src" path="/var/www/html/ProConnect/signup" file="setup.php" realpath="/var/www/html/ProConnect/signup/setup.php" size="17654" time="2015-04-13T19:48:09-07:00" unixtime="1428979689" sha1="b4475dda9ead0f9ccc93ee7dc81cb57333cddaaa" relative="signup/setup.php"/>
+  <line no="1">
+    <token name="T_OPEN_TAG">&lt;?php</token>
+  </line>
+  <line no="2">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_STRING">error_reporting</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_STRING">E_ALL</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_COMMENT">// debug</token>
+  </line>
+  <line no="3">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_STRING">ini_set</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">"display_errors"</token>
+    <token name="T_PHPDOX_COMMA">,</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_LNUMBER">1</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_COMMENT">// debug</token>
+  </line>
+  <line no="4">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_INCLUDE">include</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'../signin/php/session_check.php'</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="5">
+    <token name="T_CLOSE_TAG">?&gt;</token>
+  </line>
+  <line no="6"/>
+  <line no="7">
+    <token name="T_INLINE_HTML">&lt;!DOCTYPE html&gt;</token>
+  </line>
+  <line no="8"/>
+  <line no="9">
+    <token name="T_INLINE_HTML">&lt;html lang="en"&gt;</token>
+  </line>
+  <line no="10">
+    <token name="T_INLINE_HTML">&lt;head&gt;</token>
+  </line>
+  <line no="11">
+    <token name="T_INLINE_HTML">    &lt;meta charset="utf-8"&gt;</token>
+  </line>
+  <line no="12">
+    <token name="T_INLINE_HTML">    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;</token>
+  </line>
+  <line no="13">
+    <token name="T_INLINE_HTML">    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</token>
+  </line>
+  <line no="14">
+    <token name="T_INLINE_HTML">    &lt;meta name="description" content=""&gt;</token>
+  </line>
+  <line no="15">
+    <token name="T_INLINE_HTML">    &lt;meta name="author" content=""&gt;</token>
+  </line>
+  <line no="16">
+    <token name="T_INLINE_HTML">    &lt;link rel="icon" href="../../favicon.ico"&gt;</token>
+  </line>
+  <line no="17"/>
+  <line no="18">
+    <token name="T_INLINE_HTML">    &lt;title&gt;Set Up for ProConnect&lt;/title&gt;</token>
+  </line>
+  <line no="19">
+    <token name="T_INLINE_HTML">    &lt;!-- JQuery link --&gt;</token>
+  </line>
+  <line no="20">
+    <token name="T_INLINE_HTML">  &lt;script type="text/javascript" src="../lib/jquery/jquery-2.1.3.min.js"&gt;&lt;/script&gt;</token>
+  </line>
+  <line no="21">
+    <token name="T_INLINE_HTML">    &lt;!-- Bootstrap core CSS --&gt;</token>
+  </line>
+  <line no="22">
+    <token name="T_INLINE_HTML">    &lt;link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"&gt;</token>
+  </line>
+  <line no="23">
+    <token name="T_INLINE_HTML">	  &lt;!-- Bootstrap core CSS --&gt;</token>
+  </line>
+  <line no="24">
+    <token name="T_INLINE_HTML">  &lt;link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"&gt;</token>
+  </line>
+  <line no="25">
+    <token name="T_INLINE_HTML">  &lt;!-- Latest compiled and minified JavaScript --&gt;</token>
+  </line>
+  <line no="26">
+    <token name="T_INLINE_HTML">  &lt;script src="../lib/bootstrap/js/bootstrap.min.js"&gt;&lt;/script&gt;</token>
+  </line>
+  <line no="27"/>
+  <line no="28"/>
+  <line no="29">
+    <token name="T_INLINE_HTML">     &lt;!--Custom styles for this template --&gt;</token>
+  </line>
+  <line no="30">
+    <token name="T_INLINE_HTML">    &lt;link href="css/setup.css" rel="stylesheet"&gt;</token>
+  </line>
+  <line no="31">
+    <token name="T_INLINE_HTML">    </token>
+  </line>
+  <line no="32">
+    <token name="T_INLINE_HTML">    &lt;!-- JavaScript link --&gt;</token>
+  </line>
+  <line no="33">
+    <token name="T_INLINE_HTML">    &lt;script type="text/javascript" src="../lib/js/StatesList.js"&gt;&lt;/script&gt;</token>
+  </line>
+  <line no="34">
+    <token name="T_INLINE_HTML">	    &lt;script type="text/javascript" src="js/setUp.js"&gt;&lt;/script&gt;</token>
+  </line>
+  <line no="35">
+    <token name="T_INLINE_HTML">    &lt;script type="text/javascript" src="js/SetUpForm.js"&gt;&lt;/script&gt;</token>
+  </line>
+  <line no="36">
+    <token name="T_INLINE_HTML">    &lt;script type="text/javascript" src="js/SetUpMain.js"&gt;&lt;/script&gt;</token>
+  </line>
+  <line no="37">
+    <token name="T_INLINE_HTML">  </token>
+  </line>
+  <line no="38">
+    <token name="T_INLINE_HTML">&lt;/head&gt;</token>
+  </line>
+  <line no="39"/>
+  <line no="40">
+    <token name="T_INLINE_HTML">&lt;body&gt;</token>
+  </line>
+  <line no="41"/>
+  <line no="42">
+    <token name="T_INLINE_HTML">    &lt;div class="container-fluid"&gt;</token>
+  </line>
+  <line no="43">
+    <token name="T_INLINE_HTML">        </token>
+  </line>
+  <line no="44">
+    <token name="T_INLINE_HTML">        &lt;div class="row"&gt;</token>
+  </line>
+  <line no="45">
+    <token name="T_INLINE_HTML">            &lt;div class ="formContainer col col-xs-12 col-sm-10 col-md-4 col-lg-4 col-sm-offset-1 col-md-offset-4 col-lg-offset-4"&gt;</token>
+  </line>
+  <line no="46">
+    <token name="T_INLINE_HTML">                &lt;header class="text-center"&gt;&lt;a href= "../"&gt;&lt;img id= "logo" src = "../image/proconnect/logo_text.png"&gt;&lt;/a&gt;&lt;/header&gt;</token>
+  </line>
+  <line no="47">
+    <token name="T_INLINE_HTML">                </token>
+  </line>
+  <line no="48">
+    <token name="T_INLINE_HTML">                &lt;form id="SetUpForm" action="php/Setup_controller.php" class="text-left" novalidate&gt;</token>
+  </line>
+  <line no="49">
+    <token name="T_INLINE_HTML">					&lt;div class="form-group"&gt;				</token>
+  </line>
+  <line no="50">
+    <token name="T_INLINE_HTML">						&lt;label for="country"&gt;Country&lt;/label&gt; &lt;br /&gt;</token>
+  </line>
+  <line no="51">
+    <token name="T_INLINE_HTML">						 &lt;label class="radio-inline"&gt;</token>
+  </line>
+  <line no="52">
+    <token name="T_INLINE_HTML">						  &lt;input class= "country-option" type="radio" name="inlineRadioOptions-country" id="inlineRadio1-country" value="United States" checked&gt; United States</token>
+  </line>
+  <line no="53">
+    <token name="T_INLINE_HTML">						&lt;/label&gt;</token>
+  </line>
+  <line no="54">
+    <token name="T_INLINE_HTML">						&lt;label class="radio-inline"&gt;</token>
+  </line>
+  <line no="55">
+    <token name="T_INLINE_HTML">						  &lt;input class= "country-option" type="radio" name="inlineRadioOptions-country" id="inlineRadio2-country" value="Other" &gt; Other</token>
+  </line>
+  <line no="56">
+    <token name="T_INLINE_HTML">						&lt;/label&gt;</token>
+  </line>
+  <line no="57">
+    <token name="T_INLINE_HTML">					&lt;/div&gt;</token>
+  </line>
+  <line no="58">
+    <token name="T_INLINE_HTML">					</token>
+  </line>
+  <line no="59">
+    <token name="T_INLINE_HTML">                    &lt;div class="form-group" id="zipcode-group" &gt;</token>
+  </line>
+  <line no="60">
+    <token name="T_INLINE_HTML">                        &lt;label for="zipcode"&gt;Zip Code&lt;/label&gt; &lt;br /&gt;</token>
+  </line>
+  <line no="61">
+    <token name="T_INLINE_HTML">                        &lt;input class="form-control" id="zipcode" type="text" name="zipcode" placeholder="Zip Code" required&gt;</token>
+  </line>
+  <line no="62">
+    <token name="T_INLINE_HTML">                    &lt;/div&gt;</token>
+  </line>
+  <line no="63">
+    <token name="T_INLINE_HTML">					</token>
+  </line>
+  <line no="64">
+    <token name="T_INLINE_HTML">					&lt;div id = "other-country-group" style = "display: none;"&gt;</token>
+  </line>
+  <line no="65">
+    <token name="T_INLINE_HTML">					&lt;div class="form-group" id="countryname-group" &gt;</token>
+  </line>
+  <line no="66">
+    <token name="T_INLINE_HTML">                        &lt;input class="form-control" id="country-name" type="text" name="country-name" placeholder="Country" required&gt;</token>
+  </line>
+  <line no="67">
+    <token name="T_INLINE_HTML">                    &lt;/div&gt;</token>
+  </line>
+  <line no="68">
+    <token name="T_INLINE_HTML">                    &lt;div class="form-group" id="postalcode-group" &gt;</token>
+  </line>
+  <line no="69">
+    <token name="T_INLINE_HTML">                        &lt;label for="postal-code"&gt;Postal Code&lt;/label&gt; &lt;br /&gt;</token>
+  </line>
+  <line no="70">
+    <token name="T_INLINE_HTML">                        &lt;input class="form-control" id="postal-code" type="text" name="postal-code" placeholder="Postal Code" required&gt;</token>
+  </line>
+  <line no="71">
+    <token name="T_INLINE_HTML">                    &lt;/div&gt;</token>
+  </line>
+  <line no="72">
+    <token name="T_INLINE_HTML">					&lt;/div&gt;</token>
+  </line>
+  <line no="73"/>
+  <line no="74">
+    <token name="T_INLINE_HTML">                    &lt;div class="form-group"&gt;</token>
+  </line>
+  <line no="75">
+    <token name="T_INLINE_HTML">                        &lt;label for="address"&gt;Address&lt;/label&gt; &lt;br /&gt;</token>
+  </line>
+  <line no="76">
+    <token name="T_INLINE_HTML">                        &lt;input class="form-control" id="address" type="text" name="address" placeholder="Address" required&gt;</token>
+  </line>
+  <line no="77">
+    <token name="T_INLINE_HTML">                    &lt;/div&gt;</token>
+  </line>
+  <line no="78">
+    <token name="T_INLINE_HTML">					</token>
+  </line>
+  <line no="79">
+    <token name="T_INLINE_HTML">					&lt;div class="form-group"&gt;</token>
+  </line>
+  <line no="80">
+    <token name="T_INLINE_HTML">                        &lt;label for="phonenumber"&gt;Phone Number&lt;/label&gt; &lt;br /&gt;</token>
+  </line>
+  <line no="81">
+    <token name="T_INLINE_HTML">                        &lt;input class="form-control" id="phonenumber" type="text" name="phonenumber" placeholder="###-###-####" required&gt;</token>
+  </line>
+  <line no="82">
+    <token name="T_INLINE_HTML">                    &lt;/div&gt;</token>
+  </line>
+  <line no="83">
+    <token name="T_INLINE_HTML">					  &lt;!--I am Currently--&gt;</token>
+  </line>
+  <line no="84">
+    <token name="T_INLINE_HTML">					&lt;div class="form-group"&gt;</token>
+  </line>
+  <line no="85">
+    <token name="T_INLINE_HTML">						  &lt;label class="control-label" for="usertype"&gt;I am currently&lt;/label&gt; &lt;br /&gt;</token>
+  </line>
+  <line no="86">
+    <token name="T_INLINE_HTML">						 &lt;label class="radio-inline"&gt;</token>
+  </line>
+  <line no="87">
+    <token name="T_INLINE_HTML">						  &lt;input class= "signup-option" type="radio" name="EmploymentStatus" id="inlineRadio1" value="employed" checked&gt; Employed</token>
+  </line>
+  <line no="88">
+    <token name="T_INLINE_HTML">						&lt;/label&gt;</token>
+  </line>
+  <line no="89">
+    <token name="T_INLINE_HTML">						&lt;label class="radio-inline"&gt;</token>
+  </line>
+  <line no="90">
+    <token name="T_INLINE_HTML">						  &lt;input class= "signup-option" type="radio" name="EmploymentStatus" id="inlineRadio2" value="looking" &gt; Job Seeker</token>
+  </line>
+  <line no="91">
+    <token name="T_INLINE_HTML">						&lt;/label&gt;</token>
+  </line>
+  <line no="92">
+    <token name="T_INLINE_HTML">						&lt;label class="radio-inline"&gt;</token>
+  </line>
+  <line no="93">
+    <token name="T_INLINE_HTML">						  &lt;input class= "signup-option" type="radio" name="EmploymentStatus" id="inlineRadio3" value="student" &gt; Student</token>
+  </line>
+  <line no="94">
+    <token name="T_INLINE_HTML">						&lt;/label&gt;</token>
+  </line>
+  <line no="95">
+    <token name="T_INLINE_HTML">						&lt;label class="radio-inline"&gt;</token>
+  </line>
+  <line no="96">
+    <token name="T_INLINE_HTML">						  &lt;input class= "signup-option" type="radio" name="EmploymentStatus" id="inlineRadio4" value="none" &gt; None</token>
+  </line>
+  <line no="97">
+    <token name="T_INLINE_HTML">						&lt;/label&gt;</token>
+  </line>
+  <line no="98">
+    <token name="T_INLINE_HTML">					&lt;/div&gt;</token>
+  </line>
+  <line no="99">
+    <token name="T_INLINE_HTML">					&lt;!--For employed--&gt;	 </token>
+  </line>
+  <line no="100">
+    <token name="T_INLINE_HTML">					&lt;div id= "employedSelection"&gt;</token>
+  </line>
+  <line no="101">
+    <token name="T_INLINE_HTML">						&lt;div class="form-group"&gt;</token>
+  </line>
+  <line no="102">
+    <token name="T_INLINE_HTML">						  &lt;!-- Job title--&gt;</token>
+  </line>
+  <line no="103">
+    <token name="T_INLINE_HTML">						  &lt;label class="control-label" for="jobTitle"&gt;Job title&lt;/label&gt; &lt;br /&gt;</token>
+  </line>
+  <line no="104">
+    <token name="T_INLINE_HTML">						  &lt;div class="controls" &gt;</token>
+  </line>
+  <line no="105">
+    <token name="T_INLINE_HTML">							&lt;input class="form-control"type="text" id="jobTitle" name="jobTitle" placeholder="" class="input-xlarge" required&gt;</token>
+  </line>
+  <line no="106">
+    <token name="T_INLINE_HTML">						  &lt;/div&gt;</token>
+  </line>
+  <line no="107">
+    <token name="T_INLINE_HTML">						&lt;/div&gt;</token>
+  </line>
+  <line no="108">
+    <token name="T_INLINE_HTML">					 </token>
+  </line>
+  <line no="109">
+    <token name="T_INLINE_HTML">						&lt;div class="form-group"&gt;</token>
+  </line>
+  <line no="110">
+    <token name="T_INLINE_HTML">						  &lt;!-- Company --&gt;</token>
+  </line>
+  <line no="111">
+    <token name="T_INLINE_HTML">						  &lt;label class="control-label"  for="company"&gt;Company&lt;/label&gt; &lt;br /&gt;</token>
+  </line>
+  <line no="112">
+    <token name="T_INLINE_HTML">						  &lt;div class="controls"&gt;</token>
+  </line>
+  <line no="113">
+    <token name="T_INLINE_HTML">							&lt;input class="form-control" type="text" id="company" name="company" placeholder="" class="input-xlarge" required&gt;</token>
+  </line>
+  <line no="114">
+    <token name="T_INLINE_HTML">						  &lt;/div&gt;</token>
+  </line>
+  <line no="115">
+    <token name="T_INLINE_HTML">						&lt;/div&gt;</token>
+  </line>
+  <line no="116">
+    <token name="T_INLINE_HTML">					&lt;/div&gt;</token>
+  </line>
+  <line no="117">
+    <token name="T_INLINE_HTML">						&lt;!--For Job Seekers--&gt;</token>
+  </line>
+  <line no="118">
+    <token name="T_INLINE_HTML">					&lt;div  id= "jobSeekerSelection" style= "display:none;"&gt;</token>
+  </line>
+  <line no="119">
+    <token name="T_INLINE_HTML">						  &lt;!--Most recent Job title--&gt;</token>
+  </line>
+  <line no="120">
+    <token name="T_INLINE_HTML">						 &lt;div class="form-group"&gt;</token>
+  </line>
+  <line no="121">
+    <token name="T_INLINE_HTML">						  &lt;label class="control-label" for="recentJobTitle"&gt;Most recent Job title&lt;/label&gt;</token>
+  </line>
+  <line no="122">
+    <token name="T_INLINE_HTML">						  &lt;div class="controls"&gt;</token>
+  </line>
+  <line no="123">
+    <token name="T_INLINE_HTML">							&lt;input class="form-control" type="text" id="recentJobTitle" name="MostRecentJobTitle" placeholder="" class="input-xlarge" required&gt;</token>
+  </line>
+  <line no="124">
+    <token name="T_INLINE_HTML">						  &lt;/div&gt;</token>
+  </line>
+  <line no="125">
+    <token name="T_INLINE_HTML">						&lt;/div&gt;</token>
+  </line>
+  <line no="126"/>
+  <line no="127">
+    <token name="T_INLINE_HTML">						  &lt;!--Most recent Company --&gt;</token>
+  </line>
+  <line no="128">
+    <token name="T_INLINE_HTML">						&lt;div class="form-group"&gt;</token>
+  </line>
+  <line no="129">
+    <token name="T_INLINE_HTML">						  &lt;label class="control-label"  for="recentCompany"&gt;Most recent Company&lt;/label&gt;</token>
+  </line>
+  <line no="130">
+    <token name="T_INLINE_HTML">						  &lt;div class="controls"&gt;</token>
+  </line>
+  <line no="131">
+    <token name="T_INLINE_HTML">							&lt;input class="form-control" type="text" id="recentCompany" name="MostRecentCompany" placeholder="" class="input-xlarge" required&gt;</token>
+  </line>
+  <line no="132">
+    <token name="T_INLINE_HTML">						  &lt;/div&gt;</token>
+  </line>
+  <line no="133">
+    <token name="T_INLINE_HTML">						&lt;/div&gt;</token>
+  </line>
+  <line no="134"/>
+  <line no="135">
+    <token name="T_INLINE_HTML">						  &lt;!--Time Period--&gt;</token>
+  </line>
+  <line no="136">
+    <token name="T_INLINE_HTML">						&lt;div class="form-group"&gt;</token>
+  </line>
+  <line no="137">
+    <token name="T_INLINE_HTML">						  &lt;label class="control-label" for="timePeriod"&gt;Time period&lt;/label&gt;</token>
+  </line>
+  <line no="138">
+    <token name="T_INLINE_HTML">						  &lt;div class="row"&gt;</token>
+  </line>
+  <line no="139">
+    <token name="T_INLINE_HTML">						    &lt;div class="col-md-5"&gt;</token>
+  </line>
+  <line no="140">
+    <token name="T_INLINE_HTML">							&lt;select class="form-control" id= "start-yearpicker-seeker" name="start-year-seeker" required&gt;</token>
+  </line>
+  <line no="141">
+    <token name="T_INLINE_HTML">									&lt;option value="" selected&gt;-&lt;/option&gt;</token>
+  </line>
+  <line no="142">
+    <token name="T_INLINE_HTML">									&lt;option value="2015"&gt;2015&lt;/option&gt;&lt;option value="2014"&gt;2014&lt;/option&gt;&lt;option value="2013"&gt;2013&lt;/option&gt;&lt;option value="2012"&gt;2012&lt;/option&gt;&lt;option value="2011"&gt;2011&lt;/option&gt;&lt;option value="2010"&gt;2010&lt;/option&gt;&lt;option value="2009"&gt;2009&lt;/option&gt;&lt;option value="2008"&gt;2008&lt;/option&gt;&lt;option value="2007"&gt;2007&lt;/option&gt;&lt;option value="2006"&gt;2006&lt;/option&gt;&lt;option value="2005"&gt;2005&lt;/option&gt;&lt;option value="2004"&gt;2004&lt;/option&gt;&lt;option value="2003"&gt;2003&lt;/option&gt;&lt;option value="2002"&gt;2002&lt;/option&gt;&lt;option value="2001"&gt;2001&lt;/option&gt;&lt;option value="2000"&gt;2000&lt;/option&gt;</token>
+  </line>
+  <line no="143">
+    <token name="T_INLINE_HTML">									&lt;option value="1999"&gt;1999&lt;/option&gt;&lt;option value="1998"&gt;1998&lt;/option&gt;&lt;option value="1997"&gt;1997&lt;/option&gt;&lt;option value="1996"&gt;1996&lt;/option&gt;&lt;option value="1995"&gt;1995&lt;/option&gt;&lt;option value="1994"&gt;1994&lt;/option&gt;&lt;option value="1993"&gt;1993&lt;/option&gt;&lt;option value="1992"&gt;1992&lt;/option&gt;&lt;option value="1991"&gt;1991&lt;/option&gt;&lt;option value="1990"&gt;1990&lt;/option&gt;</token>
+  </line>
+  <line no="144">
+    <token name="T_INLINE_HTML">									&lt;option value="1989"&gt;1989&lt;/option&gt;&lt;option value="1988"&gt;1988&lt;/option&gt;&lt;option value="1987"&gt;1987&lt;/option&gt;&lt;option value="1986"&gt;1986&lt;/option&gt;&lt;option value="1985"&gt;1985&lt;/option&gt;&lt;option value="1984"&gt;1984&lt;/option&gt;&lt;option value="1983"&gt;1983&lt;/option&gt;&lt;option value="1982"&gt;1982&lt;/option&gt;&lt;option value="1981"&gt;1981&lt;/option&gt;&lt;option value="1980"&gt;1980&lt;/option&gt;</token>
+  </line>
+  <line no="145">
+    <token name="T_INLINE_HTML">									&lt;option value="1979"&gt;1979&lt;/option&gt;&lt;option value="1978"&gt;1978&lt;/option&gt;&lt;option value="1977"&gt;1977&lt;/option&gt;&lt;option value="1976"&gt;1976&lt;/option&gt;&lt;option value="1975"&gt;1975&lt;/option&gt;&lt;option value="1974"&gt;1974&lt;/option&gt;&lt;option value="1973"&gt;1973&lt;/option&gt;&lt;option value="1972"&gt;1972&lt;/option&gt;&lt;option value="1971"&gt;1971&lt;/option&gt;&lt;option value="1970"&gt;1970&lt;/option&gt;</token>
+  </line>
+  <line no="146">
+    <token name="T_INLINE_HTML">									&lt;option value="1969"&gt;1969&lt;/option&gt;&lt;option value="1968"&gt;1968&lt;/option&gt;&lt;option value="1967"&gt;1967&lt;/option&gt;&lt;option value="1966"&gt;1966&lt;/option&gt;&lt;option value="1965"&gt;1965&lt;/option&gt;&lt;option value="1964"&gt;1964&lt;/option&gt;&lt;option value="1963"&gt;1963&lt;/option&gt;&lt;option value="1962"&gt;1962&lt;/option&gt;&lt;option value="1961"&gt;1961&lt;/option&gt;&lt;option value="1960"&gt;1960&lt;/option&gt;</token>
+  </line>
+  <line no="147">
+    <token name="T_INLINE_HTML">									&lt;option value="1959"&gt;1959&lt;/option&gt;&lt;option value="1958"&gt;1958&lt;/option&gt;&lt;option value="1957"&gt;1957&lt;/option&gt;&lt;option value="1956"&gt;1956&lt;/option&gt;&lt;option value="1955"&gt;1955&lt;/option&gt;&lt;option value="1954"&gt;1954&lt;/option&gt;&lt;option value="1953"&gt;1953&lt;/option&gt;&lt;option value="1952"&gt;1952&lt;/option&gt;&lt;option value="1951"&gt;1951&lt;/option&gt;</token>
+  </line>
+  <line no="148">
+    <token name="T_INLINE_HTML">							&lt;/select&gt;</token>
+  </line>
+  <line no="149">
+    <token name="T_INLINE_HTML">							&lt;/div&gt;</token>
+  </line>
+  <line no="150">
+    <token name="T_INLINE_HTML">							&lt;div class="col-md-2 text-center"&gt;to &lt;/div&gt;</token>
+  </line>
+  <line no="151">
+    <token name="T_INLINE_HTML">							</token>
+  </line>
+  <line no="152">
+    <token name="T_INLINE_HTML">							  &lt;div class="col-md-5"&gt;</token>
+  </line>
+  <line no="153">
+    <token name="T_INLINE_HTML">							&lt;select class="form-control" id= "end-yearpicker-seeker" name="end-year-seeker"  required&gt;</token>
+  </line>
+  <line no="154">
+    <token name="T_INLINE_HTML">									&lt;option value="" selected&gt;-&lt;/option&gt;</token>
+  </line>
+  <line no="155">
+    <token name="T_INLINE_HTML">									&lt;option value="2015"&gt;2015&lt;/option&gt;&lt;option value="2014"&gt;2014&lt;/option&gt;&lt;option value="2013"&gt;2013&lt;/option&gt;&lt;option value="2012"&gt;2012&lt;/option&gt;&lt;option value="2011"&gt;2011&lt;/option&gt;&lt;option value="2010"&gt;2010&lt;/option&gt;&lt;option value="2009"&gt;2009&lt;/option&gt;&lt;option value="2008"&gt;2008&lt;/option&gt;&lt;option value="2007"&gt;2007&lt;/option&gt;&lt;option value="2006"&gt;2006&lt;/option&gt;&lt;option value="2005"&gt;2005&lt;/option&gt;&lt;option value="2004"&gt;2004&lt;/option&gt;&lt;option value="2003"&gt;2003&lt;/option&gt;&lt;option value="2002"&gt;2002&lt;/option&gt;&lt;option value="2001"&gt;2001&lt;/option&gt;&lt;option value="2000"&gt;2000&lt;/option&gt;</token>
+  </line>
+  <line no="156">
+    <token name="T_INLINE_HTML">									&lt;option value="1999"&gt;1999&lt;/option&gt;&lt;option value="1998"&gt;1998&lt;/option&gt;&lt;option value="1997"&gt;1997&lt;/option&gt;&lt;option value="1996"&gt;1996&lt;/option&gt;&lt;option value="1995"&gt;1995&lt;/option&gt;&lt;option value="1994"&gt;1994&lt;/option&gt;&lt;option value="1993"&gt;1993&lt;/option&gt;&lt;option value="1992"&gt;1992&lt;/option&gt;&lt;option value="1991"&gt;1991&lt;/option&gt;&lt;option value="1990"&gt;1990&lt;/option&gt;</token>
+  </line>
+  <line no="157">
+    <token name="T_INLINE_HTML">									&lt;option value="1989"&gt;1989&lt;/option&gt;&lt;option value="1988"&gt;1988&lt;/option&gt;&lt;option value="1987"&gt;1987&lt;/option&gt;&lt;option value="1986"&gt;1986&lt;/option&gt;&lt;option value="1985"&gt;1985&lt;/option&gt;&lt;option value="1984"&gt;1984&lt;/option&gt;&lt;option value="1983"&gt;1983&lt;/option&gt;&lt;option value="1982"&gt;1982&lt;/option&gt;&lt;option value="1981"&gt;1981&lt;/option&gt;&lt;option value="1980"&gt;1980&lt;/option&gt;</token>
+  </line>
+  <line no="158">
+    <token name="T_INLINE_HTML">									&lt;option value="1979"&gt;1979&lt;/option&gt;&lt;option value="1978"&gt;1978&lt;/option&gt;&lt;option value="1977"&gt;1977&lt;/option&gt;&lt;option value="1976"&gt;1976&lt;/option&gt;&lt;option value="1975"&gt;1975&lt;/option&gt;&lt;option value="1974"&gt;1974&lt;/option&gt;&lt;option value="1973"&gt;1973&lt;/option&gt;&lt;option value="1972"&gt;1972&lt;/option&gt;&lt;option value="1971"&gt;1971&lt;/option&gt;&lt;option value="1970"&gt;1970&lt;/option&gt;</token>
+  </line>
+  <line no="159">
+    <token name="T_INLINE_HTML">									&lt;option value="1969"&gt;1969&lt;/option&gt;&lt;option value="1968"&gt;1968&lt;/option&gt;&lt;option value="1967"&gt;1967&lt;/option&gt;&lt;option value="1966"&gt;1966&lt;/option&gt;&lt;option value="1965"&gt;1965&lt;/option&gt;&lt;option value="1964"&gt;1964&lt;/option&gt;&lt;option value="1963"&gt;1963&lt;/option&gt;&lt;option value="1962"&gt;1962&lt;/option&gt;&lt;option value="1961"&gt;1961&lt;/option&gt;&lt;option value="1960"&gt;1960&lt;/option&gt;</token>
+  </line>
+  <line no="160">
+    <token name="T_INLINE_HTML">									&lt;option value="1959"&gt;1959&lt;/option&gt;&lt;option value="1958"&gt;1958&lt;/option&gt;&lt;option value="1957"&gt;1957&lt;/option&gt;&lt;option value="1956"&gt;1956&lt;/option&gt;&lt;option value="1955"&gt;1955&lt;/option&gt;&lt;option value="1954"&gt;1954&lt;/option&gt;&lt;option value="1953"&gt;1953&lt;/option&gt;&lt;option value="1952"&gt;1952&lt;/option&gt;&lt;option value="1951"&gt;1951&lt;/option&gt;</token>
+  </line>
+  <line no="161">
+    <token name="T_INLINE_HTML">							&lt;/select&gt;</token>
+  </line>
+  <line no="162">
+    <token name="T_INLINE_HTML">							&lt;/div&gt;</token>
+  </line>
+  <line no="163">
+    <token name="T_INLINE_HTML">						  &lt;/div&gt;</token>
+  </line>
+  <line no="164">
+    <token name="T_INLINE_HTML">						&lt;/div&gt;</token>
+  </line>
+  <line no="165">
+    <token name="T_INLINE_HTML">					&lt;/div&gt;	</token>
+  </line>
+  <line no="166">
+    <token name="T_INLINE_HTML">					&lt;!--For Students--&gt;</token>
+  </line>
+  <line no="167">
+    <token name="T_INLINE_HTML">					&lt;div id= "studentSelection" style= "display:none;"&gt;</token>
+  </line>
+  <line no="168">
+    <token name="T_INLINE_HTML">						&lt;!--School/University --&gt;</token>
+  </line>
+  <line no="169">
+    <token name="T_INLINE_HTML">						&lt;div class="form-group"&gt;</token>
+  </line>
+  <line no="170">
+    <token name="T_INLINE_HTML">							  &lt;label class="control-label"  for="school"&gt;School/University&lt;/label&gt;</token>
+  </line>
+  <line no="171">
+    <token name="T_INLINE_HTML">							  &lt;div class="controls"&gt;</token>
+  </line>
+  <line no="172">
+    <token name="T_INLINE_HTML">								&lt;input class="form-control" type="text" id="school" name="school" placeholder="" class="input-xlarge" required&gt;</token>
+  </line>
+  <line no="173">
+    <token name="T_INLINE_HTML">							  &lt;/div&gt;</token>
+  </line>
+  <line no="174">
+    <token name="T_INLINE_HTML">						&lt;/div&gt;</token>
+  </line>
+  <line no="175">
+    <token name="T_INLINE_HTML">						</token>
+  </line>
+  <line no="176">
+    <token name="T_INLINE_HTML">						&lt;!--Time Period--&gt;</token>
+  </line>
+  <line no="177">
+    <token name="T_INLINE_HTML">						&lt;div class="form-group"&gt;</token>
+  </line>
+  <line no="178">
+    <token name="T_INLINE_HTML">						  &lt;label class="control-label" for="timePeriod"&gt;Time period&lt;/label&gt;</token>
+  </line>
+  <line no="179">
+    <token name="T_INLINE_HTML">						  &lt;div class="row"&gt;</token>
+  </line>
+  <line no="180">
+    <token name="T_INLINE_HTML">						    &lt;div class="col-md-5"&gt;</token>
+  </line>
+  <line no="181">
+    <token name="T_INLINE_HTML">							&lt;select class="form-control" id= "start-yearpicker-student" name="start-year-student" required&gt;</token>
+  </line>
+  <line no="182">
+    <token name="T_INLINE_HTML">									&lt;option value="" selected&gt;-&lt;/option&gt;</token>
+  </line>
+  <line no="183">
+    <token name="T_INLINE_HTML">									&lt;option value="2015"&gt;2015&lt;/option&gt;&lt;option value="2014"&gt;2014&lt;/option&gt;&lt;option value="2013"&gt;2013&lt;/option&gt;&lt;option value="2012"&gt;2012&lt;/option&gt;&lt;option value="2011"&gt;2011&lt;/option&gt;&lt;option value="2010"&gt;2010&lt;/option&gt;&lt;option value="2009"&gt;2009&lt;/option&gt;&lt;option value="2008"&gt;2008&lt;/option&gt;&lt;option value="2007"&gt;2007&lt;/option&gt;&lt;option value="2006"&gt;2006&lt;/option&gt;&lt;option value="2005"&gt;2005&lt;/option&gt;&lt;option value="2004"&gt;2004&lt;/option&gt;&lt;option value="2003"&gt;2003&lt;/option&gt;&lt;option value="2002"&gt;2002&lt;/option&gt;&lt;option value="2001"&gt;2001&lt;/option&gt;&lt;option value="2000"&gt;2000&lt;/option&gt;</token>
+  </line>
+  <line no="184">
+    <token name="T_INLINE_HTML">									&lt;option value="1999"&gt;1999&lt;/option&gt;&lt;option value="1998"&gt;1998&lt;/option&gt;&lt;option value="1997"&gt;1997&lt;/option&gt;&lt;option value="1996"&gt;1996&lt;/option&gt;&lt;option value="1995"&gt;1995&lt;/option&gt;&lt;option value="1994"&gt;1994&lt;/option&gt;&lt;option value="1993"&gt;1993&lt;/option&gt;&lt;option value="1992"&gt;1992&lt;/option&gt;&lt;option value="1991"&gt;1991&lt;/option&gt;&lt;option value="1990"&gt;1990&lt;/option&gt;</token>
+  </line>
+  <line no="185">
+    <token name="T_INLINE_HTML">									&lt;option value="1989"&gt;1989&lt;/option&gt;&lt;option value="1988"&gt;1988&lt;/option&gt;&lt;option value="1987"&gt;1987&lt;/option&gt;&lt;option value="1986"&gt;1986&lt;/option&gt;&lt;option value="1985"&gt;1985&lt;/option&gt;&lt;option value="1984"&gt;1984&lt;/option&gt;&lt;option value="1983"&gt;1983&lt;/option&gt;&lt;option value="1982"&gt;1982&lt;/option&gt;&lt;option value="1981"&gt;1981&lt;/option&gt;&lt;option value="1980"&gt;1980&lt;/option&gt;</token>
+  </line>
+  <line no="186">
+    <token name="T_INLINE_HTML">									&lt;option value="1979"&gt;1979&lt;/option&gt;&lt;option value="1978"&gt;1978&lt;/option&gt;&lt;option value="1977"&gt;1977&lt;/option&gt;&lt;option value="1976"&gt;1976&lt;/option&gt;&lt;option value="1975"&gt;1975&lt;/option&gt;&lt;option value="1974"&gt;1974&lt;/option&gt;&lt;option value="1973"&gt;1973&lt;/option&gt;&lt;option value="1972"&gt;1972&lt;/option&gt;&lt;option value="1971"&gt;1971&lt;/option&gt;&lt;option value="1970"&gt;1970&lt;/option&gt;</token>
+  </line>
+  <line no="187">
+    <token name="T_INLINE_HTML">									&lt;option value="1969"&gt;1969&lt;/option&gt;&lt;option value="1968"&gt;1968&lt;/option&gt;&lt;option value="1967"&gt;1967&lt;/option&gt;&lt;option value="1966"&gt;1966&lt;/option&gt;&lt;option value="1965"&gt;1965&lt;/option&gt;&lt;option value="1964"&gt;1964&lt;/option&gt;&lt;option value="1963"&gt;1963&lt;/option&gt;&lt;option value="1962"&gt;1962&lt;/option&gt;&lt;option value="1961"&gt;1961&lt;/option&gt;&lt;option value="1960"&gt;1960&lt;/option&gt;</token>
+  </line>
+  <line no="188">
+    <token name="T_INLINE_HTML">									&lt;option value="1959"&gt;1959&lt;/option&gt;&lt;option value="1958"&gt;1958&lt;/option&gt;&lt;option value="1957"&gt;1957&lt;/option&gt;&lt;option value="1956"&gt;1956&lt;/option&gt;&lt;option value="1955"&gt;1955&lt;/option&gt;&lt;option value="1954"&gt;1954&lt;/option&gt;&lt;option value="1953"&gt;1953&lt;/option&gt;&lt;option value="1952"&gt;1952&lt;/option&gt;&lt;option value="1951"&gt;1951&lt;/option&gt;</token>
+  </line>
+  <line no="189">
+    <token name="T_INLINE_HTML">							&lt;/select&gt;</token>
+  </line>
+  <line no="190">
+    <token name="T_INLINE_HTML">							&lt;/div&gt;</token>
+  </line>
+  <line no="191">
+    <token name="T_INLINE_HTML">							&lt;div class="col-md-2 text-center"&gt;to &lt;/div&gt;</token>
+  </line>
+  <line no="192">
+    <token name="T_INLINE_HTML">							</token>
+  </line>
+  <line no="193">
+    <token name="T_INLINE_HTML">							  &lt;div class="col-md-5"&gt;</token>
+  </line>
+  <line no="194">
+    <token name="T_INLINE_HTML">							&lt;select class="form-control" id= "end-yearpicker-student" name="end-year-student"  required&gt;</token>
+  </line>
+  <line no="195">
+    <token name="T_INLINE_HTML">									&lt;option value="" selected&gt;-&lt;/option&gt;</token>
+  </line>
+  <line no="196">
+    <token name="T_INLINE_HTML">									&lt;option value="2015"&gt;2015&lt;/option&gt;&lt;option value="2014"&gt;2014&lt;/option&gt;&lt;option value="2013"&gt;2013&lt;/option&gt;&lt;option value="2012"&gt;2012&lt;/option&gt;&lt;option value="2011"&gt;2011&lt;/option&gt;&lt;option value="2010"&gt;2010&lt;/option&gt;&lt;option value="2009"&gt;2009&lt;/option&gt;&lt;option value="2008"&gt;2008&lt;/option&gt;&lt;option value="2007"&gt;2007&lt;/option&gt;&lt;option value="2006"&gt;2006&lt;/option&gt;&lt;option value="2005"&gt;2005&lt;/option&gt;&lt;option value="2004"&gt;2004&lt;/option&gt;&lt;option value="2003"&gt;2003&lt;/option&gt;&lt;option value="2002"&gt;2002&lt;/option&gt;&lt;option value="2001"&gt;2001&lt;/option&gt;&lt;option value="2000"&gt;2000&lt;/option&gt;</token>
+  </line>
+  <line no="197">
+    <token name="T_INLINE_HTML">									&lt;option value="1999"&gt;1999&lt;/option&gt;&lt;option value="1998"&gt;1998&lt;/option&gt;&lt;option value="1997"&gt;1997&lt;/option&gt;&lt;option value="1996"&gt;1996&lt;/option&gt;&lt;option value="1995"&gt;1995&lt;/option&gt;&lt;option value="1994"&gt;1994&lt;/option&gt;&lt;option value="1993"&gt;1993&lt;/option&gt;&lt;option value="1992"&gt;1992&lt;/option&gt;&lt;option value="1991"&gt;1991&lt;/option&gt;&lt;option value="1990"&gt;1990&lt;/option&gt;</token>
+  </line>
+  <line no="198">
+    <token name="T_INLINE_HTML">									&lt;option value="1989"&gt;1989&lt;/option&gt;&lt;option value="1988"&gt;1988&lt;/option&gt;&lt;option value="1987"&gt;1987&lt;/option&gt;&lt;option value="1986"&gt;1986&lt;/option&gt;&lt;option value="1985"&gt;1985&lt;/option&gt;&lt;option value="1984"&gt;1984&lt;/option&gt;&lt;option value="1983"&gt;1983&lt;/option&gt;&lt;option value="1982"&gt;1982&lt;/option&gt;&lt;option value="1981"&gt;1981&lt;/option&gt;&lt;option value="1980"&gt;1980&lt;/option&gt;</token>
+  </line>
+  <line no="199">
+    <token name="T_INLINE_HTML">									&lt;option value="1979"&gt;1979&lt;/option&gt;&lt;option value="1978"&gt;1978&lt;/option&gt;&lt;option value="1977"&gt;1977&lt;/option&gt;&lt;option value="1976"&gt;1976&lt;/option&gt;&lt;option value="1975"&gt;1975&lt;/option&gt;&lt;option value="1974"&gt;1974&lt;/option&gt;&lt;option value="1973"&gt;1973&lt;/option&gt;&lt;option value="1972"&gt;1972&lt;/option&gt;&lt;option value="1971"&gt;1971&lt;/option&gt;&lt;option value="1970"&gt;1970&lt;/option&gt;</token>
+  </line>
+  <line no="200">
+    <token name="T_INLINE_HTML">									&lt;option value="1969"&gt;1969&lt;/option&gt;&lt;option value="1968"&gt;1968&lt;/option&gt;&lt;option value="1967"&gt;1967&lt;/option&gt;&lt;option value="1966"&gt;1966&lt;/option&gt;&lt;option value="1965"&gt;1965&lt;/option&gt;&lt;option value="1964"&gt;1964&lt;/option&gt;&lt;option value="1963"&gt;1963&lt;/option&gt;&lt;option value="1962"&gt;1962&lt;/option&gt;&lt;option value="1961"&gt;1961&lt;/option&gt;&lt;option value="1960"&gt;1960&lt;/option&gt;</token>
+  </line>
+  <line no="201">
+    <token name="T_INLINE_HTML">									&lt;option value="1959"&gt;1959&lt;/option&gt;&lt;option value="1958"&gt;1958&lt;/option&gt;&lt;option value="1957"&gt;1957&lt;/option&gt;&lt;option value="1956"&gt;1956&lt;/option&gt;&lt;option value="1955"&gt;1955&lt;/option&gt;&lt;option value="1954"&gt;1954&lt;/option&gt;&lt;option value="1953"&gt;1953&lt;/option&gt;&lt;option value="1952"&gt;1952&lt;/option&gt;&lt;option value="1951"&gt;1951&lt;/option&gt;</token>
+  </line>
+  <line no="202">
+    <token name="T_INLINE_HTML">							&lt;/select&gt;</token>
+  </line>
+  <line no="203">
+    <token name="T_INLINE_HTML">							&lt;/div&gt;</token>
+  </line>
+  <line no="204">
+    <token name="T_INLINE_HTML">						  &lt;/div&gt;</token>
+  </line>
+  <line no="205">
+    <token name="T_INLINE_HTML">						&lt;/div&gt;</token>
+  </line>
+  <line no="206">
+    <token name="T_INLINE_HTML">					&lt;/div&gt;</token>
+  </line>
+  <line no="207">
+    <token name="T_INLINE_HTML">                    &lt;!-- Invalid input alert --&gt;</token>
+  </line>
+  <line no="208">
+    <token name="T_INLINE_HTML">                    &lt;div class="form-group"&gt;</token>
+  </line>
+  <line no="209">
+    <token name="T_INLINE_HTML">                        &lt;div class="alert alert-danger text-center" role="alert" style="display: none; margin-top: 10px;"&gt;&lt;b&gt;Invalid Input :&lt;/b&gt; Please correct the marked field(s)&lt;/div&gt;</token>
+  </line>
+  <line no="210">
+    <token name="T_INLINE_HTML">                    &lt;/div&gt;</token>
+  </line>
+  <line no="211"/>
+  <line no="212">
+    <token name="T_INLINE_HTML">                    &lt;div class="form-group"&gt;</token>
+  </line>
+  <line no="213">
+    <token name="T_INLINE_HTML">                        &lt;button class="btn btn-warning btn-lg btn-block" id = "setup-btn"type="submit"&gt;&lt;b&gt;Submit&lt;/b&gt;&lt;/button&gt;</token>
+  </line>
+  <line no="214">
+    <token name="T_INLINE_HTML">                        &lt;br /&gt;</token>
+  </line>
+  <line no="215">
+    <token name="T_INLINE_HTML">                        &lt;a href="../profile-user-POV" style="float:right"&gt;Skip this step &gt;&gt;&lt;/a&gt;</token>
+  </line>
+  <line no="216">
+    <token name="T_INLINE_HTML">                    &lt;/div&gt;</token>
+  </line>
+  <line no="217"/>
+  <line no="218">
+    <token name="T_INLINE_HTML">                &lt;/form&gt;</token>
+  </line>
+  <line no="219">
+    <token name="T_INLINE_HTML">             &lt;/div&gt;</token>
+  </line>
+  <line no="220">
+    <token name="T_INLINE_HTML">        &lt;/div&gt;</token>
+  </line>
+  <line no="221">
+    <token name="T_INLINE_HTML">    &lt;/div&gt; &lt;!-- /container --&gt;</token>
+  </line>
+  <line no="222"/>
+  <line no="223">
+    <token name="T_INLINE_HTML">&lt;/body&gt;</token>
+  </line>
+  <line no="224">
+    <token name="T_INLINE_HTML">&lt;/html&gt;</token>
+  </line>
+  <line no="225"/>
+</source>

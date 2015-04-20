@@ -8,6 +8,7 @@ require_once __DIR__."/../../lib/php/classes/EducationManager.php";
 require_once __DIR__."/../../lib/php/classes/ExperienceManager.php";
 require_once __DIR__."/../../lib/php/classes/ProjectManager.php";
 require_once __DIR__."/../../lib/php/classes/SkillManager.php";
+require_once __DIR__."/../../lib/php/classes/Profile.php";
 require_once __DIR__."/Profile_view.php";
 
 // Check if logged in
@@ -105,6 +106,9 @@ try {
 			$User->setAddress($address, '', '', $zipcode, $country);
 
 			if ($Acc->update() && $User->update()) {
+				$profile = new Profile($User->getID());
+				$_SESSION['__USERDATA__'] = json_encode($profile->getData());
+
 				echo json_encode(['success'=>1]);
 			} else {
 				echo $Acc->err ."\n<br />\n" . $User->err;
