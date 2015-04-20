@@ -12,12 +12,24 @@ require_once __DIR__."/../../lib/php/classes/Profile.php";
 require_once __DIR__."/Profile_view.php";
 
 // Check if logged in
-session_start();
-$home = 'Location: ../../';
-if (!$UData = json_decode($_SESSION['__USERDATA__'], true)) {
-	//header($home);
-	echo 'Session Timed Out. <a href="/signin/">Sign back in</a>';
-	die();
+if (isset($_POST['Username']) && isset($_POST['Password'])) {
+	$login = $_POST['Username'];
+	$password = $_POST['Password'];
+
+	$accAdm = new AccountAdmin();
+	$acc = $accAdm->getAccount($login, $password);
+
+	if ($acc) {
+		$uid = $acc->getUserID();
+	}
+} else {
+	session_start();
+	$home = 'Location: ../../';
+	if (!$UData = json_decode($_SESSION['__USERDATA__'], true)) {
+		//header($home);
+		echo 'Session Timed Out. <a href="/signin/">Sign back in</a>';
+		die();
+	}
 }
 
 // Check if data valid or still exists in the database
