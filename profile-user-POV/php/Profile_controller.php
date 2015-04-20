@@ -18,9 +18,9 @@ if (isset($_POST['Username']) && isset($_POST['Password'])) {
 
 	$accAdm = new AccountAdmin();
 	$acc = $accAdm->getAccount($login, $password);
-
+echo 1;
 	if ($acc) {
-		$uid = $acc->getUserID();
+		$uid = $acc->getUserID(); echo $uid + '--1--';
 	}
 } else {
 	session_start();
@@ -30,16 +30,16 @@ if (isset($_POST['Username']) && isset($_POST['Password'])) {
 		echo 'Session Timed Out. <a href="/signin/">Sign back in</a>';
 		die();
 	}
-
+echo 2;
 	$uid = $UData['USERID'];
 }
-
+echo 3; echo $uid;
 // Check if data valid or still exists in the database
 if (!$User = new User($uid)) {
 	echo 'Session Timed Out. <a href="/signin/">Sign back in</a>';
 	die();
 }
-
+echo 4;
 // $User = new User(10); // For Testing
 $editing = false;
 if (isset($_POST['editing'])) {
