@@ -30,10 +30,11 @@ if (isset($_POST['Username']) && isset($_POST['Password'])) {
 		echo 'Session Timed Out. <a href="/signin/">Sign back in</a>';
 		die();
 	}
+
+	$uid = $UData['USERID'];
 }
 
 // Check if data valid or still exists in the database
-$uid = $UData['USERID'];
 if (!$User = new User($uid)) {
 	echo 'Session Timed Out. <a href="/signin/">Sign back in</a>';
 	die();
