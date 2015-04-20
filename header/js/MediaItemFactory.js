@@ -29,7 +29,7 @@ var MediaItemFactory = (function(){
 
 
 function MediaItem(options) {
-	var baseItem = $(document.getElementById("MediaItem").content.cloneNode(true)); //get base item
+	var baseItem = $(document.getElementById("MediaItem").content.cloneNode(true)); //stamp out base item
 	var imgURL = options["user-img-url"] || '/image/user_img.png';
 	var userURL = options["user-url"] || '#';
 	var date = options["date"] || ""; 

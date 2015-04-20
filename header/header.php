@@ -65,11 +65,12 @@ $FullName = "HELLLLO";
             </a>
         </li>
     </template>
-    <nav class="navbar navbar-inverse navbar-fixed-top affix" data-spy="affix" data-offset-top="60 " data-offset-bottom="200">
+    <!-- data-spy="affix" data-offset-top="200" data-offset-bottom="-200" -->
+    <nav id="header-nav" class="navbar navbar-inverse navbar-fixed-top affix" >
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mobile-view-menu">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-right-links">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -83,16 +84,16 @@ $FullName = "HELLLLO";
 				<img style = "width:100%;" src="../image/proconnect/logo_text.png" />				
 				</a>
 
-                <form class="navbar-form navbar-left text-center form-inline" role="search">
+                <form class="navbar-form navbar-left text-center form-inline" role="search" method="GET" action="/search-results/results.php">
                     <div class="form-group">
-                      <input type="text" size="40" class="form-control" id= "searchbar" placeholder="Search for people, companies, jobs...">
+                      <input name="searchKey" type="text" size="40" class="form-control" id= "searchbar" placeholder="Search for people, companies, jobs...">
                     </div>
                     <button type="submit" class="btn btn-primary hidden-xs hidden-sm ">&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;&nbsp;&nbsp;</button>
                 </form>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="mobile-view-menu">
+            <div class="collapse navbar-collapse" id="nav-right-links">
 
                 <ul class="nav navbar-nav nav-pills navbar-right ">
                     <!-- <li id = "return" style = "display: none;">
@@ -173,30 +174,8 @@ $FullName = "HELLLLO";
                         </ul>
                     </li>
                 </ul>
-            <!-- Normal Menu View -->
-            <ul class="nav nav-pills subNav hidden-xs">
-                <li role="presentation"><a href="../profile-user-POV/">
-                    Home</a>
-                </li>
-                <li role="presentation"><a href="../profile-user-POV/">
-                    Profile</a>
-                </li>
-                <li role="presentation"><a href="../connections/">
-                    Connections</a>
-                </li>
-                <li role="presentation"><a href="#">
-                    Education</a>
-                </li>
-                <li role="presentation"><a href="#">
-                    Jobs</a>
-                </li>
-                <li role="presentation"><a href="#">
-                    Interests</a>
-                </li>
-            </ul>
-
-            <!-- Mobile Menu View -->
-            <ul class="nav subNav hidden-sm hidden-md hidden-lg">
+                <!-- Mobile Menu View -->
+                <ul class="nav subNav hidden-sm hidden-md hidden-lg">
                     <li role="presentation">
                         <a href="../profile-user-POV/">Home</a>
                     </li>
@@ -229,6 +208,28 @@ $FullName = "HELLLLO";
                 </ul>
 
             </div><!-- /.navbar-collapse -->
+
+            <!-- Normal Menu View -->
+            <ul id="nv-menu" class="nav nav-pills subNav hidden-xs">
+                <li role="presentation"><a href="../profile-user-POV/">
+                    Home</a>
+                </li>
+                <li role="presentation"><a href="../profile-user-POV/">
+                    Profile</a>
+                </li>
+                <li role="presentation"><a href="../connections/">
+                    Connections</a>
+                </li>
+                <li role="presentation"><a href="#">
+                    Education</a>
+                </li>
+                <li role="presentation"><a href="#">
+                    Jobs</a>
+                </li>
+                <li role="presentation"><a href="#">
+                    Interests</a>
+                </li>
+            </ul>
         </div><!-- /.container-fluid -->       
     </nav>
 

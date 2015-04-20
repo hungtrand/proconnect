@@ -23,22 +23,13 @@ $(document).ready(function(){
 	function fillMessages(parent) {
 		var specialID = $(parent).attr("id");
 		MessageGetter.get(specialID,function(jqXHR,obj){
-			//clear existing items 
-			$(parent).siblings("ul").find(".custom-media-item").remove();
-
-			//show loading div
-			$(parent).siblings("ul").find("div#iam-loading").show();
+			$(parent).siblings("ul").find(".custom-media-item").remove(); //clear existing items 
+			$(parent).siblings("ul").find("div#iam-loading").show();      //show loading div
 		},function(data){
-
-			//display data
-			$.each(data,function(key,value){
-				// make items
-				var newItem = MediaItemFactory.makeItem(specialID,value);
-				//fill the items
-				$(parent).siblings("ul.media-list").children().last().after(newItem);
+			$.each(data,function(key,value){ 														  
+				var newItem = MediaItemFactory.makeItem(specialID,value);	//make items
+				$(parent).siblings("ul.media-list").children().last().after(newItem);//display item
 			});
-			// var item = new MediaItem(data);
-			// console.log( item.html() );
 			$(parent).siblings("ul").find("div#iam-loading").hide();
 		});
 	}
@@ -54,7 +45,6 @@ $(document).ready(function(){
 			fillMessages($(this).find("a.navi-menu"));
 		} 
 
-		// IamLoading.show($(this).find("ul.media-list li.dropdown-header"));
 		$(this).attr("aria-expanded","true");
 		$(this).addClass("open");
 	},function(){
@@ -62,8 +52,24 @@ $(document).ready(function(){
 		$(this).attr("aria-expanded","false");
 		$(this).removeClass("open");
 	});
-
+ 	
+ 	/* show menu on scroll down*/
+ 	$(window).scroll(showMenuOnScroll());
 	
+	function showMenuOnScroll(e){
+ 		//Keep track of last scroll
+		var lastScroll = 0;
+ 		return function() {
+          //Sets the current scroll position
+          var st = $(this).scrollTop();
+          //Determines up-or-down scrolling
+          if (st > lastScroll){  			//DOWN
+				$("#nv-menu").slideUp(100);             
+          } else { 							//UP
+             	$("#nv-menu").slideDown(100);   
+          }
+          lastScroll = st;					//Updates scroll position
+      	}
+	}
 
-	
 });
