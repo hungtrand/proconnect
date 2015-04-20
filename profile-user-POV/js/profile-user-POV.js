@@ -453,7 +453,6 @@ $(document).ready(function() {
 
 		// function removeEntry(){
 		// 	// var index = .parent("div").attr("entry-number");
-<<<<<<< HEAD
 
 		// 	// console.log(user);
 		// 	//send to model for removing
@@ -539,82 +538,4 @@ $(document).ready(function() {
 
 		$('body').append(uploader.getView());
 	});
-=======
-
-		// 	// console.log(user);
-		// 	//send to model for removing
-			
-		// }
-	});
-
-	//handle edit-form cancel 
-	$(".cancel-btn").on("click",function(){
-		// var target = "#" + $(this).attr("for"); //grab target
-		var link = '#' + $(this).parent("form").attr("link");
-		target = $(this).parent("form").parent("div");
-		$(target).fadeOut(50);				 //close editable view
-		$(target).find("form").trigger("reset"); //reset form
-		$(target).find("a.remove-entry-link").hide(); //hide delete entry link
-		//clear temporary data
-		$(this).parent("form").attr("editing","false")
-
-		//console.log(link);
-
-		//clear project member list
-		if($(this).parent("form").find("ul.sortable").length > 0) {
-			$(this).parent("form").find("ul.sortable > li").remove();
-		}
-
-		//turn off gif loader
-		$(target).find("div.loading").hide();
-
-		//repopulate the page
-		$(".editable").fadeIn(50);  //show all editable components
-		$(link).fadeIn();			//fade link items in
-	});
-
-	//enable add new 
-	$(".add-btn").on("click",function(){
-		var target = "#" + $(this).attr("for");	//grab target
-		var forTarget = '#' + $(this).attr("edit"); //grab edit flag
-
-		
-		if(forTarget !== '#true') { 		//handle editview on add
-			//display edit view
-			$(target).find("form.editable-form").attr("for-index","new");
-			$(target).find("form.editable-form").find('.DataID').val(0);
-			$(target).find("form.editable-form").find('input:text, textarea').val('');
-			$(target).find("form.editable-form").find('input:radio, input:checkbox').removeAttr('checked');
-			$(target).find("form.editable-form").find('select').removeAttr('selected');
-			$(target).fadeIn(); //.css("display","block").
-			$(target).find('input:text, textarea, input:radio, input:checkbox, select').first().focus();
-		} else {				
-			//console.log(target);	//if add btn is doing an edit action 
-			//NOTE: target should be the live view id, not edit view id
-			$(target).find("div.editable").trigger("click");	
-		}
-
-	});
-
-	//enable team member or skill deletion 
-	$("ul.sortable").on("click","button.close",function(){
-		//remove entry from model
-		$(this).parent("li").remove();
-	});
-
-	//present checkbox
-	$("#work-present-chk").on("click",function(){
-								// console.log($(this).prop("checked"));
-								if( $(this).prop("checked") ){
-									$("#work-present").show();
-									$("#work-end-time-explicit").css("visibility","hidden");
-								} else {
-									$("#work-present").hide();
-									$("#work-end-time-explicit").css("visibility","visible");
-								}
-							});
-
-
-	// $("#sortable").append("<li class=\"ui-state-default col-md-3\"><div class=\"team-member-block team-member-block-edit-view col-md-6\"><div class=\"team-member-block-description\"> <p>You</p></div></div><button type=\"button\" class=\"close\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button></li>");
->>>>>>> UI2
 });

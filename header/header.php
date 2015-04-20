@@ -2,10 +2,13 @@
 //error_reporting(E_ALL); // debug
 //ini_set("display_errors", 1); // debug
 include '../signout/php/session_check_signout.php';
+<<<<<<< HEAD
 
 // $UData = json_decode($_SESSION['__USERDATA__'], true);
 // $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 $FullName = "HELLLLO";
+=======
+>>>>>>> backend
 
 ?>
 <!DOCTYPE html>
@@ -173,9 +176,14 @@ $FullName = "HELLLLO";
                         </ul>
                     </li>
                 </ul>
+<<<<<<< HEAD
             <!-- Normal Menu View -->
             <ul class="nav nav-pills subNav hidden-xs">
                 <li role="presentation"><a href="../profile-user-POV/">
+=======
+				 <ul class="nav subNav hidden-sm hidden-md hidden-lg">
+                <li role="presentation"><a href="../feed/">
+>>>>>>> backend
                     Home</a>
                 </li>
                 <li role="presentation"><a href="../profile-user-POV/">
@@ -229,6 +237,29 @@ $FullName = "HELLLLO";
                 </ul>
 
             </div><!-- /.navbar-collapse -->
+<<<<<<< HEAD
+=======
+            <ul class="nav nav-pills subNav hidden-xs">
+                <li role="presentation"><a href="../feed/">
+                    Home</a>
+                </li>
+                <li role="presentation"><a href="../profile-user-POV/">
+                    Profile</a>
+                </li>
+                <li role="presentation"><a href="../connections/">
+                    Connections</a>
+                </li>
+                <li role="presentation"><a href="#">
+                    Education</a>
+                </li>
+                <li role="presentation"><a href="#">
+                    Jobs</a>
+                </li>
+                <li role="presentation"><a href="#">
+                    Interests</a>
+                </li>
+            </ul>
+>>>>>>> backend
         </div><!-- /.container-fluid -->       
     </nav>
 
