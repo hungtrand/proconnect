@@ -12,7 +12,7 @@ include '../header/header.php';
 
 
     <div id="loading-main">
-        <img src="../image/ajax-loader.gif">
+        <img src="/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif">
     </div>
     <div id="ConnectionsHeader" class="row">
                 
@@ -200,17 +200,16 @@ include '../header/header.php';
     </script>
 
   <!-- Custom modal handler -->
+  <script src="/lib/bootstrap/js/bootstrap-typeahead.min.js"></script>
+  <script src="/lib/js/underscore-min.js"></script>
+  <script src="js/typeahead.js"></script>
   <script src="js/index.js"></script>
   <script src="js/LoadMessages.js"></script>
-  <script src="js/SearchMessages.js"></script>
   <script src="js/Messages.js"></script>
   <script src="../connections/js/NewConnection.js"></script>
   <script src="../connections/js/SuggestionList.js"></script>
   <script src="js/NewMessage.js"></script>
   <script src="js/readmore.js"></script>
-  <script src="js/typeahead.js"></script>
-  <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
-  <script src="//underscorejs.org/underscore-min.js"></script>
 
   <!-- Custom CSS -->
   <link href="css/index.css" rel="stylesheet">

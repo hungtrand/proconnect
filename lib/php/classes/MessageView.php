@@ -3,14 +3,15 @@ require_once __DIR__."/ActiveRecord.php";
 
 
 /**
-*	MessageView - performs logic for MessageView class. 
+*	MessageView - map data between a user and message to identify which user is allowed to receive a message.
 *	@params: $UserID
 *	Responsibilities: set information for a message (like messageID, USERID, Date created, notificationID ), and also get information about the message.   
 */
 class MessageView extends ActiveRecord{
 	public static $TableName = 'MessageView';
-	public static $PrimaryKey = 'MessageViewID';
-	public static $Columns = ['MessageViewID', 'MessageID', 'UserID', 'DateCreated', 'NotificationID'];
+	public static $PrimaryKey = 'MESSAGEVIEWID';
+	public static $Columns = ['MESSAGEVIEWID', 'MESSAGEID', 'USERID', 'TIMESTAMP', 
+								'READ', 'ARCHIVED', 'DELETED', 'ISCREATOR'];
 	private $data= [];
 	private $MessageViewID;
 	public $err;
@@ -72,12 +73,24 @@ class MessageView extends ActiveRecord{
 		return $this->data['USERID'];
 	}
 
-	public function getNotificationID(){
-		return $this->data['NOTIFICATIONID'];
+	public function getTimestamp(){
+		return $this->data['TIMESTAMP'];
 	}
 
-	public function getDateCreated(){
-		return $this->data['DATECREATED'];
+	public function getRead(){
+		return $this->data['READ'];
+	}
+
+	public function getArchived(){
+		return $this->data['ARCHIVED'];
+	}
+
+	public function getDeleted(){
+		return $this->data['DELETED'];
+	}
+
+	public function isCreator() {
+		return (bool) $this->data['ISCREATOR'];
 	}
 
 	//Set Methods
@@ -97,7 +110,33 @@ class MessageView extends ActiveRecord{
 		return true;
 	}
 
+	public function setRead($boolVal = false){
+		if ($boolVal) $this->data['READ'] = true;
+		else $this->data['READ'] = false;
 
+		return true;
+	}
+
+	public function setArchived($boolVal = false){
+		if ($boolVal) $this->data['ARCHIVED'] = true;
+		else $this->data['ARCHIVED'] = false;
+
+		return true;
+	}
+
+	public function setDeleted($boolVal = false){
+		if ($boolVal) $this->data['DELETED'] = true;
+		else $this->data['DELETED'] = false;
+
+		return true;
+	}
+
+	public function setIsCreator($boolVal = false) {
+		if ($boolVal) $this->data['ISCREATOR'] = true;
+		else $this->data['ISCREATOR'] = false;
+
+		return true;
+	}
 
 }
 ?>

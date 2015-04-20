@@ -1,6 +1,6 @@
 function LoadMessages(container, form, page) {
 	
-	URLs={Inbox: 'php/dummy.php', Outbox: 'php/dummy2.php', Archive: 'php/dummy3.php', Trash: 'php/dummy4.php'};
+	URLs={Inbox: 'php/inbox_controller.php', Outbox: 'php/outbox_controller.php', Archive: 'php/archive_controller.php', Trash: 'php/trash_controller.php'};
 	this.data = "";
 	this.form = form;
 	this.btnRemoveAll;
@@ -22,7 +22,7 @@ LoadMessages.prototype = {
 	fetch: function(callback) {
 		var that = this;
 		var pageForm = {};
-		pageForm[that.form] = that.page;
+		pageForm['page'] = that.page;
 		console.log(pageForm);
 
 		$.ajax({

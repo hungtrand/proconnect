@@ -24,7 +24,7 @@
 			if(isset($ID)){
 			$this->NotificationViewID = $ID;
 			if(!$this->$data = $this->fetch($ID)){
-				$this->err = "No NotificationRelationship Found!";
+				$this->err = "No Notification Relationship Found!";
 				return false;
 			};
 
@@ -79,11 +79,6 @@
 
 		public function getUserID(){
 			return $this->data['UserID'];
-		}
-
-		//setMethods
-		public function setNotificationViewID($NotiViewID){
-			$this->data['NotificationViewID'] = $NotiViewID;
 		}
 
 		public function setNotificationID($NotiID){

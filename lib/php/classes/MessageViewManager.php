@@ -5,14 +5,15 @@
  	require_once __DIR__."/RecordSet.php";
 
 /**
-*	MessageViewManager - performs logic for MessageViewManager class. 
+*	MessageViewManager - get messages in relationship to user. Fetch messsages for inbox, outbox, archived, or trash mailbox types. 
 *	@params: $UserID
-*	Responsibilities: load the user and get the user data from the database.   
+*	Responsibilities: load messages belonged to a user depending on the status of message requested.   
 */	
  	class MessageViewManager extends RecordSet{
  		protected $PrimaryKey;
  		protected $TableName;
  		protected $Columns;
+ 		private $Mailbox;
 
  		protected $User;
  		protected $data;
@@ -22,6 +23,7 @@
 			$this->TableName = MessageView::$TableName;
 			$this->Columns = MessageView::$Columns;
 			$this->User = $User;
+			$this->Mailbox = 'inbox';
 
 			parent::__construct();
 
@@ -39,11 +41,48 @@
 			$this->User = $User;
 			return true;
 		}
+
+		public function loadPage($page, $numRows, $orderby="`READ` DESC, TIMESTAMP") {
+			if (!is_integer($page) || !is_integer($numRows)) {
+				$this->err = "Parameters must be integers";
+				return false;
+			}
+
+			$offset = $page * $numRows - $numRows;
+
+			switch ($this->Mailbox) {
+				case 'inbox':
+					$mailCond = "DELETED = 0 AND ARCHIVED = 0 ";
+					break;
+				case 'outbox':
+					$mailCond = "ISCREATOR = 1 AND DELETED = 0 AND ARCHIVED = 0 ";
+					break;
+				case 'archive':
+					$mailCond = "ARCHIVED = 1 AND DELETED = 0 ";
+					break;
+				case 'trash':
+					$mailCond = "DELETED = 1 ";
+					break;
+				default:
+					$this->err = "Cannot load mailbox. Mailbox type is not set. Use setMailbox($mailbox) method.";
+					return false;
+			}
+
+			$cond = "WHERE (USERID = ?) AND ".$mailCond;
+			$cond.= "ORDER BY ".$orderby." LIMIT ". $offset .", ". $numRows;
+			$params = ['USERID'=>$this->User->getID()];
+			if (!$this->data = $this->fetchCustom($cond, $params)) return false;
+
+			return true;
+
+		}
+
 		public function getData(){
 			if(!isset($this->data) || count($this->data) < 1) return false;
 			
 			return $this->data;
 		}
+
 		public function getAll(){
 			if(!isset($this->data) || count($this->data) < 1 || !$this->data) return false;
 			
@@ -54,6 +93,22 @@
 				array_push($arr,$obj);
 			} 
 			return $arr;
+		}
+
+		public function setMailbox($mailbox = '') {
+
+			switch ($mailbox) {
+				case 'inbox':
+				case 'archive':
+				case 'trash':
+				case 'outbox':
+					$this->Mailbox = $mailbox;
+					return true;
+				break;
+				default:
+					$this->err = "Mailbox type not recognize. Use inbox, archive, or trash.";
+					return false;
+			}
 		}		
 
  	}
