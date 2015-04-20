@@ -98,7 +98,7 @@ FeedList.prototype = {
 	next: function() {
 		var that = this;
 		if (that.page == -1) {
-			showAlert('End of results', 'info');
+			that.showAlert('End of results', 'info');
 			return false;
 		}
 		

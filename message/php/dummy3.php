@@ -11,12 +11,8 @@
 					"sender-href" => "https://www.google.com/",
 					"message-subject" => "baseball",
 					"message-time" => "January 5, 2015, 7:45 AM",
-<<<<<<< HEAD
-					"sender-message" => "fake"
-=======
 					"sender-message" => "fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake fake",
 					"total-messages" => "11"
->>>>>>> UI2
 				],
 				"message2" =>
 				[
@@ -27,25 +23,6 @@
 					"sender-href" => "https://www.google.com/",
 					"message-subject" => "pitching",
 					"message-time" => "February 5, 2015, 7:45 PM",
-<<<<<<< HEAD
-					"sender-message" => "It Works!"
-				],
-				"message3" =>
-				[
-					"sender-name" => "proconect-admin",
-					"sender-href" => "https://www.google.com/",
-					"message-subject" => "batting",
-					"message-time" => "March 5, 2015, 12:45 AM",
-					"sender-message" => "Welcome!"
-				],
-				"message4" =>
-				[
-					"sender-name" => "confirmation",
-					"sender-href" => "https://www.google.com/",
-					"message-subject" => "dugout",
-					"message-time" => "April 5, 2015, 12:45 PM",
-					"sender-message" => "These are the messages for your Archive"
-=======
 					"sender-message" => "It Works!",
 					"total-messages" => "11"
 				],
@@ -120,7 +97,6 @@
 					"message-time" => "April 5, 2015, 12:45 PM",
 					"sender-message" => "These are the messages for your Inbox",
 					"total-messages" => "11"
->>>>>>> UI2
 				]
 			];
 
