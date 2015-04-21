@@ -23,6 +23,9 @@ NewConnection.prototype = {
 		conn.find('.ConnectionJob').text(data['JobTitle']);
 		conn.find('.ConnectionCompany').text(data['CompanyName']);
 		conn.find('.ConnectionLocation').text(data['Location']);
+		if (data['ProfileImage']) {
+			conn.find('.ProfileImage').attr('src', data['ProfileImage']);
+		}
 
 		that.container = conn;
 

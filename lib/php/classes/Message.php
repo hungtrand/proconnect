@@ -94,15 +94,6 @@ class Message extends ActiveRecord {
 		return $this->data['DATECREATED'];
 	}
 
-	
-
-	// SET METHODS
-	public function setMessageID($strVal) {
-		$this->data['MESSAGEID'] = $strVal;
-
-		return true;
-	}
-
 	public function setSubject($strVal) {
 		$this->data['SUBJECT'] = $strVal;
 

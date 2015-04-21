@@ -61,10 +61,6 @@ class MessageView extends ActiveRecord{
 	}
 
 	//Get Methods
-	public function getMessageViewID(){
-		return $this->data['MESSAGEVIEWID'];
-	}
-
 	public function getMessageID(){
 		return $this->data['MESSAGEID'];
 	}
@@ -95,18 +91,13 @@ class MessageView extends ActiveRecord{
 
 	//Set Methods
 
-	public function setMessageID($strVal){
-		$this->data['MESSAGEID'] = $strVal;
+	public function setMessageID($intVal){
+		$this->data['MESSAGEID'] = (int)$intVal;
 		return true;
 	}
 
-	public function setUserID($strVal){
-		$this->data['USERID'] = $strVal;
-		return true;
-	}
-
-	public function setNotificationID($strVal){
-		$this->data['NOTIFICATIONID'] = $strVal;
+	public function setUserID($intVal){
+		$this->data['USERID'] = (int)$intVal;
 		return true;
 	}
 

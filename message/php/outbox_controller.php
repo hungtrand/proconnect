@@ -1,6 +1,6 @@
 <?php
-error_reporting(E_ALL); // debug
-ini_set("display_errors", 1); // debug
+// error_reporting(E_ALL); // debug
+// ini_set("display_errors", 1); // debug
 require_once __DIR__."/../../lib/php/sqlConnection.php";
 require_once __DIR__."/../../lib/php/classes/User.php";
 require_once __DIR__."/../../lib/php/classes/Message.php";
@@ -8,14 +8,25 @@ require_once __DIR__."/../../lib/php/classes/MessageViewManager.php";
 require_once __DIR__."/Messages_view.php";
 
 // Check if logged in
-session_start();
-if (!$UData = json_decode($_SESSION['__USERDATA__'], true)) {
-	echo 'Session Timed Out. <a href="/signin/">Sign back in</a>';
-	die();
+if (isset($_POST['Username']) && isset($_POST['Password'])) {
+	$login = $_POST['Username'];
+	$password = $_POST['Password'];
+	$accAdm = new AccountAdmin();
+
+	$acc = $accAdm->getAccount($login, $password);
+	$uid = $acc->getUserID();
+} else {
+	session_start();
+	$home = 'Location: ../../';
+	if (!$UData = json_decode($_SESSION['__USERDATA__'], true)) {
+		//header($home);
+		echo 'Session Timed Out. <a href="/signin/">Sign back in</a>';
+		die();
+	}
+
+	$uid = $UData['USERID'];
 }
 
-// Check if data valid or still exists in the database
-$uid = $UData['USERID'];
 //$uid = 10;
 if (!$User = new User($uid)) {
 	header($home);
@@ -30,7 +41,7 @@ $rowsaPage = 20;
 
 try {
 	$outbox = new MessageViewManager($User);
-	$outbox.setMailbox('outbox');
+	$outbox->setMailbox('outbox');
 	$outbox->loadPage($page, $rowsaPage);
 	$messages = $outbox->getAll();
 

@@ -25,6 +25,10 @@ UserConnection.prototype = {
 		conn.find('.ConnectionCompany').text(data['CompanyName']);
 		conn.find('.ConnectionLocation').text(data['Location']);
 
+		if (data['ProfileImage']) {
+			conn.find('.ProfileImage').attr('src', data['ProfileImage']);
+		}
+
 		that.container = conn;
 
 		that.btnConnect = that.container.find('.removeConnection');

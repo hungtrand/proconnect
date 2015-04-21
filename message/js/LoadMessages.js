@@ -23,7 +23,7 @@ LoadMessages.prototype = {
 		var that = this;
 		var pageForm = {};
 		pageForm['page'] = that.page;
-		console.log(pageForm);
+		// console.log(pageForm);
 
 		$.ajax({
 			url: URLs[that.form],
@@ -33,11 +33,12 @@ LoadMessages.prototype = {
 		}).done(function(json) {
 			try {
 				that.Alert.toggleClass('hidden', true);
-				json = JSON.parse(json);
+				json = $.parseJSON(json.trim());
 				callback(json);
 			} catch(ev) {
 				$(".message-frame-display").empty();
-				that.Alert.html("Network or Server error occurred");
+				that.Alert.html(json);
+				// console.log(ev);
 				that.Alert.toggleClass('hidden', false);
 			}
 		}).fail(function() {
@@ -135,10 +136,9 @@ LoadMessages.prototype = {
 			}
 		};
 
-		for(var i = 1; i < counter+1; i++)
+		for(key in data)
 		{
-			var index = messageIndex + i;
-			var box = new Messages($(data).attr(index), that.form);
+			var box = new Messages(data[key], that.form);
 			this.container.append(box.getView());
 		}
 

@@ -17,7 +17,7 @@ class UserConnection extends Connection {
 
 		$this->Connection = ['CONNID'=>null, 'USERID'=>null, 'CUSERID'=>null
 							, 'CFULLNAME'=>null, 'CEMAIL'=>null ,'CTITLE'=>null
-							, 'CORGANIZATION'=>null, 'CLOCATION'=>null];
+							, 'CORGANIZATION'=>null, 'CLOCATION'=>null, 'PROFILEIMAGE'=>''];
 
 		if (!isset($ConnID)) {
 			$this->setInitUserID($User->getID());
@@ -88,6 +88,7 @@ class UserConnection extends Connection {
 		$this->Connection['CTITLE'] = $CTitle;
 		$this->Connection['CORGANIZATION'] = $COrg;
 		$this->Connection['CLOCATION'] = $CLoc;
+		$this->Connection['PROFILEIMAGE'] = $CUser->getProfileImage();
 
 		return true;
 	}
@@ -122,6 +123,10 @@ class UserConnection extends Connection {
 
 	public function getConnectionLocation() {
 		return $this->Connection['CLOCATION'];
+	}
+
+	public function getProfileImage() {
+		return $this->Connection['PROFILEIMAGE'];
 	}
 }
 

@@ -17,6 +17,10 @@ class UserCard_view implements view {
 		if (!is_array($Profiles) || count($Profiles) < 1) return false;
 
 		foreach ($Profiles as $profile) {
+			$profileImage = '';
+			if ($profile->getProfileImage()) {
+				$profileImage = '/users/'.$profile->getID().'/images/'.$profile->getProfileImage();
+			}
 
 			$out = [
 				'UserID'=>$profile->getID(),
@@ -24,7 +28,8 @@ class UserCard_view implements view {
 				'JobTitle'=>$profile->getTitle(),
 				'CompanyName'=>$profile->getOrganization(),
 				'Location'=>$profile->getLocation(),
-				'Email'=>$profile->getEmail()
+				'Email'=>$profile->getEmail(),
+				'ProfileImage'=>$profileImage
 			];
 
 			array_push($this->FinalView, $out);

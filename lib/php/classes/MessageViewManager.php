@@ -42,7 +42,7 @@
 			return true;
 		}
 
-		public function loadPage($page, $numRows, $orderby="`READ` DESC, TIMESTAMP") {
+		public function loadPage($page, $numRows, $orderby="`READ` DESC, TIMESTAMP DESC") {
 			if (!is_integer($page) || !is_integer($numRows)) {
 				$this->err = "Parameters must be integers";
 				return false;
@@ -52,7 +52,7 @@
 
 			switch ($this->Mailbox) {
 				case 'inbox':
-					$mailCond = "DELETED = 0 AND ARCHIVED = 0 ";
+					$mailCond = "DELETED = 0 AND ARCHIVED = 0 AND ISCREATOR = 0 ";
 					break;
 				case 'outbox':
 					$mailCond = "ISCREATOR = 1 AND DELETED = 0 AND ARCHIVED = 0 ";

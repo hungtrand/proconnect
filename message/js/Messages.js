@@ -116,10 +116,13 @@ Messages.prototype = {
 
 	remove: function(returnedData) {
 		var that = this;
-		var data = {'messageID': this.data['messageID']};
+		var data = {
+			'messageID': this.data['messageID'],
+			'action': 'delete'
+		};
 
 		$.ajax({
-			url: 'php/dummy.php',
+			url: 'php/MailActions_controller.php',
 			data: data,
 			type: 'POST'
 		}).done(function(json) {
@@ -156,10 +159,13 @@ Messages.prototype = {
 
 	archive: function(returnedData) {
 		var that = this;
-		var data = {'messageID': this.data['messageID']}
+		var data = {
+			'messageID': this.data['messageID'],
+			'action': 'archive'
+		}
 
 		$.ajax({
-			url: 'php/dummy.php',
+			url: 'php/MailActions_controller.php',
 			data: data,
 			type: 'POST'
 		}).done(function(json) {

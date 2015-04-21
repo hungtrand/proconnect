@@ -5,6 +5,10 @@ require_once __DIR__."/../../lib/php/sqlConnection.php";
 require_once __DIR__."/../../lib/php/classes/User.php";
 require_once __DIR__."/../../lib/php/classes/Connection.php";
 
+/**
+*	NewConnection_controller - Add a new connection to current logged in user
+*/
+
 // Check if logged in
 session_start();
 if (!$UData = json_decode($_SESSION['__USERDATA__'], true)) {

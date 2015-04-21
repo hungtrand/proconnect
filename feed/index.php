@@ -115,7 +115,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];*/
         <input type="hidden" class="UserID" name="UserID" value="" />
         <div class="row">
             <div class="col col-xs-3">
-                <img width="50px" src="../image/user_img.png" class="img-rounded" />
+                <img width="50px" src="../image/user_img.png" class="img-rounded ProfileImage" />
             </div>
 
             <div class="col col-xs-9">

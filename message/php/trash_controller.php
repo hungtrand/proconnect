@@ -40,15 +40,16 @@ else $page = 1;
 $rowsaPage = 20;
 
 try {
-	$inbox = new MessageViewManager($User);
-	$inbox->loadPage($page, $rowsaPage);
-	$messages = $inbox->getAll();
+	$trash = new MessageViewManager($User);
+	$trash->setMailbox('trash');
+	$trash->loadPage($page, $rowsaPage);
+	$messages = $trash->getAll();
 
 	$view = new Messages_view();
 	$view->load($messages);
 	$data = $view->getView();
 
-	// echo "\n".json_encode($inbox->getData())."\n"; // debug only
+	// echo "\n".json_encode($trash->getData())."\n"; // debug only
 } catch (Exception $e) {
 	echo $e->getMessage();
 

@@ -89,6 +89,7 @@ include '../header/header.php';
     <div class="message-content" class="well well sm">
         <form>
             <input type="text" name="newMsgRecipient" class="form-control typeahead" id="recipient-textarea" autocomplete="off" data-provide="typeahead" placeholder="Enter the name of the recipient..." value=""/><br>
+            <div class="well well-sm hidden"><span id="recipients"></span></div>
             <input type="hidden" name="userID" id="userID" value=""/>
             <input type="text" name="newMsgSubject" class="form-control" id="recipient-subject-textarea" placeholder="Subject"/><br>
             <div id="loading-sent">
@@ -182,7 +183,7 @@ include '../header/header.php';
         <input type="hidden" class="UserID" name="UserID" value="" />
         <div class="row">
             <div class="col col-xs-3">
-                <img width="50px" src="../image/user_img.png" class="img-rounded" />
+                <img width="50px" src="../image/user_img.png" class="img-rounded ProfileImage" />
             </div>
 
             <div class="col col-xs-9">
