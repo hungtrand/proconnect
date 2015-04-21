@@ -1,6 +1,11 @@
 <?php
 //require_once "../sqlConnection.php"; // for testing
 //require_once __DIR__."/User.php"; // for testing
+
+/*
+	UserConnectionManager
+	Responsibilities: Get Connections belong to the user
+*/
 require_once __DIR__."/ConnectionManager.php";
 require_once __DIR__."/UserConnection.php";
 

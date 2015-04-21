@@ -1,4 +1,9 @@
 <?php 
+
+/*
+	Uploader
+	Responsibilites: Upload file to database, validate the file before upload
+*/
 class Uploader {
 	private $db;
 	private $uploadDir;

@@ -3,7 +3,11 @@
 require_once __DIR__."/ActiveRecord.php";
 //$u = new Experience(1); echo $u->get('Description').'\n'; // For testing
 //$u->update(['Username'=>'Feb2015']); echo $u->get('Username'); // For Testing
-
+/*
+	Project
+	Responsibility: Load data of Project from the provided ProjectID
+	
+*/
 class Project extends ActiveRecord {
 	public static $TableName = 'Projects';
 	public static $PrimaryKey = 'PROJECTID';
