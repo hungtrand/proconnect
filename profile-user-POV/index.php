@@ -152,26 +152,37 @@ ini_set("display_errors", 1); // debug
 							</label>
 						</div>
 						
-						<div class="form-group" id="zipcode-group" >
-							<label for="zipcode">Zip Code</label> <br />
-							<input class="form-control" id="zipcode-input" type="text" name="zipcode" placeholder="Zip Code">
-						</div>
 						
-						<div id = "other-country-group" style = "display: none;">
+						
+						<div class = "other-country-group" style = "display: none;">
 						<div class="form-group" id="countryname-group" >
 							<input class="form-control" id="country-name-input" type="text" name="country-name" placeholder="Country">
 						</div>
+						</div>
+						
+						<!-- City/States -->
+						<div class = "us-group">
+						<div class="form-group">
+						<label for="address">State and City</label> <br />
+						<div id="test"></div>
+						</div>
+						</div>
+						<div class="form-group">
+							<label for="address">Address</label> <br />
+							<input class="form-control" id="address-input" type="text" name="address" placeholder="Address">
+						</div>
+						<div class = "us-group">
+                        <div class="form-group" id="zipcode-group" >
+							<label for="zipcode">Zip Code</label> <br />
+							<input class="form-control" id="zipcode-input" type="text" name="zipcode" placeholder="Zip Code">
+						</div>
+						</div>
+						<div class = "other-country-group" style = "display: none;">
 						<div class="form-group" id="postalcode-group" >
 							<label for="postal-code">Postal Code</label> <br />
 							<input class="form-control" id="postal-code-input" type="text" name="postal-code" placeholder="Postal Code">
 						</div>
 						</div>
-
-						<div class="form-group">
-							<label for="address">Address</label> <br />
-							<input class="form-control" id="address-input" type="text" name="address" placeholder="Address">
-						</div>
-                        
 							<button type="submit" class="btn btn-primary save-btn" value="save">Save</button>
                           <button type="button" class="btn btn-default cancel-btn" value="cancel" for="user-info-edit">Cancel</button>
                         </form>  
@@ -670,5 +681,6 @@ ini_set("display_errors", 1); // debug
     <!-- Custom Script -->
     <script src="js/User.js"></script>
     <script src="js/profile-user-POV.js"></script>
+	<script src="/lib/js/StatesCitiesList.js"></script>
   </body>
 </html>

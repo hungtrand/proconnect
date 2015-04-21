@@ -21,6 +21,11 @@
 	border-top: none;
 }
 
+.select-inline{
+	display: inline-block;
+	width: auto;
+}
+
 /*
     color for the x symbol of the dismissible alerts
 */
