@@ -3,6 +3,7 @@
 //ini_set("display_errors", 1); // debug
 require_once __DIR__."/../../lib/php/sqlConnection.php";
 require_once __DIR__."/../../lib/php/classes/Account.php";
+require_once __DIR__."/../../lib/php/classes/AccountAdmin.php";
 require_once __DIR__."/../../lib/php/classes/User.php";
 require_once __DIR__."/../../lib/php/classes/EducationManager.php";
 require_once __DIR__."/../../lib/php/classes/ExperienceManager.php";
@@ -16,8 +17,8 @@ if (isset($_POST['Username']) && isset($_POST['Password'])) {
 	$login = $_POST['Username'];
 	$password = $_POST['Password'];
 	$accAdm = new AccountAdmin();
-	$acc = $accAdm->getAccount($login, $password);
 
+	$acc = $accAdm->getAccount($login, $password);
 	$uid = $acc->getUserID();
 } else {
 	session_start();
