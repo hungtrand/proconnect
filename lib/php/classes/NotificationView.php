@@ -7,7 +7,7 @@
 
 	
 /**
-*	NotificationView - performs logic for NotificationView class. 
+*	NotificationView - performs logic for NotificationView class. This class extend ActiveRecord class. This class provides detail information and attribute names of the NOTIFICATIONVIEW tables, and it can temporarily edit info of the NOTIFICATIONVIEW table in database like update a row or insert new row.
 *	@params: $UserID
 *	Responsibilities: This is Notification Relationship class for NotificationView Table in SQL   
 */	

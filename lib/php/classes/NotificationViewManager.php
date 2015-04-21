@@ -5,7 +5,7 @@
 	require_once __DIR__."/RecordSet.php";
 	
 /**
-*	NotificationViewManager - performs logic for NotificationViewManager class. 
+*	NotificationViewManager - performs logic for NotificationViewManager class. This class extends RecordSet class, and it will return information of the NotificationView base on user id input.
 *	@params: $UserID
 *	Responsibilities: load the user and get the user data from the database.  
 */

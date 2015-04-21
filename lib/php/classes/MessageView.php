@@ -3,7 +3,7 @@ require_once __DIR__."/ActiveRecord.php";
 
 
 /**
-*	MessageView - performs logic for MessageView class. 
+*	MessageView - performs logic for MessageView class. This class extend ActiveRecord class. This class provides detail information and attribute names of the MessageView tables, and it can temporarily edit info of the MessageView table in database like update a row or insert new row.
 *	@params: $UserID
 *	Responsibilities: set information for a message (like messageID, USERID, Date created, notificationID ), and also get information about the message.   
 */

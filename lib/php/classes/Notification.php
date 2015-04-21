@@ -6,7 +6,7 @@
  //$u->update(['Grade'=>'3.8']); echo $u->get('Grade'); // For Testing
 
 /**
-*	Notification - performs logic for Notification class. 
+*	Notification - performs logic for Notification class. This class extend ActiveRecord class. This class provides detail information and attribute names of the Notification tables, and it can temporarily edit info of the Notification table in database like update a row or insert new row.
 *	@params: $UserID
 *	Responsibilities: get message info then notify to the associated UserID .   
 */

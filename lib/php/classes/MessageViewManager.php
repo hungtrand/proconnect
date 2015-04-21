@@ -5,7 +5,7 @@
  	require_once __DIR__."/RecordSet.php";
 
 /**
-*	MessageViewManager - performs logic for MessageViewManager class. 
+*	MessageViewManager - performs logic for MessageViewManager class. This class extends RecordSet class, and it will return information of the MessageView table base on user id input.
 *	@params: $UserID
 *	Responsibilities: load the user and get the user data from the database.   
 */	
