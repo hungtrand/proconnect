@@ -1,5 +1,9 @@
 <?php
 //require_once "../sqlConnection.php"; // For testing
+/*
+	UserConnection
+	Responsibilities: determine the connection is initiator or target in the connection, 
+*/
 require_once __DIR__."/Connection.php";
 require_once __DIR__."/User.php";
 require_once __DIR__."/Account.php";

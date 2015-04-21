@@ -1,4 +1,9 @@
 <?php
+/*
+	RecordSet
+	Responsibility: Connect to the database, fetch data for desired request such as fetchby and Custom fetch
+	
+*/
 abstract class RecordSet {
 	protected $db;
 	private $Limit;
