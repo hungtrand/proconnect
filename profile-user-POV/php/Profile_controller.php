@@ -15,12 +15,11 @@ require_once __DIR__."/Profile_view.php";
 if (isset($_POST['Username']) && isset($_POST['Password'])) {
 	$login = $_POST['Username'];
 	$password = $_POST['Password'];
-echo $login .' '. $password;
 	$accAdm = new AccountAdmin();
 	$acc = $accAdm->getAccount($login, $password);
-echo $acc->err;
+
 	if ($acc) {
-		$uid = $acc->getUserID();
+		$uid = $acc->getUserID(); echo " you should get id back : ".$uid;
 	}
 } else {
 	session_start();
