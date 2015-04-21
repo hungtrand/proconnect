@@ -5,7 +5,7 @@ require_once __DIR__."/ActiveRecord.php";
 //$u->update(['Username'=>'Feb2015']); echo $u->get('Username'); // For Testing
 /*
 	Skill
-	Responsibilites: get the skills of the user, can narrow by specific skill name
+	Responsibilites: get all skills from the database, can narrow by specific skill name
 */
 class Skill extends ActiveRecord {
 	public static $TableName = 'Skills';
