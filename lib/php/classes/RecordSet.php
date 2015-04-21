@@ -32,7 +32,7 @@ abstract class RecordSet {
 		if (isset($this->Limit) && is_int($this->Limit)) 
 			$sqlLimit = " LIMIT ". (string)$this->Limit;
 
-		$sql = 'SELECT ' . $this->TableName.'.'.implode(', '.$this->TableName.'.', $cols);
+		$sql = 'SELECT ' . $this->TableName.'.`'.implode('`, '.$this->TableName.'.`', $cols).'`';
 		$sql .=' FROM '.$this->TableName.$sqlLimit;
 
 		if ($stmt = $this->db->prepare($sql)) {
@@ -78,7 +78,7 @@ abstract class RecordSet {
 			$delimiter = $Logic." ";
 		}
 
-		$sql = 'SELECT ' . $this->TableName.'.'.implode(', '.$this->TableName.'.', $cols);
+		$sql = 'SELECT ' . $this->TableName.'.`'.implode('`, '.$this->TableName.'.`', $cols).'`';
 		$sql .=' FROM '.$this->TableName.$cond.$sqlLimit;
 		if ($stmt = $this->db->prepare($sql)) {
 
@@ -113,7 +113,7 @@ abstract class RecordSet {
 		if (!isset($cond)) $cond = "";
 		$cols = $this->getColumns();
 
-		$sql = 'SELECT ' . $this->TableName.'.'.implode(', '.$this->TableName.'.', $cols);
+		$sql = 'SELECT ' . $this->TableName.'.`'.implode('`, '.$this->TableName.'.`', $cols).'`';
 		$sql .=' FROM '.$this->TableName.' '.$cond;
 		if ($stmt = $this->db->prepare($sql)) {
 
@@ -125,7 +125,7 @@ abstract class RecordSet {
 						$i++;
 					}
 				}
-				//echo $sql;
+				// echo $sql;
 				$stmt->execute();
 				
 				if ( $rs = $stmt->fetchAll(PDO::FETCH_ASSOC) ){

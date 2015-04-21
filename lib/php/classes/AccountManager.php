@@ -4,6 +4,17 @@
 require_once __DIR__."/Account.php";
 require_once __DIR__."/RecordSet.php";
 
+
+/**
+*	AccountManager - performs management of the Account
+*	@params: $UserID
+*	Resposibilities: get Data from database, load the user from database by userID, search and load the data from database by keyword,datecreated, or email. 
+*	
+*/
+
+
+
+
 class AccountManager extends RecordSet {
 	protected $PrimaryKey;
 	protected $TableName;

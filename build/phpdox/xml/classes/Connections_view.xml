@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Connections_view" namespace="" name="Connections_view" abstract="false" final="false" start="4" end="33">
+  <file path="/var/www/html/ProConnect/connections/php" file="Connections_view.php" realpath="/var/www/html/ProConnect/connections/php/Connections_view.php" size="714" time="2015-04-09T11:38:33-07:00" unixtime="1428604713" sha1="2251da660f8f56fb23af04c4b559f85d7e431070" relative="connections/php/Connections_view.php"/>
+  <implements full="view" namespace="" name="view"/>
+  <member name="FinalView" type="{unknown}" visibility="private" line="5"/>
+  <constructor name="__construct" start="7" end="9" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getView" start="11" end="13" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="loadUserConnections" start="15" end="32" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="uconn" byreference="false" type="{unknown}"/>
+  </method>
+  <interface full="view" namespace="" name="view">
+    <method name="getView" start="9" end="9" abstract="false" final="false" static="false" visibility="public"/>
+  </interface>
+</class>

@@ -1,4 +1,4 @@
-<div class="modal fade">
+<div class="modal fade ProfileImageUploader">
   	<div class="modal-dialog">
     	<div class="modal-content">
 			<div class="modal-header">
@@ -8,33 +8,39 @@
 			</div>
 
 			<div class="modal-body">
-			  	<form name="formImageUpload" class="formUpload">
-			      	<input type="file" class="form-control btn btn-info" name="ProfileImage" />
-			      	<div id="upload"></div>
-			  	</form>
+				<div class="row">
+					<div id="CurrentImageContainer" class="col col-md-6 col-sm-12 text-center">
+						<h3><label class="label label-success">Current Profile Picture</label></h3>
+						<img class="img-thumbnail CurrentImage" width="80%" src="/image/user_img.png" />
+					</div>
+
+					<div id="NewImageContainer" class="col col-md-6 col-sm-12 text-center">
+						<h3><label class="label label-default" for="ProfileImage">New Profile Picture</label></h3>
+						
+						<img class="img-thumbnail NewImage" width="80%" src="/image/user_img.png" />
+					</div>
+				</div>
+
+				<hr />
+
+				<div class="row">
+					<div class="col col-xs-12 text-center">
+						<form name="formImageUpload" class="formUpload form-inline" action="php/imageUpload.php">
+							<label for="inputProfileImage" class="text-info">Upload New: </label><br />
+							<div class="form-group">
+				      			<input type="file" class="form-control inputProfileImage" name="inputProfileImage" describedby="btnUpload" />
+				      		</div>
+					  	</form>
+					</div>
+				</div>
+			  	
 			</div>
 
 			<div class="modal-footer">
+				<div id="UploadStatus" class="uploadStatus well-sm"></div>
 			  	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			  	<button id="Upload" type="button" class="btn btn-primary">Upload</button>
+			  	<button class="btn btn-sm btn-default" id="btnUpload" disabled>Accept & Upload</button>
 			</div>
 		</div><!-- /.modal-content -->
   	</div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-
-<script src="library/js/FileUpload.js"></script>
-<script>
-	$("#Upload").on("click", function(e) {
-		e.preventDefault();
-
-		fileUpload(document.formImageUpload,'php/imageUpload.php','upload');
-	});
-
-	$("#Upload").closest(".modal").on('hide.bs.modal', function() {
-		if ($(this).find('.label-success').length > 0) {
-			// do something on successful upload and modal closes
-		}
-	});
-
-	$('.modal').modal();
-</script>

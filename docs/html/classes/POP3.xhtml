@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - POP3</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">POP3</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#constants">Constants</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/lib/PHPMailer/class.pop3.php.xhtml#line30">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>\</small>POP3</h1>
+        <h4>PHPMailer POP-Before-SMTP Authentication Class.</h4>
+        <p>Specifically for PHPMailer to use for RFC1939 POP-before-SMTP authentication.<br/>Does not support APOP.</p>
+        <ul>
+          <li>Author: Richard Davey (original author) &lt;rich@corephp.co.uk&gt;</li>
+        </ul>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class POP3
+            {<br/><ul class="none"><li>// constants</li><li>const CRLF = "\r\n";</li></ul><ul class="none"><li>// members</li><li>public string <a href="#members">$Version</a>;
+                    </li><li>public integer <a href="#members">$POP3_PORT</a>;
+                    </li><li>public integer <a href="#members">$POP3_TIMEOUT</a>;
+                    </li><li>public string <a href="#members">$CRLF</a>;
+                    </li><li>public integer <a href="#members">$do_debug</a>;
+                    </li><li>public <a href="#members">$host</a>;
+                    </li><li>public <a href="#members">$port</a>;
+                    </li><li>public <a href="#members">$tval</a>;
+                    </li><li>public <a href="#members">$username</a>;
+                    </li><li>public <a href="#members">$password</a>;
+                    </li><li>private <a href="#members">$pop_conn</a>;
+                    </li><li>private <a href="#members">$connected</a>;
+                    </li><li>private array <a href="#members">$errors</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public static boolean <a title="POP3" href="../classes/POP3/popBeforeSmtp.xhtml">popBeforeSmtp</a>()
+                    </li><li>public boolean <a title="POP3" href="../classes/POP3/authorise.xhtml">authorise</a>()
+                    </li><li>public boolean <a title="POP3" href="../classes/POP3/connect.xhtml">connect</a>()
+                    </li><li>public boolean <a title="POP3" href="../classes/POP3/login.xhtml">login</a>()
+                    </li><li>public void <a title="POP3" href="../classes/POP3/disconnect.xhtml">disconnect</a>()
+                    </li><li>private string <a title="POP3" href="../classes/POP3/getResponse.xhtml">getResponse</a>()
+                    </li><li>private integer <a title="POP3" href="../classes/POP3/sendString.xhtml">sendString</a>()
+                    </li><li>private boolean <a title="POP3" href="../classes/POP3/checkResponse.xhtml">checkResponse</a>()
+                    </li><li>private void <a title="POP3" href="../classes/POP3/setError.xhtml">setError</a>()
+                    </li><li>private void <a title="POP3" href="../classes/POP3/catchWarning.xhtml">catchWarning</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="constants">Constants</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="CRLF">CRLF</td>
+              <td>"\r\n"</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="connected">
+              <strong>$connected</strong>
+              <br/>
+              <span class="indent">Are we connected?</span>
+            </li>
+            <li id="errors">
+              <strong>$errors</strong>
+              <br/>
+              <span class="indent">Error container.</span>
+            </li>
+            <li id="pop_conn">
+              <strong>$pop_conn</strong>
+              <br/>
+              <span class="indent">Resource handle for the POP3 connection socket.</span>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul class="members">
+            <li id="CRLF">
+              <strong>$CRLF</strong>
+              <br/>
+              <span class="indent">POP3 Carriage Return + Line Feed.</span>
+            </li>
+            <li id="POP3_PORT">
+              <strong>$POP3_PORT</strong>
+              <br/>
+              <span class="indent">Default POP3 port number.</span>
+            </li>
+            <li id="POP3_TIMEOUT">
+              <strong>$POP3_TIMEOUT</strong>
+              <br/>
+              <span class="indent">Default timeout in seconds.</span>
+            </li>
+            <li id="Version">
+              <strong>$Version</strong>
+              <br/>
+              <span class="indent">The POP3 PHPMailer Version number.</span>
+            </li>
+            <li id="do_debug">
+              <strong>$do_debug</strong>
+              <br/>
+              <span class="indent">Debug display level.</span>
+            </li>
+            <li id="host">
+              <strong>$host</strong>
+              <br/>
+              <span class="indent">POP3 mail server hostname.</span>
+            </li>
+            <li id="password">
+              <strong>$password</strong>
+              <br/>
+              <span class="indent">POP3 password.</span>
+            </li>
+            <li id="port">
+              <strong>$port</strong>
+              <br/>
+              <span class="indent">POP3 port number.</span>
+            </li>
+            <li id="tval">
+              <strong>$tval</strong>
+              <br/>
+              <span class="indent">POP3 Timeout Value in seconds.</span>
+            </li>
+            <li id="username">
+              <strong>$username</strong>
+              <br/>
+              <span class="indent">POP3 username</span>
+            </li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="catchWarning"><a title="POP3" href="../classes/POP3/catchWarning.xhtml">catchWarning()</a>
+                — POP3 connection error handler.</li>
+            <li id="checkResponse"><a title="POP3" href="../classes/POP3/checkResponse.xhtml">checkResponse()</a>
+                — Checks the POP3 server response.</li>
+            <li id="getResponse"><a title="POP3" href="../classes/POP3/getResponse.xhtml">getResponse()</a>
+                — Get a response from the POP3 server.</li>
+            <li id="sendString"><a title="POP3" href="../classes/POP3/sendString.xhtml">sendString()</a>
+                — Send raw data to the POP3 server.</li>
+            <li id="setError"><a title="POP3" href="../classes/POP3/setError.xhtml">setError()</a>
+                — Add an error to the internal error store.</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="authorise"><a title="POP3" href="../classes/POP3/authorise.xhtml">authorise()</a>
+                — Authenticate with a POP3 server.</li>
+            <li id="connect"><a title="POP3" href="../classes/POP3/connect.xhtml">connect()</a>
+                — Connect to a POP3 server.</li>
+            <li id="disconnect"><a title="POP3" href="../classes/POP3/disconnect.xhtml">disconnect()</a>
+                — Disconnect from the POP3 server.</li>
+            <li id="login"><a title="POP3" href="../classes/POP3/login.xhtml">login()</a>
+                — Log in to the POP3 server.</li>
+            <li id="popBeforeSmtp"><a title="POP3" href="../classes/POP3/popBeforeSmtp.xhtml">popBeforeSmtp()</a>
+                — Simple static wrapper for all-in-one POP before SMTP</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.7.0 - Copyright (C) 2010 - 2015 by Arne Blankerts</span>
+    </footer>
+  </body>
+</html>

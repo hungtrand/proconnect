@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - SMTP</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">SMTP</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#constants">Constants</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/lib/PHPMailer/class.smtp.php.xhtml#line27">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>\</small>SMTP</h1>
+        <h4>PHPMailer RFC821 SMTP email transport class.</h4>
+        <p>Implements RFC 821 SMTP commands and provides some utility methods for sending mail to an SMTP server.</p>
+        <ul>
+          <li>Author: Chris Ryan</li>
+        </ul>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class SMTP
+            {<br/><ul class="none"><li>// constants</li><li>const VERSION = '5.2.9';</li><li>const CRLF = "\r\n";</li><li>const DEFAULT_SMTP_PORT = 25;</li><li>const MAX_LINE_LENGTH = 998;</li><li>const DEBUG_OFF = 0;</li><li>const DEBUG_CLIENT = 1;</li><li>const DEBUG_SERVER = 2;</li><li>const DEBUG_CONNECTION = 3;</li><li>const DEBUG_LOWLEVEL = 4;</li></ul><ul class="none"><li>// members</li><li>public string <a href="#members">$Version</a>;
+                    </li><li>public integer <a href="#members">$SMTP_PORT</a>;
+                    </li><li>public string <a href="#members">$CRLF</a>;
+                    </li><li>public <a href="#members">$do_debug</a>;
+                    </li><li>public string <a href="#members">$Debugoutput</a>;
+                    </li><li>public <a href="#members">$do_verp</a>;
+                    </li><li>public integer <a href="#members">$Timeout</a>;
+                    </li><li>public integer <a href="#members">$Timelimit</a>;
+                    </li><li>protected <a href="#members">$smtp_conn</a>;
+                    </li><li>protected array <a href="#members">$error</a>;
+                    </li><li>protected <a href="#members">$helo_rply</a>;
+                    </li><li>protected <a href="#members">$server_caps</a>;
+                    </li><li>protected string <a href="#members">$last_reply</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>protected void <a title="SMTP" href="../classes/SMTP/edebug.xhtml">edebug</a>()
+                    </li><li>public boolean <a title="SMTP" href="../classes/SMTP/connect.xhtml">connect</a>()
+                    </li><li>public boolean <a title="SMTP" href="../classes/SMTP/startTLS.xhtml">startTLS</a>()
+                    </li><li>public boolean <a title="SMTP" href="../classes/SMTP/authenticate.xhtml">authenticate</a>()
+                    </li><li>protected string <a title="SMTP" href="../classes/SMTP/hmac.xhtml">hmac</a>()
+                    </li><li>public boolean <a title="SMTP" href="../classes/SMTP/connected.xhtml">connected</a>()
+                    </li><li>public void <a title="SMTP" href="../classes/SMTP/close.xhtml">close</a>()
+                    </li><li>public boolean <a title="SMTP" href="../classes/SMTP/data.xhtml">data</a>()
+                    </li><li>public boolean <a title="SMTP" href="../classes/SMTP/hello.xhtml">hello</a>()
+                    </li><li>protected boolean <a title="SMTP" href="../classes/SMTP/sendHello.xhtml">sendHello</a>()
+                    </li><li>protected void <a title="SMTP" href="../classes/SMTP/parseHelloFields.xhtml">parseHelloFields</a>()
+                    </li><li>public boolean <a title="SMTP" href="../classes/SMTP/mail.xhtml">mail</a>()
+                    </li><li>public boolean <a title="SMTP" href="../classes/SMTP/quit.xhtml">quit</a>()
+                    </li><li>public boolean <a title="SMTP" href="../classes/SMTP/recipient.xhtml">recipient</a>()
+                    </li><li>public boolean <a title="SMTP" href="../classes/SMTP/reset.xhtml">reset</a>()
+                    </li><li>protected boolean <a title="SMTP" href="../classes/SMTP/sendCommand.xhtml">sendCommand</a>()
+                    </li><li>public boolean <a title="SMTP" href="../classes/SMTP/sendAndMail.xhtml">sendAndMail</a>()
+                    </li><li>public boolean <a title="SMTP" href="../classes/SMTP/verify.xhtml">verify</a>()
+                    </li><li>public boolean <a title="SMTP" href="../classes/SMTP/noop.xhtml">noop</a>()
+                    </li><li>public boolean <a title="SMTP" href="../classes/SMTP/turn.xhtml">turn</a>()
+                    </li><li>public integer|boolean <a title="SMTP" href="../classes/SMTP/client_send.xhtml">client_send</a>()
+                    </li><li>public array <a title="SMTP" href="../classes/SMTP/getError.xhtml">getError</a>()
+                    </li><li>public array|null <a title="SMTP" href="../classes/SMTP/getServerExtList.xhtml">getServerExtList</a>()
+                    </li><li>public mixed <a title="SMTP" href="../classes/SMTP/getServerExt.xhtml">getServerExt</a>()
+                    </li><li>public string <a title="SMTP" href="../classes/SMTP/getLastReply.xhtml">getLastReply</a>()
+                    </li><li>protected string <a title="SMTP" href="../classes/SMTP/get_lines.xhtml">get_lines</a>()
+                    </li><li>public void <a title="SMTP" href="../classes/SMTP/setVerp.xhtml">setVerp</a>()
+                    </li><li>public boolean <a title="SMTP" href="../classes/SMTP/getVerp.xhtml">getVerp</a>()
+                    </li><li>public void <a title="SMTP" href="../classes/SMTP/setDebugOutput.xhtml">setDebugOutput</a>()
+                    </li><li>public string <a title="SMTP" href="../classes/SMTP/getDebugOutput.xhtml">getDebugOutput</a>()
+                    </li><li>public void <a title="SMTP" href="../classes/SMTP/setDebugLevel.xhtml">setDebugLevel</a>()
+                    </li><li>public integer <a title="SMTP" href="../classes/SMTP/getDebugLevel.xhtml">getDebugLevel</a>()
+                    </li><li>public void <a title="SMTP" href="../classes/SMTP/setTimeout.xhtml">setTimeout</a>()
+                    </li><li>public integer <a title="SMTP" href="../classes/SMTP/getTimeout.xhtml">getTimeout</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="constants">Constants</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="VERSION">VERSION</td>
+              <td>'5.2.9'</td>
+            </tr>
+            <tr>
+              <td id="CRLF">CRLF</td>
+              <td>"\r\n"</td>
+            </tr>
+            <tr>
+              <td id="DEFAULT_SMTP_PORT">DEFAULT_SMTP_PORT</td>
+              <td>25</td>
+            </tr>
+            <tr>
+              <td id="MAX_LINE_LENGTH">MAX_LINE_LENGTH</td>
+              <td>998</td>
+            </tr>
+            <tr>
+              <td id="DEBUG_OFF">DEBUG_OFF</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td id="DEBUG_CLIENT">DEBUG_CLIENT</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td id="DEBUG_SERVER">DEBUG_SERVER</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td id="DEBUG_CONNECTION">DEBUG_CONNECTION</td>
+              <td>3</td>
+            </tr>
+            <tr>
+              <td id="DEBUG_LOWLEVEL">DEBUG_LOWLEVEL</td>
+              <td>4</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>protected</h4>
+          <ul class="members">
+            <li id="error">
+              <strong>$error</strong>
+              <br/>
+              <span class="indent">Error message, if any, for the last call.</span>
+            </li>
+            <li id="helo_rply">
+              <strong>$helo_rply</strong>
+              <br/>
+              <span class="indent">The reply the server sent to us for HELO.</span>
+            </li>
+            <li id="last_reply">
+              <strong>$last_reply</strong>
+              <br/>
+              <span class="indent">The most recent reply received from the server.</span>
+            </li>
+            <li id="server_caps">
+              <strong>$server_caps</strong>
+              <br/>
+              <span class="indent">The set of SMTP extensions sent in reply to EHLO command.</span>
+            </li>
+            <li id="smtp_conn">
+              <strong>$smtp_conn</strong>
+              <br/>
+              <span class="indent">The socket for the server connection.</span>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul class="members">
+            <li id="CRLF">
+              <strong>$CRLF</strong>
+              <br/>
+              <span class="indent">SMTP reply line ending.</span>
+            </li>
+            <li id="Debugoutput">
+              <strong>$Debugoutput</strong>
+              <br/>
+              <span class="indent">How to handle debug output.</span>
+            </li>
+            <li id="SMTP_PORT">
+              <strong>$SMTP_PORT</strong>
+              <br/>
+              <span class="indent">SMTP server port number.</span>
+            </li>
+            <li id="Timelimit">
+              <strong>$Timelimit</strong>
+              <br/>
+              <span class="indent">How long to wait for commands to complete, in seconds.</span>
+            </li>
+            <li id="Timeout">
+              <strong>$Timeout</strong>
+              <br/>
+              <span class="indent">The timeout value for connection, in seconds.</span>
+            </li>
+            <li id="Version">
+              <strong>$Version</strong>
+              <br/>
+              <span class="indent">The PHPMailer SMTP Version number.</span>
+            </li>
+            <li id="do_debug">
+              <strong>$do_debug</strong>
+              <br/>
+              <span class="indent">Debug output level.</span>
+            </li>
+            <li id="do_verp">
+              <strong>$do_verp</strong>
+              <br/>
+              <span class="indent">Whether to use VERP.</span>
+            </li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>protected</h4>
+          <ul>
+            <li id="edebug"><a title="SMTP" href="../classes/SMTP/edebug.xhtml">edebug()</a>
+                — Output debugging info via a user-selected method.</li>
+            <li id="get_lines"><a title="SMTP" href="../classes/SMTP/get_lines.xhtml">get_lines()</a>
+                — Read the SMTP server's response.</li>
+            <li id="hmac"><a title="SMTP" href="../classes/SMTP/hmac.xhtml">hmac()</a>
+                — Calculate an MD5 HMAC hash.</li>
+            <li id="parseHelloFields"><a title="SMTP" href="../classes/SMTP/parseHelloFields.xhtml">parseHelloFields()</a>
+                — Parse a reply to HELO/EHLO command to discover server extensions.</li>
+            <li id="sendCommand"><a title="SMTP" href="../classes/SMTP/sendCommand.xhtml">sendCommand()</a>
+                — Send a command to an SMTP server and check its return code.</li>
+            <li id="sendHello"><a title="SMTP" href="../classes/SMTP/sendHello.xhtml">sendHello()</a>
+                — Send an SMTP HELO or EHLO command.</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="authenticate"><a title="SMTP" href="../classes/SMTP/authenticate.xhtml">authenticate()</a>
+                — Perform SMTP authentication.</li>
+            <li id="client_send"><a title="SMTP" href="../classes/SMTP/client_send.xhtml">client_send()</a>
+                — Send raw data to the server.</li>
+            <li id="close"><a title="SMTP" href="../classes/SMTP/close.xhtml">close()</a>
+                — Close the socket and clean up the state of the class.</li>
+            <li id="connect"><a title="SMTP" href="../classes/SMTP/connect.xhtml">connect()</a>
+                — Connect to an SMTP server.</li>
+            <li id="connected"><a title="SMTP" href="../classes/SMTP/connected.xhtml">connected()</a>
+                — Check connection state.</li>
+            <li id="data"><a title="SMTP" href="../classes/SMTP/data.xhtml">data()</a>
+                — Send an SMTP DATA command.</li>
+            <li id="getDebugLevel"><a title="SMTP" href="../classes/SMTP/getDebugLevel.xhtml">getDebugLevel()</a>
+                — Get debug output level.</li>
+            <li id="getDebugOutput"><a title="SMTP" href="../classes/SMTP/getDebugOutput.xhtml">getDebugOutput()</a>
+                — Get debug output method.</li>
+            <li id="getError"><a title="SMTP" href="../classes/SMTP/getError.xhtml">getError()</a>
+                — Get the latest error.</li>
+            <li id="getLastReply"><a title="SMTP" href="../classes/SMTP/getLastReply.xhtml">getLastReply()</a>
+                — Get the last reply from the server.</li>
+            <li id="getServerExt"><a title="SMTP" href="../classes/SMTP/getServerExt.xhtml">getServerExt()</a>
+                — A multipurpose method The method works in three ways, dependent on argument value and current state   1. HELO/EHLO was not sent - returns null and set up $this-&gt;error   2. HELO was sent     $name = 'HELO': returns server name     $name = 'EHLO': returns boolean false     $name = any string: returns null and set up $this-&gt;error   3. EHLO was sent     $name = 'HELO'|'EHLO': returns server name     $name = any string: if extension $name exists, returns boolean True       or its options. Otherwise returns boolean False In other words, one can use this method to detect 3 conditions:  - null returned: handshake was not or we don't know about ext (refer to $this-&gt;error)  - false returned: the requested feature exactly not exists  - positive value returned: the requested feature exists</li>
+            <li id="getServerExtList"><a title="SMTP" href="../classes/SMTP/getServerExtList.xhtml">getServerExtList()</a>
+                — Get SMTP extensions available on the server</li>
+            <li id="getTimeout"><a title="SMTP" href="../classes/SMTP/getTimeout.xhtml">getTimeout()</a>
+                — Get SMTP timeout.</li>
+            <li id="getVerp"><a title="SMTP" href="../classes/SMTP/getVerp.xhtml">getVerp()</a>
+                — Get VERP address generation mode.</li>
+            <li id="hello"><a title="SMTP" href="../classes/SMTP/hello.xhtml">hello()</a>
+                — Send an SMTP HELO or EHLO command.</li>
+            <li id="mail"><a title="SMTP" href="../classes/SMTP/mail.xhtml">mail()</a>
+                — Send an SMTP MAIL command.</li>
+            <li id="noop"><a title="SMTP" href="../classes/SMTP/noop.xhtml">noop()</a>
+                — Send an SMTP NOOP command.</li>
+            <li id="quit"><a title="SMTP" href="../classes/SMTP/quit.xhtml">quit()</a>
+                — Send an SMTP QUIT command.</li>
+            <li id="recipient"><a title="SMTP" href="../classes/SMTP/recipient.xhtml">recipient()</a>
+                — Send an SMTP RCPT command.</li>
+            <li id="reset"><a title="SMTP" href="../classes/SMTP/reset.xhtml">reset()</a>
+                — Send an SMTP RSET command.</li>
+            <li id="sendAndMail"><a title="SMTP" href="../classes/SMTP/sendAndMail.xhtml">sendAndMail()</a>
+                — Send an SMTP SAML command.</li>
+            <li id="setDebugLevel"><a title="SMTP" href="../classes/SMTP/setDebugLevel.xhtml">setDebugLevel()</a>
+                — Set debug output level.</li>
+            <li id="setDebugOutput"><a title="SMTP" href="../classes/SMTP/setDebugOutput.xhtml">setDebugOutput()</a>
+                — Set debug output method.</li>
+            <li id="setTimeout"><a title="SMTP" href="../classes/SMTP/setTimeout.xhtml">setTimeout()</a>
+                — Set SMTP timeout.</li>
+            <li id="setVerp"><a title="SMTP" href="../classes/SMTP/setVerp.xhtml">setVerp()</a>
+                — Enable or disable VERP address generation.</li>
+            <li id="startTLS"><a title="SMTP" href="../classes/SMTP/startTLS.xhtml">startTLS()</a>
+                — Initiate a TLS (encrypted) session.</li>
+            <li id="turn"><a title="SMTP" href="../classes/SMTP/turn.xhtml">turn()</a>
+                — Send an SMTP TURN command.</li>
+            <li id="verify"><a title="SMTP" href="../classes/SMTP/verify.xhtml">verify()</a>
+                — Send an SMTP VRFY command.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.7.0 - Copyright (C) 2010 - 2015 by Arne Blankerts</span>
+    </footer>
+  </body>
+</html>

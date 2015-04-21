@@ -19,6 +19,9 @@ Outbox.prototype = {
 
 		this.data = data;
 		conn.find('.sender-name').text(data['sender-name']);
+		conn.find('.sender-name').attr("href", data['sender-href']);
+		conn.find('.message-subject').text(data['message-subject']);
+		conn.find('.message-time').text(data['message-time']);
 		conn.find('.sender-message').text(data['sender-message']);
 
 		that.container = conn;

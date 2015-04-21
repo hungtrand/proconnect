@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Experience_View" namespace="" name="Experience_View" abstract="false" final="false" start="4" end="42">
+  <file path="/var/www/html/ProConnect/profile-user-POV/php" file="Experience_view.php" realpath="/var/www/html/ProConnect/profile-user-POV/php/Experience_view.php" size="924" time="2015-04-09T13:54:06-07:00" unixtime="1428612846" sha1="3d7c863e71a24f14399a08927fad6f64c2704974" relative="profile-user-POV/php/Experience_view.php"/>
+  <implements full="view" namespace="" name="view"/>
+  <member name="FinalView" type="{unknown}" visibility="private" line="5"/>
+  <constructor name="__construct" start="8" end="10" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="load" start="13" end="37" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="exp" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getView" start="39" end="41" abstract="false" final="false" static="false" visibility="public"/>
+  <interface full="view" namespace="" name="view">
+    <method name="getView" start="9" end="9" abstract="false" final="false" static="false" visibility="public"/>
+  </interface>
+</class>

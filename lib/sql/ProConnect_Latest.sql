@@ -54,7 +54,7 @@ CREATE TABLE `Account` (
 
 LOCK TABLES `Account` WRITE;
 /*!40000 ALTER TABLE `Account` DISABLE KEYS */;
-INSERT INTO `Account` VALUES (6,'hung.d.tran@sjsu.edu','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-02-27 09:57:00','2015-04-09 14:41:06','',7,'hung.d.tran@sjsu.edu','','','','','4f1f9bc6dc9fe6e8f2f3a9e58bc1d970f74da755','\0','5f7248c66d52a9f170ab0fb3d5815a4a4f8defde'),(9,'hungtrand0929@gmail.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-03-01 20:32:24','2015-04-08 19:03:30','',10,'hungtrand0929@gmail.com','','','','','12864cd03656bdeaab0a69705f18c57daf92fadd','\0','795198ed9949c68e031440f7ce7a0032b166bee7'),(18,'hung_duy_tran@yahoo.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','0000-00-00 00:00:00','2015-04-06 19:39:25','',26,'hung_duy_tran@yahoo.com','','','','','f090df75b81fa64d6fc11b6988d981d0b0e3caf3','\0','8022e9e673d13062d33cf709ebb7e982963969e9'),(19,'bill@quriousdesigns.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-04-05 17:20:13','2015-04-05 10:21:48','',27,'bill@quriousdesigns.com','','','','','ee0f25847aa96e3868f5cf2af4ff9bfe9db2925c','\0',NULL),(20,'larry@proconnect.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-04-06 18:33:39',NULL,'',28,'page@proconnect.com','','','','','bcb2ae9a08c1ae7bef2892fed190e044ba10f705','\0',NULL),(21,'steve@proconnect.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-04-06 18:34:34',NULL,'',29,'jobs@proconnect.com','','','','','c43f320842fec2cd3f19112f62064d2492b34d44','\0',NULL),(22,'mark@proconnect.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-04-06 18:35:28',NULL,'',30,'mark@proconnect.com','','','','','a913b264f71e3072ef36a369d5f0631e68c75113','\0',NULL),(23,'eric@proconnect.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-04-06 18:36:30',NULL,'',31,'eric@proconnect.com','','','','','ec8097fe400beb0ab7547583de9fc98024a97405','\0',NULL),(24,'jeff@proconnect.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-04-06 18:37:59',NULL,'',32,'jeff@proconnect.com','','','','','4b291e98e9bee88c1f11c973c2140c745c6b038d','\0',NULL),(25,'natasha@blackwidow.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-04-06 18:41:39',NULL,'',33,'natasha@blackwidow.com','','','','','fb177e862247c363920681a3e3f9949f730db302','\0',NULL),(26,'wilson@deadpool.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-04-06 18:42:45',NULL,'',34,'wilson@deadpool.com','','','','','70135c84c5df50f34515e24d4cb8eeaea0fb1ea2','\0',NULL),(27,'barton@hawkeye.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-04-06 18:43:59',NULL,'',35,'barton@hawkeye.com','','','','','e35e7054dd1fbea39b83ae24a7701aff539d435a','\0',NULL);
+INSERT INTO `Account` VALUES (6,'hung.d.tran@sjsu.edu','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-02-27 09:57:00','2015-04-20 16:18:57','',7,'hung.d.tran@sjsu.edu','','','','','4f1f9bc6dc9fe6e8f2f3a9e58bc1d970f74da755','\0','5f7248c66d52a9f170ab0fb3d5815a4a4f8defde'),(9,'hungtrand0929@gmail.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-03-01 20:32:24','2015-04-20 15:08:04','',10,'hungtrand0929@gmail.com','','','','','12864cd03656bdeaab0a69705f18c57daf92fadd','\0','795198ed9949c68e031440f7ce7a0032b166bee7'),(18,'hung_duy_tran@yahoo.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','0000-00-00 00:00:00','2015-04-06 19:39:25','',26,'hung_duy_tran@yahoo.com','','','','','f090df75b81fa64d6fc11b6988d981d0b0e3caf3','\0','8022e9e673d13062d33cf709ebb7e982963969e9'),(19,'bill@quriousdesigns.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-04-05 17:20:13','2015-04-05 10:21:48','',27,'bill@quriousdesigns.com','','','','','ee0f25847aa96e3868f5cf2af4ff9bfe9db2925c','\0',NULL),(20,'larry@proconnect.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-04-06 18:33:39',NULL,'',28,'page@proconnect.com','','','','','bcb2ae9a08c1ae7bef2892fed190e044ba10f705','\0',NULL),(21,'steve@proconnect.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-04-06 18:34:34',NULL,'',29,'jobs@proconnect.com','','','','','c43f320842fec2cd3f19112f62064d2492b34d44','\0',NULL),(22,'mark@proconnect.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-04-06 18:35:28',NULL,'',30,'mark@proconnect.com','','','','','a913b264f71e3072ef36a369d5f0631e68c75113','\0',NULL),(23,'eric@proconnect.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-04-06 18:36:30',NULL,'',31,'eric@proconnect.com','','','','','ec8097fe400beb0ab7547583de9fc98024a97405','\0',NULL),(24,'jeff@proconnect.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-04-06 18:37:59',NULL,'',32,'jeff@proconnect.com','','','','','4b291e98e9bee88c1f11c973c2140c745c6b038d','\0',NULL),(25,'natasha@blackwidow.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-04-06 18:41:39',NULL,'',33,'natasha@blackwidow.com','','','','','fb177e862247c363920681a3e3f9949f730db302','\0',NULL),(26,'wilson@deadpool.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-04-06 18:42:45',NULL,'',34,'wilson@deadpool.com','','','','','70135c84c5df50f34515e24d4cb8eeaea0fb1ea2','\0',NULL),(27,'barton@hawkeye.com','448ed7416fce2cb66c285d182b1ba3df1e90016d','2015-04-06 18:43:59',NULL,'',35,'barton@hawkeye.com','','','','','e35e7054dd1fbea39b83ae24a7701aff539d435a','\0',NULL);
 /*!40000 ALTER TABLE `Account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -77,7 +77,7 @@ CREATE TABLE `Connections` (
   KEY `fk_Connections_User_TargetUser_idx` (`TargetUserID`),
   CONSTRAINT `fk_Connections_User_InitUser` FOREIGN KEY (`InitUserID`) REFERENCES `User` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Connections_User_TargetUser` FOREIGN KEY (`TargetUserID`) REFERENCES `User` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -86,7 +86,7 @@ CREATE TABLE `Connections` (
 
 LOCK TABLES `Connections` WRITE;
 /*!40000 ALTER TABLE `Connections` DISABLE KEYS */;
-INSERT INTO `Connections` VALUES (18,10,7,'','2015-04-01 01:12:27',NULL),(21,10,26,'','2015-04-02 22:58:01',NULL),(23,27,10,'','2015-04-06 07:00:00',NULL),(24,7,27,'','2015-04-06 07:00:00',NULL),(25,10,28,'','2015-04-06 07:00:00',NULL),(26,10,29,'','2015-04-06 07:00:00',NULL),(27,30,10,'','2015-04-07 02:57:03',NULL);
+INSERT INTO `Connections` VALUES (21,10,26,'','2015-04-02 22:58:01',NULL),(23,27,10,'','2015-04-06 07:00:00',NULL),(25,10,28,'','2015-04-06 07:00:00',NULL),(26,10,29,'','2015-04-06 07:00:00',NULL),(27,30,10,'','2015-04-07 02:57:03',NULL),(28,7,27,'','2015-04-13 00:39:44',NULL),(29,7,7,'','2015-04-13 00:40:22',NULL),(30,7,10,'','2015-04-16 00:21:51',NULL),(32,7,29,'','2015-04-17 00:07:07',NULL);
 /*!40000 ALTER TABLE `Connections` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -112,7 +112,7 @@ CREATE TABLE `Education` (
   UNIQUE KEY `EduID_UNIQUE` (`EduID`),
   KEY `fk_Education_User_idx` (`UserID`),
   CONSTRAINT `fk_Education_User` FOREIGN KEY (`UserID`) REFERENCES `User` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -210,7 +210,7 @@ CREATE TABLE `Experience` (
   PRIMARY KEY (`ExpID`),
   KEY `fk_Experience_User_idx` (`UserID`),
   CONSTRAINT `fk_Experience_User` FOREIGN KEY (`UserID`) REFERENCES `User` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -219,8 +219,72 @@ CREATE TABLE `Experience` (
 
 LOCK TABLES `Experience` WRITE;
 /*!40000 ALTER TABLE `Experience` DISABLE KEYS */;
-INSERT INTO `Experience` VALUES (1,'Google Inc.','Web Application Developer','Mountain View',NULL,'2015-03-30 02:37:26',11,2013,NULL,NULL,10),(3,'Google Inc.','Software Engineer',NULL,NULL,'2015-03-30 10:43:42',NULL,NULL,NULL,NULL,10),(4,'Microsoft, Inc.','CEO',NULL,NULL,'2015-04-05 17:22:52',NULL,NULL,NULL,NULL,27),(5,'Qurious Designs','Manager','San Jose, CA','2test','2015-04-09 13:38:09',2,2011,4,2015,7);
+INSERT INTO `Experience` VALUES (1,'Google Inc.','Web Application Developer','Mountain View',NULL,'2015-03-30 02:37:26',11,2013,NULL,NULL,10),(3,'Google Inc.','Software Engineer',NULL,NULL,'2015-03-30 10:43:42',NULL,NULL,NULL,NULL,10),(4,'Microsoft, Inc.','CEO',NULL,NULL,'2015-04-05 17:22:52',NULL,NULL,NULL,NULL,27),(5,'Qurious Designs','Manager','San Jose, CA','2test','2015-04-09 13:38:09',2,2011,4,2015,7),(6,'google','developer','mountain view','','2015-04-16 00:20:57',2,2012,3,2012,7);
 /*!40000 ALTER TABLE `Experience` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Feed`
+--
+
+DROP TABLE IF EXISTS `Feed`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Feed` (
+  `FeedID` int(11) NOT NULL AUTO_INCREMENT,
+  `Content` longtext,
+  `ImageURL` varchar(300) DEFAULT NULL,
+  `ExternalURL` varchar(300) DEFAULT NULL,
+  `InternalURL` varchar(300) DEFAULT NULL,
+  `Creator` int(11) DEFAULT NULL,
+  `Type` varchar(45) DEFAULT NULL,
+  `DateCreated` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`FeedID`),
+  UNIQUE KEY `FeedID_UNIQUE` (`FeedID`)
+) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Feed`
+--
+
+LOCK TABLES `Feed` WRITE;
+/*!40000 ALTER TABLE `Feed` DISABLE KEYS */;
+INSERT INTO `Feed` VALUES (1,'<div>This is sparta</div>','http://cdn.webfail.com/upl/img/7224c1428a3/post2.jpg','http://www.google.com','/Profile-public-POV/',7,NULL,'2015-04-14 01:46:01'),(36,'hello world','','','/profile-public-POV/?UserID=7',7,'normal','2015-04-16 00:22:25'),(37,'test','','','/profile-public-POV/?UserID=7',7,'normal','2015-04-16 02:29:07'),(38,'test','','','/profile-public-POV/?UserID=7',7,'normal','2015-04-16 02:29:09'),(39,'test','','','/profile-public-POV/?UserID=7',7,'normal','2015-04-16 02:29:12'),(40,'test','','','/profile-public-POV/?UserID=7',7,'normal','2015-04-16 02:29:15'),(41,'test','','','/profile-public-POV/?UserID=7',7,'normal','2015-04-16 02:29:17'),(42,'test 5','','','/profile-public-POV/?UserID=7',7,'normal','2015-04-16 03:17:51'),(43,'test 6','','','/profile-public-POV/?UserID=7',7,'normal','2015-04-16 03:19:38'),(44,'aeydyhsdfjusuh','','googlasdasfd.com','/profile-public-POV/?UserID=7',7,'normal','2015-04-17 00:33:57'),(45,'<p>test 12</p>','','','/profile-public-POV/?UserID=7',7,'normal','2015-04-17 06:31:02'),(46,'<p>Test this should work</p>','/users/7/images/Pensive_Parakeet.jpg','','/profile-public-POV/?UserID=7',7,'normal','2015-04-19 06:45:30'),(47,'<p>What if I have some &quot;quotes&quot; here.</p>','/users/7/images/Costa_Rican_Frog.jpg','','/profile-public-POV/?UserID=7',7,'normal','2015-04-19 14:55:57'),(48,'<p><span style=\"font-size:28px\"><span style=\"font-family:lucida sans unicode,lucida grande,sans-serif\"><u><strong>my new feed</strong></u></span></span></p>','/users/7/images/Boston_City_Flow.jpg','','/profile-public-POV/?UserID=7',7,'normal','2015-04-19 14:59:39'),(49,'<p>stuff from web developer</p>','/users/10/images/ElementsGlasses.jpg','','/profile-public-POV/?UserID=10',10,'normal','2015-04-19 22:33:47'),(50,'<p>stuff from developer 2</p>','/users/10/images/FourElements.jpg','','/profile-public-POV/?UserID=10',10,'normal','2015-04-19 22:44:44'),(51,'<p>stuff 3</p>','/users/10/images/FireSmoke.jpg','','/profile-public-POV/?UserID=10',10,'normal','2015-04-19 23:28:28'),(52,'<p>stuff 4</p>','/users/10/images/Unconquerable-Peaks.jpg','','/profile-public-POV/?UserID=10',10,'normal','2015-04-19 23:54:41'),(53,'<p>stuff 5</p>','/users/10/images/WithinWater.jpg','','/profile-public-POV/?UserID=10',10,'normal','2015-04-19 23:57:44'),(54,'<p>stuff 6</p>','/users/10/images/StayPositive.jpg','','/profile-public-POV/?UserID=10',10,'normal','2015-04-20 00:00:49'),(55,'<p>stuff 7</p>','/users/10/images/Friendship.png','','/profile-public-POV/?UserID=10',10,'normal','2015-04-20 00:03:00'),(56,'<p>stuff 8</p>','/users/10/images/HourGlass.jpg','','/profile-public-POV/?UserID=10',10,'normal','2015-04-20 00:04:17'),(57,'<p>stuff 9</p>','/users/10/images/EvolutionOfDisks.jpg','','/profile-public-POV/?UserID=10',10,'normal','2015-04-20 00:06:16'),(58,'<p><strong><span style=\"font-size:26px\"><span style=\"font-family:tahoma,geneva,sans-serif\">stuff 10 something heredfasdfadsf</span></span></strong></p>','/users/10/images/FollowTheLeader.jpg','','/profile-public-POV/?UserID=10',10,'normal','2015-04-20 00:37:58'),(59,'<p>Stuff 11asd sdfafdas</p>','/users/7/images/DoorOpen.jpg','','/profile-public-POV/?UserID=7',7,'normal','2015-04-20 01:45:12');
+/*!40000 ALTER TABLE `Feed` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Feed2User`
+--
+
+DROP TABLE IF EXISTS `Feed2User`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Feed2User` (
+  `UFID` int(11) NOT NULL AUTO_INCREMENT,
+  `FeedID` int(11) NOT NULL,
+  `UserID` int(11) NOT NULL,
+  `Status` varchar(20) NOT NULL,
+  `Liked` varchar(45) NOT NULL DEFAULT '0',
+  `DateCreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`UFID`),
+  UNIQUE KEY `UFID_UNIQUE` (`UFID`),
+  KEY `fk_User_Feeds_1_idx` (`FeedID`),
+  KEY `fk_User_Feeds_2_idx` (`UserID`),
+  CONSTRAINT `fk_User_Feeds_1` FOREIGN KEY (`FeedID`) REFERENCES `Feed` (`FeedID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_User_Feeds_2` FOREIGN KEY (`UserID`) REFERENCES `User` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=206 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Feed2User`
+--
+
+LOCK TABLES `Feed2User` WRITE;
+/*!40000 ALTER TABLE `Feed2User` DISABLE KEYS */;
+INSERT INTO `Feed2User` VALUES (1,1,7,'READ','1','0000-00-00 00:00:00'),(98,36,27,'NEW','0','2015-04-16 00:22:25'),(99,36,7,'NEW','0','2015-04-16 00:22:25'),(100,36,10,'NEW','0','2015-04-16 00:22:25'),(101,37,27,'NEW','0','2015-04-16 02:29:07'),(102,37,7,'NEW','0','2015-04-16 02:29:07'),(103,37,10,'NEW','0','2015-04-16 02:29:07'),(104,38,27,'NEW','0','2015-04-16 02:29:09'),(105,38,7,'NEW','0','2015-04-16 02:29:09'),(106,38,10,'NEW','0','2015-04-16 02:29:09'),(107,39,27,'NEW','0','2015-04-16 02:29:12'),(108,39,7,'NEW','0','2015-04-16 02:29:12'),(109,39,10,'NEW','0','2015-04-16 02:29:12'),(110,40,27,'NEW','0','2015-04-16 02:29:15'),(111,40,7,'NEW','0','2015-04-16 02:29:15'),(112,40,10,'NEW','0','2015-04-16 02:29:15'),(113,41,27,'NEW','0','2015-04-16 02:29:17'),(114,41,7,'NEW','0','2015-04-16 02:29:17'),(115,41,10,'NEW','0','2015-04-16 02:29:17'),(116,42,27,'NEW','0','2015-04-16 03:17:51'),(117,42,7,'NEW','0','2015-04-16 03:17:51'),(118,42,10,'NEW','0','2015-04-16 03:17:51'),(119,43,27,'NEW','0','2015-04-16 03:19:38'),(120,43,7,'NEW','0','2015-04-16 03:19:38'),(121,43,10,'NEW','0','2015-04-16 03:19:38'),(122,44,27,'NEW','0','2015-04-17 00:33:57'),(123,44,7,'NEW','0','2015-04-17 00:33:57'),(124,44,10,'NEW','0','2015-04-17 00:33:57'),(125,44,29,'NEW','0','2015-04-17 00:33:57'),(126,45,27,'NEW','0','2015-04-17 06:31:02'),(127,45,7,'NEW','0','2015-04-17 06:31:02'),(128,45,10,'NEW','0','2015-04-17 06:31:02'),(129,45,29,'NEW','0','2015-04-17 06:31:02'),(130,46,27,'NEW','0','2015-04-19 06:45:30'),(131,46,7,'NEW','0','2015-04-19 06:45:30'),(132,46,10,'NEW','0','2015-04-19 06:45:30'),(133,46,29,'NEW','0','2015-04-19 06:45:30'),(134,47,27,'NEW','0','2015-04-19 14:55:57'),(135,47,7,'NEW','0','2015-04-19 14:55:57'),(136,47,10,'NEW','0','2015-04-19 14:55:57'),(137,47,29,'NEW','0','2015-04-19 14:55:57'),(138,48,27,'NEW','0','2015-04-19 14:59:39'),(139,48,7,'NEW','0','2015-04-19 14:59:39'),(140,48,10,'NEW','0','2015-04-19 14:59:39'),(141,48,29,'NEW','0','2015-04-19 14:59:39'),(142,49,26,'NEW','0','2015-04-19 22:33:47'),(143,49,27,'NEW','0','2015-04-19 22:33:47'),(144,49,28,'NEW','0','2015-04-19 22:33:47'),(145,49,29,'NEW','0','2015-04-19 22:33:47'),(146,49,30,'NEW','0','2015-04-19 22:33:47'),(147,49,7,'NEW','0','2015-04-19 22:33:47'),(148,50,26,'NEW','0','2015-04-19 22:44:44'),(149,50,27,'NEW','0','2015-04-19 22:44:44'),(150,50,28,'NEW','0','2015-04-19 22:44:44'),(151,50,29,'NEW','0','2015-04-19 22:44:44'),(152,50,30,'NEW','0','2015-04-19 22:44:44'),(153,50,7,'NEW','0','2015-04-19 22:44:44'),(154,51,26,'NEW','0','2015-04-19 23:28:28'),(155,51,27,'NEW','0','2015-04-19 23:28:28'),(156,51,28,'NEW','0','2015-04-19 23:28:28'),(157,51,29,'NEW','0','2015-04-19 23:28:28'),(158,51,30,'NEW','0','2015-04-19 23:28:28'),(159,51,7,'NEW','0','2015-04-19 23:28:28'),(160,52,26,'NEW','0','2015-04-19 23:54:41'),(161,52,27,'NEW','0','2015-04-19 23:54:41'),(162,52,28,'NEW','0','2015-04-19 23:54:41'),(163,52,29,'NEW','0','2015-04-19 23:54:41'),(164,52,30,'NEW','0','2015-04-19 23:54:41'),(165,52,7,'NEW','0','2015-04-19 23:54:41'),(166,53,26,'NEW','0','2015-04-19 23:57:44'),(167,53,27,'NEW','0','2015-04-19 23:57:44'),(168,53,28,'NEW','0','2015-04-19 23:57:44'),(169,53,29,'NEW','0','2015-04-19 23:57:44'),(170,53,30,'NEW','0','2015-04-19 23:57:44'),(171,53,7,'NEW','0','2015-04-19 23:57:44'),(172,54,26,'NEW','0','2015-04-20 00:00:49'),(173,54,27,'NEW','0','2015-04-20 00:00:49'),(174,54,28,'NEW','0','2015-04-20 00:00:49'),(175,54,29,'NEW','0','2015-04-20 00:00:49'),(176,54,30,'NEW','0','2015-04-20 00:00:49'),(177,54,7,'NEW','0','2015-04-20 00:00:49'),(178,55,26,'NEW','0','2015-04-20 00:03:00'),(179,55,27,'NEW','0','2015-04-20 00:03:00'),(180,55,28,'NEW','0','2015-04-20 00:03:00'),(181,55,29,'NEW','0','2015-04-20 00:03:00'),(182,55,30,'NEW','0','2015-04-20 00:03:00'),(183,55,7,'NEW','0','2015-04-20 00:03:00'),(184,56,26,'NEW','0','2015-04-20 00:04:17'),(185,56,27,'NEW','0','2015-04-20 00:04:17'),(186,56,28,'NEW','0','2015-04-20 00:04:17'),(187,56,29,'NEW','0','2015-04-20 00:04:17'),(188,56,30,'NEW','0','2015-04-20 00:04:17'),(189,56,7,'NEW','0','2015-04-20 00:04:17'),(190,57,26,'NEW','0','2015-04-20 00:06:16'),(191,57,27,'NEW','0','2015-04-20 00:06:16'),(192,57,28,'NEW','0','2015-04-20 00:06:16'),(193,57,29,'NEW','0','2015-04-20 00:06:16'),(194,57,30,'NEW','0','2015-04-20 00:06:16'),(195,57,7,'NEW','0','2015-04-20 00:06:16'),(196,58,26,'NEW','0','2015-04-20 00:37:58'),(197,58,27,'NEW','0','2015-04-20 00:37:58'),(198,58,28,'NEW','0','2015-04-20 00:37:58'),(199,58,29,'NEW','0','2015-04-20 00:37:58'),(200,58,30,'NEW','0','2015-04-20 00:37:58'),(201,58,7,'NEW','0','2015-04-20 00:37:58'),(202,59,27,'NEW','0','2015-04-20 01:45:12'),(203,59,7,'NEW','0','2015-04-20 01:45:12'),(204,59,10,'NEW','0','2015-04-20 01:45:12'),(205,59,29,'NEW','0','2015-04-20 01:45:12');
+/*!40000 ALTER TABLE `Feed2User` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -403,7 +467,7 @@ CREATE TABLE `Message` (
   UNIQUE KEY `MessageID_UNIQUE` (`MessageID`),
   KEY `fk_Message_User_idx` (`Creator`),
   CONSTRAINT `fk_Message_User` FOREIGN KEY (`Creator`) REFERENCES `User` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -412,7 +476,43 @@ CREATE TABLE `Message` (
 
 LOCK TABLES `Message` WRITE;
 /*!40000 ALTER TABLE `Message` DISABLE KEYS */;
+INSERT INTO `Message` VALUES (1,'Test1','Message 1 Body',10,'2015-04-20 07:00:00');
 /*!40000 ALTER TABLE `Message` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `MessageView`
+--
+
+DROP TABLE IF EXISTS `MessageView`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `MessageView` (
+  `MessageViewID` int(11) NOT NULL AUTO_INCREMENT,
+  `MessageID` int(11) NOT NULL,
+  `UserID` int(11) DEFAULT NULL,
+  `Read` bit(1) NOT NULL DEFAULT b'0',
+  `Archived` bit(1) NOT NULL DEFAULT b'0',
+  `Deleted` bit(1) NOT NULL DEFAULT b'0',
+  `Timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `isCreator` bit(1) NOT NULL DEFAULT b'0',
+  PRIMARY KEY (`MessageViewID`),
+  UNIQUE KEY `MessageViewID_UNIQUE` (`MessageViewID`),
+  KEY `fk_MessageView_User_idx` (`UserID`),
+  KEY `fk_MessageView_Message_idx` (`MessageID`),
+  CONSTRAINT `fk_MessageView_Message` FOREIGN KEY (`MessageID`) REFERENCES `Message` (`MessageID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_MessageView_User` FOREIGN KEY (`UserID`) REFERENCES `User` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `MessageView`
+--
+
+LOCK TABLES `MessageView` WRITE;
+/*!40000 ALTER TABLE `MessageView` DISABLE KEYS */;
+INSERT INTO `MessageView` VALUES (1,1,7,'\0','\0','\0','2015-04-20 07:00:00','\0'),(2,1,10,'\0','\0','\0','2015-04-20 07:00:00','');
+/*!40000 ALTER TABLE `MessageView` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -427,10 +527,10 @@ CREATE TABLE `Notification` (
   `Message` varchar(200) DEFAULT NULL,
   `Type` varchar(45) DEFAULT NULL,
   `DateCreated` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `AssocUser` int(11) DEFAULT NULL,
+  `UserID` int(11) DEFAULT NULL,
   PRIMARY KEY (`NotificationID`),
-  KEY `fk_Notification_User_idx` (`AssocUser`),
-  CONSTRAINT `fk_Notification_User` FOREIGN KEY (`AssocUser`) REFERENCES `User` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `fk_Notification_User_idx` (`UserID`),
+  CONSTRAINT `fk_Notification_User` FOREIGN KEY (`UserID`) REFERENCES `User` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -441,6 +541,36 @@ CREATE TABLE `Notification` (
 LOCK TABLES `Notification` WRITE;
 /*!40000 ALTER TABLE `Notification` DISABLE KEYS */;
 /*!40000 ALTER TABLE `Notification` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `NotificationView`
+--
+
+DROP TABLE IF EXISTS `NotificationView`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `NotificationView` (
+  `NotificationViewID` int(11) NOT NULL AUTO_INCREMENT,
+  `NotificationID` int(11) NOT NULL,
+  `UserID` int(11) NOT NULL,
+  `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`NotificationViewID`),
+  UNIQUE KEY `NotificationViewID_UNIQUE` (`NotificationViewID`),
+  KEY `fk_NotificationView_User_idx` (`UserID`),
+  KEY `fk_NotificationView_Notification_idx` (`NotificationID`),
+  CONSTRAINT `fk_NotificationView_User` FOREIGN KEY (`UserID`) REFERENCES `User` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_NotificationView_Notification` FOREIGN KEY (`NotificationID`) REFERENCES `Notification` (`NotificationID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `NotificationView`
+--
+
+LOCK TABLES `NotificationView` WRITE;
+/*!40000 ALTER TABLE `NotificationView` DISABLE KEYS */;
+/*!40000 ALTER TABLE `NotificationView` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -465,7 +595,7 @@ CREATE TABLE `Projects` (
   PRIMARY KEY (`ProjectID`),
   KEY `fk_Projects_User_idx` (`UserID`),
   CONSTRAINT `fk_Projects_User` FOREIGN KEY (`UserID`) REFERENCES `User` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -496,7 +626,7 @@ CREATE TABLE `Skills` (
   UNIQUE KEY `SkillID_UNIQUE` (`SkillID`),
   KEY `fk_Skills_User_idx` (`UserID`),
   CONSTRAINT `fk_Skills_User` FOREIGN KEY (`UserID`) REFERENCES `User` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -505,7 +635,7 @@ CREATE TABLE `Skills` (
 
 LOCK TABLES `Skills` WRITE;
 /*!40000 ALTER TABLE `Skills` DISABLE KEYS */;
-INSERT INTO `Skills` VALUES (1,'PHP',0,1,10,'2015-03-30 02:53:34'),(4,'JAVA',1,1,7,'2015-04-09 21:39:09'),(5,'C',3,1,7,'2015-04-09 21:39:09'),(16,'C++',0,1,7,'2015-04-09 22:17:09');
+INSERT INTO `Skills` VALUES (1,'PHP',0,1,10,'2015-03-30 02:53:34'),(4,'JAVA',1,1,7,'2015-04-09 21:39:09'),(5,'C',3,1,7,'2015-04-09 21:39:09'),(6,'c++',0,1,7,'2015-04-16 00:20:00'),(7,'a',0,1,7,'2015-04-17 00:38:22');
 /*!40000 ALTER TABLE `Skills` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -544,7 +674,7 @@ CREATE TABLE `User` (
 
 LOCK TABLES `User` WRITE;
 /*!40000 ALTER TABLE `User` DISABLE KEYS */;
-INSERT INTO `User` VALUES (7,'Bruce','','Wayne','Male','2015-03-25 00:00:00','','','','','2015-02-27 09:57:00','This is my summar','5555555555','Mobile',NULL,'United States',NULL),(10,'Hung',NULL,'Tran',NULL,NULL,'1 Washington Sq.',NULL,NULL,NULL,'2015-03-01 20:32:24',NULL,'555-555-5555','Home','employed','United States',NULL),(26,'Tony','','Stark','','0000-00-00 00:00:00','','','','','2015-03-29 22:26:37',NULL,NULL,NULL,NULL,NULL,NULL),(27,'Bill','','Gates',NULL,NULL,'123 Qurious st',NULL,NULL,NULL,'2015-04-05 17:20:13',NULL,'555-555-5555','Home','employed',NULL,NULL),(28,'Larry','','Page',NULL,NULL,NULL,NULL,NULL,NULL,'2015-04-06 18:33:39',NULL,NULL,NULL,NULL,NULL,NULL),(29,'Steve','','Jobs',NULL,NULL,NULL,NULL,NULL,NULL,'2015-04-06 18:34:34',NULL,NULL,NULL,NULL,NULL,NULL),(30,'Mark','','Zuckerberg',NULL,NULL,NULL,NULL,NULL,NULL,'2015-04-06 18:35:28',NULL,NULL,NULL,NULL,NULL,NULL),(31,'Eric','','Schmidt',NULL,NULL,NULL,NULL,NULL,NULL,'2015-04-06 18:36:30',NULL,NULL,NULL,NULL,NULL,NULL),(32,'Jeff','','Weiner',NULL,NULL,NULL,NULL,NULL,NULL,'2015-04-06 18:37:59',NULL,NULL,NULL,NULL,NULL,NULL),(33,'Natasha','','Romanova',NULL,NULL,NULL,NULL,NULL,NULL,'2015-04-06 18:41:39',NULL,NULL,NULL,NULL,NULL,NULL),(34,'Wilson','','Wade',NULL,NULL,NULL,NULL,NULL,NULL,'2015-04-06 18:42:45',NULL,NULL,NULL,NULL,NULL,NULL),(35,'Barton','','Clint',NULL,NULL,NULL,NULL,NULL,NULL,'2015-04-06 18:43:59',NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `User` VALUES (7,'Bruce','','Wayne','Male','2015-03-25 00:00:00','','','','94513','2015-02-27 09:57:00','Something about myselfsdewfqwefqwerfqwerqwerfsfghsfdgsfdg','5555555555','Home',NULL,'United States','tiger.jpg'),(10,'Hung',NULL,'Tran',NULL,NULL,'1 Washington Sq.',NULL,NULL,NULL,'2015-03-01 20:32:24',NULL,'555-555-5555','Home','employed','United States','HourGlass.jpg'),(26,'Tony','','Stark','','0000-00-00 00:00:00','','','','','2015-03-29 22:26:37',NULL,NULL,NULL,NULL,NULL,NULL),(27,'Bill','','Gates',NULL,NULL,'123 Qurious st',NULL,NULL,NULL,'2015-04-05 17:20:13',NULL,'555-555-5555','Home','employed',NULL,NULL),(28,'Larry','','Page',NULL,NULL,NULL,NULL,NULL,NULL,'2015-04-06 18:33:39',NULL,NULL,NULL,NULL,NULL,NULL),(29,'Steve','','Jobs',NULL,NULL,NULL,NULL,NULL,NULL,'2015-04-06 18:34:34',NULL,NULL,NULL,NULL,NULL,NULL),(30,'Mark','','Zuckerberg',NULL,NULL,NULL,NULL,NULL,NULL,'2015-04-06 18:35:28',NULL,NULL,NULL,NULL,NULL,NULL),(31,'Eric','','Schmidt',NULL,NULL,NULL,NULL,NULL,NULL,'2015-04-06 18:36:30',NULL,NULL,NULL,NULL,NULL,NULL),(32,'Jeff','','Weiner',NULL,NULL,NULL,NULL,NULL,NULL,'2015-04-06 18:37:59',NULL,NULL,NULL,NULL,NULL,NULL),(33,'Natasha','','Romanova',NULL,NULL,NULL,NULL,NULL,NULL,'2015-04-06 18:41:39',NULL,NULL,NULL,NULL,NULL,NULL),(34,'Wilson','','Wade',NULL,NULL,NULL,NULL,NULL,NULL,'2015-04-06 18:42:45',NULL,NULL,NULL,NULL,NULL,NULL),(35,'Barton','','Clint',NULL,NULL,NULL,NULL,NULL,NULL,'2015-04-06 18:43:59',NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `User` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -569,6 +699,7 @@ SET character_set_client = utf8;
  1 AS `State`,
  1 AS `Zip`,
  1 AS `Summary`,
+ 1 AS `ProfileImage`,
  1 AS `Phone`,
  1 AS `PhoneType`,
  1 AS `EmploymentStatus`,
@@ -595,7 +726,7 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `vw_PersonalInfo` AS (select `User`.`UserID` AS `UserID`,`User`.`FirstName` AS `FirstName`,`User`.`MiddleName` AS `MiddleName`,`User`.`LastName` AS `LastName`,concat(`User`.`FirstName`,' ',`User`.`MiddleName`,' ',`User`.`LastName`) AS `Name`,`User`.`Gender` AS `Gender`,`User`.`Birthday` AS `Birthday`,`User`.`Address` AS `Address`,`User`.`City` AS `City`,`User`.`State` AS `State`,`User`.`Zip` AS `Zip`,`User`.`Summary` AS `Summary`,`User`.`Phone` AS `Phone`,`User`.`PhoneType` AS `PhoneType`,`User`.`EmploymentStatus` AS `EmploymentStatus`,`User`.`Country` AS `Country`,`Account`.`AccountID` AS `AccountID`,`Account`.`Email` AS `Email`,`Account`.`Email_Alt` AS `Email_Alt`,`Account`.`Username` AS `Username`,`Account`.`Password` AS `Password`,`Account`.`Active` AS `Active`,`Account`.`Verified` AS `Verified` from (`User` join `Account` on((`User`.`UserID` = `Account`.`UserID`)))) */;
+/*!50001 VIEW `vw_PersonalInfo` AS (select `User`.`UserID` AS `UserID`,`User`.`FirstName` AS `FirstName`,`User`.`MiddleName` AS `MiddleName`,`User`.`LastName` AS `LastName`,concat(`User`.`FirstName`,' ',`User`.`MiddleName`,' ',`User`.`LastName`) AS `Name`,`User`.`Gender` AS `Gender`,`User`.`Birthday` AS `Birthday`,`User`.`Address` AS `Address`,`User`.`City` AS `City`,`User`.`State` AS `State`,`User`.`Zip` AS `Zip`,`User`.`Summary` AS `Summary`,`User`.`ProfileImage` AS `ProfileImage`,`User`.`Phone` AS `Phone`,`User`.`PhoneType` AS `PhoneType`,`User`.`EmploymentStatus` AS `EmploymentStatus`,`User`.`Country` AS `Country`,`Account`.`AccountID` AS `AccountID`,`Account`.`Email` AS `Email`,`Account`.`Email_Alt` AS `Email_Alt`,`Account`.`Username` AS `Username`,`Account`.`Password` AS `Password`,`Account`.`Active` AS `Active`,`Account`.`Verified` AS `Verified` from (`User` join `Account` on((`User`.`UserID` = `Account`.`UserID`)))) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -609,4 +740,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-04-09 16:09:39
+-- Dump completed on 2015-04-20 16:34:08

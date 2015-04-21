@@ -1,0 +1,1703 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PHPMailer" namespace="" name="PHPMailer" abstract="false" final="false" start="28" end="3448">
+  <file path="/var/www/html/ProConnect/lib/PHPMailer" file="class.phpmailer.php" realpath="/var/www/html/ProConnect/lib/PHPMailer/class.phpmailer.php" size="120418" time="2015-02-27T01:22:45-08:00" unixtime="1425028965" sha1="6ae076b975d84b0f70a5eecabefdc385663904b3" relative="lib/PHPMailer/class.phpmailer.php"/>
+  <docblock>
+    <description compact="PHPMailer - PHP email creation and transport class."/>
+    <package value="PHPMailer"/>
+    <author value="Marcus Bointon (Synchro/coolbru) &lt;phpmailer@synchromedia.co.uk&gt;"/>
+    <author value="Jim Jagielski (jimjag) &lt;jimjag@gmail.com&gt;"/>
+    <author value="Andy Prevost (codeworxtech) &lt;codeworxtech@users.sourceforge.net&gt;"/>
+    <author value="Brent R. Matzelle (original founder)"/>
+  </docblock>
+  <member name="Version" type="string" default="'5.2.9'" visibility="public" line="34">
+    <docblock>
+      <description compact="The PHPMailer Version number."/>
+      <type value="string"/>
+    </docblock>
+  </member>
+  <member name="Priority" type="integer" default="3" visibility="public" line="41">
+    <docblock>
+      <description compact="Email priority.">Options: 1 = High, 3 = Normal, 5 = low.</description>
+      <type value="integer"/>
+    </docblock>
+  </member>
+  <member name="CharSet" type="string" default="'iso-8859-1'" visibility="public" line="47">
+    <docblock>
+      <description compact="The character set of the message."/>
+      <type value="string"/>
+    </docblock>
+  </member>
+  <member name="ContentType" type="string" default="'text/plain'" visibility="public" line="53">
+    <docblock>
+      <description compact="The MIME Content-type of the message."/>
+      <type value="string"/>
+    </docblock>
+  </member>
+  <member name="Encoding" type="string" default="'8bit'" visibility="public" line="60">
+    <docblock>
+      <description compact="The message encoding.">Options: "8bit", "7bit", "binary", "base64", and "quoted-printable".</description>
+      <type value="string"/>
+    </docblock>
+  </member>
+  <member name="ErrorInfo" type="string" default="''" visibility="public" line="66">
+    <docblock>
+      <description compact="Holds the most recent mailer error message."/>
+      <type value="string"/>
+    </docblock>
+  </member>
+  <member name="From" type="string" default="'root@localhost'" visibility="public" line="72">
+    <docblock>
+      <description compact="The From email address for the message."/>
+      <type value="string"/>
+    </docblock>
+  </member>
+  <member name="FromName" type="string" default="'Root User'" visibility="public" line="78">
+    <docblock>
+      <description compact="The From name of the message."/>
+      <type value="string"/>
+    </docblock>
+  </member>
+  <member name="Sender" type="string" default="''" visibility="public" line="85">
+    <docblock>
+      <description compact="The Sender email (Return-Path) of the message.">If not empty, will be sent via -f to sendmail or as 'MAIL FROM' in smtp mode.</description>
+      <type value="string"/>
+    </docblock>
+  </member>
+  <member name="ReturnPath" type="string" default="''" visibility="public" line="95">
+    <docblock>
+      <description compact="The Return-Path of the message.">If empty, it will be set to either From or Sender.</description>
+      <type value="string"/>
+      <deprecated value="Email senders should never set a return-path header;">it's the receiver's job (RFC5321 section 4.4), so this no longer does anything.</deprecated>
+      <link value="https://tools.ietf.org/html/rfc5321#section-4.4 RFC5321 reference"/>
+    </docblock>
+  </member>
+  <member name="Subject" type="string" default="''" visibility="public" line="101">
+    <docblock>
+      <description compact="The Subject of the message."/>
+      <type value="string"/>
+    </docblock>
+  </member>
+  <member name="Body" type="string" default="''" visibility="public" line="108">
+    <docblock>
+      <description compact="An HTML or plain text message body.">If HTML then call isHTML(true).</description>
+      <type value="string"/>
+    </docblock>
+  </member>
+  <member name="AltBody" type="string" default="''" visibility="public" line="117">
+    <docblock>
+      <description compact="The plain-text message body.">This body can be read by mail clients that do not have HTML email
+capability such as mutt &amp; Eudora.
+Clients that can read HTML will view the normal Body.</description>
+      <type value="string"/>
+    </docblock>
+  </member>
+  <member name="Ical" type="string" default="''" visibility="public" line="127">
+    <docblock>
+      <description compact="An iCal message part body.">Only supported in simple alt or alt_inline message types
+To generate iCal events, use the bundled extras/EasyPeasyICS.php class or iCalcreator</description>
+      <link value="http://sprain.ch/blog/downloads/php-class-easypeasyics-create-ical-files-with-php/"/>
+      <link value="http://kigkonsult.se/iCalcreator/"/>
+      <type value="string"/>
+    </docblock>
+  </member>
+  <member name="MIMEBody" type="string" default="''" visibility="protected" line="134">
+    <docblock>
+      <description compact="The complete compiled MIME message body."/>
+      <access value="protected"/>
+      <type value="string"/>
+    </docblock>
+  </member>
+  <member name="MIMEHeader" type="string" default="''" visibility="protected" line="141">
+    <docblock>
+      <description compact="The complete compiled MIME message headers."/>
+      <type value="string"/>
+      <access value="protected"/>
+    </docblock>
+  </member>
+  <member name="mailHeader" type="string" default="''" visibility="protected" line="148">
+    <docblock>
+      <description compact="Extra headers that createHeader() doesn't fold in."/>
+      <type value="string"/>
+      <access value="protected"/>
+    </docblock>
+  </member>
+  <member name="WordWrap" type="integer" default="0" visibility="public" line="155">
+    <docblock>
+      <description compact="Word-wrap the message body to this number of chars.">Set to 0 to not wrap. A useful value here is 78, for RFC2822 section 2.1.1 compliance.</description>
+      <type value="integer"/>
+    </docblock>
+  </member>
+  <member name="Mailer" type="string" default="'mail'" visibility="public" line="162">
+    <docblock>
+      <description compact="Which method to use to send mail.">Options: "mail", "sendmail", or "smtp".</description>
+      <type value="string"/>
+    </docblock>
+  </member>
+  <member name="Sendmail" type="string" default="'/usr/sbin/sendmail'" visibility="public" line="168">
+    <docblock>
+      <description compact="The path to the sendmail program."/>
+      <type value="string"/>
+    </docblock>
+  </member>
+  <member name="UseSendmailOptions" type="{unknown}" default="true" visibility="public" line="175">
+    <docblock>
+      <description compact="Whether mail() uses a fully sendmail-compatible MTA.">One which supports sendmail's "-oi -f" options.</description>
+      <type value="boolean"/>
+    </docblock>
+  </member>
+  <member name="PluginDir" type="string" default="''" visibility="public" line="183">
+    <docblock>
+      <description compact="Path to PHPMailer plugins.">Useful if the SMTP class is not in the PHP include path.</description>
+      <type value="string"/>
+      <deprecated value="Should not be needed now there is an autoloader."/>
+    </docblock>
+  </member>
+  <member name="ConfirmReadingTo" type="string" default="''" visibility="public" line="189">
+    <docblock>
+      <description compact="The email address that a reading confirmation should be sent to."/>
+      <type value="string"/>
+    </docblock>
+  </member>
+  <member name="Hostname" type="string" default="''" visibility="public" line="198">
+    <docblock>
+      <description compact="The hostname to use in Message-Id and Received headers and as default HELO string.">If empty, the value returned
+by SERVER_NAME is used or 'localhost.localdomain'.</description>
+      <type value="string"/>
+    </docblock>
+  </member>
+  <member name="MessageID" type="string" default="''" visibility="public" line="205">
+    <docblock>
+      <description compact="An ID to be used in the Message-Id header.">If empty, a unique id will be generated.</description>
+      <type value="string"/>
+    </docblock>
+  </member>
+  <member name="MessageDate" type="string" default="''" visibility="public" line="212">
+    <docblock>
+      <description compact="The message Date to be used in the Date header.">If empty, the current date will be added.</description>
+      <type value="string"/>
+    </docblock>
+  </member>
+  <member name="Host" type="string" default="'localhost'" visibility="public" line="225">
+    <docblock>
+      <description compact="SMTP hosts.">Either a single hostname or multiple semicolon-delimited hostnames.
+You can also specify a different port
+for each host by using this format: [hostname:port]
+(e.g. "smtp1.example.com:25;smtp2.example.com").
+You can also specify encryption type, for example:
+(e.g. "tls://smtp1.example.com:587;ssl://smtp2.example.com:465").
+Hosts will be tried in order.</description>
+      <type value="string"/>
+    </docblock>
+  </member>
+  <member name="Port" type="integer" default="25" visibility="public" line="232">
+    <docblock>
+      <description compact="The default SMTP server port."/>
+      <type value="integer"/>
+      <todo value="Why is this needed when the SMTP class takes care of it?"/>
+    </docblock>
+  </member>
+  <member name="Helo" type="string" default="''" visibility="public" line="240">
+    <docblock>
+      <description compact="The SMTP HELO of the message.">Default is $Hostname.</description>
+      <type value="string"/>
+      <see value="PHPMailer::$Hostname"/>
+    </docblock>
+  </member>
+  <member name="SMTPSecure" type="string" default="''" visibility="public" line="247">
+    <docblock>
+      <description compact="The secure connection prefix.">Options: "", "ssl" or "tls"</description>
+      <type value="string"/>
+    </docblock>
+  </member>
+  <member name="SMTPAuth" type="{unknown}" default="false" visibility="public" line="256">
+    <docblock>
+      <description compact="Whether to use SMTP authentication.">Uses the Username and Password properties.</description>
+      <type value="boolean"/>
+      <see value="PHPMailer::$Username"/>
+      <see value="PHPMailer::$Password"/>
+    </docblock>
+  </member>
+  <member name="Username" type="string" default="''" visibility="public" line="262">
+    <docblock>
+      <description compact="SMTP username."/>
+      <type value="string"/>
+    </docblock>
+  </member>
+  <member name="Password" type="string" default="''" visibility="public" line="268">
+    <docblock>
+      <description compact="SMTP password."/>
+      <type value="string"/>
+    </docblock>
+  </member>
+  <member name="AuthType" type="string" default="''" visibility="public" line="275">
+    <docblock>
+      <description compact="SMTP auth type.">Options are LOGIN (default), PLAIN, NTLM, CRAM-MD5</description>
+      <type value="string"/>
+    </docblock>
+  </member>
+  <member name="Realm" type="string" default="''" visibility="public" line="282">
+    <docblock>
+      <description compact="SMTP realm.">Used for NTLM auth</description>
+      <type value="string"/>
+    </docblock>
+  </member>
+  <member name="Workstation" type="string" default="''" visibility="public" line="289">
+    <docblock>
+      <description compact="SMTP workstation.">Used for NTLM auth</description>
+      <type value="string"/>
+    </docblock>
+  </member>
+  <member name="Timeout" type="integer" default="300" visibility="public" line="296">
+    <docblock>
+      <description compact="The SMTP server timeout in seconds.">Default of 5 minutes (300sec) is from RFC2821 section 4.5.3.2</description>
+      <type value="integer"/>
+    </docblock>
+  </member>
+  <member name="SMTPDebug" type="integer" default="0" visibility="public" line="310">
+    <docblock>
+      <description compact="SMTP class debug output mode.">Debug output level.
+Options:
+* `0` No output
+* `1` Commands
+* `2` Data and commands
+* `3` As 2 plus connection status
+* `4` Low-level data output</description>
+      <type value="integer"/>
+      <see value="SMTP::$do_debug"/>
+    </docblock>
+  </member>
+  <member name="Debugoutput" type="string" default="'echo'" visibility="public" line="326">
+    <docblock>
+      <description compact="How to handle debug output.">Options:
+* `echo` Output plain-text as-is, appropriate for CLI
+* `html` Output escaped, line breaks converted to `&lt;br&gt;`, appropriate for browser output
+* `error_log` Output to error log as configured in php.ini
+
+Alternatively, you can provide a callable expecting two params: a message string and the debug level:
+&lt;code&gt;
+$mail-&gt;Debugoutput = function($str, $level) {echo "debug level $level; message: $str";};
+&lt;/code&gt;</description>
+      <type value="string|callable"/>
+      <see value="SMTP::$Debugoutput"/>
+    </docblock>
+  </member>
+  <member name="SMTPKeepAlive" type="{unknown}" default="false" visibility="public" line="334">
+    <docblock>
+      <description compact="Whether to keep SMTP connection open after each message.">If this is set to true then to close the connection
+requires an explicit call to smtpClose().</description>
+      <type value="boolean"/>
+    </docblock>
+  </member>
+  <member name="SingleTo" type="{unknown}" default="false" visibility="public" line="341">
+    <docblock>
+      <description compact="Whether to split multiple to addresses into multiple messages or send them all in one message."/>
+      <type value="boolean"/>
+    </docblock>
+  </member>
+  <member name="SingleToArray" type="array" visibility="public" line="348">
+    <docblock>
+      <description compact="Storage for addresses when SingleTo is enabled."/>
+      <type value="array"/>
+      <todo value="This should really not be public"/>
+    </docblock>
+  </member>
+  <member name="do_verp" type="{unknown}" default="false" visibility="public" line="357">
+    <docblock>
+      <description compact="Whether to generate VERP addresses on send.">Only applicable when sending via SMTP.</description>
+      <link value="http://en.wikipedia.org/wiki/Variable_envelope_return_path"/>
+      <link value="http://www.postfix.org/VERP_README.html Postfix VERP info"/>
+      <type value="boolean"/>
+    </docblock>
+  </member>
+  <member name="AllowEmpty" type="{unknown}" default="false" visibility="public" line="363">
+    <docblock>
+      <description compact="Whether to allow sending messages with an empty body."/>
+      <type value="boolean"/>
+    </docblock>
+  </member>
+  <member name="LE" type="string" default="&quot;\n&quot;" visibility="public" line="371">
+    <docblock>
+      <description compact="The default line ending."/>
+      <note value="The default remains &quot;\n&quot;. We force CRLF where we know">it must be used via self::CRLF.</note>
+      <type value="string"/>
+    </docblock>
+  </member>
+  <member name="DKIM_selector" type="string" default="''" visibility="public" line="377">
+    <docblock>
+      <description compact="DKIM selector."/>
+      <type value="string"/>
+    </docblock>
+  </member>
+  <member name="DKIM_identity" type="string" default="''" visibility="public" line="384">
+    <docblock>
+      <description compact="DKIM Identity.">Usually the email address used as the source of the email</description>
+      <type value="string"/>
+    </docblock>
+  </member>
+  <member name="DKIM_passphrase" type="string" default="''" visibility="public" line="391">
+    <docblock>
+      <description compact="DKIM passphrase.">Used if your key is encrypted.</description>
+      <type value="string"/>
+    </docblock>
+  </member>
+  <member name="DKIM_domain" type="string" default="''" visibility="public" line="398">
+    <docblock>
+      <description compact="DKIM signing domain name."/>
+      <example value="'example.com'"/>
+      <type value="string"/>
+    </docblock>
+  </member>
+  <member name="DKIM_private" type="string" default="''" visibility="public" line="404">
+    <docblock>
+      <description compact="DKIM private key file path."/>
+      <type value="string"/>
+    </docblock>
+  </member>
+  <member name="action_function" type="string" default="''" visibility="public" line="424">
+    <docblock>
+      <description compact="Callback Action function name.">The function that handles the result of the send email action.
+It is called out by send() for each email sent.
+
+Value can be any php callable: http://www.php.net/is_callable
+
+Parameters:
+  boolean $result        result of the send action
+  string  $to            email address of the recipient
+  string  $cc            cc email addresses
+  string  $bcc           bcc email addresses
+  string  $subject       the subject
+  string  $body          the email body
+  string  $from          email address of sender</description>
+      <type value="string"/>
+    </docblock>
+  </member>
+  <member name="XMailer" type="string" default="''" visibility="public" line="431">
+    <docblock>
+      <description compact="What to put in the X-Mailer header.">Options: An empty string for PHPMailer default, whitespace for none, or a string to use</description>
+      <type value="string"/>
+    </docblock>
+  </member>
+  <member name="smtp" type="{unknown}" default="null" visibility="protected" line="438">
+    <docblock>
+      <description compact="An instance of the SMTP sender class."/>
+      <type value="SMTP"/>
+      <access value="protected"/>
+    </docblock>
+  </member>
+  <member name="to" type="array" visibility="protected" line="445">
+    <docblock>
+      <description compact="The array of 'to' addresses."/>
+      <type value="array"/>
+      <access value="protected"/>
+    </docblock>
+  </member>
+  <member name="cc" type="array" visibility="protected" line="452">
+    <docblock>
+      <description compact="The array of 'cc' addresses."/>
+      <type value="array"/>
+      <access value="protected"/>
+    </docblock>
+  </member>
+  <member name="bcc" type="array" visibility="protected" line="459">
+    <docblock>
+      <description compact="The array of 'bcc' addresses."/>
+      <type value="array"/>
+      <access value="protected"/>
+    </docblock>
+  </member>
+  <member name="ReplyTo" type="array" visibility="protected" line="466">
+    <docblock>
+      <description compact="The array of reply-to names and addresses."/>
+      <type value="array"/>
+      <access value="protected"/>
+    </docblock>
+  </member>
+  <member name="all_recipients" type="array" visibility="protected" line="474">
+    <docblock>
+      <description compact="An array of all kinds of addresses.">Includes all of $to, $cc, $bcc, $replyto</description>
+      <type value="array"/>
+      <access value="protected"/>
+    </docblock>
+  </member>
+  <member name="attachment" type="array" visibility="protected" line="481">
+    <docblock>
+      <description compact="The array of attachments."/>
+      <type value="array"/>
+      <access value="protected"/>
+    </docblock>
+  </member>
+  <member name="CustomHeader" type="array" visibility="protected" line="488">
+    <docblock>
+      <description compact="The array of custom headers."/>
+      <type value="array"/>
+      <access value="protected"/>
+    </docblock>
+  </member>
+  <member name="lastMessageID" type="string" default="''" visibility="protected" line="495">
+    <docblock>
+      <description compact="The most recent Message-ID (including angular brackets)."/>
+      <type value="string"/>
+      <access value="protected"/>
+    </docblock>
+  </member>
+  <member name="message_type" type="string" default="''" visibility="protected" line="502">
+    <docblock>
+      <description compact="The message's MIME type."/>
+      <type value="string"/>
+      <access value="protected"/>
+    </docblock>
+  </member>
+  <member name="boundary" type="array" visibility="protected" line="509">
+    <docblock>
+      <description compact="The array of MIME boundary strings."/>
+      <type value="array"/>
+      <access value="protected"/>
+    </docblock>
+  </member>
+  <member name="language" type="array" visibility="protected" line="516">
+    <docblock>
+      <description compact="The array of available languages."/>
+      <type value="array"/>
+      <access value="protected"/>
+    </docblock>
+  </member>
+  <member name="error_count" type="integer" default="0" visibility="protected" line="523">
+    <docblock>
+      <description compact="The number of errors encountered."/>
+      <type value="integer"/>
+      <access value="protected"/>
+    </docblock>
+  </member>
+  <member name="sign_cert_file" type="string" default="''" visibility="protected" line="530">
+    <docblock>
+      <description compact="The S/MIME certificate file path."/>
+      <type value="string"/>
+      <access value="protected"/>
+    </docblock>
+  </member>
+  <member name="sign_key_file" type="string" default="''" visibility="protected" line="537">
+    <docblock>
+      <description compact="The S/MIME key file path."/>
+      <type value="string"/>
+      <access value="protected"/>
+    </docblock>
+  </member>
+  <member name="sign_key_pass" type="string" default="''" visibility="protected" line="545">
+    <docblock>
+      <description compact="The S/MIME password for the key.">Used only if the key is encrypted.</description>
+      <type value="string"/>
+      <access value="protected"/>
+    </docblock>
+  </member>
+  <member name="exceptions" type="{unknown}" default="false" visibility="protected" line="552">
+    <docblock>
+      <description compact="Whether to throw exceptions for errors."/>
+      <type value="boolean"/>
+      <access value="protected"/>
+    </docblock>
+  </member>
+  <constant name="STOP_MESSAGE" value="0">
+    <docblock>
+      <description compact="Error severity: message only, continue processing."/>
+    </docblock>
+  </constant>
+  <constant name="STOP_CONTINUE" value="1">
+    <docblock>
+      <description compact="Error severity: message, likely ok to continue processing."/>
+    </docblock>
+  </constant>
+  <constant name="STOP_CRITICAL" value="2">
+    <docblock>
+      <description compact="Error severity: message, plus full stop, critical error reached."/>
+    </docblock>
+  </constant>
+  <constant name="CRLF" value="&quot;\r\n&quot;">
+    <docblock>
+      <description compact="SMTP RFC standard line ending."/>
+    </docblock>
+  </constant>
+  <constructor name="__construct" start="578" end="581" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Constructor."/>
+      <param description="Should we throw external exceptions?" type="boolean" variable="$exceptions"/>
+    </docblock>
+    <parameter name="exceptions" byreference="false" type="{unknown}" default="false"/>
+  </constructor>
+  <destructor name="__destruct" start="586" end="591" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Destructor."/>
+    </docblock>
+    <inline>
+      <comment value="close any open SMTP connection nicely" line="588"/>
+    </inline>
+  </destructor>
+  <method name="mailPassthru" start="606" end="620" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Call mail() in a safe_mode-aware fashion.">Also, unless sendmail_path points to sendmail (or something that
+claims to be sendmail), don't pass params (not a perfect fix,
+but it will do)</description>
+      <param description="To" type="string" variable="$to"/>
+      <param description="Subject" type="string" variable="$subject"/>
+      <param description="Message Body" type="string" variable="$body"/>
+      <param description="Additional Header(s)" type="string" variable="$header"/>
+      <param description="Params" type="string" variable="$params"/>
+      <access value="private"/>
+      <return type="boolean"/>
+    </docblock>
+    <parameter name="to" byreference="false" type="{unknown}"/>
+    <parameter name="subject" byreference="false" type="{unknown}"/>
+    <parameter name="body" byreference="false" type="{unknown}"/>
+    <parameter name="header" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Check overloading of mail function to avoid double-encoding" line="608"/>
+    </inline>
+  </method>
+  <method name="edebug" start="629" end="663" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Output debugging info via user-defined method.">Only generates output if SMTP debug output is enabled (@see SMTP::$do_debug).</description>
+      <see value="PHPMailer::$Debugoutput"/>
+      <see value="PHPMailer::$SMTPDebug"/>
+      <param type="string" variable="$str"/>
+    </docblock>
+    <parameter name="str" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Avoid clash with built-in function names" line="634"/>
+    </inline>
+  </method>
+  <method name="isHTML" start="670" end="677" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Sets message type to HTML or plain."/>
+      <param description="True for HTML mode." type="boolean" variable="$isHtml"/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="isHtml" byreference="false" type="{unknown}" default="true"/>
+  </method>
+  <method name="isSMTP" start="683" end="686" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Send messages using SMTP."/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="isMail" start="692" end="695" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Send messages using PHP's mail() function."/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="isSendmail" start="701" end="711" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Send messages using $Sendmail."/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="isQmail" start="717" end="727" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Send messages using qmail."/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="addAddress" start="735" end="738" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add a &quot;To&quot; address."/>
+      <param type="string" variable="$address"/>
+      <param type="string" variable="$name"/>
+      <return description="true on success, false if address already used" type="boolean"/>
+    </docblock>
+    <parameter name="address" byreference="false" type="{unknown}"/>
+    <parameter name="name" byreference="false" type="string" default="''"/>
+  </method>
+  <method name="addCC" start="747" end="750" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add a &quot;CC&quot; address."/>
+      <note value=": This function works with the SMTP mailer on win32, not with the &quot;mail&quot; mailer."/>
+      <param type="string" variable="$address"/>
+      <param type="string" variable="$name"/>
+      <return description="true on success, false if address already used" type="boolean"/>
+    </docblock>
+    <parameter name="address" byreference="false" type="{unknown}"/>
+    <parameter name="name" byreference="false" type="string" default="''"/>
+  </method>
+  <method name="addBCC" start="759" end="762" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add a &quot;BCC&quot; address."/>
+      <note value=": This function works with the SMTP mailer on win32, not with the &quot;mail&quot; mailer."/>
+      <param type="string" variable="$address"/>
+      <param type="string" variable="$name"/>
+      <return description="true on success, false if address already used" type="boolean"/>
+    </docblock>
+    <parameter name="address" byreference="false" type="{unknown}"/>
+    <parameter name="name" byreference="false" type="string" default="''"/>
+  </method>
+  <method name="addReplyTo" start="770" end="773" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add a &quot;Reply-to&quot; address."/>
+      <param type="string" variable="$address"/>
+      <param type="string" variable="$name"/>
+      <return type="boolean"/>
+    </docblock>
+    <parameter name="address" byreference="false" type="{unknown}"/>
+    <parameter name="name" byreference="false" type="string" default="''"/>
+  </method>
+  <method name="addAnAddress" start="785" end="818" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Add an address to one of the recipient arrays.">Addresses that have been added already return false, but do not throw exceptions</description>
+      <param description="One of 'to', 'cc', 'bcc', 'ReplyTo'" type="string" variable="$kind"/>
+      <param description="The email address to send to" type="string" variable="$address"/>
+      <param type="string" variable="$name"/>
+      <throws type="object">
+        <type full="phpmailerException" namespace="" name="phpmailerException"/>
+      </throws>
+      <return description="true on success, false if address already used or invalid in some way" type="boolean"/>
+      <access value="protected"/>
+    </docblock>
+    <parameter name="kind" byreference="false" type="{unknown}"/>
+    <parameter name="address" byreference="false" type="{unknown}"/>
+    <parameter name="name" byreference="false" type="string" default="''"/>
+    <inline>
+      <comment value="Strip breaks and trim" line="796"/>
+    </inline>
+  </method>
+  <method name="setFrom" start="828" end="848" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set the From and FromName properties."/>
+      <param type="string" variable="$address"/>
+      <param type="string" variable="$name"/>
+      <param description="Whether to also set the Sender address, defaults to true" type="boolean" variable="$auto"/>
+      <throws type="object">
+        <type full="phpmailerException" namespace="" name="phpmailerException"/>
+      </throws>
+      <return type="boolean"/>
+    </docblock>
+    <parameter name="address" byreference="false" type="{unknown}"/>
+    <parameter name="name" byreference="false" type="string" default="''"/>
+    <parameter name="auto" byreference="false" type="{unknown}" default="true"/>
+    <inline>
+      <comment value="Strip breaks and trim" line="831"/>
+    </inline>
+  </method>
+  <method name="getLastMessageID" start="857" end="860" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Return the Message-ID header of the last email.">Technically this is the value from the last time the headers were created,
+but it's also the message ID of the last sent message except in
+pathological cases.</description>
+      <return type="string"/>
+    </docblock>
+  </method>
+  <method name="validateAddress" start="876" end="955" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Check that a string looks like an email address."/>
+      <param description="The email address to check" type="string" variable="$address"/>
+      <param description="A selector for the validation pattern to use :" type="string" variable="$patternselect">* `auto` Pick strictest one automatically;
+* `pcre8` Use the squiloople.com pattern, requires PCRE &gt; 8.0, PHP &gt;= 5.3.2, 5.2.14;
+* `pcre` Use old PCRE implementation;
+* `php` Use PHP built-in FILTER_VALIDATE_EMAIL; same as pcre8 but does not allow 'dotless' domains;
+* `html5` Use the pattern given by the HTML5 spec for 'email' type form input elements.
+* `noregex` Don't use a regex: super fast, really dumb.</param>
+      <return type="boolean"/>
+      <static/>
+      <access value="public"/>
+    </docblock>
+    <parameter name="address" byreference="false" type="{unknown}"/>
+    <parameter name="patternselect" byreference="false" type="string" default="'auto'"/>
+    <inline>
+      <comment value="Check this constant first so it works when extension_loaded() is disabled by safe mode" line="879"/>
+      <comment value="Constant was added in PHP 5.2.4" line="880"/>
+      <comment value="This pattern can get stuck in a recursive loop in PCRE &lt;= 8.0.2" line="882"/>
+    </inline>
+  </method>
+  <method name="send" start="963" end="978" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Create a message and send it.">Uses the sending method specified by $Mailer.</description>
+      <throws type="object">
+        <type full="phpmailerException" namespace="" name="phpmailerException"/>
+      </throws>
+      <return description="false on error - See the ErrorInfo property for details of the error." type="boolean"/>
+    </docblock>
+  </method>
+  <method name="preSend" start="985" end="1044" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Prepare a message for sending."/>
+      <throws type="object">
+        <type full="phpmailerException" namespace="" name="phpmailerException"/>
+      </throws>
+      <return type="boolean"/>
+    </docblock>
+    <inline>
+      <comment value="Set whether the message is multipart/alternative" line="993"/>
+      <comment value="reset errors" line="998"/>
+      <comment value="Refuse to send an empty message unless we are specifically allowing it" line="1000"/>
+      <comment value="To capture the complete message when using mail(), create" line="1008"/>
+      <comment value="an extra header list which createHeader() doesn't fold in" line="1009"/>
+      <comment value="Sign with DKIM if enabled" line="1022"/>
+    </inline>
+  </method>
+  <method name="postSend" start="1052" end="1080" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Actually send a message.">Send the email via the selected mechanism</description>
+      <throws type="object">
+        <type full="phpmailerException" namespace="" name="phpmailerException"/>
+      </throws>
+      <return type="boolean"/>
+    </docblock>
+    <inline>
+      <comment value="Choose the mailer and send through it" line="1055"/>
+    </inline>
+  </method>
+  <method name="sendmailSend" start="1091" end="1141" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Send mail using the $Sendmail program."/>
+      <param description="The message headers" type="string" variable="$header"/>
+      <param description="The message body" type="string" variable="$body"/>
+      <see value="PHPMailer::$Sendmail"/>
+      <throws type="object">
+        <type full="phpmailerException" namespace="" name="phpmailerException"/>
+      </throws>
+      <access value="protected"/>
+      <return type="boolean"/>
+    </docblock>
+    <parameter name="header" byreference="false" type="{unknown}"/>
+    <parameter name="body" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="mailSend" start="1152" end="1186" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Send mail using the PHP mail() function."/>
+      <param description="The message headers" type="string" variable="$header"/>
+      <param description="The message body" type="string" variable="$body"/>
+      <link value="http://www.php.net/manual/en/book.mail.php"/>
+      <throws type="object">
+        <type full="phpmailerException" namespace="" name="phpmailerException"/>
+      </throws>
+      <access value="protected"/>
+      <return type="boolean"/>
+    </docblock>
+    <parameter name="header" byreference="false" type="{unknown}"/>
+    <parameter name="body" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getSMTPInstance" start="1193" end="1199" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get an instance to use for SMTP operations.">Override this function to load your own SMTP implementation</description>
+      <return type="object">
+        <type full="SMTP" namespace="" name="SMTP"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="smtpSend" start="1213" end="1272" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Send mail via SMTP.">Returns false if there is a bad MAIL FROM, RCPT, or DATA input.
+Uses the PHPMailerSMTP class by default.</description>
+      <see value="PHPMailer::getSMTPInstance() to use a different class."/>
+      <param description="The message headers" type="string" variable="$header"/>
+      <param description="The message body" type="string" variable="$body"/>
+      <throws type="object">
+        <type full="phpmailerException" namespace="" name="phpmailerException"/>
+      </throws>
+      <uses value="SMTP"/>
+      <access value="protected"/>
+      <return type="boolean"/>
+    </docblock>
+    <parameter name="header" byreference="false" type="{unknown}"/>
+    <parameter name="body" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Attempt to send to all recipients" line="1226"/>
+      <comment value="Only send the DATA command if we have viable recipients" line="1255"/>
+      <comment value="Create error message for any bad addresses" line="1265"/>
+    </inline>
+  </method>
+  <method name="smtpConnect" start="1283" end="1370" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initiate a connection to an SMTP server.">Returns false if the operation failed.</description>
+      <param description="An array of options compatible with stream_context_create()" type="array" variable="$options"/>
+      <uses value="SMTP"/>
+      <access value="public"/>
+      <throws type="object">
+        <type full="phpmailerException" namespace="" name="phpmailerException"/>
+      </throws>
+      <return type="boolean"/>
+    </docblock>
+    <parameter name="options" byreference="false" type="array"/>
+    <inline>
+      <comment value="Already connected?" line="1289"/>
+      <comment value="Not a valid host entry" line="1304"/>
+      <comment value="$hostinfo[2]: optional ssl or tls prefix" line="1307"/>
+      <comment value="$hostinfo[3]: the hostname" line="1308"/>
+      <comment value="$hostinfo[4]: optional port number" line="1309"/>
+      <comment value="The host string prefix can temporarily override the current setting for SMTPSecure" line="1310"/>
+      <comment value="If it's not specified, the default value is used" line="1311"/>
+      <comment value="We must resend HELO after tls negotiation" line="1340"/>
+      <comment value="If we get here, all connection attempts have failed, so close connection hard" line="1363"/>
+      <comment value="As we've caught all exceptions, just report whatever the last one was" line="1365"/>
+    </inline>
+  </method>
+  <method name="smtpClose" start="1376" end="1384" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Close the active SMTP session if one exists."/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="setLanguage" start="1395" end="1436" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set the language for error messages.">Returns false if it cannot load the language file.
+The default language is English.</description>
+      <param description="ISO 639-1 2-character language code (e.g. French is &quot;fr&quot;)" type="string" variable="$langcode"/>
+      <param description="Path to the language file directory, with trailing separator (slash)" type="string" variable="$lang_path"/>
+      <return type="boolean"/>
+      <access value="public"/>
+    </docblock>
+    <parameter name="langcode" byreference="false" type="string" default="'en'"/>
+    <parameter name="lang_path" byreference="false" type="string" default="''"/>
+    <inline>
+      <comment value="Define full set of translatable strings in English" line="1397"/>
+      <comment value="Calculate an absolute path so it can work if CWD is not here" line="1419"/>
+      <comment value="There is no English translation file" line="1424"/>
+      <comment value="Make sure language file path is readable" line="1425"/>
+    </inline>
+  </method>
+  <method name="getTranslations" start="1442" end="1445" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the array of strings for the current language."/>
+      <return type="array"/>
+    </docblock>
+  </method>
+  <method name="addrAppend" start="1457" end="1464" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Create recipient headers."/>
+      <access value="public"/>
+      <param type="string" variable="$type"/>
+      <param description="An array of recipient," type="array" variable="$addr">where each recipient is a 2-element indexed array with element 0 containing an address
+and element 1 containing a name, like:
+array(array('joe@example.com', 'Joe User'), array('zoe@example.com', 'Zoe User'))</param>
+      <return type="string"/>
+    </docblock>
+    <parameter name="type" byreference="false" type="{unknown}"/>
+    <parameter name="addr" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="addrFormat" start="1473" end="1482" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Format an address for use in a message header."/>
+      <access value="public"/>
+      <param description="A 2-element indexed array, element 0 containing an address, element 1 containing a name" type="array" variable="$addr">like array('joe@example.com', 'Joe User')</param>
+      <return type="string"/>
+    </docblock>
+    <parameter name="addr" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="No name provided" line="1475"/>
+    </inline>
+  </method>
+  <method name="wrapText" start="1495" end="1572" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Word-wrap message.">For use with mailers that do not automatically perform wrapping
+and for quoted-printable encoded messages.
+Original written by philippe.</description>
+      <param description="The message to wrap" type="string" variable="$message"/>
+      <param description="The line length to wrap to" type="integer" variable="$length"/>
+      <param description="Whether to run in Quoted-Printable mode" type="boolean" variable="$qp_mode"/>
+      <access value="public"/>
+      <return type="string"/>
+    </docblock>
+    <parameter name="message" byreference="false" type="{unknown}"/>
+    <parameter name="length" byreference="false" type="{unknown}"/>
+    <parameter name="qp_mode" byreference="false" type="{unknown}" default="false"/>
+    <inline>
+      <comment value="If utf-8 encoding is used, we will need to make sure we don't" line="1498"/>
+      <comment value="split multibyte characters when we wrap" line="1499"/>
+      <comment value="Magic. We know fixEOL uses $LE" line="1509"/>
+    </inline>
+  </method>
+  <method name="utf8CharBoundary" start="1583" end="1614" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Find the last character boundary prior to $maxLength in a utf-8 quoted (printable) encoded string.">Original written by Colin Brown.</description>
+      <access value="public"/>
+      <param description="utf-8 QP text" type="string" variable="$encodedText"/>
+      <param description="find last character boundary prior to this length" type="integer" variable="$maxLength"/>
+      <return type="integer"/>
+    </docblock>
+    <parameter name="encodedText" byreference="false" type="{unknown}"/>
+    <parameter name="maxLength" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Found start of encoded character byte within $lookBack block." line="1591"/>
+      <comment value="Check the encoded byte value (the 2 chars after the '=')" line="1592"/>
+      <comment value="Single byte character." line="1595"/>
+      <comment value="If the encoded char was found at pos 0, it will fit" line="1596"/>
+      <comment value="otherwise reduce maxLength to start of the encoded char" line="1597"/>
+    </inline>
+  </method>
+  <method name="setWordWrap" start="1621" end="1638" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set the body wrapping."/>
+      <access value="public"/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="createHeader" start="1645" end="1739" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Assemble message headers."/>
+      <access value="public"/>
+      <return description="The assembled headers" type="string"/>
+    </docblock>
+    <inline>
+      <comment value="Set the boundaries" line="1649"/>
+      <comment value="To be created automatically by mail()" line="1661"/>
+      <comment value="sendmail and mail() extract Cc from the header before sending" line="1680"/>
+      <comment value="sendmail and mail() extract Bcc from the header before sending" line="1685"/>
+      <comment value="mail() sets the subject itself" line="1698"/>
+      <comment value="Add custom headers" line="1726"/>
+    </inline>
+  </method>
+  <method name="getMailMIME" start="1746" end="1791" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the message MIME type headers."/>
+      <access value="public"/>
+      <return type="string"/>
+    </docblock>
+    <inline>
+      <comment value="RFC1341 part 5 says 7bit is assumed if not specified" line="1773"/>
+      <comment value="RFC 2045 section 6.4 says multipart MIME parts may only use 7bit, 8bit or binary CTE" line="1775"/>
+    </inline>
+  </method>
+  <method name="getSentMIMEMessage" start="1801" end="1804" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Returns the whole MIME message.">Includes complete headers and body.
+Only valid post preSend().</description>
+      <see value="PHPMailer::preSend()"/>
+      <access value="public"/>
+      <return type="string"/>
+    </docblock>
+  </method>
+  <method name="createBody" start="1814" end="1969" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Assemble the message body.">Returns an empty string on failure.</description>
+      <access value="public"/>
+      <throws type="object">
+        <type full="phpmailerException" namespace="" name="phpmailerException"/>
+      </throws>
+      <return description="The assembled message body" type="string"/>
+    </docblock>
+  </method>
+  <method name="getBoundary" start="1980" end="2002" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Return the start of a message boundary."/>
+      <access value="protected"/>
+      <param type="string" variable="$boundary"/>
+      <param type="string" variable="$charSet"/>
+      <param type="string" variable="$contentType"/>
+      <param type="string" variable="$encoding"/>
+      <return type="string"/>
+    </docblock>
+    <parameter name="boundary" byreference="false" type="{unknown}"/>
+    <parameter name="charSet" byreference="false" type="{unknown}"/>
+    <parameter name="contentType" byreference="false" type="{unknown}"/>
+    <parameter name="encoding" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="RFC1341 part 5 says 7bit is assumed if not specified" line="1995"/>
+    </inline>
+  </method>
+  <method name="endBoundary" start="2010" end="2013" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Return the end of a message boundary."/>
+      <access value="protected"/>
+      <param type="string" variable="$boundary"/>
+      <return type="string"/>
+    </docblock>
+    <parameter name="boundary" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setMessageType" start="2022" end="2038" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Set the message type.">PHPMailer only supports some preset message types,
+not arbitrary MIME structures.</description>
+      <access value="protected"/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="headerLine" start="2047" end="2050" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Format a header line."/>
+      <access value="public"/>
+      <param type="string" variable="$name"/>
+      <param type="string" variable="$value"/>
+      <return type="string"/>
+    </docblock>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="textLine" start="2058" end="2061" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Return a formatted mail line."/>
+      <access value="public"/>
+      <param type="string" variable="$value"/>
+      <return type="string"/>
+    </docblock>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="addAttachment" start="2074" end="2111" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add an attachment from a path on the filesystem.">Returns false if the file could not be found or read.</description>
+      <param description="Path to the attachment." type="string" variable="$path"/>
+      <param description="Overrides the attachment name." type="string" variable="$name"/>
+      <param description="File encoding (see $Encoding)." type="string" variable="$encoding"/>
+      <param description="File extension (MIME) type." type="string" variable="$type"/>
+      <param description="Disposition to use" type="string" variable="$disposition"/>
+      <throws type="object">
+        <type full="phpmailerException" namespace="" name="phpmailerException"/>
+      </throws>
+      <return type="boolean"/>
+    </docblock>
+    <parameter name="path" byreference="false" type="{unknown}"/>
+    <parameter name="name" byreference="false" type="string" default="''"/>
+    <parameter name="encoding" byreference="false" type="string" default="'base64'"/>
+    <parameter name="type" byreference="false" type="string" default="''"/>
+    <parameter name="disposition" byreference="false" type="string" default="'attachment'"/>
+    <inline>
+      <comment value="If a MIME type is not specified, try to work it out from the file name" line="2081"/>
+    </inline>
+  </method>
+  <method name="getAttachments" start="2117" end="2120" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Return the array of attachments."/>
+      <return type="array"/>
+    </docblock>
+  </method>
+  <method name="attachAll" start="2130" end="2227" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Attach all file, string, and binary attachments to the message.">Returns an empty string on failure.</description>
+      <access value="protected"/>
+      <param type="string" variable="$disposition_type"/>
+      <param type="string" variable="$boundary"/>
+      <return type="string"/>
+    </docblock>
+    <parameter name="disposition_type" byreference="false" type="{unknown}"/>
+    <parameter name="boundary" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Return text of body" line="2132"/>
+      <comment value="Add all attachments" line="2137"/>
+      <comment value="Check if it is a valid disposition_filter" line="2139"/>
+      <comment value="Check for string attachment" line="2141"/>
+      <comment value="RFC1341 part 5 says 7bit is assumed if not specified" line="2173"/>
+      <comment value="If a filename contains any of these chars, it should be quoted," line="2182"/>
+      <comment value="but not otherwise: RFC2183 &amp; RFC2045 5.1" line="2183"/>
+      <comment value="Fixes a warning in IETF's msglint MIME checker" line="2184"/>
+      <comment value="Allow for bypassing the Content-Disposition header totally" line="2185"/>
+      <comment value="Encode as string attachment" line="2207"/>
+    </inline>
+  </method>
+  <method name="encodeFile" start="2239" end="2270" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Encode a file attachment in requested format.">Returns an empty string on failure.</description>
+      <param description="The full path to the file" type="string" variable="$path"/>
+      <param description="The encoding to use; one of 'base64', '7bit', '8bit', 'binary', 'quoted-printable'" type="string" variable="$encoding"/>
+      <throws type="object">
+        <type full="phpmailerException" namespace="" name="phpmailerException"/>
+      </throws>
+      <see value="EncodeFile(encodeFile"/>
+      <access value="protected"/>
+      <return type="string"/>
+    </docblock>
+    <parameter name="path" byreference="false" type="{unknown}"/>
+    <parameter name="encoding" byreference="false" type="string" default="'base64'"/>
+  </method>
+  <method name="encodeString" start="2280" end="2306" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Encode a string in requested format.">Returns an empty string on failure.</description>
+      <param description="The text to encode" type="string" variable="$str"/>
+      <param description="The encoding to use; one of 'base64', '7bit', '8bit', 'binary', 'quoted-printable'" type="string" variable="$encoding"/>
+      <access value="public"/>
+      <return type="string"/>
+    </docblock>
+    <parameter name="str" byreference="false" type="{unknown}"/>
+    <parameter name="encoding" byreference="false" type="string" default="'base64'"/>
+  </method>
+  <method name="encodeHeader" start="2316" end="2371" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Encode a header string optimally.">Picks shortest of Q, B, quoted-printable or none.</description>
+      <access value="public"/>
+      <param type="string" variable="$str"/>
+      <param type="string" variable="$position"/>
+      <return type="string"/>
+    </docblock>
+    <parameter name="str" byreference="false" type="{unknown}"/>
+    <parameter name="position" byreference="false" type="string" default="'text'"/>
+    <inline>
+      <comment value="There are no chars that need encoding" line="2342"/>
+      <comment value="Try to select the encoding which should produce the shortest output" line="2347"/>
+      <comment value="More than a third of the content will need encoding, so B encoding will be most efficient" line="2349"/>
+      <comment value="Use a custom function which correctly encodes and wraps long" line="2352"/>
+      <comment value="multibyte strings without breaking lines within a character" line="2353"/>
+    </inline>
+  </method>
+  <method name="hasMultiBytes" start="2379" end="2386" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Check if a string contains multi-byte characters."/>
+      <access value="public"/>
+      <param description="multi-byte text to wrap encode" type="string" variable="$str"/>
+      <return type="boolean"/>
+    </docblock>
+    <parameter name="str" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="has8bitChars" start="2393" end="2396" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Does a string contain any 8-bit chars (in any charset)?"/>
+      <param type="string" variable="$text"/>
+      <return type="boolean"/>
+    </docblock>
+    <parameter name="text" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="base64EncodeWrapMB" start="2408" end="2439" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Encode and wrap long multibyte strings for mail headers without breaking lines within a character.">Adapted from a function by paravoid</description>
+      <link value="http://www.php.net/manual/en/function.mb-encode-mimeheader.php#60283"/>
+      <access value="public"/>
+      <param description="multi-byte text to wrap encode" type="string" variable="$str"/>
+      <param description="string to use as linefeed/end-of-line" type="string" variable="$linebreak"/>
+      <return type="string"/>
+    </docblock>
+    <parameter name="str" byreference="false" type="{unknown}"/>
+    <parameter name="linebreak" byreference="false" type="{unknown}" default="null"/>
+    <inline>
+      <comment value="Each line must have length &lt;= 75, including $start and $end" line="2418"/>
+      <comment value="Average multi-byte ratio" line="2420"/>
+      <comment value="Base64 has a 4:3 ratio" line="2422"/>
+      <comment value="Chomp the last linefeed" line="2436"/>
+    </inline>
+  </method>
+  <method name="encodeQP" start="2450" end="2463" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Encode a string in quoted-printable format.">According to RFC2045 section 6.7.</description>
+      <access value="public"/>
+      <param description="The text to encode" type="string" variable="$string"/>
+      <param description="Number of chars allowed on a line before wrapping" type="integer" variable="$line_max"/>
+      <return type="string"/>
+      <link value="http://www.php.net/manual/en/function.quoted-printable-decode.php#89417 Adapted from this comment"/>
+    </docblock>
+    <parameter name="string" byreference="false" type="{unknown}"/>
+    <parameter name="line_max" byreference="false" type="integer" default="76"/>
+    <inline>
+      <comment value="Use native function if it's available (&gt;= PHP5.3)" line="2452"/>
+      <comment value="Fall back to a pure PHP implementation" line="2455"/>
+    </inline>
+  </method>
+  <method name="encodeQPphp" start="2475" end="2481" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Backward compatibility wrapper for an old QP encoding function that was removed."/>
+      <see value="PHPMailer::encodeQP()"/>
+      <access value="public"/>
+      <param type="string" variable="$string"/>
+      <param type="integer" variable="$line_max"/>
+      <param type="boolean" variable="$space_conv"/>
+      <return type="string"/>
+      <deprecated value="Use encodeQP instead."/>
+    </docblock>
+    <parameter name="string" byreference="false" type="{unknown}"/>
+    <parameter name="line_max" byreference="false" type="integer" default="76"/>
+    <parameter name="space_conv" byreference="false" type="{unknown}" default="false"/>
+  </method>
+  <method name="encodeQ" start="2491" end="2529" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Encode a string using Q encoding."/>
+      <link value="http://tools.ietf.org/html/rfc2047"/>
+      <param description="the text to encode" type="string" variable="$str"/>
+      <param description="Where the text is going to be used, see the RFC for what that means" type="string" variable="$position"/>
+      <access value="public"/>
+      <return type="string"/>
+    </docblock>
+    <parameter name="str" byreference="false" type="{unknown}"/>
+    <parameter name="position" byreference="false" type="string" default="'text'"/>
+    <inline>
+      <comment value="There should not be any EOL in the string" line="2493"/>
+      <comment value="If the string contains an '=', make sure it's the first thing we replace" line="2516"/>
+      <comment value="so as to avoid double-encoding" line="2517"/>
+      <comment value="Replace every spaces to _ (more readable than =20)" line="2527"/>
+    </inline>
+  </method>
+  <method name="addStringAttachment" start="2543" end="2565" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add a string or binary attachment (non-filesystem).">This method can be used to attach ascii or binary data,
+such as a BLOB record from a database.</description>
+      <param description="String attachment data." type="string" variable="$string"/>
+      <param description="Name of the attachment." type="string" variable="$filename"/>
+      <param description="File encoding (see $Encoding)." type="string" variable="$encoding"/>
+      <param description="File extension (MIME) type." type="string" variable="$type"/>
+      <param description="Disposition to use" type="string" variable="$disposition"/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="string" byreference="false" type="{unknown}"/>
+    <parameter name="filename" byreference="false" type="{unknown}"/>
+    <parameter name="encoding" byreference="false" type="string" default="'base64'"/>
+    <parameter name="type" byreference="false" type="string" default="''"/>
+    <parameter name="disposition" byreference="false" type="string" default="'attachment'"/>
+    <inline>
+      <comment value="If a MIME type is not specified, try to work it out from the file name" line="2550"/>
+      <comment value="Append to $attachment array" line="2554"/>
+    </inline>
+  </method>
+  <method name="addEmbeddedImage" start="2583" end="2612" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add an embedded (inline) attachment from a file.">This can include images, sounds, and just about any other document type.
+These differ from 'regular' attachments in that they are intended to be
+displayed inline with the message, not just attached for download.
+This is used in HTML messages that embed the images
+the HTML refers to using the $cid value.</description>
+      <param description="Path to the attachment." type="string" variable="$path"/>
+      <param description="Content ID of the attachment; Use this to reference" type="string" variable="$cid">the content when using an embedded image in HTML.</param>
+      <param description="Overrides the attachment name." type="string" variable="$name"/>
+      <param description="File encoding (see $Encoding)." type="string" variable="$encoding"/>
+      <param description="File MIME type." type="string" variable="$type"/>
+      <param description="Disposition to use" type="string" variable="$disposition"/>
+      <return description="True on successfully adding an attachment" type="boolean"/>
+    </docblock>
+    <parameter name="path" byreference="false" type="{unknown}"/>
+    <parameter name="cid" byreference="false" type="{unknown}"/>
+    <parameter name="name" byreference="false" type="string" default="''"/>
+    <parameter name="encoding" byreference="false" type="string" default="'base64'"/>
+    <parameter name="type" byreference="false" type="string" default="''"/>
+    <parameter name="disposition" byreference="false" type="string" default="'inline'"/>
+    <inline>
+      <comment value="If a MIME type is not specified, try to work it out from the file name" line="2590"/>
+      <comment value="Append to $attachment array" line="2600"/>
+    </inline>
+  </method>
+  <method name="addStringEmbeddedImage" start="2628" end="2653" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add an embedded stringified attachment.">This can include images, sounds, and just about any other document type.
+Be sure to set the $type to an image type for images:
+JPEG images use 'image/jpeg', GIF uses 'image/gif', PNG uses 'image/png'.</description>
+      <param description="The attachment binary data." type="string" variable="$string"/>
+      <param description="Content ID of the attachment; Use this to reference" type="string" variable="$cid">the content when using an embedded image in HTML.</param>
+      <param type="string" variable="$name"/>
+      <param description="File encoding (see $Encoding)." type="string" variable="$encoding"/>
+      <param description="MIME type." type="string" variable="$type"/>
+      <param description="Disposition to use" type="string" variable="$disposition"/>
+      <return description="True on successfully adding an attachment" type="boolean"/>
+    </docblock>
+    <parameter name="string" byreference="false" type="{unknown}"/>
+    <parameter name="cid" byreference="false" type="{unknown}"/>
+    <parameter name="name" byreference="false" type="string" default="''"/>
+    <parameter name="encoding" byreference="false" type="string" default="'base64'"/>
+    <parameter name="type" byreference="false" type="string" default="''"/>
+    <parameter name="disposition" byreference="false" type="string" default="'inline'"/>
+    <inline>
+      <comment value="If a MIME type is not specified, try to work it out from the name" line="2636"/>
+      <comment value="Append to $attachment array" line="2641"/>
+    </inline>
+  </method>
+  <method name="inlineImageExists" start="2660" end="2668" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Check if an inline attachment is present."/>
+      <access value="public"/>
+      <return type="boolean"/>
+    </docblock>
+  </method>
+  <method name="attachmentExists" start="2674" end="2682" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Check if an attachment (non-inline) is present."/>
+      <return type="boolean"/>
+    </docblock>
+  </method>
+  <method name="alternativeExists" start="2688" end="2691" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Check if this message has an alternative body set."/>
+      <return type="boolean"/>
+    </docblock>
+  </method>
+  <method name="clearAddresses" start="2697" end="2703" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Clear all To recipients."/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="clearCCs" start="2709" end="2715" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Clear all CC recipients."/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="clearBCCs" start="2721" end="2727" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Clear all BCC recipients."/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="clearReplyTos" start="2733" end="2736" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Clear all ReplyTo recipients."/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="clearAllRecipients" start="2742" end="2748" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Clear all recipient types."/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="clearAttachments" start="2754" end="2757" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Clear all filesystem, string, and binary attachments."/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="clearCustomHeaders" start="2763" end="2766" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Clear all custom headers."/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="setError" start="2774" end="2784" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Add an error message to the error container."/>
+      <access value="protected"/>
+      <param type="string" variable="$msg"/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="msg" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="rfcDate" start="2792" end="2798" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Return an RFC 822 formatted date."/>
+      <access value="public"/>
+      <return type="string"/>
+      <static/>
+    </docblock>
+    <inline>
+      <comment value="Set the time zone to whatever the default is to avoid 500 errors" line="2794"/>
+      <comment value="Will default to UTC if it's not set properly in php.ini" line="2795"/>
+    </inline>
+  </method>
+  <method name="serverHostname" start="2806" end="2819" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Get the server hostname.">Returns 'localhost.localdomain' if unknown.</description>
+      <access value="protected"/>
+      <return type="string"/>
+    </docblock>
+  </method>
+  <method name="lang" start="2827" end="2838" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Get an error message in the current language."/>
+      <access value="protected"/>
+      <param type="string" variable="$key"/>
+      <return type="string"/>
+    </docblock>
+    <parameter name="key" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="isError" start="2845" end="2848" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Check if an error occurred."/>
+      <access value="public"/>
+      <return description="True if an error did occur." type="boolean"/>
+    </docblock>
+  </method>
+  <method name="fixEOL" start="2857" end="2866" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Ensure consistent line endings in a string.">Changes every end of line from CRLF, CR or LF to $this-&gt;LE.</description>
+      <access value="public"/>
+      <param description="String to fixEOL" type="string" variable="$str"/>
+      <return type="string"/>
+    </docblock>
+    <parameter name="str" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Normalise to \n" line="2859"/>
+      <comment value="Now convert LE as needed" line="2861"/>
+    </inline>
+  </method>
+  <method name="addCustomHeader" start="2877" end="2885" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add a custom header.">$name value can be overloaded to contain
+both header name and value (name:value)</description>
+      <access value="public"/>
+      <param description="Custom header name" type="string" variable="$name"/>
+      <param description="Header value" type="string" variable="$value"/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+    <parameter name="value" byreference="false" type="{unknown}" default="null"/>
+    <inline>
+      <comment value="Value passed in as name:value" line="2880"/>
+    </inline>
+  </method>
+  <method name="msgHTML" start="2899" end="2960" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Create a message from an HTML string.">Automatically makes modifications for inline images and backgrounds
+and creates a plain-text version by converting the HTML.
+Overwrites any existing values in $this-&gt;Body and $this-&gt;AltBody</description>
+      <access value="public"/>
+      <param description="HTML message string" type="string" variable="$message"/>
+      <param description="baseline directory for path" type="string" variable="$basedir"/>
+      <param description="Whether to use the internal HTML to text converter" type="object" variable="$advanced">or your own custom converter @see html2text()<type full="boolean|callable" namespace="" name="boolean|callable"/></param>
+      <return description="$message" type="string"/>
+    </docblock>
+    <parameter name="message" byreference="false" type="{unknown}"/>
+    <parameter name="basedir" byreference="false" type="string" default="''"/>
+    <parameter name="advanced" byreference="false" type="{unknown}" default="false"/>
+    <inline>
+      <comment value="Convert data URIs into embedded images" line="2904"/>
+      <comment value="RFC2392 S 2" line="2912"/>
+      <comment value="Convert all message body line breaks to CRLF, makes quoted-printable encoding work much better" line="2952"/>
+    </inline>
+  </method>
+  <method name="html2text" start="2982" end="2992" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Convert an HTML string into plain text.">This is used by msgHTML().
+Note - older versions of this function used a bundled advanced converter
+which was been removed for license reasons in #232
+Example usage:
+&lt;code&gt;
+// Use default conversion
+$plain = $mail-&gt;html2text($html);
+// Use your own custom converter
+$plain = $mail-&gt;html2text($html, function($html) {
+    $converter = new MyHtml2text($html);
+    return $converter-&gt;get_text();
+});
+&lt;/code&gt;</description>
+      <param description="The HTML text to convert" type="string" variable="$html"/>
+      <param description="Any boolean value to use the internal converter," type="object" variable="$advanced">or provide your own callable for custom conversion.<type full="boolean|callable" namespace="" name="boolean|callable"/></param>
+      <return type="string"/>
+    </docblock>
+    <parameter name="html" byreference="false" type="{unknown}"/>
+    <parameter name="advanced" byreference="false" type="{unknown}" default="false"/>
+  </method>
+  <method name="_mime_types" start="3001" end="3094" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Get the MIME type for a file extension."/>
+      <param description="File extension" type="string" variable="$ext"/>
+      <access value="public"/>
+      <return description="MIME type of file." type="string"/>
+      <static/>
+    </docblock>
+    <parameter name="ext" byreference="false" type="string" default="''"/>
+  </method>
+  <method name="filenameToType" start="3103" end="3112" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Map a file name to a MIME type.">Defaults to 'application/octet-stream', i.e.. arbitrary binary data.</description>
+      <param description="A file name or full path, does not need to exist as a file" type="string" variable="$filename"/>
+      <return type="string"/>
+      <static/>
+    </docblock>
+    <parameter name="filename" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="In case the path is a URL, strip any query string before getting extension" line="3105"/>
+    </inline>
+  </method>
+  <method name="mb_pathinfo" start="3125" end="3159" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Multi-byte-safe pathinfo replacement.">Drop-in replacement for pathinfo(), but multibyte-safe, cross-platform-safe, old-version-safe.
+Works similarly to the one in PHP &gt;= 5.2.0</description>
+      <link value="http://www.php.net/manual/en/function.pathinfo.php#107461"/>
+      <param description="A filename or path, does not need to exist as a file" type="string" variable="$path"/>
+      <param description="Either a PATHINFO_* constant," type="object" variable="$options">or a string name to return only the specified piece, allows 'filename' to work on PHP &lt; 5.2<type full="integer|string" namespace="" name="integer|string"/></param>
+      <return type="object">
+        <type full="string|array" namespace="" name="string|array"/>
+      </return>
+      <static/>
+    </docblock>
+    <parameter name="path" byreference="false" type="{unknown}"/>
+    <parameter name="options" byreference="false" type="{unknown}" default="null"/>
+  </method>
+  <method name="set" start="3175" end="3184" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set or reset instance properties.">You should avoid this function - it's more verbose, less efficient, more error-prone and
+harder to debug than setting properties directly.
+Usage Example:
+`$mail-&gt;set('SMTPSecure', 'tls');`
+  is the same as:
+`$mail-&gt;SMTPSecure = 'tls';`</description>
+      <access value="public"/>
+      <param description="The property name to set" type="string" variable="$name"/>
+      <param description="The value to set the property to" type="mixed" variable="$value"/>
+      <return type="boolean"/>
+      <todo value="Should this not be using the __set() magic function?"/>
+    </docblock>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+    <parameter name="value" byreference="false" type="string" default="''"/>
+  </method>
+  <method name="secureHeader" start="3192" end="3195" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Strip newlines to prevent header injection."/>
+      <access value="public"/>
+      <param type="string" variable="$str"/>
+      <return type="string"/>
+    </docblock>
+    <parameter name="str" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="normalizeBreaks" start="3207" end="3210" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Normalize line breaks in a string.">Converts UNIX LF, Mac CR and Windows CRLF line breaks into a single line break format.
+Defaults to CRLF (for message bodies) and preserves consecutive breaks.</description>
+      <param type="string" variable="$text"/>
+      <param description="What kind of line break to use, defaults to CRLF" type="string" variable="$breaktype"/>
+      <return type="string"/>
+      <access value="public"/>
+      <static/>
+    </docblock>
+    <parameter name="text" byreference="false" type="{unknown}"/>
+    <parameter name="breaktype" byreference="false" type="string" default="&quot;\r\n&quot;"/>
+  </method>
+  <method name="sign" start="3220" end="3225" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set the public and private key files and password for S/MIME signing."/>
+      <access value="public"/>
+      <param type="string" variable="$cert_filename"/>
+      <param type="string" variable="$key_filename"/>
+      <param description="Password for private key" type="string" variable="$key_pass"/>
+    </docblock>
+    <parameter name="cert_filename" byreference="false" type="{unknown}"/>
+    <parameter name="key_filename" byreference="false" type="{unknown}"/>
+    <parameter name="key_pass" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="DKIM_QP" start="3233" end="3245" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Quoted-Printable-encode a DKIM header."/>
+      <access value="public"/>
+      <param type="string" variable="$txt"/>
+      <return type="string"/>
+    </docblock>
+    <parameter name="txt" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="DKIM_Sign" start="3254" end="3272" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Generate a DKIM signature."/>
+      <access value="public"/>
+      <param type="string" variable="$signHeader"/>
+      <throws type="object">
+        <type full="phpmailerException" namespace="" name="phpmailerException"/>
+      </throws>
+      <return type="string"/>
+    </docblock>
+    <parameter name="signHeader" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="DKIM_HeaderC" start="3280" end="3292" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Generate a DKIM canonicalization header."/>
+      <access value="public"/>
+      <param description="Header" type="string" variable="$signHeader"/>
+      <return type="string"/>
+    </docblock>
+    <parameter name="signHeader" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Compress useless spaces" line="3287"/>
+    </inline>
+  </method>
+  <method name="DKIM_BodyC" start="3300" end="3313" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Generate a DKIM canonicalization body."/>
+      <access value="public"/>
+      <param description="Message Body" type="string" variable="$body"/>
+      <return type="string"/>
+    </docblock>
+    <parameter name="body" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="stabilize line endings" line="3305"/>
+      <comment value="END stabilize line endings" line="3308"/>
+    </inline>
+  </method>
+  <method name="DKIM_Add" start="3323" end="3379" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Create the DKIM header and body in a new message header."/>
+      <access value="public"/>
+      <param description="Header lines" type="string" variable="$headers_line"/>
+      <param description="Subject" type="string" variable="$subject"/>
+      <param description="Body" type="string" variable="$body"/>
+      <return type="string"/>
+    </docblock>
+    <parameter name="headers_line" byreference="false" type="{unknown}"/>
+    <parameter name="subject" byreference="false" type="{unknown}"/>
+    <parameter name="body" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Signature &amp; hash algorithms" line="3325"/>
+      <comment value="Canonicalization of header/body" line="3326"/>
+      <comment value="Query method" line="3327"/>
+      <comment value="Signature Timestamp = seconds since 00:00:00 - Jan 1, 1970 (UTC time zone)" line="3328"/>
+      <comment value="Copied header fields (dkim-quoted-printable)" line="3355"/>
+      <comment value="Length of body" line="3357"/>
+      <comment value="Base64 of packed binary SHA-1 hash of body" line="3358"/>
+    </inline>
+  </method>
+  <method name="getToAddresses" start="3386" end="3389" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Allows for public read access to 'to' property."/>
+      <access value="public"/>
+      <return type="array"/>
+    </docblock>
+  </method>
+  <method name="getCcAddresses" start="3396" end="3399" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Allows for public read access to 'cc' property."/>
+      <access value="public"/>
+      <return type="array"/>
+    </docblock>
+  </method>
+  <method name="getBccAddresses" start="3406" end="3409" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Allows for public read access to 'bcc' property."/>
+      <access value="public"/>
+      <return type="array"/>
+    </docblock>
+  </method>
+  <method name="getReplyToAddresses" start="3416" end="3419" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Allows for public read access to 'ReplyTo' property."/>
+      <access value="public"/>
+      <return type="array"/>
+    </docblock>
+  </method>
+  <method name="getAllRecipientAddresses" start="3426" end="3429" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Allows for public read access to 'all_recipients' property."/>
+      <access value="public"/>
+      <return type="array"/>
+    </docblock>
+  </method>
+  <method name="doCallback" start="3441" end="3447" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Perform a callback."/>
+      <param type="boolean" variable="$isSent"/>
+      <param type="array" variable="$to"/>
+      <param type="array" variable="$cc"/>
+      <param type="array" variable="$bcc"/>
+      <param type="string" variable="$subject"/>
+      <param type="string" variable="$body"/>
+      <param type="string" variable="$from"/>
+    </docblock>
+    <parameter name="isSent" byreference="false" type="{unknown}"/>
+    <parameter name="to" byreference="false" type="{unknown}"/>
+    <parameter name="cc" byreference="false" type="{unknown}"/>
+    <parameter name="bcc" byreference="false" type="{unknown}"/>
+    <parameter name="subject" byreference="false" type="{unknown}"/>
+    <parameter name="body" byreference="false" type="{unknown}"/>
+    <parameter name="from" byreference="false" type="{unknown}"/>
+  </method>
+</class>

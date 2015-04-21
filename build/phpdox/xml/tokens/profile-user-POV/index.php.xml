@@ -1,0 +1,1950 @@
+<?xml version="1.0"?>
+<source xmlns="http://xml.phpdox.net/token">
+  <file xmlns="http://xml.phpdox.net/src" path="/var/www/html/ProConnect/profile-user-POV" file="index.php" realpath="/var/www/html/ProConnect/profile-user-POV/index.php" size="41074" time="2015-04-14T00:21:52-07:00" unixtime="1428996112" sha1="82b1d438a13eeda33134fd183e30b8dad5d55244" relative="profile-user-POV/index.php"/>
+  <line no="1">
+    <token name="T_OPEN_TAG">&lt;?php</token>
+  </line>
+  <line no="2">
+    <token name="T_STRING">error_reporting</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_STRING">E_ALL</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_COMMENT">// debug</token>
+  </line>
+  <line no="3">
+    <token name="T_STRING">ini_set</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">"display_errors"</token>
+    <token name="T_PHPDOX_COMMA">,</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_LNUMBER">1</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_COMMENT">// debug</token>
+  </line>
+  <line no="4">
+    <token name="T_COMMENT">// include '../signout/php/session_check_signout.php';</token>
+  </line>
+  <line no="5"/>
+  <line no="6">
+    <token name="T_COMMENT">//$UData = json_decode($_SESSION['__USERDATA__'], true);</token>
+  </line>
+  <line no="7">
+    <token name="T_COMMENT">//$FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];</token>
+  </line>
+  <line no="8"/>
+  <line no="9"/>
+  <line no="10">
+    <token name="T_WHITESPACE">  </token>
+    <token name="T_VARIABLE">$page_title</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_EQUAL">=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">"Edit Profile"</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_COMMENT">//require for front end</token>
+  </line>
+  <line no="11">
+    <token name="T_WHITESPACE">  </token>
+    <token name="T_INCLUDE">include</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'../header/header.php'</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="12">
+    <token name="T_CLOSE_TAG">?&gt;</token>
+  </line>
+  <line no="13"/>
+  <line no="14">
+    <token name="T_INLINE_HTML">    &lt;div id="main-container" class="container-fluid"&gt;</token>
+  </line>
+  <line no="15">
+    <token name="T_INLINE_HTML">      &lt;div class="row"&gt;</token>
+  </line>
+  <line no="16">
+    <token name="T_INLINE_HTML">          &lt;div class="col col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2"&gt;</token>
+  </line>
+  <line no="17">
+    <token name="T_INLINE_HTML">              &lt;div class="well well-sm"&gt;</token>
+  </line>
+  <line no="18">
+    <token name="T_INLINE_HTML">                  &lt;div class="row normal-view"&gt;</token>
+  </line>
+  <line no="19">
+    <token name="T_INLINE_HTML">                   </token>
+  </line>
+  <line no="20">
+    <token name="T_INLINE_HTML">					&lt;div id="profile-image-block" class="col col-sm-6 col-md-4 col-lg-3"&gt;</token>
+  </line>
+  <line no="21">
+    <token name="T_INLINE_HTML">						&lt;div id="progress-block" style= "z-index: 1;"&gt;</token>
+  </line>
+  <line no="22">
+    <token name="T_INLINE_HTML">							&lt;div class="progress"&gt;</token>
+  </line>
+  <line no="23">
+    <token name="T_INLINE_HTML">							  &lt;div id="img-progress-bar" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 0%"&gt;</token>
+  </line>
+  <line no="24">
+    <token name="T_INLINE_HTML">								&lt;span class="sr-only"&gt;&lt;/span&gt;</token>
+  </line>
+  <line no="25">
+    <token name="T_INLINE_HTML">							  &lt;/div&gt;</token>
+  </line>
+  <line no="26">
+    <token name="T_INLINE_HTML">							&lt;/div&gt;</token>
+  </line>
+  <line no="27">
+    <token name="T_INLINE_HTML">						&lt;/div&gt;</token>
+  </line>
+  <line no="28">
+    <token name="T_INLINE_HTML">                          &lt;div id="profile-image" class="outer-ref" &gt;</token>
+  </line>
+  <line no="29">
+    <token name="T_INLINE_HTML">                           &lt;img src="/image/user_img.png" alt="" class="img-responsive profile-image img-rounded" id="preview"/&gt;</token>
+  </line>
+  <line no="30">
+    <token name="T_INLINE_HTML">              							&lt;div id="picture-edit"&gt;</token>
+  </line>
+  <line no="31">
+    <token name="T_INLINE_HTML">              								&lt;form class="editable-form"&gt;</token>
+  </line>
+  <line no="32">
+    <token name="T_INLINE_HTML">              									&lt;a id="change-image-block"&gt; 							                        </token>
+  </line>
+  <line no="33">
+    <token name="T_INLINE_HTML">              									 &lt;span id="glyphicon-picture" class="glyphicon glyphicon-picture" aria-hidden="true"&gt;&lt;/span&gt;</token>
+  </line>
+  <line no="34">
+    <token name="T_INLINE_HTML">              									 &lt;span id="change-photo-text"&gt;Change Photo&lt;/span&gt;</token>
+  </line>
+  <line no="35">
+    <token name="T_INLINE_HTML">              									&lt;/a&gt;</token>
+  </line>
+  <line no="36">
+    <token name="T_INLINE_HTML">              								&lt;/form&gt;</token>
+  </line>
+  <line no="37">
+    <token name="T_INLINE_HTML">              							&lt;/div&gt;</token>
+  </line>
+  <line no="38">
+    <token name="T_INLINE_HTML">                          &lt;/div&gt;</token>
+  </line>
+  <line no="39">
+    <token name="T_INLINE_HTML">						  </token>
+  </line>
+  <line no="40">
+    <token name="T_INLINE_HTML">                      &lt;/div&gt;</token>
+  </line>
+  <line no="41">
+    <token name="T_INLINE_HTML">							</token>
+  </line>
+  <line no="42">
+    <token name="T_INLINE_HTML">                      &lt;div class="col-sm-6 col-md-8 editable" for="user-info-edit"&gt;</token>
+  </line>
+  <line no="43">
+    <token name="T_INLINE_HTML">                          &lt;span class="glyphicon glyphicon-pencil" aria-hidden="true"&gt;&lt;/span&gt;</token>
+  </line>
+  <line no="44"/>
+  <line no="45">
+    <token name="T_INLINE_HTML">                          &lt;h4&gt;&lt;span id="user-first" class="first-name"&gt;&lt;/span&gt; &lt;span id="user-mi"&gt;&lt;/span&gt; &lt;span id="user-last"&gt;&lt;/span&gt;&lt;/h4&gt;</token>
+  </line>
+  <line no="46">
+    <token name="T_INLINE_HTML">                          &lt;small&gt;&lt;cite title=""&gt;&lt;span id="user-address"&gt;&lt;/span&gt;&lt;i class="glyphicon glyphicon-map-marker"&gt;</token>
+  </line>
+  <line no="47">
+    <token name="T_INLINE_HTML">                          &lt;/i&gt;&lt;/cite&gt;&lt;/small&gt;</token>
+  </line>
+  <line no="48">
+    <token name="T_INLINE_HTML">                          &lt;p&gt;</token>
+  </line>
+  <line no="49">
+    <token name="T_INLINE_HTML">                              &lt;i class="glyphicon glyphicon-envelope"&gt;&lt;/i&gt;&lt;span id="user-email"&gt;&lt;/span&gt;</token>
+  </line>
+  <line no="50">
+    <token name="T_INLINE_HTML">                              &lt;br /&gt;</token>
+  </line>
+  <line no="51">
+    <token name="T_INLINE_HTML">                              &lt;!-- &lt;i class="glyphicon glyphicon-globe"&gt;&lt;/i&gt;&lt;span id&gt;&lt;a href="http://www.jquery2dotnet.com"&gt;www.jquery2dotnet.com&lt;/a&gt;&lt;/span&gt;</token>
+  </line>
+  <line no="52">
+    <token name="T_INLINE_HTML">                              &lt;br /&gt; --&gt;</token>
+  </line>
+  <line no="53">
+    <token name="T_INLINE_HTML">                              &lt;i class="glyphicon glyphicon-phone"&gt;&lt;/i&gt;&lt;span id="user-phone"&gt;phone #&lt;/span&gt;</token>
+  </line>
+  <line no="54">
+    <token name="T_INLINE_HTML">                              &lt;br /&gt;</token>
+  </line>
+  <line no="55">
+    <token name="T_INLINE_HTML">                               &lt;i class="glyphicon glyphicon-home"&gt;&lt;/i&gt;&lt;span id="user-home"&gt;somewhere someplace&lt;/span&gt;</token>
+  </line>
+  <line no="56">
+    <token name="T_INLINE_HTML">                              &lt;br /&gt;</token>
+  </line>
+  <line no="57">
+    <token name="T_INLINE_HTML">                              &lt;!-- &lt;i class="glyphicon glyphicon-education"&gt;&lt;/i&gt;&lt;span id="user-education"&gt;somewhere someplace&lt;/span&gt;</token>
+  </line>
+  <line no="58">
+    <token name="T_INLINE_HTML">                              &lt;br /&gt; --&gt;</token>
+  </line>
+  <line no="59">
+    <token name="T_INLINE_HTML">                          &lt;/p&gt;</token>
+  </line>
+  <line no="60">
+    <token name="T_INLINE_HTML">                          </token>
+  </line>
+  <line no="61">
+    <token name="T_INLINE_HTML">                      &lt;/div&gt;</token>
+  </line>
+  <line no="62">
+    <token name="T_INLINE_HTML">                      &lt;div class="col-sm-6 col-md-8"&gt;</token>
+  </line>
+  <line no="63">
+    <token name="T_INLINE_HTML">                      &lt;!-- Split button --&gt;</token>
+  </line>
+  <line no="64">
+    <token name="T_INLINE_HTML">                          &lt;div class="btn-group"&gt;</token>
+  </line>
+  <line no="65">
+    <token name="T_INLINE_HTML">                              &lt;button type="button" class="btn btn-primary"&gt;</token>
+  </line>
+  <line no="66">
+    <token name="T_INLINE_HTML">                                  Social&lt;/button&gt;</token>
+  </line>
+  <line no="67">
+    <token name="T_INLINE_HTML">                              &lt;button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"&gt;</token>
+  </line>
+  <line no="68">
+    <token name="T_INLINE_HTML">                                  &lt;span class="caret"&gt;&lt;/span&gt;&lt;span class="sr-only"&gt;Social&lt;/span&gt;</token>
+  </line>
+  <line no="69">
+    <token name="T_INLINE_HTML">                              &lt;/button&gt;</token>
+  </line>
+  <line no="70">
+    <token name="T_INLINE_HTML">                              &lt;ul class="dropdown-menu" role="menu"&gt;</token>
+  </line>
+  <line no="71">
+    <token name="T_INLINE_HTML">                                  &lt;li&gt;&lt;a href="#"&gt;Twitter&lt;/a&gt;&lt;/li&gt;</token>
+  </line>
+  <line no="72">
+    <token name="T_INLINE_HTML">                                  &lt;li&gt;&lt;a href="https://plus.google.com/+Jquery2dotnet/posts"&gt;Google +&lt;/a&gt;&lt;/li&gt;</token>
+  </line>
+  <line no="73">
+    <token name="T_INLINE_HTML">                                  &lt;li&gt;&lt;a href="https://www.facebook.com/jquery2dotnet"&gt;Facebook&lt;/a&gt;&lt;/li&gt;</token>
+  </line>
+  <line no="74">
+    <token name="T_INLINE_HTML">                                  &lt;li class="divider"&gt;&lt;/li&gt;</token>
+  </line>
+  <line no="75">
+    <token name="T_INLINE_HTML">                                  &lt;li&gt;&lt;a href="#"&gt;Github&lt;/a&gt;&lt;/li&gt;</token>
+  </line>
+  <line no="76">
+    <token name="T_INLINE_HTML">                              &lt;/ul&gt;</token>
+  </line>
+  <line no="77">
+    <token name="T_INLINE_HTML">                          &lt;/div&gt;</token>
+  </line>
+  <line no="78">
+    <token name="T_INLINE_HTML">                      &lt;/div&gt;</token>
+  </line>
+  <line no="79">
+    <token name="T_INLINE_HTML">                  &lt;/div&gt;</token>
+  </line>
+  <line no="80">
+    <token name="T_INLINE_HTML">                  &lt;br&gt;</token>
+  </line>
+  <line no="81"/>
+  <line no="82">
+    <token name="T_INLINE_HTML">                  &lt;div class="alert alert-success alert-dismissible" role="alert"&gt;</token>
+  </line>
+  <line no="83">
+    <token name="T_INLINE_HTML">                    &lt;button type="button" class="close" data-hide="alert" aria-label="Close"&gt;&lt;span class="dimissible-color"aria-hidden="true"&gt;&amp;times;&lt;/span&gt;&lt;/button&gt;</token>
+  </line>
+  <line no="84">
+    <token name="T_INLINE_HTML">                    &lt;span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"&gt;&lt;/span&gt;</token>
+  </line>
+  <line no="85">
+    <token name="T_INLINE_HTML">                    &lt;span class="sr-only"&gt;&lt;/span&gt;</token>
+  </line>
+  <line no="86">
+    <token name="T_INLINE_HTML">                    &lt;span class="alert-msg"&gt;&lt;/span&gt;</token>
+  </line>
+  <line no="87">
+    <token name="T_INLINE_HTML">                  &lt;/div&gt;</token>
+  </line>
+  <line no="88"/>
+  <line no="89">
+    <token name="T_INLINE_HTML">                  &lt;!-- User Info --&gt;</token>
+  </line>
+  <line no="90">
+    <token name="T_INLINE_HTML">                  &lt;div id="user-info-edit" class="edit-view"&gt;</token>
+  </line>
+  <line no="91">
+    <token name="T_INLINE_HTML">                        &lt;div class="loading"&gt;</token>
+  </line>
+  <line no="92">
+    <token name="T_INLINE_HTML">                          &lt;img src="../image/ajax-loader.gif"&gt;</token>
+  </line>
+  <line no="93">
+    <token name="T_INLINE_HTML">                        &lt;/div&gt;</token>
+  </line>
+  <line no="94">
+    <token name="T_INLINE_HTML">                        &lt;form class="editable-form" method="POST" action="php/Profile_controller.php"&gt;</token>
+  </line>
+  <line no="95">
+    <token name="T_INLINE_HTML">                          &lt;!-- Error Alert --&gt;</token>
+  </line>
+  <line no="96">
+    <token name="T_INLINE_HTML">                          &lt;div class="alert alert-danger" role="alert"&gt;</token>
+  </line>
+  <line no="97">
+    <token name="T_INLINE_HTML">                            &lt;span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"&gt;&lt;/span&gt;</token>
+  </line>
+  <line no="98">
+    <token name="T_INLINE_HTML">                            &lt;span class="sr-only"&gt;Error:&lt;/span&gt;</token>
+  </line>
+  <line no="99">
+    <token name="T_INLINE_HTML">                            &lt;span class="alert-msg"&gt;&lt;/span&gt;</token>
+  </line>
+  <line no="100">
+    <token name="T_INLINE_HTML">                          &lt;/div&gt;</token>
+  </line>
+  <line no="101">
+    <token name="T_INLINE_HTML">                          &lt;!-- User Name --&gt;</token>
+  </line>
+  <line no="102">
+    <token name="T_INLINE_HTML">                          &lt;div class="form-group form-inline"&gt;</token>
+  </line>
+  <line no="103">
+    <token name="T_INLINE_HTML">                            &lt;div class="form-group"&gt;</token>
+  </line>
+  <line no="104">
+    <token name="T_INLINE_HTML">                              &lt;label for="first-name-input"&gt;First&lt;/label&gt;</token>
+  </line>
+  <line no="105">
+    <token name="T_INLINE_HTML">                              &lt;abbr title="Required" class="required"&gt;*&lt;/abbr&gt;</token>
+  </line>
+  <line no="106">
+    <token name="T_INLINE_HTML">                              &lt;input name="first-name" type="text" class="form-control" id="first-name-input" placeholder="First" required&gt;</token>
+  </line>
+  <line no="107">
+    <token name="T_INLINE_HTML">                            &lt;/div&gt;</token>
+  </line>
+  <line no="108">
+    <token name="T_INLINE_HTML">                            &lt;div class="form-group"&gt;</token>
+  </line>
+  <line no="109">
+    <token name="T_INLINE_HTML">                              &lt;label for="last-name-input"&gt;Last&lt;/label&gt;</token>
+  </line>
+  <line no="110">
+    <token name="T_INLINE_HTML">                              &lt;abbr title="Required" class="required"&gt;*&lt;/abbr&gt;</token>
+  </line>
+  <line no="111">
+    <token name="T_INLINE_HTML">                              &lt;input name="last-name" type="text" class="form-control" id="last-name-input" placeholder="Last" required&gt;</token>
+  </line>
+  <line no="112">
+    <token name="T_INLINE_HTML">                            &lt;/div&gt;</token>
+  </line>
+  <line no="113">
+    <token name="T_INLINE_HTML">                            &lt;div class="form-group"&gt;</token>
+  </line>
+  <line no="114">
+    <token name="T_INLINE_HTML">                              &lt;label for="middle-initial-input"&gt;M.I.&lt;/label&gt;</token>
+  </line>
+  <line no="115">
+    <token name="T_INLINE_HTML">                              &lt;input name="middle-initial" type="text" class="form-control" id="middle-initial-input" placeholder="M.I." style="width:50px;" maxlength="1"&gt;</token>
+  </line>
+  <line no="116">
+    <token name="T_INLINE_HTML">                            &lt;/div&gt;</token>
+  </line>
+  <line no="117">
+    <token name="T_INLINE_HTML">                          &lt;/div&gt;</token>
+  </line>
+  <line no="118">
+    <token name="T_INLINE_HTML">                          &lt;!-- Email Address --&gt;</token>
+  </line>
+  <line no="119">
+    <token name="T_INLINE_HTML">                           &lt;div class="form-group"&gt;</token>
+  </line>
+  <line no="120">
+    <token name="T_INLINE_HTML">                            &lt;label for="email-input"&gt;Email&lt;/label&gt;</token>
+  </line>
+  <line no="121">
+    <token name="T_INLINE_HTML">                            &lt;abbr title="Required" class="required"&gt;*&lt;/abbr&gt;</token>
+  </line>
+  <line no="122">
+    <token name="T_INLINE_HTML">                            &lt;input name="email-address" type="text" class="form-control" id="email-input" value="" required&gt;</token>
+  </line>
+  <line no="123">
+    <token name="T_INLINE_HTML">                          &lt;/div&gt;</token>
+  </line>
+  <line no="124">
+    <token name="T_INLINE_HTML">                          &lt;!-- Alternate Email Address --&gt;</token>
+  </line>
+  <line no="125">
+    <token name="T_INLINE_HTML">                           &lt;div class="form-group"&gt;</token>
+  </line>
+  <line no="126">
+    <token name="T_INLINE_HTML">                            &lt;label for="alt-email-input"&gt;Alternate Email&lt;/label&gt;</token>
+  </line>
+  <line no="127">
+    <token name="T_INLINE_HTML">                            &lt;input name="alt-email-address" type="text" class="form-control" id="alt-email-input" value=""&gt;</token>
+  </line>
+  <line no="128">
+    <token name="T_INLINE_HTML">                          &lt;/div&gt;</token>
+  </line>
+  <line no="129">
+    <token name="T_INLINE_HTML">                          &lt;!-- Phone --&gt;</token>
+  </line>
+  <line no="130">
+    <token name="T_INLINE_HTML">                          &lt;label for="phone-input"&gt;Phone&lt;/label&gt;</token>
+  </line>
+  <line no="131">
+    <token name="T_INLINE_HTML">                          &lt;div class="form-group form-inline"&gt;</token>
+  </line>
+  <line no="132">
+    <token name="T_INLINE_HTML">                            &lt;input name="phone-number" type="text" class="form-control" id="phone-input" placeholder="#(###) ###-#### "&gt;</token>
+  </line>
+  <line no="133">
+    <token name="T_INLINE_HTML">                           </token>
+  </line>
+  <line no="134">
+    <token name="T_INLINE_HTML">                          &lt;div class="form-group"&gt;</token>
+  </line>
+  <line no="135">
+    <token name="T_INLINE_HTML">                              &lt;select class="form-control" id="phone-color" name="phone-type"&gt;</token>
+  </line>
+  <line no="136">
+    <token name="T_INLINE_HTML">                                &lt;option value="Home"&gt;Home&lt;/option&gt;</token>
+  </line>
+  <line no="137">
+    <token name="T_INLINE_HTML">                                &lt;option value="Work"&gt;Work&lt;/option&gt;</token>
+  </line>
+  <line no="138">
+    <token name="T_INLINE_HTML">                                &lt;option value="Mobile"&gt;Mobile&lt;/option&gt;</token>
+  </line>
+  <line no="139">
+    <token name="T_INLINE_HTML">                              &lt;/select&gt;</token>
+  </line>
+  <line no="140">
+    <token name="T_INLINE_HTML">                            &lt;/div&gt;</token>
+  </line>
+  <line no="141">
+    <token name="T_INLINE_HTML">                          &lt;/div&gt;</token>
+  </line>
+  <line no="142"/>
+  <line no="143">
+    <token name="T_INLINE_HTML">                          &lt;!-- Address --&gt;</token>
+  </line>
+  <line no="144">
+    <token name="T_INLINE_HTML">                         &lt;div class="form-group"&gt;				</token>
+  </line>
+  <line no="145">
+    <token name="T_INLINE_HTML">							&lt;label for="country"&gt;Country&lt;/label&gt; &lt;br /&gt;</token>
+  </line>
+  <line no="146">
+    <token name="T_INLINE_HTML">							 &lt;label class="radio-inline"&gt;</token>
+  </line>
+  <line no="147">
+    <token name="T_INLINE_HTML">							  &lt;input class= "country-option" type="radio" name="inlineRadioOptions-country" id="inlineRadio1-country" value="United States" checked&gt; United States</token>
+  </line>
+  <line no="148">
+    <token name="T_INLINE_HTML">							&lt;/label&gt;</token>
+  </line>
+  <line no="149">
+    <token name="T_INLINE_HTML">							&lt;label class="radio-inline"&gt;</token>
+  </line>
+  <line no="150">
+    <token name="T_INLINE_HTML">							  &lt;input class= "country-option" type="radio" name="inlineRadioOptions-country" id="inlineRadio2-country" value="Other" &gt; Other</token>
+  </line>
+  <line no="151">
+    <token name="T_INLINE_HTML">							&lt;/label&gt;</token>
+  </line>
+  <line no="152">
+    <token name="T_INLINE_HTML">						&lt;/div&gt;</token>
+  </line>
+  <line no="153">
+    <token name="T_INLINE_HTML">						</token>
+  </line>
+  <line no="154">
+    <token name="T_INLINE_HTML">						&lt;div class="form-group" id="zipcode-group" &gt;</token>
+  </line>
+  <line no="155">
+    <token name="T_INLINE_HTML">							&lt;label for="zipcode"&gt;Zip Code&lt;/label&gt; &lt;br /&gt;</token>
+  </line>
+  <line no="156">
+    <token name="T_INLINE_HTML">							&lt;input class="form-control" id="zipcode-input" type="text" name="zipcode" placeholder="Zip Code"&gt;</token>
+  </line>
+  <line no="157">
+    <token name="T_INLINE_HTML">						&lt;/div&gt;</token>
+  </line>
+  <line no="158">
+    <token name="T_INLINE_HTML">						</token>
+  </line>
+  <line no="159">
+    <token name="T_INLINE_HTML">						&lt;div id = "other-country-group" style = "display: none;"&gt;</token>
+  </line>
+  <line no="160">
+    <token name="T_INLINE_HTML">						&lt;div class="form-group" id="countryname-group" &gt;</token>
+  </line>
+  <line no="161">
+    <token name="T_INLINE_HTML">							&lt;input class="form-control" id="country-name-input" type="text" name="country-name" placeholder="Country"&gt;</token>
+  </line>
+  <line no="162">
+    <token name="T_INLINE_HTML">						&lt;/div&gt;</token>
+  </line>
+  <line no="163">
+    <token name="T_INLINE_HTML">						&lt;div class="form-group" id="postalcode-group" &gt;</token>
+  </line>
+  <line no="164">
+    <token name="T_INLINE_HTML">							&lt;label for="postal-code"&gt;Postal Code&lt;/label&gt; &lt;br /&gt;</token>
+  </line>
+  <line no="165">
+    <token name="T_INLINE_HTML">							&lt;input class="form-control" id="postal-code-input" type="text" name="postal-code" placeholder="Postal Code"&gt;</token>
+  </line>
+  <line no="166">
+    <token name="T_INLINE_HTML">						&lt;/div&gt;</token>
+  </line>
+  <line no="167">
+    <token name="T_INLINE_HTML">						&lt;/div&gt;</token>
+  </line>
+  <line no="168"/>
+  <line no="169">
+    <token name="T_INLINE_HTML">						&lt;div class="form-group"&gt;</token>
+  </line>
+  <line no="170">
+    <token name="T_INLINE_HTML">							&lt;label for="address"&gt;Address&lt;/label&gt; &lt;br /&gt;</token>
+  </line>
+  <line no="171">
+    <token name="T_INLINE_HTML">							&lt;input class="form-control" id="address-input" type="text" name="address" placeholder="Address"&gt;</token>
+  </line>
+  <line no="172">
+    <token name="T_INLINE_HTML">						&lt;/div&gt;</token>
+  </line>
+  <line no="173">
+    <token name="T_INLINE_HTML">                        </token>
+  </line>
+  <line no="174">
+    <token name="T_INLINE_HTML">							&lt;button type="submit" class="btn btn-primary save-btn" value="save"&gt;Save&lt;/button&gt;</token>
+  </line>
+  <line no="175">
+    <token name="T_INLINE_HTML">                          &lt;button type="button" class="btn btn-default cancel-btn" value="cancel" for="user-info-edit"&gt;Cancel&lt;/button&gt;</token>
+  </line>
+  <line no="176">
+    <token name="T_INLINE_HTML">                        &lt;/form&gt;  </token>
+  </line>
+  <line no="177">
+    <token name="T_INLINE_HTML">                      &lt;/div&gt;</token>
+  </line>
+  <line no="178">
+    <token name="T_INLINE_HTML">                      </token>
+  </line>
+  <line no="179">
+    <token name="T_INLINE_HTML">                  &lt;/div&gt;</token>
+  </line>
+  <line no="180">
+    <token name="T_INLINE_HTML">              &lt;!-- &lt;div class="add-star"&gt;</token>
+  </line>
+  <line no="181">
+    <token name="T_INLINE_HTML">                &lt;button id="user-info-edit-btn"&gt;Edit Info&lt;/button&gt;</token>
+  </line>
+  <line no="182">
+    <token name="T_INLINE_HTML">              &lt;/div&gt; --&gt;</token>
+  </line>
+  <line no="183">
+    <token name="T_INLINE_HTML">          &lt;/div&gt;</token>
+  </line>
+  <line no="184">
+    <token name="T_INLINE_HTML">      &lt;/div&gt;</token>
+  </line>
+  <line no="185"/>
+  <line no="186">
+    <token name="T_INLINE_HTML">      &lt;!-- Summary --&gt;</token>
+  </line>
+  <line no="187">
+    <token name="T_INLINE_HTML">      &lt;div class="row"&gt;</token>
+  </line>
+  <line no="188">
+    <token name="T_INLINE_HTML">          &lt;div class="col col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2"&gt;</token>
+  </line>
+  <line no="189"/>
+  <line no="190">
+    <token name="T_INLINE_HTML">              &lt;div class="well well-sm "&gt;</token>
+  </line>
+  <line no="191">
+    <token name="T_INLINE_HTML">                  &lt;header&gt;</token>
+  </line>
+  <line no="192">
+    <token name="T_INLINE_HTML">                        &lt;h2&gt;Summary&lt;/h2&gt;</token>
+  </line>
+  <line no="193">
+    <token name="T_INLINE_HTML">                  &lt;/header&gt;</token>
+  </line>
+  <line no="194"/>
+  <line no="195"/>
+  <line no="196">
+    <token name="T_INLINE_HTML">                  &lt;div class="alert alert-success alert-dismissible" role="alert"&gt;</token>
+  </line>
+  <line no="197">
+    <token name="T_INLINE_HTML">                    &lt;button type="button" class="close" data-hide="alert" aria-label="Close"&gt;&lt;span class="dimissible-color"aria-hidden="true"&gt;&amp;times;&lt;/span&gt;&lt;/button&gt;</token>
+  </line>
+  <line no="198">
+    <token name="T_INLINE_HTML">                    &lt;span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"&gt;&lt;/span&gt;</token>
+  </line>
+  <line no="199">
+    <token name="T_INLINE_HTML">                    &lt;span class="sr-only"&gt;&lt;/span&gt;</token>
+  </line>
+  <line no="200">
+    <token name="T_INLINE_HTML">                    &lt;span class="alert-msg"&gt;&lt;/span&gt;</token>
+  </line>
+  <line no="201">
+    <token name="T_INLINE_HTML">                  &lt;/div&gt;</token>
+  </line>
+  <line no="202"/>
+  <line no="203">
+    <token name="T_INLINE_HTML">                  &lt;div id="summary-description" class="normal-view" &gt; </token>
+  </line>
+  <line no="204">
+    <token name="T_INLINE_HTML">                    &lt;div class="editable" for="summary-edit"&gt;</token>
+  </line>
+  <line no="205">
+    <token name="T_INLINE_HTML">                      &lt;span class="glyphicon glyphicon-pencil" aria-hidden="true"&gt;&lt;/span&gt;</token>
+  </line>
+  <line no="206">
+    <token name="T_INLINE_HTML">                      &lt;p id="user-summary"&gt;&lt;/p&gt;</token>
+  </line>
+  <line no="207">
+    <token name="T_INLINE_HTML">                    &lt;/div&gt;</token>
+  </line>
+  <line no="208">
+    <token name="T_INLINE_HTML">                  &lt;/div&gt;</token>
+  </line>
+  <line no="209">
+    <token name="T_INLINE_HTML">                  &lt;div id="summary-edit" class="edit-view" action="php/Education_controller.php" &gt;</token>
+  </line>
+  <line no="210">
+    <token name="T_INLINE_HTML">                    &lt;div class="loading"&gt;</token>
+  </line>
+  <line no="211">
+    <token name="T_INLINE_HTML">                        &lt;img src="../image/ajax-loader.gif"&gt;</token>
+  </line>
+  <line no="212">
+    <token name="T_INLINE_HTML">                      &lt;/div&gt;</token>
+  </line>
+  <line no="213">
+    <token name="T_INLINE_HTML">                    &lt;!-- &lt;b&gt;&lt;h4&gt;Summary&lt;/h4&gt;&lt;/b&gt; --&gt;</token>
+  </line>
+  <line no="214">
+    <token name="T_INLINE_HTML">                    &lt;form class="editable-form" action="php/Summary_controller.php"&gt;</token>
+  </line>
+  <line no="215">
+    <token name="T_INLINE_HTML">                      &lt;!-- Error Alert --&gt;</token>
+  </line>
+  <line no="216">
+    <token name="T_INLINE_HTML">                      &lt;div class="alert alert-danger" role="alert"&gt;</token>
+  </line>
+  <line no="217">
+    <token name="T_INLINE_HTML">                        &lt;span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"&gt;&lt;/span&gt;</token>
+  </line>
+  <line no="218">
+    <token name="T_INLINE_HTML">                        &lt;span class="sr-only"&gt;Error:&lt;/span&gt;</token>
+  </line>
+  <line no="219">
+    <token name="T_INLINE_HTML">                        &lt;span class="alert-msg"&gt;&lt;/span&gt;</token>
+  </line>
+  <line no="220">
+    <token name="T_INLINE_HTML">                      &lt;/div&gt;</token>
+  </line>
+  <line no="221">
+    <token name="T_INLINE_HTML">                      &lt;textarea name="summary" class="form-control" id="summary-textarea" rows="10"&gt;&lt;/textarea&gt; &lt;br&gt;&lt;br&gt;</token>
+  </line>
+  <line no="222">
+    <token name="T_INLINE_HTML">                      &lt;button type="submit" class="btn btn-primary save-btn"&gt;Save&lt;/button&gt;</token>
+  </line>
+  <line no="223">
+    <token name="T_INLINE_HTML">                      &lt;button type="button" class="btn btn-default cancel-btn"&gt;Cancel&lt;/button&gt;</token>
+  </line>
+  <line no="224">
+    <token name="T_INLINE_HTML">                    &lt;/form&gt;</token>
+  </line>
+  <line no="225">
+    <token name="T_INLINE_HTML">                  &lt;/div&gt;</token>
+  </line>
+  <line no="226">
+    <token name="T_INLINE_HTML">              &lt;/div&gt;</token>
+  </line>
+  <line no="227">
+    <token name="T_INLINE_HTML">              </token>
+  </line>
+  <line no="228">
+    <token name="T_INLINE_HTML">              &lt;div class="add-star" &gt;</token>
+  </line>
+  <line no="229">
+    <token name="T_INLINE_HTML">                &lt;button  class="add-btn" for="summary-description" edit="true" &gt;Edit Summary&lt;/button&gt;</token>
+  </line>
+  <line no="230">
+    <token name="T_INLINE_HTML">              &lt;/div&gt;</token>
+  </line>
+  <line no="231">
+    <token name="T_INLINE_HTML">          &lt;/div&gt;</token>
+  </line>
+  <line no="232">
+    <token name="T_INLINE_HTML">      &lt;/div&gt;</token>
+  </line>
+  <line no="233"/>
+  <line no="234">
+    <token name="T_INLINE_HTML">      &lt;!-- Skills --&gt;</token>
+  </line>
+  <line no="235">
+    <token name="T_INLINE_HTML">      &lt;div class="row"&gt;</token>
+  </line>
+  <line no="236">
+    <token name="T_INLINE_HTML">          &lt;div class="col col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2"&gt;</token>
+  </line>
+  <line no="237"/>
+  <line no="238">
+    <token name="T_INLINE_HTML">              &lt;div class="well well-sm "&gt;</token>
+  </line>
+  <line no="239">
+    <token name="T_INLINE_HTML">                  &lt;header&gt;</token>
+  </line>
+  <line no="240">
+    <token name="T_INLINE_HTML">                        &lt;h2&gt;Skills and Endorsements&lt;/h2&gt;</token>
+  </line>
+  <line no="241">
+    <token name="T_INLINE_HTML">                  &lt;/header&gt;</token>
+  </line>
+  <line no="242">
+    <token name="T_INLINE_HTML">                  &lt;!-- Success message goes here --&gt;</token>
+  </line>
+  <line no="243"/>
+  <line no="244">
+    <token name="T_INLINE_HTML">                  &lt;div class="alert alert-success alert-dismissible" role="alert"&gt;</token>
+  </line>
+  <line no="245">
+    <token name="T_INLINE_HTML">                    &lt;button type="button" class="close" data-hide="alert" aria-label="Close"&gt;&lt;span class="dimissible-color"aria-hidden="true"&gt;&amp;times;&lt;/span&gt;&lt;/button&gt;</token>
+  </line>
+  <line no="246">
+    <token name="T_INLINE_HTML">                    &lt;span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"&gt;&lt;/span&gt;</token>
+  </line>
+  <line no="247">
+    <token name="T_INLINE_HTML">                    &lt;span class="sr-only"&gt;&lt;/span&gt;</token>
+  </line>
+  <line no="248">
+    <token name="T_INLINE_HTML">                    &lt;span class="alert-msg"&gt;&lt;/span&gt;</token>
+  </line>
+  <line no="249">
+    <token name="T_INLINE_HTML">                  &lt;/div&gt;</token>
+  </line>
+  <line no="250"/>
+  <line no="251">
+    <token name="T_INLINE_HTML">                  &lt;!-- normal-view --&gt;</token>
+  </line>
+  <line no="252">
+    <token name="T_INLINE_HTML">                  &lt;div id="skills-endorsements" class="normal-view "&gt; </token>
+  </line>
+  <line no="253">
+    <token name="T_INLINE_HTML">                    &lt;div class="editable" for="skills-endorsements-edit"&gt;</token>
+  </line>
+  <line no="254">
+    <token name="T_INLINE_HTML">                      &lt;span class="glyphicon glyphicon-pencil" aria-hidden="true"&gt;&lt;/span&gt;</token>
+  </line>
+  <line no="255">
+    <token name="T_INLINE_HTML">                     </token>
+  </line>
+  <line no="256">
+    <token name="T_INLINE_HTML">                      &lt;div class="panel panel-default "&gt;</token>
+  </line>
+  <line no="257">
+    <token name="T_INLINE_HTML">                        &lt;!-- Default panel contents --&gt;</token>
+  </line>
+  <line no="258">
+    <token name="T_INLINE_HTML">                        &lt;!-- List group --&gt;</token>
+  </line>
+  <line no="259">
+    <token name="T_INLINE_HTML">                          &lt;div id="skill-title" class="panel-heading"&gt;&lt;b&gt;&lt;/b&gt;&lt;/div&gt;</token>
+  </line>
+  <line no="260"/>
+  <line no="261">
+    <token name="T_INLINE_HTML">                          &lt;ul id="skill-top-list" class="list-group"&gt;</token>
+  </line>
+  <line no="262">
+    <token name="T_INLINE_HTML">                            &lt;!-- &lt;li class="list-group-item "&gt;&lt;span class="badge colored-badge"&gt;12&lt;/span&gt;Cras justo odio&lt;/li&gt; --&gt;</token>
+  </line>
+  <line no="263">
+    <token name="T_INLINE_HTML">                          &lt;/ul&gt; </token>
+  </line>
+  <line no="264"/>
+  <line no="265">
+    <token name="T_INLINE_HTML">                          &lt;div id="skill-more-title" class="panel-footer skill-more"&gt;</token>
+  </line>
+  <line no="266">
+    <token name="T_INLINE_HTML">                            &lt;b&gt;&lt;span class="first-name"&gt;&lt;/span&gt; also know about...&lt;/b&gt;</token>
+  </line>
+  <line no="267">
+    <token name="T_INLINE_HTML">                          &lt;/div&gt;</token>
+  </line>
+  <line no="268"/>
+  <line no="269">
+    <token name="T_INLINE_HTML">                          &lt;!-- Default panel contents --&gt;</token>
+  </line>
+  <line no="270">
+    <token name="T_INLINE_HTML">                          &lt;!-- List group --&gt;</token>
+  </line>
+  <line no="271">
+    <token name="T_INLINE_HTML">                          </token>
+  </line>
+  <line no="272">
+    <token name="T_INLINE_HTML">                          &lt;div id="skill-more-list" class="panel-body skill-more"&gt;</token>
+  </line>
+  <line no="273">
+    <token name="T_INLINE_HTML">                            </token>
+  </line>
+  <line no="274">
+    <token name="T_INLINE_HTML">                          &lt;/div&gt;</token>
+  </line>
+  <line no="275">
+    <token name="T_INLINE_HTML">                      &lt;/div&gt;</token>
+  </line>
+  <line no="276">
+    <token name="T_INLINE_HTML">                    &lt;/div&gt;  </token>
+  </line>
+  <line no="277">
+    <token name="T_INLINE_HTML">                  &lt;/div&gt;</token>
+  </line>
+  <line no="278"/>
+  <line no="279"/>
+  <line no="280">
+    <token name="T_INLINE_HTML">                  &lt;!-- edit-view --&gt;</token>
+  </line>
+  <line no="281">
+    <token name="T_INLINE_HTML">                  &lt;div id="skills-endorsements-edit" class="edit-view " &gt; </token>
+  </line>
+  <line no="282">
+    <token name="T_INLINE_HTML">                    &lt;div class="loading"&gt;</token>
+  </line>
+  <line no="283">
+    <token name="T_INLINE_HTML">                      &lt;img src="../image/ajax-loader.gif"&gt;</token>
+  </line>
+  <line no="284">
+    <token name="T_INLINE_HTML">                    &lt;/div&gt;</token>
+  </line>
+  <line no="285">
+    <token name="T_INLINE_HTML">                    &lt;!-- &lt;b&gt;&lt;h4&gt;Summary&lt;/h4&gt;&lt;/b&gt; --&gt;</token>
+  </line>
+  <line no="286">
+    <token name="T_INLINE_HTML">                    &lt;form class="editable-form" action="php/Skill_controller.php"&gt;</token>
+  </line>
+  <line no="287">
+    <token name="T_INLINE_HTML">                      &lt;input id="SkillID" name="SkillID" class="DataID" type="hidden" value="" /&gt;</token>
+  </line>
+  <line no="288">
+    <token name="T_INLINE_HTML">                      &lt;!-- Error Alert --&gt;</token>
+  </line>
+  <line no="289">
+    <token name="T_INLINE_HTML">                      &lt;div class="alert alert-danger" role="alert"&gt;</token>
+  </line>
+  <line no="290">
+    <token name="T_INLINE_HTML">                        &lt;span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"&gt;&lt;/span&gt;</token>
+  </line>
+  <line no="291">
+    <token name="T_INLINE_HTML">                        &lt;span class="sr-only"&gt;Error:&lt;/span&gt;</token>
+  </line>
+  <line no="292">
+    <token name="T_INLINE_HTML">                        &lt;span class="alert-msg"&gt;&lt;/span&gt;</token>
+  </line>
+  <line no="293">
+    <token name="T_INLINE_HTML">                      &lt;/div&gt;</token>
+  </line>
+  <line no="294"/>
+  <line no="295">
+    <token name="T_INLINE_HTML">                      &lt;div class="form-group"&gt;</token>
+  </line>
+  <line no="296">
+    <token name="T_INLINE_HTML">                        &lt;input name="skill" type="text" class="form-control typeahead" id="skill-input" placeholder="What are you areas of expertise?"&gt;</token>
+  </line>
+  <line no="297">
+    <token name="T_INLINE_HTML">                      &lt;/div&gt;  </token>
+  </line>
+  <line no="298"/>
+  <line no="299"/>
+  <line no="300">
+    <token name="T_INLINE_HTML">                      &lt;div class="playground form-group well well-sm"&gt; &lt;!-- contentEditable="true" --&gt;</token>
+  </line>
+  <line no="301"/>
+  <line no="302">
+    <token name="T_INLINE_HTML">                        &lt;ul id="skill-list-edit" class="sortable grid"&gt;</token>
+  </line>
+  <line no="303">
+    <token name="T_INLINE_HTML">                          &lt;!-- &lt;li entry-index="" &gt;</token>
+  </line>
+  <line no="304">
+    <token name="T_INLINE_HTML">                            &lt;span class="badge"&gt;12&lt;/span&gt;</token>
+  </line>
+  <line no="305">
+    <token name="T_INLINE_HTML">                            &lt;span class="skill-pill-name"&gt;asda&lt;/span&gt;</token>
+  </line>
+  <line no="306">
+    <token name="T_INLINE_HTML">                            &lt;button type="button" class="close" aria-label="Close"&gt;&lt;span aria-hidden="true"&gt;&amp;times;&lt;/span&gt;&lt;/button&gt;</token>
+  </line>
+  <line no="307">
+    <token name="T_INLINE_HTML">                          &lt;/li&gt; --&gt;</token>
+  </line>
+  <line no="308">
+    <token name="T_INLINE_HTML">                        &lt;/ul&gt;</token>
+  </line>
+  <line no="309">
+    <token name="T_INLINE_HTML">                      &lt;/div&gt;</token>
+  </line>
+  <line no="310">
+    <token name="T_INLINE_HTML">                      &lt;b style="float:right"&gt;Drag to reorder&lt;/b&gt;</token>
+  </line>
+  <line no="311">
+    <token name="T_INLINE_HTML">                      &lt;button type="submit" class="btn btn-primary save-btn"&gt;Save&lt;/button&gt;</token>
+  </line>
+  <line no="312">
+    <token name="T_INLINE_HTML">                      &lt;button type="button" class="btn btn-default cancel-btn"&gt;Cancel&lt;/button&gt;</token>
+  </line>
+  <line no="313">
+    <token name="T_INLINE_HTML">                    &lt;/form&gt;</token>
+  </line>
+  <line no="314">
+    <token name="T_INLINE_HTML">                  &lt;/div&gt;</token>
+  </line>
+  <line no="315">
+    <token name="T_INLINE_HTML">                  </token>
+  </line>
+  <line no="316">
+    <token name="T_INLINE_HTML">              &lt;/div&gt;</token>
+  </line>
+  <line no="317">
+    <token name="T_INLINE_HTML">              </token>
+  </line>
+  <line no="318">
+    <token name="T_INLINE_HTML">              &lt;div class="add-star" &gt;</token>
+  </line>
+  <line no="319">
+    <token name="T_INLINE_HTML">                &lt;button id="skills-endorsements-edit-btn" class="add-btn" for="skills-endorsements" edit="true"&gt;Add Skill&lt;/button&gt;</token>
+  </line>
+  <line no="320">
+    <token name="T_INLINE_HTML">              &lt;/div&gt;</token>
+  </line>
+  <line no="321">
+    <token name="T_INLINE_HTML">          &lt;/div&gt;</token>
+  </line>
+  <line no="322">
+    <token name="T_INLINE_HTML">      &lt;/div&gt;</token>
+  </line>
+  <line no="323"/>
+  <line no="324">
+    <token name="T_INLINE_HTML">      &lt;!-- Experience --&gt;</token>
+  </line>
+  <line no="325">
+    <token name="T_INLINE_HTML">      &lt;div class="row"&gt;</token>
+  </line>
+  <line no="326">
+    <token name="T_INLINE_HTML">          &lt;div class="col col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2"&gt;</token>
+  </line>
+  <line no="327">
+    <token name="T_INLINE_HTML">              &lt;div class="well well-sm"&gt;</token>
+  </line>
+  <line no="328">
+    <token name="T_INLINE_HTML">                  &lt;header&gt;</token>
+  </line>
+  <line no="329">
+    <token name="T_INLINE_HTML">                    &lt;h2&gt;Experience&lt;/h2&gt;</token>
+  </line>
+  <line no="330">
+    <token name="T_INLINE_HTML">                  &lt;/header&gt;</token>
+  </line>
+  <line no="331"/>
+  <line no="332">
+    <token name="T_INLINE_HTML">                  &lt;div class="alert alert-success alert-dismissible" role="alert"&gt;</token>
+  </line>
+  <line no="333">
+    <token name="T_INLINE_HTML">                    &lt;button type="button" class="close" data-hide="alert" aria-label="Close"&gt;&lt;span class="dimissible-color"aria-hidden="true"&gt;&amp;times;&lt;/span&gt;&lt;/button&gt;</token>
+  </line>
+  <line no="334">
+    <token name="T_INLINE_HTML">                    &lt;span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"&gt;&lt;/span&gt;</token>
+  </line>
+  <line no="335">
+    <token name="T_INLINE_HTML">                    &lt;span class="sr-only"&gt;&lt;/span&gt;</token>
+  </line>
+  <line no="336">
+    <token name="T_INLINE_HTML">                    &lt;span class="alert-msg"&gt;&lt;/span&gt;</token>
+  </line>
+  <line no="337">
+    <token name="T_INLINE_HTML">                  &lt;/div&gt;</token>
+  </line>
+  <line no="338"/>
+  <line no="339">
+    <token name="T_INLINE_HTML">                  &lt;div id="experience-edit" class="edit-view" entry-number=""&gt;</token>
+  </line>
+  <line no="340">
+    <token name="T_INLINE_HTML">                    &lt;div class="loading"&gt;</token>
+  </line>
+  <line no="341">
+    <token name="T_INLINE_HTML">                        &lt;img src="../image/ajax-loader.gif"&gt;</token>
+  </line>
+  <line no="342">
+    <token name="T_INLINE_HTML">                      &lt;/div&gt;</token>
+  </line>
+  <line no="343">
+    <token name="T_INLINE_HTML">                    &lt;form class="editable-form" action="php/Experience_controller.php"&gt;</token>
+  </line>
+  <line no="344">
+    <token name="T_INLINE_HTML">                      &lt;input id="ExpID" name="ExpID" class="DataID" type="hidden" value="" /&gt;</token>
+  </line>
+  <line no="345">
+    <token name="T_INLINE_HTML">                      &lt;!-- Error Alert --&gt;</token>
+  </line>
+  <line no="346">
+    <token name="T_INLINE_HTML">                      &lt;div class="alert alert-danger" role="alert"&gt;</token>
+  </line>
+  <line no="347">
+    <token name="T_INLINE_HTML">                        &lt;span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"&gt;&lt;/span&gt;</token>
+  </line>
+  <line no="348">
+    <token name="T_INLINE_HTML">                        &lt;span class="sr-only"&gt;Error:&lt;/span&gt;</token>
+  </line>
+  <line no="349">
+    <token name="T_INLINE_HTML">                        &lt;span class="alert-msg"&gt;&lt;/span&gt;</token>
+  </line>
+  <line no="350">
+    <token name="T_INLINE_HTML">                      &lt;/div&gt;</token>
+  </line>
+  <line no="351">
+    <token name="T_INLINE_HTML">                      &lt;!-- Position Title --&gt;</token>
+  </line>
+  <line no="352">
+    <token name="T_INLINE_HTML">                      &lt;div class="form-group "&gt;</token>
+  </line>
+  <line no="353">
+    <token name="T_INLINE_HTML">                        &lt;label for="position-title"&gt;Position Title&lt;/label&gt;</token>
+  </line>
+  <line no="354">
+    <token name="T_INLINE_HTML">                        &lt;abbr title="Required" class="required"&gt;*&lt;/abbr&gt;</token>
+  </line>
+  <line no="355">
+    <token name="T_INLINE_HTML">                        &lt;input name="position-title" type="text" class="form-control" id="position-title" required&gt;</token>
+  </line>
+  <line no="356">
+    <token name="T_INLINE_HTML">                      &lt;/div&gt;</token>
+  </line>
+  <line no="357">
+    <token name="T_INLINE_HTML">                      &lt;!-- Company Name --&gt;</token>
+  </line>
+  <line no="358">
+    <token name="T_INLINE_HTML">                       &lt;div class="form-group "&gt;</token>
+  </line>
+  <line no="359">
+    <token name="T_INLINE_HTML">                        &lt;label for="company-name"&gt;Company Name&lt;/label&gt;</token>
+  </line>
+  <line no="360">
+    <token name="T_INLINE_HTML">                        &lt;abbr title="Required" class="required"&gt;*&lt;/abbr&gt;</token>
+  </line>
+  <line no="361">
+    <token name="T_INLINE_HTML">                        &lt;input name="company-name" type="text" class="form-control" id="company-name" required&gt;</token>
+  </line>
+  <line no="362">
+    <token name="T_INLINE_HTML">                      &lt;/div&gt;</token>
+  </line>
+  <line no="363">
+    <token name="T_INLINE_HTML">                      &lt;!-- Location --&gt;</token>
+  </line>
+  <line no="364">
+    <token name="T_INLINE_HTML">                      &lt;div class="form-group "&gt;</token>
+  </line>
+  <line no="365">
+    <token name="T_INLINE_HTML">                        &lt;label for="company-location"&gt;Location&lt;/label&gt;</token>
+  </line>
+  <line no="366">
+    <token name="T_INLINE_HTML">                        &lt;input name="company-location" type="text" class="form-control" id="company-location" &gt;</token>
+  </line>
+  <line no="367">
+    <token name="T_INLINE_HTML">                      &lt;/div&gt;</token>
+  </line>
+  <line no="368"/>
+  <line no="369">
+    <token name="T_INLINE_HTML">                      &lt;!-- Time Period --&gt;</token>
+  </line>
+  <line no="370">
+    <token name="T_INLINE_HTML">                      &lt;label for="work-start-month"&gt;Time Period&lt;/label&gt;</token>
+  </line>
+  <line no="371">
+    <token name="T_INLINE_HTML">                      &lt;abbr title="Required" class="required"&gt;*&lt;/abbr&gt;</token>
+  </line>
+  <line no="372">
+    <token name="T_INLINE_HTML">                      &lt;div class="form-group form-inline "&gt;</token>
+  </line>
+  <line no="373">
+    <token name="T_INLINE_HTML">                        &lt;select name="work-start-month" type="month" class="form-control" id="work-start-month" required&gt; </token>
+  </line>
+  <line no="374">
+    <token name="T_INLINE_HTML">                          &lt;option value&gt;Choose...&lt;/option&gt;</token>
+  </line>
+  <line no="375">
+    <token name="T_INLINE_HTML">                          &lt;option value="1"&gt;January&lt;/option&gt;</token>
+  </line>
+  <line no="376">
+    <token name="T_INLINE_HTML">                          &lt;option value="2"&gt;February&lt;/option&gt;</token>
+  </line>
+  <line no="377">
+    <token name="T_INLINE_HTML">                          &lt;option value="3"&gt;March&lt;/option&gt;</token>
+  </line>
+  <line no="378">
+    <token name="T_INLINE_HTML">                          &lt;option value="4"&gt;April&lt;/option&gt;</token>
+  </line>
+  <line no="379">
+    <token name="T_INLINE_HTML">                          &lt;option value="5"&gt;May&lt;/option&gt;</token>
+  </line>
+  <line no="380">
+    <token name="T_INLINE_HTML">                          &lt;option value="6"&gt;June&lt;/option&gt;</token>
+  </line>
+  <line no="381">
+    <token name="T_INLINE_HTML">                          &lt;option value="7"&gt;July&lt;/option&gt;</token>
+  </line>
+  <line no="382">
+    <token name="T_INLINE_HTML">                          &lt;option value="8"&gt;August&lt;/option&gt;</token>
+  </line>
+  <line no="383">
+    <token name="T_INLINE_HTML">                          &lt;option value="9"&gt;September&lt;/option&gt;</token>
+  </line>
+  <line no="384">
+    <token name="T_INLINE_HTML">                          &lt;option value="10"&gt;October&lt;/option&gt;</token>
+  </line>
+  <line no="385">
+    <token name="T_INLINE_HTML">                          &lt;option value="11"&gt;November&lt;/option&gt;</token>
+  </line>
+  <line no="386">
+    <token name="T_INLINE_HTML">                          &lt;option value="12"&gt;December&lt;/option&gt;</token>
+  </line>
+  <line no="387">
+    <token name="T_INLINE_HTML">                        &lt;/select&gt;</token>
+  </line>
+  <line no="388">
+    <token name="T_INLINE_HTML">                        &lt;input name="work-start-year" type="text" class="form-control short-input" id="work-start-year" placeholder="Year" maxlength="4" required&gt; &amp;#8213 </token>
+  </line>
+  <line no="389"/>
+  <line no="390">
+    <token name="T_INLINE_HTML">                        &lt;div class="form-group work-time-right-block"&gt;</token>
+  </line>
+  <line no="391">
+    <token name="T_INLINE_HTML">                          &lt;span id="work-present"&gt; current&lt;/span&gt;</token>
+  </line>
+  <line no="392"/>
+  <line no="393">
+    <token name="T_INLINE_HTML">                          &lt;div id="work-end-time-explicit" &gt;</token>
+  </line>
+  <line no="394">
+    <token name="T_INLINE_HTML">                            &lt;select name="work-end-month" type="month" class="form-control" id="work-end-month"&gt; </token>
+  </line>
+  <line no="395">
+    <token name="T_INLINE_HTML">                              &lt;option value&gt;Choose...&lt;/option&gt;</token>
+  </line>
+  <line no="396">
+    <token name="T_INLINE_HTML">                              &lt;option value="1"&gt;January&lt;/option&gt;</token>
+  </line>
+  <line no="397">
+    <token name="T_INLINE_HTML">                              &lt;option value="2"&gt;February&lt;/option&gt;</token>
+  </line>
+  <line no="398">
+    <token name="T_INLINE_HTML">                              &lt;option value="3"&gt;March&lt;/option&gt;</token>
+  </line>
+  <line no="399">
+    <token name="T_INLINE_HTML">                              &lt;option value="4"&gt;April&lt;/option&gt;</token>
+  </line>
+  <line no="400">
+    <token name="T_INLINE_HTML">                              &lt;option value="5"&gt;May&lt;/option&gt;</token>
+  </line>
+  <line no="401">
+    <token name="T_INLINE_HTML">                              &lt;option value="6"&gt;June&lt;/option&gt;</token>
+  </line>
+  <line no="402">
+    <token name="T_INLINE_HTML">                              &lt;option value="7"&gt;July&lt;/option&gt;</token>
+  </line>
+  <line no="403">
+    <token name="T_INLINE_HTML">                              &lt;option value="8"&gt;August&lt;/option&gt;</token>
+  </line>
+  <line no="404">
+    <token name="T_INLINE_HTML">                              &lt;option value="9"&gt;September&lt;/option&gt;</token>
+  </line>
+  <line no="405">
+    <token name="T_INLINE_HTML">                              &lt;option value="10"&gt;October&lt;/option&gt;</token>
+  </line>
+  <line no="406">
+    <token name="T_INLINE_HTML">                              &lt;option value="11"&gt;November&lt;/option&gt;</token>
+  </line>
+  <line no="407">
+    <token name="T_INLINE_HTML">                              &lt;option value="12"&gt;December&lt;/option&gt;</token>
+  </line>
+  <line no="408">
+    <token name="T_INLINE_HTML">                            &lt;/select&gt;</token>
+  </line>
+  <line no="409">
+    <token name="T_INLINE_HTML">                            &lt;input name="work-end-year" type="text" class="form-control short-input" id="work-end-year" placeholder="Year" maxlength="4"&gt;&lt;br&gt;</token>
+  </line>
+  <line no="410">
+    <token name="T_INLINE_HTML">                          &lt;/div&gt;</token>
+  </line>
+  <line no="411">
+    <token name="T_INLINE_HTML">                          &lt;div class="checkbox"&gt;</token>
+  </line>
+  <line no="412">
+    <token name="T_INLINE_HTML">                            &lt;label&gt;</token>
+  </line>
+  <line no="413">
+    <token name="T_INLINE_HTML">                              &lt;input id="work-present-chk" name="work-present" type="checkbox" value="current"&gt;</token>
+  </line>
+  <line no="414">
+    <token name="T_INLINE_HTML">                              I currently work here.</token>
+  </line>
+  <line no="415">
+    <token name="T_INLINE_HTML">                            &lt;/label&gt;</token>
+  </line>
+  <line no="416">
+    <token name="T_INLINE_HTML">                          &lt;/div&gt; </token>
+  </line>
+  <line no="417">
+    <token name="T_INLINE_HTML">                        &lt;/div&gt;</token>
+  </line>
+  <line no="418">
+    <token name="T_INLINE_HTML">                      &lt;/div&gt;</token>
+  </line>
+  <line no="419"/>
+  <line no="420">
+    <token name="T_INLINE_HTML">                      &lt;!-- Description --&gt;</token>
+  </line>
+  <line no="421">
+    <token name="T_INLINE_HTML">                      &lt;label for="work-description"&gt;Description&lt;/label&gt;</token>
+  </line>
+  <line no="422">
+    <token name="T_INLINE_HTML">                      &lt;textarea id="work-description" class="form-control" rows="5" name="experience-description"&gt;&lt;/textarea&gt; </token>
+  </line>
+  <line no="423">
+    <token name="T_INLINE_HTML">                      &lt;br&gt;&lt;br&gt;</token>
+  </line>
+  <line no="424">
+    <token name="T_INLINE_HTML">                      &lt;button type="submit" class="btn btn-primary save-btn"&gt;Save&lt;/button&gt;</token>
+  </line>
+  <line no="425">
+    <token name="T_INLINE_HTML">                      &lt;button type="button" class="btn btn-default cancel-btn"&gt;Cancel&lt;/button&gt;</token>
+  </line>
+  <line no="426">
+    <token name="T_INLINE_HTML">                      &lt;a class="remove-entry-link" href="#" &gt;Remove this entry.&lt;/a&gt;</token>
+  </line>
+  <line no="427">
+    <token name="T_INLINE_HTML">                    &lt;/form&gt;  </token>
+  </line>
+  <line no="428">
+    <token name="T_INLINE_HTML">                  &lt;/div&gt;</token>
+  </line>
+  <line no="429">
+    <token name="T_INLINE_HTML">                  &lt;div id="user-experiences" class="normal-view outer-ref"&gt;</token>
+  </line>
+  <line no="430">
+    <token name="T_INLINE_HTML">                  &lt;/div&gt;</token>
+  </line>
+  <line no="431">
+    <token name="T_INLINE_HTML">              &lt;/div&gt;</token>
+  </line>
+  <line no="432">
+    <token name="T_INLINE_HTML">              &lt;div class="add-star"&gt;</token>
+  </line>
+  <line no="433">
+    <token name="T_INLINE_HTML">                &lt;button class="add-btn" for="experience-edit"&gt;Add Eperience&lt;/button&gt;</token>
+  </line>
+  <line no="434">
+    <token name="T_INLINE_HTML">              &lt;/div&gt;</token>
+  </line>
+  <line no="435">
+    <token name="T_INLINE_HTML">          &lt;/div&gt;</token>
+  </line>
+  <line no="436">
+    <token name="T_INLINE_HTML">      &lt;/div&gt;</token>
+  </line>
+  <line no="437"/>
+  <line no="438">
+    <token name="T_INLINE_HTML">       &lt;!-- Project--&gt;</token>
+  </line>
+  <line no="439">
+    <token name="T_INLINE_HTML">      &lt;div class="row"&gt;</token>
+  </line>
+  <line no="440">
+    <token name="T_INLINE_HTML">          &lt;div class="col col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2"&gt;</token>
+  </line>
+  <line no="441">
+    <token name="T_INLINE_HTML">              &lt;div class="well well-sm"&gt;</token>
+  </line>
+  <line no="442">
+    <token name="T_INLINE_HTML">                  &lt;header&gt;</token>
+  </line>
+  <line no="443">
+    <token name="T_INLINE_HTML">                    &lt;h2&gt;Projects&lt;/h2&gt;</token>
+  </line>
+  <line no="444">
+    <token name="T_INLINE_HTML">                  &lt;/header&gt;</token>
+  </line>
+  <line no="445"/>
+  <line no="446">
+    <token name="T_INLINE_HTML">                  &lt;div class="alert alert-success alert-dismissible" role="alert"&gt;</token>
+  </line>
+  <line no="447">
+    <token name="T_INLINE_HTML">                    &lt;button type="button" class="close" data-hide="alert" aria-label="Close"&gt;&lt;span class="dimissible-color"aria-hidden="true"&gt;&amp;times;&lt;/span&gt;&lt;/button&gt;</token>
+  </line>
+  <line no="448">
+    <token name="T_INLINE_HTML">                    &lt;span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"&gt;&lt;/span&gt;</token>
+  </line>
+  <line no="449">
+    <token name="T_INLINE_HTML">                    &lt;span class="sr-only"&gt;&lt;/span&gt;</token>
+  </line>
+  <line no="450">
+    <token name="T_INLINE_HTML">                    &lt;span class="alert-msg"&gt;&lt;/span&gt;</token>
+  </line>
+  <line no="451">
+    <token name="T_INLINE_HTML">                  &lt;/div&gt;</token>
+  </line>
+  <line no="452"/>
+  <line no="453">
+    <token name="T_INLINE_HTML">                  &lt;div id="project-edit" class="edit-view" entry-number=""&gt;</token>
+  </line>
+  <line no="454">
+    <token name="T_INLINE_HTML">                    &lt;div class="loading"&gt;</token>
+  </line>
+  <line no="455">
+    <token name="T_INLINE_HTML">                      &lt;img src="../image/ajax-loader.gif"&gt;</token>
+  </line>
+  <line no="456">
+    <token name="T_INLINE_HTML">                    &lt;/div&gt;</token>
+  </line>
+  <line no="457">
+    <token name="T_INLINE_HTML">                    &lt;form class="editable-form" action="php/Project_controller.php"&gt;</token>
+  </line>
+  <line no="458">
+    <token name="T_INLINE_HTML">                      &lt;input id="ProjectID" name="ProjectID" class="DataID" type="hidden" value="0" /&gt;</token>
+  </line>
+  <line no="459">
+    <token name="T_INLINE_HTML">                      &lt;!-- Error Alert --&gt;</token>
+  </line>
+  <line no="460">
+    <token name="T_INLINE_HTML">                      &lt;div class="alert alert-danger" role="alert"&gt;</token>
+  </line>
+  <line no="461">
+    <token name="T_INLINE_HTML">                        &lt;span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"&gt;&lt;/span&gt;</token>
+  </line>
+  <line no="462">
+    <token name="T_INLINE_HTML">                        &lt;span class="sr-only"&gt;Error:&lt;/span&gt;</token>
+  </line>
+  <line no="463">
+    <token name="T_INLINE_HTML">                        &lt;span class="alert-msg"&gt;&lt;/span&gt;</token>
+  </line>
+  <line no="464">
+    <token name="T_INLINE_HTML">                      &lt;/div&gt;</token>
+  </line>
+  <line no="465">
+    <token name="T_INLINE_HTML">                      &lt;!-- Project Name --&gt;</token>
+  </line>
+  <line no="466">
+    <token name="T_INLINE_HTML">                      &lt;div class="form-group "&gt;</token>
+  </line>
+  <line no="467">
+    <token name="T_INLINE_HTML">                        &lt;label for="project-name"&gt;Name&lt;/label&gt;</token>
+  </line>
+  <line no="468">
+    <token name="T_INLINE_HTML">                        &lt;abbr title="Required" class="required"&gt;*&lt;/abbr&gt;</token>
+  </line>
+  <line no="469">
+    <token name="T_INLINE_HTML">                        &lt;input name="project-name" type="text" class="form-control" id="project-name" required&gt;</token>
+  </line>
+  <line no="470">
+    <token name="T_INLINE_HTML">                      &lt;/div&gt;</token>
+  </line>
+  <line no="471">
+    <token name="T_INLINE_HTML">                      &lt;!-- Project URL --&gt;</token>
+  </line>
+  <line no="472">
+    <token name="T_INLINE_HTML">                       &lt;div class="form-group "&gt;</token>
+  </line>
+  <line no="473">
+    <token name="T_INLINE_HTML">                        &lt;label for="project-url"&gt;Project URL&lt;/label&gt;</token>
+  </line>
+  <line no="474">
+    <token name="T_INLINE_HTML">                        &lt;input name="project-url" type="text" class="form-control" id="project-url"&gt;</token>
+  </line>
+  <line no="475">
+    <token name="T_INLINE_HTML">                      &lt;/div&gt;</token>
+  </line>
+  <line no="476">
+    <token name="T_INLINE_HTML">                      &lt;!-- Team Members --&gt;</token>
+  </line>
+  <line no="477">
+    <token name="T_INLINE_HTML">&lt;!--                       &lt;label for="project-team-members"&gt;Team Members&lt;/label&gt;</token>
+  </line>
+  <line no="478">
+    <token name="T_INLINE_HTML">                      </token>
+  </line>
+  <line no="479">
+    <token name="T_INLINE_HTML">                      &lt;div id="project-team-editable-block" class="form-group well well-sm"&gt; </token>
+  </line>
+  <line no="480"/>
+  <line no="481">
+    <token name="T_INLINE_HTML">                        &lt;ul id="project-team-list" class='sortable grid'&gt;  </token>
+  </line>
+  <line no="482">
+    <token name="T_INLINE_HTML">                          &lt;li class='no-sort' index='0'&gt;</token>
+  </line>
+  <line no="483">
+    <token name="T_INLINE_HTML">                            </token>
+  </line>
+  <line no="484">
+    <token name="T_INLINE_HTML">                            &lt;img src="https://static.licdn.com/scds/common/u/images/themes/katy/ghosts/person/ghost_person_30x30_v1.png"&gt;</token>
+  </line>
+  <line no="485">
+    <token name="T_INLINE_HTML">                            &lt;span class="skill-pill-name"&gt;You&lt;/span&gt;</token>
+  </line>
+  <line no="486">
+    <token name="T_INLINE_HTML">                            &lt;button type="button" class="close" aria-label="Close"&gt;&lt;span aria-hidden="true"&gt;&amp;times;&lt;/span&gt;&lt;/button&gt;</token>
+  </line>
+  <line no="487">
+    <token name="T_INLINE_HTML">                            </token>
+  </line>
+  <line no="488">
+    <token name="T_INLINE_HTML">                          &lt;/li&gt;</token>
+  </line>
+  <line no="489">
+    <token name="T_INLINE_HTML">                          &lt;li index='0'&gt;</token>
+  </line>
+  <line no="490">
+    <token name="T_INLINE_HTML">                            </token>
+  </line>
+  <line no="491">
+    <token name="T_INLINE_HTML">                            &lt;img src="https://static.licdn.com/scds/common/u/images/themes/katy/ghosts/person/ghost_person_30x30_v1.png"&gt;</token>
+  </line>
+  <line no="492">
+    <token name="T_INLINE_HTML">                            &lt;span class="skill-pill-name"&gt;You&lt;/span&gt;</token>
+  </line>
+  <line no="493">
+    <token name="T_INLINE_HTML">                            &lt;button type="button" class="close" aria-label="Close"&gt;&lt;span aria-hidden="true"&gt;&amp;times;&lt;/span&gt;&lt;/button&gt;</token>
+  </line>
+  <line no="494">
+    <token name="T_INLINE_HTML">                            </token>
+  </line>
+  <line no="495">
+    <token name="T_INLINE_HTML">                          &lt;/li&gt;</token>
+  </line>
+  <line no="496">
+    <token name="T_INLINE_HTML">                        &lt;/ul&gt;</token>
+  </line>
+  <line no="497"/>
+  <line no="498">
+    <token name="T_INLINE_HTML">                      </token>
+  </line>
+  <line no="499">
+    <token name="T_INLINE_HTML">                        &lt;input name="new-member-name" type="text" class="form-control" id="project-team-members" placeholder="+Add Member"&gt; </token>
+  </line>
+  <line no="500">
+    <token name="T_INLINE_HTML">                        </token>
+  </line>
+  <line no="501"/>
+  <line no="502">
+    <token name="T_INLINE_HTML">                      &lt;/div&gt; --&gt;</token>
+  </line>
+  <line no="503"/>
+  <line no="504">
+    <token name="T_INLINE_HTML">                      &lt;!-- Project Description --&gt;</token>
+  </line>
+  <line no="505">
+    <token name="T_INLINE_HTML">                      &lt;label for="project-description"&gt;Description&lt;/label&gt;</token>
+  </line>
+  <line no="506">
+    <token name="T_INLINE_HTML">                      &lt;textarea name="project-description" id="project-description" class="form-control" rows="5"&gt;&lt;/textarea&gt; &lt;br&gt;&lt;br&gt;</token>
+  </line>
+  <line no="507"/>
+  <line no="508">
+    <token name="T_INLINE_HTML">                      &lt;button type="submit" class="btn btn-primary save-btn"&gt;Save&lt;/button&gt;</token>
+  </line>
+  <line no="509">
+    <token name="T_INLINE_HTML">                      &lt;button type="button" class="btn btn-default cancel-btn"&gt;Cancel&lt;/button&gt;</token>
+  </line>
+  <line no="510">
+    <token name="T_INLINE_HTML">                      &lt;a class="remove-entry-link" href="#" &gt;Remove this entry.&lt;/a&gt;</token>
+  </line>
+  <line no="511">
+    <token name="T_INLINE_HTML">                    &lt;/form&gt;  </token>
+  </line>
+  <line no="512">
+    <token name="T_INLINE_HTML">                  &lt;/div&gt;</token>
+  </line>
+  <line no="513">
+    <token name="T_INLINE_HTML">                  &lt;div id="user-projects" class="normal-view"&gt;</token>
+  </line>
+  <line no="514">
+    <token name="T_INLINE_HTML">                    &lt;!-- &lt;div&gt;</token>
+  </line>
+  <line no="515">
+    <token name="T_INLINE_HTML">                      &lt;div class="editable" for="project-edit" link="Tmemers" index=""&gt;</token>
+  </line>
+  <line no="516">
+    <token name="T_INLINE_HTML">                        &lt;span class="glyphicon glyphicon-pencil" aria-hidden="true"&gt;&lt;/span&gt;</token>
+  </line>
+  <line no="517">
+    <token name="T_INLINE_HTML">                        &lt;!-- &lt;i class="glyphicon glyphicon-link"&gt;&lt;/i&gt; </token>
+  </line>
+  <line no="518">
+    <token name="T_INLINE_HTML">                        &lt;h4&gt;Project Name&lt;/h4&gt;</token>
+  </line>
+  <line no="519">
+    <token name="T_INLINE_HTML">                        </token>
+  </line>
+  <line no="520">
+    <token name="T_INLINE_HTML">                        &lt;!-- &lt;h5&gt;Date Range&lt;/h5&gt; </token>
+  </line>
+  <line no="521">
+    <token name="T_INLINE_HTML">                        &lt;p&gt;Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</token>
+  </line>
+  <line no="522">
+    <token name="T_INLINE_HTML">                        &lt;/p&gt;</token>
+  </line>
+  <line no="523">
+    <token name="T_INLINE_HTML">                      &lt;/div&gt;</token>
+  </line>
+  <line no="524">
+    <token name="T_INLINE_HTML">                      &lt;div class="team-members-container row" name="team-members" id="Tmemers"&gt;</token>
+  </line>
+  <line no="525"/>
+  <line no="526">
+    <token name="T_INLINE_HTML">                        &lt;div class="team-member-block col-md-6"&gt;</token>
+  </line>
+  <line no="527">
+    <token name="T_INLINE_HTML">                          &lt;div class="col-md-2"&gt;</token>
+  </line>
+  <line no="528">
+    <token name="T_INLINE_HTML">                            &lt;img src="http://vignette2.wikia.nocookie.net/farmville/images/d/da/38x38-icon.png/revision/latest?cb=20120530023501" class="team-member-mini-image"&gt;</token>
+  </line>
+  <line no="529">
+    <token name="T_INLINE_HTML">                          &lt;/div&gt;</token>
+  </line>
+  <line no="530">
+    <token name="T_INLINE_HTML">                          &lt;div class="team-member-block-description col-md-10"&gt;</token>
+  </line>
+  <line no="531">
+    <token name="T_INLINE_HTML">                            &lt;a href="www.google.com"&gt;Google&lt;/a&gt; &lt;br&gt;</token>
+  </line>
+  <line no="532">
+    <token name="T_INLINE_HTML">                            &lt;p&gt;User title displayed hereaasdasdasdassdasdasdasdasdsasd&lt;/p&gt;</token>
+  </line>
+  <line no="533">
+    <token name="T_INLINE_HTML">                          &lt;/div&gt;</token>
+  </line>
+  <line no="534">
+    <token name="T_INLINE_HTML">                        &lt;/div&gt;</token>
+  </line>
+  <line no="535">
+    <token name="T_INLINE_HTML">                      &lt;/div&gt;</token>
+  </line>
+  <line no="536">
+    <token name="T_INLINE_HTML">                    &lt;/div&gt; --&gt;</token>
+  </line>
+  <line no="537"/>
+  <line no="538">
+    <token name="T_INLINE_HTML">                     &lt;!--  &lt;/div&gt; --&gt;</token>
+  </line>
+  <line no="539">
+    <token name="T_INLINE_HTML">                  &lt;/div&gt;</token>
+  </line>
+  <line no="540">
+    <token name="T_INLINE_HTML">                &lt;/div&gt;  </token>
+  </line>
+  <line no="541">
+    <token name="T_INLINE_HTML">              &lt;div class="add-star"&gt;</token>
+  </line>
+  <line no="542">
+    <token name="T_INLINE_HTML">                &lt;button class="add-btn" for="project-edit"&gt;Add Project&lt;/button&gt;</token>
+  </line>
+  <line no="543">
+    <token name="T_INLINE_HTML">              &lt;/div&gt;</token>
+  </line>
+  <line no="544">
+    <token name="T_INLINE_HTML">          &lt;/div&gt;</token>
+  </line>
+  <line no="545">
+    <token name="T_INLINE_HTML">      &lt;/div&gt;</token>
+  </line>
+  <line no="546"/>
+  <line no="547">
+    <token name="T_INLINE_HTML">      &lt;!-- Education --&gt;</token>
+  </line>
+  <line no="548">
+    <token name="T_INLINE_HTML">      &lt;div class="row"&gt;</token>
+  </line>
+  <line no="549">
+    <token name="T_INLINE_HTML">          &lt;div class="col col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2"&gt;</token>
+  </line>
+  <line no="550">
+    <token name="T_INLINE_HTML">              &lt;div class="well well-sm"&gt;</token>
+  </line>
+  <line no="551">
+    <token name="T_INLINE_HTML">                  &lt;header&gt;</token>
+  </line>
+  <line no="552">
+    <token name="T_INLINE_HTML">                    &lt;h2&gt;Education&lt;/h2&gt;</token>
+  </line>
+  <line no="553">
+    <token name="T_INLINE_HTML">                  &lt;/header&gt;</token>
+  </line>
+  <line no="554"/>
+  <line no="555">
+    <token name="T_INLINE_HTML">                  &lt;div class="alert alert-success alert-dismissible" role="alert"&gt;</token>
+  </line>
+  <line no="556">
+    <token name="T_INLINE_HTML">                    &lt;button type="button" class="close" data-hide="alert" aria-label="Close"&gt;&lt;span class="dimissible-color"aria-hidden="true"&gt;&amp;times;&lt;/span&gt;&lt;/button&gt;</token>
+  </line>
+  <line no="557">
+    <token name="T_INLINE_HTML">                    &lt;span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"&gt;&lt;/span&gt;</token>
+  </line>
+  <line no="558">
+    <token name="T_INLINE_HTML">                    &lt;span class="sr-only"&gt;&lt;/span&gt;</token>
+  </line>
+  <line no="559">
+    <token name="T_INLINE_HTML">                    &lt;span class="alert-msg"&gt;&lt;/span&gt;</token>
+  </line>
+  <line no="560">
+    <token name="T_INLINE_HTML">                  &lt;/div&gt;</token>
+  </line>
+  <line no="561">
+    <token name="T_INLINE_HTML">                  </token>
+  </line>
+  <line no="562">
+    <token name="T_INLINE_HTML">                  &lt;div id="education-edit" class="edit-view" entry-number=""&gt;</token>
+  </line>
+  <line no="563">
+    <token name="T_INLINE_HTML">                    &lt;div class="loading"&gt;</token>
+  </line>
+  <line no="564">
+    <token name="T_INLINE_HTML">                      &lt;img src="../image/ajax-loader.gif"&gt;</token>
+  </line>
+  <line no="565">
+    <token name="T_INLINE_HTML">                    &lt;/div&gt;</token>
+  </line>
+  <line no="566">
+    <token name="T_INLINE_HTML">                    &lt;form class="editable-form" action="php/Education_controller.php"&gt;</token>
+  </line>
+  <line no="567">
+    <token name="T_INLINE_HTML">                      &lt;input id="EduID" name="EduID" class="DataID" type="hidden" value="0" /&gt;</token>
+  </line>
+  <line no="568">
+    <token name="T_INLINE_HTML">                      &lt;!-- Error Alert --&gt;</token>
+  </line>
+  <line no="569">
+    <token name="T_INLINE_HTML">                      &lt;div class="alert alert-danger" role="alert"&gt;</token>
+  </line>
+  <line no="570">
+    <token name="T_INLINE_HTML">                        &lt;span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"&gt;&lt;/span&gt;</token>
+  </line>
+  <line no="571">
+    <token name="T_INLINE_HTML">                        &lt;span class="sr-only"&gt;Error:&lt;/span&gt;</token>
+  </line>
+  <line no="572">
+    <token name="T_INLINE_HTML">                        &lt;span class="alert-msg"&gt;&lt;/span&gt;</token>
+  </line>
+  <line no="573">
+    <token name="T_INLINE_HTML">                      &lt;/div&gt;</token>
+  </line>
+  <line no="574">
+    <token name="T_INLINE_HTML">                      &lt;!-- School --&gt;</token>
+  </line>
+  <line no="575">
+    <token name="T_INLINE_HTML">                      &lt;div class="form-group"&gt;</token>
+  </line>
+  <line no="576">
+    <token name="T_INLINE_HTML">                        &lt;label for="school-name"&gt;School&lt;/label&gt;</token>
+  </line>
+  <line no="577">
+    <token name="T_INLINE_HTML">                        &lt;abbr title="Required" class="required"&gt;*&lt;/abbr&gt;</token>
+  </line>
+  <line no="578">
+    <token name="T_INLINE_HTML">                        &lt;input name="school-name" type="text" class="form-control" id="school-name" required&gt;</token>
+  </line>
+  <line no="579">
+    <token name="T_INLINE_HTML">                      &lt;/div&gt;</token>
+  </line>
+  <line no="580">
+    <token name="T_INLINE_HTML">                      &lt;!-- Degree --&gt;</token>
+  </line>
+  <line no="581">
+    <token name="T_INLINE_HTML">                       &lt;div class="form-group"&gt;</token>
+  </line>
+  <line no="582">
+    <token name="T_INLINE_HTML">                        &lt;label for="degree"&gt;Degree&lt;/label&gt;</token>
+  </line>
+  <line no="583">
+    <token name="T_INLINE_HTML">                        &lt;input name="degree" type="text" class="form-control" id="degree" &gt;</token>
+  </line>
+  <line no="584">
+    <token name="T_INLINE_HTML">                      &lt;/div&gt;</token>
+  </line>
+  <line no="585">
+    <token name="T_INLINE_HTML">                      &lt;!-- Field of Study --&gt;</token>
+  </line>
+  <line no="586">
+    <token name="T_INLINE_HTML">                      &lt;div class="form-group"&gt;</token>
+  </line>
+  <line no="587">
+    <token name="T_INLINE_HTML">                        &lt;label for="field-of-study"&gt;Field of Study&lt;/label&gt;</token>
+  </line>
+  <line no="588">
+    <token name="T_INLINE_HTML">                        &lt;input name="field-of-study" type="text" class="form-control" id="field-of-study" &gt;</token>
+  </line>
+  <line no="589">
+    <token name="T_INLINE_HTML">                      &lt;/div&gt;</token>
+  </line>
+  <line no="590"/>
+  <line no="591">
+    <token name="T_INLINE_HTML">                      &lt;!-- Grade --&gt;</token>
+  </line>
+  <line no="592">
+    <token name="T_INLINE_HTML">                      &lt;div class="form-group"&gt;</token>
+  </line>
+  <line no="593">
+    <token name="T_INLINE_HTML">                        &lt;label for="grade"&gt;Grade&lt;/label&gt;</token>
+  </line>
+  <line no="594">
+    <token name="T_INLINE_HTML">                        &lt;input name="grade" type="text" class="form-control" id="grade" &gt;</token>
+  </line>
+  <line no="595">
+    <token name="T_INLINE_HTML">                      &lt;/div&gt;</token>
+  </line>
+  <line no="596"/>
+  <line no="597">
+    <token name="T_INLINE_HTML">                      &lt;!-- Time Period --&gt;</token>
+  </line>
+  <line no="598">
+    <token name="T_INLINE_HTML">                      &lt;label for="school-year-started"&gt;Dates Attended&lt;/label&gt;</token>
+  </line>
+  <line no="599">
+    <token name="T_INLINE_HTML">                      &lt;div class="form-group form-inline "&gt;</token>
+  </line>
+  <line no="600">
+    <token name="T_INLINE_HTML">                        &lt;select name="school-year-started" type="month" class="form-control" id="school-year-started" &gt; </token>
+  </line>
+  <line no="601">
+    <token name="T_INLINE_HTML">                          &lt;option value="" selected&gt;-&lt;/option&gt;</token>
+  </line>
+  <line no="602">
+    <token name="T_INLINE_HTML">                          &lt;option value="2015"&gt;2015&lt;/option&gt;&lt;option value="2014"&gt;2014&lt;/option&gt;&lt;option value="2013"&gt;2013&lt;/option&gt;&lt;option value="2012"&gt;2012&lt;/option&gt;&lt;option value="2011"&gt;2011&lt;/option&gt;&lt;option value="2010"&gt;2010&lt;/option&gt;&lt;option value="2009"&gt;2009&lt;/option&gt;&lt;option value="2008"&gt;2008&lt;/option&gt;&lt;option value="2007"&gt;2007&lt;/option&gt;&lt;option value="2006"&gt;2006&lt;/option&gt;&lt;option value="2005"&gt;2005&lt;/option&gt;&lt;option value="2004"&gt;2004&lt;/option&gt;&lt;option value="2003"&gt;2003&lt;/option&gt;&lt;option value="2002"&gt;2002&lt;/option&gt;&lt;option value="2001"&gt;2001&lt;/option&gt;&lt;option value="2000"&gt;2000&lt;/option&gt;</token>
+  </line>
+  <line no="603">
+    <token name="T_INLINE_HTML">                          &lt;option value="1999"&gt;1999&lt;/option&gt;&lt;option value="1998"&gt;1998&lt;/option&gt;&lt;option value="1997"&gt;1997&lt;/option&gt;&lt;option value="1996"&gt;1996&lt;/option&gt;&lt;option value="1995"&gt;1995&lt;/option&gt;&lt;option value="1994"&gt;1994&lt;/option&gt;&lt;option value="1993"&gt;1993&lt;/option&gt;&lt;option value="1992"&gt;1992&lt;/option&gt;&lt;option value="1991"&gt;1991&lt;/option&gt;&lt;option value="1990"&gt;1990&lt;/option&gt;</token>
+  </line>
+  <line no="604">
+    <token name="T_INLINE_HTML">                          &lt;option value="1989"&gt;1989&lt;/option&gt;&lt;option value="1988"&gt;1988&lt;/option&gt;&lt;option value="1987"&gt;1987&lt;/option&gt;&lt;option value="1986"&gt;1986&lt;/option&gt;&lt;option value="1985"&gt;1985&lt;/option&gt;&lt;option value="1984"&gt;1984&lt;/option&gt;&lt;option value="1983"&gt;1983&lt;/option&gt;&lt;option value="1982"&gt;1982&lt;/option&gt;&lt;option value="1981"&gt;1981&lt;/option&gt;&lt;option value="1980"&gt;1980&lt;/option&gt;</token>
+  </line>
+  <line no="605">
+    <token name="T_INLINE_HTML">                          &lt;option value="1979"&gt;1979&lt;/option&gt;&lt;option value="1978"&gt;1978&lt;/option&gt;&lt;option value="1977"&gt;1977&lt;/option&gt;&lt;option value="1976"&gt;1976&lt;/option&gt;&lt;option value="1975"&gt;1975&lt;/option&gt;&lt;option value="1974"&gt;1974&lt;/option&gt;&lt;option value="1973"&gt;1973&lt;/option&gt;&lt;option value="1972"&gt;1972&lt;/option&gt;&lt;option value="1971"&gt;1971&lt;/option&gt;&lt;option value="1970"&gt;1970&lt;/option&gt;</token>
+  </line>
+  <line no="606">
+    <token name="T_INLINE_HTML">                          &lt;option value="1969"&gt;1969&lt;/option&gt;&lt;option value="1968"&gt;1968&lt;/option&gt;&lt;option value="1967"&gt;1967&lt;/option&gt;&lt;option value="1966"&gt;1966&lt;/option&gt;&lt;option value="1965"&gt;1965&lt;/option&gt;&lt;option value="1964"&gt;1964&lt;/option&gt;&lt;option value="1963"&gt;1963&lt;/option&gt;&lt;option value="1962"&gt;1962&lt;/option&gt;&lt;option value="1961"&gt;1961&lt;/option&gt;&lt;option value="1960"&gt;1960&lt;/option&gt;</token>
+  </line>
+  <line no="607">
+    <token name="T_INLINE_HTML">                          &lt;option value="1959"&gt;1959&lt;/option&gt;&lt;option value="1958"&gt;1958&lt;/option&gt;&lt;option value="1957"&gt;1957&lt;/option&gt;&lt;option value="1956"&gt;1956&lt;/option&gt;&lt;option value="1955"&gt;1955&lt;/option&gt;&lt;option value="1954"&gt;1954&lt;/option&gt;&lt;option value="1953"&gt;1953&lt;/option&gt;&lt;option value="1952"&gt;1952&lt;/option&gt;&lt;option value="1951"&gt;1951&lt;/option&gt;</token>
+  </line>
+  <line no="608">
+    <token name="T_INLINE_HTML">                        &lt;/select&gt;</token>
+  </line>
+  <line no="609">
+    <token name="T_INLINE_HTML">                        &amp;#8213 </token>
+  </line>
+  <line no="610">
+    <token name="T_INLINE_HTML">                        &lt;select name="school-year-ended" type="month" class="form-control" id="school-year-ended" &gt; </token>
+  </line>
+  <line no="611">
+    <token name="T_INLINE_HTML">                          &lt;option value="" selected&gt;-&lt;/option&gt;</token>
+  </line>
+  <line no="612">
+    <token name="T_INLINE_HTML">                          &lt;option value="2022"&gt;2022&lt;/option&gt;&lt;option value="2021"&gt;2021&lt;/option&gt;&lt;option value="2020"&gt;2020&lt;/option&gt;&lt;option value="2019"&gt;2019&lt;/option&gt;&lt;option value="2018"&gt;2018&lt;/option&gt;&lt;option value="2017"&gt;2017&lt;/option&gt;&lt;option value="2016"&gt;2016&lt;/option&gt;</token>
+  </line>
+  <line no="613">
+    <token name="T_INLINE_HTML">                          &lt;option value="2015"&gt;2015&lt;/option&gt;&lt;option value="2014"&gt;2014&lt;/option&gt;&lt;option value="2013"&gt;2013&lt;/option&gt;&lt;option value="2012"&gt;2012&lt;/option&gt;&lt;option value="2011"&gt;2011&lt;/option&gt;&lt;option value="2010"&gt;2010&lt;/option&gt;&lt;option value="2009"&gt;2009&lt;/option&gt;&lt;option value="2008"&gt;2008&lt;/option&gt;&lt;option value="2007"&gt;2007&lt;/option&gt;&lt;option value="2006"&gt;2006&lt;/option&gt;&lt;option value="2005"&gt;2005&lt;/option&gt;&lt;option value="2004"&gt;2004&lt;/option&gt;&lt;option value="2003"&gt;2003&lt;/option&gt;&lt;option value="2002"&gt;2002&lt;/option&gt;&lt;option value="2001"&gt;2001&lt;/option&gt;&lt;option value="2000"&gt;2000&lt;/option&gt;</token>
+  </line>
+  <line no="614">
+    <token name="T_INLINE_HTML">                          &lt;option value="1999"&gt;1999&lt;/option&gt;&lt;option value="1998"&gt;1998&lt;/option&gt;&lt;option value="1997"&gt;1997&lt;/option&gt;&lt;option value="1996"&gt;1996&lt;/option&gt;&lt;option value="1995"&gt;1995&lt;/option&gt;&lt;option value="1994"&gt;1994&lt;/option&gt;&lt;option value="1993"&gt;1993&lt;/option&gt;&lt;option value="1992"&gt;1992&lt;/option&gt;&lt;option value="1991"&gt;1991&lt;/option&gt;&lt;option value="1990"&gt;1990&lt;/option&gt;</token>
+  </line>
+  <line no="615">
+    <token name="T_INLINE_HTML">                          &lt;option value="1989"&gt;1989&lt;/option&gt;&lt;option value="1988"&gt;1988&lt;/option&gt;&lt;option value="1987"&gt;1987&lt;/option&gt;&lt;option value="1986"&gt;1986&lt;/option&gt;&lt;option value="1985"&gt;1985&lt;/option&gt;&lt;option value="1984"&gt;1984&lt;/option&gt;&lt;option value="1983"&gt;1983&lt;/option&gt;&lt;option value="1982"&gt;1982&lt;/option&gt;&lt;option value="1981"&gt;1981&lt;/option&gt;&lt;option value="1980"&gt;1980&lt;/option&gt;</token>
+  </line>
+  <line no="616">
+    <token name="T_INLINE_HTML">                          &lt;option value="1979"&gt;1979&lt;/option&gt;&lt;option value="1978"&gt;1978&lt;/option&gt;&lt;option value="1977"&gt;1977&lt;/option&gt;&lt;option value="1976"&gt;1976&lt;/option&gt;&lt;option value="1975"&gt;1975&lt;/option&gt;&lt;option value="1974"&gt;1974&lt;/option&gt;&lt;option value="1973"&gt;1973&lt;/option&gt;&lt;option value="1972"&gt;1972&lt;/option&gt;&lt;option value="1971"&gt;1971&lt;/option&gt;&lt;option value="1970"&gt;1970&lt;/option&gt;</token>
+  </line>
+  <line no="617">
+    <token name="T_INLINE_HTML">                          &lt;option value="1969"&gt;1969&lt;/option&gt;&lt;option value="1968"&gt;1968&lt;/option&gt;&lt;option value="1967"&gt;1967&lt;/option&gt;&lt;option value="1966"&gt;1966&lt;/option&gt;&lt;option value="1965"&gt;1965&lt;/option&gt;&lt;option value="1964"&gt;1964&lt;/option&gt;&lt;option value="1963"&gt;1963&lt;/option&gt;&lt;option value="1962"&gt;1962&lt;/option&gt;&lt;option value="1961"&gt;1961&lt;/option&gt;&lt;option value="1960"&gt;1960&lt;/option&gt;</token>
+  </line>
+  <line no="618">
+    <token name="T_INLINE_HTML">                          &lt;option value="1959"&gt;1959&lt;/option&gt;&lt;option value="1958"&gt;1958&lt;/option&gt;&lt;option value="1957"&gt;1957&lt;/option&gt;&lt;option value="1956"&gt;1956&lt;/option&gt;&lt;option value="1955"&gt;1955&lt;/option&gt;&lt;option value="1954"&gt;1954&lt;/option&gt;&lt;option value="1953"&gt;1953&lt;/option&gt;&lt;option value="1952"&gt;1952&lt;/option&gt;&lt;option value="1951"&gt;1951&lt;/option&gt;</token>
+  </line>
+  <line no="619">
+    <token name="T_INLINE_HTML">                        &lt;/select&gt;</token>
+  </line>
+  <line no="620">
+    <token name="T_INLINE_HTML">                        &lt;span&gt;Or expected graduation year&lt;/span&gt;</token>
+  </line>
+  <line no="621">
+    <token name="T_INLINE_HTML">                      &lt;/div&gt;</token>
+  </line>
+  <line no="622"/>
+  <line no="623">
+    <token name="T_INLINE_HTML">                      &lt;!-- Activities and Societies --&gt;</token>
+  </line>
+  <line no="624">
+    <token name="T_INLINE_HTML">                      &lt;label for="activities"&gt;Activities and Societies&lt;/label&gt;</token>
+  </line>
+  <line no="625">
+    <token name="T_INLINE_HTML">                      &lt;textarea name="activities" id="activities" class="form-control" rows="3"&gt;&lt;/textarea&gt; &lt;br&gt;</token>
+  </line>
+  <line no="626"/>
+  <line no="627">
+    <token name="T_INLINE_HTML">                      &lt;!-- Description --&gt;</token>
+  </line>
+  <line no="628">
+    <token name="T_INLINE_HTML">                      &lt;label for="education-description"&gt;Description&lt;/label&gt;</token>
+  </line>
+  <line no="629">
+    <token name="T_INLINE_HTML">                      &lt;textarea name="education-description" id="education-description" class="form-control" rows="4"&gt;&lt;/textarea&gt; &lt;br&gt;</token>
+  </line>
+  <line no="630"/>
+  <line no="631">
+    <token name="T_INLINE_HTML">                      &lt;!-- file --&gt;</token>
+  </line>
+  <line no="632">
+    <token name="T_INLINE_HTML">                      &lt;!-- &lt;label for="school-description"&gt;Description&lt;/label&gt;</token>
+  </line>
+  <line no="633">
+    <token name="T_INLINE_HTML">                      &lt;input name="school-description" id="school-description" class="form-control" rows="5"&gt;&lt;/input&gt; &lt;br&gt;&lt;br&gt; --&gt;</token>
+  </line>
+  <line no="634">
+    <token name="T_INLINE_HTML">                      &lt;button type="submit" class="btn btn-primary save-btn"&gt;Save&lt;/button&gt;</token>
+  </line>
+  <line no="635">
+    <token name="T_INLINE_HTML">                      &lt;button type="button" class="btn btn-default cancel-btn"&gt;Cancel&lt;/button&gt;</token>
+  </line>
+  <line no="636">
+    <token name="T_INLINE_HTML">                      &lt;a class="remove-entry-link" href="#" &gt;Remove this entry.&lt;/a&gt;</token>
+  </line>
+  <line no="637">
+    <token name="T_INLINE_HTML">                    &lt;/form&gt;  </token>
+  </line>
+  <line no="638">
+    <token name="T_INLINE_HTML">                  &lt;/div&gt;</token>
+  </line>
+  <line no="639">
+    <token name="T_INLINE_HTML">                  &lt;div id="user-education" class="normal-view"&gt;</token>
+  </line>
+  <line no="640">
+    <token name="T_INLINE_HTML">                    &lt;!-- &lt;div class="editable" for="education-edit" index="0"&gt;</token>
+  </line>
+  <line no="641">
+    <token name="T_INLINE_HTML">                      &lt;span class="glyphicon glyphicon-pencil" aria-hidden="true"&gt;&lt;/span&gt;</token>
+  </line>
+  <line no="642">
+    <token name="T_INLINE_HTML">                      &lt;h4&gt;School Name&lt;/h4&gt;</token>
+  </line>
+  <line no="643">
+    <token name="T_INLINE_HTML">                      &lt;h5&gt;Degree and &lt;span&gt;Grade&lt;/span&gt;&lt;/h5&gt;</token>
+  </line>
+  <line no="644">
+    <token name="T_INLINE_HTML">                      &lt;h5&gt;Dates Attended&lt;/h5&gt;</token>
+  </line>
+  <line no="645">
+    <token name="T_INLINE_HTML">                      &lt;h5&gt;Field of Study&lt;/h5&gt;</token>
+  </line>
+  <line no="646">
+    <token name="T_INLINE_HTML">                     </token>
+  </line>
+  <line no="647">
+    <token name="T_INLINE_HTML">                      &lt;p&gt;Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.&lt;/p&gt;</token>
+  </line>
+  <line no="648">
+    <token name="T_INLINE_HTML">                      &lt;h5 style="color:#888";&gt;Activities and Societies:&lt;/h5&gt;</token>
+  </line>
+  <line no="649">
+    <token name="T_INLINE_HTML">                      &lt;p&gt;some society&lt;/p&gt;</token>
+  </line>
+  <line no="650">
+    <token name="T_INLINE_HTML">                    &lt;/div&gt; --&gt;</token>
+  </line>
+  <line no="651">
+    <token name="T_INLINE_HTML">                  &lt;/div&gt;</token>
+  </line>
+  <line no="652"/>
+  <line no="653">
+    <token name="T_INLINE_HTML">              &lt;/div&gt;</token>
+  </line>
+  <line no="654">
+    <token name="T_INLINE_HTML">              &lt;div class="add-star"&gt;</token>
+  </line>
+  <line no="655">
+    <token name="T_INLINE_HTML">                &lt;button class="add-btn" for="education-edit"&gt;Add Education&lt;/button&gt;</token>
+  </line>
+  <line no="656">
+    <token name="T_INLINE_HTML">              &lt;/div&gt;</token>
+  </line>
+  <line no="657">
+    <token name="T_INLINE_HTML">          &lt;/div&gt;</token>
+  </line>
+  <line no="658">
+    <token name="T_INLINE_HTML">      &lt;/div&gt;</token>
+  </line>
+  <line no="659"/>
+  <line no="660"/>
+  <line no="661">
+    <token name="T_INLINE_HTML">    &lt;/div&gt;&lt;!-- /main-container --&gt;</token>
+  </line>
+  <line no="662"/>
+  <line no="663">
+    <token name="T_INLINE_HTML">    &lt;!-- Custom styles for this template --&gt;</token>
+  </line>
+  <line no="664">
+    <token name="T_INLINE_HTML">    &lt;link href="css/profile-user-POV.css" rel="stylesheet"&gt;</token>
+  </line>
+  <line no="665">
+    <token name="T_INLINE_HTML">    &lt;!-- Custom modal handler --&gt;</token>
+  </line>
+  <line no="666">
+    <token name="T_INLINE_HTML">    &lt;script src="../js/bootbox.min.js"&gt;&lt;/script&gt;</token>
+  </line>
+  <line no="667">
+    <token name="T_INLINE_HTML">    &lt;!-- Sortable script --&gt;</token>
+  </line>
+  <line no="668">
+    <token name="T_INLINE_HTML">    &lt;script src="../js/jquery.sortable.min.js"&gt;&lt;/script&gt;</token>
+  </line>
+  <line no="669">
+    <token name="T_INLINE_HTML">    &lt;!-- Custom Script --&gt;</token>
+  </line>
+  <line no="670">
+    <token name="T_INLINE_HTML">    &lt;script src="js/User.js"&gt;&lt;/script&gt;</token>
+  </line>
+  <line no="671">
+    <token name="T_INLINE_HTML">    &lt;script src="js/profile-user-POV.js"&gt;&lt;/script&gt;</token>
+  </line>
+  <line no="672">
+    <token name="T_INLINE_HTML">    &lt;script src="../lib/js/FileUpload.js"&gt;&lt;/script&gt;</token>
+  </line>
+  <line no="673">
+    <token name="T_INLINE_HTML">    &lt;script src="js/ProfileImageUploader.js"&gt;&lt;/script&gt;</token>
+  </line>
+  <line no="674">
+    <token name="T_INLINE_HTML">  &lt;/body&gt;</token>
+  </line>
+  <line no="675"/>
+  <line no="676"/>
+  <line no="677"/>
+  <line no="678">
+    <token name="T_INLINE_HTML">&lt;/html&gt;</token>
+  </line>
+  <line no="679"/>
+</source>

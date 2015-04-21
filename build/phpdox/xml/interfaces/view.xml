@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface xmlns="http://xml.phpdox.net/src" full="view" namespace="" name="view" abstract="false" final="false" start="8" end="10">
+  <file path="/var/www/html/ProConnect/lib/php" file="interfaces.php" realpath="/var/www/html/ProConnect/lib/php/interfaces.php" size="163" time="2015-04-09T11:38:33-07:00" unixtime="1428604713" sha1="be04c89561175fae152776b78e4edbb2154d2e44" relative="lib/php/interfaces.php"/>
+  <method name="getView" start="9" end="9" abstract="false" final="false" static="false" visibility="public"/>
+  <implementor full="UserCard_view" namespace="" name="UserCard_view"/>
+  <implementor full="Connections_view" namespace="" name="Connections_view"/>
+  <implementor full="SearchNewConnection_view" namespace="" name="SearchNewConnection_view"/>
+  <implementor full="Project_View" namespace="" name="Project_View"/>
+  <implementor full="Profile_View" namespace="" name="Profile_View"/>
+  <implementor full="Education_View" namespace="" name="Education_View"/>
+  <implementor full="Experience_View" namespace="" name="Experience_View"/>
+  <implementor full="Feed_view" namespace="" name="Feed_view"/>
+  <implementor full="FeedList_view" namespace="" name="FeedList_view"/>
+</interface>

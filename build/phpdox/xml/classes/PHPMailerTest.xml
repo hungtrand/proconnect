@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="PHPMailerTest" namespace="" name="PHPMailerTest" abstract="false" final="false" start="22" end="1448">
+  <file path="/var/www/html/ProConnect/lib/PHPMailer/test" file="phpmailerTest.php" realpath="/var/www/html/ProConnect/lib/PHPMailer/test/phpmailerTest.php" size="54481" time="2015-02-27T01:22:45-08:00" unixtime="1425028965" sha1="660245d5fea7e9717c2304571e5d4121aacf8cbc" relative="lib/PHPMailer/test/phpmailerTest.php"/>
+  <docblock>
+    <description compact="PHPMailer - PHP email transport unit test class Performs authentication tests"/>
+  </docblock>
+  <extends full="PHPUnit_Framework_TestCase" namespace="" name="PHPUnit_Framework_TestCase"/>
+  <member name="Mail" type="{unknown}" visibility="public" line="29">
+    <docblock>
+      <description compact="Holds the default phpmailer instance."/>
+      <private/>
+      <type value="PHPMailer"/>
+    </docblock>
+  </member>
+  <member name="Host" type="string" default="''" visibility="public" line="36">
+    <docblock>
+      <description compact="Holds the SMTP mail host."/>
+      <public/>
+      <type value="string"/>
+    </docblock>
+  </member>
+  <member name="ChangeLog" type="array" visibility="public" line="43">
+    <docblock>
+      <description compact="Holds the change log."/>
+      <private/>
+      <type value="string[]"/>
+    </docblock>
+  </member>
+  <member name="NoteLog" type="array" visibility="public" line="50">
+    <docblock>
+      <description compact="Holds the note log."/>
+      <private/>
+      <type value="string[]"/>
+    </docblock>
+  </member>
+  <member name="INCLUDE_DIR" type="string" default="'../'" visibility="public" line="56">
+    <docblock>
+      <description compact="Default include path"/>
+      <type value="string"/>
+    </docblock>
+  </member>
+  <member name="pids" type="array" visibility="private" line="63">
+    <docblock>
+      <description compact="PIDs of any processes we need to kill"/>
+      <type value="array"/>
+      <access value="private"/>
+    </docblock>
+  </member>
+  <method name="setUp" start="68" end="118" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Run before each test is started."/>
+    </docblock>
+    <inline>
+      <comment value="Full debug output" line="74"/>
+    </inline>
+  </method>
+  <method name="tearDown" start="123" end="134" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Run after each test is completed."/>
+    </docblock>
+    <inline>
+      <comment value="Clean global variables" line="125"/>
+    </inline>
+  </method>
+  <method name="buildBody" start="143" end="212" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Build the body of the message in the appropriate format."/>
+      <private/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+    <inline>
+      <comment value="Determine line endings for message" line="147"/>
+      <comment value="If attachments then create an attachment list" line="172"/>
+      <comment value="If there are changes then list them" line="185"/>
+      <comment value="If there are notes then list them" line="198"/>
+      <comment value="Re-attach the original body" line="210"/>
+    </inline>
+  </method>
+  <method name="checkChanges" start="219" end="248" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Check which default settings have been changed for the report."/>
+      <private/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="addChange" start="257" end="260" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add a changelog entry."/>
+      <access value="private"/>
+      <param type="string" variable="$sName"/>
+      <param type="string" variable="$sNewValue"/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="sName" byreference="false" type="{unknown}"/>
+    <parameter name="sNewValue" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="addNote" start="268" end="271" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Adds a simple note to the message."/>
+      <public/>
+      <param type="string" variable="$sValue"/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="sValue" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setAddress" start="281" end="292" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Adds all of the addresses"/>
+      <access value="public"/>
+      <param type="string" variable="$sAddress"/>
+      <param type="string" variable="$sName"/>
+      <param type="string" variable="$sType"/>
+      <return type="boolean"/>
+    </docblock>
+    <parameter name="sAddress" byreference="false" type="{unknown}"/>
+    <parameter name="sName" byreference="false" type="string" default="''"/>
+    <parameter name="sType" byreference="false" type="string" default="'to'"/>
+  </method>
+  <method name="testBootstrap" start="298" end="304" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Check that we have loaded default test params.">Pretty much everything will fail due to unset recipient if this is not done.</description>
+    </docblock>
+  </method>
+  <method name="testAuthCRAMMD5" start="310" end="326" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Test CRAM-MD5 authentication Needs a connection to a server that supports this auth mechanism, so commented out by default"/>
+    </docblock>
+  </method>
+  <method name="testValidate" start="333" end="646" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Test email address validation Test addresses obtained from http://isemail.info Some failing cases commented out that are apparently up for debate!"/>
+    </docblock>
+    <inline>
+      <comment value="For coverage" line="635"/>
+    </inline>
+  </method>
+  <method name="testWordWrap" start="651" end="668" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Try a plain message."/>
+    </docblock>
+  </method>
+  <method name="testLowPriority" start="673" end="683" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Try a plain message."/>
+    </docblock>
+  </method>
+  <method name="testMultiplePlainFileAttachment" start="688" end="705" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Simple plain file attachment test."/>
+    </docblock>
+  </method>
+  <method name="testPlainStringAttachment" start="710" end="723" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Simple plain string attachment test."/>
+    </docblock>
+  </method>
+  <method name="testQuotedPrintable" start="728" end="749" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Plain quoted-printable message."/>
+    </docblock>
+    <inline>
+      <comment value="Check that a quoted printable encode and decode results in the same as went in" line="737"/>
+      <comment value="Use this file as test content" line="738"/>
+    </inline>
+  </method>
+  <method name="testHtml" start="754" end="775" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Try a plain message."/>
+    </docblock>
+  </method>
+  <method name="testMsgHTML" start="780" end="803" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Test simple message builder and html2text converters"/>
+    </docblock>
+    <inline>
+      <comment value="Uses internal HTML to text conversion" line="786"/>
+      <comment value="Again, using a custom HTML to text converter" line="794"/>
+    </inline>
+  </method>
+  <method name="testHTMLAttachment" start="808" end="824" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Simple HTML and attachment test"/>
+    </docblock>
+    <inline>
+      <comment value="Make sure that trying to attach a nonexistent file fails" line="819"/>
+    </inline>
+  </method>
+  <method name="testEmbeddedImage" start="829" end="853" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="An embedded attachment test."/>
+    </docblock>
+    <inline>
+      <comment value="For code coverage" line="850"/>
+      <comment value="Non-existent file" line="851"/>
+    </inline>
+  </method>
+  <method name="testMultiEmbeddedImage" start="858" end="884" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="An embedded attachment test."/>
+    </docblock>
+  </method>
+  <method name="testAltBody" start="889" end="901" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Simple multipart/alternative test."/>
+    </docblock>
+  </method>
+  <method name="testAltBodyAttachment" start="906" end="925" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Simple HTML and attachment test"/>
+    </docblock>
+  </method>
+  <method name="testIcal" start="930" end="993" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="iCal event test"/>
+    </docblock>
+    <inline>
+      <comment value="Standalone ICS tests" line="932"/>
+      <comment value="Need to test generated output but PHPUnit isn't playing nice" line="960"/>
+      <comment value="$rendered = $ICS-&gt;render();" line="961"/>
+      <comment value="Now test sending an ICS" line="963"/>
+    </inline>
+  </method>
+  <method name="testMultipleSend" start="998" end="1010" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Test sending multiple messages with separate connections"/>
+    </docblock>
+  </method>
+  <method name="testSendmailSend" start="1015" end="1024" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Test sending using SendMail"/>
+    </docblock>
+  </method>
+  <method name="testQmailSend" start="1029" end="1043" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Test sending using Qmail"/>
+    </docblock>
+    <inline>
+      <comment value="Only run if we have qmail installed" line="1031"/>
+    </inline>
+  </method>
+  <method name="testMailSend" start="1048" end="1060" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Test sending using PHP mail() function"/>
+    </docblock>
+    <inline>
+      <comment value="No path in sendmail_path" line="1051"/>
+    </inline>
+  </method>
+  <method name="testEmptyBody" start="1065" end="1075" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Test sending an empty body"/>
+    </docblock>
+  </method>
+  <method name="testSmtpKeepAlive" start="1080" end="1093" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Test keepalive (sending multiple messages in a single connection)"/>
+    </docblock>
+  </method>
+  <method name="testDenialOfServiceAttack" start="1099" end="1106" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Tests this denial of service attack:    http://www.cybsec.com/vuln/PHPMailer-DOS.pdf"/>
+    </docblock>
+  </method>
+  <method name="testDenialOfServiceAttack2" start="1113" end="1119" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Tests this denial of service attack:    https://sourceforge.net/p/phpmailer/bugs/383/ According to the ticket, this should get stuck in a loop, though I can't make it happen."/>
+    </docblock>
+    <inline>
+      <comment value="Encoding name longer than 68 chars" line="1115"/>
+      <comment value="Call wrapText with a zero length value" line="1117"/>
+    </inline>
+  </method>
+  <method name="testError" start="1124" end="1135" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Test error handling"/>
+    </docblock>
+    <inline>
+      <comment value="no addresses should cause an error" line="1128"/>
+    </inline>
+  </method>
+  <method name="testAddressing" start="1140" end="1166" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Test addressing"/>
+    </docblock>
+  </method>
+  <method name="testAddressEscaping" start="1171" end="1181" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Test address escaping"/>
+    </docblock>
+  </method>
+  <method name="testBCCAddressing" start="1186" end="1193" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Test BCC-only addressing"/>
+    </docblock>
+  </method>
+  <method name="testEncodings" start="1198" end="1228" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Encoding and charset tests"/>
+    </docblock>
+    <inline>
+      <comment value="Strings containing '=' are a special case" line="1222"/>
+    </inline>
+  </method>
+  <method name="testBase64" start="1230" end="1236" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="testSigning" start="1240" end="1280" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="S/MIME Signing tests"/>
+    </docblock>
+    <inline>
+      <comment value="Make a new key pair" line="1259"/>
+      <comment value="Create a certificate signing request" line="1261"/>
+      <comment value="Create a self-signed cert" line="1263"/>
+      <comment value="Save the cert" line="1265"/>
+      <comment value="Save the key" line="1268"/>
+    </inline>
+  </method>
+  <method name="testDKIM" start="1285" end="1307" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="DKIM Signing tests"/>
+    </docblock>
+    <inline>
+      <comment value="Make a new key pair" line="1291"/>
+      <comment value="(2048 bits is the recommended minimum key length -" line="1292"/>
+      <comment value="gmail won't accept less than 1024 bits)" line="1293"/>
+      <comment value="key is not encrypted" line="1304"/>
+    </inline>
+  </method>
+  <method name="testLineBreaks" start="1312" end="1323" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Test line break reformatting"/>
+    </docblock>
+  </method>
+  <method name="testMessageID" start="1328" end="1337" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Test setting and retrieving message ID"/>
+    </docblock>
+  </method>
+  <method name="testMiscellaneous" start="1342" end="1379" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Miscellaneous calls to improve test coverage and some small tests"/>
+    </docblock>
+    <inline>
+      <comment value="Test pathinfo" line="1360"/>
+    </inline>
+  </method>
+  <method name="testPopBeforeSmtpGood" start="1385" end="1400" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Use a fake POP3 server to test POP-before-SMTP auth With a known-good login"/>
+    </docblock>
+    <inline>
+      <comment value="Start a fake POP server" line="1387"/>
+      <comment value="Test a known-good login" line="1392"/>
+      <comment value="Kill the fake server" line="1397"/>
+    </inline>
+  </method>
+  <method name="testPopBeforeSmtpBad" start="1406" end="1421" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Use a fake POP3 server to test POP-before-SMTP auth With a known-bad login"/>
+    </docblock>
+    <inline>
+      <comment value="Start a fake POP server on a different port" line="1408"/>
+      <comment value="so we don't inadvertently connect to the previous instance" line="1409"/>
+      <comment value="Test a known-bad login" line="1414"/>
+    </inline>
+  </method>
+  <method name="testSmtpConnect" start="1427" end="1447" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Test SMTP host connections.">This test can take a long time, so run it last</description>
+    </docblock>
+    <inline>
+      <comment value="Show connection-level errors" line="1429"/>
+      <comment value="Need to pick a harmless option so as not cause problems of its own! socket:bind doesn't work with Travis-CI" line="1442"/>
+    </inline>
+  </method>
+</class>

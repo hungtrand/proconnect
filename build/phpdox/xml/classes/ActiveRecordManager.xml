@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="ActiveRecordManager" namespace="" name="ActiveRecordManager" abstract="true" final="false" start="11" end="112">
+  <file path="/var/www/html/ProConnect/lib/php/classes" file="ActiveRecordManager.php" realpath="/var/www/html/ProConnect/lib/php/classes/ActiveRecordManager.php" size="2272" time="2015-04-18T23:20:40-07:00" unixtime="1429424440" sha1="8b2fbde6af251c4f42b122994fd18bcd57926e2d" relative="lib/php/classes/ActiveRecordManager.php"/>
+  <docblock>
+    <description compact="ActiveRecordManager - abstract class. Manage to get data from sql database."/>
+    <params value=": $TableName, $PrimaryKey">Resposiblities: get the data from database by one ID. or get all the data , or get the very top data.</params>
+  </docblock>
+  <implements full="manager" namespace="" name="manager"/>
+  <member name="User" type="{unknown}" visibility="private" line="12"/>
+  <member name="db" type="{unknown}" visibility="private" line="13"/>
+  <constructor name="__construct" start="15" end="18" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="TableName" byreference="false" type="{unknown}"/>
+    <parameter name="PrimaryKey" byreference="false" type="{unknown}"/>
+  </constructor>
+  <method name="getOne" start="20" end="48" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getAll" start="50" end="78" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getTop" start="80" end="111" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="num" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="$stmt-&gt;bindParam(2, $num);" line="92"/>
+    </inline>
+  </method>
+  <interface full="manager" namespace="" name="manager">
+    <method name="getOne" start="3" end="3" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getAll" start="4" end="4" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getTop" start="5" end="5" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="num" byreference="false" type="{unknown}"/>
+  </method>
+  </interface>
+</class>

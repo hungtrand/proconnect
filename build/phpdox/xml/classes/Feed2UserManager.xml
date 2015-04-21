@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Feed2UserManager" namespace="" name="Feed2UserManager" abstract="false" final="false" start="13" end="83">
+  <file path="/var/www/html/ProConnect/lib/php/classes" file="Feed2UserManager.php" realpath="/var/www/html/ProConnect/lib/php/classes/Feed2UserManager.php" size="2076" time="2015-04-18T23:20:40-07:00" unixtime="1429424440" sha1="129b4b5694179355de267ae682bb7772050076ee" relative="lib/php/classes/Feed2UserManager.php"/>
+  <docblock>
+    <description compact="Feed2UserManager - performs the users' feed class which helps other class to be able to access user's feed data through this manager class.">@params: $User
+Responsibilities: load the user's feed data or get the data from database.</description>
+  </docblock>
+  <extends full="RecordSet" namespace="" name="RecordSet"/>
+  <member name="PrimaryKey" type="{unknown}" visibility="protected" line="14"/>
+  <member name="TableName" type="{unknown}" visibility="protected" line="15"/>
+  <member name="Columns" type="{unknown}" visibility="protected" line="16"/>
+  <member name="User" type="{unknown}" visibility="protected" line="18"/>
+  <member name="data" type="{unknown}" visibility="protected" line="19"/>
+  <member name="err" type="{unknown}" visibility="public" line="21"/>
+  <constructor name="__construct" start="23" end="32" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="User" byreference="false" type="{unknown}"/>
+  </constructor>
+  <method name="getColumns" start="35" end="37" abstract="false" final="false" static="false" visibility="protected"/>
+  <method name="load" start="39" end="44" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="User" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="default: load page 1 on initialization" line="41"/>
+    </inline>
+  </method>
+  <method name="loadPage" start="46" end="61" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="page" byreference="false" type="{unknown}"/>
+    <parameter name="numRows" byreference="false" type="{unknown}"/>
+    <parameter name="orderby" byreference="false" type="string" default="&quot;DATECREATED DESC&quot;"/>
+  </method>
+  <method name="getData" start="63" end="67" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getAll" start="69" end="81" abstract="false" final="false" static="false" visibility="public"/>
+  <parent full="RecordSet" namespace="" name="RecordSet">
+    <member name="db" type="{unknown}" visibility="protected" line="3"/>
+    <member name="err" type="{unknown}" visibility="public" line="5"/>
+    <constructor name="__construct" start="7" end="10" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getData" start="12" end="12" abstract="true" final="false" static="false" visibility="public"/>
+    <method name="getColumns" start="13" end="13" abstract="true" final="false" static="false" visibility="protected"/>
+    <method name="setLimit" start="15" end="21" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="intLimit" byreference="false" type="{unknown}"/>
+  </method>
+    <method name="fetch" start="23" end="55" abstract="false" final="false" static="false" visibility="protected"/>
+    <method name="fetchBy" start="57" end="105" abstract="false" final="false" static="false" visibility="protected">
+    <parameter name="params" byreference="false" type="{unknown}"/>
+    <parameter name="Logic" byreference="false" type="string" default="&quot;AND&quot;"/>
+  </method>
+    <method name="fetchCustom" start="107" end="141" abstract="false" final="false" static="false" visibility="protected">
+    <parameter name="cond" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="false" type="{unknown}" default="null"/>
+    <inline>
+      <comment value="echo $sql;" line="123"/>
+    </inline>
+  </method>
+  </parent>
+</class>
