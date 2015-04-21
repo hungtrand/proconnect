@@ -16,10 +16,9 @@ if (isset($_POST['Username']) && isset($_POST['Password'])) {
 	$login = $_POST['Username'];
 	$password = $_POST['Password'];
 	$accAdm = new AccountAdmin();
-	$acc = $accAdm->getAccount($login, $password);
-
-	if ($acc) {
-		$uid = $acc->getUserID(); echo " you should get id back : ".$uid;
+	
+	if ($acc = $accAdm->getAccount($login, $password)) {
+		$uid = $acc->getUserID();
 	}
 } else {
 	session_start();
