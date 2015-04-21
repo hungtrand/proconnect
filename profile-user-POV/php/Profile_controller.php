@@ -16,10 +16,9 @@ if (isset($_POST['Username']) && isset($_POST['Password'])) {
 	$login = $_POST['Username'];
 	$password = $_POST['Password'];
 	$accAdm = new AccountAdmin();
-	
-	if ($acc = $accAdm->getAccount($login, $password)) {
-		$uid = $acc->getUserID();
-	}
+	$acc = $accAdm->getAccount($login, $password);
+
+	$uid = $acc->getUserID();
 } else {
 	session_start();
 	$home = 'Location: ../../';
