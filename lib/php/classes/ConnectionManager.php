@@ -38,6 +38,10 @@ class ConnectionManager extends RecordSet {
 		return $this->Columns;
 	}
 
+	protected function getPrimaryKey() {
+		return $this->PrimaryKey;
+	}
+
 	public function load($User) {
 		$params = ['INITUSERID'=>$User->getID(), 'TARGETUSERID'=>$User->getID()];
 		if (!$this->data = $this->fetchBy($params, 'OR')) return false;
@@ -68,6 +72,23 @@ class ConnectionManager extends RecordSet {
 		$cond.= "ORDER BY ".$orderby." LIMIT ". $offset .", ". $numRows;
 		$params = ['INITUSERID'=>$this->User->getID(), 
 				'TARGETUSERID'=>$this->User->getID()];
+		if (!$this->data = $this->fetchCustom($cond, $params)) return false;
+
+		return true;
+
+	}
+
+	public function loadPending($page, $numRows, $orderby="CREATEDDATE") {
+		if (!is_integer($page) || !is_integer($numRows)) {
+			$this->err = "Parameters must be integers";
+			return false;
+		}
+
+		$offset = $page * $numRows - $numRows;
+
+		$cond = "WHERE TARGETUSERID = ? AND ACCEPTED = 0 AND (DECLINED = 0 OR DECLINED IS NULL) ";
+		$cond.= "ORDER BY ".$orderby." LIMIT ". $offset .", ". $numRows;
+		$params = ['TARGETUSERID'=>$this->User->getID()];
 		if (!$this->data = $this->fetchCustom($cond, $params)) return false;
 
 		return true;
@@ -115,6 +136,16 @@ class ConnectionManager extends RecordSet {
 
 		return true;
 
+	}
+
+	public function getPendingCount() {
+		$count = 0;
+		$cond = "WHERE (INITUSERID = ? OR TARGETUSERID = ?) AND ACCEPTED = 0 ";
+		$params = ['INITUSERID'=>$this->User->getID(), 
+				'TARGETUSERID'=>$this->User->getID()];
+		if (!$count= $this->fetchCount($cond, $params)) return false;
+
+		return $count;
 	}
 	
 

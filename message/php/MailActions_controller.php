@@ -96,20 +96,20 @@ switch ($action) {
 			die();
 		}
 
-		$MessageViewID = (int) trim($_POST['messageID']);
+		$strMessageViewIDs = trim($_POST['messageID']);
+		$MessageViewIDs = explode(', ', $strMessageViewIDs);
 
-		if (!$msg = new MessageView($MessageViewID)) {
-			echo "Message not found.";
-			die();
-		}
+		foreach($MessageViewIDs as $MessageViewID) {
+			if (!$msg = new MessageView((int)$MessageViewID)) continue;
 
-		$msg->setArchived(true);
-		if ($msg->update()) {
-			echo json_encode(["success"=>1]);
-		} else {
-			echo "An error occur while updating your data.";
+			$msg->setArchived(true);
+			if (!$msg->update()) {
+				echo "An error occurred while updating your data.";
+				die();
+			}
 		}
 		
+		echo json_encode(["success"=>1]);
 	break;
 
 	////////////////////////////////////////////////////////
@@ -121,19 +121,63 @@ switch ($action) {
 			die();
 		}
 
-		$MessageViewID = (int) trim($_POST['messageID']);
+		$strMessageViewIDs = trim($_POST['messageID']);
+		$MessageViewIDs = explode(', ', $strMessageViewIDs);
 
-		if (!$msg = new MessageView($MessageViewID)) {
-			echo "Message not found.";
+		foreach($MessageViewIDs as $MessageViewID) {
+			if (!$msg = new MessageView((int)$MessageViewID)) continue;
+
+			$msg->setDeleted(true);
+			if (!$msg->update()) {
+				echo "An error occurred.";
+				die();
+			}
+		}
+		
+		echo json_encode(["success"=>1]);
+	break;
+
+	case 'recover':
+		if (!isset($_POST['messageID'])) {
+			echo 'Missing parameters. Require message ID.';
 			die();
 		}
 
-		$msg->setDeleted(true);
-		if ($msg->update()) {
-			echo json_encode(["success"=>1]);
-		} else {
-			echo "An error occur while updating your data.";
+		$strMessageViewIDs = trim($_POST['messageID']);
+		$MessageViewIDs = explode(', ', $strMessageViewIDs);
+
+		foreach($MessageViewIDs as $MessageViewID) {
+			if (!$msg = new MessageView((int)$MessageViewID)) continue;
+
+			$msg->setDeleted(false);
+			if (!$msg->update()) {
+				echo "An error occurred.";
+				die();
+			}
 		}
+		
+		echo json_encode(["success"=>1]);
+	break;
+
+	case 'burn':
+		if (!isset($_POST['messageID'])) {
+			echo 'Missing parameters. Require message ID.';
+			die();
+		}
+
+		$strMessageViewIDs = trim($_POST['messageID']);
+		$MessageViewIDs = explode(', ', $strMessageViewIDs);
+
+		foreach($MessageViewIDs as $MessageViewID) {
+			if (!$msg = new MessageView((int)$MessageViewID)) continue;
+
+			if (!$msg->delete()) {
+				echo "An error occurred.";
+				die();
+			}
+		}
+		
+		echo json_encode(["success"=>1]);
 	break;
 	default:
 	echo 'Unknown action.';

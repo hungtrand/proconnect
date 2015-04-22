@@ -1,7 +1,7 @@
 function LoadMessages(container, form, page) {
 	
 	URLs={Inbox: 'php/inbox_controller.php', Outbox: 'php/outbox_controller.php', Archive: 'php/archive_controller.php', Trash: 'php/trash_controller.php'};
-	this.data = "";
+	this.data = [];
 	this.form = form;
 	this.btnRemoveAll;
 	this.container = container;
@@ -34,6 +34,7 @@ LoadMessages.prototype = {
 			try {
 				that.Alert.toggleClass('hidden', true);
 				json = $.parseJSON(json.trim());
+				that.data = json;
 				callback(json);
 			} catch(ev) {
 				$(".message-frame-display").empty();
@@ -79,22 +80,37 @@ LoadMessages.prototype = {
 
 	removeAll: function(callback) {
 		var that = this;
+		var messageIDs = '';
+		for (var index in that.data) {
+			messageIDs += ', ' + that.data[index]['messageID'];
+		}
+
+		messageIDs = messageIDs.replace(', ', '');
+		var data = {
+			'action': 'burn',
+			'messageID': messageIDs
+		};
+
 		$.ajax({
-			url: 'php/dummy.php',
+			url: 'php/MailActions_controller.php',
+			data: data,
 			type: 'POST',
 		}).done(function(json) {
 			try {
 				json = $.parseJSON(json);
 				callback(json)
 			} catch (ev) {
-				that.failRemove(json);
+				that.Alert.html(json).toggleClass('hidden', false);
+				setTimeout(function() {
+					that.Alert.html('').toggleClass('hidden', true);
+				},3000);
 			}
 		}).fail(function(ev) {
 			that.failRemove();
 		});
 	},
 
-	confirmRemoveAll: function(callback) {
+	confirmRemoveAll: function(json) {
 		var that = this;
 
 		setTimeout( function() {
@@ -112,13 +128,11 @@ LoadMessages.prototype = {
 		var that = this;
 		that.container.show();
 		that.btnRemoveAll = $('#empty-trash');
-		that.btnRemoveAll.click(function(ev) {
+		that.btnRemoveAll.off('click').on('click', function(ev) {
 			ev.preventDefault();
-			if (that.container.children().length > 0) {
-				that.removeAll( function(callback) {
-					that.confirmRemoveAll(callback);
-				});
-			}
+			that.removeAll( function(json) {
+				that.confirmRemoveAll(json);
+			});
 		});
 		$('html,body').animate({
         	scrollTop: $("#message-div").offset().top - 200

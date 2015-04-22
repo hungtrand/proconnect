@@ -27,11 +27,15 @@
 
 			parent::__construct();
 
-			$this->load($User);
+			//$this->load($User);
 		}
 		//OVERRIDE
 		protected function getColumns(){
 			return $this->Columns;
+		}
+
+		protected function getPrimaryKey() {
+			return $this->PrimaryKey;
 		}
 
 		public function load($User){
@@ -81,6 +85,26 @@
 			if(!isset($this->data) || count($this->data) < 1) return false;
 			
 			return $this->data;
+		}
+
+		public function getUnreadCount() {
+			$count = 0;
+
+
+			switch ($this->Mailbox) {
+				case 'inbox':
+					$mailCond = "DELETED = 0 AND ARCHIVED = 0 AND ISCREATOR = 0 AND `READ` = 0 ";
+					break;
+				default:
+					$this->err = "Cannot load mailbox. Mailbox type is not set. Use setMailbox($mailbox) method.";
+					return false;
+			}
+
+			$cond = "WHERE (USERID = ?) AND ".$mailCond;
+			$params = ['USERID'=>$this->User->getID()];
+			if (!$count = $this->fetchCount($cond, $params)) return false;
+
+			return $count;
 		}
 
 		public function getAll(){

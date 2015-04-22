@@ -28,8 +28,13 @@
 
 		//OVERRIDE
 		protected function getColumns(){
-			return this->Columns;
+			return $this->Columns;
 		}
+
+		protected function getPrimaryKey() {
+			return $this->PrimaryKey;
+		}
+
 		public function load($User){
 			$params = ['USERID'=>$User->getID()];
 			if(!$this->data = $this->fetchBy($params)) return false;
@@ -37,6 +42,24 @@
 			$this->User = $User;
 			return true;
 		}
+
+		public function loadPage($page, $numRows, $orderby="`READ` DESC, TIMESTAMP DESC") {
+			if (!is_integer($page) || !is_integer($numRows)) {
+				$this->err = "Parameters must be integers";
+				return false;
+			}
+
+			$offset = $page * $numRows - $numRows;
+
+			$cond = "WHERE (USERID = ?) ";
+			$cond.= "ORDER BY ".$orderby." LIMIT ". $offset .", ". $numRows;
+			$params = ['USERID'=>$this->User->getID()];
+			if (!$this->data = $this->fetchCustom($cond, $params)) return false;
+
+			return true;
+
+		}
+
 		public function getData(){
 			if(!isset($this->data) || count($this->data) < 1) return false;
 			
@@ -52,6 +75,16 @@
 				array_push($arr,$obj);
 			} 
 			return $arr;
+		}
+
+		public function getUnreadCount() {
+			$count = 0;
+
+			$cond = "WHERE USERID = ? AND `READ` = 0 ";
+			$params = ['USERID'=>$this->User->getID()];
+			if (!$count = $this->fetchCount($cond, $params)) return false;
+
+			return $count;
 		}
 	}
 

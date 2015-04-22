@@ -42,10 +42,18 @@ include '../header/header.php';
 
                         <hr />
 
-                        <div class="input-group" id="searching">
-                            <form id="search-form">
-                                <input type="text" class="form-control typeahead" id="search-subject" placeholder="Search..." val="">
-                                <span class="input-group-btn"><button class="btn btn-default" type="button" id="search-button"><span class="glyphicon glyphicon-search"></span></button></span>
+                        <div id="searching">
+                            <form id="search-form" class="form-inline">
+                                <div class="form-group">
+                                    <input type="text" class="form-control typeahead" id="search-subject" placeholder="Search..." val="">
+                                    
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-default" type="button" id="search-button">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </div>
+                                
                             </form>
                         </div>
                     </div>       

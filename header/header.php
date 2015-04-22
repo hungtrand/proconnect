@@ -58,7 +58,6 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                 <div class="media-body">
                   <h4 class="media-heading" >Media Heading</h4>
                   <p class="snippet-zone"> Message Title </p>
-                  Message Here
                 </div>
                 <div class="media-right time-ago">lorem</div>
             </a>

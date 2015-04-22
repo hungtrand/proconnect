@@ -19,7 +19,7 @@ include '../header/header.php';
             <div class="col col-md-8">
                 <div id="ConnectionsHeader" class="row">
                     <div class="col col-xs-8">
-                        <h2 class="text-info">ProConnection Connections</h2>
+                        <h2 class="text-info">Connections</h2>
                     </div>
 
                     <div class="col col-xs-4 text-right">

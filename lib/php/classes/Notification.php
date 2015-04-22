@@ -14,7 +14,7 @@ class Notification extends ActiveRecord {
 	public static $TableName = 'Notification';
 	public static $PrimaryKey = 'NOTIFICATIONID';
 	public static $Columns = ['NOTIFICATIONID', 'MESSAGE', 'TYPE', 
-							'DATECREATED', 'USERID'];
+							'TIMESTAMP', 'USERID'];
 	
 	private $data = [];
 	private $NotiID;
@@ -82,8 +82,8 @@ class Notification extends ActiveRecord {
 	public function getType() {
 		return $this->data['TYPE'];
 	}
-	public function getDateCreated(){
-		return $this->data['DATECREATED'];
+	public function getTimestamp(){
+		return $this->data['TIMESTAMP'];
 	}
 	public function getUserID() {
 		return $this->data['USERID'];

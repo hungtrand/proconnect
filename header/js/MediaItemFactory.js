@@ -87,7 +87,17 @@ function MediaItem(options) {
 	return baseItem;
 }
 
-function MessageItem(options){
+function MessageItem(data){
+	var options = {
+		'optional-snippet': data['message-subject'],
+		'date': data['message-time'],
+		'id': data['messageID'],
+		'user-url': data['sender-href'],
+		'message': data['sender-message'],
+		'user-name': data['sender-name'],
+		'user-img-url': data['sender-picture']
+	};
+
 	var modTemplate = new MediaItem(options);
 
 	
@@ -105,7 +115,19 @@ function MessageItem(options){
 	return modTemplate;
 }
 
-function NotificationItem(options) {
+function NotificationItem(data) {
+	var heading = "";
+
+	var options = {
+		'optional-snippet': '',
+		'date': data['timestamp'],
+		'id': data['NotificationViewID'],
+		'user-url': data['href'],
+		'message': '',
+		'user-name': data['message'],
+		'user-img-url': data['picture']
+	};
+
 	var baseItem = new MediaItem(options);
 
 	var snippet = options["optional-snippet"] || "";
@@ -122,7 +144,30 @@ function NotificationItem(options) {
 	return baseItem;
 }
 
-function NewConnectionItem(options) {
+function NewConnectionItem(data) {
+	/* data example json format:
+	CompanyName: "Google Inc."
+	Email: "hungtrand0929@gmail.com"
+	JobTitle: "Web Application Developer"
+	Location: "Mountain View"
+	Name: "Hung Tran"
+	ProfileImage: "/users/10/images/HourGlass.jpg"
+	UserID: "10"*/
+	var heading = data['Name'] + ' invited you to connect.';
+	var message = data['Name'] + '<br />' + data['JobTitle'];
+	if (data['CompanyName']) message += ' at ' + data['CompanyName'];
+	if (data['Location']) message += '<br />' + data['Location'];
+
+	var options = {
+		'optional-snippet': '',
+		'date': '',
+		'id': data['UserID'],
+		'user-url': '/profile-public-POV/?UserID=' + data['UserID'],
+		'message': message,
+		'user-name': heading,
+		'user-img-url': data['ProfileImage']
+	};
+
 	var baseItem = new MediaItem(options);
 
 	var snippet = options["optional-snippet"] || "";

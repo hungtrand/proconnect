@@ -1,13 +1,13 @@
 <?php
-//error_reporting(E_ALL); // debug
-//ini_set("display_errors", 1); // debug
-require_once __DIR__."/../../lib/php/classes/Account.php";
-require_once __DIR__."/../../lib/php/classes/AccountAdmin.php";
+error_reporting(E_ALL); // debug
+ini_set("display_errors", 1); // debug
 require_once __DIR__."/../../lib/php/sqlConnection.php";
 require_once __DIR__."/../../lib/php/classes/User.php";
-require_once __DIR__."/../../lib/php/classes/UserConnectionManager.php";
-require_once __DIR__."/Connections_view.php";
+require_once __DIR__."/../../lib/php/classes/Notification.php";
+require_once __DIR__."/../../lib/php/classes/NotificationViewManager.php";
+require_once __DIR__."/NotificationInbox_view.php";
 
+// Check if logged in
 if (isset($_POST['Username']) && isset($_POST['Password'])) {
 	$login = $_POST['Username'];
 	$password = $_POST['Password'];
@@ -27,37 +27,28 @@ if (isset($_POST['Username']) && isset($_POST['Password'])) {
 	$uid = $UData['USERID'];
 }
 
+// $uid = 7;
 if (!$User = new User($uid)) {
 	header($home);
 	die();
 }
-
-//$User = new User(10); // For Testing
+// 
+// $User = new User(7); // For Testing
 if (isset($_POST['page'])) $page = (int)$_POST['page'];
 else $page = 1;
 
-$rowsaPage = 10;
-$filter = "";
-
-if (isset($_POST['filter'])) {
-	$filter = trim($_POST['filter']);
-}
+$rowsaPage = 20;
 
 try {
-	$uc = new UserConnectionManager($User);
-	if ($filter == 'pending') {
-		$uc->loadPending($page, $rowsaPage);
-	} else {
-		$uc->loadPage($page, $rowsaPage);
-	}
+	$inbox = new NotificationViewManager($User);
+	$inbox->loadPage($page, $rowsaPage);
+	$notifs = $inbox->getAll();
 
-	$conns = $uc->getAll();
-
-	$view = new Connections_view();
-	$view->loadUserConnections($conns);
+	$view = new NotificationInbox_view();
+	$view->load($notifs);
 	$data = $view->getView();
 
-	//echo "\n".json_encode($conns)."\n";
+	//echo "\n".json_encode($inbox->getData())."\n".$inbox->err; // debug only
 } catch (Exception $e) {
 	echo $e->getMessage();
 

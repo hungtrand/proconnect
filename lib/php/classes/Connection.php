@@ -13,7 +13,7 @@ class Connection extends ActiveRecord {
 	public static $TableName = 'Connections';
 	public static $PrimaryKey = 'CONNID';
 	public static $Columns = ['CONNID', 'INITUSERID', 'TARGETUSERID', 'ACCEPTED',
-				'CREATEDDATE', 'MESSAGE'];
+				'CREATEDDATE', 'MESSAGE', 'DECLINED'];
 	
 	private $data = [];
 	private $ConnID;
@@ -114,6 +114,10 @@ class Connection extends ActiveRecord {
 		return $this->data['MESSAGE'];
 	}
 
+	public function getDeclined() {
+		return $this->data['DECLINED'];
+	}
+
 	// Set methods
 	public function setInitUserID($intVal) {
 		$this->data['INITUSERID'] = $intVal;
@@ -136,6 +140,13 @@ class Connection extends ActiveRecord {
 
 	public function setMessage($strVal) {
 		$this->data['MESSAGE'] = $strVal;
+
+		return true;
+	}
+
+	public function setDeclined($boolVal = false) {
+		if ($boolVal) $this->data['DECLINED'] = true;
+		else $this->data['DECLINED'] = false;
 
 		return true;
 	}

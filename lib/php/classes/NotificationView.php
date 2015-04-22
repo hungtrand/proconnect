@@ -1,34 +1,35 @@
 <?php 
-	
-
 	require_once __DIR__."/Notification.php";
 	require_once __DIR__."/ActiveRecord.php";
 	require_once __DIR__."/User.php";
-
 	
 /**
 *	NotificationView - performs logic for NotificationView class. 
 *	@params: $UserID
 *	Responsibilities: This is Notification Relationship class for NotificationView Table in SQL   
 */	
-	class NotificationView extends ActiveRecord{
-		public static $PrimaryKey = 'NotificationViewID';
+	class NotificationView extends ActiveRecord {
+		public static $PrimaryKey = 'NOTIFICATIONVIEWID';
 		public static $TableName = 'NotificationView';
-		public static $Columns = ['NOTIFICATIONVIEWID', 'NOTIFICATIONID', 'USERID', 'Date'];
+		public static $Columns = ['NOTIFICATIONVIEWID', 'NOTIFICATIONID', 'USERID', 'READ','TIMESTAMP'];
 		private $data = [];
 		private $NotificationViewID;
 		private $UserID;
 		public $err;
+
 		function __construct($ID = null){
 			parent::__construct();
 			if(isset($ID)){
-			$this->NotificationViewID = $ID;
-			if(!$this->$data = $this->fetch($ID)){
-				$this->err = "No Notification Relationship Found!";
-				return false;
-			};
+				$this->NotificationViewID = $ID;
+
+				if(!$this->data = $this->fetch($ID)){
+					$this->err = "No Notification Relationship Found!";
+					return false;
+				}
+			}
 
 		}
+
 		//OVERRIDE
 		public function getData(){
 			return $this->data;
@@ -50,8 +51,6 @@
 			return self::$TableName;
 		}
 
-		
-
 		//OVERRIDE
 		public function load($ID){ 
 			if(!$ID){
@@ -66,27 +65,42 @@
 		}
 		//getMethods
 		public function getNotificationViewID(){
-			return $this->data['NotificationViewID'];
+			return $this->data['NOTIFICATIONVIEWID'];
 		}
 
 		public function getNotificationID(){
-			return $this->data['NotificationID'];
+			return $this->data['NOTIFICATIONID'];
 		}
 
-		public function getDate(){
-			return $this->data['Date'];
+		public function getRead(){
+			return $this->data['READ'];
+		}
+
+		public function getTimestamp(){
+			return $this->data['TIMESTAMP'];
 		}
 
 		public function getUserID(){
-			return $this->data['UserID'];
+			return $this->data['USERID'];
 		}
 
 		public function setNotificationID($NotiID){
-			$this->data['NotificationID'] = $NotiID;
+			$this->data['NOTIFICATIONID'] = $NotiID;
+
+			return true;
 		}
 
 		public function setUserID($UsrID){  //@UsrID the UserID.
-			$this->data['UserID'] = $UsrID;
+			$this->data['USERID'] = $UsrID;
+
+			return true;
+		}
+
+		public function setRead($boolVal = false){
+			if ($boolVal) $this->data['READ'] = true;
+			else $this->data['READ'] = false;
+
+			return true;
 		}
 
 

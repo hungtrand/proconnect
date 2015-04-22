@@ -31,15 +31,22 @@ $(document).ready(function(){
 		},function(data){
 
 			//display data
-			$.each(data,function(key,value){
-				// make items
-				var newItem = MediaItemFactory.makeItem(specialID,value);
-				//fill the items
-				$(parent).siblings("ul.media-list").children().last().after(newItem);
-			});
-			// var item = new MediaItem(data);
-			// console.log( item.html() );
+			if (typeof data == 'string') {
+				$(parent).siblings("ul.media-list").html('<li class="text-info custom-media-item">No messages.</li>');
+
+			} else {
+				$.each(data,function(key,value){
+					// make items
+					var newItem = MediaItemFactory.makeItem(specialID,value);
+					//fill the items
+					$(parent).siblings("ul.media-list").children().last().after(newItem);
+				});
+				// var item = new MediaItem(data);
+				// console.log( item.html() );
+			}
+
 			$(parent).siblings("ul").find("div#iam-loading").hide();
+			
 		});
 	}
 

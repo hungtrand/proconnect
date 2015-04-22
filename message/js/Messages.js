@@ -12,6 +12,7 @@ function Messages(data,form) {
 	this.form = form;
 	this.data;
 	this.init(data);
+	this.Alert = $('#MessageListEndAlert');
 }
 
 Messages.prototype = {
@@ -139,10 +140,13 @@ Messages.prototype = {
 
 	recover: function(returnedData) {
 		var that = this;
-		var data = {'messageID': this.data['messageID']}
+		var data = {
+			'action': 'recover',
+			'messageID': this.data['messageID']
+		}
 
 		$.ajax({
-			url: 'php/dummy.php',
+			url: 'php/MailActions_controller.php',
 			data: data,
 			type: 'POST'
 		}).done(function(json) {
@@ -186,7 +190,7 @@ Messages.prototype = {
 		setTimeout(function() {
 			that.container.fadeOut('800', function() {
 				$(this).remove();
-				alert("Successfully moved the message");
+				that.showAlert("Successfully moved the message", 'success');
 			})
 		}, 200);
 
@@ -194,11 +198,33 @@ Messages.prototype = {
 
 	failRemove: function() {
 		var that = this;
-		alert("Message was not removed successfully");
+		that.showAlert("Message was not removed successfully", 'danger');
 	},
 
 	getView: function() {
 		var that = this;
 		return that.container;
+	},
+
+	showAlert: function(msg, type) {
+		var that = this;
+		that.Alert.html(msg);
+		switch(type) {
+			case 'success':
+				that.Alert.attr('class', 'alert alert-success').slideDown();
+			break;
+			case 'danger':
+				that.Alert.attr('class', 'alert alert-danger').slideDown();
+			default:
+				that.Alert.attr('class', 'alert alert-info').slideDown();
+				
+		}
+
+		$(document).one('click', function() {
+			setTimeout(function() {
+				that.Alert.attr('class', 'alert alert-info').fadeOut(1000);
+			}, 2000);
+		});
+		
 	}
 }
