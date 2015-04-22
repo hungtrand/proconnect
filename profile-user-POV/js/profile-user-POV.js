@@ -485,7 +485,7 @@ $(document).ready(function() {
 		var link = '#' + $(this).parent("form").attr("link");
 		target = $(this).parent("form").parent("div");
 		$(target).fadeOut(50);				 //close editable view
-		$(target).find("form").trigger("reset"); //reset form
+		$(this).parent("form").trigger("reset"); //reset form
 		$(target).find("a.remove-entry-link").hide(); //hide delete entry link
 		//clear temporary data
 		$(this).parent("form").attr("editing","false")
