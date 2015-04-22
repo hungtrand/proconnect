@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <source xmlns="http://xml.phpdox.net/token">
-  <file xmlns="http://xml.phpdox.net/src" path="/var/www/html/ProConnect/lib/php/classes" file="ActiveRecord.php" realpath="/var/www/html/ProConnect/lib/php/classes/ActiveRecord.php" size="5398" time="2015-04-18T23:20:40-07:00" unixtime="1429424440" sha1="be8a7daa95bb9afc031f64ddec06faf5f8889d97" relative="lib/php/classes/ActiveRecord.php"/>
+  <file xmlns="http://xml.phpdox.net/src" path="/var/www/html/ProConnect/lib/php/classes" file="ActiveRecord.php" realpath="/var/www/html/ProConnect/lib/php/classes/ActiveRecord.php" size="5423" time="2015-04-21T09:05:51-07:00" unixtime="1429632351" sha1="cf67515cb86571521897b96abe62e3655d4b3cf8" relative="lib/php/classes/ActiveRecord.php"/>
   <line no="1">
     <token name="T_OPEN_TAG">&lt;?php</token>
   </line>
@@ -298,19 +298,21 @@
     <token name="T_WHITESPACE"> </token>
     <token name="T_VARIABLE">$table</token>
     <token name="T_PHPDOX_DOT">.</token>
-    <token name="T_CONSTANT_ENCAPSED_STRING">'.'</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'.`'</token>
     <token name="T_PHPDOX_DOT">.</token>
     <token name="T_STRING">implode</token>
     <token name="T_PHPDOX_OPEN_BRACKET">(</token>
-    <token name="T_CONSTANT_ENCAPSED_STRING">', '</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'`, '</token>
     <token name="T_PHPDOX_DOT">.</token>
     <token name="T_VARIABLE">$table</token>
     <token name="T_PHPDOX_DOT">.</token>
-    <token name="T_CONSTANT_ENCAPSED_STRING">'.'</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'.`'</token>
     <token name="T_PHPDOX_COMMA">,</token>
     <token name="T_WHITESPACE"> </token>
     <token name="T_VARIABLE">$cols</token>
     <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_DOT">.</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'`'</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
   <line no="44">
@@ -695,19 +697,21 @@
     <token name="T_WHITESPACE"> </token>
     <token name="T_VARIABLE">$table</token>
     <token name="T_PHPDOX_DOT">.</token>
-    <token name="T_CONSTANT_ENCAPSED_STRING">'.'</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'.`'</token>
     <token name="T_PHPDOX_DOT">.</token>
     <token name="T_STRING">implode</token>
     <token name="T_PHPDOX_OPEN_BRACKET">(</token>
-    <token name="T_CONSTANT_ENCAPSED_STRING">', '</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'`, '</token>
     <token name="T_PHPDOX_DOT">.</token>
     <token name="T_VARIABLE">$table</token>
     <token name="T_PHPDOX_DOT">.</token>
-    <token name="T_CONSTANT_ENCAPSED_STRING">'.'</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'.`'</token>
     <token name="T_PHPDOX_COMMA">,</token>
     <token name="T_WHITESPACE"> </token>
     <token name="T_VARIABLE">$cols</token>
     <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_DOT">.</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'`'</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
   <line no="88">
@@ -801,7 +805,7 @@
     <token name="T_PHPDOX_CLOSE_CURLY">}</token>
   </line>
   <line no="97">
-    <token name="T_COMMENT">//echo $sql."\n".json_encode($params)."\n";</token>
+    <token name="T_COMMENT">// echo $sql."\n".json_encode($params)."\n";</token>
   </line>
   <line no="98">
     <token name="T_WHITESPACE">				</token>
@@ -1133,11 +1137,13 @@
     <token name="T_WHITESPACE"> </token>
     <token name="T_PHPDOX_DOT">.</token>
     <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'`'</token>
+    <token name="T_PHPDOX_DOT">.</token>
     <token name="T_VARIABLE">$col</token>
     <token name="T_WHITESPACE"> </token>
     <token name="T_PHPDOX_DOT">.</token>
     <token name="T_WHITESPACE"> </token>
-    <token name="T_CONSTANT_ENCAPSED_STRING">' '</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'` '</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
   <line no="138">
@@ -1527,11 +1533,13 @@
     <token name="T_WHITESPACE"> </token>
     <token name="T_PHPDOX_DOT">.</token>
     <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'`'</token>
+    <token name="T_PHPDOX_DOT">.</token>
     <token name="T_VARIABLE">$col</token>
     <token name="T_WHITESPACE"> </token>
     <token name="T_PHPDOX_DOT">.</token>
     <token name="T_WHITESPACE"> </token>
-    <token name="T_CONSTANT_ENCAPSED_STRING">' = ? '</token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'` = ? '</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
   <line no="184">

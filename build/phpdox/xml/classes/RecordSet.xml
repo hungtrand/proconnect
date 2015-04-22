@@ -1,38 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.net/src" full="RecordSet" namespace="" name="RecordSet" abstract="true" final="false" start="2" end="142">
-  <file path="/var/www/html/ProConnect/lib/php/classes" file="RecordSet.php" realpath="/var/www/html/ProConnect/lib/php/classes/RecordSet.php" size="3005" time="2015-04-09T11:38:33-07:00" unixtime="1428604713" sha1="86fe6c787c6cbeac0381d2d414df887d004d5920" relative="lib/php/classes/RecordSet.php"/>
-  <member name="db" type="{unknown}" visibility="protected" line="3"/>
-  <member name="Limit" type="{unknown}" visibility="private" line="4"/>
-  <member name="err" type="{unknown}" visibility="public" line="5"/>
-  <constructor name="__construct" start="7" end="10" abstract="false" final="false" static="false" visibility="public"/>
-  <method name="getData" start="12" end="12" abstract="true" final="false" static="false" visibility="public"/>
-  <method name="getColumns" start="13" end="13" abstract="true" final="false" static="false" visibility="protected"/>
-  <method name="setLimit" start="15" end="21" abstract="false" final="false" static="false" visibility="public">
+<class xmlns="http://xml.phpdox.net/src" full="RecordSet" namespace="" name="RecordSet" abstract="true" final="false" start="7" end="184">
+  <file path="/var/www/html/ProConnect/lib/php/classes" file="RecordSet.php" realpath="/var/www/html/ProConnect/lib/php/classes/RecordSet.php" size="3937" time="2015-04-22T12:42:59-07:00" unixtime="1429731779" sha1="32df7062bee0418aa1873eb86997471d77057290" relative="lib/php/classes/RecordSet.php"/>
+  <member name="db" type="{unknown}" visibility="protected" line="8"/>
+  <member name="Limit" type="{unknown}" visibility="private" line="9"/>
+  <member name="err" type="{unknown}" visibility="public" line="10"/>
+  <constructor name="__construct" start="12" end="15" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getData" start="17" end="17" abstract="true" final="false" static="false" visibility="public"/>
+  <method name="getColumns" start="18" end="18" abstract="true" final="false" static="false" visibility="protected"/>
+  <method name="setLimit" start="20" end="26" abstract="false" final="false" static="false" visibility="public">
     <parameter name="intLimit" byreference="false" type="{unknown}"/>
   </method>
-  <method name="fetch" start="23" end="55" abstract="false" final="false" static="false" visibility="protected"/>
-  <method name="fetchBy" start="57" end="105" abstract="false" final="false" static="false" visibility="protected">
+  <method name="fetch" start="28" end="60" abstract="false" final="false" static="false" visibility="protected"/>
+  <method name="fetchBy" start="62" end="110" abstract="false" final="false" static="false" visibility="protected">
     <parameter name="params" byreference="false" type="{unknown}"/>
     <parameter name="Logic" byreference="false" type="string" default="&quot;AND&quot;"/>
   </method>
-  <method name="fetchCustom" start="107" end="141" abstract="false" final="false" static="false" visibility="protected">
+  <method name="fetchCustom" start="112" end="146" abstract="false" final="false" static="false" visibility="protected">
     <parameter name="cond" byreference="false" type="{unknown}"/>
     <parameter name="params" byreference="false" type="{unknown}" default="null"/>
     <inline>
-      <comment value="echo $sql;" line="123"/>
+      <comment value="echo $sql;" line="128"/>
     </inline>
   </method>
-  <extender full="NotificationManager" namespace="" name="NotificationManager"/>
+  <method name="fetchCount" start="148" end="183" abstract="false" final="false" static="false" visibility="protected">
+    <parameter name="cond" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="false" type="{unknown}" default="null"/>
+    <inline>
+      <comment value="echo $sql;" line="164"/>
+      <comment value="echo var_dump($rs);" line="168"/>
+    </inline>
+  </method>
+  <extender full="MessageViewManager" namespace="" name="MessageViewManager"/>
   <extender full="SkillManager" namespace="" name="SkillManager"/>
-  <extender full="Lookup_CitiesManager" namespace="" name="Lookup_CitiesManager"/>
   <extender full="ConnectionManager" namespace="" name="ConnectionManager"/>
   <extender full="UserConnectionManager" namespace="" name="UserConnectionManager"/>
-  <extender full="MessageManager" namespace="" name="MessageManager"/>
+  <extender full="NotificationViewManager" namespace="" name="NotificationViewManager"/>
   <extender full="ProjectManager" namespace="" name="ProjectManager"/>
-  <extender full="ExperienceManager" namespace="" name="ExperienceManager"/>
   <extender full="Feed2UserManager" namespace="" name="Feed2UserManager"/>
-  <extender full="EducationManager" namespace="" name="EducationManager"/>
-  <extender full="ProfileManager" namespace="" name="ProfileManager"/>
-  <extender full="AccountManager" namespace="" name="AccountManager"/>
-  <extender full="Lookup_StatesManager" namespace="" name="Lookup_StatesManager"/>
 </class>

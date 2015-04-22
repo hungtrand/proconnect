@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Messages_view" namespace="" name="Messages_view" abstract="false" final="false" start="6" end="40">
+  <file path="/var/www/html/ProConnect/message/php" file="Messages_view.php" realpath="/var/www/html/ProConnect/message/php/Messages_view.php" size="1072" time="2015-04-20T11:24:37-07:00" unixtime="1429554277" sha1="21870216e29118e36806ff0ed81ede5c9aec84e8" relative="message/php/Messages_view.php"/>
+  <implements full="view" namespace="" name="view"/>
+  <member name="FinalView" type="{unknown}" visibility="private" line="7"/>
+  <constructor name="__construct" start="9" end="11" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getView" start="13" end="15" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="load" start="18" end="39" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="MessageViews" byreference="false" type="{unknown}"/>
+  </method>
+  <interface full="view" namespace="" name="view">
+    <method name="getView" start="9" end="9" abstract="false" final="false" static="false" visibility="public"/>
+  </interface>
+</class>

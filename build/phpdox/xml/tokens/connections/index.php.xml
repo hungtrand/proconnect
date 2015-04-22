@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <source xmlns="http://xml.phpdox.net/token">
-  <file xmlns="http://xml.phpdox.net/src" path="/var/www/html/ProConnect/connections" file="index.php" realpath="/var/www/html/ProConnect/connections/index.php" size="9722" time="2015-04-09T11:38:33-07:00" unixtime="1428604713" sha1="c4eee57dcf356e1d8069e8df5e43308b9e5b5150" relative="connections/index.php"/>
+  <file xmlns="http://xml.phpdox.net/src" path="/var/www/html/ProConnect/connections" file="index.php" realpath="/var/www/html/ProConnect/connections/index.php" size="9734" time="2015-04-22T13:28:25-07:00" unixtime="1429734505" sha1="7f8ef92bd0ff37f26b238b6a1cf7397965a55e4a" relative="connections/index.php"/>
   <line no="1">
     <token name="T_OPEN_TAG">&lt;?php</token>
   </line>
@@ -94,7 +94,7 @@
     <token name="T_INLINE_HTML">                    &lt;div class="col col-xs-8"&gt;</token>
   </line>
   <line no="22">
-    <token name="T_INLINE_HTML">                        &lt;h2 class="text-info"&gt;ProConnection Connections&lt;/h2&gt;</token>
+    <token name="T_INLINE_HTML">                        &lt;h2 class="text-info"&gt;Connections&lt;/h2&gt;</token>
   </line>
   <line no="23">
     <token name="T_INLINE_HTML">                    &lt;/div&gt;</token>
@@ -491,7 +491,7 @@
     <token name="T_INLINE_HTML">                &lt;div class="col col-xs-4"&gt;</token>
   </line>
   <line no="169">
-    <token name="T_INLINE_HTML">                    &lt;img width="100px" src="../image/user_img.png" class="img-rounded" /&gt;</token>
+    <token name="T_INLINE_HTML">                    &lt;img width="100px" src="../image/user_img.png" class="img-rounded ProfileImage" /&gt;</token>
   </line>
   <line no="170">
     <token name="T_INLINE_HTML">                &lt;/div&gt;</token>
@@ -571,7 +571,7 @@
     <token name="T_INLINE_HTML">            &lt;div class="col col-xs-3"&gt;</token>
   </line>
   <line no="197">
-    <token name="T_INLINE_HTML">                &lt;img width="50px" src="../image/user_img.png" class="img-rounded" /&gt;</token>
+    <token name="T_INLINE_HTML">                &lt;img width="50px" src="../image/user_img.png" class="img-rounded ProfileImage" /&gt;</token>
   </line>
   <line no="198">
     <token name="T_INLINE_HTML">            &lt;/div&gt;</token>

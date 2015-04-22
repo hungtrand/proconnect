@@ -1,46 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.net/src" full="MessageViewManager" namespace="" name="MessageViewManager" abstract="false" final="false" start="12" end="59">
-  <file path="/var/www/html/ProConnect/lib/php/classes" file="MessageViewManager.php" realpath="/var/www/html/ProConnect/lib/php/classes/MessageViewManager.php" size="1486" time="2015-04-18T23:20:40-07:00" unixtime="1429424440" sha1="e8f655e527b56577f582856eeca91a411153d721" relative="lib/php/classes/MessageViewManager.php"/>
+<class xmlns="http://xml.phpdox.net/src" full="MessageViewManager" namespace="" name="MessageViewManager" abstract="false" final="false" start="12" end="138">
+  <file path="/var/www/html/ProConnect/lib/php/classes" file="MessageViewManager.php" realpath="/var/www/html/ProConnect/lib/php/classes/MessageViewManager.php" size="3567" time="2015-04-22T12:40:33-07:00" unixtime="1429731633" sha1="3721061fb1f4fb673ff3cec65fd97a6402306fcb" relative="lib/php/classes/MessageViewManager.php"/>
   <docblock>
-    <description compact="MessageViewManager - performs logic for MessageViewManager class."/>
-    <params value=": $UserID">Responsibilities: load the user and get the user data from the database.</params>
+    <description compact="MessageViewManager - get messages in relationship to user. Fetch messsages for inbox, outbox, archived, or trash mailbox types."/>
+    <params value=": $UserID">Responsibilities: load messages belonged to a user depending on the status of message requested.</params>
   </docblock>
   <extends full="RecordSet" namespace="" name="RecordSet"/>
   <member name="PrimaryKey" type="{unknown}" visibility="protected" line="13"/>
   <member name="TableName" type="{unknown}" visibility="protected" line="14"/>
   <member name="Columns" type="{unknown}" visibility="protected" line="15"/>
-  <member name="User" type="{unknown}" visibility="protected" line="17"/>
-  <member name="data" type="{unknown}" visibility="protected" line="18"/>
-  <member name="err" type="{unknown}" visibility="public" line="19"/>
-  <constructor name="__construct" start="20" end="29" abstract="false" final="false" static="false" visibility="public">
+  <member name="Mailbox" type="{unknown}" visibility="private" line="16"/>
+  <member name="User" type="{unknown}" visibility="protected" line="18"/>
+  <member name="data" type="{unknown}" visibility="protected" line="19"/>
+  <member name="err" type="{unknown}" visibility="public" line="20"/>
+  <constructor name="__construct" start="21" end="31" abstract="false" final="false" static="false" visibility="public">
     <parameter name="User" byreference="false" type="{unknown}"/>
   </constructor>
-  <method name="getColumns" start="31" end="33" abstract="false" final="false" static="false" visibility="protected"/>
-  <method name="load" start="35" end="41" abstract="false" final="false" static="false" visibility="public">
+  <method name="getColumns" start="33" end="35" abstract="false" final="false" static="false" visibility="protected"/>
+  <method name="getPrimaryKey" start="37" end="39" abstract="false" final="false" static="false" visibility="protected"/>
+  <method name="load" start="41" end="47" abstract="false" final="false" static="false" visibility="public">
     <parameter name="User" byreference="false" type="{unknown}"/>
   </method>
-  <method name="getData" start="42" end="46" abstract="false" final="false" static="false" visibility="public"/>
-  <method name="getAll" start="47" end="57" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="loadPage" start="49" end="82" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="page" byreference="false" type="{unknown}"/>
+    <parameter name="numRows" byreference="false" type="{unknown}"/>
+    <parameter name="orderby" byreference="false" type="string" default="&quot;`READ` DESC, TIMESTAMP DESC&quot;"/>
+  </method>
+  <method name="getData" start="84" end="88" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getUnreadCount" start="90" end="108" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getAll" start="110" end="120" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="setMailbox" start="122" end="136" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="mailbox" byreference="false" type="string" default="''"/>
+  </method>
   <parent full="RecordSet" namespace="" name="RecordSet">
-    <member name="db" type="{unknown}" visibility="protected" line="3"/>
-    <member name="err" type="{unknown}" visibility="public" line="5"/>
-    <constructor name="__construct" start="7" end="10" abstract="false" final="false" static="false" visibility="public"/>
-    <method name="getData" start="12" end="12" abstract="true" final="false" static="false" visibility="public"/>
-    <method name="getColumns" start="13" end="13" abstract="true" final="false" static="false" visibility="protected"/>
-    <method name="setLimit" start="15" end="21" abstract="false" final="false" static="false" visibility="public">
-    <parameter name="intLimit" byreference="false" type="{unknown}"/>
-  </method>
-    <method name="fetch" start="23" end="55" abstract="false" final="false" static="false" visibility="protected"/>
-    <method name="fetchBy" start="57" end="105" abstract="false" final="false" static="false" visibility="protected">
-    <parameter name="params" byreference="false" type="{unknown}"/>
-    <parameter name="Logic" byreference="false" type="string" default="&quot;AND&quot;"/>
-  </method>
-    <method name="fetchCustom" start="107" end="141" abstract="false" final="false" static="false" visibility="protected">
-    <parameter name="cond" byreference="false" type="{unknown}"/>
-    <parameter name="params" byreference="false" type="{unknown}" default="null"/>
-    <inline>
-      <comment value="echo $sql;" line="123"/>
-    </inline>
-  </method>
+    <member name="db" type="{unknown}" visibility="protected" line="8"/>
+    <member name="err" type="{unknown}" visibility="public" line="10"/>
+    <constructor name="__construct" start="12" end="15" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getData" start="17" end="17" abstract="true" final="false" static="false" visibility="public"/>
+    <method name="getColumns" start="18" end="18" abstract="true" final="false" static="false" visibility="protected"/>
+    <method name="setLimit" start="20" end="26" abstract="false" final="false" static="false" visibility="public">
+      <parameter name="intLimit" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="fetch" start="28" end="60" abstract="false" final="false" static="false" visibility="protected"/>
+    <method name="fetchBy" start="62" end="110" abstract="false" final="false" static="false" visibility="protected">
+      <parameter name="params" byreference="false" type="{unknown}"/>
+      <parameter name="Logic" byreference="false" type="string" default="&quot;AND&quot;"/>
+    </method>
+    <method name="fetchCustom" start="112" end="146" abstract="false" final="false" static="false" visibility="protected">
+      <parameter name="cond" byreference="false" type="{unknown}"/>
+      <parameter name="params" byreference="false" type="{unknown}" default="null"/>
+      <inline>
+        <comment value="echo $sql;" line="128"/>
+      </inline>
+    </method>
+    <method name="fetchCount" start="148" end="183" abstract="false" final="false" static="false" visibility="protected">
+      <parameter name="cond" byreference="false" type="{unknown}"/>
+      <parameter name="params" byreference="false" type="{unknown}" default="null"/>
+      <inline>
+        <comment value="echo $sql;" line="164"/>
+        <comment value="echo var_dump($rs);" line="168"/>
+      </inline>
+    </method>
   </parent>
 </class>

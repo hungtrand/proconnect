@@ -1,41 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.net/src" full="MessageView" namespace="" name="MessageView" abstract="false" final="false" start="10" end="102">
-  <file path="/var/www/html/ProConnect/lib/php/classes" file="MessageView.php" realpath="/var/www/html/ProConnect/lib/php/classes/MessageView.php" size="2117" time="2015-04-18T23:20:40-07:00" unixtime="1429424440" sha1="939ab43e822f7ae785010890e4b9947d36f91e88" relative="lib/php/classes/MessageView.php"/>
+<class xmlns="http://xml.phpdox.net/src" full="MessageView" namespace="" name="MessageView" abstract="false" final="false" start="10" end="132">
+  <file path="/var/www/html/ProConnect/lib/php/classes" file="MessageView.php" realpath="/var/www/html/ProConnect/lib/php/classes/MessageView.php" size="2828" time="2015-04-20T20:29:42-07:00" unixtime="1429586982" sha1="590340633eb5c90374928ba045c5d3f5ca4a202b" relative="lib/php/classes/MessageView.php"/>
   <docblock>
-    <description compact="MessageView - performs logic for MessageView class."/>
+    <description compact="MessageView - map data between a user and message to identify which user is allowed to receive a message."/>
     <params value=": $UserID">Responsibilities: set information for a message (like messageID, USERID, Date created, notificationID ), and also get information about the message.</params>
   </docblock>
   <extends full="ActiveRecord" namespace="" name="ActiveRecord"/>
   <member name="TableName" type="string" default="'MessageView'" visibility="public" line="11"/>
-  <member name="PrimaryKey" type="string" default="'MessageViewID'" visibility="public" line="12"/>
+  <member name="PrimaryKey" type="string" default="'MESSAGEVIEWID'" visibility="public" line="12"/>
   <member name="Columns" type="array" visibility="public" line="13"/>
-  <member name="data" type="array" visibility="private" line="14"/>
-  <member name="MessageViewID" type="{unknown}" visibility="private" line="15"/>
-  <member name="err" type="{unknown}" visibility="public" line="16"/>
-  <constructor name="__construct" start="18" end="27" abstract="false" final="false" static="false" visibility="public">
+  <member name="data" type="array" visibility="private" line="15"/>
+  <member name="MessageViewID" type="{unknown}" visibility="private" line="16"/>
+  <member name="err" type="{unknown}" visibility="public" line="17"/>
+  <constructor name="__construct" start="19" end="28" abstract="false" final="false" static="false" visibility="public">
     <parameter name="ID" byreference="false" type="{unknown}" default="null"/>
   </constructor>
-  <method name="getData" start="31" end="33" abstract="false" final="false" static="false" visibility="public"/>
-  <method name="getID" start="35" end="37" abstract="false" final="false" static="false" visibility="public"/>
-  <method name="getPrimaryKey" start="39" end="41" abstract="false" final="false" static="false" visibility="public"/>
-  <method name="getTableName" start="43" end="45" abstract="false" final="false" static="false" visibility="public"/>
-  <method name="getColumns" start="47" end="49" abstract="false" final="false" static="false" visibility="public"/>
-  <method name="load" start="52" end="60" abstract="false" final="false" static="false" visibility="public">
+  <method name="getData" start="32" end="34" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getID" start="36" end="38" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getPrimaryKey" start="40" end="42" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getTableName" start="44" end="46" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getColumns" start="48" end="50" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="load" start="53" end="61" abstract="false" final="false" static="false" visibility="public">
     <parameter name="ID" byreference="false" type="{unknown}"/>
   </method>
-  <method name="getMessageViewID" start="63" end="65" abstract="false" final="false" static="false" visibility="public"/>
-  <method name="getMessageID" start="67" end="69" abstract="false" final="false" static="false" visibility="public"/>
-  <method name="getUserID" start="71" end="73" abstract="false" final="false" static="false" visibility="public"/>
-  <method name="getNotificationID" start="75" end="77" abstract="false" final="false" static="false" visibility="public"/>
-  <method name="getDateCreated" start="79" end="81" abstract="false" final="false" static="false" visibility="public"/>
-  <method name="setMessageID" start="85" end="88" abstract="false" final="false" static="false" visibility="public">
-    <parameter name="strVal" byreference="false" type="{unknown}"/>
+  <method name="getMessageID" start="64" end="66" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getUserID" start="68" end="70" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getTimestamp" start="72" end="74" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getRead" start="76" end="78" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getArchived" start="80" end="82" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getDeleted" start="84" end="86" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="isCreator" start="88" end="90" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="setMessageID" start="94" end="97" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="intVal" byreference="false" type="{unknown}"/>
   </method>
-  <method name="setUserID" start="90" end="93" abstract="false" final="false" static="false" visibility="public">
-    <parameter name="strVal" byreference="false" type="{unknown}"/>
+  <method name="setUserID" start="99" end="102" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="intVal" byreference="false" type="{unknown}"/>
   </method>
-  <method name="setNotificationID" start="95" end="98" abstract="false" final="false" static="false" visibility="public">
-    <parameter name="strVal" byreference="false" type="{unknown}"/>
+  <method name="setRead" start="104" end="109" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="boolVal" byreference="false" type="{unknown}" default="false"/>
+  </method>
+  <method name="setArchived" start="111" end="116" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="boolVal" byreference="false" type="{unknown}" default="false"/>
+  </method>
+  <method name="setDeleted" start="118" end="123" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="boolVal" byreference="false" type="{unknown}" default="false"/>
+  </method>
+  <method name="setIsCreator" start="125" end="130" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="boolVal" byreference="false" type="{unknown}" default="false"/>
   </method>
   <parent full="ActiveRecord" namespace="" name="ActiveRecord">
     <member name="err" type="{unknown}" visibility="public" line="18"/>

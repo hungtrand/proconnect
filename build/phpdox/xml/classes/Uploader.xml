@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.net/src" full="Uploader" namespace="" name="Uploader" abstract="false" final="false" start="2" end="65">
-  <file path="/var/www/html/ProConnect/lib/php/classes" file="Uploader.php" realpath="/var/www/html/ProConnect/lib/php/classes/Uploader.php" size="1552" time="2015-04-09T11:38:33-07:00" unixtime="1428604713" sha1="866f27467421463cfc9358a9c6d5faa7c29d5b9a" relative="lib/php/classes/Uploader.php"/>
-  <member name="db" type="{unknown}" visibility="private" line="3"/>
-  <member name="uploadDir" type="{unknown}" visibility="private" line="4"/>
-  <member name="file" type="{unknown}" visibility="private" line="5"/>
-  <member name="err" type="{unknown}" visibility="public" line="7"/>
-  <constructor name="__construct" start="9" end="11" abstract="false" final="false" static="false" visibility="public">
+<class xmlns="http://xml.phpdox.net/src" full="Uploader" namespace="" name="Uploader" abstract="false" final="false" start="7" end="70">
+  <file path="/var/www/html/ProConnect/lib/php/classes" file="Uploader.php" realpath="/var/www/html/ProConnect/lib/php/classes/Uploader.php" size="1644" time="2015-04-21T09:19:04-07:00" unixtime="1429633144" sha1="4447ce50a754352e88d975510c054029d6a06431" relative="lib/php/classes/Uploader.php"/>
+  <member name="db" type="{unknown}" visibility="private" line="8"/>
+  <member name="uploadDir" type="{unknown}" visibility="private" line="9"/>
+  <member name="file" type="{unknown}" visibility="private" line="10"/>
+  <member name="err" type="{unknown}" visibility="public" line="12"/>
+  <constructor name="__construct" start="14" end="16" abstract="false" final="false" static="false" visibility="public">
     <parameter name="upDir" byreference="false" type="{unknown}"/>
   </constructor>
-  <method name="setUploadDir" start="13" end="15" abstract="false" final="false" static="false" visibility="public">
+  <method name="setUploadDir" start="18" end="20" abstract="false" final="false" static="false" visibility="public">
     <parameter name="upDir" byreference="false" type="{unknown}"/>
   </method>
-  <method name="upload" start="17" end="48" abstract="false" final="false" static="false" visibility="public">
+  <method name="upload" start="22" end="53" abstract="false" final="false" static="false" visibility="public">
     <parameter name="file" byreference="false" type="{unknown}"/>
     <inline>
-      <comment value="1. Check if any image was transferred at all, if not exit" line="20"/>
-      <comment value="3. Validate: remove any special characters in the file name" line="23"/>
-      <comment value="4. Check if file already exists" line="26"/>
-      <comment value="Upload to the product images folder" line="35"/>
-      <comment value="set proper permissions on the new file" line="40"/>
+      <comment value="1. Check if any image was transferred at all, if not exit" line="25"/>
+      <comment value="3. Validate: remove any special characters in the file name" line="28"/>
+      <comment value="4. Check if file already exists" line="31"/>
+      <comment value="Upload to the product images folder" line="40"/>
+      <comment value="set proper permissions on the new file" line="45"/>
     </inline>
   </method>
-  <method name="validate" start="50" end="63" abstract="false" final="false" static="false" visibility="private"/>
+  <method name="validate" start="55" end="68" abstract="false" final="false" static="false" visibility="private"/>
 </class>

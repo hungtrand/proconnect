@@ -1,29 +1,14 @@
 <?xml version="1.0"?>
 <source xmlns="http://xml.phpdox.net/token">
-  <file xmlns="http://xml.phpdox.net/src" path="/var/www/html/ProConnect/signin/php" file="session_signin.php" realpath="/var/www/html/ProConnect/signin/php/session_signin.php" size="1036" time="2015-04-13T23:10:24-07:00" unixtime="1428991824" sha1="1686458f5ce07a2373c5d325da4c911a03dcbce3" relative="signin/php/session_signin.php"/>
+  <file xmlns="http://xml.phpdox.net/src" path="/var/www/html/ProConnect/signin/php" file="session_signin.php" realpath="/var/www/html/ProConnect/signin/php/session_signin.php" size="1042" time="2015-04-20T16:20:33-07:00" unixtime="1429572033" sha1="205af9f063d326653e74b96cbba46d49b390c860" relative="signin/php/session_signin.php"/>
   <line no="1">
     <token name="T_OPEN_TAG">&lt;?php</token>
   </line>
   <line no="2">
-    <token name="T_STRING">error_reporting</token>
-    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
-    <token name="T_STRING">E_ALL</token>
-    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
-    <token name="T_PHPDOX_SEMICOLON">;</token>
-    <token name="T_WHITESPACE"> </token>
-    <token name="T_COMMENT">// debug</token>
+    <token name="T_COMMENT">// error_reporting(E_ALL); // debug</token>
   </line>
   <line no="3">
-    <token name="T_STRING">ini_set</token>
-    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
-    <token name="T_CONSTANT_ENCAPSED_STRING">"display_errors"</token>
-    <token name="T_PHPDOX_COMMA">,</token>
-    <token name="T_WHITESPACE"> </token>
-    <token name="T_LNUMBER">1</token>
-    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
-    <token name="T_PHPDOX_SEMICOLON">;</token>
-    <token name="T_WHITESPACE"> </token>
-    <token name="T_COMMENT">// debug</token>
+    <token name="T_COMMENT">// ini_set("display_errors", 1); // debug</token>
   </line>
   <line no="4"/>
   <line no="5">

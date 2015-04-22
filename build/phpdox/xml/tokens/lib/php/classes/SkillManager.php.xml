@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <source xmlns="http://xml.phpdox.net/token">
-  <file xmlns="http://xml.phpdox.net/src" path="/var/www/html/ProConnect/lib/php/classes" file="SkillManager.php" realpath="/var/www/html/ProConnect/lib/php/classes/SkillManager.php" size="1497" time="2015-04-09T11:38:33-07:00" unixtime="1428604713" sha1="e3a0e99ee4054d3e4983c259261e718b5a3bc714" relative="lib/php/classes/SkillManager.php"/>
+  <file xmlns="http://xml.phpdox.net/src" path="/var/www/html/ProConnect/lib/php/classes" file="SkillManager.php" realpath="/var/www/html/ProConnect/lib/php/classes/SkillManager.php" size="1573" time="2015-04-21T09:19:04-07:00" unixtime="1429633144" sha1="4f85b4a409a7ef034adbb6e3bcccdf40cd30a2bf" relative="lib/php/classes/SkillManager.php"/>
   <line no="1">
     <token name="T_OPEN_TAG">&lt;?php</token>
   </line>
@@ -26,8 +26,19 @@
     <token name="T_CONSTANT_ENCAPSED_STRING">"/RecordSet.php"</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="6"/>
+  <line no="6">
+    <token name="T_COMMENT">/*</token>
+  </line>
   <line no="7">
+    <token name="T_COMMENT">	Skill Manager</token>
+  </line>
+  <line no="8">
+    <token name="T_COMMENT">	Responsibilites: get the skills that belong the a user</token>
+  </line>
+  <line no="9">
+    <token name="T_COMMENT">*/</token>
+  </line>
+  <line no="10">
     <token name="T_CLASS">class</token>
     <token name="T_WHITESPACE"> </token>
     <token name="T_STRING">SkillManager</token>
@@ -38,52 +49,52 @@
     <token name="T_WHITESPACE"> </token>
     <token name="T_PHPDOX_OPEN_CURLY">{</token>
   </line>
-  <line no="8">
+  <line no="11">
     <token name="T_WHITESPACE">	</token>
     <token name="T_PROTECTED">protected</token>
     <token name="T_WHITESPACE"> </token>
     <token name="T_VARIABLE">$PrimaryKey</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="9">
+  <line no="12">
     <token name="T_WHITESPACE">	</token>
     <token name="T_PROTECTED">protected</token>
     <token name="T_WHITESPACE"> </token>
     <token name="T_VARIABLE">$TableName</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="10">
+  <line no="13">
     <token name="T_WHITESPACE">	</token>
     <token name="T_PROTECTED">protected</token>
     <token name="T_WHITESPACE"> </token>
     <token name="T_VARIABLE">$Columns</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="11"/>
-  <line no="12">
+  <line no="14"/>
+  <line no="15">
     <token name="T_WHITESPACE">	</token>
     <token name="T_PRIVATE">private</token>
     <token name="T_WHITESPACE"> </token>
     <token name="T_VARIABLE">$User</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="13">
+  <line no="16">
     <token name="T_WHITESPACE">	</token>
     <token name="T_PRIVATE">private</token>
     <token name="T_WHITESPACE"> </token>
     <token name="T_VARIABLE">$data</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="14"/>
-  <line no="15">
+  <line no="17"/>
+  <line no="18">
     <token name="T_WHITESPACE">	</token>
     <token name="T_PUBLIC">public</token>
     <token name="T_WHITESPACE"> </token>
     <token name="T_VARIABLE">$err</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="16"/>
-  <line no="17">
+  <line no="19"/>
+  <line no="20">
     <token name="T_WHITESPACE">	</token>
     <token name="T_FUNCTION">function</token>
     <token name="T_WHITESPACE"> </token>
@@ -94,7 +105,7 @@
     <token name="T_WHITESPACE"> </token>
     <token name="T_PHPDOX_OPEN_CURLY">{</token>
   </line>
-  <line no="18">
+  <line no="21">
     <token name="T_WHITESPACE">		</token>
     <token name="T_VARIABLE">$this</token>
     <token name="T_OBJECT_OPERATOR">-&gt;</token>
@@ -107,7 +118,7 @@
     <token name="T_VARIABLE">$PrimaryKey</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="19">
+  <line no="22">
     <token name="T_WHITESPACE">		</token>
     <token name="T_VARIABLE">$this</token>
     <token name="T_OBJECT_OPERATOR">-&gt;</token>
@@ -120,7 +131,7 @@
     <token name="T_VARIABLE">$TableName</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="20">
+  <line no="23">
     <token name="T_WHITESPACE">		</token>
     <token name="T_VARIABLE">$this</token>
     <token name="T_OBJECT_OPERATOR">-&gt;</token>
@@ -133,7 +144,7 @@
     <token name="T_VARIABLE">$Columns</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="21">
+  <line no="24">
     <token name="T_WHITESPACE">		</token>
     <token name="T_VARIABLE">$this</token>
     <token name="T_OBJECT_OPERATOR">-&gt;</token>
@@ -144,8 +155,8 @@
     <token name="T_VARIABLE">$User</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="22"/>
-  <line no="23">
+  <line no="25"/>
+  <line no="26">
     <token name="T_WHITESPACE">		</token>
     <token name="T_STRING">parent</token>
     <token name="T_DOUBLE_COLON">::</token>
@@ -154,8 +165,8 @@
     <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="24"/>
-  <line no="25">
+  <line no="27"/>
+  <line no="28">
     <token name="T_WHITESPACE">		</token>
     <token name="T_VARIABLE">$this</token>
     <token name="T_OBJECT_OPERATOR">-&gt;</token>
@@ -165,16 +176,16 @@
     <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="26">
+  <line no="29">
     <token name="T_WHITESPACE">	</token>
     <token name="T_PHPDOX_CLOSE_CURLY">}</token>
   </line>
-  <line no="27"/>
-  <line no="28">
+  <line no="30"/>
+  <line no="31">
     <token name="T_WHITESPACE">	</token>
     <token name="T_COMMENT">// OVERRIDE</token>
   </line>
-  <line no="29">
+  <line no="32">
     <token name="T_WHITESPACE">	</token>
     <token name="T_PROTECTED">protected</token>
     <token name="T_WHITESPACE"> </token>
@@ -186,7 +197,7 @@
     <token name="T_WHITESPACE"> </token>
     <token name="T_PHPDOX_OPEN_CURLY">{</token>
   </line>
-  <line no="30">
+  <line no="33">
     <token name="T_WHITESPACE">		</token>
     <token name="T_RETURN">return</token>
     <token name="T_WHITESPACE"> </token>
@@ -195,12 +206,12 @@
     <token name="T_STRING">Columns</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="31">
+  <line no="34">
     <token name="T_WHITESPACE">	</token>
     <token name="T_PHPDOX_CLOSE_CURLY">}</token>
   </line>
-  <line no="32"/>
-  <line no="33">
+  <line no="35"/>
+  <line no="36">
     <token name="T_WHITESPACE">	</token>
     <token name="T_PUBLIC">public</token>
     <token name="T_WHITESPACE"> </token>
@@ -213,7 +224,7 @@
     <token name="T_WHITESPACE"> </token>
     <token name="T_PHPDOX_OPEN_CURLY">{</token>
   </line>
-  <line no="34">
+  <line no="37">
     <token name="T_WHITESPACE">		</token>
     <token name="T_VARIABLE">$params</token>
     <token name="T_WHITESPACE"> </token>
@@ -230,7 +241,7 @@
     <token name="T_PHPDOX_CLOSE_SQUARE">]</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="35">
+  <line no="38">
     <token name="T_WHITESPACE">		</token>
     <token name="T_IF">if</token>
     <token name="T_WHITESPACE"> </token>
@@ -255,8 +266,8 @@
     <token name="T_STRING">false</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="36"/>
-  <line no="37">
+  <line no="39"/>
+  <line no="40">
     <token name="T_WHITESPACE">		</token>
     <token name="T_VARIABLE">$this</token>
     <token name="T_OBJECT_OPERATOR">-&gt;</token>
@@ -267,20 +278,20 @@
     <token name="T_VARIABLE">$User</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="38"/>
-  <line no="39">
+  <line no="41"/>
+  <line no="42">
     <token name="T_WHITESPACE">		</token>
     <token name="T_RETURN">return</token>
     <token name="T_WHITESPACE"> </token>
     <token name="T_STRING">true</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="40">
+  <line no="43">
     <token name="T_WHITESPACE">	</token>
     <token name="T_PHPDOX_CLOSE_CURLY">}</token>
   </line>
-  <line no="41"/>
-  <line no="42">
+  <line no="44"/>
+  <line no="45">
     <token name="T_WHITESPACE">	</token>
     <token name="T_PUBLIC">public</token>
     <token name="T_WHITESPACE"> </token>
@@ -292,7 +303,7 @@
     <token name="T_WHITESPACE"> </token>
     <token name="T_PHPDOX_OPEN_CURLY">{</token>
   </line>
-  <line no="43">
+  <line no="46">
     <token name="T_WHITESPACE">		</token>
     <token name="T_IF">if</token>
     <token name="T_WHITESPACE"> </token>
@@ -324,8 +335,8 @@
     <token name="T_STRING">false</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="44"/>
-  <line no="45">
+  <line no="47"/>
+  <line no="48">
     <token name="T_WHITESPACE">		</token>
     <token name="T_RETURN">return</token>
     <token name="T_WHITESPACE"> </token>
@@ -334,12 +345,12 @@
     <token name="T_STRING">data</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="46">
+  <line no="49">
     <token name="T_WHITESPACE">	</token>
     <token name="T_PHPDOX_CLOSE_CURLY">}</token>
   </line>
-  <line no="47"/>
-  <line no="48">
+  <line no="50"/>
+  <line no="51">
     <token name="T_WHITESPACE">	</token>
     <token name="T_PUBLIC">public</token>
     <token name="T_WHITESPACE"> </token>
@@ -351,7 +362,7 @@
     <token name="T_WHITESPACE"> </token>
     <token name="T_PHPDOX_OPEN_CURLY">{</token>
   </line>
-  <line no="49">
+  <line no="52">
     <token name="T_WHITESPACE">		</token>
     <token name="T_IF">if</token>
     <token name="T_WHITESPACE"> </token>
@@ -385,15 +396,15 @@
     <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
     <token name="T_WHITESPACE"> </token>
   </line>
-  <line no="50">
+  <line no="53">
     <token name="T_WHITESPACE">			</token>
     <token name="T_RETURN">return</token>
     <token name="T_WHITESPACE"> </token>
     <token name="T_STRING">false</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="51"/>
-  <line no="52">
+  <line no="54"/>
+  <line no="55">
     <token name="T_WHITESPACE">		</token>
     <token name="T_VARIABLE">$arr</token>
     <token name="T_WHITESPACE"> </token>
@@ -403,7 +414,7 @@
     <token name="T_PHPDOX_CLOSE_SQUARE">]</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="53">
+  <line no="56">
     <token name="T_WHITESPACE">		</token>
     <token name="T_FOREACH">foreach</token>
     <token name="T_WHITESPACE"> </token>
@@ -419,7 +430,7 @@
     <token name="T_WHITESPACE"> </token>
     <token name="T_PHPDOX_OPEN_CURLY">{</token>
   </line>
-  <line no="54">
+  <line no="57">
     <token name="T_WHITESPACE">			</token>
     <token name="T_VARIABLE">$id</token>
     <token name="T_WHITESPACE"> </token>
@@ -433,7 +444,7 @@
     <token name="T_PHPDOX_CLOSE_SQUARE">]</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="55">
+  <line no="58">
     <token name="T_WHITESPACE">			</token>
     <token name="T_VARIABLE">$obj</token>
     <token name="T_WHITESPACE"> </token>
@@ -447,7 +458,7 @@
     <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="56">
+  <line no="59">
     <token name="T_WHITESPACE">			</token>
     <token name="T_STRING">array_push</token>
     <token name="T_PHPDOX_OPEN_BRACKET">(</token>
@@ -458,70 +469,70 @@
     <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="57">
+  <line no="60">
     <token name="T_WHITESPACE">		</token>
     <token name="T_PHPDOX_CLOSE_CURLY">}</token>
   </line>
-  <line no="58"/>
-  <line no="59">
+  <line no="61"/>
+  <line no="62">
     <token name="T_WHITESPACE">		</token>
     <token name="T_RETURN">return</token>
     <token name="T_WHITESPACE"> </token>
     <token name="T_VARIABLE">$arr</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="60">
-    <token name="T_WHITESPACE">	</token>
-    <token name="T_PHPDOX_CLOSE_CURLY">}</token>
-  </line>
-  <line no="61">
-    <token name="T_WHITESPACE">	</token>
-  </line>
-  <line no="62">
-    <token name="T_PHPDOX_CLOSE_CURLY">}</token>
-  </line>
   <line no="63">
-    <token name="T_COMMENT">//Test</token>
+    <token name="T_WHITESPACE">	</token>
+    <token name="T_PHPDOX_CLOSE_CURLY">}</token>
   </line>
   <line no="64">
-    <token name="T_COMMENT">/*$u = new User(10);</token>
+    <token name="T_WHITESPACE">	</token>
   </line>
   <line no="65">
-    <token name="T_COMMENT">$skill = new Skill();</token>
+    <token name="T_PHPDOX_CLOSE_CURLY">}</token>
   </line>
   <line no="66">
-    <token name="T_COMMENT">$skill-&gt;setSkillName('PHP)');</token>
+    <token name="T_COMMENT">//Test</token>
   </line>
   <line no="67">
-    <token name="T_COMMENT">$skill-&gt;setOrderPosition(1);</token>
+    <token name="T_COMMENT">/*$u = new User(10);</token>
   </line>
   <line no="68">
-    <token name="T_COMMENT">$skill-&gt;setUserID($u-&gt;getID());</token>
+    <token name="T_COMMENT">$skill = new Skill();</token>
   </line>
-  <line no="69"/>
+  <line no="69">
+    <token name="T_COMMENT">$skill-&gt;setSkillName('PHP)');</token>
+  </line>
   <line no="70">
-    <token name="T_COMMENT">$skill-&gt;save();</token>
+    <token name="T_COMMENT">$skill-&gt;setOrderPosition(1);</token>
   </line>
   <line no="71">
-    <token name="T_COMMENT">echo $skill-&gt;err;</token>
+    <token name="T_COMMENT">$skill-&gt;setUserID($u-&gt;getID());</token>
   </line>
   <line no="72"/>
   <line no="73">
-    <token name="T_COMMENT">$sm = new SkillManager($u);</token>
+    <token name="T_COMMENT">$skill-&gt;save();</token>
   </line>
   <line no="74">
-    <token name="T_COMMENT">echo "\n";</token>
+    <token name="T_COMMENT">echo $skill-&gt;err;</token>
   </line>
-  <line no="75">
-    <token name="T_COMMENT">echo json_encode($sm-&gt;getData());</token>
-  </line>
+  <line no="75"/>
   <line no="76">
-    <token name="T_COMMENT">echo $sm-&gt;err;</token>
+    <token name="T_COMMENT">$sm = new SkillManager($u);</token>
   </line>
   <line no="77">
-    <token name="T_COMMENT">echo"\n";*/</token>
+    <token name="T_COMMENT">echo "\n";</token>
   </line>
   <line no="78">
+    <token name="T_COMMENT">echo json_encode($sm-&gt;getData());</token>
+  </line>
+  <line no="79">
+    <token name="T_COMMENT">echo $sm-&gt;err;</token>
+  </line>
+  <line no="80">
+    <token name="T_COMMENT">echo"\n";*/</token>
+  </line>
+  <line no="81">
     <token name="T_CLOSE_TAG">?&gt;</token>
   </line>
 </source>

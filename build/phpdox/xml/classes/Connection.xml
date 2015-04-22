@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.net/src" full="Connection" namespace="" name="Connection" abstract="false" final="false" start="12" end="142">
-  <file path="/var/www/html/ProConnect/lib/php/classes" file="Connection.php" realpath="/var/www/html/ProConnect/lib/php/classes/Connection.php" size="3221" time="2015-04-18T23:20:40-07:00" unixtime="1429424440" sha1="ba21316fa2c91f9ec8d3cd999c499a45ed1ea808" relative="lib/php/classes/Connection.php"/>
+<class xmlns="http://xml.phpdox.net/src" full="Connection" namespace="" name="Connection" abstract="false" final="false" start="12" end="153">
+  <file path="/var/www/html/ProConnect/lib/php/classes" file="Connection.php" realpath="/var/www/html/ProConnect/lib/php/classes/Connection.php" size="3461" time="2015-04-22T14:02:06-07:00" unixtime="1429736526" sha1="974582804349c2d7aec3b3b8fd2e8c8d48433879" relative="lib/php/classes/Connection.php"/>
   <docblock>
     <description compact="Connection - performs logic for connections of the users,"/>
     <params value=": @ID - UserID">Responsibilities: Make connection from a user to another user. User can find the other user by first name, last name. Adding other to current user connection.</params>
@@ -32,18 +32,23 @@
   <method name="getAccepted" start="105" end="107" abstract="false" final="false" static="false" visibility="public"/>
   <method name="getCreatedDate" start="109" end="111" abstract="false" final="false" static="false" visibility="public"/>
   <method name="getMessage" start="113" end="115" abstract="false" final="false" static="false" visibility="public"/>
-  <method name="setInitUserID" start="118" end="122" abstract="false" final="false" static="false" visibility="public">
+  <method name="getDeclined" start="117" end="119" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="setInitUserID" start="122" end="126" abstract="false" final="false" static="false" visibility="public">
     <parameter name="intVal" byreference="false" type="{unknown}"/>
   </method>
-  <method name="setTargetUserID" start="124" end="128" abstract="false" final="false" static="false" visibility="public">
+  <method name="setTargetUserID" start="128" end="132" abstract="false" final="false" static="false" visibility="public">
     <parameter name="intVal" byreference="false" type="{unknown}"/>
   </method>
-  <method name="setAccepted" start="130" end="135" abstract="false" final="false" static="false" visibility="public">
+  <method name="setAccepted" start="134" end="139" abstract="false" final="false" static="false" visibility="public">
     <parameter name="boolVal" byreference="false" type="{unknown}" default="false"/>
   </method>
-  <method name="setMessage" start="137" end="141" abstract="false" final="false" static="false" visibility="public">
+  <method name="setMessage" start="141" end="145" abstract="false" final="false" static="false" visibility="public">
     <parameter name="strVal" byreference="false" type="{unknown}"/>
   </method>
+  <method name="setDeclined" start="147" end="152" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="boolVal" byreference="false" type="{unknown}" default="false"/>
+  </method>
+  <extender full="UserConnection" namespace="" name="UserConnection"/>
   <parent full="ActiveRecord" namespace="" name="ActiveRecord">
     <member name="err" type="{unknown}" visibility="public" line="18"/>
     <constructor name="__construct" start="20" end="22" abstract="false" final="false" static="false" visibility="public"/>

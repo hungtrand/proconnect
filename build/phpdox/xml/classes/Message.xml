@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.net/src" full="Message" namespace="" name="Message" abstract="false" final="false" start="12" end="133">
-  <file path="/var/www/html/ProConnect/lib/php/classes" file="Message.php" realpath="/var/www/html/ProConnect/lib/php/classes/Message.php" size="2503" time="2015-04-18T23:20:40-07:00" unixtime="1429424440" sha1="97caaaeeb7522a00df6d310f972e90bd13acf3d1" relative="lib/php/classes/Message.php"/>
+<class xmlns="http://xml.phpdox.net/src" full="Message" namespace="" name="Message" abstract="false" final="false" start="12" end="124">
+  <file path="/var/www/html/ProConnect/lib/php/classes" file="Message.php" realpath="/var/www/html/ProConnect/lib/php/classes/Message.php" size="2385" time="2015-04-20T20:21:52-07:00" unixtime="1429586512" sha1="a766fd1d1fba0c7cf52d52e30962b6b5e7046e38" relative="lib/php/classes/Message.php"/>
   <docblock>
     <description compact="Message - performs logic for Message class."/>
     <params value=": $ID (messageID)">Responsibilities: get attributes in message table or set up attributes in message table,</params>
@@ -28,19 +28,16 @@
   <method name="getBody" start="85" end="87" abstract="false" final="false" static="false" visibility="public"/>
   <method name="getCreator" start="89" end="91" abstract="false" final="false" static="false" visibility="public"/>
   <method name="getDateCreated" start="93" end="95" abstract="false" final="false" static="false" visibility="public"/>
-  <method name="setMessageID" start="100" end="104" abstract="false" final="false" static="false" visibility="public">
+  <method name="setSubject" start="97" end="101" abstract="false" final="false" static="false" visibility="public">
     <parameter name="strVal" byreference="false" type="{unknown}"/>
   </method>
-  <method name="setSubject" start="106" end="110" abstract="false" final="false" static="false" visibility="public">
+  <method name="setBody" start="103" end="107" abstract="false" final="false" static="false" visibility="public">
     <parameter name="strVal" byreference="false" type="{unknown}"/>
   </method>
-  <method name="setBody" start="112" end="116" abstract="false" final="false" static="false" visibility="public">
+  <method name="setCreator" start="109" end="113" abstract="false" final="false" static="false" visibility="public">
     <parameter name="strVal" byreference="false" type="{unknown}"/>
   </method>
-  <method name="setCreator" start="118" end="122" abstract="false" final="false" static="false" visibility="public">
-    <parameter name="strVal" byreference="false" type="{unknown}"/>
-  </method>
-  <method name="setDateCreated" start="124" end="128" abstract="false" final="false" static="false" visibility="public">
+  <method name="setDateCreated" start="115" end="119" abstract="false" final="false" static="false" visibility="public">
     <parameter name="intVal" byreference="false" type="{unknown}"/>
   </method>
   <parent full="ActiveRecord" namespace="" name="ActiveRecord">
