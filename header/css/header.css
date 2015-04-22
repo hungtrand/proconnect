@@ -8,6 +8,11 @@ h3 {
 	margin-top: 12px;
 }
 
+#advance-option-div {
+	width: 403px;
+	z-index: 10;
+}
+
 .attention-icon {
 	color: #FCFCFC;
 }
@@ -109,6 +114,10 @@ h3 {
 	background-image: linear-gradient(#fa3c45, #dc0d17);
 }
 
+.main-search-bar {
+	width: 300px !important;
+}
+
 .open-custom {
 	color: red;
 	background-color: #080808;
@@ -121,6 +130,7 @@ h3 {
 
 .subNav a { 
 	color: #ccc !important;  
+	z-index: 0;
 }
 
 .time-ago {
@@ -139,33 +149,37 @@ h3 {
 	  	margin-left: 30px;
 	}
 	.navbar-right {
-		  margin-right: 30px;
-		  margin-top: 10px;
+		margin-right: 30px;
+	    margin-top: 10px;
 	}
 	.nav {
-	  padding-left: 50px;
-	 }
-
+	    padding-left: 50px;
+	}
 	.navbar-left {
 		position: absolute;
 		left: 50%;
 		transform: translate(-50%,0);
 		margin-top:15px;
 	}
-
 	.navbar>.container-fluid .navbar-brand {
-	  margin-left: 30px;
+	    margin-left: 30px;
 	}
-
 	.navbar-right {
-	  margin-right: 30px;
-	  margin-top: 10px;
+	    margin-right: 30px;
+	    margin-top: 10px;
 	}
 }
 
- 
 @media (max-width: 767px){
+	#advance-option-div {
+		max-width: 360px;
+		max-width: 400px;
+		/*width: 100%;*/
+	}
 	.nav {
-	  padding-left: 0px;
-	 }
+		padding-left: 0px;
+	}
+	.main-search-bar {
+		width: 100% !important;
+	}
 }

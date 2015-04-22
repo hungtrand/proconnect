@@ -72,4 +72,9 @@ $(document).ready(function(){
       	}
 	}
 
+	$("#advance-option-div").on("click",function(e){
+		console.log(e);
+		e.preventDefault();
+		e.stopPropagation();
+	});
 });

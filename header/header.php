@@ -84,11 +84,36 @@ $FullName = "HELLLLO";
 				<img style = "width:100%;" src="../image/proconnect/logo_text.png" />				
 				</a>
 
-                <form class="navbar-form navbar-left text-center form-inline" role="search" method="GET" action="/search-results/results.php">
-                    <div class="form-group">
+                <form class="navbar-form navbar-left text-center form-inline col-xs-12" role="search" method="GET" action="/search-results/results.php">
+                    <!-- <div class="form-group">
                       <input name="searchKey" type="text" size="40" class="form-control" id= "searchbar" placeholder="Search for people, companies, jobs...">
                     </div>
-                    <button type="submit" class="btn btn-primary hidden-xs hidden-sm ">&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;&nbsp;&nbsp;</button>
+
+                    <button type="submit" class="btn btn-primary hidden-xs hidden-sm ">&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;&nbsp;&nbsp;</button> -->
+                    <div id="searchbar" class="input-group">
+                        
+                        <div class="input-group-btn">
+                            <!-- Button and dropdown menu -->
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <span class="caret"></span>
+                            </button>
+                            <ul id="advance-option-div" class="dropdown-menu" role="menu">
+                              <!-- <li class=""> -->
+                                <div class="md-col-2">
+                                    <input type="text">
+                                </div>
+                                <div class="md-col-6">
+                                    <input type="text">
+                                </div>
+                              <!-- </li> -->
+                            </ul>
+                        </div><!-- /btn-group -->
+                        <input type="text" class="form-control main-search-bar" name="searchKey" placeholder="Search for people, companies, jobs...">
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </span>
+                    </div>
+                    
                 </form>
             </div>
 
