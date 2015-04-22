@@ -4,7 +4,8 @@
 	require_once __DIR__."/User.php";
 	
 /**
-*	NotificationView - performs logic for NotificationView class. 
+*	NotificationView - represent the relationship between notifications and users.
+*	also contains data representing the status between user and the notification as `Read` 
 *	@params: $UserID
 *	Responsibilities: This is Notification Relationship class for NotificationView Table in SQL   
 */	

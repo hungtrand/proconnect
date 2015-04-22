@@ -73,7 +73,7 @@ NewConnection.prototype = {
 	confirmConnect: function(json) {
 		var that = this;
 		if (json['success'] == 1)
-			that.btnConnect.replaceWith('<span class="label label-success">Invitation Sent</label>');
+			that.btnConnect.replaceWith('<span class="label label-success">Invitation Sent.</label>');
 	},
 
 	failConnect: function(msg) {

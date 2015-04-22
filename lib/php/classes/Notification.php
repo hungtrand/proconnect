@@ -6,7 +6,9 @@
  //$u->update(['Grade'=>'3.8']); echo $u->get('Grade'); // For Testing
 
 /**
-*	Notification - performs logic for Notification class. 
+*	Notification - a notification with message, timestamp and related userid.
+*	The relationship between a notification and a user is in NotificationView class
+*	This class only contains data of the notification itself. 
 *	@params: $UserID
 *	Responsibilities: get message info then notify to the associated UserID .   
 */
