@@ -1,61 +1,34 @@
-body {
-  padding-top: 50px;
-  padding-bottom: 40px;
-  background-color: white;
-  background:url("../../image/cityatnight1680x1050.jpg") no-repeat center fixed transparent;
+body.login{
+background: url("../../social-1/images/lock-2.jpg"); 
 }
-
-
-.form-signin {
-  max-width: 330px;
-  padding: 15px;
-  margin: 0 auto;
-}
-.filler {
-
-	height: 100%;
-}
-.form-signin .form-control {
-  position: relative;
-  height: auto;
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-  padding: 10px;
-  font-size: 16px;
-}
-.form-signin .form-control:focus {
-  z-index: 2;
-}
-.formContainer {
-padding: 30px;
-/*max-width:500px;
-margin: 0 auto;*/
-background-color: rgba(238, 238, 238, 0.89);
-
+a{
+color:  #4687ce;
 }
 #logo{
-  width: 250px;
-  margin-bottom: 25px;
-  margin-left:27px;
+width: 300px;
+padding: 10px 30px;
 }
-
-.form-signin input[type="email"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
+.panel {
+  width: 300px;
+  padding: 20px;
 }
-.form-signin input[type="password"] {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  box-shadow: 0 -3px 5px -3px rgba(0,0,0,.15);
+  z-index: 101;
 }
-.btn-primary {
-color: #fff;
-background-color: #0497EC;
-border-color: #2e6da4;
+.alert-danger {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
 }
-#signUp{
-margin-top: 10px;
-margin-left: 60px;
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
 }
