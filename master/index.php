@@ -17,7 +17,7 @@ if (!isset($Content)) $Content = "Content not loaded.";
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title><?=$title?></title>
+    <title><?=$Title?></title>
     <!-- Compressed Vendor BUNDLE
     Includes vendor (3rd party) styling such as the customized Bootstrap and other 3rd party libraries used for the current theme/module -->
     <link href="/master/css/vendor.min.css" rel="stylesheet">
@@ -409,7 +409,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!-- /st-pusher -->
         <!-- Footer -->
         <footer class="footer">
-            <strong>ThemeKit</strong> v3.6.3 &copy; Copyright 2015
+            <strong>ProConnect</strong> Quorious Design &copy; Copyright 2015
         </footer>
         <!-- // Footer -->
     </div>

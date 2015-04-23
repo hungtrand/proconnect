@@ -172,7 +172,6 @@ ob_start();
         </div>
     </script>
 
-    
 <?php
     $Content = ob_get_clean();
     include __DIR__."/../master/index.php";
