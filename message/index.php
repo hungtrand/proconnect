@@ -1,36 +1,33 @@
 <?php
-//error_reporting(E_ALL); // debug
-//ini_set("display_errors", 1); // debug
-// include '../signout/php/session_check_signout.php';
+// error_reporting(E_ALL); // debug
+// ini_set("display_errors", 1); // debug
+// initialize variables with default values
+include '/signout/php/session_check_signout.php';
 
+session_start();
 $UData = json_decode($_SESSION['__USERDATA__'], true);
 $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 
-$page_title = "Message Center"; //require for front end
-include '../header/header.php';
+$Title = "Feed - Proconnect";
+$ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
+$JobTitle = $UData['TITLE'];
+
+ob_start();
+
 ?>
 
-
+<div id="container">
     <div id="loading-main">
         <img src="/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif">
     </div>
-    <div id="ConnectionsHeader" class="row">
-                
-                    <div class="col col-xs-8">
-                        <h2 class="text-info" style="color: #DDDDDD;">ProConnecting</h2>            
-                    </div>
-
-                </div>  
-    <div class="container">
 
         <div class="row">
 
             <div class="col col-md-12">          
 
-                <div class="col col-xs-4 col col-sm-12 well" id="sidebar" role="navigation">
+                <div class="col col-xs-2 col col-sm-12 well" id="sidebar" role="navigation">
                 
-                    <div id="sidebar-content">
-
+                	<div id="sidebar-content">
                         <div class="new-message-btn">
                             <a href="#" id="main-new" class="list-group-item" value="New Message">New<span class="sidebar-icon glyphicon glyphicon-pencil"></span></a>
                         </div>
@@ -42,11 +39,11 @@ include '../header/header.php';
 
                         <hr />
 
-                        <div id="searching">
+                        <!-- <div id="searching">
                             <form id="search-form" class="form-inline">
                                 <div class="form-group">
                                     <input type="text" class="form-control typeahead" id="search-subject" placeholder="Search..." val="">
-                                    
+                                
                                 </div>
                                 <div class="form-group">
                                     <button class="btn btn-default" type="button" id="search-button">
@@ -55,17 +52,17 @@ include '../header/header.php';
                                 </div>
                                 
                             </form>
-                        </div>
-                    </div>       
+                        </div> -->
+                    </div>  
                 </div>
                     <div id="message-div" class="col col-xs-12 well">
                         <input type="hidden" name="pageNumber" id="pageNumber" value="1"/>
-                        <div>
-                        <h3 style="margin-top: 8px; margin-bottom: 19px; color: #337AB7;"><p class="message-frame-name"></p></h3>
+                        <div id="message-form-header">
+	                        <h3 style="margin-top: 8px; margin-bottom: 19px; color: #337AB7;"><p class="message-frame-name"></p></h3>
 
-                        <div class="text-right" id="remove-trash">
-                            <button class="btn btn-default" type="button" id="empty-trash">Empty Trash</button>
-                        </div>
+	                        <div class="text-right" id="remove-trash">
+	                            <button class="btn btn-default" type="button" id="empty-trash">Empty Trash</button>
+	                        </div>
                         </div>
                     
                         <hr />
@@ -76,21 +73,21 @@ include '../header/header.php';
                         <div id="MessageListEndAlert" class="alert alert-info hidden text-center"></div>
                         <!-- this empty div is filled with either one of the four message boxes, or a new message frame -->                  
                         </div>   
-                <div id="fixed-right-section" class="col col-xs-4" role="complimentary">
-                <div class="well">
-                    <h3 class="text-primary" style="margin-top: 8px; margin-bottom: 19px;">Suggestions</h3>
-                    <hr />
+                <!-- <div id="fixed-right-section" class="col col-xs-4" role="complimentary">
+                	<div class="well">
+	                    <h3 class="text-primary" style="margin-top: 8px; margin-bottom: 19px;">Suggestions</h3>
+	                    <hr />
 
-                    <div id="SuggListing" >
-                        <!-- this empty div is filled with suggested connections -->
-                    </div>
+	                    <div id="SuggListing" >
+	                        <!-- this empty div is filled with suggested connections
+	                    </div>
 
-                    <div id="SuggestionsListEndAlert" class="alert alert-info hidden text-center"></div>
-                </div>
-            </div>
+                    	<div id="SuggestionsListEndAlert" class="alert alert-info hidden text-center"></div>
+                	</div>
+            	</div> -->
             </div>
         </div>
-    </div>
+        </div>
 
 <!-- script for textfield -->
 <script type="text/template" id="message-textfield">
@@ -118,20 +115,21 @@ include '../header/header.php';
     <div id="message-content" class="well well-sm">
         <input type="hidden" class"messageID" name="messageID" value="" />                           
         <div class="row">
-            <div class="col col-xs-12">
-                <a href="#" class="sender-href"><img src="../image/user_img.png" class="img-rounded sender-picture" style="float: left; margin-right:10px;"/></a>
-                <h4 class="text-primary ConnectionName"><strong><a href="#" class="sender-href"><span class="sender-name">John Doe</span></a></strong></h4>
-                <strong><p class="message-subject">Test</p></strong>
-                <p class="message-time">message time</p>
+            <div class="col col-xs-12 topper">
+            	<div>
+	                <a href="#" class="sender-href"><img src="../image/user_img.png" class="img-rounded sender-picture" style="float: left; margin-right:10px;"/></a>
+	                <h4 class="text-primary ConnectionName"><strong><a href="#" class="sender-href"><span class="sender-name">John Doe</span></a></strong></h4>
+	                <strong><p class="message-subject">Test</p></strong>
+	                <p class="message-time">message time</p>
+                </div>
             </div>
             <div class="col col-xs-12">
                 <div  class="message-text">
-                    <hr />
-                        <article>
-                            <p class="sender-message">Test</p>
-                        </article>                
-                    <hr />
+                    <article>
+                        <p class="sender-message">Test</p>
+                    </article>
                 </div>
+            <hr/>
             </div>
             <div id="footers">
                 <ol class="nav nav-pills">
@@ -208,6 +206,11 @@ include '../header/header.php';
     </div>
     </script>
 
+    <?php
+    $Content = ob_get_clean();
+    include __DIR__."/../master/index.php";
+?>
+
   <!-- Custom modal handler -->
   <script src="/lib/bootstrap/js/bootstrap-typeahead.min.js"></script>
   <script src="/lib/js/underscore-min.js"></script>
@@ -222,6 +225,3 @@ include '../header/header.php';
 
   <!-- Custom CSS -->
   <link href="css/index.css" rel="stylesheet">
-
-</body>
-</html>
