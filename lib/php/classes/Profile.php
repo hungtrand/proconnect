@@ -6,7 +6,7 @@ require_once __DIR__."/ExperienceManager.php";
 require_once __DIR__."/EducationManager.php";
 
 /**
-*	Profile - performs logic for Profile class. 
+*	Profile - performs logic for Profile class. This class extend ViewRecord class. This class provides detail information and attribute names of the vw_PersonalInfo tables, and it will return info of user profile base on userID input.
 *	@params: $UserID
 *	Responsibilities: get info from a user's profile such as userid, first name, last name, birthday, gender, .etc.. .  
 */

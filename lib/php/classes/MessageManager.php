@@ -5,7 +5,7 @@ require_once __DIR__."/Message.php";
 require_once __DIR__."/RecordSet.php";
 
 /**
-*	MessageManager - performs logic for MessageManager class. 
+*	MessageManager - performs logic for MessageManager class. This class extend Record class. It will return information from the Message table base on user id input.
 *	@params: $USERID
 *	Responsibilities: load the user and get message for the user.   
 */
