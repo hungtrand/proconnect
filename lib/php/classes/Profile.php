@@ -5,12 +5,17 @@ require_once __DIR__."/User.php";
 require_once __DIR__."/ExperienceManager.php";
 require_once __DIR__."/EducationManager.php";
 
+/**
+*	Profile - performs logic for Profile class. This class extend ViewRecord class. This class provides detail information and attribute names of the vw_PersonalInfo tables, and it will return info of user profile base on userID input.
+*	@params: $UserID
+*	Responsibilities: get info from a user's profile such as userid, first name, last name, birthday, gender, .etc.. .  
+*/
 class Profile extends ViewRecord {
 	public static $TableName = 'vw_PersonalInfo';
 	public static $PrimaryKey = 'USERID';
 	public static $Columns = ['USERID', 'FIRSTNAME', 'MIDDLENAME', 'LASTNAME', 'NAME'
 							, 'GENDER', 'BIRTHDAY', 'ADDRESS', 'CITY', 'STATE', 'ZIP'
-							, 'SUMMARY', 'PHONE', 'PHONETYPE', 'EMPLOYMENTSTATUS'
+							, 'SUMMARY', 'PROFILEIMAGE', 'PHONE', 'PHONETYPE', 'EMPLOYMENTSTATUS'
 							, 'COUNTRY', 'ACCOUNTID', 'EMAIL', 'EMAIL_ALT'
 							, 'USERNAME', 'PASSWORD', 'ACTIVE', 'VERIFIED'];
 	public static $PseudoColumns = ['TITLE', 'ORGANIZATION', 'LOCATION'];
@@ -164,6 +169,10 @@ class Profile extends ViewRecord {
 
 	public function getSummary() {
 		return $this->data['SUMMARY'];
+	}
+
+	public function getProfileImage() {
+		return $this->data['PROFILEIMAGE'];
 	}
 
 	public function getEmploymentStatus() {

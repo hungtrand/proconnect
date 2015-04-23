@@ -3,14 +3,14 @@
  //$u = new Account(1); echo $u->get('Username').'\n'; // For testing
 // $u->update(['Username'=>'Feb2015']); echo $u->get('Username'); // For Testing
 
-/*
-	The user class retrieve data of Account from the provided AccountID
-	@params: $AccountID
-	$data: an associated array that act as the main property of the class Account
-			this array holds all data from the database of instance user with AccountID
-			the key is the exact name of column in database, and the value is the field value
-	@update: public function update allow Account to update its own data
-			after updating, the object Account would reload itself with new data
+/**
+*	ActiveRecord - The user class retrieve data of Account from the provided AccountID
+*	@params: $AccountID
+*	$data: an associated array that act as the main property of the class Account
+*			this array holds all data from the database of instance user with AccountID
+*			the key is the exact name of column in database, and the value is the field value
+*	@update: public function update allow Account to update its own data
+*			after updating, the object Account would reload itself with new data
 */
 abstract class ActiveRecord {
 	private $db;
@@ -40,7 +40,7 @@ abstract class ActiveRecord {
 		$pk = $this->getPrimaryKey();
 		$cols = $this->getColumns();
 
-		$sql = 'SELECT ' . $table.'.'.implode(', '.$table.'.', $cols);
+		$sql = 'SELECT ' . $table.'.`'.implode('`, '.$table.'.`', $cols).'`';
 		$sql .=' FROM '.$table.' WHERE '.$pk.'= ? LIMIT 1 ';
 
 		if ($stmt = $this->db->prepare($sql)) {
@@ -84,7 +84,7 @@ abstract class ActiveRecord {
 			$delimiter = $Logic." ";
 		}
 
-		$sql = 'SELECT ' . $table.'.'.implode(', '.$table.'.', $cols);
+		$sql = 'SELECT ' . $table.'.`'.implode('`, '.$table.'.`', $cols).'`';
 		$sql .=' FROM '.$table.$cond.' LIMIT 1 ';
 		if ($stmt = $this->db->prepare($sql)) {
 
@@ -94,7 +94,7 @@ abstract class ActiveRecord {
 					$stmt->bindParam($i, $paramVal);
 					$i++;
 				}
-//echo $sql."\n".json_encode($params)."\n";
+// echo $sql."\n".json_encode($params)."\n";
 				$stmt->execute();
 				
 				if ( $rs = $stmt->fetch(PDO::FETCH_ASSOC) ){
@@ -134,7 +134,7 @@ abstract class ActiveRecord {
 		$fields = '(';
 		$values = 'VALUES (';
 		foreach($data as $col=>$value) {
-			$fields .= $delimiter . $col . ' ';
+			$fields .= $delimiter . '`'.$col . '` ';
 			$values .= $delimiter . '? ';
 
 			$delimiter = ', '; 
@@ -180,7 +180,7 @@ abstract class ActiveRecord {
 		foreach($data as $col => $value) {
 			if ($col == $pk) continue;
 
-			$setStmt .= $delimiter . $col . ' = ? ';
+			$setStmt .= $delimiter . '`'.$col . '` = ? ';
 			$delimiter = ", ";
 		}
 		$setStmt .= " ";

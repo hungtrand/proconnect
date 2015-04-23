@@ -14,9 +14,11 @@ $u = ["FirstName"=>"Iron", "LastName"=>"Man",
 $aa->signup($u);
 echo $aa->err;*/
 
-/*
-	Account admin
-	Responsibilities: Account signup, Account validation, send verification email, login, logout
+/**
+*	AccountAdmin - performs logic for user sign up, sign in, reset password, 
+*	and email verification. AccountAdmin also communicates with System_Email package to send out 
+*	email regarding the user’s account changes. 
+*	Responsibilities: Account signup, Account validation, send verification email, login, logout
 */
 class AccountAdmin {
 	private $db;

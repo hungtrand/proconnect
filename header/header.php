@@ -1,17 +1,16 @@
 <?php
 //error_reporting(E_ALL); // debug
 //ini_set("display_errors", 1); // debug
-// include '../signout/php/session_check_signout.php';
+include '../signout/php/session_check_signout.php';
 
 $UData = json_decode($_SESSION['__USERDATA__'], true);
 $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
-?>
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,7 +18,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
     <meta name="author" content="">
 
     <title><?php echo $page_title; ?></title>
-    
+    <link rel="ICON" href="../image/proconnect/Tab_logo2.ico" type="image/ico" />
     <script src="/lib/jquery/jquery-2.1.3.min.js"></script>
 
 
@@ -39,17 +38,42 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="/js/ie10-viewport-bug-workaround.js"></script>
 
-    <link rel="stylesheet" href="/header/header.css">
-    <script src="/header/header.js"></script>
-	
-
+    <link rel="stylesheet" href="/header/css/header.css">
+    <!-- <link rel="import" href="/lib/templates/centered-loading-gif.html"></link> -->
     <script type="text/javascript" src="/header/js/NotificationGetter.js"></script>
+    <script type="text/javascript" src="/header/js/AdvanceSearchInterfaceHandler.js"></script>
+    <script type="text/javascript" src="/header/js/MessageGetter.js"></script>
+    <script type="text/javascript" src="/header/js/MediaItemFactory.js"></script>
     <script type="text/javascript" src="/header/js/header.js"></script>
 
 </head>
 
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top affix" data-spy="affix" data-offset-top="60 " data-offset-bottom="200">
+    <template id="MediaItem">
+        <li class="media custom-media-item">
+            <a class="landing-destination" href="#">
+                <div class="media-left">
+                    <img href="" class="media-object" src="/image/user_img.png" alt="..." style="max-width: 48px;">
+                </div> 
+                <div class="media-body">
+                  <h4 class="media-heading" >Media Heading</h4>
+                  <p class="snippet-zone"> Message Title </p>
+                </div>
+                <div class="media-right time-ago">lorem</div>
+            </a>
+        </li>
+    </template>
+    <template id="ao-checkbox">
+        <li>
+        <div class="checkbox">
+            <label>
+               <input type="checkbox" value="" checked> 
+            </label>
+        </div>
+    </li>
+    </template>
+    <!-- data-spy="affix" data-offset-top="200" data-offset-bottom="-200" -->
+    <nav id="header-nav" class="navbar navbar-inverse navbar-fixed-top affix" >
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -60,19 +84,66 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                     <span class="icon-bar"></span>
                 </button>
 
-                <a id="logo" class="navbar-brand hidden-xs hidden-sm " href="#">				
+                <a class="logo navbar-brand hidden-xs hidden-sm " href="#">				
 				<img src="../image/proconnect/logo_text.png" />				
 				</a>
-				<a id="logo" class="navbar-brand hidden-md hidden-lg" style = "width:200px;" href="#">				
+				<a class="logo navbar-brand hidden-md hidden-lg" style = "width:200px;" href="#">				
 				<img style = "width:100%;" src="../image/proconnect/logo_text.png" />				
 				</a>
 
-
-                <form class="navbar-form navbar-left text-center form-inline" role="search">
-                    <div class="form-group">
-                      <input type="text" size="40" class="form-control" id= "searchbar" placeholder="Search for people, companies, jobs...">
+                <form class="navbar-form navbar-left text-center form-inline col-xs-12" role="search" method="GET" action="/search-results/results.php">
+                    <!-- <div class="form-group">
+                      <input name="searchKey" type="text" size="40" class="form-control" id= "searchbar" placeholder="Search for people, companies, jobs...">
                     </div>
-                    <button type="submit" class="btn btn-primary hidden-xs hidden-sm ">&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;&nbsp;&nbsp;</button>
+
+                    <button type="submit" class="btn btn-primary hidden-xs hidden-sm ">&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;&nbsp;&nbsp;</button> -->
+                    <div id="searchbar" class="input-group">
+                        
+                        <div class="input-group-btn">
+                            <!-- Button and dropdown menu -->
+                            <button id="ao-show-btn"type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <span class="caret"></span>
+                            </button>
+                            <div id="advance-option-div" class="dropdown-menu well " role="options">
+                                <h3>Advance Search By:</h3>
+                                <div class="ao-outer">
+                                    <div>
+                                        <div class="form-group">
+                                            <label for="ao-education">Education</label> 
+                                            <div class="">
+                                                <ul id="ao-education" class="dynamic-result-div list-unstyled">
+                                                </ul> 
+                                                <input class="ao-add-option" type="text" placeholder="+ Add">
+                                            </div>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                </div>
+                                <div class="ao-outer">
+                                    <div>
+                                        <div class="form-group">
+                                            <label for="ao-education">School</label> 
+                                            <div>
+                                                <ul id="ao-school" class="dynamic-result-div list-unstyled">
+                                                </ul> 
+                                                <input class="ao-add-option" type="text" placeholder="+ Add">
+                                            </div>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                </div>
+                                <button type="button" class="ao-close close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+                                <!-- Extra Search Button -->
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            </div>
+                        </div><!-- /btn-group -->
+                        <input type="text" class="form-control main-search-bar" name="searchKey" placeholder="Search for people, companies, jobs...">
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </span>
+                    </div>
+                    
                 </form>
             </div>
 
@@ -80,45 +151,77 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
             <div class="collapse navbar-collapse" id="nav-right-links">
 
                 <ul class="nav navbar-nav nav-pills navbar-right ">
-                    <li class="notification-list" id="message">
-                        <a href="#" class="dropdown-toggle notification-menu" id= "message-menu" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-envelope"></span><span class="badge">2</span></a>
-						  <ul class="dropdown-menu" role="menu">
-							<li><a href="#">Action</a></li>
-							<li><a href="#">Another action</a></li>
-							<li><a href="#">Something else here</a></li>
-							<li class="divider"></li>
-							<li><a href="#">Separated link</a></li>
-						  </ul>
-				 </li>
-				
+                    <!-- <li id = "return" style = "display: none;">
+                        <a href="#"><span class="glyphicon glyphicon-menu-left"></span></a>
+					</li> -->
 
-                    <li class="notification-list" id="notification">
-                        <a href="#" class="dropdown-toggle notification-menu" id= "notification-menu" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-flag"></span><span class="badge">1</span></a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="#">Action</a></li>
-								<li><a href="#">Another action</a></li>
-								<li><a href="#">Something else here</a></li>
-								<li class="divider"></li>
-								<li><a href="#">Separated link</a></li>
-							</ul>
-				   </li>
+					<li class="notification-list notification-icon" id="message">
 
-                    <li class="notification-list" id="connection">
-                        <a href="#" class="dropdown-toggle notification-menu" id= "connection-menu" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user"></span><span class="badge">5</span></a>
-						<ul class="dropdown-menu" role="menu">
-								<li><a href="#">Action</a></li>
-								<li><a href="#">Another action</a></li>
-								<li><a href="#">Something else here</a></li>
-								<li class="divider"></li>
-								<li><a href="#">Separated link</a></li>
+                        <a href="#" class="dropdown-toggle notification-menu navi-menu" id="message-menu" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <span class="glyphicon glyphicon-envelope"></span>
+                            <span class="badge notification-number"></span>
+                        </a>
+
+                        <!-- Message Items -->
+					    <ul class="dropdown-menu media-list dropdown-menu-right" role="menu">
+							<li role="presentation" class="dropdown-header">
+                                <strong>Messages</strong> 
+                                <span class="glyphicon glyphicon-triangle-right" aria-hidden="true">
+                            </li>
+                            <div id="iam-loading" >
+                                <div>
+                                  <img src="/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif">
+                                </div>
+                            </div>
+					    </ul> 
+					</li>
+                    <!-- <li role="presentation" class="divider"></li> -->
+
+                    <li class="notification-list notification-icon" id="notification">
+                        <a href="#" class="dropdown-toggle notification-menu navi-menu" id= "notification-menu" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <span class="glyphicon glyphicon-flag"></span>
+                            <span class="badge notification-number"></span>
+                        </a>
+						<ul class="dropdown-menu media-list" role="menu">
+							<li role="presentation" class="dropdown-header">
+                                <strong>Notifications</strong>
+                                <span class="glyphicon glyphicon-triangle-right" aria-hidden="true">
+                            </li>
+                            <div id="iam-loading" >
+                                <div>
+                                  <img src="/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif">
+                                </div>
+                            </div>
 						</ul>
 				   </li>
 
-                    <li class="dropdown hidden-xs">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            <?=$FullName?> <span class="caret"></span>
+                    <li class="notification-list notification-icon" id="connection">
+                        <a href="#" class="dropdown-toggle notification-menu navi-menu" id="connection-menu" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <span class="glyphicon glyphicon-user"></span>
+                            <span class="badge notification-number"></span>
                         </a>
-                        <ul class="dropdown-menu" role="menu">
+						<ul class="dropdown-menu media-list" role="menu">
+								<li role="presentation" class="dropdown-header">
+                                    <strong>Add Connections</strong>
+                                    <span class="glyphicon glyphicon-triangle-right" aria-hidden="true">
+                                </li>
+                                <div id="iam-loading" >
+                                    <div>
+                                      <img src="/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif">
+                                    </div>
+                                </div> 
+						</ul>
+				   </li>
+
+                    <li class="dropdown hidden-xs" id="caret">
+                        <a href="#" class="dropdown-toggle" id="caret-menu" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <?=$FullName?> <span class="glyphicon glyphicon-cog"></span>
+                        </a>
+                        <ul class="dropdown-menu " role="menu">
+							<li role="presentation" class="dropdown-header">
+                                <strong>Account & Settings</strong>
+                                <span class="glyphicon glyphicon-triangle-right" aria-hidden="true">
+                            </li>
                             <li><a href="#">Account & Settings</a></li>
                             <li><a href="#">Job Posting</a></li>
                             <li class="divider"></li>
@@ -126,8 +229,8 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                         </ul>
                     </li>
                 </ul>
-				 <ul class="nav subNav hidden-sm hidden-md hidden-lg">
-                <li role="presentation"><a href="../profile-user-POV/">
+			<ul class="nav subNav hidden-sm hidden-md hidden-lg">
+                <li role="presentation"><a href="../feed/">
                     Home</a>
                 </li>
                 <li role="presentation"><a href="../profile-user-POV/">
@@ -145,18 +248,45 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                 <li role="presentation"><a href="#">
                     Interests</a>
                 </li>
-	
-				<li role="presentation"><a href="#">Account & Settings</a></li>
-				<li role="presentation"><a href="#">Job Posting</a></li>
-				<hr>
-				<li role="presentation" id = "signout-menu"><a href="../signout/php/session_signout.php">Sign Out</a></li>
-					
-                </div>
             </ul>
 
+            <!-- Mobile Menu View -->
+            <ul class="nav subNav hidden-sm hidden-md hidden-lg">
+                    <li role="presentation">
+                        <a href="../profile-user-POV/">Home</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="../profile-user-POV/">Profile</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="../connections/">Connections</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#">Education</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#">Jobs</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#">Interests</a>
+                    </li>
+        
+                    <li role="presentation">
+                        <a href="#">Account & Settings</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#">Job Posting</a>
+                    </li>
+                    <hr>
+                    <li role="presentation" id="signout-menu">
+                        <a href="../signout/php/session_signout.php">Sign Out</a>
+                    </li>
+                </ul>
+
             </div><!-- /.navbar-collapse -->
+
             <ul class="nav nav-pills subNav hidden-xs">
-                <li role="presentation"><a href="../profile-user-POV/">
+                <li role="presentation"><a href="../feed/">
                     Home</a>
                 </li>
                 <li role="presentation"><a href="../profile-user-POV/">

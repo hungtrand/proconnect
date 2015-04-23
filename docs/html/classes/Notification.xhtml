@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - Notification</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">Notification</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/lib/php/classes/Notification.php.xhtml#line15">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>\</small>Notification</h1>
+        <h4>Notification - a notification with message, timestamp and related userid.</h4>
+        <p>The relationship between a notification and a user is in NotificationView class<br/>This class only contains data of the notification itself.</p>
+        <ul/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class Notification
+                extends <a title="ActiveRecord" href="../classes/ActiveRecord.xhtml">ActiveRecord</a>
+            {<br/><ul class="none"><li>// members</li><li>public string <a href="#members">$TableName</a>;
+                    </li><li>public string <a href="#members">$PrimaryKey</a>;
+                    </li><li>public array <a href="#members">$Columns</a>;
+                    </li><li>private array <a href="#members">$data</a>;
+                    </li><li>private <a href="#members">$NotiID</a>;
+                    </li><li>public <a href="#members">$err</a>;
+                    </li></ul><ul class="none"><li>// Inherited members from <span title="ActiveRecord">ActiveRecord</span></li><li>public <a href="#members">$err</a>;
+                        </li></ul><ul class="none"><li>// methods</li><li>public void <a title="Notification" href="../classes/Notification/__construct.xhtml">__construct</a>()
+                    </li><li>public void <a title="Notification" href="../classes/Notification/getData.xhtml">getData</a>()
+                    </li><li>public void <a title="Notification" href="../classes/Notification/getID.xhtml">getID</a>()
+                    </li><li>protected void <a title="Notification" href="../classes/Notification/getPrimaryKey.xhtml">getPrimaryKey</a>()
+                    </li><li>protected void <a title="Notification" href="../classes/Notification/getTableName.xhtml">getTableName</a>()
+                    </li><li>protected void <a title="Notification" href="../classes/Notification/getColumns.xhtml">getColumns</a>()
+                    </li><li>public void <a title="Notification" href="../classes/Notification/load.xhtml">load</a>()
+                    </li><li>public void <a title="Notification" href="../classes/Notification/getMessage.xhtml">getMessage</a>()
+                    </li><li>public void <a title="Notification" href="../classes/Notification/getType.xhtml">getType</a>()
+                    </li><li>public void <a title="Notification" href="../classes/Notification/getTimestamp.xhtml">getTimestamp</a>()
+                    </li><li>public void <a title="Notification" href="../classes/Notification/getUserID.xhtml">getUserID</a>()
+                    </li><li>public void <a title="Notification" href="../classes/Notification/setMessage.xhtml">setMessage</a>()
+                    </li><li>public void <a title="Notification" href="../classes/Notification/setType.xhtml">setType</a>()
+                    </li><li>public void <a title="Notification" href="../classes/Notification/setUserID.xhtml">setUserID</a>()
+                    </li></ul><ul class="none"><li>// Inherited methods from <span title="ActiveRecord">ActiveRecord</span></li><li>public void <a title="ActiveRecord" href="../classes/ActiveRecord/__construct.xhtml">__construct</a>()
+                        </li><li>public abstract void <a title="ActiveRecord" href="../classes/ActiveRecord/getData.xhtml">getData</a>()
+                        </li><li>public abstract void <a title="ActiveRecord" href="../classes/ActiveRecord/getID.xhtml">getID</a>()
+                        </li><li>protected abstract void <a title="ActiveRecord" href="../classes/ActiveRecord/getPrimaryKey.xhtml">getPrimaryKey</a>()
+                        </li><li>protected abstract void <a title="ActiveRecord" href="../classes/ActiveRecord/getTableName.xhtml">getTableName</a>()
+                        </li><li>protected abstract void <a title="ActiveRecord" href="../classes/ActiveRecord/getColumns.xhtml">getColumns</a>()
+                        </li><li>public abstract void <a title="ActiveRecord" href="../classes/ActiveRecord/load.xhtml">load</a>()
+                        </li><li>public void <a title="ActiveRecord" href="../classes/ActiveRecord/reload.xhtml">reload</a>()
+                        </li><li>protected void <a title="ActiveRecord" href="../classes/ActiveRecord/fetch.xhtml">fetch</a>()
+                        </li><li>protected void <a title="ActiveRecord" href="../classes/ActiveRecord/fetchBy.xhtml">fetchBy</a>()
+                        </li><li>public void <a title="ActiveRecord" href="../classes/ActiveRecord/save.xhtml">save</a>()
+                        </li><li>public void <a title="ActiveRecord" href="../classes/ActiveRecord/update.xhtml">update</a>()
+                        </li><li>public void <a title="ActiveRecord" href="../classes/ActiveRecord/delete.xhtml">delete</a>()
+                        </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Extends</h4>
+          <ul>
+            <li>
+              <a href="../classes/ActiveRecord.xhtml">ActiveRecord</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="NotiID">
+              <strong>$NotiID</strong>
+            </li>
+            <li id="data">
+              <strong>$data</strong>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul class="members">
+            <li id="Columns">
+              <strong>$Columns</strong>
+            </li>
+            <li id="PrimaryKey">
+              <strong>$PrimaryKey</strong>
+            </li>
+            <li id="TableName">
+              <strong>$TableName</strong>
+            </li>
+            <li id="err">
+              <strong>$err</strong>
+            </li>
+            <li id="err">
+              <strong>$err</strong>
+            </li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>protected</h4>
+          <ul>
+            <li id="getColumns">
+              <a title="Notification" href="../classes/Notification/getColumns.xhtml">getColumns()</a>
+            </li>
+            <li id="getPrimaryKey">
+              <a title="Notification" href="../classes/Notification/getPrimaryKey.xhtml">getPrimaryKey()</a>
+            </li>
+            <li id="getTableName">
+              <a title="Notification" href="../classes/Notification/getTableName.xhtml">getTableName()</a>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__construct">
+              <a title="Notification" href="../classes/Notification/__construct.xhtml">__construct()</a>
+            </li>
+            <li id="getData">
+              <a title="Notification" href="../classes/Notification/getData.xhtml">getData()</a>
+            </li>
+            <li id="getID">
+              <a title="Notification" href="../classes/Notification/getID.xhtml">getID()</a>
+            </li>
+            <li id="getMessage">
+              <a title="Notification" href="../classes/Notification/getMessage.xhtml">getMessage()</a>
+            </li>
+            <li id="getTimestamp">
+              <a title="Notification" href="../classes/Notification/getTimestamp.xhtml">getTimestamp()</a>
+            </li>
+            <li id="getType">
+              <a title="Notification" href="../classes/Notification/getType.xhtml">getType()</a>
+            </li>
+            <li id="getUserID">
+              <a title="Notification" href="../classes/Notification/getUserID.xhtml">getUserID()</a>
+            </li>
+            <li id="load">
+              <a title="Notification" href="../classes/Notification/load.xhtml">load()</a>
+            </li>
+            <li id="setMessage">
+              <a title="Notification" href="../classes/Notification/setMessage.xhtml">setMessage()</a>
+            </li>
+            <li id="setType">
+              <a title="Notification" href="../classes/Notification/setType.xhtml">setType()</a>
+            </li>
+            <li id="setUserID">
+              <a title="Notification" href="../classes/Notification/setUserID.xhtml">setUserID()</a>
+            </li>
+          </ul>
+          <h3>Inherited from <a title="ActiveRecord" href="../classes/ActiveRecord.xhtml">ActiveRecord</a></h3>
+          <h4>protected</h4>
+          <ul>
+            <li id="fetch">
+              <a title="ActiveRecord" href="../classes/ActiveRecord/fetch.xhtml">fetch()</a>
+            </li>
+            <li id="fetchBy">
+              <a title="ActiveRecord" href="../classes/ActiveRecord/fetchBy.xhtml">fetchBy()</a>
+            </li>
+            <li id="getColumns">
+              <a title="ActiveRecord" href="../classes/ActiveRecord/getColumns.xhtml">getColumns()</a>
+            </li>
+            <li id="getPrimaryKey">
+              <a title="ActiveRecord" href="../classes/ActiveRecord/getPrimaryKey.xhtml">getPrimaryKey()</a>
+            </li>
+            <li id="getTableName">
+              <a title="ActiveRecord" href="../classes/ActiveRecord/getTableName.xhtml">getTableName()</a>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="delete">
+              <a title="ActiveRecord" href="../classes/ActiveRecord/delete.xhtml">delete()</a>
+            </li>
+            <li id="getData">
+              <a title="ActiveRecord" href="../classes/ActiveRecord/getData.xhtml">getData()</a>
+            </li>
+            <li id="getID">
+              <a title="ActiveRecord" href="../classes/ActiveRecord/getID.xhtml">getID()</a>
+            </li>
+            <li id="load">
+              <a title="ActiveRecord" href="../classes/ActiveRecord/load.xhtml">load()</a>
+            </li>
+            <li id="reload">
+              <a title="ActiveRecord" href="../classes/ActiveRecord/reload.xhtml">reload()</a>
+            </li>
+            <li id="save">
+              <a title="ActiveRecord" href="../classes/ActiveRecord/save.xhtml">save()</a>
+            </li>
+            <li id="update">
+              <a title="ActiveRecord" href="../classes/ActiveRecord/update.xhtml">update()</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.7.0 - Copyright (C) 2010 - 2015 by Arne Blankerts</span>
+    </footer>
+  </body>
+</html>

@@ -238,9 +238,9 @@ div[for="skills-endorsements-edit"] > .panel,.list-group{
 }
 */
 
-#logo{
+/*#logo{
 	color: #D7D7D7;
-}
+}*/
 
 .normal-view {
 	/*display: none;*/
@@ -392,8 +392,6 @@ small {
 	position: relative;
 }
 
-
-
 #sortable { 
 	list-style-type: none; 
 	margin: 0; 
@@ -418,7 +416,7 @@ small {
 	}
 }
 
-@media (min-width: 798px) and (max-width: 992px) { 
+@media (min-width: 768px) and (max-width: 992px) { 
 	.profile-image {
 		max-height: 300px;
 		max-width: 300px;

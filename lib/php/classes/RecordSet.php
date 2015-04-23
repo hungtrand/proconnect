@@ -1,4 +1,8 @@
 <?php
+/**
+*	RecordSet - Connect to the database, fetch data for desired request such as fetchby and Custom fetch and return an array of recors.
+*	
+*/
 abstract class RecordSet {
 	protected $db;
 	private $Limit;
@@ -27,7 +31,7 @@ abstract class RecordSet {
 		if (isset($this->Limit) && is_int($this->Limit)) 
 			$sqlLimit = " LIMIT ". (string)$this->Limit;
 
-		$sql = 'SELECT ' . $this->TableName.'.'.implode(', '.$this->TableName.'.', $cols);
+		$sql = 'SELECT ' . $this->TableName.'.`'.implode('`, '.$this->TableName.'.`', $cols).'`';
 		$sql .=' FROM '.$this->TableName.$sqlLimit;
 
 		if ($stmt = $this->db->prepare($sql)) {
@@ -73,7 +77,7 @@ abstract class RecordSet {
 			$delimiter = $Logic." ";
 		}
 
-		$sql = 'SELECT ' . $this->TableName.'.'.implode(', '.$this->TableName.'.', $cols);
+		$sql = 'SELECT ' . $this->TableName.'.`'.implode('`, '.$this->TableName.'.`', $cols).'`';
 		$sql .=' FROM '.$this->TableName.$cond.$sqlLimit;
 		if ($stmt = $this->db->prepare($sql)) {
 
@@ -108,7 +112,7 @@ abstract class RecordSet {
 		if (!isset($cond)) $cond = "";
 		$cols = $this->getColumns();
 
-		$sql = 'SELECT ' . $this->TableName.'.'.implode(', '.$this->TableName.'.', $cols);
+		$sql = 'SELECT ' . $this->TableName.'.`'.implode('`, '.$this->TableName.'.`', $cols).'`';
 		$sql .=' FROM '.$this->TableName.' '.$cond;
 		if ($stmt = $this->db->prepare($sql)) {
 
@@ -120,11 +124,48 @@ abstract class RecordSet {
 						$i++;
 					}
 				}
-				//echo $sql;
+				// echo $sql;
 				$stmt->execute();
 				
 				if ( $rs = $stmt->fetchAll(PDO::FETCH_ASSOC) ){
 					return $rs;
+				} else {
+					$this->err = "No Data found.";
+					return false;
+				}
+				
+				
+			} catch (Exception $e) {
+				$this->err = $e->getMessage();
+				return false;
+			}
+		} else {
+			return false;
+		}
+	}
+
+	protected function fetchCount($cond, $params = null) {
+		if (!isset($cond)) $cond = "";
+		$cols = $this->getColumns();
+
+		$sql = 'SELECT COUNT(`'.$this->getPrimaryKey().'`) AS COUNT';
+		$sql .=' FROM '.$this->TableName.' '.$cond;
+		if ($stmt = $this->db->prepare($sql)) {
+
+			try {
+				if (isset($params)) {
+					$i = 1;
+					foreach($params as $param=>&$paramVal) {
+						$stmt->bindParam($i, $paramVal);
+						$i++;
+					}
+				}
+				// echo $sql;
+				$stmt->execute();
+				
+				if ( $rs = $stmt->fetch(PDO::FETCH_ASSOC) ){
+					//echo var_dump($rs);
+					return $rs['COUNT'];
 				} else {
 					$this->err = "No Data found.";
 					return false;

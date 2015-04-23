@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - PHPMailerTest</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.xhtml">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">PHPMailerTest</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/lib/PHPMailer/test/phpmailerTest.php.xhtml#line22">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>\</small>PHPMailerTest</h1>
+        <h4>PHPMailer - PHP email transport unit test class Performs authentication tests</h4>
+        <p/>
+        <ul/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class PHPMailerTest
+                extends <a title="PHPUnit_Framework_TestCase" href="../classes/PHPUnit_Framework_TestCase.xhtml">PHPUnit_Framework_TestCase</a>
+            {<br/><ul class="none"><li>// members</li><li>public <a href="#members">$Mail</a>;
+                    </li><li>public string <a href="#members">$Host</a>;
+                    </li><li>public array <a href="#members">$ChangeLog</a>;
+                    </li><li>public array <a href="#members">$NoteLog</a>;
+                    </li><li>public string <a href="#members">$INCLUDE_DIR</a>;
+                    </li><li>private array <a href="#members">$pids</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="PHPMailerTest" href="../classes/PHPMailerTest/setUp.xhtml">setUp</a>()
+                    </li><li>public void <a title="PHPMailerTest" href="../classes/PHPMailerTest/tearDown.xhtml">tearDown</a>()
+                    </li><li>public void <a title="PHPMailerTest" href="../classes/PHPMailerTest/buildBody.xhtml">buildBody</a>()
+                    </li><li>public void <a title="PHPMailerTest" href="../classes/PHPMailerTest/checkChanges.xhtml">checkChanges</a>()
+                    </li><li>public void <a title="PHPMailerTest" href="../classes/PHPMailerTest/addChange.xhtml">addChange</a>()
+                    </li><li>public void <a title="PHPMailerTest" href="../classes/PHPMailerTest/addNote.xhtml">addNote</a>()
+                    </li><li>public boolean <a title="PHPMailerTest" href="../classes/PHPMailerTest/setAddress.xhtml">setAddress</a>()
+                    </li><li>public void <a title="PHPMailerTest" href="../classes/PHPMailerTest/testBootstrap.xhtml">testBootstrap</a>()
+                    </li><li>public void <a title="PHPMailerTest" href="../classes/PHPMailerTest/testAuthCRAMMD5.xhtml">testAuthCRAMMD5</a>()
+                    </li><li>public void <a title="PHPMailerTest" href="../classes/PHPMailerTest/testValidate.xhtml">testValidate</a>()
+                    </li><li>public void <a title="PHPMailerTest" href="../classes/PHPMailerTest/testWordWrap.xhtml">testWordWrap</a>()
+                    </li><li>public void <a title="PHPMailerTest" href="../classes/PHPMailerTest/testLowPriority.xhtml">testLowPriority</a>()
+                    </li><li>public void <a title="PHPMailerTest" href="../classes/PHPMailerTest/testMultiplePlainFileAttachment.xhtml">testMultiplePlainFileAttachment</a>()
+                    </li><li>public void <a title="PHPMailerTest" href="../classes/PHPMailerTest/testPlainStringAttachment.xhtml">testPlainStringAttachment</a>()
+                    </li><li>public void <a title="PHPMailerTest" href="../classes/PHPMailerTest/testQuotedPrintable.xhtml">testQuotedPrintable</a>()
+                    </li><li>public void <a title="PHPMailerTest" href="../classes/PHPMailerTest/testHtml.xhtml">testHtml</a>()
+                    </li><li>public void <a title="PHPMailerTest" href="../classes/PHPMailerTest/testMsgHTML.xhtml">testMsgHTML</a>()
+                    </li><li>public void <a title="PHPMailerTest" href="../classes/PHPMailerTest/testHTMLAttachment.xhtml">testHTMLAttachment</a>()
+                    </li><li>public void <a title="PHPMailerTest" href="../classes/PHPMailerTest/testEmbeddedImage.xhtml">testEmbeddedImage</a>()
+                    </li><li>public void <a title="PHPMailerTest" href="../classes/PHPMailerTest/testMultiEmbeddedImage.xhtml">testMultiEmbeddedImage</a>()
+                    </li><li>public void <a title="PHPMailerTest" href="../classes/PHPMailerTest/testAltBody.xhtml">testAltBody</a>()
+                    </li><li>public void <a title="PHPMailerTest" href="../classes/PHPMailerTest/testAltBodyAttachment.xhtml">testAltBodyAttachment</a>()
+                    </li><li>public void <a title="PHPMailerTest" href="../classes/PHPMailerTest/testIcal.xhtml">testIcal</a>()
+                    </li><li>public void <a title="PHPMailerTest" href="../classes/PHPMailerTest/testMultipleSend.xhtml">testMultipleSend</a>()
+                    </li><li>public void <a title="PHPMailerTest" href="../classes/PHPMailerTest/testSendmailSend.xhtml">testSendmailSend</a>()
+                    </li><li>public void <a title="PHPMailerTest" href="../classes/PHPMailerTest/testQmailSend.xhtml">testQmailSend</a>()
+                    </li><li>public void <a title="PHPMailerTest" href="../classes/PHPMailerTest/testMailSend.xhtml">testMailSend</a>()
+                    </li><li>public void <a title="PHPMailerTest" href="../classes/PHPMailerTest/testEmptyBody.xhtml">testEmptyBody</a>()
+                    </li><li>public void <a title="PHPMailerTest" href="../classes/PHPMailerTest/testSmtpKeepAlive.xhtml">testSmtpKeepAlive</a>()
+                    </li><li>public void <a title="PHPMailerTest" href="../classes/PHPMailerTest/testDenialOfServiceAttack.xhtml">testDenialOfServiceAttack</a>()
+                    </li><li>public void <a title="PHPMailerTest" href="../classes/PHPMailerTest/testDenialOfServiceAttack2.xhtml">testDenialOfServiceAttack2</a>()
+                    </li><li>public void <a title="PHPMailerTest" href="../classes/PHPMailerTest/testError.xhtml">testError</a>()
+                    </li><li>public void <a title="PHPMailerTest" href="../classes/PHPMailerTest/testAddressing.xhtml">testAddressing</a>()
+                    </li><li>public void <a title="PHPMailerTest" href="../classes/PHPMailerTest/testAddressEscaping.xhtml">testAddressEscaping</a>()
+                    </li><li>public void <a title="PHPMailerTest" href="../classes/PHPMailerTest/testBCCAddressing.xhtml">testBCCAddressing</a>()
+                    </li><li>public void <a title="PHPMailerTest" href="../classes/PHPMailerTest/testEncodings.xhtml">testEncodings</a>()
+                    </li><li>public void <a title="PHPMailerTest" href="../classes/PHPMailerTest/testBase64.xhtml">testBase64</a>()
+                    </li><li>public void <a title="PHPMailerTest" href="../classes/PHPMailerTest/testSigning.xhtml">testSigning</a>()
+                    </li><li>public void <a title="PHPMailerTest" href="../classes/PHPMailerTest/testDKIM.xhtml">testDKIM</a>()
+                    </li><li>public void <a title="PHPMailerTest" href="../classes/PHPMailerTest/testLineBreaks.xhtml">testLineBreaks</a>()
+                    </li><li>public void <a title="PHPMailerTest" href="../classes/PHPMailerTest/testMessageID.xhtml">testMessageID</a>()
+                    </li><li>public void <a title="PHPMailerTest" href="../classes/PHPMailerTest/testMiscellaneous.xhtml">testMiscellaneous</a>()
+                    </li><li>public void <a title="PHPMailerTest" href="../classes/PHPMailerTest/testPopBeforeSmtpGood.xhtml">testPopBeforeSmtpGood</a>()
+                    </li><li>public void <a title="PHPMailerTest" href="../classes/PHPMailerTest/testPopBeforeSmtpBad.xhtml">testPopBeforeSmtpBad</a>()
+                    </li><li>public void <a title="PHPMailerTest" href="../classes/PHPMailerTest/testSmtpConnect.xhtml">testSmtpConnect</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Extends</h4>
+          <ul>
+            <li>
+              <a href="../classes/PHPUnit_Framework_TestCase.xhtml">PHPUnit_Framework_TestCase</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="pids">
+              <strong>$pids</strong>
+              <br/>
+              <span class="indent">PIDs of any processes we need to kill</span>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul class="members">
+            <li id="ChangeLog">
+              <strong>$ChangeLog</strong>
+              <br/>
+              <span class="indent">Holds the change log.</span>
+            </li>
+            <li id="Host">
+              <strong>$Host</strong>
+              <br/>
+              <span class="indent">Holds the SMTP mail host.</span>
+            </li>
+            <li id="INCLUDE_DIR">
+              <strong>$INCLUDE_DIR</strong>
+              <br/>
+              <span class="indent">Default include path</span>
+            </li>
+            <li id="Mail">
+              <strong>$Mail</strong>
+              <br/>
+              <span class="indent">Holds the default phpmailer instance.</span>
+            </li>
+            <li id="NoteLog">
+              <strong>$NoteLog</strong>
+              <br/>
+              <span class="indent">Holds the note log.</span>
+            </li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>public</h4>
+          <ul>
+            <li id="addChange"><a title="PHPMailerTest" href="../classes/PHPMailerTest/addChange.xhtml">addChange()</a>
+                — Add a changelog entry.</li>
+            <li id="addNote"><a title="PHPMailerTest" href="../classes/PHPMailerTest/addNote.xhtml">addNote()</a>
+                — Adds a simple note to the message.</li>
+            <li id="buildBody"><a title="PHPMailerTest" href="../classes/PHPMailerTest/buildBody.xhtml">buildBody()</a>
+                — Build the body of the message in the appropriate format.</li>
+            <li id="checkChanges"><a title="PHPMailerTest" href="../classes/PHPMailerTest/checkChanges.xhtml">checkChanges()</a>
+                — Check which default settings have been changed for the report.</li>
+            <li id="setAddress"><a title="PHPMailerTest" href="../classes/PHPMailerTest/setAddress.xhtml">setAddress()</a>
+                — Adds all of the addresses</li>
+            <li id="setUp"><a title="PHPMailerTest" href="../classes/PHPMailerTest/setUp.xhtml">setUp()</a>
+                — Run before each test is started.</li>
+            <li id="tearDown"><a title="PHPMailerTest" href="../classes/PHPMailerTest/tearDown.xhtml">tearDown()</a>
+                — Run after each test is completed.</li>
+            <li id="testAddressEscaping"><a title="PHPMailerTest" href="../classes/PHPMailerTest/testAddressEscaping.xhtml">testAddressEscaping()</a>
+                — Test address escaping</li>
+            <li id="testAddressing"><a title="PHPMailerTest" href="../classes/PHPMailerTest/testAddressing.xhtml">testAddressing()</a>
+                — Test addressing</li>
+            <li id="testAltBody"><a title="PHPMailerTest" href="../classes/PHPMailerTest/testAltBody.xhtml">testAltBody()</a>
+                — Simple multipart/alternative test.</li>
+            <li id="testAltBodyAttachment"><a title="PHPMailerTest" href="../classes/PHPMailerTest/testAltBodyAttachment.xhtml">testAltBodyAttachment()</a>
+                — Simple HTML and attachment test</li>
+            <li id="testAuthCRAMMD5"><a title="PHPMailerTest" href="../classes/PHPMailerTest/testAuthCRAMMD5.xhtml">testAuthCRAMMD5()</a>
+                — Test CRAM-MD5 authentication Needs a connection to a server that supports this auth mechanism, so commented out by default</li>
+            <li id="testBCCAddressing"><a title="PHPMailerTest" href="../classes/PHPMailerTest/testBCCAddressing.xhtml">testBCCAddressing()</a>
+                — Test BCC-only addressing</li>
+            <li id="testBase64">
+              <a title="PHPMailerTest" href="../classes/PHPMailerTest/testBase64.xhtml">testBase64()</a>
+            </li>
+            <li id="testBootstrap"><a title="PHPMailerTest" href="../classes/PHPMailerTest/testBootstrap.xhtml">testBootstrap()</a>
+                — Check that we have loaded default test params.</li>
+            <li id="testDKIM"><a title="PHPMailerTest" href="../classes/PHPMailerTest/testDKIM.xhtml">testDKIM()</a>
+                — DKIM Signing tests</li>
+            <li id="testDenialOfServiceAttack"><a title="PHPMailerTest" href="../classes/PHPMailerTest/testDenialOfServiceAttack.xhtml">testDenialOfServiceAttack()</a>
+                — Tests this denial of service attack:    http://www.cybsec.com/vuln/PHPMailer-DOS.pdf</li>
+            <li id="testDenialOfServiceAttack2"><a title="PHPMailerTest" href="../classes/PHPMailerTest/testDenialOfServiceAttack2.xhtml">testDenialOfServiceAttack2()</a>
+                — Tests this denial of service attack:    https://sourceforge.net/p/phpmailer/bugs/383/ According to the ticket, this should get stuck in a loop, though I can't make it happen.</li>
+            <li id="testEmbeddedImage"><a title="PHPMailerTest" href="../classes/PHPMailerTest/testEmbeddedImage.xhtml">testEmbeddedImage()</a>
+                — An embedded attachment test.</li>
+            <li id="testEmptyBody"><a title="PHPMailerTest" href="../classes/PHPMailerTest/testEmptyBody.xhtml">testEmptyBody()</a>
+                — Test sending an empty body</li>
+            <li id="testEncodings"><a title="PHPMailerTest" href="../classes/PHPMailerTest/testEncodings.xhtml">testEncodings()</a>
+                — Encoding and charset tests</li>
+            <li id="testError"><a title="PHPMailerTest" href="../classes/PHPMailerTest/testError.xhtml">testError()</a>
+                — Test error handling</li>
+            <li id="testHTMLAttachment"><a title="PHPMailerTest" href="../classes/PHPMailerTest/testHTMLAttachment.xhtml">testHTMLAttachment()</a>
+                — Simple HTML and attachment test</li>
+            <li id="testHtml"><a title="PHPMailerTest" href="../classes/PHPMailerTest/testHtml.xhtml">testHtml()</a>
+                — Try a plain message.</li>
+            <li id="testIcal"><a title="PHPMailerTest" href="../classes/PHPMailerTest/testIcal.xhtml">testIcal()</a>
+                — iCal event test</li>
+            <li id="testLineBreaks"><a title="PHPMailerTest" href="../classes/PHPMailerTest/testLineBreaks.xhtml">testLineBreaks()</a>
+                — Test line break reformatting</li>
+            <li id="testLowPriority"><a title="PHPMailerTest" href="../classes/PHPMailerTest/testLowPriority.xhtml">testLowPriority()</a>
+                — Try a plain message.</li>
+            <li id="testMailSend"><a title="PHPMailerTest" href="../classes/PHPMailerTest/testMailSend.xhtml">testMailSend()</a>
+                — Test sending using PHP mail() function</li>
+            <li id="testMessageID"><a title="PHPMailerTest" href="../classes/PHPMailerTest/testMessageID.xhtml">testMessageID()</a>
+                — Test setting and retrieving message ID</li>
+            <li id="testMiscellaneous"><a title="PHPMailerTest" href="../classes/PHPMailerTest/testMiscellaneous.xhtml">testMiscellaneous()</a>
+                — Miscellaneous calls to improve test coverage and some small tests</li>
+            <li id="testMsgHTML"><a title="PHPMailerTest" href="../classes/PHPMailerTest/testMsgHTML.xhtml">testMsgHTML()</a>
+                — Test simple message builder and html2text converters</li>
+            <li id="testMultiEmbeddedImage"><a title="PHPMailerTest" href="../classes/PHPMailerTest/testMultiEmbeddedImage.xhtml">testMultiEmbeddedImage()</a>
+                — An embedded attachment test.</li>
+            <li id="testMultiplePlainFileAttachment"><a title="PHPMailerTest" href="../classes/PHPMailerTest/testMultiplePlainFileAttachment.xhtml">testMultiplePlainFileAttachment()</a>
+                — Simple plain file attachment test.</li>
+            <li id="testMultipleSend"><a title="PHPMailerTest" href="../classes/PHPMailerTest/testMultipleSend.xhtml">testMultipleSend()</a>
+                — Test sending multiple messages with separate connections</li>
+            <li id="testPlainStringAttachment"><a title="PHPMailerTest" href="../classes/PHPMailerTest/testPlainStringAttachment.xhtml">testPlainStringAttachment()</a>
+                — Simple plain string attachment test.</li>
+            <li id="testPopBeforeSmtpBad"><a title="PHPMailerTest" href="../classes/PHPMailerTest/testPopBeforeSmtpBad.xhtml">testPopBeforeSmtpBad()</a>
+                — Use a fake POP3 server to test POP-before-SMTP auth With a known-bad login</li>
+            <li id="testPopBeforeSmtpGood"><a title="PHPMailerTest" href="../classes/PHPMailerTest/testPopBeforeSmtpGood.xhtml">testPopBeforeSmtpGood()</a>
+                — Use a fake POP3 server to test POP-before-SMTP auth With a known-good login</li>
+            <li id="testQmailSend"><a title="PHPMailerTest" href="../classes/PHPMailerTest/testQmailSend.xhtml">testQmailSend()</a>
+                — Test sending using Qmail</li>
+            <li id="testQuotedPrintable"><a title="PHPMailerTest" href="../classes/PHPMailerTest/testQuotedPrintable.xhtml">testQuotedPrintable()</a>
+                — Plain quoted-printable message.</li>
+            <li id="testSendmailSend"><a title="PHPMailerTest" href="../classes/PHPMailerTest/testSendmailSend.xhtml">testSendmailSend()</a>
+                — Test sending using SendMail</li>
+            <li id="testSigning"><a title="PHPMailerTest" href="../classes/PHPMailerTest/testSigning.xhtml">testSigning()</a>
+                — S/MIME Signing tests</li>
+            <li id="testSmtpConnect"><a title="PHPMailerTest" href="../classes/PHPMailerTest/testSmtpConnect.xhtml">testSmtpConnect()</a>
+                — Test SMTP host connections.</li>
+            <li id="testSmtpKeepAlive"><a title="PHPMailerTest" href="../classes/PHPMailerTest/testSmtpKeepAlive.xhtml">testSmtpKeepAlive()</a>
+                — Test keepalive (sending multiple messages in a single connection)</li>
+            <li id="testValidate"><a title="PHPMailerTest" href="../classes/PHPMailerTest/testValidate.xhtml">testValidate()</a>
+                — Test email address validation Test addresses obtained from http://isemail.info Some failing cases commented out that are apparently up for debate!</li>
+            <li id="testWordWrap"><a title="PHPMailerTest" href="../classes/PHPMailerTest/testWordWrap.xhtml">testWordWrap()</a>
+                — Try a plain message.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.7.0 - Copyright (C) 2010 - 2015 by Arne Blankerts</span>
+    </footer>
+  </body>
+</html>

@@ -4,11 +4,16 @@ require_once __DIR__."/ActiveRecord.php";
 //$u = new Experience(1); echo $u->get('Description').'\n'; // For testing
 //$u->update(['Username'=>'Feb2015']); echo $u->get('Username'); // For Testing
 
+/**
+*	Connection - performs logic for connections of the users, 
+*	@params: @ID - UserID
+*	Responsibilities: Make connection from a user to another user. User can find the other user by first name, last name. Adding other to current user connection.  
+*/
 class Connection extends ActiveRecord {
 	public static $TableName = 'Connections';
 	public static $PrimaryKey = 'CONNID';
 	public static $Columns = ['CONNID', 'INITUSERID', 'TARGETUSERID', 'ACCEPTED',
-				'CREATEDDATE', 'MESSAGE'];
+				'CREATEDDATE', 'MESSAGE', 'DECLINED'];
 	
 	private $data = [];
 	private $ConnID;
@@ -98,7 +103,8 @@ class Connection extends ActiveRecord {
 	}
 
 	public function getAccepted() {
-		return $this->data['ACCEPTED'];
+		if ($this->data['ACCEPTED'] == 1) return true;
+		else return false;
 	}
 
 	public function getCreatedDate() {
@@ -107,6 +113,11 @@ class Connection extends ActiveRecord {
 
 	public function getMessage() {
 		return $this->data['MESSAGE'];
+	}
+
+	public function getDeclined() {
+		if ($this->data['ACCEPTED'] == 1) return true;
+		else return false;
 	}
 
 	// Set methods
@@ -131,6 +142,13 @@ class Connection extends ActiveRecord {
 
 	public function setMessage($strVal) {
 		$this->data['MESSAGE'] = $strVal;
+
+		return true;
+	}
+
+	public function setDeclined($boolVal = false) {
+		if ($boolVal) $this->data['DECLINED'] = true;
+		else $this->data['DECLINED'] = false;
 
 		return true;
 	}

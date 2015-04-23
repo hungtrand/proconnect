@@ -4,8 +4,10 @@
 
  
 
-/*
-	Load education data from the database
+/**
+*	Message - performs logic for Message class. This class extends ActiveRecord class. It provides details about Message table, and it will temporarily edit row information of Message table. 
+*	@params: $ID (messageID)
+*	Responsibilities: get attributes in message table or set up attributes in message table,    
 */
 class Message extends ActiveRecord {
 	public static $TableName = 'Message';
@@ -90,15 +92,6 @@ class Message extends ActiveRecord {
 
 	public function getDateCreated() {
 		return $this->data['DATECREATED'];
-	}
-
-	
-
-	// SET METHODS
-	public function setMessageID($strVal) {
-		$this->data['MESSAGEID'] = $strVal;
-
-		return true;
 	}
 
 	public function setSubject($strVal) {

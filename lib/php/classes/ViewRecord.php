@@ -1,6 +1,6 @@
 <?php
-/*
-	Represent a record from the a View table from the database
+/**
+*	ViewRecord- Represent a record from the a View table, or custom query from the database, does not update, insert or delete privileges
 */
 abstract class ViewRecord {
 	private $db;

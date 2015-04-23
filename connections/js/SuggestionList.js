@@ -30,7 +30,7 @@ SuggestionList.prototype = {
 		}
 
 		$.ajax({
-			url: 'php/FetchSuggestions_controller.php',
+			url: '/connections/php/FetchSuggestions_controller.php',
 			type: 'POST',
 			data: data
 		}).done(function(json) {

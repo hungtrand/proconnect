@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="UserCard_view" namespace="" name="UserCard_view" abstract="false" final="false" start="8" end="43">
+  <file path="/var/www/html/ProConnect/connections/php" file="UserCard_view.php" realpath="/var/www/html/ProConnect/connections/php/UserCard_view.php" size="1068" time="2015-04-23T01:19:53-07:00" unixtime="1429777193" sha1="8f5e78489676f12b751ee7e2b8376eebda00e45f" relative="connections/php/UserCard_view.php"/>
+  <docblock>
+    <description compact="UserCard_view - convert data from Profile objects into client tier json format objects to display as business cards format."/>
+  </docblock>
+  <implements full="view" namespace="" name="view"/>
+  <member name="FinalView" type="{unknown}" visibility="private" line="9"/>
+  <constructor name="__construct" start="11" end="13" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getView" start="15" end="17" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="load" start="19" end="42" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="Profiles" byreference="false" type="{unknown}"/>
+  </method>
+  <interface full="view" namespace="" name="view">
+    <method name="getView" start="9" end="9" abstract="false" final="false" static="false" visibility="public"/>
+  </interface>
+</class>

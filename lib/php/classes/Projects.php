@@ -3,14 +3,8 @@
  $u = new Projects(1); echo $u->get('TeamMembers').'\n'; // For testing
 // $u->update(['Username'=>'Feb2015']); echo $u->get('Username'); // For Testing
 
-/*
-	The user class retrieve data of Account from the provided AccountID
-	@params: $AccountID
-	$data: an associated array that act as the main property of the class Account
-			this array holds all data from the database of instance user with AccountID
-			the key is the exact name of column in database, and the value is the field value
-	@update: public function update allow Account to update its own data
-			after updating, the object Account would reload itself with new data
+/**
+*	Project -Load all information of the project, get Projects by the field, update project information 
 */
 class Projects {
 	private $data;

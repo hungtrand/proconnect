@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Skill" namespace="" name="Skill" abstract="false" final="false" start="10" end="135">
+  <file path="/var/www/html/ProConnect/lib/php/classes" file="Skill.php" realpath="/var/www/html/ProConnect/lib/php/classes/Skill.php" size="2974" time="2015-04-23T01:14:40-07:00" unixtime="1429776880" sha1="853557339fac0b3f418db25250ad3b8b979eb317" relative="lib/php/classes/Skill.php"/>
+  <docblock>
+    <description compact="Skill - contains one record of data for a user's skill. update endorsement and save ordering positions fron client tier.">Responsibilites: get all skills from the database, can narrow by specific skill name</description>
+  </docblock>
+  <extends full="ActiveRecord" namespace="" name="ActiveRecord"/>
+  <member name="TableName" type="string" default="'Skills'" visibility="public" line="11"/>
+  <member name="PrimaryKey" type="string" default="'SKILLID'" visibility="public" line="12"/>
+  <member name="Columns" type="array" visibility="public" line="13"/>
+  <member name="data" type="array" visibility="private" line="16"/>
+  <member name="SkillID" type="{unknown}" visibility="private" line="17"/>
+  <member name="err" type="{unknown}" visibility="public" line="18"/>
+  <constructor name="__construct" start="20" end="30" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="ID" byreference="false" type="{unknown}" default="null"/>
+  </constructor>
+  <method name="getData" start="34" end="36" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getID" start="39" end="41" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getPrimaryKey" start="44" end="46" abstract="false" final="false" static="false" visibility="protected"/>
+  <method name="getTableName" start="49" end="51" abstract="false" final="false" static="false" visibility="protected"/>
+  <method name="getColumns" start="54" end="56" abstract="false" final="false" static="false" visibility="protected"/>
+  <method name="load" start="59" end="70" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="ID" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="loadBySkillName" start="73" end="87" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="UserID" byreference="false" type="{unknown}"/>
+    <parameter name="SkillName" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getSkillName" start="90" end="92" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getUserID" start="94" end="96" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getEndorsements" start="98" end="100" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getOrderPosition" start="102" end="104" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getDateCreated" start="106" end="108" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="setSkillName" start="111" end="115" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="strVal" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setUserID" start="117" end="121" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="intVal" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setEndorsements" start="123" end="127" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="intVal" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setOrderPosition" start="129" end="133" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="intVal" byreference="false" type="{unknown}"/>
+  </method>
+  <parent full="ActiveRecord" namespace="" name="ActiveRecord">
+    <member name="err" type="{unknown}" visibility="public" line="18"/>
+    <constructor name="__construct" start="20" end="22" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getData" start="24" end="24" abstract="true" final="false" static="false" visibility="public"/>
+    <method name="getID" start="25" end="25" abstract="true" final="false" static="false" visibility="public"/>
+    <method name="getPrimaryKey" start="26" end="26" abstract="true" final="false" static="false" visibility="protected"/>
+    <method name="getTableName" start="27" end="27" abstract="true" final="false" static="false" visibility="protected"/>
+    <method name="getColumns" start="28" end="28" abstract="true" final="false" static="false" visibility="protected"/>
+    <method name="load" start="31" end="31" abstract="true" final="false" static="false" visibility="public">
+    <parameter name="ID" byreference="false" type="{unknown}"/>
+  </method>
+    <method name="reload" start="33" end="35" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="fetch" start="37" end="71" abstract="false" final="false" static="false" visibility="protected">
+    <parameter name="ID" byreference="false" type="{unknown}"/>
+  </method>
+    <method name="fetchBy" start="73" end="118" abstract="false" final="false" static="false" visibility="protected">
+    <parameter name="params" byreference="false" type="{unknown}"/>
+    <parameter name="Logic" byreference="false" type="string" default="&quot;AND&quot;"/>
+    <inline>
+      <comment value="echo $sql.&quot;\n&quot;.json_encode($params).&quot;\n&quot;;" line="97"/>
+    </inline>
+  </method>
+    <method name="save" start="120" end="168" abstract="false" final="false" static="false" visibility="public">
+    <inline>
+      <comment value="echo &quot;\n&quot;.$sql.&quot;\n&quot;;" line="150"/>
+    </inline>
+  </method>
+    <method name="update" start="170" end="215" abstract="false" final="false" static="false" visibility="public">
+    <inline>
+      <comment value="echo json_encode($data);" line="171"/>
+      <comment value="echo $sql; //for testing" line="203"/>
+    </inline>
+  </method>
+    <method name="delete" start="217" end="243" abstract="false" final="false" static="false" visibility="public"/>
+  </parent>
+</class>

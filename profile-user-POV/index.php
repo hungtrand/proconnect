@@ -1,10 +1,10 @@
 <?php
-//error_reporting(E_ALL); // debug
-//ini_set("display_errors", 1); // debug
+error_reporting(E_ALL); // debug
+ini_set("display_errors", 1); // debug
 // include '../signout/php/session_check_signout.php';
 
-$UData = json_decode($_SESSION['__USERDATA__'], true);
-$FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
+//$UData = json_decode($_SESSION['__USERDATA__'], true);
+//$FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 
 
   $page_title = "Edit Profile"; //require for front end
@@ -26,15 +26,13 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 							</div>
 						</div>
                           <div id="profile-image" class="outer-ref" >
-                           <img src="/image/user_img.png" alt="" class="img-responsive profile-image" id="preview"/>
+                           <img src="/image/user_img.png" alt="" class="img-responsive profile-image img-rounded" id="preview"/>
               							<div id="picture-edit">
               								<form class="editable-form">
-              									<div id="change-image-block" type = "file"> 							                        
+              									<a id="change-image-block"> 							                        
               									 <span id="glyphicon-picture" class="glyphicon glyphicon-picture" aria-hidden="true"></span>
               									 <span id="change-photo-text">Change Photo</span>
-              									 <input id= "input-25" type= "file" class>
-              									 <button type="submit" id = "picture-submit"class="btn btn-primary save-btn" value="save" style = "display: none;">Save</button>
-              									</div>
+              									</a>
               								</form>
               							</div>
                           </div>
@@ -153,26 +151,37 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 							</label>
 						</div>
 						
-						<div class="form-group" id="zipcode-group" >
-							<label for="zipcode">Zip Code</label> <br />
-							<input class="form-control" id="zipcode-input" type="text" name="zipcode" placeholder="Zip Code">
-						</div>
 						
-						<div id = "other-country-group" style = "display: none;">
+						
+						<div class = "other-country-group" style = "display: none;">
 						<div class="form-group" id="countryname-group" >
 							<input class="form-control" id="country-name-input" type="text" name="country-name" placeholder="Country">
 						</div>
+						</div>
+						
+						<!-- City/States -->
+						<div class = "us-group">
+						<div class="form-group">
+						<label for="address">State and City</label> <br />
+						<div id="test"></div>
+						</div>
+						</div>
+						<div class="form-group">
+							<label for="address">Address</label> <br />
+							<input class="form-control" id="address-input" type="text" name="address" placeholder="Address">
+						</div>
+						<div class = "us-group">
+                        <div class="form-group" id="zipcode-group" >
+							<label for="zipcode">Zip Code</label> <br />
+							<input class="form-control" id="zipcode-input" type="text" name="zipcode" placeholder="Zip Code">
+						</div>
+						</div>
+						<div class = "other-country-group" style = "display: none;">
 						<div class="form-group" id="postalcode-group" >
 							<label for="postal-code">Postal Code</label> <br />
 							<input class="form-control" id="postal-code-input" type="text" name="postal-code" placeholder="Postal Code">
 						</div>
 						</div>
-
-						<div class="form-group">
-							<label for="address">Address</label> <br />
-							<input class="form-control" id="address-input" type="text" name="address" placeholder="Address">
-						</div>
-                        
 							<button type="submit" class="btn btn-primary save-btn" value="save">Save</button>
                           <button type="button" class="btn btn-default cancel-btn" value="cancel" for="user-info-edit">Cancel</button>
                         </form>  
@@ -476,7 +485,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                         <input name="project-url" type="text" class="form-control" id="project-url">
                       </div>
                       <!-- Team Members -->
-<!--                       <label for="project-team-members">Team Members</label>
+                      <!--<label for="project-team-members">Team Members</label>
                       
                       <div id="project-team-editable-block" class="form-group well well-sm"> 
 
@@ -671,8 +680,8 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
     <!-- Custom Script -->
     <script src="js/User.js"></script>
     <script src="js/profile-user-POV.js"></script>
+    <script src="../lib/js/FileUpload.js"></script>
+    <script src="js/ProfileImageUploader.js"></script>
+	   <script src="/lib/js/StatesCitiesList.js"></script>
   </body>
-
-
-
 </html>

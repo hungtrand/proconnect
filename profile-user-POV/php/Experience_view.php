@@ -1,6 +1,11 @@
 <?php
 require_once __DIR__."/../../lib/php/interfaces.php";
 
+/**
+*	Experience_view - the class convert server data of the Experience object into
+*	json format that can be understood by the Client Tier. They key and value of the
+*	json matches with requests and responses from Client Tier. 
+*/
 class Experience_View implements view {
 	private $FinalView;
 

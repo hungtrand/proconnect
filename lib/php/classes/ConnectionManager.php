@@ -4,6 +4,14 @@
 require_once __DIR__."/Connection.php";
 require_once __DIR__."/RecordSet.php";
 
+/**
+*	ConnectionManager - performs management of the Connection class.  
+*	@params: $User
+*	Resposibilities: get Data from database, load the user from database by userID, search and load the data from database by keyword,datecreated, or email.
+* 						get the data from database, get all or current user data.  
+*/
+
+
 class ConnectionManager extends RecordSet {
 	protected $PrimaryKey;
 	protected $TableName;
@@ -28,6 +36,10 @@ class ConnectionManager extends RecordSet {
 	// OVERRIDE
 	protected function getColumns() {
 		return $this->Columns;
+	}
+
+	protected function getPrimaryKey() {
+		return $this->PrimaryKey;
 	}
 
 	public function load($User) {
@@ -60,6 +72,23 @@ class ConnectionManager extends RecordSet {
 		$cond.= "ORDER BY ".$orderby." LIMIT ". $offset .", ". $numRows;
 		$params = ['INITUSERID'=>$this->User->getID(), 
 				'TARGETUSERID'=>$this->User->getID()];
+		if (!$this->data = $this->fetchCustom($cond, $params)) return false;
+
+		return true;
+
+	}
+
+	public function loadPending($page, $numRows, $orderby="CREATEDDATE") {
+		if (!is_integer($page) || !is_integer($numRows)) {
+			$this->err = "Parameters must be integers";
+			return false;
+		}
+
+		$offset = $page * $numRows - $numRows;
+
+		$cond = "WHERE TARGETUSERID = ? AND ACCEPTED = 0 AND (DECLINED = 0 OR DECLINED IS NULL) ";
+		$cond.= "ORDER BY ".$orderby." LIMIT ". $offset .", ". $numRows;
+		$params = ['TARGETUSERID'=>$this->User->getID()];
 		if (!$this->data = $this->fetchCustom($cond, $params)) return false;
 
 		return true;
@@ -107,6 +136,15 @@ class ConnectionManager extends RecordSet {
 
 		return true;
 
+	}
+
+	public function getPendingCount() {
+		$count = 0;
+		$cond = "WHERE TARGETUSERID = ? AND ACCEPTED = 0 AND (DECLINED = 0 OR DECLINED IS NULL) ";
+		$params = ['TARGETUSERID'=>$this->User->getID()];
+		if (!$count= $this->fetchCount($cond, $params)) return false;
+
+		return $count;
 	}
 	
 

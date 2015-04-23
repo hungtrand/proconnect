@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Feed" namespace="" name="Feed" abstract="false" final="false" start="12" end="142">
+  <file path="/var/www/html/ProConnect/lib/php/classes" file="Feed.php" realpath="/var/www/html/ProConnect/lib/php/classes/Feed.php" size="2895" time="2015-04-18T23:20:40-07:00" unixtime="1429424440" sha1="d9a47ba0fba3f6b07b7d8a8399fda19728fe0a39" relative="lib/php/classes/Feed.php"/>
+  <docblock>
+    <description compact="Feed - This class performs a logic for users' feed."/>
+    <params value=": $ID (userid)">Responsibilities: getting or settingup user's data to database, such as context, imageurl. externalurl, internalurl, user, type.</params>
+  </docblock>
+  <extends full="ActiveRecord" namespace="" name="ActiveRecord"/>
+  <member name="TableName" type="string" default="'Feed'" visibility="public" line="13"/>
+  <member name="PrimaryKey" type="string" default="'FEEDID'" visibility="public" line="14"/>
+  <member name="Columns" type="array" visibility="public" line="15"/>
+  <member name="data" type="array" visibility="private" line="19"/>
+  <member name="FeedID" type="{unknown}" visibility="private" line="20"/>
+  <member name="err" type="{unknown}" visibility="public" line="21"/>
+  <constructor name="__construct" start="23" end="34" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="ID" byreference="false" type="{unknown}" default="null"/>
+  </constructor>
+  <method name="getData" start="38" end="40" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getID" start="43" end="45" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getPrimaryKey" start="48" end="50" abstract="false" final="false" static="false" visibility="protected"/>
+  <method name="getTableName" start="53" end="55" abstract="false" final="false" static="false" visibility="protected"/>
+  <method name="getColumns" start="58" end="60" abstract="false" final="false" static="false" visibility="protected"/>
+  <method name="load" start="63" end="74" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="ID" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getContent" start="78" end="80" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getImageURL" start="82" end="84" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getExternalURL" start="86" end="88" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getInternalURL" start="90" end="92" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getCreator" start="94" end="96" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getType" start="98" end="100" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getDateCreated" start="102" end="104" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="setContent" start="107" end="111" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="strVal" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setImageURL" start="113" end="117" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="strVal" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setExternalURL" start="119" end="123" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="strVal" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setInternalURL" start="125" end="129" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="strVal" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setCreator" start="131" end="135" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="intVal" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setType" start="137" end="141" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="strVal" byreference="false" type="{unknown}"/>
+  </method>
+  <parent full="ActiveRecord" namespace="" name="ActiveRecord">
+    <member name="err" type="{unknown}" visibility="public" line="18"/>
+    <constructor name="__construct" start="20" end="22" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getData" start="24" end="24" abstract="true" final="false" static="false" visibility="public"/>
+    <method name="getID" start="25" end="25" abstract="true" final="false" static="false" visibility="public"/>
+    <method name="getPrimaryKey" start="26" end="26" abstract="true" final="false" static="false" visibility="protected"/>
+    <method name="getTableName" start="27" end="27" abstract="true" final="false" static="false" visibility="protected"/>
+    <method name="getColumns" start="28" end="28" abstract="true" final="false" static="false" visibility="protected"/>
+    <method name="load" start="31" end="31" abstract="true" final="false" static="false" visibility="public">
+      <parameter name="ID" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="reload" start="33" end="35" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="fetch" start="37" end="71" abstract="false" final="false" static="false" visibility="protected">
+      <parameter name="ID" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="fetchBy" start="73" end="118" abstract="false" final="false" static="false" visibility="protected">
+      <parameter name="params" byreference="false" type="{unknown}"/>
+      <parameter name="Logic" byreference="false" type="string" default="&quot;AND&quot;"/>
+      <inline>
+        <comment value="echo $sql.&quot;\n&quot;.json_encode($params).&quot;\n&quot;;" line="97"/>
+      </inline>
+    </method>
+    <method name="save" start="120" end="168" abstract="false" final="false" static="false" visibility="public">
+      <inline>
+        <comment value="echo &quot;\n&quot;.$sql.&quot;\n&quot;;" line="150"/>
+      </inline>
+    </method>
+    <method name="update" start="170" end="215" abstract="false" final="false" static="false" visibility="public">
+      <inline>
+        <comment value="echo json_encode($data);" line="171"/>
+        <comment value="echo $sql; //for testing" line="203"/>
+      </inline>
+    </method>
+    <method name="delete" start="217" end="243" abstract="false" final="false" static="false" visibility="public"/>
+  </parent>
+</class>

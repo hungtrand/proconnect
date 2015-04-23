@@ -4,6 +4,12 @@
 require_once __DIR__."/Education.php";
 require_once __DIR__."/RecordSet.php";
 
+/**
+*	EducationManager - performs management for Education class which help others class to be able to access Education data through this manager class. 
+*	@params: $User
+*	Responsibilities: load the user and get the user data from the database.
+*/
+
 class EducationManager extends RecordSet {
 	protected $PrimaryKey;
 	protected $TableName;
@@ -73,14 +79,15 @@ class EducationManager extends RecordSet {
 //Test
 /*$u = new User(10);
 $edu = new Education();
-$edu->setSchool('Alameda College');
-$edu->setFieldOfStudy('Computer Science');
-$edu->setUserID($u->getID());
-$edu->setGPA(3.9);
-$edu->setYearStart(2011);
-$edu->setYearEnd(2013);
+$edu->load(6);
+//$edu->setSchool('Alameda College');
+//$edu->setFieldOfStudy('Computer Science');
+//$edu->setUserID($u->getID());
+//$edu->setGPA(3.9);
+//$edu->setYearStart(2011);
+//$edu->setYearEnd(2013);
 
-$edu->save();
+$edu->delete();
 
 $em = new EducationManager($u);
 echo "\n";

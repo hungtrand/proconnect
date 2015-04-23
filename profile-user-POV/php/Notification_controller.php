@@ -27,13 +27,18 @@ if (!$User = new USER($uid)) {
 	$Assocuser = null;
 	$notcid = -1; //initialize notification ID 
 	$mode = "exit"; // initialize the mode :
-
+	if(isset($_POST['NotificationID'])){
+		$noticid = (int)$_POST['NotificationID'];
+	}
 	if(isset($_POST['remove']) && $notcid > 0){
 		$mode = 'delete'; 
+	}elseif($notcid > 0){
+		$mode = 'edit';
 	}elseif($notcid == 0){
 		$mode = 'insert';
 	}
 	
+
 	if(isset($_POST['Message'])){
 		$message = trim($_POST['Message']);
 	}
@@ -53,10 +58,22 @@ if (!$User = new USER($uid)) {
 					echo "Cannot delete. This notification is no longer exists!";
 				}
 				break;
+			case 'edit':
+				$noti = new Notification();
+				if($noti->load($notcid) == true){
+					$noti->setMessage($message);
+					$noti->setType($type);
+					$noti->update();
+					echo json_encode(['success' => 1]);
+				}else{
+					echo "Cannot Update! This data is not exists!";
+				}
+				break;
+
 			case 'insert':
 				$noti = new Notification();
-					$noti->setAssocUser($uid);
-					$noti->setUMessage($message);
+					$noti->setUserID($uid);
+					$noti->setMessage($message);
 					$noti->setType($type);
 					$noti->save();
 					echo json_encode(json_encode($noti->getData()));

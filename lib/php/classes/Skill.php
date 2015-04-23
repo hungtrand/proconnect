@@ -3,7 +3,10 @@
 require_once __DIR__."/ActiveRecord.php";
 //$u = new Experience(1); echo $u->get('Description').'\n'; // For testing
 //$u->update(['Username'=>'Feb2015']); echo $u->get('Username'); // For Testing
-
+/**
+*	Skill - contains one record of data for a user's skill. update endorsement and save ordering positions fron client tier.
+*	Responsibilites: get all skills from the database, can narrow by specific skill name
+*/
 class Skill extends ActiveRecord {
 	public static $TableName = 'Skills';
 	public static $PrimaryKey = 'SKILLID';

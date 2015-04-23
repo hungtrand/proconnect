@@ -6,15 +6,16 @@ require_once __DIR__."/ActiveRecord.php";
  //$u = new Account(1); echo $u->get('Username').'\n'; // For testing
 // $u->update(['Username'=>'Feb2015']); echo $u->get('Username'); // For Testing
 
-/*
-	The user class retrieve data of Account from the provided AccountID
-	@params: $AccountID
-	$data: an associated array that act as the main property of the class Account
-			this array holds all data from the database of instance user with AccountID
-			the key is the exact name of column in database, and the value is the field value
-	@update: public function update allow Account to update its own data
-			after updating, the object Account would reload itself with new data
-*/
+/**
+* 	Account - Model (MVC) - fetch & stores email, password, alternate email, verification key, 
+*	password reset key, account type and login timestamps
+*	@params: $AccountID
+*	$data: an associated array that act as the main property of the class Account
+*	this array holds all data from the database of instance user with AccountID
+*	the key is the exact name of column in database, and the value is the field value
+*	@update: public function update allow Account to update its own data
+*	after updating, the object Account would reload itself with new data
+**/
 class Account extends ActiveRecord {
 	public static $PrimaryKey = 'ACCOUNTID';
 	public static $TableName = 'Account';

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="UserConnection" namespace="" name="UserConnection" abstract="false" final="false" start="14" end="136">
+  <file path="/var/www/html/ProConnect/lib/php/classes" file="UserConnection.php" realpath="/var/www/html/ProConnect/lib/php/classes/UserConnection.php" size="3894" time="2015-04-23T01:21:20-07:00" unixtime="1429777280" sha1="f8da69dd6b54d15f4f9911f0e4d75a035a8fc6ed" relative="lib/php/classes/UserConnection.php"/>
+  <docblock>
+    <description compact="UserConnection - determine the user is initiator or target in the connection, contains data from User object into the connection object."/>
+  </docblock>
+  <extends full="Connection" namespace="" name="Connection"/>
+  <member name="User" type="{unknown}" visibility="private" line="15"/>
+  <member name="Connection" type="{unknown}" visibility="private" line="16"/>
+  <member name="err" type="{unknown}" visibility="public" line="17"/>
+  <constructor name="__construct" start="19" end="39" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="User" byreference="false" type="{unknown}"/>
+    <parameter name="ConnID" byreference="false" type="{unknown}" default="null"/>
+  </constructor>
+  <method name="getData" start="42" end="44" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="loadConnectionData" start="46" end="99" abstract="false" final="false" static="false" visibility="private">
+    <parameter name="ConnIsInit" byreference="false" type="{unknown}" default="null"/>
+    <inline>
+      <comment value="if there's a current job then display that as connection's information" line="73"/>
+    </inline>
+  </method>
+  <method name="getID" start="101" end="103" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getUserID" start="105" end="107" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getConnectionUserID" start="109" end="111" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getConnectionName" start="113" end="115" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getConnectionEmail" start="117" end="119" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getConnectionTitle" start="121" end="123" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getConnectionOrganization" start="125" end="127" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getConnectionLocation" start="129" end="131" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getProfileImage" start="133" end="135" abstract="false" final="false" static="false" visibility="public"/>
+  <parent full="Connection" namespace="" name="Connection">
+    <extends full="ActiveRecord" namespace="" name="ActiveRecord"/>
+    <member name="TableName" type="string" default="'Connections'" visibility="public" line="13"/>
+    <member name="PrimaryKey" type="string" default="'CONNID'" visibility="public" line="14"/>
+    <member name="Columns" type="array" visibility="public" line="15"/>
+    <member name="err" type="{unknown}" visibility="public" line="20"/>
+    <constructor name="__construct" start="22" end="35" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="ID" byreference="false" type="{unknown}" default="null"/>
+  </constructor>
+    <method name="getData" start="39" end="41" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getID" start="44" end="46" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getPrimaryKey" start="49" end="51" abstract="false" final="false" static="false" visibility="protected"/>
+    <method name="getTableName" start="54" end="56" abstract="false" final="false" static="false" visibility="protected"/>
+    <method name="getColumns" start="58" end="60" abstract="false" final="false" static="false" visibility="protected"/>
+    <method name="load" start="63" end="74" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="ID" byreference="false" type="{unknown}"/>
+  </method>
+    <method name="loadByUsers" start="76" end="93" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="firstID" byreference="false" type="{unknown}"/>
+    <parameter name="secondID" byreference="false" type="{unknown}"/>
+  </method>
+    <method name="getInitUserID" start="97" end="99" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getTargetUserID" start="101" end="103" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getAccepted" start="105" end="108" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getCreatedDate" start="110" end="112" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getMessage" start="114" end="116" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getDeclined" start="118" end="121" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="setInitUserID" start="124" end="128" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="intVal" byreference="false" type="{unknown}"/>
+  </method>
+    <method name="setTargetUserID" start="130" end="134" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="intVal" byreference="false" type="{unknown}"/>
+  </method>
+    <method name="setAccepted" start="136" end="141" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="boolVal" byreference="false" type="{unknown}" default="false"/>
+  </method>
+    <method name="setMessage" start="143" end="147" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="strVal" byreference="false" type="{unknown}"/>
+  </method>
+    <method name="setDeclined" start="149" end="154" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="boolVal" byreference="false" type="{unknown}" default="false"/>
+  </method>
+  </parent>
+  <parent full="ActiveRecord" namespace="" name="ActiveRecord">
+    <member name="err" type="{unknown}" visibility="public" line="18"/>
+    <constructor name="__construct" start="20" end="22" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getData" start="24" end="24" abstract="true" final="false" static="false" visibility="public"/>
+    <method name="getID" start="25" end="25" abstract="true" final="false" static="false" visibility="public"/>
+    <method name="getPrimaryKey" start="26" end="26" abstract="true" final="false" static="false" visibility="protected"/>
+    <method name="getTableName" start="27" end="27" abstract="true" final="false" static="false" visibility="protected"/>
+    <method name="getColumns" start="28" end="28" abstract="true" final="false" static="false" visibility="protected"/>
+    <method name="load" start="31" end="31" abstract="true" final="false" static="false" visibility="public">
+    <parameter name="ID" byreference="false" type="{unknown}"/>
+  </method>
+    <method name="reload" start="33" end="35" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="fetch" start="37" end="71" abstract="false" final="false" static="false" visibility="protected">
+    <parameter name="ID" byreference="false" type="{unknown}"/>
+  </method>
+    <method name="fetchBy" start="73" end="118" abstract="false" final="false" static="false" visibility="protected">
+    <parameter name="params" byreference="false" type="{unknown}"/>
+    <parameter name="Logic" byreference="false" type="string" default="&quot;AND&quot;"/>
+    <inline>
+      <comment value="echo $sql.&quot;\n&quot;.json_encode($params).&quot;\n&quot;;" line="97"/>
+    </inline>
+  </method>
+    <method name="save" start="120" end="168" abstract="false" final="false" static="false" visibility="public">
+    <inline>
+      <comment value="echo &quot;\n&quot;.$sql.&quot;\n&quot;;" line="150"/>
+    </inline>
+  </method>
+    <method name="update" start="170" end="215" abstract="false" final="false" static="false" visibility="public">
+    <inline>
+      <comment value="echo json_encode($data);" line="171"/>
+      <comment value="echo $sql; //for testing" line="203"/>
+    </inline>
+  </method>
+    <method name="delete" start="217" end="243" abstract="false" final="false" static="false" visibility="public"/>
+  </parent>
+</class>

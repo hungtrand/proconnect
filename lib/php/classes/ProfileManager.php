@@ -4,6 +4,11 @@
 require_once __DIR__."/Profile.php";
 require_once __DIR__."/RecordSet.php";
 
+/**
+*	ProfileManager - performs logic for ProfileManager class. This class extend RecordSet class, and it will return information of  user profile based on userId input.
+*	@params: $UserID
+*	Responsibilities: load the user and get the user data from the database.  
+*/
 class ProfileManager extends RecordSet {
 	protected $PrimaryKey;
 	protected $TableName;

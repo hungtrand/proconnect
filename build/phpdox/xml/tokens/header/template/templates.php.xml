@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<source xmlns="http://xml.phpdox.net/token">
+  <file xmlns="http://xml.phpdox.net/src" path="/var/www/html/ProConnect/header/template" file="templates.php" realpath="/var/www/html/ProConnect/header/template/templates.php" size="578" time="2015-04-19T19:09:08-07:00" unixtime="1429495748" sha1="43c50372bf51a78ad9cf4342a0af36f9695f9b07" relative="header/template/templates.php"/>
+  <line no="1">
+    <token name="T_INLINE_HTML">&lt;!-- Media Items For Hoverover --&gt;</token>
+  </line>
+  <line no="2">
+    <token name="T_INLINE_HTML">&lt;template id="MediaItem"&gt;</token>
+  </line>
+  <line no="3">
+    <token name="T_INLINE_HTML">  &lt;li class="media" style=""&gt;</token>
+  </line>
+  <line no="4">
+    <token name="T_INLINE_HTML">      &lt;a class="landing-destination" href="#"&gt;</token>
+  </line>
+  <line no="5">
+    <token name="T_INLINE_HTML">          &lt;div class="media-left"&gt;</token>
+  </line>
+  <line no="6">
+    <token name="T_INLINE_HTML">              &lt;img href="" class="media-object" src="/image/user_img.png" alt="..." style="max-width: 48px;"&gt;</token>
+  </line>
+  <line no="7">
+    <token name="T_INLINE_HTML">          &lt;/div&gt; </token>
+  </line>
+  <line no="8">
+    <token name="T_INLINE_HTML">          &lt;div class="media-body"&gt;</token>
+  </line>
+  <line no="9">
+    <token name="T_INLINE_HTML">            &lt;h4 class="media-heading" &gt;Media heading&lt;/h4&gt;</token>
+  </line>
+  <line no="10">
+    <token name="T_INLINE_HTML">            &lt;p&gt; title long long long long long &lt;/p&gt;</token>
+  </line>
+  <line no="11">
+    <token name="T_INLINE_HTML">            message here</token>
+  </line>
+  <line no="12">
+    <token name="T_INLINE_HTML">          &lt;/div&gt;</token>
+  </line>
+  <line no="13">
+    <token name="T_INLINE_HTML">          &lt;div class="media-right time-ago"&gt;lorem&lt;/div&gt;</token>
+  </line>
+  <line no="14">
+    <token name="T_INLINE_HTML">      &lt;/a&gt;</token>
+  </line>
+  <line no="15">
+    <token name="T_INLINE_HTML">  &lt;/li&gt;</token>
+  </line>
+  <line no="16">
+    <token name="T_INLINE_HTML">&lt;/template&gt;</token>
+  </line>
+  <line no="17"/>
+  <line no="18"/>
+  <line no="19"/>
+  <line no="20"/>
+</source>

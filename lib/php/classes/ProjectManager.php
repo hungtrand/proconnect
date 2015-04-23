@@ -3,6 +3,9 @@
 //require_once __DIR__."/User.php"; // for testing
 require_once __DIR__."/Project.php";
 require_once __DIR__."/RecordSet.php";
+/**
+*	Project Manager -load Project information,getAll projects belong to user
+*/
 
 class ProjectManager extends RecordSet {
 	protected $PrimaryKey;

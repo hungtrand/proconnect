@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Account" namespace="" name="Account" abstract="false" final="false" start="19" end="290">
+  <file path="/var/www/html/ProConnect/lib/php/classes" file="Account.php" realpath="/var/www/html/ProConnect/lib/php/classes/Account.php" size="6644" time="2015-04-16T18:23:54-07:00" unixtime="1429233834" sha1="769001818c77c9564a589fd9198c19a1b339fad8" relative="lib/php/classes/Account.php"/>
+  <docblock>
+    <description compact="Account - Model (MVC) - fetch &amp; stores email, password, alternate email, verification key, password reset key, account type and login timestamps"/>
+    <params value=": $AccountID">$data: an associated array that act as the main property of the class Account
+this array holds all data from the database of instance user with AccountID
+the key is the exact name of column in database, and the value is the field value</params>
+    <update value=": public function update allow Account to update its own data">after updating, the object Account would reload itself with new data</update>
+  </docblock>
+  <extends full="ActiveRecord" namespace="" name="ActiveRecord"/>
+  <member name="PrimaryKey" type="string" default="'ACCOUNTID'" visibility="public" line="20"/>
+  <member name="TableName" type="string" default="'Account'" visibility="public" line="21"/>
+  <member name="Columns" type="array" visibility="public" line="22"/>
+  <member name="data" type="array" visibility="private" line="29"/>
+  <member name="AccountID" type="{unknown}" visibility="private" line="30"/>
+  <member name="err" type="{unknown}" visibility="public" line="31"/>
+  <constructor name="__construct" start="33" end="43" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="ID" byreference="false" type="{unknown}" default="null"/>
+    <inline>
+      <comment value="Primary Key" line="37"/>
+    </inline>
+  </constructor>
+  <method name="getData" start="47" end="49" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getID" start="52" end="54" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getPrimaryKey" start="57" end="59" abstract="false" final="false" static="false" visibility="protected"/>
+  <method name="getTableName" start="62" end="64" abstract="false" final="false" static="false" visibility="protected"/>
+  <method name="getColumns" start="67" end="69" abstract="false" final="false" static="false" visibility="protected"/>
+  <method name="load" start="72" end="81" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="ID" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="loadByEmail" start="84" end="92" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="Email" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="loadByLogin" start="94" end="104" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="email" byreference="false" type="{unknown}"/>
+    <parameter name="password" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="loadByUserID" start="106" end="114" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="UserID" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getUsername" start="116" end="118" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getPassword" start="120" end="122" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="isActive" start="124" end="130" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getUserID" start="132" end="134" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getEmail" start="136" end="138" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getEmail_Alt" start="140" end="142" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getSecurityQuestion" start="144" end="146" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getSecurityAnswer" start="148" end="150" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="isVerified" start="152" end="158" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getVerificationKey" start="160" end="162" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="isRecruiter" start="164" end="170" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getForgotPasswordKey" start="172" end="174" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getLastLogin" start="176" end="178" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="setUserID" start="181" end="190" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="UserID" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setUsername" start="192" end="196" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="newUsername" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setPassword" start="198" end="202" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="newPassword" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setEmail" start="204" end="208" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="newEmail" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setEmail_Alt" start="210" end="214" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="newEmailAlt" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setSecurityQuestion" start="216" end="220" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="SecQues" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setSecurityAnswer" start="222" end="226" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="SecAns" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setVerificationKey" start="228" end="238" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="extra" byreference="false" type="{unknown}" default="null"/>
+  </method>
+  <method name="setForgotPasswordKey" start="240" end="250" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="extra" byreference="false" type="{unknown}" default="null"/>
+  </method>
+  <method name="setLastLogin" start="252" end="268" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="LastLogin" byreference="false" type="{unknown}" default="null"/>
+  </method>
+  <method name="setActive" start="270" end="275" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="isActive" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setVerified" start="277" end="282" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="isVerified" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setIsRecruiter" start="284" end="289" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="isRecruiter" byreference="false" type="{unknown}"/>
+  </method>
+  <parent full="ActiveRecord" namespace="" name="ActiveRecord">
+    <member name="err" type="{unknown}" visibility="public" line="18"/>
+    <constructor name="__construct" start="20" end="22" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getData" start="24" end="24" abstract="true" final="false" static="false" visibility="public"/>
+    <method name="getID" start="25" end="25" abstract="true" final="false" static="false" visibility="public"/>
+    <method name="getPrimaryKey" start="26" end="26" abstract="true" final="false" static="false" visibility="protected"/>
+    <method name="getTableName" start="27" end="27" abstract="true" final="false" static="false" visibility="protected"/>
+    <method name="getColumns" start="28" end="28" abstract="true" final="false" static="false" visibility="protected"/>
+    <method name="load" start="31" end="31" abstract="true" final="false" static="false" visibility="public">
+    <parameter name="ID" byreference="false" type="{unknown}"/>
+  </method>
+    <method name="reload" start="33" end="35" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="fetch" start="37" end="71" abstract="false" final="false" static="false" visibility="protected">
+    <parameter name="ID" byreference="false" type="{unknown}"/>
+  </method>
+    <method name="fetchBy" start="73" end="118" abstract="false" final="false" static="false" visibility="protected">
+    <parameter name="params" byreference="false" type="{unknown}"/>
+    <parameter name="Logic" byreference="false" type="string" default="&quot;AND&quot;"/>
+    <inline>
+      <comment value="echo $sql.&quot;\n&quot;.json_encode($params).&quot;\n&quot;;" line="97"/>
+    </inline>
+  </method>
+    <method name="save" start="120" end="168" abstract="false" final="false" static="false" visibility="public">
+    <inline>
+      <comment value="echo &quot;\n&quot;.$sql.&quot;\n&quot;;" line="150"/>
+    </inline>
+  </method>
+    <method name="update" start="170" end="215" abstract="false" final="false" static="false" visibility="public">
+    <inline>
+      <comment value="echo json_encode($data);" line="171"/>
+      <comment value="echo $sql; //for testing" line="203"/>
+    </inline>
+  </method>
+    <method name="delete" start="217" end="243" abstract="false" final="false" static="false" visibility="public"/>
+  </parent>
+</class>

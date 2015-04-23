@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="FeedList_view" namespace="" name="FeedList_view" abstract="false" final="false" start="13" end="63">
+  <file path="/var/www/html/ProConnect/feed/php" file="FeedList_view.php" realpath="/var/www/html/ProConnect/feed/php/FeedList_view.php" size="1611" time="2015-04-23T00:02:19-07:00" unixtime="1429772539" sha1="50cb44525872dff85932bc942646b2a6bd1e6d5e" relative="feed/php/FeedList_view.php"/>
+  <docblock>
+    <description compact="FeedList_view - the class convert an array of feeds or posts saved in the database under Feed objects. The output data is in json format where the client side can display and manipulate easier."/>
+  </docblock>
+  <implements full="view" namespace="" name="view"/>
+  <member name="FinalView" type="{unknown}" visibility="private" line="14"/>
+  <constructor name="__construct" start="16" end="18" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getView" start="20" end="22" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="load" start="24" end="62" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="feeds2User" byreference="false" type="{unknown}"/>
+  </method>
+  <interface full="view" namespace="" name="view">
+    <method name="getView" start="9" end="9" abstract="false" final="false" static="false" visibility="public"/>
+  </interface>
+</class>
