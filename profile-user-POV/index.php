@@ -1,30 +1,32 @@
 <?php
-error_reporting(E_ALL); // debug
-ini_set("display_errors", 1); // debug
-// include '../signout/php/session_check_signout.php';
+// error_reporting(E_ALL); // debug
+// ini_set("display_errors", 1); // debug
+include '../signout/php/session_check_signout.php';
 
-//$UData = json_decode($_SESSION['__USERDATA__'], true);
-//$FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
+session_start();
+$UData = json_decode($_SESSION['__USERDATA__'], true);
+$FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 
 
-  $page_title = "Edit Profile"; //require for front end
-  include '../header/header.php';
+  $Title = "Edit Profile"; //require for front end
+  // include '../header/header.php';
+
+  ob_start();
 ?>
 
-    <div id="main-container" class="container-fluid">
+    <!-- <div id="main-container" class="container-fluid"> -->
       <div class="row">
-          <div class="col col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
+          <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
               <div class="well well-sm">
                   <div class="row normal-view">
-                   
-					<div id="profile-image-block" class="col col-sm-6 col-md-4 col-lg-3">
-						<div id="progress-block" style= "z-index: 1;">
-							<div class="progress">
-							  <div id="img-progress-bar" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
-								<span class="sr-only"></span>
-							  </div>
-							</div>
-						</div>
+              					<div id="profile-image-block" class="col col-sm-6 col-md-4 col-lg-3">
+              						<div id="progress-block" style= "z-index: 1;">
+              							<div class="progress">
+              							  <div id="img-progress-bar" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+              								<span class="sr-only"></span>
+              							  </div>
+              							</div>
+              						</div>
                           <div id="profile-image" class="outer-ref" >
                            <img src="/image/user_img.png" alt="" class="img-responsive profile-image img-rounded" id="preview"/>
               							<div id="picture-edit">
@@ -196,14 +198,12 @@ ini_set("display_errors", 1); // debug
 
       <!-- Summary -->
       <div class="row">
-          <div class="col col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
+          <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
               <div class="well well-sm ">
                   <header>
                         <h2>Summary</h2>
                   </header>
-
-
                   <div class="alert alert-success alert-dismissible" role="alert">
                     <button type="button" class="close" data-hide="alert" aria-label="Close"><span class="dimissible-color"aria-hidden="true">&times;</span></button>
                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -214,7 +214,7 @@ ini_set("display_errors", 1); // debug
                   <div id="summary-description" class="normal-view" > 
                     <div class="editable" for="summary-edit">
                       <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                      <p id="user-summary"></p>
+                      <pre id="user-summary"></pre>
                     </div>
                   </div>
                   <div id="summary-edit" class="edit-view" action="php/Education_controller.php" >
@@ -244,7 +244,7 @@ ini_set("display_errors", 1); // debug
 
       <!-- Skills -->
       <div class="row">
-          <div class="col col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
+          <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
               <div class="well well-sm ">
                   <header>
@@ -334,7 +334,7 @@ ini_set("display_errors", 1); // debug
 
       <!-- Experience -->
       <div class="row">
-          <div class="col col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
+          <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
               <div class="well well-sm">
                   <header>
                     <h2>Experience</h2>
@@ -448,7 +448,7 @@ ini_set("display_errors", 1); // debug
 
        <!-- Project-->
       <div class="row">
-          <div class="col col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
+          <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
               <div class="well well-sm">
                   <header>
                     <h2>Projects</h2>
@@ -557,7 +557,7 @@ ini_set("display_errors", 1); // debug
 
       <!-- Education -->
       <div class="row">
-          <div class="col col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
+          <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
               <div class="well well-sm">
                   <header>
                     <h2>Education</h2>
@@ -669,12 +669,19 @@ ini_set("display_errors", 1); // debug
       </div>
 
 
-    </div><!-- /main-container -->
+    <!-- </div>/main-container -->
 
-    <!-- Custom styles for this template -->
+    
+
+<?php
+    $Content = ob_get_clean();
+    include $_SERVER["DOCUMENT_ROOT"]."/master/index.php";
+?>
+
+<!-- Custom styles for this template -->
     <link href="css/profile-user-POV.css" rel="stylesheet">
     <!-- Custom modal handler -->
-    <script src="../js/bootbox.min.js"></script>
+    // <script src="../js/bootbox.min.js"></script>
     <!-- Sortable script -->
     <script src="../js/jquery.sortable.min.js"></script>
     <!-- Custom Script -->
@@ -682,6 +689,7 @@ ini_set("display_errors", 1); // debug
     <script src="js/profile-user-POV.js"></script>
     <script src="../lib/js/FileUpload.js"></script>
     <script src="js/ProfileImageUploader.js"></script>
-	   <script src="/lib/js/StatesCitiesList.js"></script>
-  </body>
-</html>
+    <script src="/lib/js/StatesCitiesList.js"></script>
+
+
+
