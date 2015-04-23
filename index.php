@@ -14,7 +14,7 @@
     <meta name="author" content="">
 
     <title>World's Most Professional Connection Network</title>
-
+	<link rel="ICON" href="../image/proconnect/Tab_logo2.ico" type="image/ico" />
     <!-- Bootstrap Core CSS -->
     <link href="../lib/startbootstrap-stylish-portfolio-1.0.3/startbootstrap-stylish-portfolio-1.0.3/css/bootstrap.min.css" rel="stylesheet">
 
@@ -38,8 +38,9 @@
     <!-- Header -->
     <header id="top" class="header">
         <div class="text-vertical-center">
-            <h1>ProConnect</h1>
-            <h3>Stay Connected With Your Profession</h3>
+			<img class= "hidden-xs "id= "logo" src = "../image/proconnect/ProConnect_black.png" width="400">
+			<img class= "hidden-sm hidden-md hidden-lg"id= "logo" src = "../image/proconnect/ProConnect_black.png" width="250">
+		   <h3>Stay Connected With Your Profession</h3>
             <br>
             <a href="../signup" class="btn btn-dark btn-lg">Get Started</a>
 			<a href="#about" class="btn btn-dark btn-lg">Learn More</a>
@@ -153,7 +154,7 @@
                     <p>1 Washington Sq<br>San Jose, CA 95192</p>
                     <ul class="list-unstyled">
                         <li><i class="fa fa-phone fa-fw"></i> (123) 456-7890</li>
-                        <li><i class="fa fa-envelope-o fa-fw"></i>  <a href="mailto:name@example.com">contact@ProConnect.com</a>
+                        <li><i class="fa fa-envelope-o fa-fw"></i>  <a href="mailto:contact@ProConnect.com">contact@ProConnect.com</a>
                         </li>
                     </ul>
                     <br>

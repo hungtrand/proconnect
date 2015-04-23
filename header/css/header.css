@@ -169,3 +169,7 @@ h3 {
 	  padding-left: 0px;
 	 }
 }
+.navbar-brand>img {
+  width: 225px;
+  margin-top: -5px;
+}
