@@ -19,15 +19,12 @@ $(document).ready(function(){
 		});
 	});
 	
-	//get messages
+	//get notification messages
 	function fillMessages(parent) {
 		var specialID = $(parent).attr("id");
 		MessageGetter.get(specialID,function(jqXHR,obj){
-			//clear existing items 
-			$(parent).siblings("ul").find(".custom-media-item").remove();
-
-			//show loading div
-			$(parent).siblings("ul").find("div#iam-loading").show();
+			$(parent).siblings("ul").find(".custom-media-item").remove(); //clear existing items 
+			$(parent).siblings("ul").find("div#iam-loading").show();      //show loading div
 		},function(data){
 
 			//display data
@@ -64,7 +61,6 @@ $(document).ready(function(){
 			fillMessages($(this).find("a.navi-menu"));
 		} 
 
-		// IamLoading.show($(this).find("ul.media-list li.dropdown-header"));
 		$(this).attr("aria-expanded","true");
 		$(this).addClass("open");
 	});
@@ -77,6 +73,25 @@ $(document).ready(function(){
 		$(".notification-icon").attr("aria-expanded","false");
 		$(".notification-icon").removeClass("open");
 	});
-
+ 	
+ 	/* show menu on scroll down*/
+ 	$(window).scroll(showMenuOnScroll());
 	
+	function showMenuOnScroll(e){
+ 		//Keep track of last scroll
+		var lastScroll = 0;
+ 		return function() {
+          //Sets the current scroll position
+          var st = $(this).scrollTop();
+          //Determines up-or-down scrolling
+          if (st > lastScroll){  			//DOWN
+				$("#nv-menu").slideUp(100);             
+          } else { 							//UP
+             	$("#nv-menu").slideDown(100);   
+          }
+          lastScroll = st;					//Updates scroll position
+      	}
+	}
+
+	AdvanceSearchInterfaceHandler.init();
 });

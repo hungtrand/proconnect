@@ -41,7 +41,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
     <link rel="stylesheet" href="/header/css/header.css">
     <!-- <link rel="import" href="/lib/templates/centered-loading-gif.html"></link> -->
     <script type="text/javascript" src="/header/js/NotificationGetter.js"></script>
-    <!-- // <script type="text/javascript" src="/header/js/NotificationHandler.js"></script> -->
+    <script type="text/javascript" src="/header/js/AdvanceSearchInterfaceHandler.js"></script>
     <script type="text/javascript" src="/header/js/MessageGetter.js"></script>
     <script type="text/javascript" src="/header/js/MediaItemFactory.js"></script>
     <script type="text/javascript" src="/header/js/header.js"></script>
@@ -63,11 +63,21 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
             </a>
         </li>
     </template>
-    <nav class="navbar navbar-inverse navbar-fixed-top affix" data-spy="affix" data-offset-top="60 " data-offset-bottom="200">
+    <template id="ao-checkbox">
+        <li>
+        <div class="checkbox">
+            <label>
+               <input type="checkbox" value="" checked> 
+            </label>
+        </div>
+    </li>
+    </template>
+    <!-- data-spy="affix" data-offset-top="200" data-offset-bottom="-200" -->
+    <nav id="header-nav" class="navbar navbar-inverse navbar-fixed-top affix" >
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mobile-view-menu">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-right-links">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -81,16 +91,64 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 				<img style = "width:100%;" src="../image/proconnect/logo_text.png" />				
 				</a>
 
-                <form class="navbar-form navbar-left text-center form-inline" role="search">
-                    <div class="form-group">
-                      <input type="text" size="40" class="form-control" id= "searchbar" placeholder="Search for people, companies, jobs...">
+                <form class="navbar-form navbar-left text-center form-inline col-xs-12" role="search" method="GET" action="/search-results/results.php">
+                    <!-- <div class="form-group">
+                      <input name="searchKey" type="text" size="40" class="form-control" id= "searchbar" placeholder="Search for people, companies, jobs...">
                     </div>
-                    <button type="submit" class="btn btn-primary hidden-xs hidden-sm ">&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;&nbsp;&nbsp;</button>
+
+                    <button type="submit" class="btn btn-primary hidden-xs hidden-sm ">&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;&nbsp;&nbsp;</button> -->
+                    <div id="searchbar" class="input-group">
+                        
+                        <div class="input-group-btn">
+                            <!-- Button and dropdown menu -->
+                            <button id="ao-show-btn"type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <span class="caret"></span>
+                            </button>
+                            <div id="advance-option-div" class="dropdown-menu well " role="options">
+                                <h3>Advance Search By:</h3>
+                                <div class="ao-outer">
+                                    <div>
+                                        <div class="form-group">
+                                            <label for="ao-education">Education</label> 
+                                            <div class="">
+                                                <ul id="ao-education" class="dynamic-result-div list-unstyled">
+                                                </ul> 
+                                                <input class="ao-add-option" type="text" placeholder="+ Add">
+                                            </div>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                </div>
+                                <div class="ao-outer">
+                                    <div>
+                                        <div class="form-group">
+                                            <label for="ao-education">School</label> 
+                                            <div>
+                                                <ul id="ao-school" class="dynamic-result-div list-unstyled">
+                                                </ul> 
+                                                <input class="ao-add-option" type="text" placeholder="+ Add">
+                                            </div>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                </div>
+                                <button type="button" class="ao-close close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+                                <!-- Extra Search Button -->
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            </div>
+                        </div><!-- /btn-group -->
+                        <input type="text" class="form-control main-search-bar" name="searchKey" placeholder="Search for people, companies, jobs...">
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </span>
+                    </div>
+                    
                 </form>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="mobile-view-menu">
+            <div class="collapse navbar-collapse" id="nav-right-links">
 
                 <ul class="nav navbar-nav nav-pills navbar-right ">
                     <!-- <li id = "return" style = "display: none;">
@@ -171,7 +229,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                         </ul>
                     </li>
                 </ul>
-				 <ul class="nav subNav hidden-sm hidden-md hidden-lg">
+			<ul class="nav subNav hidden-sm hidden-md hidden-lg">
                 <li role="presentation"><a href="../feed/">
                     Home</a>
                 </li>
@@ -226,6 +284,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                 </ul>
 
             </div><!-- /.navbar-collapse -->
+
             <ul class="nav nav-pills subNav hidden-xs">
                 <li role="presentation"><a href="../feed/">
                     Home</a>
