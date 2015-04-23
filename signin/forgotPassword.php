@@ -66,7 +66,7 @@
 							</div>
 
 							<div class="form-group">
-								<button class="btn btn-lg btn-info btn-block" id="continue-btn" type="submit">Continue</button>
+								<button class="btn btn-info btn-block" id="continue-btn" type="submit">Continue</button>
 							</div>
 
 						</form>  

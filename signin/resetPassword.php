@@ -87,7 +87,7 @@ $ForgotPasswordKey = $_SESSION['__ForgotPasswordKey__'];
 							</div>
 
 							<div class="form-group">
-								<button class="btn btn-lg btn-info btn-block" type="submit">Reset Password</button>
+								<button class="btn btn-info btn-block" type="submit">Reset Password</button>
 							</div>
 
 						</form>
