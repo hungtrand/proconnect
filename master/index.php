@@ -137,7 +137,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                         <!-- User -->
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="<?=$ProfileImage?>" width="35" alt="<?=$FullName?>" class="img-circle" /> <?=$FullName?> <span class="caret"></span>
+                                <img style="object-fit: cover;" width="30px" height="30px" src="<?=$ProfileImage?>" alt="<?=$FullName?>" class="img-circle" /> <?=$FullName?> <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="/profile-user-POV/">Profile</a>
@@ -200,7 +200,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                     </li>
                     <li class=""><a href="/profile-user-POV/"><i class="icon-user-1"></i> <span>Profile</span></a>
                     </li>
-                    <li class=""><a href="/connections/"><i class="fa fa-group"></i> <span>Users</span></a>
+                    <li class=""><a href="/connections/"><i class="fa fa-group"></i> <span>Connections</span></a>
                     </li>
                     <li class=""><a href="/message/"><i class="icon-comment-fill-1"></i> <span>Messages</span></a>
                     </li>

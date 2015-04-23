@@ -1,22 +1,27 @@
 <?php
 //error_reporting(E_ALL); // debug
 //ini_set("display_errors", 1); // debug
-// include '../signout/php/session_check_signout.php';
 
+include '/signout/php/session_check_signout.php';
+
+session_start();
 $UData = json_decode($_SESSION['__USERDATA__'], true);
 $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 
-$page_title = "Connections - ProConnect"; //required for front end
-include '../header/header.php';
+$Title = "Feed - Proconnect";
+$ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
+$JobTitle = $UData['TITLE'];
+
+ob_start();
 ?>
+    <!-- Custom CSS -->
+    <link href="css/index.css" rel="stylesheet">
 
-    <!-- Page Content -->
-    <div class="container">
-
+    <div class="wrapper" style="padding: 20px;">
         <div class="row">
 
             <!-- Blog Entries Column -->
-            <div class="col col-md-8">
+            <div class="col col-md-12 col-sm-10 col-xs-10">
                 <div id="ConnectionsHeader" class="row">
                     <div class="col col-xs-8">
                         <h2 class="text-info">Connections</h2>
@@ -65,7 +70,7 @@ include '../header/header.php';
 
                 <hr />
 
-                <div id="ConnListing">
+                <div id="ConnListing" class="row">
 
                 </div>
 
@@ -74,36 +79,21 @@ include '../header/header.php';
             </div>
 
             <!-- Blog Sidebar Widgets Column -->
-            <div id="fixed-right-section" class="col col-md-4 affix hidden-print hidden-xs hidden-sm" role="complimentary" data-spy="affix" data-offset-top="200 " data-offset-bottom="200">
+            <!-- <div id="fixed-right-section" class="col col-md-4 affix hidden-print hidden-xs hidden-sm" role="complimentary" data-spy="affix" data-offset-top="200 " data-offset-bottom="200">
                 <div class="well">
                     <h3 class="text-primary" style="overflow: auto;">Suggestions</h3>
-					<hr />
+    				<hr />
 
-					<div id="SuggListing" >
+    				<div id="SuggListing" >
 
-					</div>
+    				</div>
 
                     <div id="SuggestionsListEndAlert" class="alert alert-info hidden text-center"></div>
                 </div>
-            </div>
+            </div> -->
         </div>
         <!-- /.row -->
-
-        <hr>
-
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <p>Copyright &copy; ProConnect 2015</p>
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-        </footer>
-
     </div>
-    <!-- /.container -->
 
     <div id="modalNewConnection" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -161,12 +151,12 @@ include '../header/header.php';
     </div><!-- /.modal -->
 
     <script type="text/template" id="ConnectionTemplate">
-    <div class="UserConnection" class="col col-xs-12">
+    <div class="UserConnection col-lg-4 col-md-4 col-sm-6 col-xs-12 item" style="height: 180px;">
         <input type="hidden" class="UserID" name="UserID" value="" />
         <div class="well well-sm">
             <div class="row">
                 <div class="col col-xs-4">
-                    <img width="100px" src="../image/user_img.png" class="img-rounded ProfileImage" />
+                    <img style="object-fit: cover; margin-left: 10px;" width="100px" height="100px" src="../image/user_img.png" class="img-circle ProfileImage" />
                 </div>
 
                 <div class="col col-xs-8">
@@ -185,7 +175,6 @@ include '../header/header.php';
                 </div>
             </div>
         </div>
-        <hr />
     </div>
     </script>
 	
@@ -211,14 +200,13 @@ include '../header/header.php';
     </div>
     </script>
 
+<?php
+    $Content = ob_get_clean();
+    include __DIR__."/../master/index.php";
+?>
     <script src="js/UserConnection.js"></script>
     <script src="js/NewConnection.js"></script>
     <script src="js/SuggestionList.js"></script>
     <script src="js/ConnectionList.js"></script>
     <script src="js/NewConnectionSearch.js"></script>
     <script src="js/index.js"></script>
-    <!-- Custom CSS -->
-    <link href="css/index.css" rel="stylesheet">
-</body>
-    
-</html>
