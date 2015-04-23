@@ -1,6 +1,10 @@
 <?php
 require_once __DIR__."/../../lib/php/interfaces.php";
-
+/**
+*	Connections_view - the class inherits the view interface is responsible for 
+*	converting data from array of Connection objects into json format data
+*	for returning to client tier.
+**/
 class Connections_view implements view {
 	private $FinalView;
 

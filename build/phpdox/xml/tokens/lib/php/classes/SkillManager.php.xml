@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <source xmlns="http://xml.phpdox.net/token">
-  <file xmlns="http://xml.phpdox.net/src" path="/var/www/html/ProConnect/lib/php/classes" file="SkillManager.php" realpath="/var/www/html/ProConnect/lib/php/classes/SkillManager.php" size="1573" time="2015-04-21T09:19:04-07:00" unixtime="1429633144" sha1="4f85b4a409a7ef034adbb6e3bcccdf40cd30a2bf" relative="lib/php/classes/SkillManager.php"/>
+  <file xmlns="http://xml.phpdox.net/src" path="/var/www/html/ProConnect/lib/php/classes" file="SkillManager.php" realpath="/var/www/html/ProConnect/lib/php/classes/SkillManager.php" size="1677" time="2015-04-23T01:14:29-07:00" unixtime="1429776869" sha1="c5faf36593876888bf4b79442c2bba360dfcab37" relative="lib/php/classes/SkillManager.php"/>
   <line no="1">
     <token name="T_OPEN_TAG">&lt;?php</token>
   </line>
@@ -27,16 +27,16 @@
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
   <line no="6">
-    <token name="T_COMMENT">/*</token>
+    <token name="T_DOC_COMMENT">/**</token>
   </line>
   <line no="7">
-    <token name="T_COMMENT">	Skill Manager</token>
+    <token name="T_DOC_COMMENT">*	Skill Manager - collections of all skills belonged to a user, retrieve them in specific orders or by endorsements.</token>
   </line>
   <line no="8">
-    <token name="T_COMMENT">	Responsibilites: get the skills that belong the a user</token>
+    <token name="T_DOC_COMMENT">*	Responsibilites: get the skills that belong the a user</token>
   </line>
   <line no="9">
-    <token name="T_COMMENT">*/</token>
+    <token name="T_DOC_COMMENT">*/</token>
   </line>
   <line no="10">
     <token name="T_CLASS">class</token>

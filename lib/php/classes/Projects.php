@@ -3,9 +3,8 @@
  $u = new Projects(1); echo $u->get('TeamMembers').'\n'; // For testing
 // $u->update(['Username'=>'Feb2015']); echo $u->get('Username'); // For Testing
 
-/*
-	Project
-	Responsibilities: Load all information of the project, get Projects by the field, update project information 
+/**
+*	Project -Load all information of the project, get Projects by the field, update project information 
 */
 class Projects {
 	private $data;

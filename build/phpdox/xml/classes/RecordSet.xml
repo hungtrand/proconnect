@@ -1,40 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.net/src" full="RecordSet" namespace="" name="RecordSet" abstract="true" final="false" start="7" end="184">
-  <file path="/var/www/html/ProConnect/lib/php/classes" file="RecordSet.php" realpath="/var/www/html/ProConnect/lib/php/classes/RecordSet.php" size="3937" time="2015-04-22T12:42:59-07:00" unixtime="1429731779" sha1="32df7062bee0418aa1873eb86997471d77057290" relative="lib/php/classes/RecordSet.php"/>
-  <member name="db" type="{unknown}" visibility="protected" line="8"/>
-  <member name="Limit" type="{unknown}" visibility="private" line="9"/>
-  <member name="err" type="{unknown}" visibility="public" line="10"/>
-  <constructor name="__construct" start="12" end="15" abstract="false" final="false" static="false" visibility="public"/>
-  <method name="getData" start="17" end="17" abstract="true" final="false" static="false" visibility="public"/>
-  <method name="getColumns" start="18" end="18" abstract="true" final="false" static="false" visibility="protected"/>
-  <method name="setLimit" start="20" end="26" abstract="false" final="false" static="false" visibility="public">
+<class xmlns="http://xml.phpdox.net/src" full="RecordSet" namespace="" name="RecordSet" abstract="true" final="false" start="6" end="183">
+  <file path="/var/www/html/ProConnect/lib/php/classes" file="RecordSet.php" realpath="/var/www/html/ProConnect/lib/php/classes/RecordSet.php" size="3956" time="2015-04-23T01:18:33-07:00" unixtime="1429777113" sha1="28c9bfa0b2e6266889cde33ad061e3f74a3f0628" relative="lib/php/classes/RecordSet.php"/>
+  <docblock>
+    <description compact="RecordSet - Connect to the database, fetch data for desired request such as fetchby and Custom fetch and return an array of recors."/>
+  </docblock>
+  <member name="db" type="{unknown}" visibility="protected" line="7"/>
+  <member name="Limit" type="{unknown}" visibility="private" line="8"/>
+  <member name="err" type="{unknown}" visibility="public" line="9"/>
+  <constructor name="__construct" start="11" end="14" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getData" start="16" end="16" abstract="true" final="false" static="false" visibility="public"/>
+  <method name="getColumns" start="17" end="17" abstract="true" final="false" static="false" visibility="protected"/>
+  <method name="setLimit" start="19" end="25" abstract="false" final="false" static="false" visibility="public">
     <parameter name="intLimit" byreference="false" type="{unknown}"/>
   </method>
-  <method name="fetch" start="28" end="60" abstract="false" final="false" static="false" visibility="protected"/>
-  <method name="fetchBy" start="62" end="110" abstract="false" final="false" static="false" visibility="protected">
+  <method name="fetch" start="27" end="59" abstract="false" final="false" static="false" visibility="protected"/>
+  <method name="fetchBy" start="61" end="109" abstract="false" final="false" static="false" visibility="protected">
     <parameter name="params" byreference="false" type="{unknown}"/>
     <parameter name="Logic" byreference="false" type="string" default="&quot;AND&quot;"/>
   </method>
-  <method name="fetchCustom" start="112" end="146" abstract="false" final="false" static="false" visibility="protected">
+  <method name="fetchCustom" start="111" end="145" abstract="false" final="false" static="false" visibility="protected">
     <parameter name="cond" byreference="false" type="{unknown}"/>
     <parameter name="params" byreference="false" type="{unknown}" default="null"/>
     <inline>
-      <comment value="echo $sql;" line="128"/>
+      <comment value="echo $sql;" line="127"/>
     </inline>
   </method>
-  <method name="fetchCount" start="148" end="183" abstract="false" final="false" static="false" visibility="protected">
+  <method name="fetchCount" start="147" end="182" abstract="false" final="false" static="false" visibility="protected">
     <parameter name="cond" byreference="false" type="{unknown}"/>
     <parameter name="params" byreference="false" type="{unknown}" default="null"/>
     <inline>
-      <comment value="echo $sql;" line="164"/>
-      <comment value="echo var_dump($rs);" line="168"/>
+      <comment value="echo $sql;" line="163"/>
+      <comment value="echo var_dump($rs);" line="167"/>
     </inline>
   </method>
-  <extender full="MessageViewManager" namespace="" name="MessageViewManager"/>
-  <extender full="SkillManager" namespace="" name="SkillManager"/>
-  <extender full="ConnectionManager" namespace="" name="ConnectionManager"/>
-  <extender full="UserConnectionManager" namespace="" name="UserConnectionManager"/>
-  <extender full="NotificationViewManager" namespace="" name="NotificationViewManager"/>
   <extender full="ProjectManager" namespace="" name="ProjectManager"/>
-  <extender full="Feed2UserManager" namespace="" name="Feed2UserManager"/>
-</class>
+<extender full="UserConnectionManager" namespace="" name="UserConnectionManager"/></class>

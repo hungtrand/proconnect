@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.net/src" full="NotificationInbox_view" namespace="" name="NotificationInbox_view" abstract="false" final="false" start="6" end="38">
-  <file path="/var/www/html/ProConnect/notification/php" file="NotificationInbox_view.php" realpath="/var/www/html/ProConnect/notification/php/NotificationInbox_view.php" size="1007" time="2015-04-22T15:22:57-07:00" unixtime="1429741377" sha1="8ee054087eda88f4715162ba3ae8909bcfbc2cc9" relative="notification/php/NotificationInbox_view.php"/>
+<class xmlns="http://xml.phpdox.net/src" full="NotificationInbox_view" namespace="" name="NotificationInbox_view" abstract="false" final="false" start="9" end="41">
+  <file path="/var/www/html/ProConnect/notification/php" file="NotificationInbox_view.php" realpath="/var/www/html/ProConnect/notification/php/NotificationInbox_view.php" size="1110" time="2015-04-23T01:07:07-07:00" unixtime="1429776427" sha1="b17a8cc19d54b1a5db27951647b267a9931a7bb3" relative="notification/php/NotificationInbox_view.php"/>
+  <docblock>
+    <description compact="NotificationInbox_view - list all relationships between notifications users and their status."/>
+  </docblock>
   <implements full="view" namespace="" name="view"/>
-  <member name="FinalView" type="{unknown}" visibility="private" line="7"/>
-  <constructor name="__construct" start="9" end="11" abstract="false" final="false" static="false" visibility="public"/>
-  <method name="getView" start="13" end="15" abstract="false" final="false" static="false" visibility="public"/>
-  <method name="load" start="18" end="37" abstract="false" final="false" static="false" visibility="public">
+  <member name="FinalView" type="{unknown}" visibility="private" line="10"/>
+  <constructor name="__construct" start="12" end="14" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getView" start="16" end="18" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="load" start="21" end="40" abstract="false" final="false" static="false" visibility="public">
     <parameter name="NotificationViews" byreference="false" type="{unknown}"/>
   </method>
   <interface full="view" namespace="" name="view">

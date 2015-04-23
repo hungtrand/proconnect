@@ -1,8 +1,8 @@
 <?php 
 
-/*
-	Uploader
-	Responsibilites: Upload file to database, validate the file before upload
+/**
+*	Uploader - create user directory if not already exists, and upload file, modify accessing persmissions for file.
+*	Responsibilites: Upload file to database, validate the file before upload
 */
 class Uploader {
 	private $db;

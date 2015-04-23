@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <source xmlns="http://xml.phpdox.net/token">
-  <file xmlns="http://xml.phpdox.net/src" path="/var/www/html/ProConnect/lib/php/classes" file="NotificationView.php" realpath="/var/www/html/ProConnect/lib/php/classes/NotificationView.php" size="2421" time="2015-04-22T16:44:35-07:00" unixtime="1429746275" sha1="0f9b83ac83084c3598c396162a6fc625b6a85c7e" relative="lib/php/classes/NotificationView.php"/>
+  <file xmlns="http://xml.phpdox.net/src" path="/var/www/html/ProConnect/lib/php/classes" file="NotificationView.php" realpath="/var/www/html/ProConnect/lib/php/classes/NotificationView.php" size="2421" time="2015-04-23T01:05:48-07:00" unixtime="1429776348" sha1="9cd13ccc3e146b0ecf56c9969eda25613263d4ff" relative="lib/php/classes/NotificationView.php"/>
   <line no="1">
     <token name="T_OPEN_TAG">&lt;?php </token>
   </line>
@@ -38,7 +38,7 @@
     <token name="T_DOC_COMMENT">/**</token>
   </line>
   <line no="7">
-    <token name="T_DOC_COMMENT">*	NotificationView - represent the relationship between notifications and users.</token>
+    <token name="T_DOC_COMMENT">*	NotificationView - represent the relationship between notifications and users,</token>
   </line>
   <line no="8">
     <token name="T_DOC_COMMENT">*	also contains data representing the status between user and the notification as `Read` </token>

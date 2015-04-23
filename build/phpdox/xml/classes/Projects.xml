@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.net/src" full="Projects" namespace="" name="Projects" abstract="false" final="false" start="10" end="85">
-  <file path="/var/www/html/ProConnect/lib/php/classes" file="Projects.php" realpath="/var/www/html/ProConnect/lib/php/classes/Projects.php" size="1872" time="2015-04-21T09:19:04-07:00" unixtime="1429633144" sha1="3f7428f1b64655e61cb021d0f5508a4234febbcf" relative="lib/php/classes/Projects.php"/>
-  <member name="data" type="{unknown}" visibility="private" line="11"/>
-  <member name="db" type="{unknown}" visibility="private" line="12"/>
-  <constructor name="__construct" start="14" end="18" abstract="false" final="false" static="false" visibility="public">
+<class xmlns="http://xml.phpdox.net/src" full="Projects" namespace="" name="Projects" abstract="false" final="false" start="9" end="84">
+  <file path="/var/www/html/ProConnect/lib/php/classes" file="Projects.php" realpath="/var/www/html/ProConnect/lib/php/classes/Projects.php" size="1856" time="2015-04-23T01:17:52-07:00" unixtime="1429777072" sha1="9163d74d9bbf6d56ef981e7ee756a656f980c2a7" relative="lib/php/classes/Projects.php"/>
+  <docblock>
+    <description compact="Project -Load all information of the project, get Projects by the field, update project information"/>
+  </docblock>
+  <member name="data" type="{unknown}" visibility="private" line="10"/>
+  <member name="db" type="{unknown}" visibility="private" line="11"/>
+  <constructor name="__construct" start="13" end="17" abstract="false" final="false" static="false" visibility="public">
     <parameter name="ProjectID" byreference="false" type="{unknown}"/>
   </constructor>
-  <method name="load" start="20" end="46" abstract="false" final="false" static="false" visibility="private">
+  <method name="load" start="19" end="45" abstract="false" final="false" static="false" visibility="private">
     <parameter name="ProjectID" byreference="false" type="{unknown}"/>
   </method>
-  <method name="get" start="48" end="50" abstract="false" final="false" static="false" visibility="public">
+  <method name="get" start="47" end="49" abstract="false" final="false" static="false" visibility="public">
     <parameter name="field" byreference="false" type="{unknown}"/>
   </method>
-  <method name="update" start="52" end="84" abstract="false" final="false" static="false" visibility="public">
+  <method name="update" start="51" end="83" abstract="false" final="false" static="false" visibility="public">
     <parameter name="newData" byreference="false" type="{unknown}"/>
   </method>
 </class>

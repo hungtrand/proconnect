@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.net/src" full="Education_View" namespace="" name="Education_View" abstract="false" final="false" start="4" end="46">
-  <file path="/var/www/html/ProConnect/profile-user-POV/php" file="Education_view.php" realpath="/var/www/html/ProConnect/profile-user-POV/php/Education_view.php" size="989" time="2015-04-09T13:54:06-07:00" unixtime="1428612846" sha1="6528dac0ec7c476b01949666b2bca80c4c235675" relative="profile-user-POV/php/Education_view.php"/>
+<class xmlns="http://xml.phpdox.net/src" full="Education_View" namespace="" name="Education_View" abstract="false" final="false" start="10" end="52">
+  <file path="/var/www/html/ProConnect/profile-user-POV/php" file="Education_view.php" realpath="/var/www/html/ProConnect/profile-user-POV/php/Education_view.php" size="1195" time="2015-04-22T23:54:33-07:00" unixtime="1429772073" sha1="659fd801d785a29a415a6610207cca83f4fd125c" relative="profile-user-POV/php/Education_view.php"/>
+  <docblock>
+    <description compact="Education_View - the class is responsible for converting data from an Education object into json format to return to client tier.">The key also matches with response request from client tier.</description>
+  </docblock>
   <implements full="view" namespace="" name="view"/>
-  <member name="FinalView" type="{unknown}" visibility="private" line="5"/>
-  <constructor name="__construct" start="8" end="21" abstract="false" final="false" static="false" visibility="public"/>
-  <method name="load" start="24" end="41" abstract="false" final="false" static="false" visibility="public">
+  <member name="FinalView" type="{unknown}" visibility="private" line="11"/>
+  <constructor name="__construct" start="14" end="27" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="load" start="30" end="47" abstract="false" final="false" static="false" visibility="public">
     <parameter name="edu" byreference="false" type="{unknown}"/>
   </method>
-  <method name="getView" start="43" end="45" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getView" start="49" end="51" abstract="false" final="false" static="false" visibility="public"/>
   <interface full="view" namespace="" name="view">
     <method name="getView" start="9" end="9" abstract="false" final="false" static="false" visibility="public"/>
   </interface>

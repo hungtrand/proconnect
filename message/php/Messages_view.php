@@ -3,6 +3,10 @@ require_once __DIR__."/../../lib/php/interfaces.php";
 require_once __DIR__."/../../lib/php/classes/Message.php";
 require_once __DIR__."/../../lib/php/classes/Profile.php";
 
+/**
+*	Messages_view - the class resopnsible for converting an array of 
+*	Messages objects into json friendly format. The response and requests
+*/
 class Messages_view implements view {
 	private $FinalView;
 

@@ -1,28 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.net/src" full="Profile_View" namespace="" name="Profile_View" abstract="false" final="false" start="4" end="119">
-  <file path="/var/www/html/ProConnect/profile-public-POV/php" file="Profile_view.php" realpath="/var/www/html/ProConnect/profile-public-POV/php/Profile_view.php" size="3016" time="2015-04-09T13:54:06-07:00" unixtime="1428612846" sha1="9e51a3f475a66617c27271c6a042b5dc14656e4c" relative="profile-public-POV/php/Profile_view.php"/>
+<class xmlns="http://xml.phpdox.net/src" full="Profile_View" namespace="" name="Profile_View" abstract="false" final="false" start="9" end="143">
+  <file path="/var/www/html/ProConnect/profile-user-POV/php" file="Profile_view.php" realpath="/var/www/html/ProConnect/profile-user-POV/php/Profile_view.php" size="3708" time="2015-04-23T01:10:16-07:00" unixtime="1429776616" sha1="82fba504d563ac6a0c31d9eadbb57f7dd4b9a92c" relative="profile-user-POV/php/Profile_view.php"/>
+  <docblock>
+    <description compact="Profile_View - convert profile objects into json format and compile process image paths and user page path for client tier."/>
+  </docblock>
   <implements full="view" namespace="" name="view"/>
-  <member name="FinalView" type="{unknown}" visibility="private" line="5"/>
-  <member name="PersonalInfo" type="{unknown}" visibility="private" line="7"/>
-  <member name="Experiences" type="{unknown}" visibility="private" line="8"/>
-  <member name="Skills" type="{unknown}" visibility="private" line="9"/>
-  <member name="Projects" type="{unknown}" visibility="private" line="10"/>
-  <member name="Education" type="{unknown}" visibility="private" line="11"/>
-  <constructor name="__construct" start="13" end="21" abstract="false" final="false" static="false" visibility="public"/>
-  <method name="loadPersonalInfo" start="23" end="45" abstract="false" final="false" static="false" visibility="public">
+  <member name="FinalView" type="{unknown}" visibility="private" line="10"/>
+  <member name="PersonalInfo" type="{unknown}" visibility="private" line="12"/>
+  <member name="Experiences" type="{unknown}" visibility="private" line="13"/>
+  <member name="Skills" type="{unknown}" visibility="private" line="14"/>
+  <member name="Projects" type="{unknown}" visibility="private" line="15"/>
+  <member name="Education" type="{unknown}" visibility="private" line="16"/>
+  <constructor name="__construct" start="18" end="27" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="loadPersonalInfo" start="29" end="52" abstract="false" final="false" static="false" visibility="public">
     <parameter name="User" byreference="false" type="{unknown}"/>
     <parameter name="Account" byreference="false" type="{unknown}"/>
   </method>
-  <method name="loadExperience" start="47" end="74" abstract="false" final="false" static="false" visibility="public">
+  <method name="loadExperience" start="54" end="82" abstract="false" final="false" static="false" visibility="public">
     <parameter name="arrExp" byreference="false" type="{unknown}"/>
   </method>
-  <method name="loadProjects" start="76" end="92" abstract="false" final="false" static="false" visibility="public">
+  <method name="loadProjects" start="84" end="101" abstract="false" final="false" static="false" visibility="public">
     <parameter name="arrProjects" byreference="false" type="{unknown}"/>
   </method>
-  <method name="loadEducation" start="94" end="114" abstract="false" final="false" static="false" visibility="public">
+  <method name="loadSkills" start="103" end="115" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="arrSkills" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="loadEducation" start="117" end="138" abstract="false" final="false" static="false" visibility="public">
     <parameter name="arrEdu" byreference="false" type="{unknown}"/>
   </method>
-  <method name="getView" start="116" end="118" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getView" start="140" end="142" abstract="false" final="false" static="false" visibility="public"/>
   <interface full="view" namespace="" name="view">
     <method name="getView" start="9" end="9" abstract="false" final="false" static="false" visibility="public"/>
   </interface>

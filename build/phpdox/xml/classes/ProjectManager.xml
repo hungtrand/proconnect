@@ -1,49 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.net/src" full="ProjectManager" namespace="" name="ProjectManager" abstract="false" final="false" start="11" end="66">
-  <file path="/var/www/html/ProConnect/lib/php/classes" file="ProjectManager.php" realpath="/var/www/html/ProConnect/lib/php/classes/ProjectManager.php" size="1771" time="2015-04-21T09:19:04-07:00" unixtime="1429633144" sha1="93e3c492080c4a3b0c0c4c0364673340ea25bfa9" relative="lib/php/classes/ProjectManager.php"/>
+<class xmlns="http://xml.phpdox.net/src" full="ProjectManager" namespace="" name="ProjectManager" abstract="false" final="false" start="10" end="65">
+  <file path="/var/www/html/ProConnect/lib/php/classes" file="ProjectManager.php" realpath="/var/www/html/ProConnect/lib/php/classes/ProjectManager.php" size="1755" time="2015-04-23T01:17:31-07:00" unixtime="1429777051" sha1="f787e8458015cfc7414490a635df07e408dc5098" relative="lib/php/classes/ProjectManager.php"/>
+  <docblock>
+    <description compact="Project Manager -load Project information,getAll projects belong to user"/>
+  </docblock>
   <extends full="RecordSet" namespace="" name="RecordSet"/>
-  <member name="PrimaryKey" type="{unknown}" visibility="protected" line="12"/>
-  <member name="TableName" type="{unknown}" visibility="protected" line="13"/>
-  <member name="Columns" type="{unknown}" visibility="protected" line="14"/>
-  <member name="User" type="{unknown}" visibility="protected" line="16"/>
-  <member name="data" type="{unknown}" visibility="protected" line="17"/>
-  <member name="err" type="{unknown}" visibility="public" line="19"/>
-  <constructor name="__construct" start="21" end="30" abstract="false" final="false" static="false" visibility="public">
+  <member name="PrimaryKey" type="{unknown}" visibility="protected" line="11"/>
+  <member name="TableName" type="{unknown}" visibility="protected" line="12"/>
+  <member name="Columns" type="{unknown}" visibility="protected" line="13"/>
+  <member name="User" type="{unknown}" visibility="protected" line="15"/>
+  <member name="data" type="{unknown}" visibility="protected" line="16"/>
+  <member name="err" type="{unknown}" visibility="public" line="18"/>
+  <constructor name="__construct" start="20" end="29" abstract="false" final="false" static="false" visibility="public">
     <parameter name="User" byreference="false" type="{unknown}"/>
   </constructor>
-  <method name="getColumns" start="33" end="35" abstract="false" final="false" static="false" visibility="protected"/>
-  <method name="load" start="37" end="44" abstract="false" final="false" static="false" visibility="public">
+  <method name="getColumns" start="32" end="34" abstract="false" final="false" static="false" visibility="protected"/>
+  <method name="load" start="36" end="43" abstract="false" final="false" static="false" visibility="public">
     <parameter name="User" byreference="false" type="{unknown}"/>
   </method>
-  <method name="getData" start="46" end="50" abstract="false" final="false" static="false" visibility="public"/>
-  <method name="getAll" start="52" end="64" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getData" start="45" end="49" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getAll" start="51" end="63" abstract="false" final="false" static="false" visibility="public"/>
   <parent full="RecordSet" namespace="" name="RecordSet">
-    <member name="db" type="{unknown}" visibility="protected" line="8"/>
-    <member name="err" type="{unknown}" visibility="public" line="10"/>
-    <constructor name="__construct" start="12" end="15" abstract="false" final="false" static="false" visibility="public"/>
-    <method name="getData" start="17" end="17" abstract="true" final="false" static="false" visibility="public"/>
-    <method name="getColumns" start="18" end="18" abstract="true" final="false" static="false" visibility="protected"/>
-    <method name="setLimit" start="20" end="26" abstract="false" final="false" static="false" visibility="public">
+    <member name="db" type="{unknown}" visibility="protected" line="7"/>
+    <member name="err" type="{unknown}" visibility="public" line="9"/>
+    <constructor name="__construct" start="11" end="14" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getData" start="16" end="16" abstract="true" final="false" static="false" visibility="public"/>
+    <method name="getColumns" start="17" end="17" abstract="true" final="false" static="false" visibility="protected"/>
+    <method name="setLimit" start="19" end="25" abstract="false" final="false" static="false" visibility="public">
       <parameter name="intLimit" byreference="false" type="{unknown}"/>
     </method>
-    <method name="fetch" start="28" end="60" abstract="false" final="false" static="false" visibility="protected"/>
-    <method name="fetchBy" start="62" end="110" abstract="false" final="false" static="false" visibility="protected">
+    <method name="fetch" start="27" end="59" abstract="false" final="false" static="false" visibility="protected"/>
+    <method name="fetchBy" start="61" end="109" abstract="false" final="false" static="false" visibility="protected">
       <parameter name="params" byreference="false" type="{unknown}"/>
       <parameter name="Logic" byreference="false" type="string" default="&quot;AND&quot;"/>
     </method>
-    <method name="fetchCustom" start="112" end="146" abstract="false" final="false" static="false" visibility="protected">
+    <method name="fetchCustom" start="111" end="145" abstract="false" final="false" static="false" visibility="protected">
       <parameter name="cond" byreference="false" type="{unknown}"/>
       <parameter name="params" byreference="false" type="{unknown}" default="null"/>
       <inline>
-        <comment value="echo $sql;" line="128"/>
+        <comment value="echo $sql;" line="127"/>
       </inline>
     </method>
-    <method name="fetchCount" start="148" end="183" abstract="false" final="false" static="false" visibility="protected">
+    <method name="fetchCount" start="147" end="182" abstract="false" final="false" static="false" visibility="protected">
       <parameter name="cond" byreference="false" type="{unknown}"/>
       <parameter name="params" byreference="false" type="{unknown}" default="null"/>
       <inline>
-        <comment value="echo $sql;" line="164"/>
-        <comment value="echo var_dump($rs);" line="168"/>
+        <comment value="echo $sql;" line="163"/>
+        <comment value="echo var_dump($rs);" line="167"/>
       </inline>
     </method>
   </parent>

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class xmlns="http://xml.phpdox.net/src" full="Uploader" namespace="" name="Uploader" abstract="false" final="false" start="7" end="70">
-  <file path="/var/www/html/ProConnect/lib/php/classes" file="Uploader.php" realpath="/var/www/html/ProConnect/lib/php/classes/Uploader.php" size="1644" time="2015-04-21T09:19:04-07:00" unixtime="1429633144" sha1="4447ce50a754352e88d975510c054029d6a06431" relative="lib/php/classes/Uploader.php"/>
+  <file path="/var/www/html/ProConnect/lib/php/classes" file="Uploader.php" realpath="/var/www/html/ProConnect/lib/php/classes/Uploader.php" size="1751" time="2015-04-23T01:14:49-07:00" unixtime="1429776889" sha1="58d714e9ab77189a67a1810b84917ae5b4179857" relative="lib/php/classes/Uploader.php"/>
+  <docblock>
+    <description compact="Uploader - create user directory if not already exists, and upload file, modify accessing persmissions for file.">Responsibilites: Upload file to database, validate the file before upload</description>
+  </docblock>
   <member name="db" type="{unknown}" visibility="private" line="8"/>
   <member name="uploadDir" type="{unknown}" visibility="private" line="9"/>
   <member name="file" type="{unknown}" visibility="private" line="10"/>

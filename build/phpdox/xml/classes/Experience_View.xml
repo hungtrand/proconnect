@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.net/src" full="Experience_View" namespace="" name="Experience_View" abstract="false" final="false" start="4" end="42">
-  <file path="/var/www/html/ProConnect/profile-user-POV/php" file="Experience_view.php" realpath="/var/www/html/ProConnect/profile-user-POV/php/Experience_view.php" size="924" time="2015-04-09T13:54:06-07:00" unixtime="1428612846" sha1="3d7c863e71a24f14399a08927fad6f64c2704974" relative="profile-user-POV/php/Experience_view.php"/>
+<class xmlns="http://xml.phpdox.net/src" full="Experience_View" namespace="" name="Experience_View" abstract="false" final="false" start="9" end="47">
+  <file path="/var/www/html/ProConnect/profile-user-POV/php" file="Experience_view.php" realpath="/var/www/html/ProConnect/profile-user-POV/php/Experience_view.php" size="1156" time="2015-04-23T00:00:31-07:00" unixtime="1429772431" sha1="d7c1be02c5335898cdbbacba0adc24f11be40191" relative="profile-user-POV/php/Experience_view.php"/>
+  <docblock>
+    <description compact="Experience_view - the class convert server data of the Experience object into json format that can be understood by the Client Tier. They key and value of the json matches with requests and responses from Client Tier."/>
+  </docblock>
   <implements full="view" namespace="" name="view"/>
-  <member name="FinalView" type="{unknown}" visibility="private" line="5"/>
-  <constructor name="__construct" start="8" end="10" abstract="false" final="false" static="false" visibility="public"/>
-  <method name="load" start="13" end="37" abstract="false" final="false" static="false" visibility="public">
+  <member name="FinalView" type="{unknown}" visibility="private" line="10"/>
+  <constructor name="__construct" start="13" end="15" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="load" start="18" end="42" abstract="false" final="false" static="false" visibility="public">
     <parameter name="exp" byreference="false" type="{unknown}"/>
   </method>
-  <method name="getView" start="39" end="41" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getView" start="44" end="46" abstract="false" final="false" static="false" visibility="public"/>
   <interface full="view" namespace="" name="view">
     <method name="getView" start="9" end="9" abstract="false" final="false" static="false" visibility="public"/>
   </interface>

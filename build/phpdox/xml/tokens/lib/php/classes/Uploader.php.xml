@@ -1,21 +1,21 @@
 <?xml version="1.0"?>
 <source xmlns="http://xml.phpdox.net/token">
-  <file xmlns="http://xml.phpdox.net/src" path="/var/www/html/ProConnect/lib/php/classes" file="Uploader.php" realpath="/var/www/html/ProConnect/lib/php/classes/Uploader.php" size="1644" time="2015-04-21T09:19:04-07:00" unixtime="1429633144" sha1="4447ce50a754352e88d975510c054029d6a06431" relative="lib/php/classes/Uploader.php"/>
+  <file xmlns="http://xml.phpdox.net/src" path="/var/www/html/ProConnect/lib/php/classes" file="Uploader.php" realpath="/var/www/html/ProConnect/lib/php/classes/Uploader.php" size="1751" time="2015-04-23T01:14:49-07:00" unixtime="1429776889" sha1="58d714e9ab77189a67a1810b84917ae5b4179857" relative="lib/php/classes/Uploader.php"/>
   <line no="1">
     <token name="T_OPEN_TAG">&lt;?php </token>
   </line>
   <line no="2"/>
   <line no="3">
-    <token name="T_COMMENT">/*</token>
+    <token name="T_DOC_COMMENT">/**</token>
   </line>
   <line no="4">
-    <token name="T_COMMENT">	Uploader</token>
+    <token name="T_DOC_COMMENT">*	Uploader - create user directory if not already exists, and upload file, modify accessing persmissions for file.</token>
   </line>
   <line no="5">
-    <token name="T_COMMENT">	Responsibilites: Upload file to database, validate the file before upload</token>
+    <token name="T_DOC_COMMENT">*	Responsibilites: Upload file to database, validate the file before upload</token>
   </line>
   <line no="6">
-    <token name="T_COMMENT">*/</token>
+    <token name="T_DOC_COMMENT">*/</token>
   </line>
   <line no="7">
     <token name="T_CLASS">class</token>

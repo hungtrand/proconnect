@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <source xmlns="http://xml.phpdox.net/token">
-  <file xmlns="http://xml.phpdox.net/src" path="/var/www/html/ProConnect/message/php" file="Messages_view.php" realpath="/var/www/html/ProConnect/message/php/Messages_view.php" size="1072" time="2015-04-20T11:24:37-07:00" unixtime="1429554277" sha1="21870216e29118e36806ff0ed81ede5c9aec84e8" relative="message/php/Messages_view.php"/>
+  <file xmlns="http://xml.phpdox.net/src" path="/var/www/html/ProConnect/message/php" file="Messages_view.php" realpath="/var/www/html/ProConnect/message/php/Messages_view.php" size="1219" time="2015-04-23T00:06:56-07:00" unixtime="1429772816" sha1="fc3ed21c8106901b8247f7ac9f3a9f45cd4ebce4" relative="message/php/Messages_view.php"/>
   <line no="1">
     <token name="T_OPEN_TAG">&lt;?php</token>
   </line>
@@ -30,6 +30,18 @@
   </line>
   <line no="5"/>
   <line no="6">
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="7">
+    <token name="T_DOC_COMMENT">*	Messages_view - the class resopnsible for converting an array of </token>
+  </line>
+  <line no="8">
+    <token name="T_DOC_COMMENT">*	Messages objects into json friendly format. The response and requests</token>
+  </line>
+  <line no="9">
+    <token name="T_DOC_COMMENT">*/</token>
+  </line>
+  <line no="10">
     <token name="T_CLASS">class</token>
     <token name="T_WHITESPACE"> </token>
     <token name="T_STRING">Messages_view</token>
@@ -40,15 +52,15 @@
     <token name="T_WHITESPACE"> </token>
     <token name="T_PHPDOX_OPEN_CURLY">{</token>
   </line>
-  <line no="7">
+  <line no="11">
     <token name="T_WHITESPACE">	</token>
     <token name="T_PRIVATE">private</token>
     <token name="T_WHITESPACE"> </token>
     <token name="T_VARIABLE">$FinalView</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="8"/>
-  <line no="9">
+  <line no="12"/>
+  <line no="13">
     <token name="T_WHITESPACE">	</token>
     <token name="T_FUNCTION">function</token>
     <token name="T_WHITESPACE"> </token>
@@ -58,7 +70,7 @@
     <token name="T_WHITESPACE"> </token>
     <token name="T_PHPDOX_OPEN_CURLY">{</token>
   </line>
-  <line no="10">
+  <line no="14">
     <token name="T_WHITESPACE">		</token>
     <token name="T_VARIABLE">$this</token>
     <token name="T_OBJECT_OPERATOR">-&gt;</token>
@@ -70,12 +82,12 @@
     <token name="T_PHPDOX_CLOSE_SQUARE">]</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="11">
+  <line no="15">
     <token name="T_WHITESPACE">	</token>
     <token name="T_PHPDOX_CLOSE_CURLY">}</token>
   </line>
-  <line no="12"/>
-  <line no="13">
+  <line no="16"/>
+  <line no="17">
     <token name="T_WHITESPACE">	</token>
     <token name="T_PUBLIC">public</token>
     <token name="T_WHITESPACE"> </token>
@@ -87,7 +99,7 @@
     <token name="T_WHITESPACE"> </token>
     <token name="T_PHPDOX_OPEN_CURLY">{</token>
   </line>
-  <line no="14">
+  <line no="18">
     <token name="T_WHITESPACE">		</token>
     <token name="T_RETURN">return</token>
     <token name="T_WHITESPACE"> </token>
@@ -96,16 +108,16 @@
     <token name="T_STRING">FinalView</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="15">
+  <line no="19">
     <token name="T_WHITESPACE">	</token>
     <token name="T_PHPDOX_CLOSE_CURLY">}</token>
   </line>
-  <line no="16"/>
-  <line no="17">
+  <line no="20"/>
+  <line no="21">
     <token name="T_WHITESPACE">	</token>
     <token name="T_COMMENT">// requires an array of MessageView objects</token>
   </line>
-  <line no="18">
+  <line no="22">
     <token name="T_WHITESPACE">	</token>
     <token name="T_PUBLIC">public</token>
     <token name="T_WHITESPACE"> </token>
@@ -118,10 +130,10 @@
     <token name="T_WHITESPACE"> </token>
     <token name="T_PHPDOX_OPEN_CURLY">{</token>
   </line>
-  <line no="19">
+  <line no="23">
     <token name="T_WHITESPACE">		</token>
   </line>
-  <line no="20">
+  <line no="24">
     <token name="T_WHITESPACE">		</token>
     <token name="T_FOREACH">foreach</token>
     <token name="T_WHITESPACE"> </token>
@@ -135,7 +147,7 @@
     <token name="T_WHITESPACE"> </token>
     <token name="T_PHPDOX_OPEN_CURLY">{</token>
   </line>
-  <line no="21">
+  <line no="25">
     <token name="T_WHITESPACE">			</token>
     <token name="T_VARIABLE">$message</token>
     <token name="T_WHITESPACE"> </token>
@@ -153,7 +165,7 @@
     <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="22">
+  <line no="26">
     <token name="T_WHITESPACE">			</token>
     <token name="T_VARIABLE">$sender</token>
     <token name="T_WHITESPACE"> </token>
@@ -171,8 +183,8 @@
     <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="23"/>
-  <line no="24">
+  <line no="27"/>
+  <line no="28">
     <token name="T_WHITESPACE">			</token>
     <token name="T_VARIABLE">$out</token>
     <token name="T_WHITESPACE"> </token>
@@ -180,7 +192,7 @@
     <token name="T_WHITESPACE"> </token>
     <token name="T_PHPDOX_OPEN_SQUARE">[</token>
   </line>
-  <line no="25">
+  <line no="29">
     <token name="T_WHITESPACE">				</token>
     <token name="T_CONSTANT_ENCAPSED_STRING">'messageID'</token>
     <token name="T_DOUBLE_ARROW">=&gt;</token>
@@ -191,7 +203,7 @@
     <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
     <token name="T_PHPDOX_COMMA">,</token>
   </line>
-  <line no="26">
+  <line no="30">
     <token name="T_WHITESPACE">				</token>
     <token name="T_CONSTANT_ENCAPSED_STRING">'sender-ID'</token>
     <token name="T_DOUBLE_ARROW">=&gt;</token>
@@ -202,7 +214,7 @@
     <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
     <token name="T_PHPDOX_COMMA">,</token>
   </line>
-  <line no="27">
+  <line no="31">
     <token name="T_WHITESPACE">				</token>
     <token name="T_CONSTANT_ENCAPSED_STRING">'sender-picture'</token>
     <token name="T_DOUBLE_ARROW">=&gt;</token>
@@ -223,7 +235,7 @@
     <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
     <token name="T_PHPDOX_COMMA">,</token>
   </line>
-  <line no="28">
+  <line no="32">
     <token name="T_WHITESPACE">				</token>
     <token name="T_CONSTANT_ENCAPSED_STRING">'sender-name'</token>
     <token name="T_DOUBLE_ARROW">=&gt;</token>
@@ -234,7 +246,7 @@
     <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
     <token name="T_PHPDOX_COMMA">,</token>
   </line>
-  <line no="29">
+  <line no="33">
     <token name="T_WHITESPACE">				</token>
     <token name="T_CONSTANT_ENCAPSED_STRING">'sender-href'</token>
     <token name="T_DOUBLE_ARROW">=&gt;</token>
@@ -247,7 +259,7 @@
     <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
     <token name="T_PHPDOX_COMMA">,</token>
   </line>
-  <line no="30">
+  <line no="34">
     <token name="T_WHITESPACE">				</token>
     <token name="T_CONSTANT_ENCAPSED_STRING">'message-subject'</token>
     <token name="T_DOUBLE_ARROW">=&gt;</token>
@@ -258,7 +270,7 @@
     <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
     <token name="T_PHPDOX_COMMA">,</token>
   </line>
-  <line no="31">
+  <line no="35">
     <token name="T_WHITESPACE">				</token>
     <token name="T_CONSTANT_ENCAPSED_STRING">'message-time'</token>
     <token name="T_DOUBLE_ARROW">=&gt;</token>
@@ -270,7 +282,7 @@
     <token name="T_PHPDOX_COMMA">,</token>
     <token name="T_WHITESPACE">	</token>
   </line>
-  <line no="32">
+  <line no="36">
     <token name="T_WHITESPACE">				</token>
     <token name="T_CONSTANT_ENCAPSED_STRING">'sender-message'</token>
     <token name="T_DOUBLE_ARROW">=&gt;</token>
@@ -280,13 +292,13 @@
     <token name="T_PHPDOX_OPEN_BRACKET">(</token>
     <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
   </line>
-  <line no="33">
+  <line no="37">
     <token name="T_WHITESPACE">			</token>
     <token name="T_PHPDOX_CLOSE_SQUARE">]</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="34"/>
-  <line no="35">
+  <line no="38"/>
+  <line no="39">
     <token name="T_WHITESPACE">			</token>
     <token name="T_VARIABLE">$this</token>
     <token name="T_OBJECT_OPERATOR">-&gt;</token>
@@ -306,26 +318,26 @@
     <token name="T_VARIABLE">$out</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="36">
+  <line no="40">
     <token name="T_WHITESPACE">		</token>
     <token name="T_PHPDOX_CLOSE_CURLY">}</token>
   </line>
-  <line no="37"/>
-  <line no="38">
+  <line no="41"/>
+  <line no="42">
     <token name="T_WHITESPACE">		</token>
     <token name="T_RETURN">return</token>
     <token name="T_WHITESPACE"> </token>
     <token name="T_STRING">true</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="39">
+  <line no="43">
     <token name="T_WHITESPACE">	</token>
     <token name="T_PHPDOX_CLOSE_CURLY">}</token>
   </line>
-  <line no="40">
+  <line no="44">
     <token name="T_PHPDOX_CLOSE_CURLY">}</token>
   </line>
-  <line no="41">
+  <line no="45">
     <token name="T_CLOSE_TAG">?&gt;</token>
   </line>
 </source>

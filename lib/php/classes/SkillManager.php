@@ -3,9 +3,9 @@
 //require_once __DIR__."/User.php"; // for testing
 require_once __DIR__."/Skill.php";
 require_once __DIR__."/RecordSet.php";
-/*
-	Skill Manager
-	Responsibilites: get the skills that belong the a user
+/**
+*	Skill Manager - collections of all skills belonged to a user, retrieve them in specific orders or by endorsements.
+*	Responsibilites: get the skills that belong the a user
 */
 class SkillManager extends RecordSet {
 	protected $PrimaryKey;

@@ -1,6 +1,11 @@
 <?php
 require_once __DIR__."/../../lib/php/interfaces.php";
 
+/**
+*	Profile_View - convert profile objects into json format 
+*	and compile process image paths and user page path for client tier.
+*/
+
 class Profile_View implements view {
 	private $FinalView;
 

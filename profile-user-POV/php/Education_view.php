@@ -1,6 +1,12 @@
 <?php
 require_once __DIR__."/../../lib/php/interfaces.php";
 
+/**
+*	Education_View - the class is responsible for converting data from
+*	an Education object into json format to return to client tier.
+*	The key also matches with response request from client tier.
+**/
+
 class Education_View implements view {
 	private $FinalView;
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.net/src" full="ConnectionManager" namespace="" name="ConnectionManager" abstract="false" final="false" start="15" end="172">
-  <file path="/var/www/html/ProConnect/lib/php/classes" file="ConnectionManager.php" realpath="/var/www/html/ProConnect/lib/php/classes/ConnectionManager.php" size="5332" time="2015-04-22T16:28:20-07:00" unixtime="1429745300" sha1="96476cfef607c76a2e39ba185b188e20f7ef5752" relative="lib/php/classes/ConnectionManager.php"/>
+<class xmlns="http://xml.phpdox.net/src" full="ConnectionManager" namespace="" name="ConnectionManager" abstract="false" final="false" start="15" end="171">
+  <file path="/var/www/html/ProConnect/lib/php/classes" file="ConnectionManager.php" realpath="/var/www/html/ProConnect/lib/php/classes/ConnectionManager.php" size="5310" time="2015-04-22T20:27:13-07:00" unixtime="1429759633" sha1="abc53fae4c0569689f91814b9b80b984cdbf9352" relative="lib/php/classes/ConnectionManager.php"/>
   <docblock>
     <description compact="ConnectionManager - performs management of the Connection class."/>
     <params value=": $User">Resposibilities: get Data from database, load the user from database by userID, search and load the data from database by keyword,datecreated, or email.
@@ -42,9 +42,9 @@
       <comment value="it find the connections user have, ignore matchings with user's own records" line="109"/>
     </inline>
   </method>
-  <method name="getPendingCount" start="141" end="149" abstract="false" final="false" static="false" visibility="public"/>
-  <method name="getData" start="152" end="156" abstract="false" final="false" static="false" visibility="public"/>
-  <method name="getAll" start="158" end="170" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getPendingCount" start="141" end="148" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getData" start="151" end="155" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getAll" start="157" end="169" abstract="false" final="false" static="false" visibility="public"/>
   <parent full="RecordSet" namespace="" name="RecordSet">
     <member name="db" type="{unknown}" visibility="protected" line="8"/>
     <member name="err" type="{unknown}" visibility="public" line="10"/>
@@ -52,28 +52,27 @@
     <method name="getData" start="17" end="17" abstract="true" final="false" static="false" visibility="public"/>
     <method name="getColumns" start="18" end="18" abstract="true" final="false" static="false" visibility="protected"/>
     <method name="setLimit" start="20" end="26" abstract="false" final="false" static="false" visibility="public">
-      <parameter name="intLimit" byreference="false" type="{unknown}"/>
-    </method>
+    <parameter name="intLimit" byreference="false" type="{unknown}"/>
+  </method>
     <method name="fetch" start="28" end="60" abstract="false" final="false" static="false" visibility="protected"/>
     <method name="fetchBy" start="62" end="110" abstract="false" final="false" static="false" visibility="protected">
-      <parameter name="params" byreference="false" type="{unknown}"/>
-      <parameter name="Logic" byreference="false" type="string" default="&quot;AND&quot;"/>
-    </method>
+    <parameter name="params" byreference="false" type="{unknown}"/>
+    <parameter name="Logic" byreference="false" type="string" default="&quot;AND&quot;"/>
+  </method>
     <method name="fetchCustom" start="112" end="146" abstract="false" final="false" static="false" visibility="protected">
-      <parameter name="cond" byreference="false" type="{unknown}"/>
-      <parameter name="params" byreference="false" type="{unknown}" default="null"/>
-      <inline>
-        <comment value="echo $sql;" line="128"/>
-      </inline>
-    </method>
+    <parameter name="cond" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="false" type="{unknown}" default="null"/>
+    <inline>
+      <comment value="echo $sql;" line="128"/>
+    </inline>
+  </method>
     <method name="fetchCount" start="148" end="183" abstract="false" final="false" static="false" visibility="protected">
-      <parameter name="cond" byreference="false" type="{unknown}"/>
-      <parameter name="params" byreference="false" type="{unknown}" default="null"/>
-      <inline>
-        <comment value="echo $sql;" line="164"/>
-        <comment value="echo var_dump($rs);" line="168"/>
-      </inline>
-    </method>
+    <parameter name="cond" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="false" type="{unknown}" default="null"/>
+    <inline>
+      <comment value="echo $sql;" line="164"/>
+      <comment value="echo var_dump($rs);" line="168"/>
+    </inline>
+  </method>
   </parent>
-  <extender full="UserConnectionManager" namespace="" name="UserConnectionManager"/>
-</class>
+<extender full="UserConnectionManager" namespace="" name="UserConnectionManager"/></class>

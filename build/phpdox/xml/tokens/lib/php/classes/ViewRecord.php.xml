@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
 <source xmlns="http://xml.phpdox.net/token">
-  <file xmlns="http://xml.phpdox.net/src" path="/var/www/html/ProConnect/lib/php/classes" file="ViewRecord.php" realpath="/var/www/html/ProConnect/lib/php/classes/ViewRecord.php" size="2413" time="2015-04-09T11:38:33-07:00" unixtime="1428604713" sha1="6259a680e006c2c8880bd50d66f6f907d4942ad4" relative="lib/php/classes/ViewRecord.php"/>
+  <file xmlns="http://xml.phpdox.net/src" path="/var/www/html/ProConnect/lib/php/classes" file="ViewRecord.php" realpath="/var/www/html/ProConnect/lib/php/classes/ViewRecord.php" size="2490" time="2015-04-23T01:16:36-07:00" unixtime="1429776996" sha1="8c102a1f3e8c08b55a0f490d6db05910a23e74aa" relative="lib/php/classes/ViewRecord.php"/>
   <line no="1">
     <token name="T_OPEN_TAG">&lt;?php</token>
   </line>
   <line no="2">
-    <token name="T_COMMENT">/*</token>
+    <token name="T_DOC_COMMENT">/**</token>
   </line>
   <line no="3">
-    <token name="T_COMMENT">	Represent a record from the a View table from the database</token>
+    <token name="T_DOC_COMMENT">*	ViewRecord- Represent a record from the a View table, or custom query from the database, does not update, insert or delete privileges</token>
   </line>
   <line no="4">
-    <token name="T_COMMENT">*/</token>
+    <token name="T_DOC_COMMENT">*/</token>
   </line>
   <line no="5">
     <token name="T_ABSTRACT">abstract</token>

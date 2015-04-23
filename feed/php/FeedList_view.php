@@ -4,6 +4,12 @@ require_once __DIR__."/../../lib/php/classes/Feed.php";
 require_once __DIR__."/../../lib/php/classes/Feed2User.php";
 require_once __DIR__."/../../lib/php/classes/User.php";
 
+/**
+*	FeedList_view - the class convert an array of feeds or posts saved in the database
+*	under Feed objects. The output data is in json format where the client side can
+*	display and manipulate easier.
+*/
+
 class FeedList_view implements view {
 	private $FinalView;
 

@@ -1,8 +1,7 @@
 <?php
-/*
-	RecordSet
-	Responsibility: Connect to the database, fetch data for desired request such as fetchby and Custom fetch
-	
+/**
+*	RecordSet - Connect to the database, fetch data for desired request such as fetchby and Custom fetch and return an array of recors.
+*	
 */
 abstract class RecordSet {
 	protected $db;

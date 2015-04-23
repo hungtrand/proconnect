@@ -4,7 +4,8 @@ require_once __DIR__."/ActiveRecord.php";
 //$u = new Experience(1); echo $u->get('Description').'\n'; // For testing
 //$u->update(['Username'=>'Feb2015']); echo $u->get('Username'); // For Testing
 /**
-*	Experience - performs logic for experience class.
+*	Experience - manage user's experience data. An instance of Experience class
+*	is object has Company Name, Title, Location, Description, Start and End month of year.
 * 	@params: $ID (userid)
 *	Responsiblities: get or setup the user's data to database, such as companyname, title, location,
 *						user's description of this experience, starting month and year, ending month and year. 

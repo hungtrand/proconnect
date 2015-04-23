@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class xmlns="http://xml.phpdox.net/src" full="ViewRecord" namespace="" name="ViewRecord" abstract="true" final="false" start="5" end="110">
-  <file path="/var/www/html/ProConnect/lib/php/classes" file="ViewRecord.php" realpath="/var/www/html/ProConnect/lib/php/classes/ViewRecord.php" size="2413" time="2015-04-09T11:38:33-07:00" unixtime="1428604713" sha1="6259a680e006c2c8880bd50d66f6f907d4942ad4" relative="lib/php/classes/ViewRecord.php"/>
+  <file path="/var/www/html/ProConnect/lib/php/classes" file="ViewRecord.php" realpath="/var/www/html/ProConnect/lib/php/classes/ViewRecord.php" size="2490" time="2015-04-23T01:16:36-07:00" unixtime="1429776996" sha1="8c102a1f3e8c08b55a0f490d6db05910a23e74aa" relative="lib/php/classes/ViewRecord.php"/>
+  <docblock>
+    <description compact="ViewRecord- Represent a record from the a View table, or custom query from the database, does not update, insert or delete privileges"/>
+  </docblock>
   <member name="db" type="{unknown}" visibility="private" line="6"/>
   <member name="id" type="{unknown}" visibility="private" line="7"/>
   <member name="err" type="{unknown}" visibility="public" line="8"/>
@@ -27,5 +30,4 @@
       <comment value="echo $sql.&quot;\n&quot;.json_encode($params).&quot;\n&quot;;" line="88"/>
     </inline>
   </method>
-  <extender full="Profile" namespace="" name="Profile"/>
 </class>

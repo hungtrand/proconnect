@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.net/src" full="Feed_view" namespace="" name="Feed_view" abstract="false" final="false" start="6" end="67">
-  <file path="/var/www/html/ProConnect/feed/php" file="Feed_view.php" realpath="/var/www/html/ProConnect/feed/php/Feed_view.php" size="1480" time="2015-04-15T16:15:26-07:00" unixtime="1429139726" sha1="0d7780e8fb395fb07a080f6a8001c66514851bc4" relative="feed/php/Feed_view.php"/>
+<class xmlns="http://xml.phpdox.net/src" full="Feed_view" namespace="" name="Feed_view" abstract="false" final="false" start="11" end="72">
+  <file path="/var/www/html/ProConnect/feed/php" file="Feed_view.php" realpath="/var/www/html/ProConnect/feed/php/Feed_view.php" size="1648" time="2015-04-23T00:04:52-07:00" unixtime="1429772692" sha1="c70be5304771667c47c4db7295adcc5c6214ef1e" relative="feed/php/Feed_view.php"/>
+  <docblock>
+    <description compact="Feed_view - the class create a json format view of one instance of the Feed class The object contains keys matches with Client Tier requests and responses."/>
+  </docblock>
   <implements full="view" namespace="" name="view"/>
-  <member name="FinalView" type="{unknown}" visibility="private" line="7"/>
-  <constructor name="__construct" start="9" end="22" abstract="false" final="false" static="false" visibility="public"/>
-  <method name="getView" start="24" end="26" abstract="false" final="false" static="false" visibility="public"/>
-  <method name="load" start="28" end="66" abstract="false" final="false" static="false" visibility="public">
+  <member name="FinalView" type="{unknown}" visibility="private" line="12"/>
+  <constructor name="__construct" start="14" end="27" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getView" start="29" end="31" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="load" start="33" end="71" abstract="false" final="false" static="false" visibility="public">
     <parameter name="f2u" byreference="false" type="{unknown}"/>
   </method>
   <interface full="view" namespace="" name="view">

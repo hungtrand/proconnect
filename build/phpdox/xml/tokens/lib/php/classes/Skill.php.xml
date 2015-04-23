@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <source xmlns="http://xml.phpdox.net/token">
-  <file xmlns="http://xml.phpdox.net/src" path="/var/www/html/ProConnect/lib/php/classes" file="Skill.php" realpath="/var/www/html/ProConnect/lib/php/classes/Skill.php" size="2856" time="2015-04-21T09:19:04-07:00" unixtime="1429633144" sha1="9d7cca4f89a4f6c80ae082702cbee356c1918e51" relative="lib/php/classes/Skill.php"/>
+  <file xmlns="http://xml.phpdox.net/src" path="/var/www/html/ProConnect/lib/php/classes" file="Skill.php" realpath="/var/www/html/ProConnect/lib/php/classes/Skill.php" size="2974" time="2015-04-23T01:14:40-07:00" unixtime="1429776880" sha1="853557339fac0b3f418db25250ad3b8b979eb317" relative="lib/php/classes/Skill.php"/>
   <line no="1">
     <token name="T_OPEN_TAG">&lt;?php</token>
   </line>
@@ -22,16 +22,16 @@
     <token name="T_COMMENT">//$u-&gt;update(['Username'=&gt;'Feb2015']); echo $u-&gt;get('Username'); // For Testing</token>
   </line>
   <line no="6">
-    <token name="T_COMMENT">/*</token>
+    <token name="T_DOC_COMMENT">/**</token>
   </line>
   <line no="7">
-    <token name="T_COMMENT">	Skill</token>
+    <token name="T_DOC_COMMENT">*	Skill - contains one record of data for a user's skill. update endorsement and save ordering positions fron client tier.</token>
   </line>
   <line no="8">
-    <token name="T_COMMENT">	Responsibilites: get all skills from the database, can narrow by specific skill name</token>
+    <token name="T_DOC_COMMENT">*	Responsibilites: get all skills from the database, can narrow by specific skill name</token>
   </line>
   <line no="9">
-    <token name="T_COMMENT">*/</token>
+    <token name="T_DOC_COMMENT">*/</token>
   </line>
   <line no="10">
     <token name="T_CLASS">class</token>

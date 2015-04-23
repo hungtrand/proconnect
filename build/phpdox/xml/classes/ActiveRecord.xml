@@ -51,4 +51,4 @@
   <extender full="NotificationView" namespace="" name="NotificationView"/>
   <extender full="Connection" namespace="" name="Connection"/>
   <extender full="MessageView" namespace="" name="MessageView"/>
-</class>
+<extender full="Experience" namespace="" name="Experience"/><extender full="User" namespace="" name="User"/></class>

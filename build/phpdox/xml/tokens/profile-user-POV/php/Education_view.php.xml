@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <source xmlns="http://xml.phpdox.net/token">
-  <file xmlns="http://xml.phpdox.net/src" path="/var/www/html/ProConnect/profile-user-POV/php" file="Education_view.php" realpath="/var/www/html/ProConnect/profile-user-POV/php/Education_view.php" size="989" time="2015-04-09T13:54:06-07:00" unixtime="1428612846" sha1="6528dac0ec7c476b01949666b2bca80c4c235675" relative="profile-user-POV/php/Education_view.php"/>
+  <file xmlns="http://xml.phpdox.net/src" path="/var/www/html/ProConnect/profile-user-POV/php" file="Education_view.php" realpath="/var/www/html/ProConnect/profile-user-POV/php/Education_view.php" size="1195" time="2015-04-22T23:54:33-07:00" unixtime="1429772073" sha1="659fd801d785a29a415a6610207cca83f4fd125c" relative="profile-user-POV/php/Education_view.php"/>
   <line no="1">
     <token name="T_OPEN_TAG">&lt;?php</token>
   </line>
@@ -14,6 +14,22 @@
   </line>
   <line no="3"/>
   <line no="4">
+    <token name="T_DOC_COMMENT">/**</token>
+  </line>
+  <line no="5">
+    <token name="T_DOC_COMMENT">*	Education_View - the class is responsible for converting data from</token>
+  </line>
+  <line no="6">
+    <token name="T_DOC_COMMENT">*	an Education object into json format to return to client tier.</token>
+  </line>
+  <line no="7">
+    <token name="T_DOC_COMMENT">*	The key also matches with response request from client tier.</token>
+  </line>
+  <line no="8">
+    <token name="T_DOC_COMMENT">**/</token>
+  </line>
+  <line no="9"/>
+  <line no="10">
     <token name="T_CLASS">class</token>
     <token name="T_WHITESPACE"> </token>
     <token name="T_STRING">Education_View</token>
@@ -24,16 +40,16 @@
     <token name="T_WHITESPACE"> </token>
     <token name="T_PHPDOX_OPEN_CURLY">{</token>
   </line>
-  <line no="5">
+  <line no="11">
     <token name="T_WHITESPACE">	</token>
     <token name="T_PRIVATE">private</token>
     <token name="T_WHITESPACE"> </token>
     <token name="T_VARIABLE">$FinalView</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="6"/>
-  <line no="7"/>
-  <line no="8">
+  <line no="12"/>
+  <line no="13"/>
+  <line no="14">
     <token name="T_WHITESPACE">	</token>
     <token name="T_FUNCTION">function</token>
     <token name="T_WHITESPACE"> </token>
@@ -43,7 +59,7 @@
     <token name="T_WHITESPACE"> </token>
     <token name="T_PHPDOX_OPEN_CURLY">{</token>
   </line>
-  <line no="9">
+  <line no="15">
     <token name="T_WHITESPACE">		</token>
     <token name="T_VARIABLE">$this</token>
     <token name="T_OBJECT_OPERATOR">-&gt;</token>
@@ -53,87 +69,87 @@
     <token name="T_WHITESPACE"> </token>
     <token name="T_PHPDOX_OPEN_SQUARE">[</token>
   </line>
-  <line no="10">
+  <line no="16">
     <token name="T_WHITESPACE">			</token>
     <token name="T_CONSTANT_ENCAPSED_STRING">"EduID"</token>
     <token name="T_DOUBLE_ARROW">=&gt;</token>
     <token name="T_CONSTANT_ENCAPSED_STRING">""</token>
     <token name="T_PHPDOX_COMMA">,</token>
   </line>
-  <line no="11">
+  <line no="17">
     <token name="T_WHITESPACE">			</token>
     <token name="T_CONSTANT_ENCAPSED_STRING">"position-title"</token>
     <token name="T_DOUBLE_ARROW">=&gt;</token>
     <token name="T_CONSTANT_ENCAPSED_STRING">''</token>
     <token name="T_PHPDOX_COMMA">,</token>
   </line>
-  <line no="12">
+  <line no="18">
     <token name="T_WHITESPACE">			</token>
     <token name="T_CONSTANT_ENCAPSED_STRING">"company-name"</token>
     <token name="T_DOUBLE_ARROW">=&gt;</token>
     <token name="T_CONSTANT_ENCAPSED_STRING">''</token>
     <token name="T_PHPDOX_COMMA">,</token>
   </line>
-  <line no="13">
+  <line no="19">
     <token name="T_WHITESPACE">			</token>
     <token name="T_CONSTANT_ENCAPSED_STRING">"company-location"</token>
     <token name="T_DOUBLE_ARROW">=&gt;</token>
     <token name="T_CONSTANT_ENCAPSED_STRING">''</token>
     <token name="T_PHPDOX_COMMA">,</token>
   </line>
-  <line no="14">
+  <line no="20">
     <token name="T_WHITESPACE">			</token>
     <token name="T_CONSTANT_ENCAPSED_STRING">"work-start-month"</token>
     <token name="T_DOUBLE_ARROW">=&gt;</token>
     <token name="T_CONSTANT_ENCAPSED_STRING">''</token>
     <token name="T_PHPDOX_COMMA">,</token>
   </line>
-  <line no="15">
+  <line no="21">
     <token name="T_WHITESPACE">			</token>
     <token name="T_CONSTANT_ENCAPSED_STRING">"work-start-year"</token>
     <token name="T_DOUBLE_ARROW">=&gt;</token>
     <token name="T_CONSTANT_ENCAPSED_STRING">''</token>
     <token name="T_PHPDOX_COMMA">,</token>
   </line>
-  <line no="16">
+  <line no="22">
     <token name="T_WHITESPACE">			</token>
     <token name="T_CONSTANT_ENCAPSED_STRING">"work-end-month"</token>
     <token name="T_DOUBLE_ARROW">=&gt;</token>
     <token name="T_CONSTANT_ENCAPSED_STRING">''</token>
     <token name="T_PHPDOX_COMMA">,</token>
   </line>
-  <line no="17">
+  <line no="23">
     <token name="T_WHITESPACE">			</token>
     <token name="T_CONSTANT_ENCAPSED_STRING">"work-end-year"</token>
     <token name="T_DOUBLE_ARROW">=&gt;</token>
     <token name="T_CONSTANT_ENCAPSED_STRING">''</token>
     <token name="T_PHPDOX_COMMA">,</token>
   </line>
-  <line no="18">
+  <line no="24">
     <token name="T_WHITESPACE">			</token>
     <token name="T_CONSTANT_ENCAPSED_STRING">"work-present"</token>
     <token name="T_DOUBLE_ARROW">=&gt;</token>
     <token name="T_STRING">false</token>
     <token name="T_PHPDOX_COMMA">,</token>
   </line>
-  <line no="19">
+  <line no="25">
     <token name="T_WHITESPACE">			</token>
     <token name="T_CONSTANT_ENCAPSED_STRING">"experience-description"</token>
     <token name="T_DOUBLE_ARROW">=&gt;</token>
     <token name="T_CONSTANT_ENCAPSED_STRING">''</token>
   </line>
-  <line no="20">
+  <line no="26">
     <token name="T_WHITESPACE">		</token>
     <token name="T_PHPDOX_CLOSE_SQUARE">]</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="21">
+  <line no="27">
     <token name="T_WHITESPACE">	</token>
     <token name="T_PHPDOX_CLOSE_CURLY">}</token>
   </line>
-  <line no="22"/>
-  <line no="23"/>
-  <line no="24">
+  <line no="28"/>
+  <line no="29"/>
+  <line no="30">
     <token name="T_WHITESPACE">	</token>
     <token name="T_PUBLIC">public</token>
     <token name="T_WHITESPACE"> </token>
@@ -146,7 +162,7 @@
     <token name="T_WHITESPACE"> </token>
     <token name="T_PHPDOX_OPEN_CURLY">{</token>
   </line>
-  <line no="25">
+  <line no="31">
     <token name="T_WHITESPACE">		</token>
     <token name="T_IF">if</token>
     <token name="T_WHITESPACE"> </token>
@@ -163,8 +179,8 @@
     <token name="T_STRING">false</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="26"/>
-  <line no="27">
+  <line no="32"/>
+  <line no="33">
     <token name="T_WHITESPACE">		</token>
     <token name="T_VARIABLE">$data</token>
     <token name="T_WHITESPACE"> </token>
@@ -172,7 +188,7 @@
     <token name="T_WHITESPACE"> </token>
     <token name="T_PHPDOX_OPEN_SQUARE">[</token>
   </line>
-  <line no="28">
+  <line no="34">
     <token name="T_WHITESPACE">			</token>
     <token name="T_CONSTANT_ENCAPSED_STRING">"EduID"</token>
     <token name="T_DOUBLE_ARROW">=&gt;</token>
@@ -183,7 +199,7 @@
     <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
     <token name="T_PHPDOX_COMMA">,</token>
   </line>
-  <line no="29">
+  <line no="35">
     <token name="T_WHITESPACE">			</token>
     <token name="T_CONSTANT_ENCAPSED_STRING">"school-name"</token>
     <token name="T_DOUBLE_ARROW">=&gt;</token>
@@ -196,7 +212,7 @@
     <token name="T_CONSTANT_ENCAPSED_STRING">''</token>
     <token name="T_PHPDOX_COMMA">,</token>
   </line>
-  <line no="30">
+  <line no="36">
     <token name="T_WHITESPACE">			</token>
     <token name="T_CONSTANT_ENCAPSED_STRING">"degree"</token>
     <token name="T_DOUBLE_ARROW">=&gt;</token>
@@ -209,7 +225,7 @@
     <token name="T_CONSTANT_ENCAPSED_STRING">''</token>
     <token name="T_PHPDOX_COMMA">,</token>
   </line>
-  <line no="31">
+  <line no="37">
     <token name="T_WHITESPACE">			</token>
     <token name="T_CONSTANT_ENCAPSED_STRING">"field-of-study"</token>
     <token name="T_DOUBLE_ARROW">=&gt;</token>
@@ -222,7 +238,7 @@
     <token name="T_CONSTANT_ENCAPSED_STRING">''</token>
     <token name="T_PHPDOX_COMMA">,</token>
   </line>
-  <line no="32">
+  <line no="38">
     <token name="T_WHITESPACE">			</token>
     <token name="T_CONSTANT_ENCAPSED_STRING">"grade"</token>
     <token name="T_DOUBLE_ARROW">=&gt;</token>
@@ -235,7 +251,7 @@
     <token name="T_CONSTANT_ENCAPSED_STRING">''</token>
     <token name="T_PHPDOX_COMMA">,</token>
   </line>
-  <line no="33">
+  <line no="39">
     <token name="T_WHITESPACE">			</token>
     <token name="T_CONSTANT_ENCAPSED_STRING">"school-year-started"</token>
     <token name="T_DOUBLE_ARROW">=&gt;</token>
@@ -248,7 +264,7 @@
     <token name="T_CONSTANT_ENCAPSED_STRING">''</token>
     <token name="T_PHPDOX_COMMA">,</token>
   </line>
-  <line no="34">
+  <line no="40">
     <token name="T_WHITESPACE">			</token>
     <token name="T_CONSTANT_ENCAPSED_STRING">"school-year-ended"</token>
     <token name="T_DOUBLE_ARROW">=&gt;</token>
@@ -261,7 +277,7 @@
     <token name="T_CONSTANT_ENCAPSED_STRING">''</token>
     <token name="T_PHPDOX_COMMA">,</token>
   </line>
-  <line no="35">
+  <line no="41">
     <token name="T_WHITESPACE">			</token>
     <token name="T_CONSTANT_ENCAPSED_STRING">"activities"</token>
     <token name="T_DOUBLE_ARROW">=&gt;</token>
@@ -274,7 +290,7 @@
     <token name="T_CONSTANT_ENCAPSED_STRING">''</token>
     <token name="T_PHPDOX_COMMA">,</token>
   </line>
-  <line no="36">
+  <line no="42">
     <token name="T_WHITESPACE">			</token>
     <token name="T_CONSTANT_ENCAPSED_STRING">"education-description"</token>
     <token name="T_DOUBLE_ARROW">=&gt;</token>
@@ -286,14 +302,14 @@
     <token name="T_PHPDOX_DOT">.</token>
     <token name="T_CONSTANT_ENCAPSED_STRING">''</token>
   </line>
-  <line no="37">
+  <line no="43">
     <token name="T_WHITESPACE">		</token>
     <token name="T_PHPDOX_CLOSE_SQUARE">]</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="38"/>
-  <line no="39"/>
-  <line no="40">
+  <line no="44"/>
+  <line no="45"/>
+  <line no="46">
     <token name="T_WHITESPACE">		</token>
     <token name="T_VARIABLE">$this</token>
     <token name="T_OBJECT_OPERATOR">-&gt;</token>
@@ -304,12 +320,12 @@
     <token name="T_VARIABLE">$data</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="41">
+  <line no="47">
     <token name="T_WHITESPACE">	</token>
     <token name="T_PHPDOX_CLOSE_CURLY">}</token>
   </line>
-  <line no="42"/>
-  <line no="43">
+  <line no="48"/>
+  <line no="49">
     <token name="T_WHITESPACE">	</token>
     <token name="T_PUBLIC">public</token>
     <token name="T_WHITESPACE"> </token>
@@ -321,7 +337,7 @@
     <token name="T_WHITESPACE"> </token>
     <token name="T_PHPDOX_OPEN_CURLY">{</token>
   </line>
-  <line no="44">
+  <line no="50">
     <token name="T_WHITESPACE">		</token>
     <token name="T_RETURN">return</token>
     <token name="T_WHITESPACE"> </token>
@@ -330,14 +346,14 @@
     <token name="T_STRING">FinalView</token>
     <token name="T_PHPDOX_SEMICOLON">;</token>
   </line>
-  <line no="45">
+  <line no="51">
     <token name="T_WHITESPACE">	</token>
     <token name="T_PHPDOX_CLOSE_CURLY">}</token>
   </line>
-  <line no="46">
+  <line no="52">
     <token name="T_PHPDOX_CLOSE_CURLY">}</token>
   </line>
-  <line no="47">
+  <line no="53">
     <token name="T_CLOSE_TAG">?&gt;</token>
   </line>
 </source>

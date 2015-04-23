@@ -4,6 +4,9 @@
 require_once __DIR__."/Notification.php";
 require_once __DIR__."/RecordSet.php";
 
+/**
+*	manages all notifications contents without the status of the notification.
+*/
 class NotificationManager extends RecordSet {
 	protected $PrimaryKey;
 	protected $TableName;

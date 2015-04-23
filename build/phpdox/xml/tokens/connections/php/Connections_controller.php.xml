@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <source xmlns="http://xml.phpdox.net/token">
-  <file xmlns="http://xml.phpdox.net/src" path="/var/www/html/ProConnect/connections/php" file="Connections_controller.php" realpath="/var/www/html/ProConnect/connections/php/Connections_controller.php" size="1643" time="2015-04-22T16:27:12-07:00" unixtime="1429745232" sha1="99ebc47146a0bac9f00da53a941388a51e15baab" relative="connections/php/Connections_controller.php"/>
+  <file xmlns="http://xml.phpdox.net/src" path="/var/www/html/ProConnect/connections/php" file="Connections_controller.php" realpath="/var/www/html/ProConnect/connections/php/Connections_controller.php" size="1648" time="2015-04-22T20:27:13-07:00" unixtime="1429759633" sha1="611d85e535a1f0235d92ba01079a9453b06d7b32" relative="connections/php/Connections_controller.php"/>
   <line no="1">
     <token name="T_OPEN_TAG">&lt;?php</token>
   </line>
@@ -228,6 +228,7 @@
     <token name="T_WHITESPACE"> </token>
     <token name="T_PHPDOX_EQUAL">=</token>
     <token name="T_WHITESPACE"> </token>
+    <token name="T_INT_CAST">(int)</token>
     <token name="T_VARIABLE">$UData</token>
     <token name="T_PHPDOX_OPEN_SQUARE">[</token>
     <token name="T_CONSTANT_ENCAPSED_STRING">'USERID'</token>

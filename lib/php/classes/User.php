@@ -11,14 +11,14 @@ for ($i=0; $i<count($arrEdu);$i++) {
 	echo $edu->get('school');
 }*/
 
-/*
-	The user class retrieve data of user from the provided UserID
-	@params: $UserID
-	$data: an associated array that act as the main property of the class user
-			this array holds all data from the database of instance user with UserID
-			the key is the exact name of column in database, and the value is the field value
-	@update: public function update allow user to update its own data
-			after updating, the object user would reload itself with new data
+/**
+*The user class retrieve data of user from the provided UserID
+*	@params: $UserID
+*	$data: an associated array that act as the main property of the class user
+*			this array holds all data from the database of instance user with UserID
+*			the key is the exact name of column in database, and the value is the field value
+*	@update: public function update allow user to update its own data
+*			after updating, the object user would reload itself with new data
 */
 class User extends ActiveRecord {
 	public static $TableName = 'User';

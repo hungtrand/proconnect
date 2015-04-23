@@ -3,6 +3,9 @@ require_once __DIR__."/../../lib/php/interfaces.php";
 require_once __DIR__."/../../lib/php/classes/Notification.php";
 require_once __DIR__."/../../lib/php/classes/Profile.php";
 
+/**
+*	NotificationInbox_view - list all relationships between notifications users and their status.
+*/
 class NotificationInbox_view implements view {
 	private $FinalView;
 
