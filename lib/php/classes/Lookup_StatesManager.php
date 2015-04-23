@@ -4,7 +4,7 @@ require_once __DIR__."/RecordSet.php";
 
 
 /**
-*	lookup_StatesManager - performs logic for lookup_StatesManager class. 
+*	lookup_StatesManager - performs logic for lookup_StatesManager class. This class extends recordSet class, and it get appropriated attributes name for the lookup_States table.  
 *	@params: $city
 *	Responsibilities: look for state by city name.   
 */

@@ -5,7 +5,7 @@
  
 
 /**
-*	Message - performs logic for Message class. 
+*	Message - performs logic for Message class. This class extends ActiveRecord class. It provides details about Message table, and it will temporarily edit row information of Message table. 
 *	@params: $ID (messageID)
 *	Responsibilities: get attributes in message table or set up attributes in message table,    
 */
