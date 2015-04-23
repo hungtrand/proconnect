@@ -199,3 +199,7 @@ h3 {
 		width: 100% !important;
 	}
 }
+.navbar-brand>img {
+  width: 225px;
+  margin-top: -5px;
+}

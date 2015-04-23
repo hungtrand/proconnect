@@ -1,64 +1,34 @@
-body {
-  padding-top: 50px;
-  padding-left:0px;
-  background: url("../../image/signout_background.png" ) no-repeat center fixed transparent;
-  font: arial;
-
+body.login{
+background: url("../../social-1/images/lock-2.jpg"); 
 }
-.starter-template {
-  font-size: 20px;
-  padding: 30px 0px;
-  text-align: left;
+a{
+color:  #4687ce;
 }
-
-nav{
-height: 40px;
-}
-.container {
-padding-right: 15px;
-padding-left: 100px;
-margin-right: auto;
-margin-left: auto;
-
-}
-.navbar {
-min-height: 40px;
-}
-
-.navbar-brand {
-background-image: url(../../image/proconnect/logo_text.png);
-background-repeat: no-repeat;
-background-position: center;
-float: left;
-width: 250px;
-height: 40px;
-}
-
-.navbar-inverse {
-background: #333;
-background-image: -webkit-linear-gradient(top, #555555 0%,#515151 18%,#373737 85%,#333333 100%);
-vertical-align: center;
-}
-#navbar{
-float: right;
-margin-right: 90px;
-}
-
 #logo{
-color: #D7D7D7;
+width: 300px;
+padding: 10px 30px;
 }
-
-.navbar-inverse .navbar-nav>li{
-height: 40px;
+.panel {
+  width: 300px;
+  padding: 20px;
 }
-
-.navbar-inverse .navbar-nav>li>a {
-color: #D7D7D7;
-height: 40px;
-padding: 10px;
-font-size: 13px;
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  box-shadow: 0 -3px 5px -3px rgba(0,0,0,.15);
+  z-index: 101;
 }
-
-.navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover {
-color: #0077B5;
+.alert-danger {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
 }
