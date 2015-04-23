@@ -19,7 +19,7 @@ $(document).ready(function(){
 		});
 	});
 	
-	//get messages
+	//get notification messages
 	function fillMessages(parent) {
 		var specialID = $(parent).attr("id");
 		MessageGetter.get(specialID,function(jqXHR,obj){
@@ -72,9 +72,5 @@ $(document).ready(function(){
       	}
 	}
 
-	$("#advance-option-div").on("click",function(e){
-		console.log(e);
-		e.preventDefault();
-		e.stopPropagation();
-	});
+	AdvanceSearchInterfaceHandler.init();
 });

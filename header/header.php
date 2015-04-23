@@ -42,7 +42,7 @@ $FullName = "HELLLLO";
     <link rel="stylesheet" href="/header/css/header.css">
     <!-- <link rel="import" href="/lib/templates/centered-loading-gif.html"></link> -->
     <script type="text/javascript" src="/header/js/NotificationGetter.js"></script>
-    <!-- // <script type="text/javascript" src="/header/js/NotificationHandler.js"></script> -->
+    <script type="text/javascript" src="/header/js/AdvanceSearchInterfaceHandler.js"></script>
     <script type="text/javascript" src="/header/js/MessageGetter.js"></script>
     <script type="text/javascript" src="/header/js/MediaItemFactory.js"></script>
     <script type="text/javascript" src="/header/js/header.js"></script>
@@ -64,6 +64,13 @@ $FullName = "HELLLLO";
                 <div class="media-right time-ago">lorem</div>
             </a>
         </li>
+    </template>
+    <template id="ao-checkbox">
+        <div class="checkbox">
+            <label>
+               <input type="checkbox" value="" checked> 
+            </label>
+        </div>
     </template>
     <!-- data-spy="affix" data-offset-top="200" data-offset-bottom="-200" -->
     <nav id="header-nav" class="navbar navbar-inverse navbar-fixed-top affix" >
@@ -94,19 +101,27 @@ $FullName = "HELLLLO";
                         
                         <div class="input-group-btn">
                             <!-- Button and dropdown menu -->
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <button id="ao-show-btn"type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                 <span class="caret"></span>
                             </button>
-                            <ul id="advance-option-div" class="dropdown-menu" role="menu">
-                              <!-- <li class=""> -->
-                                <div class="md-col-2">
-                                    <input type="text">
+                            <div id="advance-option-div" class="dropdown-menu well " role="options">
+                                <h3>Advance Search By:</h3>
+                                <div class="ao-outer">
+                                    <div id="ao-regular-div" >
+                                        <div class="form-group">
+                                            <label for="ao-education">Education</label> 
+                                            <div id="ao-education" class="dynamic-result-div">
+                                            </div> 
+                                            <input class="ao-add-option" type="text" placeholder="+ Add">
+                                        </div>
+                                        <hr>
+                                    </div>
                                 </div>
-                                <div class="md-col-6">
-                                    <input type="text">
-                                </div>
-                              <!-- </li> -->
-                            </ul>
+                                <button type="button" class="ao-close close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+                                <!-- Extra Search Button -->
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            </div>
                         </div><!-- /btn-group -->
                         <input type="text" class="form-control main-search-bar" name="searchKey" placeholder="Search for people, companies, jobs...">
                         <span class="input-group-btn">
