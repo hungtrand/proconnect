@@ -90,23 +90,25 @@ $(document).ready(function() {
 		});
 	}
 
-	// create an instance of the StatesCitiesList
-	 var sl = new StatesCitiesList();
 
-	 // use getView method to get the html and append anywhere you want
-	 $('#test').html(sl.getView());
+						// create an instance of the StatesCitiesList
+						 var sl = new StatesCitiesList();
 
-	 // if you just want the data for the states just call method getStates()
-	 states = sl.getStates();
-	 console.log(states);
+						 // use getView method to get the html and append anywhere you want
+						 $('#test').html(sl.getView());
 
-	 // if you want data for the cities in json format for a particular state
-	 // you can call method getCities() like this:
-	 // method getCities() take two parameter, the state you want and a callback
-	 // function than you want to execute after the cities data come back from ajax
-	 sl.getCities('SC', function(cities_json) {
-		console.log(cities_json);
-	 });
+						 // if you just want the data for the states just call method getStates()
+						 states = sl.getStates();
+						 //console.log(states);
+
+						 // if you want data for the cities in json format for a particular state
+						 // you can call method getCities() like this:
+						 // method getCities() take two parameter, the state you want and a callback
+						 // function than you want to execute after the cities data come back from ajax
+						 sl.getCities('SC', function(cities_json) {
+							//console.log(cities_json);
+						 });
+
 
 	
 	//handle edit-form submition
@@ -485,7 +487,7 @@ $(document).ready(function() {
 		var link = '#' + $(this).parent("form").attr("link");
 		target = $(this).parent("form").parent("div");
 		$(target).fadeOut(50);				 //close editable view
-		$(target).find("form").trigger("reset"); //reset form
+		$(this).parent("form").trigger("reset"); //reset form
 		$(target).find("a.remove-entry-link").hide(); //hide delete entry link
 		//clear temporary data
 		$(this).parent("form").attr("editing","false")
@@ -548,4 +550,13 @@ $(document).ready(function() {
 
 
 	// $("#sortable").append("<li class=\"ui-state-default col-md-3\"><div class=\"team-member-block team-member-block-edit-view col-md-6\"><div class=\"team-member-block-description\"> <p>You</p></div></div><button type=\"button\" class=\"close\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button></li>");
+	$('#change-image-block').on('click', function() {
+		var uploader = new ProfileImageUploader($('.profile-image').attr('src'));
+		uploader.onClose(function(newImagePath) {
+			if (newImagePath.length > 0)
+				$('.profile-image').attr('src', newImagePath);
+		});
+
+		$('body').append(uploader.getView());
+	});
 });

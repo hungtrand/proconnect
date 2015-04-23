@@ -19,24 +19,40 @@ $(document).ready(function(){
 		});
 	});
 	
-	//get messages
+	//get notification messages
 	function fillMessages(parent) {
 		var specialID = $(parent).attr("id");
 		MessageGetter.get(specialID,function(jqXHR,obj){
 			$(parent).siblings("ul").find(".custom-media-item").remove(); //clear existing items 
 			$(parent).siblings("ul").find("div#iam-loading").show();      //show loading div
 		},function(data){
-			$.each(data,function(key,value){ 														  
-				var newItem = MediaItemFactory.makeItem(specialID,value);	//make items
-				$(parent).siblings("ul.media-list").children().last().after(newItem);//display item
-			});
+
+			//display data
+			if (typeof data == 'string') {
+				$(parent).siblings("ul.media-list").html('<li class="text-info custom-media-item">No messages.</li>');
+
+			} else {
+				$.each(data,function(key,value){
+					// make items
+					var newItem = MediaItemFactory.makeItem(specialID,value);
+					//fill the items
+					$(parent).siblings("ul.media-list").children().last().after(newItem);
+				});
+				// var item = new MediaItem(data);
+				// console.log( item.html() );
+			}
+
 			$(parent).siblings("ul").find("div#iam-loading").hide();
+			
 		});
 	}
 
 	
 	/* Link notification hover handler */
-	$(".notification-icon").hover(function(){
+	$(".notification-icon").on('mouseover', function(){
+		$(".notification-icon").not($(this)).attr("aria-expanded","false").removeClass('open');
+		if ($(this).hasClass('open')) return false;
+
 		// $(this).find("ul.media-list").fadeIn(500);
 		var notificationNum = parseInt($(this).find("span.notification-number").text());
 
@@ -47,10 +63,15 @@ $(document).ready(function(){
 
 		$(this).attr("aria-expanded","true");
 		$(this).addClass("open");
-	},function(){
-		// $(this).find("ul.media-list").hide();
-		$(this).attr("aria-expanded","false");
-		$(this).removeClass("open");
+	});
+
+	$(".notification-icon").on('click', function(e){
+		e.stopPropagation();
+	});
+
+	$(document).on('click', function(e) {
+		$(".notification-icon").attr("aria-expanded","false");
+		$(".notification-icon").removeClass("open");
 	});
  	
  	/* show menu on scroll down*/
@@ -72,4 +93,5 @@ $(document).ready(function(){
       	}
 	}
 
+	AdvanceSearchInterfaceHandler.init();
 });

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="ntlm_sasl_client_class" namespace="" name="ntlm_sasl_client_class" abstract="false" final="false" start="16" end="185">
+  <file path="/var/www/html/ProConnect/lib/PHPMailer/extras" file="ntlm_sasl_client.php" realpath="/var/www/html/ProConnect/lib/PHPMailer/extras/ntlm_sasl_client.php" size="6651" time="2015-02-27T01:22:45-08:00" unixtime="1425028965" sha1="95bb2176b146aeb5ce451e65133d174d2239ba56" relative="lib/PHPMailer/extras/ntlm_sasl_client.php"/>
+  <member name="credentials" type="array" visibility="public" line="18"/>
+  <member name="state" type="{unknown}" default="SASL_NTLM_STATE_START" visibility="public" line="19"/>
+  <method name="initialize" start="21" end="35" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="client" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="ASCIIToUnicode" start="37" end="43" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="ascii" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="typeMsg1" start="45" end="64" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="domain" byreference="false" type="{unknown}"/>
+    <parameter name="workstation" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="NTLMResponse" start="66" end="86" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="challenge" byreference="false" type="{unknown}"/>
+    <parameter name="password" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="typeMsg3" start="88" end="136" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="ntlm_response" byreference="false" type="{unknown}"/>
+    <parameter name="user" byreference="false" type="{unknown}"/>
+    <parameter name="domain" byreference="false" type="{unknown}"/>
+    <parameter name="workstation" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="start" start="138" end="157" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="client" byreference="true" type="{unknown}"/>
+    <parameter name="message" byreference="true" type="{unknown}"/>
+    <parameter name="interactions" byreference="true" type="{unknown}"/>
+  </method>
+  <method name="step" start="159" end="184" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="client" byreference="true" type="{unknown}"/>
+    <parameter name="response" byreference="false" type="{unknown}"/>
+    <parameter name="message" byreference="true" type="{unknown}"/>
+    <parameter name="interactions" byreference="true" type="{unknown}"/>
+  </method>
+</class>

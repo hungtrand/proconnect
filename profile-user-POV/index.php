@@ -17,27 +17,26 @@ ini_set("display_errors", 1); // debug
               <div class="well well-sm">
                   <div class="row normal-view">
                    
-            					<div id="profile-image-block" class="col col-sm-6 col-md-4 col-lg-3">
-            						<div id="progress-block" style= "z-index: 1;">
-            							<div class="progress">
-            							  <div id="img-progress-bar" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
-            								<span class="sr-only"></span>
-            							  </div>
-            							</div>
-            						</div>
-                        <div id="profile-image" class="outer-ref" >
-                         <img src="/image/user_img.png" alt="" class="img-responsive profile-image" id="preview"/>
-            							<div id="picture-edit">
-            								<form class="editable-form">
-            									<div id="change-image-block" type = "file"> 							                        
-            									 <span id="glyphicon-picture" class="glyphicon glyphicon-picture" aria-hidden="true"></span>
-            									 <span id="change-photo-text">Change Photo</span>
-            									 <input id= "input-25" type= "file" class>
-            									 <button type="submit" id = "picture-submit"class="btn btn-primary save-btn" value="save" style = "display: none;">Save</button>
-            									</div>
-            								</form>
-            							</div>
-                        </div>
+					<div id="profile-image-block" class="col col-sm-6 col-md-4 col-lg-3">
+						<div id="progress-block" style= "z-index: 1;">
+							<div class="progress">
+							  <div id="img-progress-bar" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+								<span class="sr-only"></span>
+							  </div>
+							</div>
+						</div>
+                          <div id="profile-image" class="outer-ref" >
+                           <img src="/image/user_img.png" alt="" class="img-responsive profile-image img-rounded" id="preview"/>
+              							<div id="picture-edit">
+              								<form class="editable-form">
+              									<a id="change-image-block"> 							                        
+              									 <span id="glyphicon-picture" class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+              									 <span id="change-photo-text">Change Photo</span>
+              									</a>
+              								</form>
+              							</div>
+                          </div>
+						  
                       </div>
 							
                       <div class="col-sm-6 col-md-8 editable" for="user-info-edit">
@@ -681,6 +680,8 @@ ini_set("display_errors", 1); // debug
     <!-- Custom Script -->
     <script src="js/User.js"></script>
     <script src="js/profile-user-POV.js"></script>
-	<script src="/lib/js/StatesCitiesList.js"></script>
+    <script src="../lib/js/FileUpload.js"></script>
+    <script src="js/ProfileImageUploader.js"></script>
+	   <script src="/lib/js/StatesCitiesList.js"></script>
   </body>
 </html>

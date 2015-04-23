@@ -1,11 +1,10 @@
 <?php
 //error_reporting(E_ALL); // debug
 //ini_set("display_errors", 1); // debug
-// include '../signout/php/session_check_signout.php';
+include '../signout/php/session_check_signout.php';
 
-// $UData = json_decode($_SESSION['__USERDATA__'], true);
-// $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
-$FullName = "HELLLLO";
+$UData = json_decode($_SESSION['__USERDATA__'], true);
+$FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 
 ?>
 <!DOCTYPE html>
@@ -19,7 +18,9 @@ $FullName = "HELLLLO";
     <meta name="author" content="">
 
     <title><?php echo $page_title; ?></title>
+
     <link rel="ICON" href="../image/proconnect/Tab_logo2.ico" type="image/ico" />
+
     <script src="/lib/jquery/jquery-2.1.3.min.js"></script>
 
 
@@ -42,7 +43,7 @@ $FullName = "HELLLLO";
     <link rel="stylesheet" href="/header/css/header.css">
     <!-- <link rel="import" href="/lib/templates/centered-loading-gif.html"></link> -->
     <script type="text/javascript" src="/header/js/NotificationGetter.js"></script>
-    <!-- // <script type="text/javascript" src="/header/js/NotificationHandler.js"></script> -->
+    <script type="text/javascript" src="/header/js/AdvanceSearchInterfaceHandler.js"></script>
     <script type="text/javascript" src="/header/js/MessageGetter.js"></script>
     <script type="text/javascript" src="/header/js/MediaItemFactory.js"></script>
     <script type="text/javascript" src="/header/js/header.js"></script>
@@ -59,11 +60,19 @@ $FullName = "HELLLLO";
                 <div class="media-body">
                   <h4 class="media-heading" >Media Heading</h4>
                   <p class="snippet-zone"> Message Title </p>
-                  Message Here
                 </div>
                 <div class="media-right time-ago">lorem</div>
             </a>
         </li>
+    </template>
+    <template id="ao-checkbox">
+        <li>
+        <div class="checkbox">
+            <label>
+               <input type="checkbox" value="" checked> 
+            </label>
+        </div>
+    </li>
     </template>
     <!-- data-spy="affix" data-offset-top="200" data-offset-bottom="-200" -->
     <nav id="header-nav" class="navbar navbar-inverse navbar-fixed-top affix" >
@@ -84,11 +93,59 @@ $FullName = "HELLLLO";
 				<img style = "width:100%;" src="../image/proconnect/logo_text.png" />				
 				</a>
 
-                <form class="navbar-form navbar-left text-center form-inline" role="search" method="GET" action="/search-results/results.php">
-                    <div class="form-group">
+                <form class="navbar-form navbar-left text-center form-inline col-xs-12" role="search" method="GET" action="/search-results/results.php">
+                    <!-- <div class="form-group">
                       <input name="searchKey" type="text" size="40" class="form-control" id= "searchbar" placeholder="Search for people, companies, jobs...">
                     </div>
-                    <button type="submit" class="btn btn-primary hidden-xs hidden-sm ">&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;&nbsp;&nbsp;</button>
+
+                    <button type="submit" class="btn btn-primary hidden-xs hidden-sm ">&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;&nbsp;&nbsp;</button> -->
+                    <div id="searchbar" class="input-group">
+                        
+                        <div class="input-group-btn">
+                            <!-- Button and dropdown menu -->
+                            <button id="ao-show-btn"type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <span class="caret"></span>
+                            </button>
+                            <div id="advance-option-div" class="dropdown-menu well " role="options">
+                                <h3>Advance Search By:</h3>
+                                <div class="ao-outer">
+                                    <div>
+                                        <div class="form-group">
+                                            <label for="ao-education">Education</label> 
+                                            <div class="">
+                                                <ul id="ao-education" class="dynamic-result-div list-unstyled">
+                                                </ul> 
+                                                <input class="ao-add-option" type="text" placeholder="+ Add">
+                                            </div>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                </div>
+                                <div class="ao-outer">
+                                    <div>
+                                        <div class="form-group">
+                                            <label for="ao-education">School</label> 
+                                            <div>
+                                                <ul id="ao-school" class="dynamic-result-div list-unstyled">
+                                                </ul> 
+                                                <input class="ao-add-option" type="text" placeholder="+ Add">
+                                            </div>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                </div>
+                                <button type="button" class="ao-close close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+                                <!-- Extra Search Button -->
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            </div>
+                        </div><!-- /btn-group -->
+                        <input type="text" class="form-control main-search-bar" name="searchKey" placeholder="Search for people, companies, jobs...">
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </span>
+                    </div>
+                    
                 </form>
             </div>
 
@@ -154,7 +211,7 @@ $FullName = "HELLLLO";
                                     <div>
                                       <img src="/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif">
                                     </div>
-                                </div>  
+                                </div> 
 						</ul>
 				   </li>
 
@@ -174,8 +231,29 @@ $FullName = "HELLLLO";
                         </ul>
                     </li>
                 </ul>
-                <!-- Mobile Menu View -->
-                <ul class="nav subNav hidden-sm hidden-md hidden-lg">
+			<ul class="nav subNav hidden-sm hidden-md hidden-lg">
+                <li role="presentation"><a href="../feed/">
+                    Home</a>
+                </li>
+                <li role="presentation"><a href="../profile-user-POV/">
+                    Profile</a>
+                </li>
+                <li role="presentation"><a href="../connections/">
+                    Connections</a>
+                </li>
+                <li role="presentation"><a href="#">
+                    Education</a>
+                </li>
+                <li role="presentation"><a href="#">
+                    Jobs</a>
+                </li>
+                <li role="presentation"><a href="#">
+                    Interests</a>
+                </li>
+            </ul>
+
+            <!-- Mobile Menu View -->
+            <ul class="nav subNav hidden-sm hidden-md hidden-lg">
                     <li role="presentation">
                         <a href="../profile-user-POV/">Home</a>
                     </li>
@@ -209,9 +287,8 @@ $FullName = "HELLLLO";
 
             </div><!-- /.navbar-collapse -->
 
-            <!-- Normal Menu View -->
-            <ul id="nv-menu" class="nav nav-pills subNav hidden-xs">
-                <li role="presentation"><a href="../profile-user-POV/">
+            <ul class="nav nav-pills subNav hidden-xs">
+                <li role="presentation"><a href="../feed/">
                     Home</a>
                 </li>
                 <li role="presentation"><a href="../profile-user-POV/">

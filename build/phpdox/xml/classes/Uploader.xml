@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Uploader" namespace="" name="Uploader" abstract="false" final="false" start="7" end="70">
+  <file path="/var/www/html/ProConnect/lib/php/classes" file="Uploader.php" realpath="/var/www/html/ProConnect/lib/php/classes/Uploader.php" size="1751" time="2015-04-23T01:14:49-07:00" unixtime="1429776889" sha1="58d714e9ab77189a67a1810b84917ae5b4179857" relative="lib/php/classes/Uploader.php"/>
+  <docblock>
+    <description compact="Uploader - create user directory if not already exists, and upload file, modify accessing persmissions for file.">Responsibilites: Upload file to database, validate the file before upload</description>
+  </docblock>
+  <member name="db" type="{unknown}" visibility="private" line="8"/>
+  <member name="uploadDir" type="{unknown}" visibility="private" line="9"/>
+  <member name="file" type="{unknown}" visibility="private" line="10"/>
+  <member name="err" type="{unknown}" visibility="public" line="12"/>
+  <constructor name="__construct" start="14" end="16" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="upDir" byreference="false" type="{unknown}"/>
+  </constructor>
+  <method name="setUploadDir" start="18" end="20" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="upDir" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="upload" start="22" end="53" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="file" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="1. Check if any image was transferred at all, if not exit" line="25"/>
+      <comment value="3. Validate: remove any special characters in the file name" line="28"/>
+      <comment value="4. Check if file already exists" line="31"/>
+      <comment value="Upload to the product images folder" line="40"/>
+      <comment value="set proper permissions on the new file" line="45"/>
+    </inline>
+  </method>
+  <method name="validate" start="55" end="68" abstract="false" final="false" static="false" visibility="private"/>
+</class>

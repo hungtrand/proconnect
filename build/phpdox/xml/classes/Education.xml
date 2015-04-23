@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="Education" namespace="" name="Education" abstract="false" final="false" start="13" end="169">
+  <file path="/var/www/html/ProConnect/lib/php/classes" file="Education.php" realpath="/var/www/html/ProConnect/lib/php/classes/Education.php" size="3297" time="2015-04-18T23:20:40-07:00" unixtime="1429424440" sha1="dbe4f11556ee1ca149356fa7a021c6df794ed902" relative="lib/php/classes/Education.php"/>
+  <docblock>
+    <description compact="Education - performs logic for Education class.  Store data to or Load education data from the database."/>
+    <params value=": $UserID">Responsibilities: setup user's school, degree, fieldofstudy, activites, gpa, yearstarts, yearend, and user's description of this education.</params>
+  </docblock>
+  <extends full="ActiveRecord" namespace="" name="ActiveRecord"/>
+  <member name="TableName" type="string" default="'Education'" visibility="public" line="14"/>
+  <member name="PrimaryKey" type="string" default="'EDUID'" visibility="public" line="15"/>
+  <member name="Columns" type="array" visibility="public" line="16"/>
+  <member name="data" type="array" visibility="private" line="20"/>
+  <member name="EduID" type="{unknown}" visibility="private" line="21"/>
+  <member name="err" type="{unknown}" visibility="public" line="22"/>
+  <constructor name="__construct" start="24" end="35" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="ID" byreference="false" type="{unknown}" default="null"/>
+  </constructor>
+  <method name="getData" start="39" end="41" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getID" start="44" end="46" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getPrimaryKey" start="49" end="51" abstract="false" final="false" static="false" visibility="protected"/>
+  <method name="getTableName" start="54" end="56" abstract="false" final="false" static="false" visibility="protected"/>
+  <method name="getColumns" start="59" end="61" abstract="false" final="false" static="false" visibility="protected"/>
+  <method name="load" start="64" end="75" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="ID" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getSchool" start="79" end="81" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getDegree" start="83" end="85" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getFieldOfStudy" start="87" end="89" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getActivities" start="91" end="93" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getUserID" start="95" end="97" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getGPA" start="99" end="101" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getYearStart" start="103" end="105" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getYearEnd" start="107" end="109" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getDescription" start="111" end="113" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="setSchool" start="116" end="120" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="strVal" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setDegree" start="122" end="126" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="strVal" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setFieldOfStudy" start="128" end="132" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="strVal" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setActivities" start="134" end="138" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="strVal" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setUserID" start="140" end="144" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="intVal" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setGPA" start="146" end="150" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="decVal" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setYearStart" start="152" end="156" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="intVal" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setYearEnd" start="158" end="162" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="intVal" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setDescription" start="164" end="168" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="txtVal" byreference="false" type="{unknown}"/>
+  </method>
+  <parent full="ActiveRecord" namespace="" name="ActiveRecord">
+    <member name="err" type="{unknown}" visibility="public" line="18"/>
+    <constructor name="__construct" start="20" end="22" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getData" start="24" end="24" abstract="true" final="false" static="false" visibility="public"/>
+    <method name="getID" start="25" end="25" abstract="true" final="false" static="false" visibility="public"/>
+    <method name="getPrimaryKey" start="26" end="26" abstract="true" final="false" static="false" visibility="protected"/>
+    <method name="getTableName" start="27" end="27" abstract="true" final="false" static="false" visibility="protected"/>
+    <method name="getColumns" start="28" end="28" abstract="true" final="false" static="false" visibility="protected"/>
+    <method name="load" start="31" end="31" abstract="true" final="false" static="false" visibility="public">
+      <parameter name="ID" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="reload" start="33" end="35" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="fetch" start="37" end="71" abstract="false" final="false" static="false" visibility="protected">
+      <parameter name="ID" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="fetchBy" start="73" end="118" abstract="false" final="false" static="false" visibility="protected">
+      <parameter name="params" byreference="false" type="{unknown}"/>
+      <parameter name="Logic" byreference="false" type="string" default="&quot;AND&quot;"/>
+      <inline>
+        <comment value="echo $sql.&quot;\n&quot;.json_encode($params).&quot;\n&quot;;" line="97"/>
+      </inline>
+    </method>
+    <method name="save" start="120" end="168" abstract="false" final="false" static="false" visibility="public">
+      <inline>
+        <comment value="echo &quot;\n&quot;.$sql.&quot;\n&quot;;" line="150"/>
+      </inline>
+    </method>
+    <method name="update" start="170" end="215" abstract="false" final="false" static="false" visibility="public">
+      <inline>
+        <comment value="echo json_encode($data);" line="171"/>
+        <comment value="echo $sql; //for testing" line="203"/>
+      </inline>
+    </method>
+    <method name="delete" start="217" end="243" abstract="false" final="false" static="false" visibility="public"/>
+  </parent>
+</class>

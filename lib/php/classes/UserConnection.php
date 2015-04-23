@@ -1,10 +1,15 @@
 <?php
 //require_once "../sqlConnection.php"; // For testing
+
 require_once __DIR__."/Connection.php";
 require_once __DIR__."/User.php";
 require_once __DIR__."/Account.php";
 require_once __DIR__."/ExperienceManager.php";
 require_once __DIR__."/EducationManager.php";
+
+/**
+*	UserConnection - determine the user is initiator or target in the connection, contains data from User object into the connection object.
+*/
 
 class UserConnection extends Connection {
 	private $User;
@@ -17,7 +22,7 @@ class UserConnection extends Connection {
 
 		$this->Connection = ['CONNID'=>null, 'USERID'=>null, 'CUSERID'=>null
 							, 'CFULLNAME'=>null, 'CEMAIL'=>null ,'CTITLE'=>null
-							, 'CORGANIZATION'=>null, 'CLOCATION'=>null];
+							, 'CORGANIZATION'=>null, 'CLOCATION'=>null, 'PROFILEIMAGE'=>''];
 
 		if (!isset($ConnID)) {
 			$this->setInitUserID($User->getID());
@@ -88,6 +93,7 @@ class UserConnection extends Connection {
 		$this->Connection['CTITLE'] = $CTitle;
 		$this->Connection['CORGANIZATION'] = $COrg;
 		$this->Connection['CLOCATION'] = $CLoc;
+		$this->Connection['PROFILEIMAGE'] = $CUser->getProfileImage();
 
 		return true;
 	}
@@ -122,6 +128,10 @@ class UserConnection extends Connection {
 
 	public function getConnectionLocation() {
 		return $this->Connection['CLOCATION'];
+	}
+
+	public function getProfileImage() {
+		return $this->Connection['PROFILEIMAGE'];
 	}
 }
 

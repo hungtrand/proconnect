@@ -23,6 +23,9 @@ NewConnection.prototype = {
 		conn.find('.ConnectionJob').text(data['JobTitle']);
 		conn.find('.ConnectionCompany').text(data['CompanyName']);
 		conn.find('.ConnectionLocation').text(data['Location']);
+		if (data['ProfileImage']) {
+			conn.find('.ProfileImage').attr('src', data['ProfileImage']);
+		}
 
 		that.container = conn;
 
@@ -49,7 +52,7 @@ NewConnection.prototype = {
 		}
 
 		$.ajax({
-			url: 'php/NewConnection_controller.php',
+			url: '/connections/php/NewConnection_controller.php',
 			data: data,
 			type: 'POST'
 		}).done(function(json) {
@@ -70,7 +73,7 @@ NewConnection.prototype = {
 	confirmConnect: function(json) {
 		var that = this;
 		if (json['success'] == 1)
-			that.btnConnect.replaceWith('<span class="label label-success">connected</label>');
+			that.btnConnect.replaceWith('<span class="label label-success">Invitation Sent.</label>');
 	},
 
 	failConnect: function(msg) {

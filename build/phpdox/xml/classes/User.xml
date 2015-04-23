@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="User" namespace="" name="User" abstract="false" final="false" start="23" end="206">
+  <file path="/var/www/html/ProConnect/lib/php/classes" file="User.php" realpath="/var/www/html/ProConnect/lib/php/classes/User.php" size="4497" time="2015-04-23T01:15:40-07:00" unixtime="1429776940" sha1="35ec762dadbbbb45a56f74eb8999547e5d7ec949" relative="lib/php/classes/User.php"/>
+  <docblock>
+    <description compact="he user class retrieve data of user from the provided UserID"/>
+    <params value=": $UserID">$data: an associated array that act as the main property of the class user
+		this array holds all data from the database of instance user with UserID
+		the key is the exact name of column in database, and the value is the field value</params>
+    <update value=": public function update allow user to update its own data">after updating, the object user would reload itself with new data</update>
+  </docblock>
+  <extends full="ActiveRecord" namespace="" name="ActiveRecord"/>
+  <member name="TableName" type="string" default="'User'" visibility="public" line="24"/>
+  <member name="PrimaryKey" type="string" default="'USERID'" visibility="public" line="25"/>
+  <member name="Columns" type="array" visibility="public" line="26"/>
+  <member name="data" type="array" visibility="private" line="30"/>
+  <member name="UserID" type="{unknown}" visibility="private" line="31"/>
+  <member name="err" type="{unknown}" visibility="public" line="32"/>
+  <constructor name="__construct" start="34" end="44" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="ID" byreference="false" type="{unknown}" default="null"/>
+  </constructor>
+  <method name="getData" start="48" end="50" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getID" start="53" end="55" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getPrimaryKey" start="58" end="60" abstract="false" final="false" static="false" visibility="protected"/>
+  <method name="getTableName" start="63" end="65" abstract="false" final="false" static="false" visibility="protected"/>
+  <method name="getColumns" start="68" end="70" abstract="false" final="false" static="false" visibility="protected"/>
+  <method name="load" start="73" end="84" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="ID" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getName" start="87" end="92" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="isFullName" byreference="false" type="{unknown}" default="null"/>
+  </method>
+  <method name="getFirstName" start="94" end="96" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getLastName" start="98" end="100" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getMiddleName" start="102" end="104" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getBirthday" start="106" end="108" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getGender" start="110" end="112" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getAddress" start="114" end="116" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getCity" start="118" end="120" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getState" start="122" end="124" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getZip" start="126" end="128" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getCountry" start="130" end="132" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getPhone" start="134" end="136" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getPhoneType" start="138" end="140" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getSummary" start="142" end="144" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getEmploymentStatus" start="146" end="148" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getProfileImage" start="150" end="152" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="setName" start="154" end="160" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="FirstName" byreference="false" type="{unknown}"/>
+    <parameter name="LastName" byreference="false" type="{unknown}"/>
+    <parameter name="MidName" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setGender" start="162" end="166" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="Gender" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setBirthday" start="168" end="172" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="Birthday" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setAddress" start="174" end="182" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="Address" byreference="false" type="{unknown}"/>
+    <parameter name="City" byreference="false" type="{unknown}"/>
+    <parameter name="State" byreference="false" type="{unknown}"/>
+    <parameter name="Zip" byreference="false" type="{unknown}"/>
+    <parameter name="Country" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setPhone" start="184" end="187" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="Phone" byreference="false" type="{unknown}"/>
+    <parameter name="PhoneType" byreference="false" type="string" default="&quot;Home&quot;"/>
+  </method>
+  <method name="setSummary" start="189" end="193" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="strSummary" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setEmploymentStatus" start="195" end="199" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="strStatus" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setProfileImage" start="201" end="205" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="strURL" byreference="false" type="{unknown}"/>
+  </method>
+  <parent full="ActiveRecord" namespace="" name="ActiveRecord">
+    <member name="err" type="{unknown}" visibility="public" line="18"/>
+    <constructor name="__construct" start="20" end="22" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getData" start="24" end="24" abstract="true" final="false" static="false" visibility="public"/>
+    <method name="getID" start="25" end="25" abstract="true" final="false" static="false" visibility="public"/>
+    <method name="getPrimaryKey" start="26" end="26" abstract="true" final="false" static="false" visibility="protected"/>
+    <method name="getTableName" start="27" end="27" abstract="true" final="false" static="false" visibility="protected"/>
+    <method name="getColumns" start="28" end="28" abstract="true" final="false" static="false" visibility="protected"/>
+    <method name="load" start="31" end="31" abstract="true" final="false" static="false" visibility="public">
+    <parameter name="ID" byreference="false" type="{unknown}"/>
+  </method>
+    <method name="reload" start="33" end="35" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="fetch" start="37" end="71" abstract="false" final="false" static="false" visibility="protected">
+    <parameter name="ID" byreference="false" type="{unknown}"/>
+  </method>
+    <method name="fetchBy" start="73" end="118" abstract="false" final="false" static="false" visibility="protected">
+    <parameter name="params" byreference="false" type="{unknown}"/>
+    <parameter name="Logic" byreference="false" type="string" default="&quot;AND&quot;"/>
+    <inline>
+      <comment value="echo $sql.&quot;\n&quot;.json_encode($params).&quot;\n&quot;;" line="97"/>
+    </inline>
+  </method>
+    <method name="save" start="120" end="168" abstract="false" final="false" static="false" visibility="public">
+    <inline>
+      <comment value="echo &quot;\n&quot;.$sql.&quot;\n&quot;;" line="150"/>
+    </inline>
+  </method>
+    <method name="update" start="170" end="215" abstract="false" final="false" static="false" visibility="public">
+    <inline>
+      <comment value="echo json_encode($data);" line="171"/>
+      <comment value="echo $sql; //for testing" line="203"/>
+    </inline>
+  </method>
+    <method name="delete" start="217" end="243" abstract="false" final="false" static="false" visibility="public"/>
+  </parent>
+</class>

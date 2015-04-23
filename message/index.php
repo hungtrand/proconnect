@@ -10,8 +10,9 @@ $page_title = "Message Center"; //require for front end
 include '../header/header.php';
 ?>
 
+
     <div id="loading-main">
-        <img src="../image/ajax-loader.gif">
+        <img src="/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif">
     </div>
     <div id="ConnectionsHeader" class="row">
                 
@@ -41,10 +42,18 @@ include '../header/header.php';
 
                         <hr />
 
-                        <div class="input-group" id="searching">
-                            <form id="search-form">
-                                <input type="text" class="form-control typeahead" id="search-subject" placeholder="Search..." val="">
-                                <span class="input-group-btn"><button class="btn btn-default" type="button" id="search-button"><span class="glyphicon glyphicon-search"></span></button></span>
+                        <div id="searching">
+                            <form id="search-form" class="form-inline">
+                                <div class="form-group">
+                                    <input type="text" class="form-control typeahead" id="search-subject" placeholder="Search..." val="">
+                                    
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-default" type="button" id="search-button">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </div>
+                                
                             </form>
                         </div>
                     </div>       
@@ -66,7 +75,7 @@ include '../header/header.php';
                         </div>
                         <div id="MessageListEndAlert" class="alert alert-info hidden text-center"></div>
                         <!-- this empty div is filled with either one of the four message boxes, or a new message frame -->                  
-                        </div>            
+                        </div>   
                 <div id="fixed-right-section" class="col col-xs-4" role="complimentary">
                 <div class="well">
                     <h3 class="text-primary" style="margin-top: 8px; margin-bottom: 19px;">Suggestions</h3>
@@ -88,6 +97,7 @@ include '../header/header.php';
     <div class="message-content" class="well well sm">
         <form>
             <input type="text" name="newMsgRecipient" class="form-control typeahead" id="recipient-textarea" autocomplete="off" data-provide="typeahead" placeholder="Enter the name of the recipient..." value=""/><br>
+            <div class="well well-sm hidden"><span id="recipients"></span></div>
             <input type="hidden" name="userID" id="userID" value=""/>
             <input type="text" name="newMsgSubject" class="form-control" id="recipient-subject-textarea" placeholder="Subject"/><br>
             <div id="loading-sent">
@@ -136,7 +146,6 @@ include '../header/header.php';
         </div>
     </div>
 </script>
-
 <script type="text/template" id="message-nav-temp">
     <div id="message-nav-footer">
         <div class="row">
@@ -177,17 +186,39 @@ include '../header/header.php';
     </ul>
 </script>
 
+<script type="text/template" id="SuggestionTemplate">
+    <div class="NewUserConnection" class="col col-xs-12">
+        <input type="hidden" class="UserID" name="UserID" value="" />
+        <div class="row">
+            <div class="col col-xs-3">
+                <img width="50px" src="../image/user_img.png" class="img-rounded ProfileImage" />
+            </div>
+
+            <div class="col col-xs-9">
+                <h5 class="text-primary ConnectionName" style="margin-top: 0px; margin-bottom: 7px;">John Doe</h5>
+                <p class="ConnectionWork" style= "font-size: 12px;"><span class="ConnectionJob"></span>&nbsp;at&nbsp;<span class="ConnectionCompany"></span></p>
+                   <a class="addNewConnection" href="#" style= "font-size: 12px;">
+                   <span class="glyphicon glyphicon-retweet">&nbsp;<span class="txt">Connect</span></a>
+                    &nbsp;&#8226;
+                   <a class="dismissConnection" href="#" style= "font-size: 12px; color: gray;">Skip</a>
+            </div>
+        </div>
+
+        <hr />
+    </div>
+    </script>
+
   <!-- Custom modal handler -->
+  <script src="/lib/bootstrap/js/bootstrap-typeahead.min.js"></script>
+  <script src="/lib/js/underscore-min.js"></script>
+  <script src="js/typeahead.js"></script>
   <script src="js/index.js"></script>
   <script src="js/LoadMessages.js"></script>
-  <script src="js/SearchMessages.js"></script>
   <script src="js/Messages.js"></script>
-  <script src="js/SuggestionList.js"></script>
+  <script src="../connections/js/NewConnection.js"></script>
+  <script src="../connections/js/SuggestionList.js"></script>
   <script src="js/NewMessage.js"></script>
   <script src="js/readmore.js"></script>
-  <script src="js/typeahead.js"></script>
-  <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
-  <script src="//underscorejs.org/underscore-min.js"></script>
 
   <!-- Custom CSS -->
   <link href="css/index.css" rel="stylesheet">

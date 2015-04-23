@@ -1,10 +1,10 @@
 <?php
-error_reporting(E_ALL); // debug
-ini_set("display_errors", 1); // debug
+// error_reporting(E_ALL); // debug
+// ini_set("display_errors", 1); // debug
 
 require_once __DIR__."/../../lib/php/sqlConnection.php";
 require_once __DIR__."/../../lib/php/classes/AccountAdmin.php";
-require_once __DIR__."/../../lib/php/classes/User.php";
+require_once __DIR__."/../../lib/php/classes/Profile.php";
 
 if (isset($_POST['Username']) && isset($_POST['Password'])) {
 	$login = $_POST['Username'];
@@ -25,7 +25,7 @@ if ($acc) {
 	$acc->setLastLogin();
 	$acc->update();
 	
-	$user = new User($acc->getUserID());
+	$user = new Profile($acc->getUserID());
 
 	session_start();
 

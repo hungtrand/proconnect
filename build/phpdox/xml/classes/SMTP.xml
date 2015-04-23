@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="SMTP" namespace="" name="SMTP" abstract="false" final="false" start="27" end="1132">
+  <file path="/var/www/html/ProConnect/lib/PHPMailer" file="class.smtp.php" realpath="/var/www/html/ProConnect/lib/PHPMailer/class.smtp.php" size="38379" time="2015-02-27T01:22:45-08:00" unixtime="1425028965" sha1="0790847c49ba3886e8166ff795301f53a01b5db7" relative="lib/PHPMailer/class.smtp.php"/>
+  <docblock>
+    <description compact="PHPMailer RFC821 SMTP email transport class.">Implements RFC 821 SMTP commands and provides some utility methods for sending mail to an SMTP server.</description>
+    <package value="PHPMailer"/>
+    <author value="Chris Ryan"/>
+    <author value="Marcus Bointon &lt;phpmailer@synchromedia.co.uk&gt;"/>
+  </docblock>
+  <constant name="VERSION" value="'5.2.9'">
+    <docblock>
+      <description compact="The PHPMailer SMTP version number."/>
+      <type value="string"/>
+    </docblock>
+  </constant>
+  <constant name="CRLF" value="&quot;\r\n&quot;">
+    <docblock>
+      <description compact="SMTP line break constant."/>
+      <type value="string"/>
+    </docblock>
+  </constant>
+  <constant name="DEFAULT_SMTP_PORT" value="25">
+    <docblock>
+      <description compact="The SMTP port to use if one is not specified."/>
+      <type value="integer"/>
+    </docblock>
+  </constant>
+  <constant name="MAX_LINE_LENGTH" value="998">
+    <docblock>
+      <description compact="The maximum line length allowed by RFC 2822 section 2.1.1"/>
+      <type value="integer"/>
+    </docblock>
+  </constant>
+  <constant name="DEBUG_OFF" value="0">
+    <docblock>
+      <description compact="Debug level for no output"/>
+    </docblock>
+  </constant>
+  <constant name="DEBUG_CLIENT" value="1">
+    <docblock>
+      <description compact="Debug level to show client -&gt; server messages"/>
+    </docblock>
+  </constant>
+  <constant name="DEBUG_SERVER" value="2">
+    <docblock>
+      <description compact="Debug level to show client -&gt; server and server -&gt; client messages"/>
+    </docblock>
+  </constant>
+  <constant name="DEBUG_CONNECTION" value="3">
+    <docblock>
+      <description compact="Debug level to show connection status, client -&gt; server and server -&gt; client messages"/>
+    </docblock>
+  </constant>
+  <constant name="DEBUG_LOWLEVEL" value="4">
+    <docblock>
+      <description compact="Debug level to show all messages"/>
+    </docblock>
+  </constant>
+  <member name="Version" type="string" default="'5.2.9'" visibility="public" line="84">
+    <docblock>
+      <description compact="The PHPMailer SMTP Version number."/>
+      <type value="string"/>
+      <deprecated value="Use the `VERSION` constant instead"/>
+      <see value="SMTP::VERSION"/>
+    </docblock>
+  </member>
+  <member name="SMTP_PORT" type="integer" default="25" visibility="public" line="92">
+    <docblock>
+      <description compact="SMTP server port number."/>
+      <type value="integer"/>
+      <deprecated value="This is only ever used as a default value, so use the `DEFAULT_SMTP_PORT` constant instead"/>
+      <see value="SMTP::DEFAULT_SMTP_PORT"/>
+    </docblock>
+  </member>
+  <member name="CRLF" type="string" default="&quot;\r\n&quot;" visibility="public" line="100">
+    <docblock>
+      <description compact="SMTP reply line ending."/>
+      <type value="string"/>
+      <deprecated value="Use the `CRLF` constant instead"/>
+      <see value="SMTP::CRLF"/>
+    </docblock>
+  </member>
+  <member name="do_debug" type="{unknown}" default="self::DEBUG_OFF" visibility="public" line="112">
+    <docblock>
+      <description compact="Debug output level.">Options:
+* self::DEBUG_OFF (`0`) No debug output, default
+* self::DEBUG_CLIENT (`1`) Client commands
+* self::DEBUG_SERVER (`2`) Client commands and server responses
+* self::DEBUG_CONNECTION (`3`) As DEBUG_SERVER plus connection status
+* self::DEBUG_LOWLEVEL (`4`) Low-level data output, all messages</description>
+      <type value="integer"/>
+    </docblock>
+  </member>
+  <member name="Debugoutput" type="string" default="'echo'" visibility="public" line="127">
+    <docblock>
+      <description compact="How to handle debug output.">Options:
+* `echo` Output plain-text as-is, appropriate for CLI
+* `html` Output escaped, line breaks converted to `&lt;br&gt;`, appropriate for browser output
+* `error_log` Output to error log as configured in php.ini
+
+Alternatively, you can provide a callable expecting two params: a message string and the debug level:
+&lt;code&gt;
+$smtp-&gt;Debugoutput = function($str, $level) {echo "debug level $level; message: $str";};
+&lt;/code&gt;</description>
+      <type value="string|callable"/>
+    </docblock>
+  </member>
+  <member name="do_verp" type="{unknown}" default="false" visibility="public" line="135">
+    <docblock>
+      <description compact="Whether to use VERP."/>
+      <link value="http://en.wikipedia.org/wiki/Variable_envelope_return_path"/>
+      <link value="http://www.postfix.org/VERP_README.html Info on VERP"/>
+      <type value="boolean"/>
+    </docblock>
+  </member>
+  <member name="Timeout" type="integer" default="300" visibility="public" line="144">
+    <docblock>
+      <description compact="The timeout value for connection, in seconds.">Default of 5 minutes (300sec) is from RFC2821 section 4.5.3.2
+This needs to be quite high to function correctly with hosts using greetdelay as an anti-spam measure.</description>
+      <link value="http://tools.ietf.org/html/rfc2821#section-4.5.3.2"/>
+      <type value="integer"/>
+    </docblock>
+  </member>
+  <member name="Timelimit" type="integer" default="300" visibility="public" line="151">
+    <docblock>
+      <description compact="How long to wait for commands to complete, in seconds.">Default of 5 minutes (300sec) is from RFC2821 section 4.5.3.2</description>
+      <type value="integer"/>
+    </docblock>
+  </member>
+  <member name="smtp_conn" type="{unknown}" visibility="protected" line="157">
+    <docblock>
+      <description compact="The socket for the server connection."/>
+      <type value="resource"/>
+    </docblock>
+  </member>
+  <member name="error" type="array" visibility="protected" line="163">
+    <docblock>
+      <description compact="Error message, if any, for the last call."/>
+      <type value="array"/>
+    </docblock>
+  </member>
+  <member name="helo_rply" type="{unknown}" default="null" visibility="protected" line="170">
+    <docblock>
+      <description compact="The reply the server sent to us for HELO.">If null, no HELO string has yet been received.</description>
+      <type value="string|null"/>
+    </docblock>
+  </member>
+  <member name="server_caps" type="{unknown}" default="null" visibility="protected" line="181">
+    <docblock>
+      <description compact="The set of SMTP extensions sent in reply to EHLO command.">Indexes of the array are extension names.
+Value at index 'HELO' or 'EHLO' (according to command that was sent)
+represents the server name. In case of HELO it is the only element of the array.
+Other values can be boolean TRUE or an array containing extension options.
+If null, no HELO/EHLO string has yet been received.</description>
+      <type value="array|null"/>
+    </docblock>
+  </member>
+  <member name="last_reply" type="string" default="''" visibility="protected" line="187">
+    <docblock>
+      <description compact="The most recent reply received from the server."/>
+      <type value="string"/>
+    </docblock>
+  </member>
+  <method name="edebug" start="197" end="231" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Output debugging info via a user-selected method."/>
+      <see value="SMTP::$Debugoutput"/>
+      <see value="SMTP::$do_debug"/>
+      <param description="Debug string to output" type="string" variable="$str"/>
+      <param description="The debug level of this message; see DEBUG_* constants" type="integer" variable="$level"/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="str" byreference="false" type="{unknown}"/>
+    <parameter name="level" byreference="false" type="integer" default="0"/>
+    <inline>
+      <comment value="Avoid clash with built-in function names" line="202"/>
+    </inline>
+  </method>
+  <method name="connect" start="242" end="321" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Connect to an SMTP server."/>
+      <param description="SMTP server IP or host name" type="string" variable="$host"/>
+      <param description="The port number to connect to" type="integer" variable="$port"/>
+      <param description="How long to wait for the connection to open" type="integer" variable="$timeout"/>
+      <param description="An array of options for stream_context_create()" type="array" variable="$options"/>
+      <access value="public"/>
+      <return type="boolean"/>
+    </docblock>
+    <parameter name="host" byreference="false" type="{unknown}"/>
+    <parameter name="port" byreference="false" type="{unknown}" default="null"/>
+    <parameter name="timeout" byreference="false" type="integer" default="30"/>
+    <parameter name="options" byreference="false" type="array"/>
+    <inline>
+      <comment value="This is enabled by default since 5.0.0 but some providers disable it" line="245"/>
+      <comment value="Check this once and cache the result" line="246"/>
+      <comment value="Clear errors to avoid confusion" line="250"/>
+      <comment value="Make sure we are __not__ connected" line="252"/>
+      <comment value="Already connected, generate error" line="254"/>
+      <comment value="Connect to the SMTP server" line="261"/>
+      <comment value="Suppress errors; connection failures are handled at a higher level" line="270"/>
+      <comment value="Verify we connected properly" line="293"/>
+      <comment value="SMTP server can take longer to respond, give longer timeout for first read" line="308"/>
+      <comment value="Windows does not have support for this timeout function" line="309"/>
+      <comment value="Don't bother if unlimited" line="312"/>
+      <comment value="Get any announcement" line="317"/>
+    </inline>
+  </method>
+  <method name="startTLS" start="328" end="342" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Initiate a TLS (encrypted) session."/>
+      <access value="public"/>
+      <return type="boolean"/>
+    </docblock>
+    <inline>
+      <comment value="Begin encrypted connection" line="333"/>
+    </inline>
+  </method>
+  <method name="authenticate" start="356" end="502" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Perform SMTP authentication.">Must be run after hello().</description>
+      <see value="hello()"/>
+      <param description="The user name" type="string" variable="$username"/>
+      <param description="The password" type="string" variable="$password"/>
+      <param description="The auth type (PLAIN, LOGIN, NTLM, CRAM-MD5)" type="string" variable="$authtype"/>
+      <param description="The auth realm for NTLM" type="string" variable="$realm"/>
+      <param description="The auth workstation for NTLM" type="string" variable="$workstation"/>
+      <access value="public"/>
+      <return description="True if successfully authenticated." type="boolean"/>
+    </docblock>
+    <parameter name="username" byreference="false" type="{unknown}"/>
+    <parameter name="password" byreference="false" type="{unknown}"/>
+    <parameter name="authtype" byreference="false" type="{unknown}" default="null"/>
+    <parameter name="realm" byreference="false" type="string" default="''"/>
+    <parameter name="workstation" byreference="false" type="string" default="''"/>
+    <inline>
+      <comment value="SMTP extensions are available. Let's try to find a proper authentication method" line="369"/>
+      <comment value="'at this stage' means that auth may be allowed after the stage changes" line="373"/>
+      <comment value="e.g. after STARTTLS" line="374"/>
+    </inline>
+  </method>
+  <method name="hmac" start="513" end="538" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Calculate an MD5 HMAC hash.">Works like hash_hmac('md5', $data, $key)
+in case that function is not available</description>
+      <param description="The data to hash" type="string" variable="$data"/>
+      <param description="The key to hash with" type="string" variable="$key"/>
+      <access value="protected"/>
+      <return type="string"/>
+    </docblock>
+    <parameter name="data" byreference="false" type="{unknown}"/>
+    <parameter name="key" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="The following borrowed from" line="519"/>
+      <comment value="http://php.net/manual/en/function.mhash.php#27225" line="520"/>
+      <comment value="RFC 2104 HMAC implementation for php." line="522"/>
+      <comment value="Creates an md5 HMAC." line="523"/>
+      <comment value="Eliminates the need to install mhash to compute a HMAC" line="524"/>
+      <comment value="by Lance Rushing" line="525"/>
+      <comment value="byte length for md5" line="527"/>
+    </inline>
+  </method>
+  <method name="connected" start="545" end="561" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Check connection state."/>
+      <access value="public"/>
+      <return description="True if connected." type="boolean"/>
+    </docblock>
+    <inline>
+      <comment value="The socket is valid but we are not connected" line="550"/>
+    </inline>
+  </method>
+  <method name="close" start="570" end="581" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Close the socket and clean up the state of the class.">Don't use this function without first trying to use QUIT.</description>
+      <see value="quit()"/>
+      <access value="public"/>
+      <return type="object">
+        <type full="void" namespace="" name="void"/>
+      </return>
+    </docblock>
+    <inline>
+      <comment value="close the connection and cleanup" line="576"/>
+      <comment value="Makes for cleaner serialization" line="578"/>
+    </inline>
+  </method>
+  <method name="data" start="595" end="671" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Send an SMTP DATA command.">Issues a data command and sends the msg_data to the server,
+finializing the mail transaction. $msg_data is the message
+that is to be send with the headers. Each header needs to be
+on a single line followed by a &lt;CRLF&gt; with the message headers
+and the message body being separated by and additional &lt;CRLF&gt;.
+Implements rfc 821: DATA &lt;CRLF&gt;</description>
+      <param description="Message data to send" type="string" variable="$msg_data"/>
+      <access value="public"/>
+      <return type="boolean"/>
+    </docblock>
+    <parameter name="msg_data" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="This will use the standard timelimit" line="597"/>
+      <comment value="The server is ready to accept data!" line="602"/>
+      <comment xmlns="http://xml.phpdox.net/src" value="According to rfc821 we should not send more than 1000 characters on a single line (including the CRLF)" line="603"/>
+      <comment xmlns="http://xml.phpdox.net/src" value="so we will break the data up into lines by \r and/or \n then if needed we will break each of those into" line="604"/>
+      <comment xmlns="http://xml.phpdox.net/src" value="smaller lines to fit within the limit." line="605"/>
+      <comment xmlns="http://xml.phpdox.net/src" value="We will also look for lines that start with a '.' and prepend an additional '.'." line="606"/>
+      <comment xmlns="http://xml.phpdox.net/src" value="NOTE: this does not count towards line-length limit." line="607"/>
+      <comment value="Normalize line breaks before exploding" line="610"/>
+      <comment value="To distinguish between a complete RFC822 message and a plain message body, we check if the first field" line="613"/>
+      <comment xmlns="http://xml.phpdox.net/src" value="of the first line (':' separated) does not contain a space then it _should_ be a header and we will" line="614"/>
+      <comment xmlns="http://xml.phpdox.net/src" value="process all lines before a blank line as headers." line="615"/>
+      <comment value="We need to break this line up into several smaller lines" line="629"/>
+      <comment value="This is a small micro-optimisation: isset($str[$len]) is equivalent to (strlen($str) &gt; $len)" line="630"/>
+      <comment value="Working backwards, try to find a space within the last MAX_LINE_LENGTH chars of the line to break on" line="632"/>
+      <comment value="so as to avoid breaking in the middle of a word" line="633"/>
+      <comment value="Deliberately matches both false and 0" line="635"/>
+      <comment value="No nice break found, add a hard break" line="636"/>
+      <comment value="If processing headers add a LWSP-char to the front of new line RFC822 section 3.1.1" line="646"/>
+      <comment value="Send the lines to the server" line="653"/>
+      <comment value="RFC2821 section 4.5.2" line="655"/>
+      <comment value="Message data has been sent, complete the command" line="663"/>
+      <comment value="Increase timelimit for end of DATA command" line="664"/>
+      <comment value="Restore timelimit" line="668"/>
+    </inline>
+  </method>
+  <method name="hello" start="683" end="687" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Send an SMTP HELO or EHLO command.">Used to identify the sending server to the receiving server.
+This makes sure that client and server are in a known state.
+Implements RFC 821: HELO &lt;SP&gt; &lt;domain&gt; &lt;CRLF&gt;
+and RFC 2821 EHLO.</description>
+      <param description="The host name or IP to connect to" type="string" variable="$host"/>
+      <access value="public"/>
+      <return type="boolean"/>
+    </docblock>
+    <parameter name="host" byreference="false" type="string" default="''"/>
+    <inline>
+      <comment value="Try extended hello first (RFC 2821)" line="685"/>
+    </inline>
+  </method>
+  <method name="sendHello" start="698" end="708" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Send an SMTP HELO or EHLO command.">Low-level implementation used by hello()</description>
+      <see value="hello()"/>
+      <param description="The HELO string" type="string" variable="$hello"/>
+      <param description="The hostname to say we are" type="string" variable="$host"/>
+      <access value="protected"/>
+      <return type="boolean"/>
+    </docblock>
+    <parameter name="hello" byreference="false" type="{unknown}"/>
+    <parameter name="host" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="parseHelloFields" start="716" end="739" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Parse a reply to HELO/EHLO command to discover server extensions.">In case of HELO, the only parameter that can be discovered is a server name.</description>
+      <access value="protected"/>
+      <param description="- 'HELO' or 'EHLO'" type="string" variable="$type"/>
+    </docblock>
+    <parameter name="type" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="mail" start="752" end="760" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Send an SMTP MAIL command.">Starts a mail transaction from the email address specified in
+$from. Returns true if successful or false otherwise. If True
+the mail transaction is started and then one or more recipient
+commands may be called followed by a data command.
+Implements rfc 821: MAIL &lt;SP&gt; FROM:&lt;reverse-path&gt; &lt;CRLF&gt;</description>
+      <param description="Source address of this message" type="string" variable="$from"/>
+      <access value="public"/>
+      <return type="boolean"/>
+    </docblock>
+    <parameter name="from" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="quit" start="770" end="779" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Send an SMTP QUIT command.">Closes the socket if there is no error or the $close_on_error argument is true.
+Implements from rfc 821: QUIT &lt;CRLF&gt;</description>
+      <param description="Should the connection close if an error occurs?" type="boolean" variable="$close_on_error"/>
+      <access value="public"/>
+      <return type="boolean"/>
+    </docblock>
+    <parameter name="close_on_error" byreference="false" type="{unknown}" default="true"/>
+    <inline>
+      <comment value="Save any error" line="773"/>
+    </inline>
+  </method>
+  <method name="recipient" start="790" end="797" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Send an SMTP RCPT command.">Sets the TO argument to $toaddr.
+Returns true if the recipient was accepted false if it was rejected.
+Implements from rfc 821: RCPT &lt;SP&gt; TO:&lt;forward-path&gt; &lt;CRLF&gt;</description>
+      <param description="The address the message is being sent to" type="string" variable="$toaddr"/>
+      <access value="public"/>
+      <return type="boolean"/>
+    </docblock>
+    <parameter name="toaddr" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="reset" start="806" end="809" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Send an SMTP RSET command.">Abort any transaction that is currently in progress.
+Implements rfc 821: RSET &lt;CRLF&gt;</description>
+      <access value="public"/>
+      <return description="True on success." type="boolean"/>
+    </docblock>
+  </method>
+  <method name="sendCommand" start="819" end="865" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Send a command to an SMTP server and check its return code."/>
+      <param description="The command name - not sent to the server" type="string" variable="$command"/>
+      <param description="The actual command to send" type="string" variable="$commandstring"/>
+      <param description="One or more expected integer success codes" type="object" variable="$expect">
+        <type full="integer|array" namespace="" name="integer|array"/>
+      </param>
+      <access value="protected"/>
+      <return description="True on success." type="boolean"/>
+    </docblock>
+    <parameter name="command" byreference="false" type="{unknown}"/>
+    <parameter name="commandstring" byreference="false" type="{unknown}"/>
+    <parameter name="expect" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Fetch SMTP code and possible error code explanation" line="830"/>
+      <comment value="Cut off error code from each response line" line="835"/>
+    </inline>
+  </method>
+  <method name="sendAndMail" start="880" end="883" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Send an SMTP SAML command.">Starts a mail transaction from the email address specified in $from.
+Returns true if successful or false otherwise. If True
+the mail transaction is started and then one or more recipient
+commands may be called followed by a data command. This command
+will send the message to the users terminal if they are logged
+in and send them an email.
+Implements rfc 821: SAML &lt;SP&gt; FROM:&lt;reverse-path&gt; &lt;CRLF&gt;</description>
+      <param description="The address the message is from" type="string" variable="$from"/>
+      <access value="public"/>
+      <return type="boolean"/>
+    </docblock>
+    <parameter name="from" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="verify" start="891" end="894" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Send an SMTP VRFY command."/>
+      <param description="The name to verify" type="string" variable="$name"/>
+      <access value="public"/>
+      <return type="boolean"/>
+    </docblock>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="noop" start="902" end="905" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Send an SMTP NOOP command.">Used to keep keep-alives alive, doesn't actually do anything</description>
+      <access value="public"/>
+      <return type="boolean"/>
+    </docblock>
+  </method>
+  <method name="turn" start="916" end="923" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Send an SMTP TURN command.">This is an optional command for SMTP that this class does not support.
+This method is here to make the RFC821 Definition complete for this class
+and _may_ be implemented in future
+Implements from rfc 821: TURN &lt;CRLF&gt;</description>
+      <access value="public"/>
+      <return type="boolean"/>
+    </docblock>
+  </method>
+  <method name="client_send" start="931" end="935" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Send raw data to the server."/>
+      <param description="The data to send" type="string" variable="$data"/>
+      <access value="public"/>
+      <return description="The number of bytes sent to the server or false on error" type="object">
+        <type full="integer|boolean" namespace="" name="integer|boolean"/>
+      </return>
+    </docblock>
+    <parameter name="data" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getError" start="942" end="945" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the latest error."/>
+      <access value="public"/>
+      <return type="array"/>
+    </docblock>
+  </method>
+  <method name="getServerExtList" start="952" end="955" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get SMTP extensions available on the server"/>
+      <access value="public"/>
+      <return type="object">
+        <type full="array|null" namespace="" name="array|null"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="getServerExt" start="976" end="996" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="A multipurpose method The method works in three ways, dependent on argument value and current state   1. HELO/EHLO was not sent - returns null and set up $this-&gt;error   2. HELO was sent     $name = 'HELO': returns server name     $name = 'EHLO': returns boolean false     $name = any string: returns null and set up $this-&gt;error   3. EHLO was sent     $name = 'HELO'|'EHLO': returns server name     $name = any string: if extension $name exists, returns boolean True       or its options. Otherwise returns boolean False In other words, one can use this method to detect 3 conditions:  - null returned: handshake was not or we don't know about ext (refer to $this-&gt;error)  - false returned: the requested feature exactly not exists  - positive value returned: the requested feature exists"/>
+      <param description="Name of SMTP extension or 'HELO'|'EHLO'" type="string" variable="$name"/>
+      <return type="mixed"/>
+    </docblock>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="the tight logic knot ;)" line="983"/>
+    </inline>
+  </method>
+  <method name="getLastReply" start="1003" end="1006" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the last reply from the server."/>
+      <access value="public"/>
+      <return type="string"/>
+    </docblock>
+  </method>
+  <method name="get_lines" start="1017" end="1059" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Read the SMTP server's response.">Either before eof or socket timeout occurs on the operation.
+With SMTP we can tell if we have more lines to read if the
+4th character is '-' symbol. If it is a space then we don't
+need to read anything else.</description>
+      <access value="protected"/>
+      <return type="string"/>
+    </docblock>
+    <inline>
+      <comment value="If the connection is bad, give up straight away" line="1019"/>
+      <comment value="If 4th character is a space, we are done reading, break the loop, micro-optimisation over strlen" line="1035"/>
+      <comment value="Timed-out? Log and break" line="1039"/>
+      <comment value="Now check if reads took too long" line="1048"/>
+    </inline>
+  </method>
+  <method name="setVerp" start="1065" end="1068" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Enable or disable VERP address generation."/>
+      <param type="boolean" variable="$enabled"/>
+    </docblock>
+    <parameter name="enabled" byreference="false" type="{unknown}" default="false"/>
+  </method>
+  <method name="getVerp" start="1074" end="1077" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get VERP address generation mode."/>
+      <return type="boolean"/>
+    </docblock>
+  </method>
+  <method name="setDebugOutput" start="1083" end="1086" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set debug output method."/>
+      <param description="The name of the mechanism to use for debugging output, or a callable to handle it." type="object" variable="$method">
+        <type full="string|callable" namespace="" name="string|callable"/>
+      </param>
+    </docblock>
+    <parameter name="method" byreference="false" type="string" default="'echo'"/>
+  </method>
+  <method name="getDebugOutput" start="1092" end="1095" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get debug output method."/>
+      <return type="string"/>
+    </docblock>
+  </method>
+  <method name="setDebugLevel" start="1101" end="1104" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set debug output level."/>
+      <param type="integer" variable="$level"/>
+    </docblock>
+    <parameter name="level" byreference="false" type="integer" default="0"/>
+  </method>
+  <method name="getDebugLevel" start="1110" end="1113" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get debug output level."/>
+      <return type="integer"/>
+    </docblock>
+  </method>
+  <method name="setTimeout" start="1119" end="1122" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set SMTP timeout."/>
+      <param type="integer" variable="$timeout"/>
+    </docblock>
+    <parameter name="timeout" byreference="false" type="integer" default="0"/>
+  </method>
+  <method name="getTimeout" start="1128" end="1131" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get SMTP timeout."/>
+      <return type="integer"/>
+    </docblock>
+  </method>
+</class>

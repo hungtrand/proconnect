@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="NotificationView" namespace="" name="NotificationView" abstract="false" final="false" start="12" end="108">
+  <file path="/var/www/html/ProConnect/lib/php/classes" file="NotificationView.php" realpath="/var/www/html/ProConnect/lib/php/classes/NotificationView.php" size="2421" time="2015-04-23T01:05:48-07:00" unixtime="1429776348" sha1="9cd13ccc3e146b0ecf56c9969eda25613263d4ff" relative="lib/php/classes/NotificationView.php"/>
+  <docblock>
+    <description compact="NotificationView - represent the relationship between notifications and users, also contains data representing the status between user and the notification as `Read`"/>
+    <params value=": $UserID">Responsibilities: This is Notification Relationship class for NotificationView Table in SQL</params>
+  </docblock>
+  <extends full="ActiveRecord" namespace="" name="ActiveRecord"/>
+  <member name="PrimaryKey" type="string" default="'NOTIFICATIONVIEWID'" visibility="public" line="13"/>
+  <member name="TableName" type="string" default="'NotificationView'" visibility="public" line="14"/>
+  <member name="Columns" type="array" visibility="public" line="15"/>
+  <member name="data" type="array" visibility="private" line="16"/>
+  <member name="NotificationViewID" type="{unknown}" visibility="private" line="17"/>
+  <member name="UserID" type="{unknown}" visibility="private" line="18"/>
+  <member name="err" type="{unknown}" visibility="public" line="19"/>
+  <constructor name="__construct" start="21" end="32" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="ID" byreference="false" type="{unknown}" default="null"/>
+  </constructor>
+  <method name="getData" start="35" end="37" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getID" start="39" end="41" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getColumns" start="43" end="45" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getPrimaryKey" start="47" end="49" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getTableName" start="51" end="53" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="load" start="56" end="66" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="ID" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getNotificationViewID" start="68" end="70" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getNotificationID" start="72" end="74" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getRead" start="76" end="78" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getTimestamp" start="80" end="82" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getUserID" start="84" end="86" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="setNotificationID" start="88" end="92" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="NotiID" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setUserID" start="94" end="98" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="UsrID" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="@UsrID the UserID." line="94"/>
+    </inline>
+  </method>
+  <method name="setRead" start="100" end="105" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="boolVal" byreference="false" type="{unknown}" default="false"/>
+  </method>
+  <parent full="ActiveRecord" namespace="" name="ActiveRecord">
+    <member name="err" type="{unknown}" visibility="public" line="18"/>
+    <constructor name="__construct" start="20" end="22" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getData" start="24" end="24" abstract="true" final="false" static="false" visibility="public"/>
+    <method name="getID" start="25" end="25" abstract="true" final="false" static="false" visibility="public"/>
+    <method name="getPrimaryKey" start="26" end="26" abstract="true" final="false" static="false" visibility="protected"/>
+    <method name="getTableName" start="27" end="27" abstract="true" final="false" static="false" visibility="protected"/>
+    <method name="getColumns" start="28" end="28" abstract="true" final="false" static="false" visibility="protected"/>
+    <method name="load" start="31" end="31" abstract="true" final="false" static="false" visibility="public">
+    <parameter name="ID" byreference="false" type="{unknown}"/>
+  </method>
+    <method name="reload" start="33" end="35" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="fetch" start="37" end="71" abstract="false" final="false" static="false" visibility="protected">
+    <parameter name="ID" byreference="false" type="{unknown}"/>
+  </method>
+    <method name="fetchBy" start="73" end="118" abstract="false" final="false" static="false" visibility="protected">
+    <parameter name="params" byreference="false" type="{unknown}"/>
+    <parameter name="Logic" byreference="false" type="string" default="&quot;AND&quot;"/>
+    <inline>
+      <comment value="echo $sql.&quot;\n&quot;.json_encode($params).&quot;\n&quot;;" line="97"/>
+    </inline>
+  </method>
+    <method name="save" start="120" end="168" abstract="false" final="false" static="false" visibility="public">
+    <inline>
+      <comment value="echo &quot;\n&quot;.$sql.&quot;\n&quot;;" line="150"/>
+    </inline>
+  </method>
+    <method name="update" start="170" end="215" abstract="false" final="false" static="false" visibility="public">
+    <inline>
+      <comment value="echo json_encode($data);" line="171"/>
+      <comment value="echo $sql; //for testing" line="203"/>
+    </inline>
+  </method>
+    <method name="delete" start="217" end="243" abstract="false" final="false" static="false" visibility="public"/>
+  </parent>
+</class>

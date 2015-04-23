@@ -71,6 +71,23 @@ textarea {
 	height: auto;
 }
 
+.ConnectionName {
+	margin-top: 5px;	
+}
+.message-subject {
+	margin-top: -5px;
+}
+
+.message-time {
+	margin-top: -5px;
+	margin-bottom: -10px;
+}
+
+.message-text {
+	overflow: auto;
+	height: auto;
+}
+
 .sidebar-icon {
 	float: right;
 	color: black;
@@ -199,4 +216,13 @@ textarea {
 		margin-left: 0px;
 		width: 100%;
 	}
+}
+
+label.recipient {
+	border: 1px solid #999;
+	color: #333;
+}
+
+label.recipient a {
+	color: #999;
 }

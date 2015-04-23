@@ -3,24 +3,36 @@
 //ini_set("display_errors", 1); // debug
 require_once __DIR__."/../../lib/php/sqlConnection.php";
 require_once __DIR__."/../../lib/php/classes/Account.php";
+require_once __DIR__."/../../lib/php/classes/AccountAdmin.php";
 require_once __DIR__."/../../lib/php/classes/User.php";
 require_once __DIR__."/../../lib/php/classes/EducationManager.php";
 require_once __DIR__."/../../lib/php/classes/ExperienceManager.php";
 require_once __DIR__."/../../lib/php/classes/ProjectManager.php";
 require_once __DIR__."/../../lib/php/classes/SkillManager.php";
+require_once __DIR__."/../../lib/php/classes/Profile.php";
 require_once __DIR__."/Profile_view.php";
 
 // Check if logged in
-session_start();
-$home = 'Location: ../../';
-if (!$UData = json_decode($_SESSION['__USERDATA__'], true)) {
-	//header($home);
-	echo 'Session Timed Out. <a href="/signin/">Sign back in</a>';
-	die();
+if (isset($_POST['Username']) && isset($_POST['Password'])) {
+	$login = $_POST['Username'];
+	$password = $_POST['Password'];
+	$accAdm = new AccountAdmin();
+
+	$acc = $accAdm->getAccount($login, $password);
+	$uid = $acc->getUserID();
+} else {
+	session_start();
+	$home = 'Location: ../../';
+	if (!$UData = json_decode($_SESSION['__USERDATA__'], true)) {
+		//header($home);
+		echo 'Session Timed Out. <a href="/signin/">Sign back in</a>';
+		die();
+	}
+
+	$uid = $UData['USERID'];
 }
 
 // Check if data valid or still exists in the database
-$uid = $UData['USERID'];
 if (!$User = new User($uid)) {
 	echo 'Session Timed Out. <a href="/signin/">Sign back in</a>';
 	die();
@@ -105,6 +117,9 @@ try {
 			$User->setAddress($address, '', '', $zipcode, $country);
 
 			if ($Acc->update() && $User->update()) {
+				$profile = new Profile($User->getID());
+				$_SESSION['__USERDATA__'] = json_encode($profile->getData());
+
 				echo json_encode(['success'=>1]);
 			} else {
 				echo $Acc->err ."\n<br />\n" . $User->err;

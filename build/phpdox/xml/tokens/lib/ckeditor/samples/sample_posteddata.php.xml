@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<source xmlns="http://xml.phpdox.net/token">
+  <file xmlns="http://xml.phpdox.net/src" path="/var/www/html/ProConnect/lib/ckeditor/samples" file="sample_posteddata.php" realpath="/var/www/html/ProConnect/lib/ckeditor/samples/sample_posteddata.php" size="831" time="2015-02-10T16:17:33-08:00" unixtime="1423613853" sha1="f03ff9c9bdf1789588d86c8ddefb487e9adc69a1" relative="lib/ckeditor/samples/sample_posteddata.php"/>
+  <line no="1">
+    <token name="T_OPEN_TAG">&lt;?php </token>
+    <token name="T_COMMENT">/* &lt;body&gt;&lt;pre&gt;</token>
+  </line>
+  <line no="2"/>
+  <line no="3">
+    <token name="T_COMMENT">-------------------------------------------------------------------------------------------</token>
+  </line>
+  <line no="4">
+    <token name="T_COMMENT">  CKEditor - Posted Data</token>
+  </line>
+  <line no="5"/>
+  <line no="6">
+    <token name="T_COMMENT">  We are sorry, but your Web server does not support the PHP language used in this script.</token>
+  </line>
+  <line no="7"/>
+  <line no="8">
+    <token name="T_COMMENT">  Please note that CKEditor can be used with any other server-side language than just PHP.</token>
+  </line>
+  <line no="9">
+    <token name="T_COMMENT">  To save the content created with CKEditor you need to read the POST data on the server</token>
+  </line>
+  <line no="10">
+    <token name="T_COMMENT">  side and write it to a file or the database.</token>
+  </line>
+  <line no="11"/>
+  <line no="12">
+    <token name="T_COMMENT">  Copyright (c) 2003-2014, CKSource - Frederico Knabben. All rights reserved.</token>
+  </line>
+  <line no="13">
+    <token name="T_COMMENT">  For licensing, see LICENSE.md or &lt;a href="http://ckeditor.com/license"&gt;http://ckeditor.com/license&lt;/a&gt;</token>
+  </line>
+  <line no="14">
+    <token name="T_COMMENT">-------------------------------------------------------------------------------------------</token>
+  </line>
+  <line no="15"/>
+  <line no="16">
+    <token name="T_COMMENT">&lt;/pre&gt;&lt;div style="display:none"&gt;&lt;/body&gt; */</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_INCLUDE">include</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">"assets/posteddata.php"</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CLOSE_TAG">?&gt;</token>
+  </line>
+  <line no="17"/>
+</source>

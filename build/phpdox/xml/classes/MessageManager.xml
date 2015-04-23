@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="MessageManager" namespace="" name="MessageManager" abstract="false" final="false" start="12" end="77">
+  <file path="/var/www/html/ProConnect/lib/php/classes" file="MessageManager.php" realpath="/var/www/html/ProConnect/lib/php/classes/MessageManager.php" size="2035" time="2015-04-18T23:20:40-07:00" unixtime="1429424440" sha1="b9cf753b6b77ea3eba690d30be1fbba3274359e5" relative="lib/php/classes/MessageManager.php"/>
+  <docblock>
+    <description compact="MessageManager - performs logic for MessageManager class."/>
+    <params value=": $USERID">Responsibilities: load the user and get message for the user.</params>
+  </docblock>
+  <extends full="RecordSet" namespace="" name="RecordSet"/>
+  <member name="PrimaryKey" type="{unknown}" visibility="protected" line="13"/>
+  <member name="TableName" type="{unknown}" visibility="protected" line="14"/>
+  <member name="Columns" type="{unknown}" visibility="protected" line="15"/>
+  <member name="User" type="{unknown}" visibility="protected" line="17"/>
+  <member name="data" type="{unknown}" visibility="protected" line="18"/>
+  <member name="err" type="{unknown}" visibility="public" line="20"/>
+  <constructor name="__construct" start="22" end="31" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="User" byreference="false" type="{unknown}"/>
+  </constructor>
+  <method name="getColumns" start="34" end="36" abstract="false" final="false" static="false" visibility="protected"/>
+  <method name="load" start="38" end="45" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="User" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="loadCurrent" start="47" end="55" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getData" start="57" end="61" abstract="false" final="false" static="false" visibility="public"/>
+  <method name="getAll" start="63" end="75" abstract="false" final="false" static="false" visibility="public"/>
+  <parent full="RecordSet" namespace="" name="RecordSet">
+    <member name="db" type="{unknown}" visibility="protected" line="3"/>
+    <member name="err" type="{unknown}" visibility="public" line="5"/>
+    <constructor name="__construct" start="7" end="10" abstract="false" final="false" static="false" visibility="public"/>
+    <method name="getData" start="12" end="12" abstract="true" final="false" static="false" visibility="public"/>
+    <method name="getColumns" start="13" end="13" abstract="true" final="false" static="false" visibility="protected"/>
+    <method name="setLimit" start="15" end="21" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="intLimit" byreference="false" type="{unknown}"/>
+  </method>
+    <method name="fetch" start="23" end="55" abstract="false" final="false" static="false" visibility="protected"/>
+    <method name="fetchBy" start="57" end="105" abstract="false" final="false" static="false" visibility="protected">
+    <parameter name="params" byreference="false" type="{unknown}"/>
+    <parameter name="Logic" byreference="false" type="string" default="&quot;AND&quot;"/>
+  </method>
+    <method name="fetchCustom" start="107" end="141" abstract="false" final="false" static="false" visibility="protected">
+    <parameter name="cond" byreference="false" type="{unknown}"/>
+    <parameter name="params" byreference="false" type="{unknown}" default="null"/>
+    <inline>
+      <comment value="echo $sql;" line="123"/>
+    </inline>
+  </method>
+  </parent>
+</class>

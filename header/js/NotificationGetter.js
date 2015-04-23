@@ -10,7 +10,7 @@ var NotificationGetter = (function() {
 
 			function getResponse() {
 				$.ajax({
-					url: "/header/php/dummy.php",													  //<------ must be hard link
+					url: "/header/php/notifications_controller.php",													  //<------ must be hard link
 					data: {"userID":"notification-getter"},															  //<------ may not be necessary
 					method: "POST",
 					success: function(data){

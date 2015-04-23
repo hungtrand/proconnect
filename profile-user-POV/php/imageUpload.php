@@ -1,16 +1,44 @@
 <?php 
-	define("IMAGES_DIR", "../../library/images/products/");
-	define("UPLOAD_DIR", IMAGES_DIR);
+	//error_reporting(E_ALL); // debug
+	//ini_set("display_errors", 1); // debug
+	require_once __DIR__."/../../lib/php/sqlConnection.php";
+	require_once __DIR__."/../../lib/php/classes/User.php";
+	require_once __DIR__."/../../lib/php/classes/Profile.php";
+
+	session_start();
+	if (!$UData = json_decode($_SESSION['__USERDATA__'], true)) {
+		echo 'Session Timeout.';
+		die();
+	}
+
+	// Check if data valid or still exists in the database
+	$uid = $UData['USERID'];
+	if (!$User = new USER($uid)) {
+		echo "The Id is not in the database";
+		die();
+	}
+
+	define("USER_DIR", __DIR__."/../../users/".$uid."/");
+	define("UPLOAD_DIR", USER_DIR."images/");
+
+	// check if directory exists else create it
+	if(!is_dir(USER_DIR)) {
+	    mkdir(USER_DIR);
+	}
+
+	if(!is_dir(UPLOAD_DIR)) {
+	    mkdir(UPLOAD_DIR);
+	}
 
 	// 1. Check if any image was transferred at all, if not exit
-	if (empty($_FILES["ProfileImage"]))
+	if (empty($_FILES["inputProfileImage"]))
 	{
 		$rs = '<div class="label label-danger">No File Received.</div>';
 		echo $rs;
 		exit();
 	}
 
-	$imgFile = $_FILES["ProfileImage"];
+	$imgFile = $_FILES["inputProfileImage"];
 
 	// 2. Check if any error occurred during the transfer
 	if ($imgFile["error"] !== UPLOAD_ERR_OK)
@@ -26,11 +54,11 @@
 	// 4. Check if file already exists
 	$i = 0;
 	$parts = pathinfo($FileName);
-	while (file_exists(IMAGES_DIR . $FileName))
+	/*while (file_exists(UPLOAD_DIR . $FileName))
 	{
 		$i++;
         $FileName = $parts["filename"] . "-" . $i . "." . $parts["extension"];
-	}
+	}*/
 
 	// Upload to the product images folder
     $success = move_uploaded_file($imgFile["tmp_name"],
@@ -38,10 +66,15 @@
 
     if ($success) { 
     	$rs = '<div class="label label-success">File Successfully Uploaded.</div>';
-    	$rs .= '<input type="hidden" id="uploadedFile" value="' . $FileName . '" />';
+    	$rs .= '<input type="hidden" id="uploadedFile" value="/users/'.$uid.'/images/'. $FileName . '" />';
     	
     	// set proper permissions on the new file
-    	chmod(UPLOAD_DIR . $FileName, 0644);
+    	chmod(UPLOAD_DIR . $FileName, 0775);
+    	$User->setProfileImage($FileName);
+    	$User->update();
+
+    	$profile = new Profile($User->getID());
+		$_SESSION['__USERDATA__'] = json_encode($profile->getData());
     } else {
     	$rs = '<div class="label label-danger">Unable to save file.</div>';
     }

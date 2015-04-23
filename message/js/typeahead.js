@@ -17,7 +17,8 @@ typeahead.prototype = {
 		var userNames = [];
 		var throttledRequest = _.debounce(function(query, process){
 		$.ajax({
-			url: 'php/dummyConn.php',
+			url: '../../connections/php/Connections_controller.php',
+			data: {'keywords':query},
 			type: 'POST',
 			contentType: 'text/plain'
 		}).done(function(json) {
@@ -26,12 +27,13 @@ typeahead.prototype = {
 				userObjs = {};
 				userNames = [];
 				_.each( json, function(item, ix, list){
-					userNames.push( item['user-name'] );
-					userObjs[ item['user-name'] ] = item;
-				process( userNames );	
+					userNames.push( item['Name'] );
+					userObjs[ item['Name'] ] = item;
+					process( userNames );	
 				});
 			} catch (ev) {
-				alert("OMG");
+				console.log(json);
+				console.log(ev);
 			}
 			});
 		}, 750);
@@ -44,15 +46,42 @@ typeahead.prototype = {
 
 			highlighter: function( item ){
           		var user = userObjs[ item ];
-          
-          		return '<div class="user">'+'<img src="'+user['user-picture']+'"/>'+'<strong>'+user['user-name']+'</strong><br /><em>'+user['user-job-title']+'</em></div>';
+          		var ProfileImage = '/image/user_img.png';
+          		if (user['ProfileImage']) ProfileImage = user['ProfileImage'];
+          		var suggestElement = '<div class="user" style="padding: 5px;">'+'<img src="'+ProfileImage+'"/>';
+          		suggestElement += '<strong>'+user['Name']+'</strong><br /><em>&nbsp;'+user['JobTitle']+'&nbsp;</em></div>';
+          		return suggestElement;
         	}, 
         	updater: function ( selectedName ) {
-        		$("#userID").val(userObjs[selectedName].userID);
+        		if ($('#userID').val() == '')
+        			$("#userID").val(userObjs[selectedName].UserID);
+        		else {
+        			var newVal = $('#userID').val() + ', ' + userObjs[selectedName].UserID;
+        			$('#userID').val(newVal);
+        		}
+
+        		var recip = $('<label class="label recipient">'+selectedName+'&nbsp;<a href="#"><span class="glyphicon glyphicon-remove"></span></a></label>');
+        		recip.find('a').on('click', function(e) { 
+        			e.preventDefault();
+        			var ids = $('#userID').val();
+        			ids = ids.split(', ');
+        			for (var i=0, l = ids.length; i < l; i++) {
+        				if (ids[i] == userObjs[selectedName].UserID) {
+        					ids.splice(i, 1);
+        				}
+        			}
+
+        			ids = ids.join(', ');
+        			$('#userID').val(ids);
+        			$(this).parent('label').remove();
+        			if (ids.trim().length == 0) $('#recipients').parent().toggleClass('hidden', true);
+        		});
+        		$('#recipients').append(recip, '&nbsp;');
+        		$('#recipients').parent().toggleClass('hidden', false);
 				// $( "#userID" ).val( userObjs[ selectedName ].id );
 				// console.log($( "#userID" ).val( userObjs[ selectedName ] ));
 				// console.log($("#userID").attr("value"));
-					return selectedName;
+					return '';
 				}
 			});
 	}
