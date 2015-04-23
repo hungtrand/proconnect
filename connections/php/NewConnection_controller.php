@@ -28,7 +28,7 @@ if (isset($_POST['Username']) && isset($_POST['Password'])) {
 		die();
 	}
 
-	$uid = $UData['USERID'];
+	$uid = (int)$UData['USERID'];
 }
 
 //$uid = 10;
@@ -41,6 +41,9 @@ if (!$User = new User($uid)) {
 if (isset($_POST['UserID'])) {
 	$CUserID = (int)$_POST['UserID'];
 	$CUser = new User($CUserID);
+} else if (isset($_GET['UserID'])) {
+	$CUserID = (int)$_GET['UserID'];
+	$CUser = new User($CUserID);
 }
 //$CUser = new User(7);
 if (!isset($CUser)) {
@@ -49,25 +52,25 @@ if (!isset($CUser)) {
 }
 
 // if a connection id is passed here, then accept connection instead of creating new one
-if (isset($_POST['ConnID']) && is_numeric(trim($_POST['ConnID']))) {
-	$acceptConnID = (int) $_POST['ConnID'];
-	$conn = new Connection($acceptConnID);
-	$conn->setAccepted(true);
-	
-	if ($conn->update()) {
-		echo json_encode(['success'=>1]);
-	}
-
-	die();
-}
 
 // Create new connection // send invite
 try {
 	// test if connection exists
 	$conn = new Connection();
 	if ($conn->loadByUsers($uid, $CUserID)) {
-		echo "Already Connected";
-		die();
+		if ($conn->getAccepted()) {
+			echo "Already Connected";
+			die();
+		} else if (isset($_GET['accept'])) {
+			$conn->setAccepted(true);
+			if ($conn->update()) {
+				echo json_encode(['success'=>1]);
+			} else {
+				echo "Could not accept the invitation to connect.";
+			}
+
+			die();
+		}
 	};
 
 	$conn = new Connection();

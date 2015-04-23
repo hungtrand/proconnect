@@ -1,12 +1,9 @@
 <?php
 //error_reporting(E_ALL); // debug
 //ini_set("display_errors", 1); // debug
-require_once __DIR__."/../../lib/php/classes/Account.php";
-require_once __DIR__."/../../lib/php/classes/AccountAdmin.php";
 require_once __DIR__."/../../lib/php/sqlConnection.php";
 require_once __DIR__."/../../lib/php/classes/User.php";
-require_once __DIR__."/../../lib/php/classes/UserConnectionManager.php";
-require_once __DIR__."/Connections_view.php";
+require_once __DIR__."/../../lib/php/classes/Connection.php";
 
 if (isset($_POST['Username']) && isset($_POST['Password'])) {
 	$login = $_POST['Username'];
@@ -27,44 +24,45 @@ if (isset($_POST['Username']) && isset($_POST['Password'])) {
 	$uid = (int)$UData['USERID'];
 }
 
+//$uid = 10;
 if (!$User = new User($uid)) {
-	header($home);
+	//header($home);
 	die();
 }
 
 //$User = new User(10); // For Testing
-if (isset($_POST['page'])) $page = (int)$_POST['page'];
-else $page = 1;
+if (isset($_POST['UserID'])) {
+	$CUserID = (int)$_POST['UserID'];
+} else if (isset($_GET['UserID'])) {
+	$CUserID = (int)$_GET['UserID'];
+}
 
-$rowsaPage = 10;
-$filter = "";
-
-if (isset($_POST['filter'])) {
-	$filter = trim($_POST['filter']);
+$CUser = new User($CUserID);
+//$CUser = new User(7);
+if (!isset($CUser)) {
+	echo "User not found";
+	die();
 }
 
 try {
-	$uc = new UserConnectionManager($User);
-	if ($filter == 'pending') {
-		$uc->loadPending($page, $rowsaPage);
-	} else {
-		$uc->loadPage($page, $rowsaPage);
+	// test if connection exists
+	$conn = new Connection();
+	if (!$conn->loadByUsers($uid, $CUserID)) {
+		echo "Not Connected";
 	}
 
-	$conns = $uc->getAll();
+	$conn->setDeclined(true);
+	if ($conn->update()) {
+		echo json_encode(['success'=>1]);
+		die();
+	}
 
-	$view = new Connections_view();
-	$view->loadUserConnections($conns);
-	$data = $view->getView();
-
+	echo $conn->err;
 	//echo "\n".json_encode($conns)."\n";
 } catch (Exception $e) {
 	echo $e->getMessage();
 
 	die();
 }
-
-if ($data) echo json_encode($data);
-else echo "End of results.";
 
 ?>

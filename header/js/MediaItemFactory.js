@@ -157,6 +157,10 @@ function NewConnectionItem(data) {
 	var message = data['Name'] + '<br />' + data['JobTitle'];
 	if (data['CompanyName']) message += ' at ' + data['CompanyName'];
 	if (data['Location']) message += '<br />' + data['Location'];
+	message += '<div class="text-right">';
+	message += '<a class="btn btn-success ConnectionAction" href="/connections/php/NewConnection_controller.php?accept=true&UserID=' + data['UserID'] + '">Accept</a>';
+	message += '&nbsp;&nbsp;<a class="btn btn-warning ConnectionAction" href="/connections/php/declineConnection_controller.php?UserID=' + data['UserID'] + '">Decline</a>';
+	message += '</div>';
 
 	var options = {
 		'optional-snippet': '',
@@ -180,6 +184,27 @@ function NewConnectionItem(data) {
 	baseItem.find(".media-heading").text(options["user-name"]);
 	baseItem.find("p.snippet-zone").text(snippet);
 	baseItem.find("p.snippet-zone").after(message);
+	baseItem.find('.ConnectionAction').on('click', function(e) {
+		e.preventDefault();
+		var href = $(this).attr('href');
+		var theLink = $(this);
+		$.ajax({
+			url: href,
+			type: 'POST'
+		}).done(function(json) {
+			try {
+				json = $.parseJSON(json);
+				var li = theLink.closest('li');
+				theLink.parent().toggleClass('alert alert-success text-center', true).html('Saved');
+				setTimeout(function() {
+					li.fadeOut('700', function() {$(this).remove();});
+				}, 3000);
+			} catch (e) {
+				console.log(json);
+			}
+			
+		});
+	});
 
 	return baseItem;
 }

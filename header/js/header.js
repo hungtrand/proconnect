@@ -52,7 +52,10 @@ $(document).ready(function(){
 
 	
 	/* Link notification hover handler */
-	$(".notification-icon").hover(function(){
+	$(".notification-icon").on('mouseover', function(){
+		$(".notification-icon").not($(this)).attr("aria-expanded","false").removeClass('open');
+		if ($(this).hasClass('open')) return false;
+
 		// $(this).find("ul.media-list").fadeIn(500);
 		var notificationNum = parseInt($(this).find("span.notification-number").text());
 
@@ -64,13 +67,16 @@ $(document).ready(function(){
 		// IamLoading.show($(this).find("ul.media-list li.dropdown-header"));
 		$(this).attr("aria-expanded","true");
 		$(this).addClass("open");
-	},function(){
-		// $(this).find("ul.media-list").hide();
-		$(this).attr("aria-expanded","false");
-		$(this).removeClass("open");
 	});
 
-	
+	$(".notification-icon").on('click', function(e){
+		e.stopPropagation();
+	});
+
+	$(document).on('click', function(e) {
+		$(".notification-icon").attr("aria-expanded","false");
+		$(".notification-icon").removeClass("open");
+	});
 
 	
 });

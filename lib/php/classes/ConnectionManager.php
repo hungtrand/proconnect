@@ -140,9 +140,8 @@ class ConnectionManager extends RecordSet {
 
 	public function getPendingCount() {
 		$count = 0;
-		$cond = "WHERE (INITUSERID = ? OR TARGETUSERID = ?) AND ACCEPTED = 0 ";
-		$params = ['INITUSERID'=>$this->User->getID(), 
-				'TARGETUSERID'=>$this->User->getID()];
+		$cond = "WHERE TARGETUSERID = ? AND ACCEPTED = 0 AND (DECLINED = 0 OR DECLINED IS NULL) ";
+		$params = ['TARGETUSERID'=>$this->User->getID()];
 		if (!$count= $this->fetchCount($cond, $params)) return false;
 
 		return $count;

@@ -103,7 +103,8 @@ class Connection extends ActiveRecord {
 	}
 
 	public function getAccepted() {
-		return $this->data['ACCEPTED'];
+		if ($this->data['ACCEPTED'] == 1) return true;
+		else return false;
 	}
 
 	public function getCreatedDate() {
@@ -115,7 +116,8 @@ class Connection extends ActiveRecord {
 	}
 
 	public function getDeclined() {
-		return $this->data['DECLINED'];
+		if ($this->data['ACCEPTED'] == 1) return true;
+		else return false;
 	}
 
 	// Set methods
