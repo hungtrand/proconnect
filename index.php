@@ -20,7 +20,8 @@
 
     <!-- Custom CSS -->
     <link href="../lib/startbootstrap-stylish-portfolio-1.0.3/startbootstrap-stylish-portfolio-1.0.3/css/stylish-portfolio.css" rel="stylesheet">
-
+	<link href="css/index.css" rel="stylesheet">
+	
     <!-- Custom Fonts -->
     <link href="../lib/startbootstrap-stylish-portfolio-1.0.3/startbootstrap-stylish-portfolio-1.0.3/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
@@ -36,7 +37,10 @@
 
 <body>
     <!-- Header -->
-    <header id="top" class="header">
+    <header id="top" class="header" style= "position: relative;">
+		<div class="text-right" style= "position: absolute; width: inherit; padding-top: 20px; padding-right: 20px;">
+			<a href="../signin" class="btn" id="signin" >Sign In</a>
+		</div>
         <div class="text-vertical-center">
 			<img class= "hidden-xs "id= "logo" src = "../image/proconnect/ProConnect_black.png" width="400">
 			<img class= "hidden-sm hidden-md hidden-lg"id= "logo" src = "../image/proconnect/ProConnect_black.png" width="250">
@@ -123,6 +127,9 @@
                             </div>
                         </div>
                     </div>
+					<div>
+					            <a href="../signup" class="btn btn-light">Get Started</a>
+					</div>
                     <!-- /.row (nested) -->
                 </div>
                 <!-- /.col-lg-10 -->
