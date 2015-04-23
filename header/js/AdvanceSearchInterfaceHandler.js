@@ -12,12 +12,12 @@ var AdvanceSearchInterfaceHandler = (function(){
 				e.stopPropagation();
 
 				var optionName = $(this).val();
-				var name = $(this).siblings("div.dynamic-result-div").prop("id");
+				var name = $(this).siblings(".dynamic-result-div").prop("id");
 
 				var baseItem = $(document.getElementById("ao-checkbox").content.cloneNode(true));
 				baseItem.find("input[type=checkbox]").prop("value",optionName).prop("name",name).after(" " + optionName);
 
-				$(this).siblings("div.dynamic-result-div").append(baseItem); //attach baseItem
+				$(this).siblings(".dynamic-result-div").append(baseItem); //attach baseItem
 
 				$(this).val("");//reset value
 			}	

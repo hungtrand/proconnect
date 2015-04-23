@@ -66,11 +66,13 @@ $FullName = "HELLLLO";
         </li>
     </template>
     <template id="ao-checkbox">
+        <li>
         <div class="checkbox">
             <label>
                <input type="checkbox" value="" checked> 
             </label>
         </div>
+    </li>
     </template>
     <!-- data-spy="affix" data-offset-top="200" data-offset-bottom="-200" -->
     <nav id="header-nav" class="navbar navbar-inverse navbar-fixed-top affix" >
@@ -107,12 +109,27 @@ $FullName = "HELLLLO";
                             <div id="advance-option-div" class="dropdown-menu well " role="options">
                                 <h3>Advance Search By:</h3>
                                 <div class="ao-outer">
-                                    <div id="ao-regular-div" >
+                                    <div>
                                         <div class="form-group">
                                             <label for="ao-education">Education</label> 
-                                            <div id="ao-education" class="dynamic-result-div">
-                                            </div> 
-                                            <input class="ao-add-option" type="text" placeholder="+ Add">
+                                            <div class="">
+                                                <ul id="ao-education" class="dynamic-result-div list-unstyled">
+                                                </ul> 
+                                                <input class="ao-add-option" type="text" placeholder="+ Add">
+                                            </div>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                </div>
+                                <div class="ao-outer">
+                                    <div>
+                                        <div class="form-group">
+                                            <label for="ao-education">School</label> 
+                                            <div>
+                                                <ul id="ao-school" class="dynamic-result-div list-unstyled">
+                                                </ul> 
+                                                <input class="ao-add-option" type="text" placeholder="+ Add">
+                                            </div>
                                         </div>
                                         <hr>
                                     </div>
