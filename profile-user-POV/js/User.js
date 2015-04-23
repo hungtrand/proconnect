@@ -198,7 +198,7 @@ User.prototype = {
 			var succeeded = false;
 			 // try{
 					that.temporaryData = JSON.parse(data);
-					console.log( that.temporaryData );
+					//console.log( that.temporaryData );
 					that.userData = that.temporaryData; 	//store as user data
 					succeeded = true;
 			// } catch (e){

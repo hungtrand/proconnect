@@ -64,6 +64,17 @@ try {
 		} else if (isset($_GET['accept'])) {
 			$conn->setAccepted(true);
 			if ($conn->update()) {
+				$notif = new Notification();
+				$notif->setUserID($CUserID);
+				$notif->setType("Connection");
+				$notif->setMessage($User->getName()." accepted your invitation.");
+				$notif->save();
+
+				$notifView = new NotificationView();
+				$notifView->setUserID($CUserID);
+				$notifView->setNotificationID($notif->getID());
+				$notifView->save();
+				
 				echo json_encode(['success'=>1]);
 			} else {
 				echo "Could not accept the invitation to connect.";

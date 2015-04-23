@@ -6,7 +6,7 @@ var NotificationGetter = (function() {
 
 			getResponse();																			  //query response right away
 
-			//var interval = window.setInterval(getResponse,timeBetweenEachAjax);						  //query a response
+			var interval = window.setInterval(getResponse,timeBetweenEachAjax);						  //query a response
 
 			function getResponse() {
 				$.ajax({
