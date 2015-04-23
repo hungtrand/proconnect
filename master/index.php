@@ -4,11 +4,9 @@
 *   the following variables can be used to inject contents into master
 */
 
-// initialize variables with default values
-$Title = "Proconnect";
-$ProfileImage = "/image/user_img.png";
-$FullName = "";
-$Content = "Content not loaded.";
+if (!isset($Title)) $Title = "Proconnect";
+if (!isset($ProfileImage)) $ProfileImage = "/image/user_img.png";
+if (!isset($Content)) $Content = "Content not loaded.";
 ?>
 
 <!DOCTYPE html>
@@ -139,7 +137,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                         <!-- User -->
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="<?=$ProfileImage?>" width="35" alt="Bill" class="img-circle" /> <?=$FullName?> <span class="caret"></span>
+                                <img src="<?=$ProfileImage?>" width="35" alt="<?=$FullName?>" class="img-circle" /> <?=$FullName?> <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="/profile-user-POV/">Profile</a>
@@ -401,7 +399,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                 <!-- extra div for emulating position:fixed of the menu -->
                 <div class="st-content-inner">
                     <div class="container-fluid">
-                        <?=$content?>
+                        <?=$Content?>
                     </div>
                 </div>
                 <!-- /st-content-inner -->

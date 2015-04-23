@@ -18,11 +18,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
     <meta name="author" content="">
 
     <title><?php echo $page_title; ?></title>
-<<<<<<< HEAD
-    <link rel="icon" type="image/png" href="/favicon.ico">
-=======
     <link rel="ICON" href="../image/proconnect/Tab_logo2.ico" type="image/ico" />
->>>>>>> Amy
     <script src="/lib/jquery/jquery-2.1.3.min.js"></script>
 
 
