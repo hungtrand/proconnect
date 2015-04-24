@@ -88,7 +88,7 @@
 
 								<div class="form-group">
 									<label for="confirmpassword">Confirm Password</label> <br />
-									<input class="form-control" id="confpassword" type="password" name="confpassword" placeholder="retype your password above" required>
+									<input class="form-control" id="confpassword" type="password" name="confpassword" placeholder="Retype your password above" required>
 								</div>
 
 								<!-- Invalid input alert -->
