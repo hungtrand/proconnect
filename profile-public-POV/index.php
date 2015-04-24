@@ -1,17 +1,16 @@
 <?php
-//error_reporting(E_ALL); // debug
-//ini_set("display_errors", 1); // debug
-// include '../signout/php/session_check_signout.php';
+// error_reporting(E_ALL); // debug
+// ini_set("display_errors", 1); // debug
+include '../signout/php/session_check_signout.php';
 
 $UData = json_decode($_SESSION['__USERDATA__'], true);
 $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 
 
-  $page_title = "Edit Profile"; //require for front end
-  include '../header/header.php';
+  $Title = "Edit Profile"; //require for front end
+  // include '../header/header.php';
+  ob_start();
 ?>
-
-    <div id="main-container" class="container-fluid">
       <div class="row">
           <div class="col col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
               <div class="well well-sm">
@@ -658,7 +657,13 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
       </div>
 
 
-    </div><!-- /main-container -->
+   
+
+<?php
+    $Content = ob_get_clean();
+    include $_SERVER["DOCUMENT_ROOT"]."/master/index.php";
+?>
+ <!-- </div>/main-container -->
 
     <!-- Custom styles for this template -->
     <link href="css/profile-user-POV.css" rel="stylesheet">
@@ -670,8 +675,3 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
     <script src="js/PublicUser.js"></script>
     <script src="js/init.js"></script>
     <!-- // <script src="js/profile-user-POV.js"></script> -->
-  </body>
-
-
-
-</html>

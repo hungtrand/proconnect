@@ -1,20 +1,25 @@
 <?php
-error_reporting(E_ALL); // debug
-ini_set("display_errors", 1); // debug
-/*include '../signout/php/session_check_signout.php';
+// error_reporting(E_ALL); // debug
+// ini_set("display_errors", 1); // debug
+// initialize variables with default values
+include '/signout/php/session_check_signout.php';
 
+session_start();
 $UData = json_decode($_SESSION['__USERDATA__'], true);
-$FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];*/
+$FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 
+$Title = "Feed - Proconnect";
+$ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
+$JobTitle = $UData['TITLE'];
 
-  $page_title = "Feeds"; //require for front end
-  include '../header/header.php';
+ob_start();
+
 ?>
     <link rel="stylesheet" type="text/css" href="../lib/lightbox/ekko-lightbox.min.css" />
     <link rel="stylesheet" type="text/css" href="../lib/lightbox/dark.css" />
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     
-    <div id="main-container" class="container">
+    
         <div class="row">
             <!-- Left main content -->
             <div class="col col-xs-12 col-sm-12 col-md-8 col-lg-8">
@@ -24,12 +29,12 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];*/
                             <div class="media">
                                 <div class="media-left">
                                     <a href="#">
-                                      <img class="media-object img-circle" style="object-fit: cover;" width="100px" height="100px" src="<?='/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE']?>" alt="...">
+                                      <img class="media-object img-circle" style="object-fit: cover;" width="100px" height="100px" src="<?=$ProfileImage?>" alt="...">
                                     </a>
                                 </div>
                                 <div class="media-body">
                                     <h4 class="media-heading txt-warning"><?=$FullName?></h4>
-                                    <em class="text-muted"><?=$UData['TITLE']?></em>
+                                    <em class="text-muted"><?=$JobTitle?></em>
                                 </div>
                             </div>
                         </div>
@@ -94,7 +99,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];*/
 
             <!-- Right suggestions column -->
             <!-- Blog Sidebar Widgets Column -->
-            <div id="fixed-right-section" class="col col-md-4 affix hidden-print hidden-xs hidden-sm" style="position: fixed;" role="complimentary" data-spy="affix" data-offset-top="200 ">
+            <!-- <div id="fixed-right-section" class="col col-md-4 affix hidden-print hidden-xs hidden-sm" style="position: fixed;" role="complimentary" data-spy="affix" data-offset-top="200 ">
                 <div class="well">
                     <h3 class="text-primary" style="overflow: auto;">Suggestions</h3>
                     <hr />
@@ -105,10 +110,9 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];*/
 
                     <div id="SuggestionsListEndAlert" class="alert alert-info hidden text-center"></div>
                 </div>
-            </div>
+            </div> -->
         </div>
         
-    </div><!-- /main-container -->
 
     <script type="text/template" id="SuggestionTemplate">
     <div class="NewUserConnection" class="col col-xs-12">
@@ -137,7 +141,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];*/
             <input type="hidden" class="FeedID" name="FeedID" value="" />
             <div class="media-left">
                 <a href="#">
-                  <img class="media-object creatorImage thumbnail" style="object-fit: cover;" width="100px" height="100px" src="{{CreatorImage}}" alt="{{UserName}}">
+                  <img class="media-object creatorImage img-circle" style="object-fit: cover;" width="100px" height="100px" src="{{CreatorImage}}" alt="{{UserName}}">
                 </a>
             </div>
             <div class="media-body well well-sm">
@@ -149,9 +153,9 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];*/
                             
                         </div>
 
-                         <div class="media-right media-middle">
+                         <div>
                             <a class="contentImageLink" data-toggle="lightbox" href="{{ImageURL}}">
-                              <img class="media-object contentImage thumbnail" style="max-height: 150px;" src=".{{ImageURL}}" />
+                              <img class="media-object contentImage thumbnail" style="max-width: 700px;" src=".{{ImageURL}}" />
                             </a>
                         </div>
                     </div>
@@ -168,6 +172,10 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];*/
         </div>
     </script>
 
+<?php
+    $Content = ob_get_clean();
+    include __DIR__."/../master/index.php";
+?>
     <script src="../connections/js/NewConnection.js"></script>
     <script src="../connections/js/SuggestionList.js"></script>
     <script src="../lib/js/FileUpload.js"></script>
@@ -177,8 +185,3 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];*/
     <script src="js/Feed.js"></script>
     <script src="js/FeedList.js"></script>
     <script src="js/index.js"></script>
-</body>
-
-
-
-</html>

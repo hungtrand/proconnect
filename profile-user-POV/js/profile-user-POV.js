@@ -90,6 +90,7 @@ $(document).ready(function() {
 		});
 	}
 
+<<<<<<< HEAD
 
 						// create an instance of the StatesCitiesList
 						 var sl = new StatesCitiesList();
@@ -108,7 +109,6 @@ $(document).ready(function() {
 						 sl.getCities('SC', function(cities_json) {
 							//console.log(cities_json);
 						 });
-
 
 	
 	//handle edit-form submition

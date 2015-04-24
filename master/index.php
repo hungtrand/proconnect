@@ -1,3 +1,14 @@
+<?php
+/** 
+*   master/index.php - This page will provide a consistent look across all pages; it provides the left navigation, top navigation, and blank content area.
+*   the following variables can be used to inject contents into master
+*/
+
+if (!isset($Title)) $Title = "Proconnect";
+if (!isset($ProfileImage)) $ProfileImage = "/image/user_img.png";
+if (!isset($Content)) $Content = "Content not loaded.";
+?>
+
 <!DOCTYPE html>
 <html class="st-layout ls-top-navbar ls-bottom-footer show-sidebar sidebar-l2" lang="en">
 <head>
@@ -6,7 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>ThemeKit</title>
+    <title><?=$Title?></title>
     <!-- Compressed Vendor BUNDLE
     Includes vendor (3rd party) styling such as the customized Bootstrap and other 3rd party libraries used for the current theme/module -->
     <link href="/master/css/vendor.min.css" rel="stylesheet">
@@ -66,7 +77,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                         <span class="icon-bar"></span>
                     </button>
                     <a href="#sidebar-chat" data-toggle="sidebar-menu" data-effect="st-effect-1" class="toggle pull-right visible-xs "><i class="fa fa-comments"></i></a>
-                    <a class="navbar-brand navbar-brand-primary hidden-xs" href="index.html">ThemeKit</a>
+                    <a class="navbar-brand navbar-brand-primary hidden-xs" href="/feed/">Proconnect</a>
                 </div>
                 <div class="collapse navbar-collapse" id="main-nav">
                     <ul class="nav navbar-nav hidden-xs">
@@ -125,15 +136,15 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                     <ul class="nav navbar-nav navbar-user">
                         <!-- User -->
                         <li class="dropdown">
-                            <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="images/people/50/guy-5.jpg" width="35" alt="Bill" class="img-circle" /> Bill <span class="caret"></span>
-                            </a> -->
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img style="object-fit: cover;" width="30px" height="30px" src="<?=$ProfileImage?>" alt="<?=$FullName?>" class="img-circle" /> <?=$FullName?> <span class="caret"></span>
+                            </a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="profile.html">Profile</a>
+                                <li><a href="/profile-user-POV/">Profile</a>
                                 </li>
-                                <li><a href="messages.html">Messages</a>
+                                <li><a href="/message/">Messages</a>
                                 </li>
-                                <li><a href="login.html">Logout</a>
+                                <li><a href="/signout/php/session_signout.php">Logout</a>
                                 </li>
                             </ul>
                         </li>
@@ -187,15 +198,15 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                             </li>
                         </ul>
                     </li>
-                    <li class=""><a href="profile.html"><i class="icon-user-1"></i> <span>Profile</span></a>
+                    <li class=""><a href="/profile-user-POV/"><i class="icon-user-1"></i> <span>Profile</span></a>
                     </li>
-                    <li class=""><a href="users.html"><i class="fa fa-group"></i> <span>Users</span></a>
+                    <li class=""><a href="/connections/"><i class="fa fa-group"></i> <span>Connections</span></a>
                     </li>
-                    <li class=""><a href="messages.html"><i class="icon-comment-fill-1"></i> <span>Messages</span></a>
+                    <li class=""><a href="/message/"><i class="icon-comment-fill-1"></i> <span>Messages</span></a>
                     </li>
-                    <li><a href="login.html"><i class="icon-lock-fill"></i> <span>Login</span></a>
+                    <li><a href="/login/"><i class="icon-lock-fill"></i> <span>Login</span></a>
                     </li>
-                    <li class="hasSubmenu">
+                    <!-- <li class="hasSubmenu">
                         <a href="#components"><i class="icon-paint-brushes"></i> <span>UI Components</span></a>
                         <ul id="components">
                             <li><a href="essential-buttons.html"><i class="fa fa-circle-o"></i> <span>Buttons</span></a>
@@ -213,9 +224,9 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                             <li><a href="essential-tabs.html"><i class="fa fa-circle-o"></i> <span>Tabs</span></a>
                             </li>
                         </ul>
-                    </li>
+                    </li> -->
                     <!-- Sample 2 Level Collapse -->
-                    <li class="hasSubmenu">
+                    <!-- <li class="hasSubmenu">
                         <a href="#submenu"><i class="fa fa-chevron-circle-down"></i> <span>Collapse</span></a>
                         <ul id="submenu">
                             <li class="hasSubmenu">
@@ -228,7 +239,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                             <li><a href="#"><i class="fa fa-circle-o"></i> Regular Link</a>
                             </li>
                         </ul>
-                    </li>
+                    </li> -->
                 </ul>
                 <h4 class="category border top">News Feeds</h4>
                 <div class="sidebar-block">
@@ -325,166 +336,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                     <li><a href="#" data-target=".offline">Offline</a>
                     </li>
                 </ul>
-                <div class="split-vertical-body">
-                    <div class="split-vertical-cell">
-                        <div data-scrollable>
-                            <!-- <ul class="chat-contacts">
-                                <li class="online" data-user-id="1">
-                                    <a href="#">
-                                        <div class="media">
-                                            <div class="pull-left">
-                                                <span class="status"></span>
-                                                <img src="images/people/110/guy-6.jpg" width="40" class="img-circle" />
-                                            </div>
-                                            <div class="media-body">
-                                                <div class="contact-name">Jonathan S.</div>
-                                                <small>"Free Today"</small>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="online away" data-user-id="2">
-                                    <a href="#">
-                                        <div class="media">
-                                            <div class="pull-left">
-                                                <span class="status"></span>
-                                                <img src="images/people/110/woman-5.jpg" width="40" class="img-circle" />
-                                            </div>
-                                            <div class="media-body">
-                                                <div class="contact-name">Mary A.</div>
-                                                <small>"Feeling Groovy"</small>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="online" data-user-id="3">
-                                    <a href="#">
-                                        <div class="media">
-                                            <div class="pull-left ">
-                                                <span class="status"></span>
-                                                <img src="images/people/110/guy-3.jpg" width="40" class="img-circle" />
-                                            </div>
-                                            <div class="media-body">
-                                                <div class="contact-name">Adrian D.</div>
-                                                <small>Busy</small>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="offline" data-user-id="4">
-                                    <a href="#">
-                                        <div class="media">
-                                            <div class="pull-left">
-                                                <img src="images/people/110/woman-6.jpg" width="40" class="img-circle" />
-                                            </div>
-                                            <div class="media-body">
-                                                <div class="contact-name">Michelle S.</div>
-                                                <small>Offline</small>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="offline" data-user-id="5">
-                                    <a href="#">
-                                        <div class="media">
-                                            <div class="pull-left">
-                                                <img src="images/people/110/woman-7.jpg" width="40" class="img-circle" />
-                                            </div>
-                                            <div class="media-body">
-                                                <div class="contact-name">Daniele A.</div>
-                                                <small>Offline</small>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="online" data-user-id="6">
-                                    <a href="#">
-                                        <div class="media">
-                                            <div class="pull-left">
-                                                <span class="status"></span>
-                                                <img src="images/people/110/guy-4.jpg" width="40" class="img-circle" />
-                                            </div>
-                                            <div class="media-body">
-                                                <div class="contact-name">Jake F.</div>
-                                                <small>Busy</small>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="online away" data-user-id="7">
-                                    <a href="#">
-                                        <div class="media">
-                                            <div class="pull-left">
-                                                <span class="status"></span>
-                                                <img src="images/people/110/woman-6.jpg" width="40" class="img-circle" />
-                                            </div>
-                                            <div class="media-body">
-                                                <div class="contact-name">Jane A.</div>
-                                                <small>"Custom Status"</small>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="offline" data-user-id="8">
-                                    <a href="#">
-                                        <div class="media">
-                                            <div class="pull-left">
-                                                <span class="status"></span>
-                                                <img src="images/people/110/woman-8.jpg" width="40" class="img-circle" />
-                                            </div>
-                                            <div class="media-body">
-                                                <div class="contact-name">Sabine J.</div>
-                                                <small>"Offline right now"</small>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="online away" data-user-id="9">
-                                    <a href="#">
-                                        <div class="media">
-                                            <div class="pull-left">
-                                                <span class="status"></span>
-                                                <img src="images/people/110/woman-9.jpg" width="40" class="img-circle" />
-                                            </div>
-                                            <div class="media-body">
-                                                <div class="contact-name">Danny B.</div>
-                                                <small>Be Right Back</small>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="online" data-user-id="10">
-                                    <a href="#">
-                                        <div class="media">
-                                            <div class="pull-left">
-                                                <span class="status"></span>
-                                                <img src="images/people/110/woman-8.jpg" width="40" class="img-circle" />
-                                            </div>
-                                            <div class="media-body">
-                                                <div class="contact-name">Elise J.</div>
-                                                <small>My Status</small>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="online" data-user-id="11">
-                                    <a href="#">
-                                        <div class="media">
-                                            <div class="pull-left">
-                                                <span class="status"></span>
-                                                <img src="images/people/110/guy-3.jpg" width="40" class="img-circle" />
-                                            </div>
-                                            <div class="media-body">
-                                                <div class="contact-name">John J.</div>
-                                                <small>My Status #1</small>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul> -->
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
         <script id="chat-window-template" type="text/x-handlebars-template">
@@ -547,7 +399,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                 <!-- extra div for emulating position:fixed of the menu -->
                 <div class="st-content-inner">
                     <div class="container-fluid">
-                        <?=$content?>
+                        <?=$Content?>
                     </div>
                 </div>
                 <!-- /st-content-inner -->
@@ -557,7 +409,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!-- /st-pusher -->
         <!-- Footer -->
         <footer class="footer">
-            <strong>ThemeKit</strong> v3.6.3 &copy; Copyright 2015
+            <strong>ProConnect</strong> Quorious Design &copy; Copyright 2015
         </footer>
         <!-- // Footer -->
     </div>
