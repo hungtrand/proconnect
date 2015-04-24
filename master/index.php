@@ -18,6 +18,7 @@ if (!isset($Content)) $Content = "Content not loaded.";
     <meta name="description" content="">
     <meta name="author" content="">
     <title><?=$Title?></title>
+	 <link rel="ICON" href="../image/proconnect/Tab_logo2.ico" type="image/ico" />
     <!-- Compressed Vendor BUNDLE
     Includes vendor (3rd party) styling such as the customized Bootstrap and other 3rd party libraries used for the current theme/module -->
     <link href="/master/css/vendor.min.css" rel="stylesheet">
@@ -77,7 +78,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                         <span class="icon-bar"></span>
                     </button>
                     <a href="#sidebar-chat" data-toggle="sidebar-menu" data-effect="st-effect-1" class="toggle pull-right visible-xs "><i class="fa fa-comments"></i></a>
-                    <a class="navbar-brand navbar-brand-primary hidden-xs" href="/feed/">Proconnect</a>
+                    <a class="navbar-brand navbar-brand-info hidden-xs" href="/feed/" style= "background-color: #4687CE;"><img width="150px" src="../image/proconnect/logo_text.png" alt="ProConnect" style = "margin-top: -5px;"/></a>
                 </div>
                 <div class="collapse navbar-collapse" id="main-nav">
                     <ul class="nav navbar-nav hidden-xs">
@@ -144,7 +145,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                                 </li>
                                 <li><a href="/message/">Messages</a>
                                 </li>
-                                <li><a href="/signout/php/session_signout.php">Logout</a>
+                                <li><a href="/signout/php/session_signout.php">Sign Out</a>
                                 </li>
                             </ul>
                         </li>
@@ -157,6 +158,8 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                                 <input type="text" class="form-control" placeholder="Search a friend">
                             </div>
                         </div>
+						<!-- Color bar -->
+						 <!--
                         <div class="pull-left visible-md visible-lg" data-toggle="tooltip" data-placement="bottom" title="A few Color Examples. Download includes CSS Files for all color examples & the tools to Generate any Color combination. This Color-Switcher is for previewing purposes only.">
                             <ul class="skins">
                                 <li><span data-file="theme-bundle" data-skin="default" style="background: #16ae9f "></span>
@@ -170,7 +173,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                                 <li><span data-file="skin-brown" data-skin="brown" style="background: #c3a961 "></span>
                                 </li>
                             </ul>
-                        </div>
+                        </div>-->
                     </form>
                     <ul class="nav navbar-nav navbar-right hidden-xs">
                         <li class="pull-right">
@@ -183,12 +186,11 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
             </div>
         </div>
         <!-- Sidebar component with st-effect-1 (set on the toggle button within the navbar) -->
-        <div class="sidebar left sidebar-size-2 sidebar-offset-0 sidebar-visible-desktop sidebar-visible-mobile sidebar-skin-dark" id="sidebar-menu" data-type="collapse">
+        <div class="sidebar left sidebar-size-2 sidebar-offset-0 sidebar-visible-desktop sidebar-visible-mobile sidebar-skin-white-blue" id="sidebar-menu" data-type="collapse">
             <div data-scrollable>
                 <ul class="sidebar-menu">
-                    <li><a href="../../index.html"><i class="icon-paint-brush"></i> <span>Themes</span></a>
-                    </li>
                     <li class="category">Navigation</li>
+					<!--
                     <li class="hasSubmenu">
                         <a href="#timeline"><i class="icon-ship-wheel"></i> <span>Timeline</span></a>
                         <ul id="timeline">
@@ -197,14 +199,14 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                             <li><a href="timeline-list.html"><i class="fa fa-circle-o"></i> <span>Listing</span></a>
                             </li>
                         </ul>
-                    </li>
+                    </li>-->
                     <li class=""><a href="/profile-user-POV/"><i class="icon-user-1"></i> <span>Profile</span></a>
                     </li>
                     <li class=""><a href="/connections/"><i class="fa fa-group"></i> <span>Connections</span></a>
                     </li>
                     <li class=""><a href="/message/"><i class="icon-comment-fill-1"></i> <span>Messages</span></a>
                     </li>
-                    <li><a href="/login/"><i class="icon-lock-fill"></i> <span>Login</span></a>
+                    <li><a href="/signout/php/session_signout.php"><i class="icon-lock-fill"></i> <span>Sign Out</span></a>
                     </li>
                     <!-- <li class="hasSubmenu">
                         <a href="#components"><i class="icon-paint-brushes"></i> <span>UI Components</span></a>
@@ -422,7 +424,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
         "warning-color": "#f0ad4e",
         "inverse-color": "#2c3e50",
         "info-color": "#2d7cb5",
-        "default-color": "#6e7882",
+        "default-color": "#4687ce",
         "default-light-color": "#cfd9db",
         "purple-color": "#9D8AC7",
         "mustard-color": "#d4d171",
@@ -433,7 +435,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
         theme: "social-1",
         skins: {
             "default": {
-                "primary-color": "#16ae9f"
+                "primary-color": "#4687ce"
             },
             "orange": {
                 "primary-color": "#e74c3c"

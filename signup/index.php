@@ -16,10 +16,7 @@
     <title>Sign Up for ProConnect</title>
 	<link rel="ICON" href="../image/proconnect/Tab_logo2.ico" type="image/ico" />
     <!-- Bootstrap core CSS -->
-    <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-  
-    
+    <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">  
     <!-- JQuery link -->
     <script src="../lib/jquery/jquery-2.1.3.min.js"></script>
 

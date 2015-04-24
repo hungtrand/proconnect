@@ -90,7 +90,7 @@ $(document).ready(function() {
 		});
 	}
 
-<<<<<<< HEAD
+
 
 						// create an instance of the StatesCitiesList
 						 var sl = new StatesCitiesList();

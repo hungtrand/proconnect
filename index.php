@@ -27,7 +27,11 @@
 
 	<link href="signup/css/signup.css" rel="stylesheet">
 	<link href="css/index.css" rel="stylesheet">
-	
+	<!-- JQuery link -->
+    <script src="lib/jquery/jquery-2.1.3.min.js"></script>
+	<!-- JavaScript link -->
+    <script type="text/javascript" src="signup/js/SignUpForm.js"></script>
+    <script type="text/javascript" src="signup/js/index.js"></script>
     <!-- Custom Fonts -->
     <link href="../lib/startbootstrap-stylish-portfolio-1.0.3/startbootstrap-stylish-portfolio-1.0.3/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
@@ -152,7 +156,7 @@
                     <hr class="small">
 					<div class="panel panel-default text-center">
 						<div class= "panel-body">
-							<form id="SignUpForm" action="php/user_signup.php" class="text-left" novalidate>
+							<form id="SignUpForm" action="signup/php/user_signup.php" class="text-left" novalidate>
 								<div class="form-group" style="overflow: auto;">
 									<div class="col-xs-6" style="padding: 0 5px 0 0">
 										<label for"first">First Name</label> <br />

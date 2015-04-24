@@ -29,4 +29,9 @@ padding-top: 30px;
 margin: auto auto;
 }
 .panel{
-width: initial;}
+width: initial;
+  box-shadow: none;
+  border-color: #e2e9e6;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 0;}
