@@ -214,7 +214,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                   <div id="summary-description" class="normal-view" > 
                     <div class="editable" for="summary-edit">
                       <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                      <pre id="user-summary"></pre>
+                      <div id="user-summary"></div>
                     </div>
                   </div>
                   <div id="summary-edit" class="edit-view" action="php/Education_controller.php" >
@@ -681,15 +681,18 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 <!-- Custom styles for this template -->
     <link href="css/profile-user-POV.css" rel="stylesheet">
     <!-- Custom modal handler -->
-    // <script src="../js/bootbox.min.js"></script>
+    <script src="../js/bootbox.min.js"></script>
+
     <!-- Sortable script -->
     <script src="../js/jquery.sortable.min.js"></script>
     <!-- Custom Script -->
+    <script src="../lib/ckeditor/ckeditor.js"></script>
+    <script src="../lib/js/FileUpload.js"></script>
+    <script src="/lib/js/StatesCitiesList.js"></script>
     <script src="js/User.js"></script>
     <script src="js/profile-user-POV.js"></script>
-    <script src="../lib/js/FileUpload.js"></script>
     <script src="js/ProfileImageUploader.js"></script>
-    <script src="/lib/js/StatesCitiesList.js"></script>
+
 
 
 
