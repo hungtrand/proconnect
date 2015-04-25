@@ -189,14 +189,8 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                     <li><a href="../../index.html"><i class="icon-paint-brush"></i> <span>Themes</span></a>
                     </li>
                     <li class="category">Navigation</li>
-                    <li class="hasSubmenu">
-                        <a href="#timeline"><i class="icon-ship-wheel"></i> <span>Timeline</span></a>
-                        <ul id="timeline">
-                            <li><a href="index.html"><i class="fa fa-circle-o"></i> <span>Blocks</span></a>
-                            </li>
-                            <li><a href="timeline-list.html"><i class="fa fa-circle-o"></i> <span>Listing</span></a>
-                            </li>
-                        </ul>
+                    <li class="">
+                        <a href="/feed/"><i class="icon-ship-wheel"></i> <span>Feed</span></a>
                     </li>
                     <li class=""><a href="/profile-user-POV/"><i class="icon-user-1"></i> <span>Profile</span></a>
                     </li>
@@ -204,7 +198,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                     </li>
                     <li class=""><a href="/message/"><i class="icon-comment-fill-1"></i> <span>Messages</span></a>
                     </li>
-                    <li><a href="/login/"><i class="icon-lock-fill"></i> <span>Login</span></a>
+                    <li><a href="/signout/php/session_signout.php"><i class="icon-lock-fill"></i> <span>Logout</span></a>
                     </li>
                     <!-- <li class="hasSubmenu">
                         <a href="#components"><i class="icon-paint-brushes"></i> <span>UI Components</span></a>

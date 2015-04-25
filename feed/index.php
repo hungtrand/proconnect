@@ -94,7 +94,7 @@ ob_start();
 
                 </div>
 
-                <div id="FeedListEndAlert" class="alert alert-info hidden text-center" style="margin: 50px 20px;"></div>
+                <div id="FeedListEndAlert" class="alert alert-info text-center" style="margin: 50px 20px; display:none;"></div>
             </div>
 
             <!-- Right suggestions column -->

@@ -1,11 +1,12 @@
 function FeedList(container) {
 	this.data = [];
 	this.unreadCache = [];
+	this.busy = false;
 
 	this.container = container;
 	this.page = 0;
 	this.Alert;
-	this.waitingGif = $('<div class="text-center hidden waitingGif"><img src="/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif" alt="Loading..."/></div>');
+	this.waitingGif = $('<div class="text-center waitingGif"><img src="/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif" alt="Loading..."/></div>');
 
 	this.init();
 }
@@ -38,15 +39,13 @@ FeedList.prototype = {
 		}).done(function(json) {
 			try {
 				json = $.parseJSON(json);
-				callback(json);
 			} catch (e) {
-				that.showAlert(json, "info");
-				if (json.indexOf('End') > -1) that.page = -1;
+				console.log(e);
 			}
 
-			that.container.find('.waitingGif').remove();
+			callback(json);
 		}).fail(function() {
-			that.showAlert("Network or Server Error Occured", "danger");
+			that.showAlert("Network or Server Error Occurred", "danger");
 		});
 	},
 
@@ -59,7 +58,7 @@ FeedList.prototype = {
 		}
 
 		that.fetch(function(json) {
-			if (json.length < 1 ) return false;
+			if (typeof json == 'string') return false;
 
 			for (var i = 0, l = json.length; i < l; i++) {
 				that.unreadCache.push(json[i]);
@@ -86,7 +85,7 @@ FeedList.prototype = {
 		that.container.append(that.waitingGif);
 
 		that.page = 1;
-		that.Alert.toggleClass('hidden', true);
+		that.Alert.slideUp(700);
 		that.container.html('');
 
 		that.fetch(function(jsonData) {
@@ -97,20 +96,38 @@ FeedList.prototype = {
 
 	next: function() {
 		var that = this;
+		if (that.busy) return false;
 		if (that.page == -1) {
 			that.showAlert('End of results', 'info');
 			return false;
 		}
-		
+
+		that.busy = true;
 		that.page++;
-		that.showAlert(that.waitingGif, "info");
+		that.showAlert(that.waitingGif, "default");
 
 		that.fetch(function(jsonData) {
-			that.appendView(jsonData, true);
+			if (typeof jsonData	== 'string') {
+				that.showAlert(jsonData, 'danger');
+				if (jsonData.indexOf('End') > -1) that.page = -1;
+			}
+			else {
+				setTimeout(function() {
+					that.appendView(jsonData, true);
+					that.busy = false;
+				}, 2000);
+			}
 		});
+		
+		
 	},
 
 	appendView: function(json, older) {
+		if (typeof json == 'string') {
+			showAlert('You are up to date.');
+			return false;
+		}
+
 		var that = this;
 
 		for (var i = json.length, l=-1; i > l; i--) {
@@ -133,18 +150,24 @@ FeedList.prototype = {
 		that.Alert.html(msg);
 		switch(type) {
 			case 'success':
-				that.Alert.attr('class', 'alert alert-success').slideDown();
+				that.Alert.attr('class', 'alert alert-success');
 			break;
 			case 'danger':
-				that.Alert.attr('class', 'alert alert-danger').slideDown();
+				that.Alert.attr('class', 'alert alert-danger');
+			break;
+			case 'info':
+				that.Alert.attr('class', 'alert alert-info');
+				break;
 			default:
-				that.Alert.attr('class', 'alert alert-info').slideDown();
+				that.Alert.attr('class', 'alert alert-default');
 				
 		}
 
+		that.Alert.slideDown();
+
 		$(document).one('click', function() {
 			setTimeout(function() {
-				that.Alert.attr('class', 'alert alert-info').fadeOut(1000);
+				that.Alert.attr('class', 'alert alert-info').slideUp(500);
 			}, 2000);
 		});
 		
