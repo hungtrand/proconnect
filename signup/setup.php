@@ -34,7 +34,7 @@
 	<!-- Compressed Vendor BUNDLE-->
     <link href="../social-1/css/vendor.min.css" rel="stylesheet">
 	<!-- Compressed Theme BUNDLE-->
-	<link href="../social-1/css/theme-core.min.css" rel="stylesheet">
+	<!--<link href="../social-1/css/theme-core.min.css" rel="stylesheet">-->
 	<!-- Standalone Modules-->
 	<link href="../social-1/css/module-essentials.min.css" rel="stylesheet" />
     <link href="../social-1/css/module-layout.min.css" rel="stylesheet" />
@@ -61,11 +61,9 @@
 </head>
 
 <body class = "login">
-	<div id="content">
-		<div class="container-fluid">
-			
+		<div class="container-fluid">		
 			<div class="row">
-				<div class ="lock-container formContainer col col-xs-12 col-sm-10 col-md-4 col-lg-4 col-sm-offset-1 col-md-offset-4 col-lg-offset-4">
+				<div class =" lock-container formContainer col col-xs-12 col-sm-10 col-md-4 col-lg-4 col-sm-offset-1 col-md-offset-4 col-lg-offset-4">
 					<header class="text-center"><a href= "../"><img id= "logo" src = "../image/proconnect/logo_text.png"></a></header>
 					<div class="panel panel-default text-center">
 						<div class= "panel-body">
@@ -169,9 +167,8 @@
 									  <!--Time Period-->
 									<div class="form-group">
 									  <label class="control-label" for="timePeriod">Time period</label>
-									  <div class="row">
-										<div class="col-md-5">
-										<select class="form-control" id= "start-yearpicker-seeker" name="start-year-seeker" required>
+										<div class="controls">
+										<select class="form-control select-inline" id= "start-yearpicker-seeker" name="start-year-seeker" required>
 												<option value="" selected>-</option>
 												<option value="2015">2015</option><option value="2014">2014</option><option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option><option value="2009">2009</option><option value="2008">2008</option><option value="2007">2007</option><option value="2006">2006</option><option value="2005">2005</option><option value="2004">2004</option><option value="2003">2003</option><option value="2002">2002</option><option value="2001">2001</option><option value="2000">2000</option>
 												<option value="1999">1999</option><option value="1998">1998</option><option value="1997">1997</option><option value="1996">1996</option><option value="1995">1995</option><option value="1994">1994</option><option value="1993">1993</option><option value="1992">1992</option><option value="1991">1991</option><option value="1990">1990</option>
@@ -180,11 +177,11 @@
 												<option value="1969">1969</option><option value="1968">1968</option><option value="1967">1967</option><option value="1966">1966</option><option value="1965">1965</option><option value="1964">1964</option><option value="1963">1963</option><option value="1962">1962</option><option value="1961">1961</option><option value="1960">1960</option>
 												<option value="1959">1959</option><option value="1958">1958</option><option value="1957">1957</option><option value="1956">1956</option><option value="1955">1955</option><option value="1954">1954</option><option value="1953">1953</option><option value="1952">1952</option><option value="1951">1951</option>
 										</select>
-										</div>
-										<div class="col-md-2 text-center">to </div>
 										
-										  <div class="col-md-5">
-										<select class="form-control" id= "end-yearpicker-seeker" name="end-year-seeker"  required>
+										to
+										
+										 
+										<select class="form-control select-inline" id= "end-yearpicker-seeker" name="end-year-seeker"  required>
 												<option value="" selected>-</option>
 												<option value="2015">2015</option><option value="2014">2014</option><option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option><option value="2009">2009</option><option value="2008">2008</option><option value="2007">2007</option><option value="2006">2006</option><option value="2005">2005</option><option value="2004">2004</option><option value="2003">2003</option><option value="2002">2002</option><option value="2001">2001</option><option value="2000">2000</option>
 												<option value="1999">1999</option><option value="1998">1998</option><option value="1997">1997</option><option value="1996">1996</option><option value="1995">1995</option><option value="1994">1994</option><option value="1993">1993</option><option value="1992">1992</option><option value="1991">1991</option><option value="1990">1990</option>
@@ -194,9 +191,8 @@
 												<option value="1959">1959</option><option value="1958">1958</option><option value="1957">1957</option><option value="1956">1956</option><option value="1955">1955</option><option value="1954">1954</option><option value="1953">1953</option><option value="1952">1952</option><option value="1951">1951</option>
 										</select>
 										</div>
-									  </div>
 									</div>
-								</div>	
+								</div>
 								<!--For Students-->
 								<div id= "studentSelection" style= "display:none;">
 									<!--School/University -->
@@ -210,9 +206,9 @@
 									<!--Time Period-->
 									<div class="form-group">
 									  <label class="control-label" for="timePeriod">Time period</label>
-									  <div class="row">
-										<div class="col-md-5">
-										<select class="form-control" id= "start-yearpicker-student" name="start-year-student" required>
+									  
+										<div class="controls">
+										<select class="form-control select-inline" id= "start-yearpicker-student" name="start-year-student" required>
 												<option value="" selected>-</option>
 												<option value="2015">2015</option><option value="2014">2014</option><option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option><option value="2009">2009</option><option value="2008">2008</option><option value="2007">2007</option><option value="2006">2006</option><option value="2005">2005</option><option value="2004">2004</option><option value="2003">2003</option><option value="2002">2002</option><option value="2001">2001</option><option value="2000">2000</option>
 												<option value="1999">1999</option><option value="1998">1998</option><option value="1997">1997</option><option value="1996">1996</option><option value="1995">1995</option><option value="1994">1994</option><option value="1993">1993</option><option value="1992">1992</option><option value="1991">1991</option><option value="1990">1990</option>
@@ -221,11 +217,11 @@
 												<option value="1969">1969</option><option value="1968">1968</option><option value="1967">1967</option><option value="1966">1966</option><option value="1965">1965</option><option value="1964">1964</option><option value="1963">1963</option><option value="1962">1962</option><option value="1961">1961</option><option value="1960">1960</option>
 												<option value="1959">1959</option><option value="1958">1958</option><option value="1957">1957</option><option value="1956">1956</option><option value="1955">1955</option><option value="1954">1954</option><option value="1953">1953</option><option value="1952">1952</option><option value="1951">1951</option>
 										</select>
-										</div>
-										<div class="col-md-2 text-center">to </div>
 										
-										  <div class="col-md-5">
-										<select class="form-control" id= "end-yearpicker-student" name="end-year-student"  required>
+										to
+										
+										
+										<select class="form-control select-inline" id= "end-yearpicker-student" name="end-year-student"  required>
 												<option value="" selected>-</option>
 												<option value="2015">2015</option><option value="2014">2014</option><option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option><option value="2009">2009</option><option value="2008">2008</option><option value="2007">2007</option><option value="2006">2006</option><option value="2005">2005</option><option value="2004">2004</option><option value="2003">2003</option><option value="2002">2002</option><option value="2001">2001</option><option value="2000">2000</option>
 												<option value="1999">1999</option><option value="1998">1998</option><option value="1997">1997</option><option value="1996">1996</option><option value="1995">1995</option><option value="1994">1994</option><option value="1993">1993</option><option value="1992">1992</option><option value="1991">1991</option><option value="1990">1990</option>
@@ -234,7 +230,7 @@
 												<option value="1969">1969</option><option value="1968">1968</option><option value="1967">1967</option><option value="1966">1966</option><option value="1965">1965</option><option value="1964">1964</option><option value="1963">1963</option><option value="1962">1962</option><option value="1961">1961</option><option value="1960">1960</option>
 												<option value="1959">1959</option><option value="1958">1958</option><option value="1957">1957</option><option value="1956">1956</option><option value="1955">1955</option><option value="1954">1954</option><option value="1953">1953</option><option value="1952">1952</option><option value="1951">1951</option>
 										</select>
-										</div>
+										
 									  </div>
 									</div>
 								</div>
@@ -253,8 +249,98 @@
 						</div>
 					</div>	
 				 </div>
-			</div>
+
 		</div> <!-- /container -->
 	</div>
+		<!-- Footer -->
+  <footer class="footer">
+        <strong>ProConnect</strong> v1.0 &copy; Copyright 2015
+    </footer>
+    <!-- // Footer -->
+
+<!-- Inline Script for colors and config objects; used by various external scripts; -->
+    <script>
+    var colors = {
+        "danger-color": "#e74c3c",
+        "success-color": "#81b53e",
+        "warning-color": "#f0ad4e",
+        "inverse-color": "#2c3e50",
+        "info-color": "#2d7cb5",
+        "default-color": "#6e7882",
+        "default-light-color": "#cfd9db",
+        "purple-color": "#9D8AC7",
+        "mustard-color": "#d4d171",
+        "lightred-color": "#e15258",
+        "body-bg": "#f6f6f6"
+    };
+    var config = {
+        theme: "social-1",
+        skins: {
+            "default": {
+                "primary-color": "#16ae9f"
+            },
+            "orange": {
+                "primary-color": "#e74c3c"
+            },
+            "blue": {
+                "primary-color": "#4687ce"
+            },
+            "purple": {
+                "primary-color": "#af86b9"
+            },
+            "brown": {
+                "primary-color": "#c3a961"
+            }
+        }
+    };
+    </script>
+    <!-- Separate Vendor Script Bundles -->
+    <script src="../social-1/js/vendor-core.min.js"></script>
+    <script src="../social-1/js/vendor-tables.min.js"></script>
+    <script src="../social-1/js/vendor-forms.min.js"></script>
+    <!-- <script src="js/vendor-media.min.js"></script> -->
+    <!-- <script src="js/vendor-player.min.js"></script> -->
+    <!-- <script src="js/vendor-charts-all.min.js"></script> -->
+    <!-- <script src="js/vendor-charts-flot.min.js"></script> -->
+    <!-- <script src="js/vendor-charts-easy-pie.min.js"></script> -->
+    <!-- <script src="js/vendor-charts-morris.min.js"></script> -->
+    <!-- <script src="js/vendor-charts-sparkline.min.js"></script> -->
+    <script src="../social-1/js/vendor-maps.min.js"></script>
+    <!-- <script src="js/vendor-tree.min.js"></script> -->
+    <!-- <script src="js/vendor-nestable.min.js"></script> -->
+    <!-- <script src="js/vendor-angular.min.js"></script> -->
+    <!-- Compressed Vendor Scripts Bundle
+    Includes all of the 3rd party JavaScript libraries above.
+    The bundle was generated using modern frontend development tools that are provided with the package
+    To learn more about the development process, please refer to the documentation.
+    Do not use it simultaneously with the separate bundles above. -->
+    <!-- <script src="js/vendor-bundle-all.min.js"></script> -->
+    <!-- Compressed App Scripts Bundle
+    Includes Custom Application JavaScript used for the current theme/module;
+    Do not use it simultaneously with the standalone modules below. -->
+    <!-- <script src="js/module-bundle-main.min.js"></script> -->
+    <!-- Standalone Modules
+    As a convenience, we provide the entire UI framework broke down in separate modules
+    Some of the standalone modules may have not been used with the current theme/module
+    but ALL the modules are 100% compatible -->
+    <script src="../social-1/js/module-essentials.min.js"></script>
+    <script src="../social-1/js/module-layout.min.js"></script>
+    <script src="../social-1/js/module-sidebar.min.js"></script>
+    <!-- <script src="js/module-media.min.js"></script> -->
+    <!-- <script src="js/module-player.min.js"></script> -->
+    <script src="../social-1/js/module-timeline.min.js"></script>
+    <script src="../social-1/js/module-chat.min.js"></script>
+    <script src="../social-1/js/module-maps.min.js"></script>
+    <!-- <script src="js/module-charts-all.min.js"></script> -->
+    <!-- <script src="js/module-charts-flot.min.js"></script> -->
+    <!-- <script src="js/module-charts-easy-pie.min.js"></script> -->
+    <!-- <script src="js/module-charts-morris.min.js"></script> -->
+    <!-- <script src="js/module-charts-sparkline.min.js"></script> -->
+    <!-- [social-1] Core Theme Script:
+        Includes the custom JavaScript for this theme/module;
+        The file has to be loaded in addition to the UI modules above;
+        module-bundle-main.js already includes theme-core.js so this should be loaded
+        ONLY when using the standalone modules; -->
+    <script src="../social-1/js/theme-core.min.js"></script>
 </body>
 </html>

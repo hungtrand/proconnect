@@ -6,6 +6,11 @@
 <html lang="en">
 
 <head>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>World's Most Professional Connection Network</title>
+    <link rel="ICON" href="image/proconnect/Tab_logo2.ico" type="image/ico" />
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,8 +24,14 @@
 
     <!-- Custom CSS -->
     <link href="../lib/startbootstrap-stylish-portfolio-1.0.3/startbootstrap-stylish-portfolio-1.0.3/css/stylish-portfolio.css" rel="stylesheet">
+
+	<link href="signup/css/signup.css" rel="stylesheet">
 	<link href="css/index.css" rel="stylesheet">
-	
+	<!-- JQuery link -->
+    <script src="lib/jquery/jquery-2.1.3.min.js"></script>
+	<!-- JavaScript link -->
+    <script type="text/javascript" src="signup/js/SignUpForm.js"></script>
+    <script type="text/javascript" src="signup/js/index.js"></script>
     <!-- Custom Fonts -->
     <link href="../lib/startbootstrap-stylish-portfolio-1.0.3/startbootstrap-stylish-portfolio-1.0.3/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
@@ -41,12 +52,12 @@
 			<a href="../signin" class="btn" id="signin" >Sign In</a>
 		</div>
         <div class="text-vertical-center">
-			<img class= "hidden-xs "id= "logo" src = "../image/proconnect/ProConnect_black.png" width="400">
-			<img class= "hidden-sm hidden-md hidden-lg"id= "logo" src = "../image/proconnect/ProConnect_black.png" width="250">
+			<img class= "hidden-xs "id= "logo-main" src = "../image/proconnect/ProConnect_black.png" width="400">
+			<img class= "hidden-sm hidden-md hidden-lg"id= "logo-main" src = "../image/proconnect/ProConnect_black.png" width="250">
 		   <h3>Stay Connected With Your Profession</h3>
             <br>
-            <a href="../signup" class="btn btn-dark btn-lg">Get Started</a>
 			<a href="#about" class="btn btn-dark btn-lg">Learn More</a>
+			<a href="#signup" class="btn btn-dark btn-lg">Get Started</a>
         </div>
     </header>
 
@@ -65,7 +76,6 @@
     </section>
 
     <!-- Services -->
-    <!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->
     <section id="services" class="services bg-primary">
         <div class="container">
             <div class="row text-center">
@@ -126,9 +136,6 @@
                             </div>
                         </div>
                     </div>
-					<div>
-					            <a href="../signup" class="btn btn-light">Get Started</a>
-					</div>
                     <!-- /.row (nested) -->
                 </div>
                 <!-- /.col-lg-10 -->
@@ -137,18 +144,65 @@
         </div>
         <!-- /.container -->
     </section>
+ 
+    <section id="signup" class=  "bg-primary login" >
+		
+		<div class=  "login" >
+		<div class="container">
+			
+			<div class="row">
+				<div class ="text-center lock-container formContainer col col-xs-12 col-sm-10 col-md-4 col-lg-4 col-sm-offset-1 col-md-offset-4 col-lg-offset-4">		
+					<h2>Join Now</h2>
+                    <hr class="small">
+					<div class="panel panel-default text-center">
+						<div class= "panel-body">
+							<form id="SignUpForm" action="signup/php/user_signup.php" class="text-left" novalidate>
+								<div class="form-group" style="overflow: auto;">
+									<div class="col-xs-6" style="padding: 0 5px 0 0">
+										<label for"first">First Name</label> <br />
+										<input class="form-control" id="first" type="text" name="first" placeholder="First name" required> 
+									</div>
 
-  <!-- Map -->
-  <!--
-    <section id="contact" class="map">
-        <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3172.309237802998!2d-121.88107199999999!3d37.335187!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fccb864de43d5%3A0x397ffe721937340e!2sSan+Jos%C3%A9+State+University!5e0!3m2!1sen!2sus!4v1429696067595">
-        <br />
-        <small>
-            <a href="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3172.309237802998!2d-121.88107199999999!3d37.335187!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fccb864de43d5%3A0x397ffe721937340e!2sSan+Jos%C3%A9+State+University!5e0!3m2!1sen!2sus!4v1429696067595"></a>
-        </small>
-        </iframe>
+									<div class="col-xs-6" style="padding: 0 0 0 5px">
+										<label for"last">Last Name</label> <br />
+										<input class="form-control" id="last" type="text" name="last" placeholder="Last name" required>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="email">Email</label> <br />
+									<input class="form-control" id="email" type="email" name="email" placeholder="professional@proconnect.com" required>
+								</div>
+
+								<div class="form-group">
+									<label for="password">Password</label> <br />
+									<input class="form-control" id="password" type="password" name="password" placeholder="6 or more characters" required>
+								</div>
+
+								<div class="form-group">
+									<label for="confirmpassword">Confirm Password</label> <br />
+									<input class="form-control" id="confpassword" type="password" name="confpassword" placeholder="Retype your password above" required>
+								</div>
+
+								<!-- Invalid input alert -->
+								<div class="form-group">
+									<div class="alert alert-danger text-center" role="alert" style="display: none; margin-top: 10px;"><b>Invalid Input :</b> Please correct the marked field(s)</div>
+								</div>
+
+								<div class="form-group text-center">
+									<button class="btn btn-info btn-block" id = "signup-btn"type="submit"><b>Join now</b></button>
+									<br />
+									<p class="text-center"><a href="../signin/">Already a member? Sign in.</a>
+								</div>
+
+							</form>
+						</div>
+					</div>
+				 </div>
+			</div>
+		</div> <!-- /container -->
+	</div>
     </section> 
--->
 
     <!-- Footer -->
     <footer>
