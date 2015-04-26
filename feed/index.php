@@ -44,7 +44,7 @@ ob_start();
 
         <div class="row">
             <!-- Left main content -->
-            <div class="col col-xs-12 col-sm-12 col-md-8 col-lg-8">
+            <div class="col col-xs-12 col-sm-12 col-md-9 col-lg-9">
                 <!-- <div id="SelfSection" class="well well-sm">
                     <div id="UserStats" class="row">
                         <div id="ProfileCard" class="col col-xs-12 col-sm-6">
@@ -86,14 +86,22 @@ ob_start();
                             </div>
 
                             <div class="form-group">
+                                <div class="input-group" style="display:none;">
+                                    <span class="input-group-addon">YouTube Link</span>
+                                    <input type="text" class="form-control" id="YouTubeURL" name="YouTubeURL" placeholder="Past YouTube URL here" value="" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <a id="btnAttachImg" class="btn btn-default btnAttachImg"><span class="glyphicon glyphicon-picture"></span></a>
+                                &nbsp;&nbsp;
+                                <a id="btnYouTube" class="btn btn-default btnYouTube"><i class="fa fa-youtube" style="font-size: 18px;"></i></a>
                                 <button id="btnSharePost" class="btn btn-primary pull-right">Share</button>
                                 <hr/>
                                 <div class="hiddenInputs">
                                     <input type="file" class="hidden" id="FeedImage" name="FeedImage" /><!-- temp image / not yet uploaded -->
                                     <!-- uploaded image link only populate when upload then reset after sumission -->
                                     <input type="text" class="hidden" id="ImageURL" name="ImageURL" value="" />
-
                                     <div id="AlertNewPost" class="alert alert-info" style="display: none;"></div>
                                     
                                 </div>
@@ -112,9 +120,9 @@ ob_start();
                     </div>
                 </div>
 
-                <div id="FeedsSection">
+                <ul id="FeedsSection" class="timeline-list">
 
-                </div>
+                </ul>
 
                 <div id="FeedListEndAlert" class="alert alert-info text-center" style="margin: 50px 20px; display:none;"></div>
             </div>
@@ -134,60 +142,69 @@ ob_start();
                 </div>
             </div> -->
 
+
             <!--<div class="affix hidden-print hidden-xs hidden-sm text-right" 
                 style="position: fixed; width: 400px; right: 30px; top: 50px;" role="complimentary" data-spy="affix" data-offset-top="50">
                 <label class="text-default">People You may know...</label>
                 <ul id="SuggListing" class="nav text-right">
                 </ul>
             </div>-->
+
         </div>
 
     <script type="text/template" id="FeedTemplate">
-        <div class="media feed">
+        <li class="media media-clearfix-xs feed">
             <input type="hidden" class="FeedID" name="FeedID" value="" />
             <div class="media-left">
-                <a href="#">
-                  <img class="media-object creatorImage img-circle" style="object-fit: cover;" width="100px" height="100px" src="{{CreatorImage}}" alt="{{UserName}}">
-                </a>
+                <div class="user-wrapper">
+                    <img src="{{CreatorImage}}" alt="people" style="object-fit: cover; margin-left: 20px;"
+                    class="img-circle media-object creatorImage" width="80" height="80" />
+                    <div><a href="#" class="AuthorLink">{{UserName}}</a>
+                    </div>
+                    <div class="date">19 OCT</div>
+                </div>
             </div>
-            <div class="media-body well well-sm">
-                <h4 class="media-heading contentHeading">{{User}} shared: </h4>
-                <hr />
-                <div class="feed-content">
-                    <div class="media">
-                        <div class="media-body contentMessage">
-                            
-                        </div>
+            <div class="media-body">
+                <div class="media-body-wrapper">
+                    <div class="row">
+                        <div class="col-md-10 col-lg-8">
+                            <div class="panel panel-default share clearfix-xs">
+                                <div class="panel-heading panel-heading-gray title contentHeading">
+                                    What&acute;s new
+                                </div>
+                                <div class="panel-body feed-content">
+                                    <div class="contentMessage"></div>
+                                    <div>
+                                        <a class="contentImageLink" data-toggle="lightbox" href="{{ImageURL}}">
+                                          <img class="media-object contentImage thumbnail" style="max-width: 700px;" src=".{{ImageURL}}" />
+                                        </a>
+                                    </div>
 
-                         <div>
-                            <a class="contentImageLink" data-toggle="lightbox" href="{{ImageURL}}">
-                              <img class="media-object contentImage thumbnail" style="max-width: 700px;" src=".{{ImageURL}}" />
-                            </a>
+                                    <div>
+                                        <iframe class="YouTubeFrame" width="560" height="315" src="https://www.youtube.com/embed/{{YouTubeID}}" frameborder="0" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                                <div class="panel-footer">
+                                    <a href="#" class="feedLike"><i class="fa fa-thumbs-o-up">&nbsp;Like</i></a>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a href="#" class="feedComment"><i class="fa fa-comment"></i>&nbsp;Comment</a>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a href="#" class="feedShare"><i class="fa fa-share-alt"></i>&nbsp;Share</a>
+                                    <button type="submit" class="btn btn-primary btn-xs pull-right display-none" href="#">Post</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="feed-actions">
-                    <ul class="nav nav-pills">
-                        <li role="presentation"><a class="feedLike" href="#">Like</a></li>
-                        <li role="presentation"><a class="feedComment" href="#">Comment</a></li>
-                        <li role="presentation"><a class="feedShare" href="#">Share</a></li>
-                    </ul>
+                    <div class="clearfix"></div>
                 </div>
             </div>
-        </div>
+        </li>
     </script>
-
-<?php
-    include_once __DIR__."/../ComponentTemplates/ConnectionSuggestionTemplate.html";
-?>
 
 <?php
     $Content = ob_get_clean();
     include __DIR__."/../master/index.php";
 ?>
-    <script src="../connections/js/NewConnection.js"></script>
-    <script src="../connections/js/SuggestionList.js"></script>
     <script src="../lib/js/FileUpload.js"></script>
     <script src="../lib/ckeditor/ckeditor.js"></script>
     <script src="../lib/lightbox/ekko-lightbox.js"></script>

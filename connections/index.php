@@ -132,26 +132,32 @@ ob_start();
     <script type="text/template" id="ConnectionTemplate">
     <div class="UserConnection col-lg-4 col-md-4 col-sm-6 col-xs-12 item" style="height: 180px;">
         <input type="hidden" class="UserID" name="UserID" value="" />
-        <div class="well well-sm">
-            <div class="row">
-                <div class="col col-xs-4">
-                    <img style="object-fit: cover; margin-left: 10px;" width="100px" height="100px" src="../image/user_img.png" class="img-circle ProfileImage" />
-                </div>
 
-                <div class="col col-xs-8">
-                    <h4 class="text-primary ConnectionName">John Doe</h4>
-                    <p class="ConnectionWork"><span class="ConnectionJob"></span>&nbsp;at&nbsp;<span class="ConnectionCompany"></span></p>
-                    <p class="ConnectionLocation"></p>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="media">
+                    <div class="pull-left text-center">
+                        <img src="../image/proconnect/Tab_logo2_100x100.png" alt="people" style="object-fit: cover; padding: 0px;" width="150px" height="150px" class="media-object img-circle ProfileImage" />
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading margin-v-5"><a class="ConnectionName text-primary" href="#">Adrian D.</a>
+                        </h4>
+                        <br />
+                        <div class="text-info">
+                            <span><i class="fa fa-briefcase"></i>&nbsp;&nbsp;<span class="ConnectionJob">Job Here</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                            <br />
+                            <span><i class="fa fa-building"></i>&nbsp;&nbsp;<span class="ConnectionCompany">Company Here</span></span>
 
-                    <ul class="nav nav-pills">
-                        <li role="presentation"><a href="#">
-                            <span class="glyphicon glyphicon-envelope"><span>&nbsp;Email</a>
-                        </li>
-                        <li role="presentation"><a class="removeConnection" href="#">
-                            <span class="glyphicon glyphicon-remove"><span>&nbsp;Remove</a>
-                        </li>
-                    </ul>
+                            <br />
+                            <p><i class="fa fa-map-marker"></i>&nbsp;&nbsp;<span class="ConnectionLocation"></span></p>
+                        </div>
+                    </div>
                 </div>
+            </div>
+            <div class="panel-footer BlurHide text-right">
+                <a href="#" class="btn btn-default btn-sm emailConnection"><i class="fa fa-envelope"></i>&nbsp;Email</a>
+                <a href="#" class="btn btn-default btn-sm removeConnection"><i class="fa fa-remove"></i>&nbsp;Remove</a>
             </div>
         </div>
     </div>

@@ -63,11 +63,17 @@ NewConnection.prototype = {
 
 		// initialize hide mode
 		conn.css({
-			'opacity':'0.5',
-			'width':'21%',
-			'float':'right',
-			'clear':'both'
+			'width':'100px',
+			'float':'left',
+			'clear':'both',
+			'z-index':"0"
 		});
+
+		conn.find('.panel-heading, .panel, .panel-body').css({
+			'background-color':'transparent',
+		});
+
+		conn.find('.panel').css('border-width', "0px");
 
 		conn.find('.BlurHide').hide();
 		conn.find('.FullHide').show();
@@ -87,7 +93,11 @@ NewConnection.prototype = {
 			case 'show':
 				if (that.mode == 'show' || that.mode == 'static') return false;
 				that.mode = mode;
-				conn.animate({width:'100%', opacity:1},400, 'linear', function() {
+				conn.find('.panel-heading, .panel, .panel-body').css({
+					'background-color':'#fff',
+				});
+				conn.find('.panel').css('border-width', '2px');
+				conn.animate({width:'400px', 'z-index':"9"},400, 'linear', function() {
 					conn.find('.BlurHide').show();
 					conn.find('.FullHide').hide();
 				});
@@ -97,7 +107,12 @@ NewConnection.prototype = {
 				that.mode = 'hide';
 				conn.find('.BlurHide').hide();
 				conn.find('.FullHide').show();
-				conn.animate({width:'21%', opacity:0.5},400, 'linear');
+				conn.animate({width:'100px', 'z-index':"0"},400, 'linear', function() {
+					conn.find('.panel-heading, .panel, .panel-body').css({
+						'background-color':'transparent',
+					});
+					conn.find('.panel').css('border-width', "0px");
+				});
 		}
 	},
 
