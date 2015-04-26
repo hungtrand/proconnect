@@ -36,6 +36,10 @@
 	border-right: 0px !important;
 }
 
+#ao-search-btn-grp:hover {
+	cursor: pointer;
+}
+
 .attention-icon {
 	color: #FCFCFC;
 }
@@ -152,6 +156,11 @@
 
 .main-search-bar {
 	width: 300px !important;
+}
+
+#mobile-view-main-nav-btn {
+	margin-top: 11px;
+ 	margin-left: 15px;
 }
 
 .open-custom {

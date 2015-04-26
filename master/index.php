@@ -104,11 +104,10 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
     </script>
     <template id="ao-checkbox">
         <li>
-        <div class="checkbox">
-            <label>
-               <input type="checkbox" value="" checked> 
-            </label>
-        </div>
+        <!-- <div class="checkbox"> -->
+               <input id="" type="checkbox" value checked>  
+               <label class="ao-label" for=""></label>
+        <!-- </div> -->
         </li>
     </template>
     <!-- Wrapper required for sidebar transitions -->
@@ -118,21 +117,45 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
             <div class="container-fluid">
                 <div class="navbar-header">
                     <a href="#sidebar-menu" data-effect="st-effect-1" data-toggle="sidebar-menu" class="toggle pull-left visible-xs"><i class="fa fa-bars"></i></a>
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav">
+                    <button id="mobile-view-main-nav-btn" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a href="#sidebar-chat" data-toggle="sidebar-menu" data-effect="st-effect-1" class="toggle pull-right visible-xs "><i class="fa fa-comments"></i></a>
+
+                     <form class="navbar-form margin-none navbar-left visible-xs" method="GET" action="/search-results/results.php">
+                        <!-- Search -->
+                        <div class="search-1">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="icon-search"></i></span>
+
+                                <input type="text" class="form-control" placeholder="Search for people..." name="searchKey">
+                                <!-- <span class="input-group-btn">
+                                    <input type="submit" class="btn btn-default">Search</input>
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-right well " role="menu">
+                                        <li>
+                                            <div>
+                                              <img src="/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif">
+                                            </div>
+                                        </li>
+                                    </ul> -->
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- <a href="#sidebar-chat" data-toggle="sidebar-menu" data-effect="st-effect-1" class="toggle pull-right visible-xs "><i class="fa fa-comments"></i></a> -->
 
                     <a class="navbar-brand navbar-brand-info hidden-xs" href="/feed/" style= "background-color: #1565c0;"><img width="150px" src="../image/proconnect/logo_text.png" alt="ProConnect" style = "margin-top: 10px;"/></a>
-
                 </div>
                 <div class="collapse navbar-collapse" id="main-nav">
                     <ul class="nav navbar-nav ">
                         <!-- messages -->
-                        <li id="message-list" class="dropdown notifications  hidden-sm notification-icon">
+                        <li id="message-list" class="dropdown notifications notification-icon">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-envelope-o"></i>
                                 <span class="badge notification-number notification-red"></span>
@@ -164,7 +187,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                         </li>
                         <!-- // END messages -->
                         <!-- connection -->
-                        <li id="connection-list" class="dropdown notifications  hidden-sm notification-icon">
+                        <li id="connection-list" class="dropdown notifications notification-icon">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fw icon-user-1"></i>
                                 <span class="badge notification-number notification-red"></span>
@@ -179,7 +202,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                         </li>
                         <!-- // END connection -->
                         <!-- notification -->
-                        <li id="notification-list" class="dropdown notifications  hidden-sm notification-icon">
+                        <li id="notification-list" class="dropdown notifications notification-icon">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-flag-o"></i>
                                 <span class="badge notification-number notification-red"></span>
@@ -196,7 +219,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                         <!-- // END notification -->
                     </ul>
                     
-                    <form class="navbar-form margin-none navbar-left hidden-xs ">
+                    <form class="navbar-form margin-none navbar-left hidden-xs" method="GET" action="/search-results/results.php">
                         <!-- Search -->
                         <div class="search-1">
                             <div class="input-group">
@@ -221,7 +244,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                         </div>
 
                         <!-- Search Button -->
-                        <div class="pull-left visible-md visible-lg"> 
+                        <div id="ao-search-btn-grp" class="pull-left visible-sm visible-md visible-lg"> 
                             <ul class="nav navbar-nav ">
                                 <li class="ao-search-btn">
                                     <a class="main-nav-search-btn" type="submit">Search</a>
@@ -244,13 +267,6 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                                                     <label for="ao-education">Education</label> 
                                                     <div class="">
                                                         <ul id="ao-education" class="dynamic-result-div list-unstyled">
-                                                            <li>
-                                                            <div class="checkbox">
-
-                                                                   <input id="asda"type="checkbox" checked>  
-                                                                   <label for="asda">asdasd</label>
-                                                            </div>
-                                                            </li>
                                                         </ul> 
                                                         <input class="ao-add-option" type="text" placeholder="+ Add">
                                                     </div>
