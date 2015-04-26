@@ -21,7 +21,7 @@ class Feed_view implements view {
 			'Type'=>'',
 			'CreatorImage'=>'',
 			'ImageURL'=>'',
-			'FeedLink'=>'',	
+			'YouTubeID'=>'',	
 			'ContentMessage'=>''
 		];
 	}
@@ -46,13 +46,9 @@ class Feed_view implements view {
 				$CreatorImage = "/users/".$User->getID()."/images/".$User->getProfileImage();
 		}
 
-		if ($feed->getInternalURL())
+		$FeedLink='';
+		if ($feed->getInternalURL()) {
 			$FeedLink=$feed->getInternalURL();
-		else {
-			$FeedLink=$feed->getExternalURL();
-			if (strpos($FeedLink, "http") != 0) {
-				$FeedLink = "http://".$FeedLink;
-			}
 		}
 
 		$out = [
@@ -63,6 +59,7 @@ class Feed_view implements view {
 			'CreatorImage'=>$CreatorImage,
 			'ImageURL'=>$feed->getImageURL(),
 			'FeedLink'=>$FeedLink,	
+			'YouTubeID'=>$feed->getExternalURL(),
 			'ContentMessage'=>$feed->getContent()
 		];
 

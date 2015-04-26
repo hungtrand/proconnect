@@ -29,14 +29,23 @@ Feed.prototype = {
 		var that = this;
 		var feed = $(that.template);
 
-		var heading = that.data['Creator'] + ' shared: ';
+		var heading = 'Shared: ';
 		feed.find('.FeedID').val(that.data['FeedID']);
+		feed.find('.AuthorLink').text(that.data['Creator']).attr('href', that.data['FeedLink']);
 		feed.find('.creatorImage').attr('src', that.data['CreatorImage']);
 		feed.find('.contentHeading').text(heading);
 		feed.find('.contentImageLink').attr('href', that.data['ImageURL'])
 			.attr('data-title', that.data['ContentMessage']);
 		feed.find('.contentImage').attr('src', that.data['ImageURL']);
 		feed.find('.contentMessage').html(that.data['ContentMessage']);
+
+		if (that.data['YouTubeID']) {
+			var url = feed.find('.YouTubeFrame').attr('src');
+			url = url.replace('{{YouTubeID}}', that.data['YouTubeID']);
+			feed.find('.YouTubeFrame').attr('src', url);
+		} else {
+			feed.find('.YouTubeFrame').parent().remove();
+		}
 
 		that.container = feed;
 		that.bindEvents();
@@ -55,6 +64,11 @@ Feed.prototype = {
 	setImageURL: function(strVal) {
 		if (!strVal) return false;
 		this.data['ImageURL'] = strVal;
+	},
+
+	setYouTubeURL: function(strVal) {
+		if (!strVal) return false;
+		this.data['YouTubeURL'] = strVal;
 	},
 
 	setFeedLink: function(strVal) {

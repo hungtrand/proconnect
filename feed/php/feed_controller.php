@@ -35,8 +35,10 @@ $FeedID = -1;
 if (isset($_POST['FeedID'])) {
 	$FeedID = (int)$_POST['FeedID'];
 }
-if(isset($_POST['FeedLink'])) {
-	$ExternalLink = trim($_POST['FeedLink']);
+if(isset($_POST['YouTubeURL'])) {
+	$ExternalLink = trim($_POST['YouTubeURL']);
+	parse_str( parse_url( $ExternalLink, PHP_URL_QUERY ), $qStringsArr );
+	$YouTubeID = $qStringsArr['v'];
 }
 if(isset($_POST['ContentMessage'])){
 	$Content= trim($_POST['ContentMessage']);
@@ -71,7 +73,7 @@ try {
 			$feed = new Feed();
 			$feed->setContent($Content);
 			$feed->setImageURL($ImageURL);
-			$feed->setExternalURL($ExternalLink);
+			$feed->setExternalURL($YouTubeID);
 			$feed->setInternalURL($InternalLink);
 			$feed->setCreator($uid);
 			$feed->setType('normal');
