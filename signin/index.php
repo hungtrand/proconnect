@@ -73,7 +73,7 @@
             <div class="lock-container formContainer col col-xs-12 col-sm-10 col-md-4 col-lg-4 col-sm-offset-1 col-md-offset-4 col-lg-offset-4">   
 				<a href= "../"><img id= "logo" src = "../image/proconnect/logo_text.png"></a>
 				<div class="panel panel-default text-center">
-						<img src="<?=$ProfileImage?>" class="img-circle" style="height: 100px; width: 100px; object-cover: fit;">
+						<img src="<?=$ProfileImage?>" class="img-circle" style="height: 100px; width: 100px; object-fit: cover;">
 						<div class= "panel-body">
 							<form class="form-signin form" id="SignInForm" action="php/session_signin.php" novalidate>							  								
 								<!-- Invalid input alert -->
