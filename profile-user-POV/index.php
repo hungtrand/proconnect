@@ -7,8 +7,6 @@ session_start();
 $UData = json_decode($_SESSION['__USERDATA__'], true);
 $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 $ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
-  
-
 
   $Title = "Edit Profile"; //require for front end
   // include '../header/header.php';
