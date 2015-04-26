@@ -6,6 +6,7 @@ include '../signout/php/session_check_signout.php';
 session_start();
 $UData = json_decode($_SESSION['__USERDATA__'], true);
 $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
+  
 
 
   $Title = "Edit Profile"; //require for front end
@@ -13,6 +14,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 
   ob_start();
 ?>
+    <link href="css/profile-user-POV.css" rel="stylesheet">
 
     <!-- <div id="main-container" class="container-fluid"> -->
       <div class="row">
@@ -63,10 +65,13 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                       </div>
                       <div class="col-sm-6 col-md-8">
                       <!-- Split button -->
-                          <div class="btn-group">
-                              <button type="button" class="btn btn-primary">
-                                  Social</button>
-                              <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                          <!-- <div class="btn-group"> -->
+                            <form action="/profile-public-POV/" method="GET">
+                              <button  type="submit" class="btn btn-primary" value=<?=$UData['USERID']?> name="userID">
+                                  View Profile As Public
+                              </button>
+                            </form>
+                              <!-- <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                                   <span class="caret"></span><span class="sr-only">Social</span>
                               </button>
                               <ul class="dropdown-menu" role="menu">
@@ -75,8 +80,8 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                                   <li><a href="https://www.facebook.com/jquery2dotnet">Facebook</a></li>
                                   <li class="divider"></li>
                                   <li><a href="#">Github</a></li>
-                              </ul>
-                          </div>
+                              </ul> -->
+                          <!-- </div> -->
                       </div>
                   </div>
                   <br>
@@ -214,8 +219,8 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                   <div id="summary-description" class="normal-view" > 
                     <div class="editable" for="summary-edit">
                       <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                      <pre id="user-summary"></pre>
-                    </div>
+                      <div id="user-summary" class="white-space"></div>
+                    </div> 
                   </div>
                   <div id="summary-edit" class="edit-view" action="php/Education_controller.php" >
                     <div class="loading">
@@ -679,17 +684,19 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 ?>
 
 <!-- Custom styles for this template -->
-    <link href="css/profile-user-POV.css" rel="stylesheet">
     <!-- Custom modal handler -->
-    // <script src="../js/bootbox.min.js"></script>
+    <script src="../js/bootbox.min.js"></script>
+
     <!-- Sortable script -->
     <script src="../js/jquery.sortable.min.js"></script>
     <!-- Custom Script -->
+    <script src="../lib/ckeditor/ckeditor.js"></script>
+    <script src="../lib/js/FileUpload.js"></script>
+    <script src="/lib/js/StatesCitiesList.js"></script>
     <script src="js/User.js"></script>
     <script src="js/profile-user-POV.js"></script>
-    <script src="../lib/js/FileUpload.js"></script>
     <script src="js/ProfileImageUploader.js"></script>
-    <script src="/lib/js/StatesCitiesList.js"></script>
+
 
 
 

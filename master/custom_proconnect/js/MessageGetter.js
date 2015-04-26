@@ -1,0 +1,42 @@
+var MessageGetter = (function() {
+	return {
+		get: function(categoryID, beforeSendCB ,displayCallback) {
+			var data = {"categoryID":categoryID};
+			var	contentURL;
+			if (categoryID == 'notification-list') {
+				contentURL = "/notification/php/notificationInbox_controller.php";
+			} else if (categoryID == 'message-list') {
+				contentURL = "/message/php/inbox_controller.php";
+			} else if (categoryID == 'connection-list') {
+				contentURL = "/connections/php/Connections_controller.php";
+				data['filter'] = 'pending';
+			}
+
+			//DEBUG
+			contentURL = "/master/custom_proconnect/php/dummy.php";
+
+			$.ajax({
+				url: contentURL,			//<------ must be hard link
+				data: data,			//<------ may not be necessary
+				method: "POST",
+				beforeSend: function(jqXHR,obj){
+					beforeSendCB(jqXHR,obj);
+				},
+				error: function(qXHR, textStatus,errorThrown ) {
+					console.log(textStatus + ": " + errorThrown);
+				}
+			}).done(function(data){
+					try {
+						var messages = JSON.parse(data);
+						
+						if(displayCallback !== undefined){
+							displayCallback(messages);
+						}
+					} catch (e) {
+						console.log(e);
+						displayCallback(data);
+					}
+			});
+		}
+	}
+})();

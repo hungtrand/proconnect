@@ -738,11 +738,8 @@ User.prototype = {
 
 		//update summary description
 		if(this.userData.personalInfo["summary"] !== "") {
-			// console.log(this.userData.personalInfo["summary"]);
-			$("#user-summary").text(this.userData.personalInfo["summary"]);
+			$("#user-summary")[0].innerHTML = this.userData.personalInfo["summary"];
 		} else {
-			// console.log(this.userData.personalInfo["summary"]);
-
 			$("#user-summary").text("Say something about yourself!");
 		}
 
@@ -790,7 +787,7 @@ User.prototype = {
 					"<h3>" + exp['position-title'] + "</h3>" + 
 		          	"<h4>" + exp['company-name'] + "</h4>" +
  		          	"<h5>" + workTime + "</h5>" + 
-		          	"<p>" + exp['experience-description'] + "</p>" +
+		          	"<p class='white-space'>" + exp['experience-description'] + "</p>" +
 	        	"</div>");
 			if(parseInt(i) < that.userData.experiences.length-1) {
 				$("#user-experiences").append("<hr>");
@@ -841,7 +838,7 @@ User.prototype = {
                 "<div class='editable' for='project-edit' link='" + 'elmo' + key +  "' index='" + key + "'>" + 
                 "<span class='glyphicon glyphicon-pencil' aria-hidden='true'></span>" +
                 "<h3>" + projTitle + "</h3>" +
-                "<p name='description'>" + proj['project-description'] +"</p>" +
+                "<p name='description' class='white-space'>" + proj['project-description'] +"</p>" +
               "</div>" + teamMemberBlock +
             "</div>");
 
@@ -866,9 +863,9 @@ User.prototype = {
 						              "<h4>" + edu['degree'] + "<span> " + edu['grade'] + "</span></h4>" +
 						              "<h4>" + edu['field-of-study'] + "</h4>" +
 						              "<h5>" + schoolTime + "</h5>" +
-						              "<p>" + edu['education-description']+ "</p>" +
+						              "<p class='white-space'>" + edu['education-description']+ "</p>" +
 						              "<h5 style='color:#888';>Activities and Societies:</h5>" +
-						              "<p>" + edu['activities'] + "</p>" +
+						              "<p class='white-space'>" + edu['activities'] + "</p>" +
 						            "</div>" +
 						          "</div>" );
 
