@@ -10,7 +10,7 @@ class Feed2User extends ActiveRecord {
 	public static $TableName = 'Feed2User';
 	public static $PrimaryKey = 'UFID';
 	public static $Columns = ['UFID', 'FEEDID', 'USERID', 
-							'STATUS', 'LIKED', 'DATECREATED'];
+							'STATUS', 'LIKED', 'DATECREATED', 'ISCREATOR'];
 	
 	private $data = [];
 	private $UFID;
@@ -91,6 +91,10 @@ class Feed2User extends ActiveRecord {
 		return $this->data['DATECREATED'];
 	}
 
+	public function isCreator() {
+		return (bool)$this->data['ISCREATOR'];
+	}
+
 	// SET METHODS
 	public function setFeedID($intVal) {
 		$this->data['FEEDID'] = (int) $intVal;
@@ -113,6 +117,13 @@ class Feed2User extends ActiveRecord {
 	public function setLiked($boolVal = false) {
 		if ($boolVal) $this->data['LIKED'] = true;
 		else $this->data['LIKED'] = false;
+
+		return true;
+	}
+
+	public function setIsCreator($boolVal = false) {
+		if ($boolVal) $this->data['ISCREATOR'] = true;
+		else $this->data['ISCREATOR'] = false;
 
 		return true;
 	}

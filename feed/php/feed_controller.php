@@ -82,6 +82,12 @@ try {
 				$ucm = new UserConnectionManager($User);
 				$connections = $ucm->getAll();
 
+				$f2u = new Feed2User();
+				$f2u->setFeedID($feed->getID());
+				$f2u->setUserID($uid);
+				$f2u->setStatus("SELF");
+				$f2u->save();
+
 				foreach ($connections as $conn) {
 					$f2u = new Feed2User();
 					$f2u->setFeedID($feed->getID());
