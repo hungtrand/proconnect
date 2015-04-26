@@ -208,11 +208,12 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                                 <li>
                                     <a class="main-nav-search-btn" type="submit">Search</a>
                                 </li>
+                                
                                 <li class="dropdown" >
-                                    <a id="ao-show-btn" type="button" data-toggle="dropdown" class="dropdown-toggle">
+                                    <a id="ao-show-btn" data-toggle="dropdown" class="dropdown-toggle">
                                         <i class="fa fa-caret-down"></i>
                                     </a>
-                                    <ul class="dropdown-menu">
+                                    <div class="dropdown-menu">
                                         <div class="iam-loading" >
                                             <div>
                                               <img src="/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif">
@@ -234,7 +235,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                                             </div>
                                         </li> -->
                                         
-                                    </ul>
+                                    </div>
                                 </li>
                             </ul>
                         </div>
