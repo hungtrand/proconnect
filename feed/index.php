@@ -134,41 +134,13 @@ ob_start();
                 </div>
             </div> -->
 
-            <div class="affix hidden-print hidden-xs hidden-sm" 
+            <div class="affix hidden-print hidden-xs hidden-sm text-right" 
                 style="position: fixed; width: 400px; right: 30px; top: 50px;" role="complimentary" data-spy="affix" data-offset-top="50">
+                <label class="text-default">People You may know...</label>
                 <ul id="SuggListing" class="nav text-right">
                 </ul>
             </div>
         </div>
-        
-
-    <script type="text/template" id="SuggestionTemplate">
-    <li class="NewUserConnection">
-        <input type="hidden" class="UserID" name="UserID" value="" />
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <div class="media">
-                    <div class="pull-left text-center">
-                        <img src="../image/proconnect/Tab_logo2_100x100.png" alt="people" style="object-fit: cover;" width="50px" height="50px" class="media-object img-circle ProfileImage" />
-                        <span class="ConnectionFirstName FullHide text-muted" href="#">Adrian D.</span>
-                    </div>
-                    <div class="media-body BlurHide">
-                        <h4 class="media-heading margin-v-5"><a class="ConnectionName" href="#">Adrian D.</a>
-                        </h4>
-                        <div class="profile-icons">
-                            <span><i class="fa fa-briefcase"></i>&nbsp;&nbsp;<span class="ConnectionJob">Job Here</span></span>
-                            <span><i class="fa fa-building"></i>&nbsp;&nbsp;<span class="ConnectionCompany">Company Here</span></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="panel-footer BlurHide">
-                <a href="#" class="btn btn-default btn-sm addNewConnection">Connect&nbsp;&nbsp;<i class="fa fa-retweet"></i></a>
-                <a href="#" class="btn btn-default btn-sm dismissConnection">Skip&nbsp;&nbsp;<i class="fa fa-retweet"></i></a>
-            </div>
-        </div>
-    </li>
-    </script>
 
     <script type="text/template" id="FeedTemplate">
         <div class="media feed">
@@ -205,6 +177,10 @@ ob_start();
             </div>
         </div>
     </script>
+
+<?php
+    include_once __DIR__."/../ComponentTemplates/ConnectionSuggestionTemplate.html";
+?>
 
 <?php
     $Content = ob_get_clean();

@@ -86,7 +86,7 @@ NewConnectionSearch.prototype = {
 		var resultsContainer = that.container.find('.searchResults');
 
 		for (var i = 0, l=json.length; i < l; i++) {
-			var conn = new NewConnection(json[i]);
+			var conn = new NewConnection(json[i], 'static');
 			resultsContainer.append(conn.getView());
 		}
 	},

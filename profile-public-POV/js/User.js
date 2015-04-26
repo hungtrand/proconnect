@@ -573,11 +573,12 @@ User.prototype = {
 		$("#user-home").text(this.userData.personalInfo["phone-number"]);
 
 		
+		console.log("mess");
 
 		//update summary description
 		if(this.userData.personalInfo["summary"] !== "") {
 			// console.log(this.userData.personalInfo["summary"]);
-			$("#user-summary").text(this.userData.personalInfo["summary"]);
+			$("#user-summary").html(this.userData.personalInfo["summary"]);
 		} else {
 			// console.log(this.userData.personalInfo["summary"]);
 

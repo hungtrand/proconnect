@@ -384,6 +384,10 @@ small {
 }
 */
 
+.white-space {
+	white-space: pre-line !important;
+}
+
 #work-present{
 	display: none;
 	position: absolute;

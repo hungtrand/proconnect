@@ -31,6 +31,10 @@ To learn more about the development process, please refer to the documentation. 
     <!-- Compressed Theme CORE
 This variant is to be used when loading the separate styling modules -->
     <link href="/master/css/theme-core.min.css" rel="stylesheet">
+
+    <!-- Custom ProConnect CSS -->
+    <link rel="stylesheet" type="text/css" href="/master/custom_proconnect/css/master.css">
+
     <!-- Standalone Modules
     As a convenience, we provide the entire UI framework broke down in separate modules
     Some of the standalone modules may have not been used with the current theme/module
@@ -59,11 +63,54 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
-    <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <script src="/lib/jquery/jquery-2.1.3.min.js"></script>
-    <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+    <!-- <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" /> -->
+    <!-- // <script src="/lib/jquery/jquery-2.1.3.min.js"></script> -->
+    <!-- // <script src="/lib/bootstrap/js/bootstrap.min.js"></script> -->
+
+    
 </head>
 <body>
+    <script id="MediaItem" type="text/html">
+        <li class="media custom-media-item">
+            <div class="media-left">
+                <a class="user-url" href="#">
+                    <img class="media-object thumb" src="/image/user_img.png" alt="default">
+                </a>
+            </div>
+            <div class="media-body custom-media-body">
+                <div class="pull-right">
+                    <span class="label label-default time-ago">5 min</span>
+                </div>
+                <h5 class="media-heading">Default</h5>
+                <p class="margin-none snippet-zone">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+        </li>
+    </script>
+    <script id="FeedItem" type="text/html">
+        <li class="media">
+            <div class="media-left">
+                <span class="media-object">
+                <i class="fa fa-fw fa-bell"></i>
+            </span>
+            </div>
+            <div class="media-body">
+                <a href="" class="text-white">Adrian</a> just logged in
+                <span class="time">2 min ago</span>
+            </div>
+            <div class="media-right">
+                <span class="news-item-success"><i class="fa fa-circle"></i></span>
+            </div>
+        </li>
+    </script>
+    <template id="ao-checkbox">
+        <li>
+        <div class="checkbox">
+            <label>
+               <input type="checkbox" value="" checked> 
+            </label>
+        </div>
+    </li>
+    </template>
     <!-- Wrapper required for sidebar transitions -->
     <div class="st-container">
         <!-- Fixed navbar -->
@@ -81,14 +128,22 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                     <a class="navbar-brand navbar-brand-info hidden-xs" href="/feed/" style= "background-color: #4687CE;"><img width="150px" src="../image/proconnect/logo_text.png" alt="ProConnect" style = "margin-top: -5px;"/></a>
                 </div>
                 <div class="collapse navbar-collapse" id="main-nav">
-                    <ul class="nav navbar-nav hidden-xs">
+                    <ul class="nav navbar-nav ">
                         <!-- messages -->
-                        <li class="dropdown notifications hidden-xs hidden-sm">
+                        <li id="message-list" class="dropdown notifications  hidden-sm notification-icon">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-envelope-o"></i>
+                                <span class="badge notification-number notification-red"></span>
                             </a>
-                            <!-- <ul class="dropdown-menu">
-                                <li class="media">
+
+                            <ul class="dropdown-menu">
+                                <div class="iam-loading" >
+                                    <div>
+                                      <img src="/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif">
+                                    </div>
+                                </div>
+
+                                <!-- <li class="media">
                                     <div class="media-left">
                                         <a href="#">
                                             <img class="media-object thumb" src="images/people/50/guy-2.jpg" alt="people">
@@ -101,63 +156,89 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                                         <h5 class="media-heading">Adrian D.</h5>
                                         <p class="margin-none">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                                     </div>
-                                </li>
-                                <li class="media">
-                                    <div class="media-left">
-                                        <a href="#">
-                                            <img class="media-object thumb" src="images/people/50/woman-7.jpg" alt="people">
-                                        </a>
-                                    </div>
-                                    <div class="media-body">
-                                        <div class="pull-right">
-                                            <span class="label label-default">2 days</span>
-                                        </div>
-                                        <h5 class="media-heading">Jane B.</h5>
-                                        <p class="margin-none">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                    </div>
-                                </li>
-                                <li class="media">
-                                    <div class="media-left">
-                                        <a href="#">
-                                            <img class="media-object thumb" src="images/people/50/guy-8.jpg" alt="people">
-                                        </a>
-                                    </div>
-                                    <div class="media-body">
-                                        <div class="pull-right">
-                                            <span class="label label-default">3 days</span>
-                                        </div>
-                                        <h5 class="media-heading">Andrew M.</h5>
-                                        <p class="margin-none">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                    </div>
-                                </li>
-                            </ul> -->
-                        </li>
-                        <!-- // END messages -->
-                    </ul>
-                    <ul class="nav navbar-nav navbar-user">
-                        <!-- User -->
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img style="object-fit: cover;" width="30px" height="30px" src="<?=$ProfileImage?>" alt="<?=$FullName?>" class="img-circle" /> <?=$FullName?> <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="/profile-user-POV/">Profile</a>
-                                </li>
-                                <li><a href="/message/">Messages</a>
-                                </li>
-                                <li><a href="/signout/php/session_signout.php">Sign Out</a>
-                                </li>
+                                </li> -->
+                                
                             </ul>
                         </li>
+                        <!-- // END messages -->
+                        <!-- connection -->
+                        <li id="connection-list" class="dropdown notifications  hidden-sm notification-icon">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fw icon-user-1"></i>
+                                <span class="badge notification-number notification-red"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <div class="iam-loading" >
+                                    <div>
+                                      <img src="/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif">
+                                    </div>
+                                </div>
+                            </ul>
+                        </li>
+                        <!-- // END connection -->
+                        <!-- notification -->
+                        <li id="notification-list" class="dropdown notifications  hidden-sm notification-icon">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-flag-o"></i>
+                                <span class="badge notification-number notification-red"></span>
+                            </a>
+
+                            <ul class="dropdown-menu">
+                                <div class="iam-loading" >
+                                    <div>
+                                      <img src="/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif">
+                                    </div>
+                                </div>
+                            </ul>
+                        </li>
+                        <!-- // END notification -->
                     </ul>
+                    
                     <form class="navbar-form margin-none navbar-left hidden-xs ">
                         <!-- Search -->
                         <div class="search-1">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="icon-search"></i></span>
-                                <input type="text" class="form-control" placeholder="Search a friend">
+                                <input type="text" class="form-control" placeholder="Search for people..." name="searchKey">
                             </div>
                         </div>
+                        <div class="pull-left visible-md visible-lg"> 
+                            <ul class="nav navbar-nav ">
+                                <li>
+                                    <a class="main-nav-search-btn" type="submit">Search</a>
+                                </li>
+                                
+                                <li class="dropdown" >
+                                    <a id="ao-show-btn" data-toggle="dropdown" class="dropdown-toggle">
+                                        <i class="fa fa-caret-down"></i>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <div class="iam-loading" >
+                                            <div>
+                                              <img src="/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif">
+                                            </div>
+                                        </div>
+
+                                        <!-- <li class="media">
+                                            <div class="media-left">
+                                                <a href="#">
+                                                    <img class="media-object thumb" src="images/people/50/guy-2.jpg" alt="people">
+                                                </a>
+                                            </div>
+                                            <div class="media-body">
+                                                <div class="pull-right">
+                                                    <span class="label label-default">5 min</span>
+                                                </div>
+                                                <h5 class="media-heading">Adrian D.</h5>
+                                                <p class="margin-none">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                            </div>
+                                        </li> -->
+                                        
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- <div class="pull-left visible-md visible-lg" data-toggle="tooltip" data-placement="bottom" title="A few Color Examples. Download includes CSS Files for all color examples & the tools to Generate any Color combination. This Color-Switcher is for previewing purposes only.">
 						<!-- Color bar -->
 						 <!--
                         <div class="pull-left visible-md visible-lg" data-toggle="tooltip" data-placement="bottom" title="A few Color Examples. Download includes CSS Files for all color examples & the tools to Generate any Color combination. This Color-Switcher is for previewing purposes only.">
@@ -173,15 +254,33 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                                 <li><span data-file="skin-brown" data-skin="brown" style="background: #c3a961 "></span>
                                 </li>
                             </ul>
-                        </div>-->
+                        </div> -->
                     </form>
-                    <ul class="nav navbar-nav navbar-right hidden-xs">
+                            
+
+                    <ul class="nav navbar-nav navbar-user navbar-right pull-right">
+                        <!-- User -->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img style="object-fit: cover;" width="30px" height="30px" src="<?=$ProfileImage?>" alt="<?=$FullName?>" class="img-circle" /> <?=$FullName?> <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="/profile-user-POV/">Profile</a>
+                                </li>
+                                <li><a href="/message/">Messages</a>
+                                </li>
+                                <li><a href="/signout/php/session_signout.php">Logout</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <!-- <ul class="nav navbar-nav navbar-right hidden-xs">
                         <li class="pull-right">
                             <a href="#sidebar-chat" data-effect="st-effect-1" data-toggle="sidebar-menu">
                                 <i class="fa fa-comments"></i>
                             </a>
                         </li>
-                    </ul>
+                    </ul> -->
                 </div>
             </div>
         </div>
@@ -189,9 +288,18 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
         <div class="sidebar left sidebar-size-2 sidebar-offset-0 sidebar-visible-desktop sidebar-visible-mobile sidebar-skin-white-blue" id="sidebar-menu" data-type="collapse">
             <div data-scrollable>
                 <ul class="sidebar-menu">
-                    <li class="category">Navigation</li>
-                    <li class="">
-                        <a href="/feed/"><i class="icon-ship-wheel"></i> <span>Feed</span></a>
+                    <!-- <li><a href="../../index.html"><i class="icon-paint-brush"></i> <span>Themes</span></a></li> -->
+                    <!-- <li class="category">Navigation</li> -->
+                    <!-- <li class="hasSubmenu">
+                        <a href="#timeline"><i class="icon-ship-wheel"></i> <span>Timeline</span></a>
+                        <ul id="timeline">
+                            <li><a href="index.html"><i class="fa fa-circle-o"></i> <span>Blocks</span></a>
+                            </li>
+                            <li><a href="timeline-list.html"><i class="fa fa-circle-o"></i> <span>Listing</span></a>
+                            </li>
+                        </ul>
+                    </li> -->
+                    <li class=""><a href="/feed/"><i class="fa fa-home"></i> <span>Home</span></a>
                     </li>
                     <li class=""><a href="/profile-user-POV/"><i class="icon-user-1"></i> <span>Profile</span></a>
                     </li>
@@ -199,7 +307,9 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                     </li>
                     <li class=""><a href="/message/"><i class="icon-comment-fill-1"></i> <span>Messages</span></a>
                     </li>
-                    <li><a href="/signout/php/session_signout.php"><i class="icon-lock-fill"></i> <span>Sign Out</span></a>
+                    <li class=""><a href="/jobs/"><i class="fa fa-suitcase"></i> <span>Jobs</span></a>
+                    </li>
+                    <li><a href="/interest/"><i class="fa fa-star"></i> <span>Interests</span></a>
                     </li>
                     <!-- <li class="hasSubmenu">
                         <a href="#components"><i class="icon-paint-brushes"></i> <span>UI Components</span></a>
@@ -236,14 +346,32 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                         </ul>
                     </li> -->
                 </ul>
-                <h4 class="category border top">News Feeds</h4>
+
+                
+                <!-- <i class="fa fa-flag pull-right"></i> -->
+                <!-- <h4 id="notification-list"class="category border top">Notifications <span class="badge notification-red pull-right"></span>
+                </h4>
                 <div class="sidebar-block">
                     <ul class="sidebar-feed">
+                        <li class="media custom-media-item">
+                            <div class="media-left">
+                                <a class="user-url" href="#">
+                                    <img class="media-object thumb" src="" alt="default">
+                                </a>
+                            </div>
+                            <div class="media-body custom-media-body">
+                                <div class="pull-right">
+                                    <span class="label label-default time-ago">5 min</span>
+                                </div>
+                                <h5 class="media-heading">Default</h5>
+                                <p class="margin-none snippet-zone">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            </div>
+                        </li>
                         <li class="media">
                             <div class="media-left">
                                 <span class="media-object">
-                            <i class="fa fa-fw fa-bell"></i>
-                        </span>
+                                <i class="fa fa-fw fa-bell"></i>
+                            </span>
                             </div>
                             <div class="media-body">
                                 <a href="" class="text-white">Adrian</a> just logged in
@@ -301,8 +429,8 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                             </div>
                         </li>
                     </ul>
-                </div>
-                <h4 class="category">Filter</h4>
+                </div> -->
+                <!-- <h4 class="category">Filter</h4>
                 <div class="sidebar-block">
                     <ul>
                         <li><a href="#" class="sidebar-link"><span class="fa fa-fw fa-circle-o text-success"></span> Work Related</a>
@@ -314,11 +442,11 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                         <li><a href="#" class="sidebar-link"><span class="fa fa-fw fa-circle-o text-primary"></span> Other</a>
                         </li>
                     </ul>
-                </div>
+                </div> -->
             </div>
         </div>
         <!-- Sidebar component with st-effect-1 (set on the toggle button within the navbar) -->
-        <div class="sidebar sidebar-chat right sidebar-size-2 sidebar-offset-0 chat-skin-white sidebar-visible-mobile" id=sidebar-chat>
+        <!-- <div class="sidebar sidebar-chat right sidebar-size-2 sidebar-offset-0 chat-skin-white sidebar-visible-mobile" id="sidebar-chat">
             <div class="split-vertical">
                 <div class="chat-search">
                     <input type="text" class="form-control" placeholder="Search" />
@@ -333,7 +461,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                 </ul>
 
             </div>
-        </div>
+        </div> -->
         <script id="chat-window-template" type="text/x-handlebars-template">
             <div class="panel panel-default">
                 <div class="panel-heading" data-toggle="chat-collapse" data-target="#chat-bill">
@@ -493,5 +621,12 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
         module-bundle-main.js already includes theme-core.js so this should be loaded
         ONLY when using the standalone modules; -->
     <script src="/master/js/theme-core.min.js"></script>
+
+    <!-- Custom ProConnect -->
+    <script type="text/javascript" src="/master/custom_proconnect/js/NotificationGetter.js"></script>
+    <script type="text/javascript" src="/master/custom_proconnect/js/AdvanceSearchInterfaceHandler.js"></script>
+    <script type="text/javascript" src="/master/custom_proconnect/js/MessageGetter.js"></script>
+    <script type="text/javascript" src="/master/custom_proconnect/js/MediaItemFactory.js"></script>
+    <script type="text/javascript" src="/master/custom_proconnect/js/master.js"></script>
 </body>
 </html>
