@@ -423,4 +423,10 @@ small {
 	}
 }
 
-
+.expandable .expandable-indicator i {
+	background-color: #4193d0;
+}
+.panel-default>.panel-heading {
+	background-color: #4193d0;
+	color: white;
+}

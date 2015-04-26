@@ -18,7 +18,7 @@ if (!isset($Content)) $Content = "Content not loaded.";
     <meta name="description" content="">
     <meta name="author" content="">
     <title><?=$Title?></title>
-	 <link rel="ICON" href="../image/proconnect/Tab_logo2.ico" type="image/ico" />
+	 <link rel="ICON" href="../image/proconnect/Tab_logo2_bold.ico" type="image/ico" />
     <!-- Compressed Vendor BUNDLE
     Includes vendor (3rd party) styling such as the customized Bootstrap and other 3rd party libraries used for the current theme/module -->
     <link href="/master/css/vendor.min.css" rel="stylesheet">
@@ -125,7 +125,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                         <span class="icon-bar"></span>
                     </button>
                     <a href="#sidebar-chat" data-toggle="sidebar-menu" data-effect="st-effect-1" class="toggle pull-right visible-xs "><i class="fa fa-comments"></i></a>
-                    <a class="navbar-brand navbar-brand-info hidden-xs" href="/feed/" style= "background-color: #4687CE;"><img width="150px" src="../image/proconnect/logo_text.png" alt="ProConnect" style = "margin-top: -5px;"/></a>
+                    <a class="navbar-brand navbar-brand-info hidden-xs" href="/feed/" style= "background-color: #1565c0;"><img width="150px" src="../image/proconnect/logo_text.png" alt="ProConnect" style = "margin-top: 10px;"/></a>
                 </div>
                 <div class="collapse navbar-collapse" id="main-nav">
                     <ul class="nav navbar-nav ">
@@ -544,8 +544,8 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
         "success-color": "#81b53e",
         "warning-color": "#f0ad4e",
         "inverse-color": "#2c3e50",
-        "info-color": "#2d7cb5",
-        "default-color": "#4687ce",
+        "info-color": "#1565c0",
+        "default-color": "#1565c0",
         "default-light-color": "#cfd9db",
         "purple-color": "#9D8AC7",
         "mustard-color": "#d4d171",
@@ -556,7 +556,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
         theme: "social-1",
         skins: {
             "default": {
-                "primary-color": "#4687ce"
+                "primary-color": "#1565c0"
             },
             "orange": {
                 "primary-color": "#e74c3c"

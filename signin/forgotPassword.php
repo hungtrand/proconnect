@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+
 
     <title>Forgot Password</title>
-	<link rel="ICON" href="../image/proconnect/Tab_logo2.ico" type="image/ico" />
+	<link rel="ICON" href="../image/proconnect/Tab_logo2_bold.ico" type="image/ico" />
     <!-- Bootstrap core CSS -->
     <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     
