@@ -19,11 +19,33 @@ ob_start();
     <link rel="stylesheet" type="text/css" href="../lib/lightbox/dark.css" />
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     
-    
+        <div class="cover profile">
+            <div class="wrapper">
+                <div class="cover cover-image-full overlay">
+                    <img src="/image/BlurStreet.jpeg" alt="Profile Cover" />
+                </div>
+            </div>
+            <div class="cover-info">
+                <div class="avatar">
+                    <img src="<?=$ProfileImage?>" alt="<?=$FullName?>" />
+                </div>
+                <div class="name"><a href="#"><?=$FullName?>&nbsp;-&nbsp;<small><em><?=$JobTitle?></em></small></a>
+                </div>
+                <ul class="cover-nav">
+                    <li class="active"><a href="index.html"><i class="fa fa-fw icon-ship-wheel"></i> Timeline</a>
+                    </li>
+                    <li><a href="profile.html"><i class="fa fa-fw icon-user-1"></i> About</a>
+                    </li>
+                    <li><a href="users.html"><i class="fa fa-fw fa-users"></i> Friends</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
         <div class="row">
             <!-- Left main content -->
             <div class="col col-xs-12 col-sm-12 col-md-8 col-lg-8">
-                <div id="SelfSection" class="well well-sm">
+                <!-- <div id="SelfSection" class="well well-sm">
                     <div id="UserStats" class="row">
                         <div id="ProfileCard" class="col col-xs-12 col-sm-6">
                             <div class="media">
@@ -46,7 +68,7 @@ ob_start();
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <div id="NewPost" class="well well-sm">
                     <div class="row">
@@ -94,7 +116,7 @@ ob_start();
 
                 </div>
 
-                <div id="FeedListEndAlert" class="alert alert-info hidden text-center" style="margin: 50px 20px;"></div>
+                <div id="FeedListEndAlert" class="alert alert-info text-center" style="margin: 50px 20px; display:none;"></div>
             </div>
 
             <!-- Right suggestions column -->
@@ -111,29 +133,41 @@ ob_start();
                     <div id="SuggestionsListEndAlert" class="alert alert-info hidden text-center"></div>
                 </div>
             </div> -->
+
+            <div class="affix hidden-print hidden-xs hidden-sm" 
+                style="position: fixed; width: 400px; right: 30px; top: 50px;" role="complimentary" data-spy="affix" data-offset-top="50">
+                <ul id="SuggListing" class="nav text-right">
+                </ul>
+            </div>
         </div>
         
 
     <script type="text/template" id="SuggestionTemplate">
-    <div class="NewUserConnection" class="col col-xs-12">
+    <li class="NewUserConnection">
         <input type="hidden" class="UserID" name="UserID" value="" />
-        <div class="row">
-            <div class="col col-xs-3">
-                <img width="50px" src="../image/user_img.png" class="img-rounded ProfileImage" />
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="media">
+                    <div class="pull-left text-center">
+                        <img src="../image/proconnect/Tab_logo2_100x100.png" alt="people" style="object-fit: cover;" width="50px" height="50px" class="media-object img-circle ProfileImage" />
+                        <span class="ConnectionFirstName FullHide text-muted" href="#">Adrian D.</span>
+                    </div>
+                    <div class="media-body BlurHide">
+                        <h4 class="media-heading margin-v-5"><a class="ConnectionName" href="#">Adrian D.</a>
+                        </h4>
+                        <div class="profile-icons">
+                            <span><i class="fa fa-briefcase"></i>&nbsp;&nbsp;<span class="ConnectionJob">Job Here</span></span>
+                            <span><i class="fa fa-building"></i>&nbsp;&nbsp;<span class="ConnectionCompany">Company Here</span></span>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div class="col col-xs-9">
-                <h5 class="text-primary ConnectionName" style="margin-top: 0px; margin-bottom: 7px;">John Doe</h5>
-                <p class="ConnectionWork" style= "font-size: 12px;"><span class="ConnectionJob"></span>&nbsp;at&nbsp;<span class="ConnectionCompany"></span></p>
-                   <a class="addNewConnection" href="#" style= "font-size: 12px;">
-                   <span class="glyphicon glyphicon-retweet">&nbsp;<span class="txt">Connect</span></a>
-                    &nbsp;&#8226;
-                   <a class="dismissConnection" href="#" style= "font-size: 12px; color: gray;">Skip</a>
+            <div class="panel-footer BlurHide">
+                <a href="#" class="btn btn-default btn-sm addNewConnection">Connect&nbsp;&nbsp;<i class="fa fa-retweet"></i></a>
+                <a href="#" class="btn btn-default btn-sm dismissConnection">Skip&nbsp;&nbsp;<i class="fa fa-retweet"></i></a>
             </div>
         </div>
-
-        <hr />
-    </div>
+    </li>
     </script>
 
     <script type="text/template" id="FeedTemplate">

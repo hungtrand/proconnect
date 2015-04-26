@@ -115,7 +115,6 @@ $(document).ready(function() {
 	 sl.getCities('SC', function(cities_json) {
 		// console.log(cities_json);
 	 });
-
 	
 	//handle edit-form submition
 	$(".editable-form").on("submit", function(e){

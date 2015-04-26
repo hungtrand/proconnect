@@ -6,10 +6,12 @@ function SuggestionList(container) {
 		{ "Name": "Duncan Adam", "JobTitle": "Auditor",  "CompanyName": "Pandora, Inc.", "Location": "Mountain View"}
 	];*/
 	this.data = [];
+	this.children = [];
 
 	this.container = container;
 	this.page = 0;
 	this.Alert;
+	this.mode = 'full';
 	this.waitingGif = $('<div class="text-center hidden waitingGif"><img src="/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif" alt="Loading..."/></div>');
 
 	this.init();
@@ -49,8 +51,9 @@ SuggestionList.prototype = {
 		});
 	},
 
-	load: function() {
+	load: function(mode) {
 		var that = this;
+		if (mode) that.mode = mode;
 		that.container.append(that.waitingGif);
 
 		that.page = 1;
@@ -83,8 +86,8 @@ SuggestionList.prototype = {
 
 		for (var i = 0, l=json.length; i < l; i++) {
 			that.data.push(json[i]);
-			var conn = new NewConnection(json[i]);
-
+			var conn = new NewConnection(json[i], that.mode);
+			that.children.push(conn);
 			this.container.append(conn.getView());
 		}
 	}

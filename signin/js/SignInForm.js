@@ -48,7 +48,7 @@ SignInForm.prototype = {
 				.toggleClass('alert-success', true)
 				.text('Signed In Successfully.');
 
-				window.location.href = "/profile-user-POV/";
+				window.location.href = "/feed/";
 			} catch (err) {
 				that.Alert.text(response);
 				// window.location.href = "signin/#failed";

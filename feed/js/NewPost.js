@@ -209,11 +209,13 @@ NewPost.prototype = {
 	},
 
 	reset: function() {
-		this.inputExternalLink.val('');
+		var that = this;
+		that.inputExternalLink.val('');
 		CKEDITOR.instances.ContentMessage.setData('');
-		this.inputFeedImage.val('');
-		this.imagePreview.attr('src', '');
-		this.imagePreview.hide();
+		that.inputFeedImage.val('');
+		that.imagePreview.attr('src', '');
+		that.imagePreview.hide();
+		that.formNewPost.get(0).reset();
 	},
 
 	// take in any function to execute after a submission is made for a post
