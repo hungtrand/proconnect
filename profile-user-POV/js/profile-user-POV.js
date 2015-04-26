@@ -26,22 +26,30 @@ $(document).ready(function() {
 	   });
 	   return o;
 	};
+
+	// replaces newlines and break for html <br> ARCHIVED
+	// function addHTMLBreak(text) {
+	// 	console.log( text.replace(/\r?\n/g, '<br />') );
+		
+	// 	return ;
+	// }
 	
 	//preview profile picture
 	function readURL(input) {
-		  if (input.files && input.files[0]) {
-		   var reader = new FileReader();
-		   reader.onload = function(e) {
-			   $('#preview').attr('src', e.target.result);
-			   $( "#picture-submit" ).trigger( "click" );
-		   }
+	  if (input.files && input.files[0]) {
+	   var reader = new FileReader();
+	   reader.onload = function(e) {
+		   $('#preview').attr('src', e.target.result);
+		   $( "#picture-submit" ).trigger( "click" );
+	   }
 
-		   reader.readAsDataURL(input.files[0]);
-		   }
-		   }
-		   $("#input-25").change(function() {
-		   readURL(this);
-	   });
+	   reader.readAsDataURL(input.files[0]);
+	   }
+    }
+
+    $("#input-25").change(function() {
+		readURL(this);
+	});
 	//enable edit view
 	$(".normal-view").on("click",".editable",function(){
 		console.log("hello");
@@ -98,14 +106,14 @@ $(document).ready(function() {
 
 	 // if you just want the data for the states just call method getStates()
 	 states = sl.getStates();
-	 console.log(states);
+	 // console.log(states);
 
 	 // if you want data for the cities in json format for a particular state
 	 // you can call method getCities() like this:
 	 // method getCities() take two parameter, the state you want and a callback
 	 // function than you want to execute after the cities data come back from ajax
 	 sl.getCities('SC', function(cities_json) {
-		console.log(cities_json);
+		// console.log(cities_json);
 	 });
 
 	
@@ -172,6 +180,7 @@ $(document).ready(function() {
 					skillList[skillName] = endorsementNum;
 				});
 				data["skill"] = JSON.stringify(skillList);	// Convert to string for easy decoding in PHP
+
 			} else if( $(this).parent("div").attr("id") === "project-edit" ) {		//grabbing team members
 				// console.log("project-edit hellow");
 				var memberList = {};
@@ -184,7 +193,8 @@ $(document).ready(function() {
 				});
 				data["team-member"] =  memberList
 				// console.log(data["team-member"]);
-			}	
+
+			} 
 
 			// console.log($(this).parent("div").attr("id"));
 
@@ -559,25 +569,25 @@ $(document).ready(function() {
 	});
 
 	// replace textbox with CKEditor
-	CKEDITOR.replace("summary-textarea", {
-		toolbarGroups: [
-			//{ name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
-			// { name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
-			//{ name: 'editing', groups: [ 'find', 'selection', 'spellchecker' ] },
-			//{ name: 'forms' },
-			'/',
-			{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
-			{ name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align' ] },
-			{ name: 'links' },
-			//{ name: 'insert' },
-			'/',
-			 { name: 'styles' },
-			// { name: 'colors' },
-			// { name: 'tools', groups: ['mode'] },
-			// { name: 'others' },
-			//{ name: 'about' }
-		]
+	// CKEDITOR.replace("summary-textarea", {
+	// 	toolbarGroups: [
+	// 		//{ name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
+	// 		// { name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
+	// 		//{ name: 'editing', groups: [ 'find', 'selection', 'spellchecker' ] },
+	// 		//{ name: 'forms' },
+	// 		'/',
+	// 		{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+	// 		{ name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align' ] },
+	// 		{ name: 'links' },
+	// 		//{ name: 'insert' },
+	// 		'/',
+	// 		 { name: 'styles' },
+	// 		// { name: 'colors' },
+	// 		// { name: 'tools', groups: ['mode'] },
+	// 		// { name: 'others' },
+	// 		//{ name: 'about' }
+	// 	]
 
-		// NOTE: Remember to leave 'toolbar' property with the default value (null).
-	});
+	// 	// NOTE: Remember to leave 'toolbar' property with the default value (null).
+	// });
 });
