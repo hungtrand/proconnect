@@ -93,62 +93,41 @@ ob_start();
             </div> -->
         </div>
         <!-- /.row -->
+
+        <div id="modalNewConnection" class="modal fade" role="dialog" data-backdrop="false">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title text-primary">Add New Connection</h4>
+                        <p class="text-info">Please enter name or email of the new connection you want to add:</p>
+                    </div>
+                    <div class="modal-body">
+                        <form id="NewConnectionSearchForm" class="form-horizontal" action="php/SearchNewConnection_controller.php">
+
+                            <div class="form-group">
+                                <div class="col-xs-10 col-xs-offset-1 input-group">
+                                    <input type="text" class="form-control keywords" name="NewConnKeywords" />
+
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-primary submit" type="button" title="Search">
+                                            <span class="glyphicon glyphicon-search"></span>
+                                        </button>
+                                      </span>
+                                </div>
+                            </div>
+                        </form>
+
+                        <ul class="searchResults nav"></ul>
+                    </div>
+                    <div class="modal-footer">
+                        <div id="NewConnectionSearchAlert" class="alert alert-warning hidden"></div>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
     </div>
-
-    <div id="modalNewConnection" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title text-primary">Add New Connection</h4>
-                    <p class="text-info">Please enter name or email of the new connection you want to add:</p>
-                </div>
-                <div class="modal-body">
-                    <form id="NewConnectionSearchForm" class="form-horizontal" action="php/SearchNewConnection_controller.php">
-                        <!-- <div class="form-group">
-                            <label class="col-sm-2 control-label">Name</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" name="NewConnName" />
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Company</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" name="NewConnCompany" />
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Location</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" name="NewConnLocation" />
-                            </div>
-                        </div> -->
-
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Email</label>
-                            <div class="col-sm-9 input-group">
-                                <input type="text" class="form-control keywords" name="NewConnKeywords" />
-
-                                <span class="input-group-btn">
-                                    <button class="btn btn-primary submit" type="button" title="Search">
-                                        <span class="glyphicon glyphicon-search"></span>
-                                    </button>
-                                  </span>
-                            </div>
-                        </div>
-                    </form>
-
-                    <div class="searchResults"></div>
-                </div>
-                <div class="modal-footer">
-                    <div id="NewConnectionSearchAlert" class="alert alert-warning hidden"></div>
-                    <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
 
     <script type="text/template" id="ConnectionTemplate">
     <div class="UserConnection col-lg-4 col-md-4 col-sm-6 col-xs-12 item" style="height: 180px;">
@@ -177,33 +156,9 @@ ob_start();
         </div>
     </div>
     </script>
-	
-	<script type="text/template" id="SuggestionTemplate">
-    <li class="NewUserConnection">
-        <input type="hidden" class="UserID" name="UserID" value="" />
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <div class="media">
-                    <div class="pull-left">
-                        <img src="../image/proconnect/Tab_logo2_100x100.png" alt="people" style="object-fit: cover;" width="50px" height="50px" class="media-object img-circle ProfileImage" />
-                    </div>
-                    <div class="media-body BlurHide">
-                        <h4 class="media-heading margin-v-5"><a class="ConnectionName" href="#">Adrian D.</a>
-                        </h4>
-                        <div class="profile-icons">
-                            <span><i class="fa fa-briefcase"></i>&nbsp;&nbsp;<span class="ConnectionJob">Job Here</span></span>
-                            <span><i class="fa fa-building"></i>&nbsp;&nbsp;<span class="ConnectionCompany">Company Here</span></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="panel-footer BlurHide">
-                <a href="#" class="btn btn-default btn-sm addNewConnection">Connect&nbsp;&nbsp;<i class="fa fa-retweet"></i></a>
-                <a href="#" class="btn btn-default btn-sm dismissConnection">Skip&nbsp;&nbsp;<i class="fa fa-retweet"></i></a>
-            </div>
-        </div>
-    </li>
-    </script>
+<?php
+    include_once __DIR__."/../ComponentTemplates/ConnectionSuggestionTemplate.html";
+?>
 
 <?php
     $Content = ob_get_clean();

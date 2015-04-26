@@ -4,16 +4,15 @@ function NewConnection(data, mode) {
 	this.btnDismiss;
 	this.ConnTemplate;
 	this.data;
-	if(mode == 'show') this.mode = mode;
-	else this.mode = 'hide';
+	this.mode = 'hide';
 
-	this.init(data);
+	this.init(data, mode);
 }
 
 NewConnection.prototype = {
 	constructor: this,
 
-	init: function(data) {
+	init: function(data, mode) {
 		var that = this;
 		that.data = data;
 		that.ConnTemplate = $('#SuggestionTemplate').html();
@@ -31,7 +30,7 @@ NewConnection.prototype = {
 		}
 		
 		/*toggle suggestions hide/show events*/
-		conn.find('.ProfileImage').on('click', function() {
+		conn.find('.ProfileImage').on('mouseover', function() {
 			that.switchMode('show');
 		});
 
@@ -40,6 +39,7 @@ NewConnection.prototype = {
 		});
 
 		$(document).on('click', function(e) {
+			if (that.mode == 'static') return false;
 			that.switchMode('hide');
 		});
 		/*end of suggestions hide/show events*/
@@ -61,29 +61,43 @@ NewConnection.prototype = {
 			that.dismiss();
 		});
 
-		if (that.mode != 'show') {
-			that.switchMode('hide');
-			conn.css({
-				'width':'21%',
-				'float':'right',
-				'clear':'both'
-			});
+		// initialize hide mode
+		conn.css({
+			'opacity':'0.5',
+			'width':'21%',
+			'float':'right',
+			'clear':'both'
+		});
+
+		conn.find('.BlurHide').hide();
+		conn.find('.FullHide').show();
+		// end of initialization
+
+		// if a parameter was passed in for mode then execute that mode
+		if (mode == 'show' || mode == 'static') {
+			that.switchMode(mode);
 		}
 	},
 
 	switchMode: function(mode) {
+		var that = this;
 		var conn = this.container;
 		switch(mode) {
+			case 'static':
 			case 'show':
-				conn.animate({width:'100%'},400, 'linear', function() {
+				if (that.mode == 'show' || that.mode == 'static') return false;
+				that.mode = mode;
+				conn.animate({width:'100%', opacity:1},400, 'linear', function() {
 					conn.find('.BlurHide').show();
 					conn.find('.FullHide').hide();
 				});
 			break;
 			default:
+				if (that.mode == 'hide') return false;
+				that.mode = 'hide';
 				conn.find('.BlurHide').hide();
 				conn.find('.FullHide').show();
-				conn.animate({width:'21%'},400, 'linear');
+				conn.animate({width:'21%', opacity:0.5},400, 'linear');
 		}
 	},
 
