@@ -12,9 +12,6 @@ var MessageGetter = (function() {
 				data['filter'] = 'pending';
 			}
 
-			//DEBUG
-			contentURL = "/master/custom_proconnect/php/dummy.php";
-
 			$.ajax({
 				url: contentURL,			//<------ must be hard link
 				data: data,			//<------ may not be necessary
