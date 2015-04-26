@@ -109,7 +109,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                <input type="checkbox" value="" checked> 
             </label>
         </div>
-    </li>
+        </li>
     </template>
     <!-- Wrapper required for sidebar transitions -->
     <div class="st-container">
@@ -199,12 +199,29 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                         <div class="search-1">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="icon-search"></i></span>
+
                                 <input type="text" class="form-control" placeholder="Search for people..." name="searchKey">
+                                <!-- <span class="input-group-btn">
+                                    <input type="submit" class="btn btn-default">Search</input>
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-right well " role="menu">
+                                        <li>
+                                            <div>
+                                              <img src="/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif">
+                                            </div>
+                                        </li>
+                                    </ul> -->
+                                </span>
                             </div>
                         </div>
+
+                        <!-- Search Button -->
                         <div class="pull-left visible-md visible-lg"> 
                             <ul class="nav navbar-nav ">
-                                <li>
+                                <li class="ao-search-btn">
                                     <a class="main-nav-search-btn" type="submit">Search</a>
                                 </li>
                                 
@@ -212,32 +229,56 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                                     <a id="ao-show-btn" data-toggle="dropdown" class="dropdown-toggle">
                                         <i class="fa fa-caret-down"></i>
                                     </a>
-                                    <div class="dropdown-menu">
+                                    <div id="ao-main-box" class="dropdown-menu dropdown-menu-right well" role="options">
                                         <div class="iam-loading" >
                                             <div>
                                               <img src="/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif">
                                             </div>
                                         </div>
+                                        <h3>Advance Search By:</h3>
+                                        <div class="ao-outer">
+                                            <div>
+                                                <div class="form-group">
+                                                    <label for="ao-education">Education</label> 
+                                                    <div class="">
+                                                        <ul id="ao-education" class="dynamic-result-div list-unstyled">
+                                                            <li>
+                                                            <div class="checkbox">
 
-                                        <!-- <li class="media">
-                                            <div class="media-left">
-                                                <a href="#">
-                                                    <img class="media-object thumb" src="images/people/50/guy-2.jpg" alt="people">
-                                                </a>
-                                            </div>
-                                            <div class="media-body">
-                                                <div class="pull-right">
-                                                    <span class="label label-default">5 min</span>
+                                                                   <input id="asda"type="checkbox" checked>  
+                                                                   <label for="asda">asdasd</label>
+                                                            </div>
+                                                            </li>
+                                                        </ul> 
+                                                        <input class="ao-add-option" type="text" placeholder="+ Add">
+                                                    </div>
                                                 </div>
-                                                <h5 class="media-heading">Adrian D.</h5>
-                                                <p class="margin-none">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                                <hr>
                                             </div>
-                                        </li> -->
+                                        </div>
+                                        <div class="ao-outer">
+                                            <div>
+                                                <div class="form-group">
+                                                    <label for="ao-education">School</label> 
+                                                    <div>
+                                                        <ul id="ao-school" class="dynamic-result-div list-unstyled">
+                                                        </ul> 
+                                                        <input class="ao-add-option" type="text" placeholder="+ Add">
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="ao-close close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+                                        <!-- Extra Search Button -->
+                                        <button type="submit" class="btn btn-primary">Search</button>
                                         
                                     </div>
                                 </li>
                             </ul>
-                        </div>
+                        </div> <!-- END Search Button -->
+
                         <!-- <div class="pull-left visible-md visible-lg" data-toggle="tooltip" data-placement="bottom" title="A few Color Examples. Download includes CSS Files for all color examples & the tools to Generate any Color combination. This Color-Switcher is for previewing purposes only.">
 						<!-- Color bar -->
 						 <!--

@@ -80,5 +80,5 @@ $(document).ready(function(){
       	}
 	}
 
-	// AdvanceSearchInterfaceHandler.init();
+	AdvanceSearchInterfaceHandler.init();
 });

@@ -2,7 +2,10 @@ var AdvanceSearchInterfaceHandler = (function(){
 
 	function init() {
 		
-		$("#advance-option-div").on("click",function(e){e.stopPropagation();}); //prevent closing on random click*/
+		$("#ao-main-box").on("click",function(e){
+			e.stopPropagation();
+			console.log(e);
+		}); //prevent closing on random click*/
 
 		$(".ao-close").on("click",function(e){$("#ao-show-btn").trigger("click");}); //enable close button
 
@@ -14,9 +17,16 @@ var AdvanceSearchInterfaceHandler = (function(){
 				var optionName = $(this).val();
 				var name = $(this).siblings(".dynamic-result-div").prop("id");
 
-				var baseItem = $(document.getElementById("ao-checkbox").content.cloneNode(true));
-				baseItem.find("input[type=checkbox]").prop("value",optionName).prop("name",name).after(" " + optionName);
+				var baseItem = document.getElementById("ao-checkbox").content.cloneNode(true);//stamping out template
+				var checkBox = baseItem.querySelector("input[type=checkbox]");
+				checkBox.value = optionName;
+				checkBox.name = name;
+				var textNode = document.createTextNode(" " + optionName);
 
+				checkBox.appendChild(textNode);
+				// .prop("value",optionName).prop("name",name).after(" " + optionName);
+
+				console.log(baseItem);
 				$(this).siblings(".dynamic-result-div").append(baseItem); //attach baseItem
 
 				$(this).val("");//reset value
