@@ -30,6 +30,8 @@ NewPost.prototype = {
 		that.inputFeedImage = that.container.find('#FeedImage');
 		that.imagePreview = that.container.find('#ImagePreview');
 		that.processedImageURL = that.container.find('#ImageURL');
+		that.btnYouTube = that.container.find('#btnYouTube');
+		that.YouTubeURL = that.container.find('#YouTubeURL');
 		that.btnPostMode = that.container.find('#btnPostMode');
 		that.btnPostMode.on('click', function() {that.changeMode('active')});
 		that.btnSharePost = that.container.find('#btnSharePost');
@@ -37,6 +39,13 @@ NewPost.prototype = {
 		that.btnAttachLink = that.container.find('#btnAttachLink');
 		that.inputExternalLink = that.container.find('#ExternalLink');
 		that.Alert = that.container.find('#AlertNewPost');
+
+		that.btnYouTube.on('click', function(e) {
+			e.preventDefault();
+			that.YouTubeURL.parent().fadeIn('2500', function() {
+				that.YouTubeURL.focus();
+			});
+		});
 
 		// replace textbox with CKEditor
 		CKEDITOR.replace("ContentMessage", {
@@ -132,6 +141,7 @@ NewPost.prototype = {
 			feed.setContentMessage(contentMsg);
 			feed.setFeedLink(that.inputExternalLink.val());
 			feed.setImageURL(uploadedImageURL);
+			feed.setYouTubeURL(that.YouTubeURL.val());
 
 			feed.update(function(json) { 
 				try {

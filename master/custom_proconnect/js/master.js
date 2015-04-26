@@ -81,4 +81,8 @@ $(document).ready(function(){
 	}
 
 	AdvanceSearchInterfaceHandler.init();
+
+	// Load connections suggestions
+	var suggList = new SuggestionList($('#SuggListing'));
+	suggList.load('compact');
 });

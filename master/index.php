@@ -125,7 +125,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                         <span class="icon-bar"></span>
                     </button>
                     <a href="#sidebar-chat" data-toggle="sidebar-menu" data-effect="st-effect-1" class="toggle pull-right visible-xs "><i class="fa fa-comments"></i></a>
-                    <a class="navbar-brand navbar-brand-info hidden-xs" href="/feed/" style= "background-color: #4687CE;"><img width="150px" src="../image/proconnect/logo_text.png" alt="ProConnect" style = "margin-top: -5px;"/></a>
+                    <a class="navbar-brand navbar-brand-info hidden-xs" href="/feed/" style= "background-color: #4687CE;"><img width="150px" src="../image/proconnect/logo_text.png" alt="ProConnect" /></a>
                 </div>
                 <div class="collapse navbar-collapse" id="main-nav">
                     <ul class="nav navbar-nav ">
@@ -389,88 +389,13 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                 </ul>
 
                 
-                <!-- <i class="fa fa-flag pull-right"></i> -->
-                <!-- <h4 id="notification-list"class="category border top">Notifications <span class="badge notification-red pull-right"></span>
-                </h4>
-                <div class="sidebar-block">
-                    <ul class="sidebar-feed">
-                        <li class="media custom-media-item">
-                            <div class="media-left">
-                                <a class="user-url" href="#">
-                                    <img class="media-object thumb" src="" alt="default">
-                                </a>
-                            </div>
-                            <div class="media-body custom-media-body">
-                                <div class="pull-right">
-                                    <span class="label label-default time-ago">5 min</span>
-                                </div>
-                                <h5 class="media-heading">Default</h5>
-                                <p class="margin-none snippet-zone">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                            </div>
-                        </li>
-                        <li class="media">
-                            <div class="media-left">
-                                <span class="media-object">
-                                <i class="fa fa-fw fa-bell"></i>
-                            </span>
-                            </div>
-                            <div class="media-body">
-                                <a href="" class="text-white">Adrian</a> just logged in
-                                <span class="time">2 min ago</span>
-                            </div>
-                            <div class="media-right">
-                                <span class="news-item-success"><i class="fa fa-circle"></i></span>
-                            </div>
-                        </li>
-                        <li class="media">
-                            <div class="media-left">
-                                <span class="media-object">
-                            <i class="fa fa-fw fa-bell"></i>
-                        </span>
-                            </div>
-                            <div class="media-body">
-                                <a href="" class="text-white">Adrian</a> just added <a href="" class="text-white">mosaicpro</a> as their office
-                                <span class="time">2 min ago</span>
-                            </div>
-                            <div class="media-right">
-                                <span class="news-item-success"><i class="fa fa-circle"></i></span>
-                            </div>
-                        </li>
-                        <li class="media">
-                            <div class="media-left">
-                                <span class="media-object">
-                            <i class="fa fa-fw fa-bell"></i>
-                        </span>
-                            </div>
-                            <div class="media-body">
-                                <a href="" class="text-white">Adrian</a> just logged in
-                                <span class="time">2 min ago</span>
-                            </div>
-                        </li>
-                        <li class="media">
-                            <div class="media-left">
-                                <span class="media-object">
-                            <i class="fa fa-fw fa-bell"></i>
-                        </span>
-                            </div>
-                            <div class="media-body">
-                                <a href="" class="text-white">Adrian</a> just logged in
-                                <span class="time">2 min ago</span>
-                            </div>
-                        </li>
-                        <li class="media">
-                            <div class="media-left">
-                                <span class="media-object">
-                            <i class="fa fa-fw fa-bell"></i>
-                        </span>
-                            </div>
-                            <div class="media-body">
-                                <a href="" class="text-white">Adrian</a> just logged in
-                                <span class="time">2 min ago</span>
-                            </div>
-                        </li>
+                <i class="fa fa-users pull-right"></i>
+                <div class="affix hidden-print hidden-xs hidden-sm" style="position: fixed; padding-left: 20px" role="complimentary" data-spy="affix" data-offset-top="400">
+                    <label class="text-info">People You may know...</label>
+                    <ul id="SuggListing" class="sidebar-feed nav">
+                        
                     </ul>
-                </div> -->
+                </div>
                 <!-- <h4 class="category">Filter</h4>
                 <div class="sidebar-block">
                     <ul>
@@ -551,6 +476,10 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                 <input type="text" class="form-control" placeholder="Type message..." />
             </div>
         </script>
+
+        <?php // include template for displaying Connection Suggestion
+            include_once __DIR__."/../ComponentTemplates/ConnectionSuggestionTemplate.html";
+        ?>
         <div class="chat-window-container"></div>
         <!-- sidebar effects OUTSIDE of st-pusher: -->
         <!-- st-effect-1, st-effect-2, st-effect-4, st-effect-5, st-effect-9, st-effect-10, st-effect-11, st-effect-12, st-effect-13 -->
@@ -668,6 +597,8 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
     <script type="text/javascript" src="/master/custom_proconnect/js/AdvanceSearchInterfaceHandler.js"></script>
     <script type="text/javascript" src="/master/custom_proconnect/js/MessageGetter.js"></script>
     <script type="text/javascript" src="/master/custom_proconnect/js/MediaItemFactory.js"></script>
+    <script src="../connections/js/NewConnection.js"></script>
+    <script src="../connections/js/SuggestionList.js"></script>
     <script type="text/javascript" src="/master/custom_proconnect/js/master.js"></script>
 </body>
 </html>
