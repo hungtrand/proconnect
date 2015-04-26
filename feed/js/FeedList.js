@@ -40,7 +40,7 @@ FeedList.prototype = {
 			try {
 				json = $.parseJSON(json);
 			} catch (e) {
-				console.log(e);
+				//console.log(e);
 			}
 
 			callback(json);

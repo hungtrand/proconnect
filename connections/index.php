@@ -179,25 +179,30 @@ ob_start();
     </script>
 	
 	<script type="text/template" id="SuggestionTemplate">
-    <div class="NewUserConnection" class="col col-xs-12">
+    <li class="NewUserConnection">
         <input type="hidden" class="UserID" name="UserID" value="" />
-        <div class="row">
-            <div class="col col-xs-3">
-                <img width="50px" src="../image/user_img.png" class="img-rounded ProfileImage" />
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="media">
+                    <div class="pull-left">
+                        <img src="../image/proconnect/Tab_logo2_100x100.png" alt="people" style="object-fit: cover;" width="50px" height="50px" class="media-object img-circle ProfileImage" />
+                    </div>
+                    <div class="media-body BlurHide">
+                        <h4 class="media-heading margin-v-5"><a class="ConnectionName" href="#">Adrian D.</a>
+                        </h4>
+                        <div class="profile-icons">
+                            <span><i class="fa fa-briefcase"></i>&nbsp;&nbsp;<span class="ConnectionJob">Job Here</span></span>
+                            <span><i class="fa fa-building"></i>&nbsp;&nbsp;<span class="ConnectionCompany">Company Here</span></span>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div class="col col-xs-9">
-                <h5 class="text-primary ConnectionName" style="margin-top: 0px; margin-bottom: 7px;">John Doe</h5>
-                <p class="ConnectionWork" style= "font-size: 12px;"><span class="ConnectionJob"></span>&nbsp;at&nbsp;<span class="ConnectionCompany"></span></p>
-                   <a class="addNewConnection" href="#" style= "font-size: 12px;">
-                   <span class="glyphicon glyphicon-retweet">&nbsp;<span class="txt">Connect</span></a>
-                    &nbsp;&#8226;
-				   <a class="dismissConnection" href="#" style= "font-size: 12px; color: gray;">Skip</a>
+            <div class="panel-footer BlurHide">
+                <a href="#" class="btn btn-default btn-sm addNewConnection">Connect&nbsp;&nbsp;<i class="fa fa-retweet"></i></a>
+                <a href="#" class="btn btn-default btn-sm dismissConnection">Skip&nbsp;&nbsp;<i class="fa fa-retweet"></i></a>
             </div>
         </div>
-
-        <hr />
-    </div>
+    </li>
     </script>
 
 <?php

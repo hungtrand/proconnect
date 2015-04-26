@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	
 	var suggList = new SuggestionList($('#SuggListing'));
-	suggList.load();
+	suggList.load('compact');
 
 	var feedList = new FeedList($('#FeedsSection'));
 	feedList.load();
