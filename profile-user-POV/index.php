@@ -671,12 +671,7 @@ $ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
               </div>
           </div>
       </div>
-
-
     <!-- </div>/main-container -->
-
-    
-
 <?php
     $Content = ob_get_clean();
     include $_SERVER["DOCUMENT_ROOT"]."/master/index.php";
