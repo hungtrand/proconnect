@@ -16,7 +16,7 @@
     <link rel="icon" href="../../favicon.ico">
 
     <title>Set Up for ProConnect</title>
-	<link rel="ICON" href="../image/proconnect/Tab_logo2.ico" type="image/ico" />
+	<link rel="ICON" href="../image/proconnect/Tab_logo2_bold.ico" type="image/ico" />
     <!-- JQuery link -->
 	<script type="text/javascript" src="../lib/jquery/jquery-2.1.3.min.js"></script>
     <!-- Bootstrap core CSS -->

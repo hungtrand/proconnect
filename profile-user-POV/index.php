@@ -6,6 +6,7 @@ include '../signout/php/session_check_signout.php';
 session_start();
 $UData = json_decode($_SESSION['__USERDATA__'], true);
 $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
+$ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
   
 
 
@@ -67,11 +68,11 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                       <!-- Split button -->
                           <!-- <div class="btn-group"> -->
                             <form action="/profile-public-POV/" method="GET">
-                              <button  type="submit" class="btn btn-primary" value=<?=$UData['USERID']?> name="userID">
+                              <button  type="submit" class="btn btn-info" value=<?=$UData['USERID']?> name="userID">
                                   View Profile As Public
                               </button>
                             </form>
-                              <!-- <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                              <!-- <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
                                   <span class="caret"></span><span class="sr-only">Social</span>
                               </button>
                               <ul class="dropdown-menu" role="menu">
@@ -189,7 +190,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 							<input class="form-control" id="postal-code-input" type="text" name="postal-code" placeholder="Postal Code">
 						</div>
 						</div>
-							<button type="submit" class="btn btn-primary save-btn" value="save">Save</button>
+							<button type="submit" class="btn btn-info save-btn" value="save">Save</button>
                           <button type="button" class="btn btn-default cancel-btn" value="cancel" for="user-info-edit">Cancel</button>
                         </form>  
                       </div>
@@ -235,7 +236,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                         <span class="alert-msg"></span>
                       </div>
                       <textarea name="summary" class="form-control" id="summary-textarea" rows="10"></textarea> <br><br>
-                      <button type="submit" class="btn btn-primary save-btn">Save</button>
+                      <button type="submit" class="btn btn-info save-btn">Save</button>
                       <button type="button" class="btn btn-default cancel-btn">Cancel</button>
                     </form>
                   </div>
@@ -324,7 +325,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                         </ul>
                       </div>
                       <b style="float:right">Drag to reorder</b>
-                      <button type="submit" class="btn btn-primary save-btn">Save</button>
+                      <button type="submit" class="btn btn-info save-btn">Save</button>
                       <button type="button" class="btn btn-default cancel-btn">Cancel</button>
                     </form>
                   </div>
@@ -437,7 +438,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                       <label for="work-description">Description</label>
                       <textarea id="work-description" class="form-control" rows="5" name="experience-description"></textarea> 
                       <br><br>
-                      <button type="submit" class="btn btn-primary save-btn">Save</button>
+                      <button type="submit" class="btn btn-info save-btn">Save</button>
                       <button type="button" class="btn btn-default cancel-btn">Cancel</button>
                       <a class="remove-entry-link" href="#" >Remove this entry.</a>
                     </form>  
@@ -521,7 +522,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                       <label for="project-description">Description</label>
                       <textarea name="project-description" id="project-description" class="form-control" rows="5"></textarea> <br><br>
 
-                      <button type="submit" class="btn btn-primary save-btn">Save</button>
+                      <button type="submit" class="btn btn-info save-btn">Save</button>
                       <button type="button" class="btn btn-default cancel-btn">Cancel</button>
                       <a class="remove-entry-link" href="#" >Remove this entry.</a>
                     </form>  
@@ -647,7 +648,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                       <!-- file -->
                       <!-- <label for="school-description">Description</label>
                       <input name="school-description" id="school-description" class="form-control" rows="5"></input> <br><br> -->
-                      <button type="submit" class="btn btn-primary save-btn">Save</button>
+                      <button type="submit" class="btn btn-info save-btn">Save</button>
                       <button type="button" class="btn btn-default cancel-btn">Cancel</button>
                       <a class="remove-entry-link" href="#" >Remove this entry.</a>
                     </form>  

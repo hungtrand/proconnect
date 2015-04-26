@@ -27,7 +27,7 @@ ob_start();
             </div>
             <div class="cover-info">
                 <div class="avatar">
-                    <img src="<?=$ProfileImage?>" alt="<?=$FullName?>" />
+                    <img src="<?=$ProfileImage?>" alt="<?=$FullName?>" style="object-fit: cover;"/>
                 </div>
                 <div class="name"><a href="#"><?=$FullName?>&nbsp;-&nbsp;<small><em><?=$JobTitle?></em></small></a>
                 </div>
@@ -141,6 +141,15 @@ ob_start();
                     <div id="SuggestionsListEndAlert" class="alert alert-info hidden text-center"></div>
                 </div>
             </div> -->
+
+
+            <!--<div class="affix hidden-print hidden-xs hidden-sm text-right" 
+                style="position: fixed; width: 400px; right: 30px; top: 50px;" role="complimentary" data-spy="affix" data-offset-top="50">
+                <label class="text-default">People You may know...</label>
+                <ul id="SuggListing" class="nav text-right">
+                </ul>
+            </div>-->
+
         </div>
 
     <script type="text/template" id="FeedTemplate">
