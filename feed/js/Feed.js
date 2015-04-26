@@ -38,7 +38,7 @@ Feed.prototype = {
 			.attr('data-title', that.data['ContentMessage']);
 		feed.find('.contentImage').attr('src', that.data['ImageURL']);
 		feed.find('.contentMessage').html(that.data['ContentMessage']);
-
+		console.log(that.data['YouTubeID']);
 		if (that.data['YouTubeID']) {
 			var url = feed.find('.YouTubeFrame').attr('src');
 			url = url.replace('{{YouTubeID}}', that.data['YouTubeID']);
