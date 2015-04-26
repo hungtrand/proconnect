@@ -27,7 +27,7 @@ ob_start();
             </div>
             <div class="cover-info">
                 <div class="avatar">
-                    <img src="<?=$ProfileImage?>" alt="<?=$FullName?>" />
+                    <img src="<?=$ProfileImage?>" alt="<?=$FullName?>" style="object-fit: cover;"/>
                 </div>
                 <div class="name"><a href="#"><?=$FullName?>&nbsp;-&nbsp;<small><em><?=$JobTitle?></em></small></a>
                 </div>
