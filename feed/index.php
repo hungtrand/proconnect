@@ -121,7 +121,7 @@ ob_start();
                     </div>
                 </div>
 
-                <ul id="FeedsSection" class="timeline-list">
+                <ul id="FeedsSection" class="">
 
                 </ul>
 
@@ -157,9 +157,11 @@ ob_start();
         <li class="media media-clearfix-xs feed">
             <input type="hidden" class="FeedID" name="FeedID" value="" />
             <div class="media-left">
-                <div class="user-wrapper">
-                    <img src="/image/user_img.png" alt="people" style="object-fit: cover; margin-left: 20px;"
+                <div class="user-wrapper text-center">
+                    <img src="/image/user_img.png" alt="people" style="object-fit: cover;"
                     class="img-circle media-object creatorImage hidden-xs" width="80" height="80" />
+                    <img src="/image/user_img.png" alt="people" style=""
+                    class="img-rounded media-object creatorImage hidden-sm hidden-md hidden-lg" width="80" />
                     <div><a href="#" class="AuthorLink">{{UserName}}</a>
                     </div>
                     <div class="timestamp">19 OCT</div>
