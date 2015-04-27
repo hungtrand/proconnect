@@ -100,7 +100,7 @@
 								"education-description" => "asdasdasdasdasda"
 							],
 							[
-								"school-name" => "Some value",
+								"school-name" => "Latest School",
 								"degree" => "Bachelor of Science (BS)",
 								"field-of-study" => "Computer Science",
 								"grade" => "SHIT",

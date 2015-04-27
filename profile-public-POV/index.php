@@ -21,7 +21,7 @@ $ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
 					   <!-- Split button -->
 						<div class="btn-group">
 							  <button type="button" class="btn btn-info">
-								  Send a message</button>
+								  Connect</button>
 							  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
 								  <span class="caret"></span><span class="sr-only">Social</span>
 							  </button>
@@ -71,40 +71,83 @@ $ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
 				</div>
 			</div>
 		</div>
-		<!-- Skills -->
-		<div class="panel panel-default">
-			<div class="panel-heading panel-heading-gray">
-			<i class="fa fa-wrench "></i>		
-			&nbsp;Skills and Endorsements		  
+		<div class="row">
+				<div class="col-md-6">
+					<div class="panel panel-default">
+						<div class="panel-heading panel-heading-gray">
+							<i class="fa fa-fw fa-info-circle"></i> About
+						</div>
+					<div class="panel-body">
+							<ul class="list-unstyled">
+								<li class="padding-v-4">
+									<div class="row">
+										<div class="col-sm-4"><span class="text-muted">Job</span>
+										</div>
+										<div class="col-sm-8"> <span id="about-job"></span></div>
+									</div>
+								</li>
+								<li class="padding-v-4">
+									<div class="row">
+										<div class="col-sm-4"><span class="text-muted">Lives in</span>
+										</div>
+										<div class="col-sm-8"> <span id="about-address"></span></div>
+									</div>
+								</li>
+								<li class="padding-v-4">
+									<div class="row">
+										<div class="col-sm-4"><span class="text-muted">Studied</span>
+										</div>
+										<div class="col-sm-8"> <span id="about-education"></span></div>
+									</div>
+								</li>
+								<li class="padding-v-4">
+									<div class="row">
+										<div class="col-sm-4"><span class="text-muted">Connections</span>
+										</div>
+										<div class="col-sm-8"> <span id="about-connection"></span></div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<!-- Skills -->
+					<div class="panel panel-default">
+						<div class="panel-heading panel-heading-gray">
+							<i class="fa fa-wrench "></i>		
+							&nbsp;Skills and Endorsements		  
+						</div>
+						<!-- normal-view -->
+						<div id="skills-endorsements" class="normal-view "> 
+							<div class="editable" for="skills-endorsements-edit">
+							  <!-- <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> -->
+								 
+							
+									<!-- Default panel contents -->
+									<!-- List group -->
+									  <div id="skill-title" class="panel-heading skill-top" style= "background-color: #f5f5f5; font-weight: 700; color: #5e5e5e;"><b></b></div>
+									  <div id="skill-top-list" class="panel-body skill-more">
+										<!-- <li class="list-group-item "><span class="badge colored-badge">12</span>Cras justo odio</li> -->
+									  </div> 
+
+									  <div id="skill-more-title" class="panel-footer skill-more">
+										<b><span class="first-name"></span> also knows about...</b>
+									  </div>
+
+									  <!-- Default panel contents -->
+									  <!-- List group -->
+									  
+									  <div id="skill-more-list" class="panel-body skill-more">
+										
+									  </div>
+								
+							</div>  
+						</div>
+					</div>
 			</div>
-			<!-- normal-view -->
-			<div id="skills-endorsements" class="normal-view "> 
-			<div class="editable" for="skills-endorsements-edit">
-			  <!-- <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> -->
-			 
-			  <div class="panel panel-default ">
-				<!-- Default panel contents -->
-				<!-- List group -->
-				  <div id="skill-title" class="panel-heading" style= "background-color: #f5f5f5; font-weight: 700; color: #5e5e5e;"><b></b></div>
+        </div>
 
-				  <ul id="skill-top-list" class="list-group">
-					<!-- <li class="list-group-item "><span class="badge colored-badge">12</span>Cras justo odio</li> -->
-				  </ul> 
-
-				  <div id="skill-more-title" class="panel-footer skill-more">
-					<b><span class="first-name"></span> also knows about...</b>
-				  </div>
-
-				  <!-- Default panel contents -->
-				  <!-- List group -->
-				  
-				  <div id="skill-more-list" class="panel-body skill-more">
-					
-				  </div>
-			  </div>
-			</div>  
-			</div>
-		</div>
 
 		<!-- Experience -->
 		<div class="panel panel-default">

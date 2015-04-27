@@ -58,7 +58,7 @@ margin-left: auto;
 }*/
 
 .colored-badge{
-	background-color: #1ba8e5; 
+	background-color: #4193d0; 
 }
 
 .close {
@@ -429,4 +429,6 @@ small {
 .panel-default>.panel-heading {
 	background-color: #4193d0;
 	color: white;
+}
+.editable .skill{
 }
