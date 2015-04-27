@@ -16,7 +16,7 @@ $ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
 		  <div class="width-250 width-auto-xs">
 			  <div class="panel panel-default widget-user-1 text-center">					   
 					<div class="avatar">								
-						<img src="http://placehold.it/380x500" alt="" class="img-circle" style="height: 110px; width: 110px; object-fit: cover;" id="preview"/>			
+						<img src="http://placehold.it/380x500" alt="" class="img-circle profile-image" style="height: 110px; width: 110px; object-fit: cover;" id="preview"/>			
 						<h3><span id="user-first" class="first-name"></span> <span id="user-mi"></span> <span id="user-last"></span></h3>
 					   <!-- Split button -->
 						<div class="btn-group">

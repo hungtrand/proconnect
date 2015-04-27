@@ -2,6 +2,7 @@
 require_once __DIR__."/../../lib/php/interfaces.php";
 require_once __DIR__."/../../lib/php/classes/Message.php";
 require_once __DIR__."/../../lib/php/classes/Profile.php";
+require_once __DIR__."/../../lib/php/utils.php";
 
 /**
 *	Messages_view - the class resopnsible for converting an array of 
@@ -25,6 +26,10 @@ class Messages_view implements view {
 			$message = new Message($mv->getMessageID());
 			$sender = new Profile($message->getCreator());
 
+			$timestamp = '';
+			if ($message->getDateCreated())
+				$timestamp = timetostr($message->getDateCreated());
+
 			$out = [
 				'messageID'=>$mv->getID(),
 				'sender-ID'=>$sender->getID(),
@@ -32,7 +37,7 @@ class Messages_view implements view {
 				'sender-name'=>$sender->getName(),
 				'sender-href'=>'/profile-public-POV/?UserID='.$sender->getID(),
 				'message-subject'=>$message->getSubject(),
-				'message-time'=>$message->getDateCreated(),	
+				'message-time'=>$timestamp,	
 				'sender-message'=>$message->getBody()
 			];
 

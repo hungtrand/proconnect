@@ -1,19 +1,22 @@
 <?php
- //require_once "../sqlConnection.php"; // For testing
+ // include "../sqlConnection.php"; // For testing
  require_once __DIR__."/ActiveRecord.php";
+
+
 /**
-*	Feed2User - performs logic for user's feed.
-*	@params: $ID (userid)
-*	Responsibilities: getting or setting the data of user's feed to database. 
+*	FeedComment - represent a comment a user made on a post. Map to Feed and User table.
+*	@params: $ID (CommentID)
+*	Responsibilities: contains user's comments and relationship with the user and the feed. 
 */
-class Feed2User extends ActiveRecord {
-	public static $TableName = 'Feed2User';
-	public static $PrimaryKey = 'UFID';
-	public static $Columns = ['UFID', 'FEEDID', 'USERID', 
-							'STATUS', 'LIKED', 'DATECREATED', 'ISCREATOR'];
+
+class FeedComment extends ActiveRecord {
+	public static $TableName = 'Feed_Comments';
+	public static $PrimaryKey = 'COMMENTID';
+	public static $Columns = ['FEEDID', 'USERID', 'COMMENT', 
+							'TIMESTAMP'];
 	
 	private $data = [];
-	private $UFID;
+	private $CommentID;
 	public $err;
 
 	function __construct($ID = null) {
@@ -21,7 +24,7 @@ class Feed2User extends ActiveRecord {
 		parent::__construct();
 
 		if (isset($ID)) {
-			$this->UFID = $ID;
+			$this->CommentID = $ID;
 			if (!$this->data = $this->fetch($ID)) {
 				$this->err = "Record not found.";
 				return false;
@@ -37,7 +40,7 @@ class Feed2User extends ActiveRecord {
 
 	// OVERRIDE
 	public function getID() {
-		return $this->UFID;
+		return $this->CommentID;
 	}
 
 	// OVERRIDE
@@ -64,7 +67,7 @@ class Feed2User extends ActiveRecord {
 			return false;
 		}
 
-		$this->UFID = $ID;
+		$this->FeedID = $ID;
 
 		return true;
 	}
@@ -79,20 +82,12 @@ class Feed2User extends ActiveRecord {
 		return $this->data['USERID'];
 	}
 
-	public function getStatus() {
-		return $this->data['STATUS'];
+	public function getComment() {
+		return $this->data['COMMENT'];
 	}
 
-	public function getLiked() {
-		return (bool)trim($this->data['LIKED']);
-	}
-
-	public function getDateCreated() {
-		return $this->data['DATECREATED'];
-	}
-
-	public function isCreator() {
-		return (bool)trim($this->data['ISCREATOR']);
+	public function getTimestamp() {
+		return $this->data['TIMESTAMP'];
 	}
 
 	// SET METHODS
@@ -108,31 +103,17 @@ class Feed2User extends ActiveRecord {
 		return true;
 	}
 
-	public function setStatus($strVal) {
-		$this->data['STATUS'] = $strVal;
-
-		return true;
-	}
-
-	public function setLiked($boolVal = false) {
-		if ($boolVal) $this->data['LIKED'] = true;
-		else $this->data['LIKED'] = false;
-
-		return true;
-	}
-
-	public function setIsCreator($boolVal = false) {
-		if ($boolVal) $this->data['ISCREATOR'] = true;
-		else $this->data['ISCREATOR'] = false;
+	public function setComment($strVal) {
+		$this->data['COMMENT'] = $strVal;
 
 		return true;
 	}
 }
 
-/*$f = new Feed2User(1);
-// $f->setFeedID(1);
-// $f->setUserID(7);
-$f->setStatus("READ");
-$f->setLiked(true);
-$f->update();*/
+
+/*$fc = new FeedComment();
+$fc->setFeedID(86);
+$fc->setUserID(7);
+$fc->setComment('I like this project. I will try it.');
+$fc->save();*/
 ?>

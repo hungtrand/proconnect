@@ -7,6 +7,16 @@
 if (!isset($Title)) $Title = "Proconnect";
 if (!isset($ProfileImage)) $ProfileImage = "/image/user_img.png";
 if (!isset($Content)) $Content = "Content not loaded.";
+
+// these are are if the page is active, assign a class "active" to the nav
+// these variables are set on the active pages, not here. this is only to check for empty
+if (!isset($HomeActive)) $HomeActive = "";
+if (!isset($MessageActive)) $MessageActive = "";
+if (!isset($ConnectionActive)) $ConnectionActive = "";
+if (!isset($ProfileActive)) $ProfileActive = "";
+if (!isset($JobActive)) $JobActive = "";
+if (!isset($InterestActive)) $InterestActive = "";
+
 ?>
 
 <!DOCTYPE html>
@@ -358,17 +368,17 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                             </li>
                         </ul>
                     </li> -->
-                    <li class=""><a href="/feed/"><i class="fa fa-home"></i> <span>Home</span></a>
+                    <li class="<?=$HomeActive?>"><a href="/feed/"><i class="fa fa-home"></i> <span>Home</span></a>
                     </li>
-                    <li class=""><a href="/profile-user-POV/"><i class="icon-user-1"></i> <span>Profile</span></a>
+                    <li class="<?=$ProfileActive?>"><a href="/profile-user-POV/"><i class="icon-user-1"></i> <span>Profile</span></a>
                     </li>
-                    <li class=""><a href="/connections/"><i class="fa fa-group"></i> <span>Connections</span></a>
+                    <li class="<?=$ConnectionActive?>"><a href="/connections/"><i class="fa fa-group"></i> <span>Connections</span></a>
                     </li>
-                    <li class=""><a href="/message/"><i class="icon-comment-fill-1"></i> <span>Messages</span></a>
+                    <li class="<?=$MessageActive?>"><a href="/message/"><i class="icon-comment-fill-1"></i> <span>Messages</span></a>
                     </li>
-                    <li class=""><a href="/jobs/"><i class="fa fa-suitcase"></i> <span>Jobs</span></a>
+                    <li class="<?=$JobActive?>"><a href="/jobs/"><i class="fa fa-suitcase"></i> <span>Jobs</span></a>
                     </li>
-                    <li><a href="/interest/"><i class="fa fa-star"></i> <span>Interests</span></a>
+                    <li class="<?=$InterestActive?>"><a href="/interest/"><i class="fa fa-star"></i> <span>Interests</span></a>
                     </li>
                     <!-- <li class="hasSubmenu">
                         <a href="#components"><i class="icon-paint-brushes"></i> <span>UI Components</span></a>
