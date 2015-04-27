@@ -27,13 +27,21 @@ class Profile_View implements view {
 	}
 
 	public function loadPersonalInfo($User, $Account) {
-		$address = $User->getAddress();
-		if ($User->getCity())
-			$address .= ", ".$User->getCity();
-		if ($User->getState())
-			$address .= ", ".$User->getState();
-		if ($User->getZip()) 
-			$address .= ", ".$User->getZip();
+		$address = '';
+		if (trim($User->getAddress()))
+			$address = $User->getAddress();
+		if (trim($User->getCity())) {
+			if ($address) $address.=', ';
+			$address .= $User->getCity();
+		}
+		if (trim($User->getState())){
+			if ($address) $address.=', ';
+			$address .= $User->getState();
+		}
+		if (trim($User->getZip())){
+			if ($address) $address.=', ';
+			$address .= $User->getZip();
+		}
 
 		$data = [
 			"first-name"=>$User->getFirstName().'',

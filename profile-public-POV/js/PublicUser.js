@@ -165,7 +165,9 @@ PublicUser.prototype = {
 		$("#user-phone").text(this.userData.personalInfo["phone-number"]);
 		$("#user-home").text(this.userData.personalInfo["phone-number"]);
 
-		
+		if (this.userData.personalInfo['profile-image']) {
+			$('.profile-image').attr('src', this.userData.personalInfo['profile-image']);
+		}
 
 		//update summary description
 		if(this.userData.personalInfo["summary"] !== "") {
@@ -179,7 +181,7 @@ PublicUser.prototype = {
 		
 		//update about
 		var job;
-		var address = this.userData.personalInfo["user-address"]["address-input"] +" " + this.userData.personalInfo["user-address"]["country-input"];
+		var address = this.userData.personalInfo["user-address"];
 		var education;
 		var connection;
 			//job

@@ -161,7 +161,7 @@ ob_start();
                     class="img-circle media-object creatorImage" width="80" height="80" />
                     <div><a href="#" class="AuthorLink">{{UserName}}</a>
                     </div>
-                    <div class="date">19 OCT</div>
+                    <div class="timestamp">19 OCT</div>
                 </div>
             </div>
             <div class="media-body">
@@ -185,12 +185,12 @@ ob_start();
                                     </div>
                                 </div>
                                 <div class="panel-footer">
-                                    <a href="#" class="feedLike"><i class="fa fa-thumbs-o-up">&nbsp;Like</i></a>
+                                    <i class="fa fa-thumbs-o-up"></i>&nbsp;<a href="#" class="feedLike">Like</a>
+                                    <span class="numLikes"></span>
                                     &nbsp;&nbsp;&nbsp;&nbsp;
                                     <a href="#" class="feedComment"><i class="fa fa-comment"></i>&nbsp;Comment</a>
                                     &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <a href="#" class="feedShare"><i class="fa fa-share-alt"></i>&nbsp;Share</a>
-                                    <button type="submit" class="btn btn-primary btn-xs pull-right display-none" href="#">Post</button>
+                                    <a href="#" class="feedPropagate"><i class="fa fa-share-alt"></i>&nbsp;Propagate</a>
                                 </div>
                             </div>
                         </div>

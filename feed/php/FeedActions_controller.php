@@ -9,7 +9,7 @@ require_once __DIR__."/../../lib/php/classes/Feed2User.php";
 require_once __DIR__."/../../lib/php/classes/UserConnectionManager.php";
 require_once __DIR__."/Feed_view.php";
 
-// Check if logged in
+/// Check if logged in
 if (isset($_POST['Username']) && isset($_POST['Password'])) {
 	$login = $_POST['Username'];
 	$password = $_POST['Password'];
@@ -35,87 +35,53 @@ if (!$User = new USER($uid)) {
 	die();
 }
 
-$ImageURL = '';
-$ExternalLink = '';
-$InternalLink = '/profile-public-POV/?UserID='.$uid;
-$ContentMessage = '';
-$FeedID = -1; 
+$F2UID = -1; 
+$mode = "exit";
 // testing  
 // $uid = 3;
 
 if (isset($_POST['FeedID'])) {
-	$FeedID = (int)$_POST['FeedID'];
+	$F2UID = (int)$_POST['FeedID'];
 }
-if(isset($_POST['YouTubeURL'])) {
-	$ExternalLink = trim($_POST['YouTubeURL']);
-	parse_str( parse_url( $ExternalLink, PHP_URL_QUERY ), $qStringsArr );
-	$YouTubeID = $qStringsArr['v'];
-}
-if(isset($_POST['ContentMessage'])){
-	$Content= trim($_POST['ContentMessage']);
-}
-if(isset($_POST['ImageURL'])) {
-	$ImageURL = trim($_POST['ImageURL']);
+if(isset($_POST['Action'])) {
+	$mode = $_POST['Action'];
 }
 
-$mode = "exit";
-
-if ($FeedID > 0) {
-	$mode = "edit";
-} elseif ($FeedID == 0) {
-	$mode = 'insert';
+if ($F2UID < 1) {
+	echo "Missing parameters.";
+	die();
 }
 
 try {
 	switch($mode) {
-		case "edit":
-			$feed = new Feed();
+		case "Like":
+			$f2u = new Feed2User();
 		//	var_dump($exp->getData());
-			if($feed->load($FeedID) == true){
-				
-				$feed->update();
+			if($f2u->load($F2UID) == true){
+				$f2u->setLiked(true);
+				$f2u->update();
 
 				echo json_encode(['success'=>1]);
 			} else {
 				echo "Cannot save. Record no longer exists.";
 			}
 		break;
-		case "insert":
-			$feed = new Feed();
-			$feed->setContent($Content);
-			$feed->setImageURL($ImageURL);
-			$feed->setExternalURL($YouTubeID);
-			$feed->setInternalURL($InternalLink);
-			$feed->setCreator($uid);
-			$feed->setType('normal');
+		case "Comment":
+			/*$feed = new Feed();
 			
-			if ($feed->save()) {
-				$ucm = new UserConnectionManager($User);
-				$connections = $ucm->getAll();
-
-				$f2u = new Feed2User();
-				$f2u->setFeedID($feed->getID());
-				$f2u->setUserID($uid);
-				$f2u->setStatus("SELF");
-				$f2u->save();
-
-				foreach ($connections as $conn) {
-					$f2u = new Feed2User();
-					$f2u->setFeedID($feed->getID());
-					$f2u->setUserID($conn->getConnectionUserID());
-					$f2u->setStatus("NEW");
-					$f2u->save();
-				}
+			
+			if ($feed->update()) {
+				
 				
 				$view = new Feed_view();
 				$view->load($f2u);
 				echo json_encode($view->getView());
 			} else {
 				echo "Failed to save new feed. ".$feed->err;
-			};
+			};*/
 		break;
 		default:
-			echo "What are you trying to do?";
+			echo "Unknown action.";
 			die();
 		break;
 	}
