@@ -177,6 +177,37 @@ PublicUser.prototype = {
 
 			$("#user-summary").text("Say something about yourself!");
 		}
+		
+		//update about
+		var job;
+		var address = this.userData.personalInfo["user-address"]["address-input"] +" " + this.userData.personalInfo["user-address"]["country-input"];
+		var education;
+		var connection;
+			//job
+			$.each(this.userData.experiences,function(i,exp){
+
+				var endTime = (exp["work-present"] === "") ? exp["work-end-month"] + " " + exp['work-end-year'] : exp["work-present"];
+				if(endTime == "current") {
+					job = exp['position-title'] + " at " + exp['company-name'];
+				}
+			});
+			//address
+			//education
+			$.each(this.userData.education,function(key,edu){
+			var tempEnded = 0;
+			var schoolEnded = edu["school-year-ended"];
+			
+			if(schoolEnded > tempEnded) {
+				tempEnded=schoolEnded;
+				education= edu['field-of-study']+" at " + edu['school-name'];
+			}
+			});
+			//connection
+			console.log (education);
+		$("#about-job").text(job);
+		$("#about-address").text(address);
+		$("#about-education").text(education);
+		$("#about-connection").text(connection);
 
 		//update skill
 		if ($.isEmptyObject(this.userData.skill) === false){ //if not an empty object
@@ -194,7 +225,8 @@ PublicUser.prototype = {
 				value = (value == 0) ? "" : value;
 
 				if(count < 7){
-					$("#skill-top-list").append("<li class=\"list-group-item\"><span class=\"badge colored-badge\">" + value + "</span>" + key + "</li>");
+					//$("#skill-top-list").append("<li class=\"list-group-item\"><span class=\"badge colored-badge\">" + value + "</span>" + key + "</li>");
+					$("#skill-top-list").append("<div class='skill-bean'><span >" + key + " <span class=\"badge colored-badge\">" + value + "</span></span></div>");
 				} else {
 					$(".skill-more").show();
 					$("#skill-more-list").append("<div class='skill-bean'><span >" + key + " <span class=\"badge colored-badge\">" + value + "</span></span></div>");
