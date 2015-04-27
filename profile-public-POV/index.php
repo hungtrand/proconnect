@@ -62,15 +62,7 @@ $ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
 		  </div>
 		</div><!--left-->		
 	<div class = "media-body">		
-		<!--Send Message-->
-		<div class="panel panel-default share">
-			<div class="input-group">
-				<input type="text" class="form-control share-text" placeholder="Write message...">
-				<div class="input-group-btn">
-					<a class="btn btn-info" href="#"><i class="fa fa-envelope"></i> Send</a>
-				</div>
-			</div>
-		</div>
+		
 		<div class="row">
 				<div class="col-md-6">
 					<div class="panel panel-default">
@@ -121,27 +113,9 @@ $ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
 						<!-- normal-view -->
 						<div id="skills-endorsements" class="normal-view "> 
 							<div class="editable" for="skills-endorsements-edit">
-							  <!-- <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> -->
-								 
-							
-									<!-- Default panel contents -->
-									<!-- List group -->
-									  <div id="skill-title" class="panel-heading skill-top" style= "background-color: #f5f5f5; font-weight: 700; color: #5e5e5e;"><b></b></div>
 									  <div id="skill-top-list" class="panel-body skill-more">
 										<!-- <li class="list-group-item "><span class="badge colored-badge">12</span>Cras justo odio</li> -->
-									  </div> 
-
-									  <div id="skill-more-title" class="panel-footer skill-more">
-										<b><span class="first-name"></span> also knows about...</b>
-									  </div>
-
-									  <!-- Default panel contents -->
-									  <!-- List group -->
-									  
-									  <div id="skill-more-list" class="panel-body skill-more">
-										
-									  </div>
-								
+									  </div> 							
 							</div>  
 						</div>
 					</div>

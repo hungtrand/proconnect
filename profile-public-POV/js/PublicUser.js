@@ -117,8 +117,8 @@ PublicUser.prototype = {
 
 		//do an ajax call to get user data
 		$.ajax({
-			url: "php/Profile_controller.php",
-			// url: "php/dummy.php",
+			//url: "php/Profile_controller.php",
+			 url: "php/dummy.php",
 			method: 'POST',
 			data: that.queryString(),   			// <----------- data is {"userID": 11111} 
 			error: function(xhr,status,error) {
@@ -223,13 +223,13 @@ PublicUser.prototype = {
 				//check for 0 value
 				value = (value == 0) ? "" : value;
 
-				if(count < 7){
+				//if(count < 7){
 					//$("#skill-top-list").append("<li class=\"list-group-item\"><span class=\"badge colored-badge\">" + value + "</span>" + key + "</li>");
 					$("#skill-top-list").append("<div class='skill-bean'><span >" + key + " <span class=\"badge colored-badge\">" + value + "</span></span></div>");
-				} else {
+				//} else {
 					$(".skill-more").show();
 					$("#skill-more-list").append("<div class='skill-bean'><span >" + key + " <span class=\"badge colored-badge\">" + value + "</span></span></div>");
-				}
+				//}
 				count++;
 			});
 			
