@@ -17,6 +17,7 @@ class Feed_view implements view {
 			'FeedID'=>'',
 			'UserID'=>'',
 			'Creator'=>'',
+			'CreatorFirstName'=>'',
 			'Status'=>'',
 			'DateCreated'=>'',
 			'Type'=>'',
@@ -65,6 +66,7 @@ class Feed_view implements view {
 		$out = [
 			'FeedID'=>$f2u->getID(),
 			'Creator'=>$User->getName(),
+			'CreatorFirstName'=>$User->getFirstName(),
 			'Timestamp'=>$TimeAgo,
 			'Type'=>$feed->getType(),
 			'CreatorImage'=>$CreatorImage,

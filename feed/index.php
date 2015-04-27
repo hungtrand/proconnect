@@ -11,6 +11,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 $Title = "Feed - Proconnect";
 $ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
 $JobTitle = $UData['TITLE'];
+$HomeActive = 'active';
 
 ob_start();
 
@@ -157,7 +158,7 @@ ob_start();
             <input type="hidden" class="FeedID" name="FeedID" value="" />
             <div class="media-left">
                 <div class="user-wrapper">
-                    <img src="{{CreatorImage}}" alt="people" style="object-fit: cover; margin-left: 20px;"
+                    <img src="/image/user_img.png" alt="people" style="object-fit: cover; margin-left: 20px;"
                     class="img-circle media-object creatorImage" width="80" height="80" />
                     <div><a href="#" class="AuthorLink">{{UserName}}</a>
                     </div>
@@ -188,14 +189,59 @@ ob_start();
                                     <i class="fa fa-thumbs-o-up"></i>&nbsp;<a href="#" class="feedLike">Like</a>
                                     <span class="numLikes"></span>
                                     &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <a href="#" class="feedComment"><i class="fa fa-comment"></i>&nbsp;Comment</a>
+                                    <i class="fa fa-comment"></i>&nbsp;<a href="#" class="feedComment">Comment</a>
                                     &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <a href="#" class="feedPropagate"><i class="fa fa-share-alt"></i>&nbsp;Propagate</a>
+                                    <i class="fa fa-share-alt"></i>&nbsp;<a href="#" class="feedPropagate">Propagate</a>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <div class="row commentsSection">
+                        <div class="col-md-10 col-lg-8">
+                            <form class="media media-clearfix-xs NewComment">
+                                <input type="hidden" class="CommentID" name="CommentID" value=0 />
+                                <div class="media-left">
+                                    <div class="user-wrapper text-center">
+                                        <img src="/image/user_img.png" alt="people" style="object-fit: cover;"
+                                        class="img-circle media-object CommentProfileImage" width="40" height="40" />
+                                        <div><small><a href="#" class="CommentAuthor">{{FirstName}}</a></small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="media-body CommentMessage">
+                                    <textarea class="txtNewComment form-control" name="CommentMessage" placeholder="Type new comment here..."></textarea>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-10 col-lg-8">
+                            <ul class="media-list comments-list">
+
+                            </ul>
+                        </div>
+                    </div>
+
                     <div class="clearfix"></div>
+                </div>
+            </div>
+        </li>
+    </script>
+
+    <script type="text/template" id="CommentTemplate">
+        <li class="media media-clearfix-xs comment">
+            <input type="hidden" class="CommentID" name="CommentID" value="" />
+            <div class="media-left">
+                <div class="user-wrapper text-center">
+                    <img src="/image/user_img.png" alt="people" style="object-fit: cover;"
+                    class="img-circle media-object CommentProfileImage" width="40" height="40" />
+                    <div><small><a href="#" class="CommentAuthor">{{FirstName}}</a></small>
+                    </div>
+                </div>
+            </div>
+            <div class="media-body">
+                <div class="text-right CommentTimestamp"></div>
+                <div class="media-body-wrapper CommentMessage">
+                    
                 </div>
             </div>
         </li>

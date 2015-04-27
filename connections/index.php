@@ -11,6 +11,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 $Title = "Feed - Proconnect";
 $ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
 $JobTitle = $UData['TITLE'];
+$ConnectionActive = 'active';
 
 ob_start();
 ?>
