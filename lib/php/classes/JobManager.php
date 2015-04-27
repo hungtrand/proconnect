@@ -43,6 +43,16 @@
 			return true;
 		}
 
+		public function loadCurrent() {
+			$cond = "WHERE USERID = ? AND DATECREATED IS NOT NULL ";
+			$cond .="ORDER BY DATECREATED DESC LIMIT 1 ";
+
+			$params = ['USERID'=>$this->User->getID()];
+			if (!$this->data = $this->fetchCustom($cond, $params)) return false;
+
+			return true;
+		}
+
 
 
 		public  function getData(){
