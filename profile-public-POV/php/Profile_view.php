@@ -16,7 +16,8 @@ class Profile_View implements view {
 			"experiences"=>[],
 			"skill"=>[],
 			"projects"=>[],
-			"education"=>[]
+			"education"=>[],
+			"ConnectionStatus"=>''
 		];
 	}
 
@@ -111,6 +112,10 @@ class Profile_View implements view {
 		}
 
 		$this->FinalView['education'] = $data;
+	}
+
+	public function setConnectionStatus($strVal) {
+		$this->FinalView['ConnectionStatus'] = $strVal;
 	}
 
 	public function getView() {

@@ -117,10 +117,9 @@ PublicUser.prototype = {
 
 		//do an ajax call to get user data
 		$.ajax({
-			// url: "php/Profile_controller.php",
-			url: "php/dummy.php",
+			url: "php/Profile_controller.php",
+			// url: "php/dummy.php",
 			method: 'POST',
-			contentType: 'text/plain',
 			data: that.queryString(),   			// <----------- data is {"userID": 11111} 
 			error: function(xhr,status,error) {
 				bootbox.dialog({

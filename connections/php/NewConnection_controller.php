@@ -81,6 +81,9 @@ try {
 			}
 
 			die();
+		} else {
+			echo "An invitation is already pending."
+			die();
 		}
 	};
 
