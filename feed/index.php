@@ -45,7 +45,7 @@ ob_start();
 
         <div class="row">
             <!-- Left main content -->
-            <div class="col col-xs-12 col-sm-12 col-md-9 col-lg-9">
+            <div class="col col-xs-11 col-sm-11 col-md-9 col-lg-9">
                 <!-- <div id="SelfSection" class="well well-sm">
                     <div id="UserStats" class="row">
                         <div id="ProfileCard" class="col col-xs-12 col-sm-6">
@@ -111,7 +111,7 @@ ob_start();
                     </div>
 
                     <div class="row">
-                         <div class="col col-xs-10">
+                         <div class="col col-xs-10 col-sm-10 col-md-10 col-lg-10">
                             <blockquote>A person who never made a mistake never tried anything new.</blockquote>
                         </div>
 
@@ -159,7 +159,7 @@ ob_start();
             <div class="media-left">
                 <div class="user-wrapper">
                     <img src="/image/user_img.png" alt="people" style="object-fit: cover; margin-left: 20px;"
-                    class="img-circle media-object creatorImage" width="80" height="80" />
+                    class="img-circle media-object creatorImage hidden-xs" width="80" height="80" />
                     <div><a href="#" class="AuthorLink">{{UserName}}</a>
                     </div>
                     <div class="timestamp">19 OCT</div>
@@ -168,7 +168,7 @@ ob_start();
             <div class="media-body">
                 <div class="media-body-wrapper">
                     <div class="row">
-                        <div class="col-md-10 col-lg-8">
+                        <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
                             <div class="panel panel-default share clearfix-xs">
                                 <div class="panel-heading panel-heading-gray title contentHeading">
                                     What&acute;s new
@@ -177,7 +177,7 @@ ob_start();
                                     <div class="contentMessage"></div>
                                     <div>
                                         <a class="contentImageLink" data-toggle="lightbox" href="{{ImageURL}}">
-                                          <img class="media-object contentImage thumbnail" style="max-width: 700px;" src=".{{ImageURL}}" />
+                                          <img class="media-object contentImage thumbnail" style="max-width: 800px;" src=".{{ImageURL}}" />
                                         </a>
                                     </div>
 
@@ -198,13 +198,13 @@ ob_start();
                     </div>
 
                     <div class="row commentsSection">
-                        <div class="col-md-10 col-lg-8">
+                        <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
                             <form class="media media-clearfix-xs NewComment">
                                 <input type="hidden" class="CommentID" name="CommentID" value=0 />
                                 <div class="media-left">
                                     <div class="user-wrapper text-center">
                                         <img src="/image/user_img.png" alt="people" style="object-fit: cover;"
-                                        class="img-circle media-object CommentProfileImage" width="40" height="40" />
+                                        class="img-circle media-object CommentProfileImage hidden-xs" width="40" height="40" />
                                         <div><small><a href="#" class="CommentAuthor">{{FirstName}}</a></small>
                                         </div>
                                     </div>
@@ -214,7 +214,7 @@ ob_start();
                                 </div>
                             </form>
                         </div>
-                        <div class="col-md-10 col-lg-8">
+                        <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
                             <ul class="media-list comments-list">
 
                             </ul>
@@ -233,7 +233,7 @@ ob_start();
             <div class="media-left">
                 <div class="user-wrapper text-center">
                     <img src="/image/user_img.png" alt="people" style="object-fit: cover;"
-                    class="img-circle media-object CommentProfileImage" width="40" height="40" />
+                    class="img-circle media-object CommentProfileImage hidden-xs" width="40" height="40" />
                     <div><small><a href="#" class="CommentAuthor">{{FirstName}}</a></small>
                     </div>
                 </div>
