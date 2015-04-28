@@ -9,6 +9,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 $ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
 
   $Title = "Edit Profile"; //require for front end
+  $ProfileActive = 'active';
   // include '../header/header.php';
 
   ob_start();

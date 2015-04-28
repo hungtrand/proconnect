@@ -11,6 +11,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 $Title = "Feed - Proconnect";
 $ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
 $JobTitle = $UData['TITLE'];
+$HomeActive = 'active';
 
 ob_start();
 
@@ -31,20 +32,20 @@ ob_start();
                 </div>
                 <div class="name"><a href="#"><?=$FullName?>&nbsp;-&nbsp;<small><em><?=$JobTitle?></em></small></a>
                 </div>
-                <ul class="cover-nav">
+                <!-- <ul class="cover-nav">
                     <li class="active"><a href="index.html"><i class="fa fa-fw icon-ship-wheel"></i> Timeline</a>
                     </li>
                     <li><a href="profile.html"><i class="fa fa-fw icon-user-1"></i> About</a>
                     </li>
                     <li><a href="users.html"><i class="fa fa-fw fa-users"></i> Friends</a>
                     </li>
-                </ul>
+                </ul> -->
             </div>
         </div>
 
         <div class="row">
             <!-- Left main content -->
-            <div class="col col-xs-12 col-sm-12 col-md-9 col-lg-9">
+            <div class="col col-xs-11 col-sm-11 col-md-9 col-lg-9">
                 <!-- <div id="SelfSection" class="well well-sm">
                     <div id="UserStats" class="row">
                         <div id="ProfileCard" class="col col-xs-12 col-sm-6">
@@ -110,17 +111,17 @@ ob_start();
                     </div>
 
                     <div class="row">
-                         <div class="col col-xs-10">
+                         <div class="col col-xs-9 col-sm-10 col-md-10 col-lg-10">
                             <blockquote>A person who never made a mistake never tried anything new.</blockquote>
                         </div>
 
-                        <div class="col col-xs-2 text-right">
+                        <div class="col col-xs-3  col-sm-2 text-right">
                              <button id="btnPostMode" class="btn btn-danger" title="New Post">Post</button>
                         </div>
                     </div>
                 </div>
 
-                <ul id="FeedsSection" class="timeline-list">
+                <ul id="FeedsSection" style="padding: 0;">
 
                 </ul>
 
@@ -153,21 +154,26 @@ ob_start();
         </div>
 
     <script type="text/template" id="FeedTemplate">
-        <li class="media media-clearfix-xs feed">
+        <li class="media media-clearfix-xs feed well" style="border-color: #CCC;">
             <input type="hidden" class="FeedID" name="FeedID" value="" />
             <div class="media-left">
-                <div class="user-wrapper">
-                    <img src="{{CreatorImage}}" alt="people" style="object-fit: cover; margin-left: 20px;"
-                    class="img-circle media-object creatorImage" width="80" height="80" />
-                    <div><a href="#" class="AuthorLink">{{UserName}}</a>
+                <div class="user-wrapper text-center row">
+                    <div class="col col-xs-3 col-sm-12">
+                        <img src="/image/user_img.png" alt="people" style="object-fit: cover;"
+                        class="img-circle media-object creatorImage hidden-xs" width="80" height="80" />
+                        <img src="/image/user_img.png" alt="people" style=""
+                        class="img-rounded media-object creatorImage hidden-sm hidden-md hidden-lg" width="80" />
                     </div>
-                    <div class="date">19 OCT</div>
+                    <div class="col col-xs-9 col-sm-12">
+                        <a href="#" class="AuthorLink">{{UserName}}</a>
+                        <div class="timestamp">19 OCT</div>
+                    </div>
                 </div>
             </div>
             <div class="media-body">
                 <div class="media-body-wrapper">
                     <div class="row">
-                        <div class="col-md-10 col-lg-8">
+                        <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
                             <div class="panel panel-default share clearfix-xs">
                                 <div class="panel-heading panel-heading-gray title contentHeading">
                                     What&acute;s new
@@ -176,7 +182,7 @@ ob_start();
                                     <div class="contentMessage"></div>
                                     <div>
                                         <a class="contentImageLink" data-toggle="lightbox" href="{{ImageURL}}">
-                                          <img class="media-object contentImage thumbnail" style="max-width: 700px;" src=".{{ImageURL}}" />
+                                          <img class="media-object contentImage thumbnail" style="max-width: 800px;" src=".{{ImageURL}}" />
                                         </a>
                                     </div>
 
@@ -185,17 +191,62 @@ ob_start();
                                     </div>
                                 </div>
                                 <div class="panel-footer">
-                                    <a href="#" class="feedLike"><i class="fa fa-thumbs-o-up">&nbsp;Like</i></a>
+                                    <i class="fa fa-thumbs-o-up"></i>&nbsp;<a href="#" class="feedLike">Like</a>
+                                    <span class="numLikes"></span>
                                     &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <a href="#" class="feedComment"><i class="fa fa-comment"></i>&nbsp;Comment</a>
+                                    <i class="fa fa-comment"></i>&nbsp;<a href="#" class="feedComment">Comment</a>
                                     &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <a href="#" class="feedShare"><i class="fa fa-share-alt"></i>&nbsp;Share</a>
-                                    <button type="submit" class="btn btn-primary btn-xs pull-right display-none" href="#">Post</button>
+                                    <i class="fa fa-share-alt"></i>&nbsp;<a href="#" class="feedPropagate">Propagate</a>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <div class="row commentsSection">
+                        <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+                            <form class="media media-clearfix-xs NewComment">
+                                <input type="hidden" class="CommentID" name="CommentID" value=0 />
+                                <div class="media-left">
+                                    <div class="user-wrapper text-center">
+                                        <img src="/image/user_img.png" alt="people" style="object-fit: cover;"
+                                        class="img-circle media-object CommentProfileImage hidden-xs" width="40" height="40" />
+                                        <div><small><a href="#" class="CommentAuthor">{{FirstName}}</a></small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="media-body CommentMessage">
+                                    <textarea class="txtNewComment form-control" name="CommentMessage" placeholder="Type new comment here..."></textarea>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+                            <ul class="media-list comments-list">
+
+                            </ul>
+                        </div>
+                    </div>
+
                     <div class="clearfix"></div>
+                </div>
+            </div>
+        </li>
+    </script>
+
+    <script type="text/template" id="CommentTemplate">
+        <li class="media media-clearfix-xs comment">
+            <input type="hidden" class="CommentID" name="CommentID" value="" />
+            <div class="media-left">
+                <div class="user-wrapper text-center">
+                    <img src="/image/user_img.png" alt="people" style="object-fit: cover;"
+                    class="img-circle media-object CommentProfileImage hidden-xs" width="40" height="40" />
+                    <div><small><a href="#" class="CommentAuthor">{{FirstName}}</a></small>
+                    </div>
+                </div>
+            </div>
+            <div class="media-body">
+                <div class="text-right CommentTimestamp"></div>
+                <div class="media-body-wrapper CommentMessage">
+                    
                 </div>
             </div>
         </li>

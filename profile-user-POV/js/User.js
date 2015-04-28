@@ -725,7 +725,7 @@ User.prototype = {
 			$("#user-mi").text(this.userData.personalInfo["middle-initial"]+'.');
 		
 		$("#user-last").text(this.userData.personalInfo["last-name"]);
-		$("#user-address").text(this.userData.personalInfo["user-address"]["address-input"]);
+		$("#user-address").text(this.userData.personalInfo["user-address"]);
 			$("#user-address").append(" ");
 			$("#user-address").append(this.userData.personalInfo["user-address"]["country-input"]);
 		$("#user-email").text(this.userData.personalInfo["email-address"]);

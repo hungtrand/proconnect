@@ -2,6 +2,7 @@
 require_once __DIR__."/../../lib/php/interfaces.php";
 require_once __DIR__."/../../lib/php/classes/Notification.php";
 require_once __DIR__."/../../lib/php/classes/Profile.php";
+require_once __DIR__."/../../lib/php/utils.php";
 
 /**
 *	NotificationInbox_view - list all relationships between notifications users and their status.
@@ -24,12 +25,16 @@ class NotificationInbox_view implements view {
 			$notif = new Notification($nv->getNotificationID());
 			$originator = new Profile($notif->getUserID());
 
+			$timestamp = '';
+			if ($notif->getTimestamp())
+				$timestamp = timetostr($notif->getTimestamp());
+
 			$out = [
 				'NotificationViewID'=>$nv->getID(),
 				'picture'=>'/users/'.$originator->getID().'/images/'.$originator->getProfileImage(),
 				'message'=>$notif->getMessage(),
 				'href'=>'/profile-public-POV/?UserID='.$originator->getID(),
-				'timestamp'=>$notif->getTimestamp(),
+				'timestamp'=>$timestamp,
 				'notificationType'=>$notif->getType()
 			];
 
