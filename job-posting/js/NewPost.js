@@ -1,8 +1,8 @@
 // NewPost - the object validate the new post form, upload image and submit form
 function NewPost() {
-	this.inputFeedImage;
-	this.imagePreview;
-	this.btnAttachImg;
+	// this.inputFeedImage;
+	// this.imagePreview;
+	// this.btnAttachImg;
 	this.init();
 }
 
@@ -67,27 +67,27 @@ NewPost.prototype = {
 			// NOTE: Remember to leave 'toolbar' property with the default value (null).
 		});
 
-		that.bindEvents();
+		// that.bindEvents();
 	},
 
-	bindEvents: function() {
-		var that = this;
+	// bindEvents: function() {
+	// 	var that = this;
 
-		that.btnAttachImg.on('click', function(e) {
-			e.preventDefault();
-			that.inputFeedImage.trigger('click');
-		});
+	// 	that.btnAttachImg.on('click', function(e) {
+	// 		e.preventDefault();
+	// 		that.inputFeedImage.trigger('click');
+	// 	});
 
-		that.inputFeedImage.on('change', function(evt) {
-			var tgt = evt.target || window.event.srcElement, files = tgt.files;
+	// 	that.inputFeedImage.on('change', function(evt) {
+	// 		var tgt = evt.target || window.event.srcElement, files = tgt.files;
 
-			if (FileReader && files && files.length) {
-		        var fr = new FileReader();
-		        fr.onload = function () {
-		            that.imagePreview.attr('src', fr.result).show();
-		        }
-		        fr.readAsDataURL(files[0]);
-		    }
-		});
-	}
+	// 		if (FileReader && files && files.length) {
+	// 	        var fr = new FileReader();
+	// 	        fr.onload = function () {
+	// 	            that.imagePreview.attr('src', fr.result).show();
+	// 	        }
+	// 	        fr.readAsDataURL(files[0]);
+	// 	    }
+	// 	});
+	// }
 }
