@@ -158,9 +158,7 @@ PublicUser.prototype = {
 		$(".first-name").text(this.userData.personalInfo["first-name"]);
 		$("#user-mi").text(this.userData.personalInfo["middle-initial"]+'.');
 		$("#user-last").text(this.userData.personalInfo["last-name"]);
-		$("#user-address").text(this.userData.personalInfo["user-address"]["address-input"]);
-			$("#user-address").append(" ");
-			$("#user-address").append(this.userData.personalInfo["user-address"]["country-input"]);
+		$("#user-address").text(this.userData.personalInfo["user-address"]);
 		$("#user-email").text(this.userData.personalInfo["email-address"]);
 		$("#user-phone").text(this.userData.personalInfo["phone-number"]);
 		$("#user-home").text(this.userData.personalInfo["phone-number"]);

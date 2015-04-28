@@ -32,14 +32,14 @@ ob_start();
                 </div>
                 <div class="name"><a href="#"><?=$FullName?>&nbsp;-&nbsp;<small><em><?=$JobTitle?></em></small></a>
                 </div>
-                <ul class="cover-nav">
+                <!-- <ul class="cover-nav">
                     <li class="active"><a href="index.html"><i class="fa fa-fw icon-ship-wheel"></i> Timeline</a>
                     </li>
                     <li><a href="profile.html"><i class="fa fa-fw icon-user-1"></i> About</a>
                     </li>
                     <li><a href="users.html"><i class="fa fa-fw fa-users"></i> Friends</a>
                     </li>
-                </ul>
+                </ul> -->
             </div>
         </div>
 
@@ -111,17 +111,17 @@ ob_start();
                     </div>
 
                     <div class="row">
-                         <div class="col col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                         <div class="col col-xs-9 col-sm-10 col-md-10 col-lg-10">
                             <blockquote>A person who never made a mistake never tried anything new.</blockquote>
                         </div>
 
-                        <div class="col col-xs-2 text-right">
+                        <div class="col col-xs-3  col-sm-2 text-right">
                              <button id="btnPostMode" class="btn btn-danger" title="New Post">Post</button>
                         </div>
                     </div>
                 </div>
 
-                <ul id="FeedsSection" class="timeline-list">
+                <ul id="FeedsSection" style="padding: 0;">
 
                 </ul>
 
@@ -154,15 +154,20 @@ ob_start();
         </div>
 
     <script type="text/template" id="FeedTemplate">
-        <li class="media media-clearfix-xs feed">
+        <li class="media media-clearfix-xs feed well" style="border-color: #CCC;">
             <input type="hidden" class="FeedID" name="FeedID" value="" />
             <div class="media-left">
-                <div class="user-wrapper">
-                    <img src="/image/user_img.png" alt="people" style="object-fit: cover; margin-left: 20px;"
-                    class="img-circle media-object creatorImage hidden-xs" width="80" height="80" />
-                    <div><a href="#" class="AuthorLink">{{UserName}}</a>
+                <div class="user-wrapper text-center row">
+                    <div class="col col-xs-3 col-sm-12">
+                        <img src="/image/user_img.png" alt="people" style="object-fit: cover;"
+                        class="img-circle media-object creatorImage hidden-xs" width="80" height="80" />
+                        <img src="/image/user_img.png" alt="people" style=""
+                        class="img-rounded media-object creatorImage hidden-sm hidden-md hidden-lg" width="80" />
                     </div>
-                    <div class="timestamp">19 OCT</div>
+                    <div class="col col-xs-9 col-sm-12">
+                        <a href="#" class="AuthorLink">{{UserName}}</a>
+                        <div class="timestamp">19 OCT</div>
+                    </div>
                 </div>
             </div>
             <div class="media-body">
