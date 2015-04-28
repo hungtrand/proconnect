@@ -52,14 +52,6 @@ $(document).ready(function() {
 	});
 	//enable edit view
 	$(".normal-view").on("click",".editable",function(){
-		//move window to head of form for easy access
-
-		var anchor = $(this).find("a.anchor").prop("href");
-		// console.log(anchor);
-		if(undefined != anchor) {
-			window.location.href = anchor;
-		}
-// 	
 		var target = "#" + $(this).attr("for");			//grab target
 		var targetLink = '#' + $(this).attr("link");	//grab link
 		var indexNum = $(this).attr("index");			//grab index
@@ -87,6 +79,13 @@ $(document).ready(function() {
 		//display edit view
 		$(target).fadeIn().find("form").attr( "link", $(this).attr("link") ).attr("editing","true"); 
 		$(target).find('input:text, textarea, input:radio, input:checkbox, select').first().focus();
+
+		//move window to head of form for easy access
+		var anchor = $(this).find("a.anchor").prop("href");
+		// console.log(anchor);
+		if(undefined != anchor) {
+			window.location.href = anchor;
+		}
 	});
 	
 	//controls address field
@@ -206,7 +205,7 @@ $(document).ready(function() {
 
 			//pass json object to model for processing
 			try{ 
-				validateForm($(this));				//validate this form according to form name
+				FormValidator.validateForm($(this));				//validate this form according to form name
 
 				var editing = ($(this).attr("editing") === "true") ? true : false;
 				
@@ -525,13 +524,6 @@ $(document).ready(function() {
 	//enable add new 
 	$(".add-btn").on("click",function(){
 
-		var anchor = $(this).siblings("a.anchor").prop("href");
-		if(undefined != anchor) {
-		console.log(anchor);
-
-			window.location.href = anchor;
-		}
-
 		var target = "#" + $(this).attr("for");	//grab target
 		var forTarget = '#' + $(this).attr("edit"); //grab edit flag
 
@@ -548,9 +540,14 @@ $(document).ready(function() {
 		} else {				
 			//console.log(target);	//if add btn is doing an edit action 
 			//NOTE: target should be the live view id, not edit view id
+                
 			$(target).find("div.editable").trigger("click");	
 		}
 
+		var anchor = $(this).siblings("a.anchor").prop("href");
+		if(undefined != anchor) {
+			window.location.href = anchor;
+		}
 	});
 
 	//enable team member or skill deletion 

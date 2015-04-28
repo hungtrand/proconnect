@@ -8,8 +8,22 @@ function User(){
 	// 	"alt-email-address":"",
 	// 	"phone-number":"",
 	// 	"phone-number-type":"",
-	// 	"user-address":"",
+	// 	"user-address":"",					<------ deprecated
 	// 	"summary":""
+// 	address: ""   							<------ new
+// alt-email-address: "" 
+// city-name: "Select One"					<------ new
+// country-name: ""							<------ new
+// email-address: "hungtrand0929@gmail.com"
+// first-name: "Hung"	
+// inlineRadioOptions-country: "United States"	<------ new
+// last-name: "Tran" 
+// middle-initial: ""
+// phone-number: "555-555-5555"
+// phone-type: "Home"
+// postal-code: ""								<------ new
+// state-name: "Select One"						<------ new
+// zipcode: ""									<------ new
 	// };
 	// this.experiences = {
 	// 	"0":{
@@ -198,7 +212,7 @@ User.prototype = {
 			var succeeded = false;
 			 // try{
 					that.temporaryData = JSON.parse(data);
-					//console.log( that.temporaryData );
+					// console.log( that.temporaryData );
 					that.userData = that.temporaryData; 	//store as user data
 					succeeded = true;
 			// } catch (e){
@@ -414,6 +428,7 @@ User.prototype = {
 						}
 					});
 				});
+				console.log(that.userData.personalInfo);
 			break;
 			case "summary-edit":
 				// console.log("summary-edit");
@@ -577,7 +592,8 @@ User.prototype = {
 				var skillList = form.find("#skill-list-edit");
 				var count = 0;
 				var beans = "";
-				$.each(this.userData.skill,function(skillName,endorsementNum){
+				$.each(this.userData.skill,function(skillName,endorsementCount){
+					var endorsementNum = (endorsementCount > 0) ? endorsementCount : '';
 				    beans += "<li entry-index='" + count + "' >" +
 		                "<span class='badge'>" + endorsementNum + "</span> " +
 		                "<span class='skill-pill-name'>" + skillName + "</span>" +
@@ -586,6 +602,9 @@ User.prototype = {
 		            count++;
 	            });
 				skillList.html(beans);
+
+				//enable sortable - Needs to figure this out
+				$(".skill-sortable").sortable();
 			break;
 
 			case "#experience-edit":

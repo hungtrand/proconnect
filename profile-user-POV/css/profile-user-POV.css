@@ -322,11 +322,11 @@ div[for="skills-endorsements-edit"] > .panel,.list-group{
 	width: 60px !important;
 }
 
-.sortable {
+.skill-sortable {
 	padding-left: 0px;
 }
 
-.sortable li {
+.skill-sortable li {
 	margin-right: 7px;
 	margin-bottom: 7px;
 	list-style: none;
@@ -340,7 +340,7 @@ div[for="skills-endorsements-edit"] > .panel,.list-group{
 	cursor: move;
 }
 
-.sortable li img {
+.skill-sortable li img {
 	margin-right: 5px;
 	margin-left: -5px;
 	max-height: 30px;
@@ -405,8 +405,7 @@ small {
 	position: relative;
 }
 
-
-
+/*
 #sortable { 
 	list-style-type: none; 
 	margin: 0; 
@@ -417,7 +416,7 @@ small {
 	margin: 0 5px 5px 5px; 
 	padding: 5px; 
 	float: left;
-}
+}*/
 
 .hide-temp{
 	display: none;

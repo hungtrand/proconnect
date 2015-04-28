@@ -149,47 +149,45 @@ $ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
 
                           <!-- Address -->
                          <div class="form-group">				
-							<label for="country">Country</label> <br />
-							 <label class="radio-inline">
-							  <input class= "country-option" type="radio" name="inlineRadioOptions-country" id="inlineRadio1-country" value="United States" checked> United States
-							</label>
-							<label class="radio-inline">
-							  <input class= "country-option" type="radio" name="inlineRadioOptions-country" id="inlineRadio2-country" value="Other" > Other
-							</label>
-						</div>
-						
-						
-						
-						<div class = "other-country-group" style = "display: none;">
-						<div class="form-group" id="countryname-group" >
-							<input class="form-control" id="country-name-input" type="text" name="country-name" placeholder="Country">
-						</div>
-						</div>
-						
-						<!-- City/States -->
-						<div class = "us-group">
-						<div class="form-group">
-						<label for="address">State and City</label> <br />
-						<div id="test"></div>
-						</div>
-						</div>
-						<div class="form-group">
-							<label for="address">Address</label> <br />
-							<input class="form-control" id="address-input" type="text" name="address" placeholder="Address">
-						</div>
-						<div class = "us-group">
-                        <div class="form-group" id="zipcode-group" >
-							<label for="zipcode">Zip Code</label> <br />
-							<input class="form-control" id="zipcode-input" type="text" name="zipcode" placeholder="Zip Code">
-						</div>
-						</div>
-						<div class = "other-country-group" style = "display: none;">
-						<div class="form-group" id="postalcode-group" >
-							<label for="postal-code">Postal Code</label> <br />
-							<input class="form-control" id="postal-code-input" type="text" name="postal-code" placeholder="Postal Code">
-						</div>
-						</div>
-							<button type="submit" class="btn btn-info save-btn" value="save">Save</button>
+            							<label for="country">Country</label> <br />
+            							 <label class="radio-inline">
+            							  <input class= "country-option" type="radio" name="inlineRadioOptions-country" id="inlineRadio1-country" value="United States" checked> United States
+            							</label>
+            							<label class="radio-inline">
+            							  <input class= "country-option" type="radio" name="inlineRadioOptions-country" id="inlineRadio2-country" value="Other" > Other
+            							</label>
+            						 </div>
+            						
+            						<div class = "other-country-group" style = "display: none;">
+            						<div class="form-group" id="countryname-group" >
+            							<input class="form-control" id="country-name-input" type="text" name="country-name" placeholder="Country">
+            						</div>
+            						</div>
+            						
+            						<!-- City/States -->
+            						<div class = "us-group">
+            						<div class="form-group">
+            						<label for="address">State and City</label> <br />
+            						<div id="test"></div>
+            						</div>
+            						</div>
+            						<div class="form-group">
+            							<label for="address">Address</label> <br />
+            							<input class="form-control" id="address-input" type="text" name="address" placeholder="Address">
+            						</div>
+            						<div class = "us-group">
+                                    <div class="form-group" id="zipcode-group" >
+            							<label for="zipcode">Zip Code</label> <br />
+            							<input class="form-control" id="zipcode-input" type="text" name="zipcode" placeholder="Zip Code">
+            						</div>
+            						</div>
+            						<div class = "other-country-group" style = "display: none;">
+            						<div class="form-group" id="postalcode-group" >
+            							<label for="postal-code">Postal Code</label> <br />
+            							<input class="form-control" id="postal-code-input" type="text" name="postal-code" placeholder="Postal Code">
+            						</div>
+            						</div>
+            							<button type="submit" class="btn btn-info save-btn" value="save">Save</button>
                           <button type="button" class="btn btn-default cancel-btn" value="cancel" for="user-info-edit">Cancel</button>
                         </form>  
                       </div>
@@ -205,8 +203,8 @@ $ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
       <div class="row">
           <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-              <div class="well well-sm ">
-                  <header id="summary-header">
+              <div id="summary-header" class="well well-sm ">
+                  <header>
                         <h2>Summary</h2>
                   </header>
                   <div class="alert alert-success alert-dismissible" role="alert">
@@ -243,6 +241,7 @@ $ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
               </div>
               
               <div class="add-star" >
+                <a class="anchor" href="#summary-header"></a>
                 <button  class="add-btn" for="summary-description" edit="true" >Edit Summary</button>
               </div>
           </div>
@@ -252,8 +251,8 @@ $ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
       <div class="row">
           <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-              <div  class="well well-sm ">
-                  <header id="skills-endorsements-header">
+              <div id="skills-endorsements-header" class="well well-sm ">
+                  <header>
                         <h2>Skills and Endorsements</h2>
                   </header>
                   <!-- Success message goes here -->
@@ -317,7 +316,7 @@ $ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
 
                       <div class="playground form-group well well-sm"> <!-- contentEditable="true" -->
 
-                        <ul id="skill-list-edit" class="sortable grid">
+                        <ul id="skill-list-edit" class="skill-sortable grid">
                           <!-- <li entry-index="" >
                             <span class="badge">12</span>
                             <span class="skill-pill-name">asda</span>
@@ -334,6 +333,7 @@ $ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
               </div>
               
               <div class="add-star" >
+                <a class='anchor' href='#skills-endorsements-header'></a>
                 <button id="skills-endorsements-edit-btn" class="add-btn" for="skills-endorsements" edit="true">Add Skill</button>
               </div>
           </div>
@@ -342,8 +342,8 @@ $ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
       <!-- Experience -->
       <div class="row">
           <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <div class="well well-sm">
-                  <header id="experiences-header">
+              <div id="experiences-header" class="well well-sm">
+                  <header>
                     <h2>Experience</h2>
                   </header>
 
@@ -427,10 +427,8 @@ $ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
                             <input name="work-end-year" type="text" class="form-control short-input" id="work-end-year" placeholder="Year" maxlength="4"><br>
                           </div>
                           <div class="checkbox">
-                            <label>
                               <input id="work-present-chk" name="work-present" type="checkbox" value="current">
-                              I currently work here.
-                            </label>
+                              <label for="work-present-chk"> I currently work here. </label>
                           </div> 
                         </div>
                       </div>
@@ -448,6 +446,7 @@ $ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
                   </div>
               </div>
               <div class="add-star">
+                <a class='anchor' href='#experiences-header'></a>
                 <button class="add-btn" for="experience-edit">Add Eperience</button>
               </div>
           </div>
@@ -456,8 +455,8 @@ $ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
        <!-- Project-->
       <div class="row">
           <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <div class="well well-sm">
-                  <header id="projects-header">
+              <div id="projects-header" class="well well-sm">
+                  <header>
                     <h2>Projects</h2>
                   </header>
 
@@ -557,6 +556,7 @@ $ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
                   </div>
                 </div>  
               <div class="add-star">
+                <a class='anchor' href='#projects-header'></a>
                 <button class="add-btn" for="project-edit">Add Project</button>
               </div>
           </div>
@@ -564,8 +564,8 @@ $ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
 
       <!-- Education -->
       <div class="row">
-          <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <div id="education-header" class="well well-sm">
+          <div id="education-header" class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <div class="well well-sm">
                   <header >
                     <h2>Education</h2>
                   </header>
@@ -691,6 +691,7 @@ $ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
     <script src="../lib/ckeditor/ckeditor.js"></script>
     <script src="../lib/js/FileUpload.js"></script>
     <script src="/lib/js/StatesCitiesList.js"></script>
+    <script src="js/FormValidator.js"></script>
     <script src="js/User.js"></script>
     <script src="js/profile-user-POV.js"></script>
     <script src="js/ProfileImageUploader.js"></script>
