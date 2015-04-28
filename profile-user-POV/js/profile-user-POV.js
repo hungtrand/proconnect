@@ -26,25 +26,32 @@ $(document).ready(function() {
 	   });
 	   return o;
 	};
+
+	// replaces newlines and break for html <br> ARCHIVED
+	// function addHTMLBreak(text) {
+	// 	console.log( text.replace(/\r?\n/g, '<br />') );
+		
+	// 	return ;
+	// }
 	
 	//preview profile picture
 	function readURL(input) {
-		  if (input.files && input.files[0]) {
-		   var reader = new FileReader();
-		   reader.onload = function(e) {
-			   $('#preview').attr('src', e.target.result);
-			   $( "#picture-submit" ).trigger( "click" );
-		   }
+	  if (input.files && input.files[0]) {
+	   var reader = new FileReader();
+	   reader.onload = function(e) {
+		   $('#preview').attr('src', e.target.result);
+		   $( "#picture-submit" ).trigger( "click" );
+	   }
 
-		   reader.readAsDataURL(input.files[0]);
-		   }
-		   }
-		   $("#input-25").change(function() {
-		   readURL(this);
-	   });
+	   reader.readAsDataURL(input.files[0]);
+	   }
+    }
+
+    $("#input-25").change(function() {
+		readURL(this);
+	});
 	//enable edit view
 	$(".normal-view").on("click",".editable",function(){
-		console.log("hello");
 		var target = "#" + $(this).attr("for");			//grab target
 		var targetLink = '#' + $(this).attr("link");	//grab link
 		var indexNum = $(this).attr("index");			//grab index
@@ -72,6 +79,13 @@ $(document).ready(function() {
 		//display edit view
 		$(target).fadeIn().find("form").attr( "link", $(this).attr("link") ).attr("editing","true"); 
 		$(target).find('input:text, textarea, input:radio, input:checkbox, select').first().focus();
+
+		//move window to head of form for easy access
+		var anchor = $(this).find("a.anchor").prop("href");
+		// console.log(anchor);
+		if(undefined != anchor) {
+			window.location.href = anchor;
+		}
 	});
 	
 	//controls address field
@@ -98,16 +112,15 @@ $(document).ready(function() {
 
 	 // if you just want the data for the states just call method getStates()
 	 states = sl.getStates();
-	 console.log(states);
+	 // console.log(states);
 
 	 // if you want data for the cities in json format for a particular state
 	 // you can call method getCities() like this:
 	 // method getCities() take two parameter, the state you want and a callback
 	 // function than you want to execute after the cities data come back from ajax
 	 sl.getCities('SC', function(cities_json) {
-		console.log(cities_json);
+		// console.log(cities_json);
 	 });
-
 	
 	//handle edit-form submition
 	$(".editable-form").on("submit", function(e){
@@ -172,6 +185,7 @@ $(document).ready(function() {
 					skillList[skillName] = endorsementNum;
 				});
 				data["skill"] = JSON.stringify(skillList);	// Convert to string for easy decoding in PHP
+
 			} else if( $(this).parent("div").attr("id") === "project-edit" ) {		//grabbing team members
 				// console.log("project-edit hellow");
 				var memberList = {};
@@ -184,13 +198,14 @@ $(document).ready(function() {
 				});
 				data["team-member"] =  memberList
 				// console.log(data["team-member"]);
-			}	
+
+			} 
 
 			// console.log($(this).parent("div").attr("id"));
 
 			//pass json object to model for processing
 			try{ 
-				validateForm($(this));				//validate this form according to form name
+				FormValidator.validateForm($(this));				//validate this form according to form name
 
 				var editing = ($(this).attr("editing") === "true") ? true : false;
 				
@@ -490,7 +505,8 @@ $(document).ready(function() {
 		//clear temporary data
 		$(this).parent("form").attr("editing","false")
 
-		//console.log(link);
+		//clear alert div
+		$(this).siblings("div.alert").hide();
 
 		//clear project member list
 		if($(this).parent("form").find("ul.sortable").length > 0) {
@@ -507,6 +523,7 @@ $(document).ready(function() {
 
 	//enable add new 
 	$(".add-btn").on("click",function(){
+
 		var target = "#" + $(this).attr("for");	//grab target
 		var forTarget = '#' + $(this).attr("edit"); //grab edit flag
 
@@ -523,9 +540,14 @@ $(document).ready(function() {
 		} else {				
 			//console.log(target);	//if add btn is doing an edit action 
 			//NOTE: target should be the live view id, not edit view id
+                
 			$(target).find("div.editable").trigger("click");	
 		}
 
+		var anchor = $(this).siblings("a.anchor").prop("href");
+		if(undefined != anchor) {
+			window.location.href = anchor;
+		}
 	});
 
 	//enable team member or skill deletion 
@@ -557,4 +579,27 @@ $(document).ready(function() {
 
 		$('body').append(uploader.getView());
 	});
+
+	// replace textbox with CKEditor
+	// CKEDITOR.replace("summary-textarea", {
+	// 	toolbarGroups: [
+	// 		//{ name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
+	// 		// { name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
+	// 		//{ name: 'editing', groups: [ 'find', 'selection', 'spellchecker' ] },
+	// 		//{ name: 'forms' },
+	// 		'/',
+	// 		{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+	// 		{ name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align' ] },
+	// 		{ name: 'links' },
+	// 		//{ name: 'insert' },
+	// 		'/',
+	// 		 { name: 'styles' },
+	// 		// { name: 'colors' },
+	// 		// { name: 'tools', groups: ['mode'] },
+	// 		// { name: 'others' },
+	// 		//{ name: 'about' }
+	// 	]
+
+	// 	// NOTE: Remember to leave 'toolbar' property with the default value (null).
+	// });
 });

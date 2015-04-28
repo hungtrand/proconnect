@@ -27,6 +27,7 @@ class UserCard_view implements view {
 
 			$out = [
 				'UserID'=>$profile->getID(),
+				'FirstName'=>$profile->getFirstName(),
 				'Name'=>$profile->getName(),
 				'JobTitle'=>$profile->getTitle(),
 				'CompanyName'=>$profile->getOrganization(),

@@ -1,17 +1,18 @@
-function NewConnection(data) {
+function NewConnection(data, mode) {
 	this.container;
 	this.btnConnect;
 	this.btnDismiss;
 	this.ConnTemplate;
 	this.data;
+	this.mode = 'hide';
 
-	this.init(data);
+	this.init(data, mode);
 }
 
 NewConnection.prototype = {
 	constructor: this,
 
-	init: function(data) {
+	init: function(data, mode) {
 		var that = this;
 		that.data = data;
 		that.ConnTemplate = $('#SuggestionTemplate').html();
@@ -20,12 +21,28 @@ NewConnection.prototype = {
 
 		conn.find('.UserID').val(data['UserID']);
 		conn.find('.ConnectionName').text(data['Name']);
+		conn.find('.ConnectionFirstName').text(data['FirstName']);
 		conn.find('.ConnectionJob').text(data['JobTitle']);
 		conn.find('.ConnectionCompany').text(data['CompanyName']);
 		conn.find('.ConnectionLocation').text(data['Location']);
 		if (data['ProfileImage']) {
 			conn.find('.ProfileImage').attr('src', data['ProfileImage']);
 		}
+		
+		/*toggle suggestions hide/show events*/
+		conn.find('.ProfileImage').on('mouseover', function() {
+			that.switchMode('show');
+		});
+
+		conn.on('click', function(e) {
+			e.stopPropagation();
+		});
+
+		$(document).on('click', function(e) {
+			if (that.mode == 'static') return false;
+			that.switchMode('hide');
+		});
+		/*end of suggestions hide/show events*/
 
 		that.container = conn;
 
@@ -43,6 +60,60 @@ NewConnection.prototype = {
 			console.log('asdfafd');
 			that.dismiss();
 		});
+
+		// initialize hide mode
+		conn.css({
+			'width':'100px',
+			'float':'left',
+			'clear':'both',
+			'z-index':"0"
+		});
+
+		conn.find('.panel-heading, .panel, .panel-body').css({
+			'background-color':'transparent',
+		});
+
+		conn.find('.panel').css('border-width', "0px");
+
+		conn.find('.BlurHide').hide();
+		conn.find('.FullHide').show();
+		// end of initialization
+
+		// if a parameter was passed in for mode then execute that mode
+		if (mode == 'show' || mode == 'static') {
+			that.switchMode(mode);
+		}
+	},
+
+	switchMode: function(mode) {
+		var that = this;
+		var conn = this.container;
+		switch(mode) {
+			case 'static':
+			case 'show':
+				if (that.mode == 'show' || that.mode == 'static') return false;
+				that.mode = mode;
+				conn.find('.panel-heading, .panel, .panel-body').css({
+					'background-color':'#fff',
+				});
+				conn.find('.panel').css('border-width', '2px');
+				conn.animate({width:'400px', 'z-index':"9"},400, 'linear', function() {
+					conn.find('.BlurHide').show();
+					conn.find('.FullHide').hide();
+				});
+			break;
+			default:
+				if (that.mode == 'hide') return false;
+				that.mode = 'hide';
+				conn.find('.BlurHide').hide();
+				conn.find('.FullHide').show();
+				conn.animate({width:'100px', 'z-index':"0"},400, 'linear', function() {
+					conn.find('.panel-heading, .panel, .panel-body').css({
+						'background-color':'transparent',
+					});
+					conn.find('.panel').css('border-width', "0px");
+				});
+		}
 	},
 
 	connect: function(callback) {
@@ -57,13 +128,14 @@ NewConnection.prototype = {
 			type: 'POST'
 		}).done(function(json) {
 
-			console.log(json);
+			//console.log(json);
 			try {
-				json = $.parseJSON(json)
-				callback(json);
+				json = $.parseJSON(json);
 			} catch (e) {
-				that.failConnect(json);
+				// console.log(json);
 			}
+
+			callback(json);
 			
 		}).fail(function(e) {
 			that.failConnect();
@@ -72,8 +144,16 @@ NewConnection.prototype = {
 
 	confirmConnect: function(json) {
 		var that = this;
-		if (json['success'] == 1)
+		if (json['success'] == 1) {
 			that.btnConnect.replaceWith('<span class="label label-success">Invitation Sent.</label>');
+			setTimeout(function() {
+				that.container.fadeOut('slow', function() {
+					$(this).remove();
+				});
+			},3000);
+		}
+		else 
+			that.failConnect('Invitation Failed');
 	},
 
 	failConnect: function(msg) {

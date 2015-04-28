@@ -1,9 +1,17 @@
 <?php
 
 
-  $page_title = "Search Results"; //require for front end
-  include '../header/header.php';
+  include '../signout/php/session_check_signout.php';
+  $UData = json_decode($_SESSION['__USERDATA__'], true);
+$FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
+$ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
+  
+  $Title = "Search Results"; //require for front end
+  // include '../header/header.php';
+  ob_start();
 ?>
+	<link rel="stylesheet" type="text/css" href="css/results.css">
+
 	<template id="SearchResultMediaItemTemplate">
         <div class="media sr-media-item">
 		  <div class="media-left">
@@ -23,7 +31,7 @@
 		   </div>
 		</div>
     </template>
-	<div id="main" class="container col-xs-12 col-md-8 col-md-offset-2">
+	<div id="main" class="col-xs-12 col-md-8">
 		<div id="sr-left-col" class="col-md-2 hidden-xs">
 			Lorem ipsum
 		</div>
@@ -55,10 +63,10 @@
 			</div>
 		</div>	
 	</div>
-	<link rel="stylesheet" type="text/css" href="css/results.css">
-
+<?php
+    $Content = ob_get_clean();
+    include $_SERVER["DOCUMENT_ROOT"]."/master/index.php";
+?>
 	<script type="text/javascript" src="js/SearchResultGetter.js"></script>
 	<script type="text/javascript" src="js/SearchResultFactory.js"></script>
 	<script type="text/javascript" src="js/search-results.js"></script>
-
-</body>

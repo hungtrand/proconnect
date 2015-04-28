@@ -9,15 +9,26 @@ require_once __DIR__."/../../lib/php/classes/Feed2User.php";
 require_once __DIR__."/../../lib/php/classes/UserConnectionManager.php";
 require_once __DIR__."/Feed_view.php";
 
-// checking if logged in
-session_start();
-if (!$UData = json_decode($_SESSION['__USERDATA__'], true)) {
-	echo 'Session Timed Out.';
-	die();
+// Check if logged in
+if (isset($_POST['Username']) && isset($_POST['Password'])) {
+	$login = $_POST['Username'];
+	$password = $_POST['Password'];
+	$accAdm = new AccountAdmin();
+
+	$acc = $accAdm->getAccount($login, $password);
+	$uid = $acc->getUserID();
+} else {
+	session_start();
+	$home = 'Location: ../../';
+	if (!$UData = json_decode($_SESSION['__USERDATA__'], true)) {
+		//header($home);
+		echo 'Session Timed Out. <a href="/signin/">Sign back in</a>';
+		die();
+	}
+
+	$uid = $UData['USERID'];
 }
 
-// Check if data valid or still exists in the database
-$uid = $UData['USERID'];
 // $uid = 7;
 if (!$User = new USER($uid)) {
 	echo "The Id is not in the database";
@@ -35,8 +46,10 @@ $FeedID = -1;
 if (isset($_POST['FeedID'])) {
 	$FeedID = (int)$_POST['FeedID'];
 }
-if(isset($_POST['FeedLink'])) {
-	$ExternalLink = trim($_POST['FeedLink']);
+if(isset($_POST['YouTubeURL'])) {
+	$ExternalLink = trim($_POST['YouTubeURL']);
+	parse_str( parse_url( $ExternalLink, PHP_URL_QUERY ), $qStringsArr );
+	$YouTubeID = $qStringsArr['v'];
 }
 if(isset($_POST['ContentMessage'])){
 	$Content= trim($_POST['ContentMessage']);
@@ -71,7 +84,7 @@ try {
 			$feed = new Feed();
 			$feed->setContent($Content);
 			$feed->setImageURL($ImageURL);
-			$feed->setExternalURL($ExternalLink);
+			$feed->setExternalURL($YouTubeID);
 			$feed->setInternalURL($InternalLink);
 			$feed->setCreator($uid);
 			$feed->setType('normal');
@@ -79,6 +92,12 @@ try {
 			if ($feed->save()) {
 				$ucm = new UserConnectionManager($User);
 				$connections = $ucm->getAll();
+
+				$f2u = new Feed2User();
+				$f2u->setFeedID($feed->getID());
+				$f2u->setUserID($uid);
+				$f2u->setStatus("SELF");
+				$f2u->save();
 
 				foreach ($connections as $conn) {
 					$f2u = new Feed2User();

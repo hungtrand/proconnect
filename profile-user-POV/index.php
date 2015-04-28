@@ -6,13 +6,15 @@ include '../signout/php/session_check_signout.php';
 session_start();
 $UData = json_decode($_SESSION['__USERDATA__'], true);
 $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
-
+$ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
 
   $Title = "Edit Profile"; //require for front end
+  $ProfileActive = 'active';
   // include '../header/header.php';
 
   ob_start();
 ?>
+    <link href="css/profile-user-POV.css" rel="stylesheet">
 
     <!-- <div id="main-container" class="container-fluid"> -->
       <div class="row">
@@ -63,10 +65,13 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                       </div>
                       <div class="col-sm-6 col-md-8">
                       <!-- Split button -->
-                          <div class="btn-group">
-                              <button type="button" class="btn btn-primary">
-                                  Social</button>
-                              <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                          <!-- <div class="btn-group"> -->
+                            <form action="/profile-public-POV/" method="GET">
+                              <button  type="submit" class="btn btn-info" value=<?=$UData['USERID']?> name="userID">
+                                  View Profile As Public
+                              </button>
+                            </form>
+                              <!-- <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
                                   <span class="caret"></span><span class="sr-only">Social</span>
                               </button>
                               <ul class="dropdown-menu" role="menu">
@@ -75,8 +80,8 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                                   <li><a href="https://www.facebook.com/jquery2dotnet">Facebook</a></li>
                                   <li class="divider"></li>
                                   <li><a href="#">Github</a></li>
-                              </ul>
-                          </div>
+                              </ul> -->
+                          <!-- </div> -->
                       </div>
                   </div>
                   <br>
@@ -144,47 +149,45 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 
                           <!-- Address -->
                          <div class="form-group">				
-							<label for="country">Country</label> <br />
-							 <label class="radio-inline">
-							  <input class= "country-option" type="radio" name="inlineRadioOptions-country" id="inlineRadio1-country" value="United States" checked> United States
-							</label>
-							<label class="radio-inline">
-							  <input class= "country-option" type="radio" name="inlineRadioOptions-country" id="inlineRadio2-country" value="Other" > Other
-							</label>
-						</div>
-						
-						
-						
-						<div class = "other-country-group" style = "display: none;">
-						<div class="form-group" id="countryname-group" >
-							<input class="form-control" id="country-name-input" type="text" name="country-name" placeholder="Country">
-						</div>
-						</div>
-						
-						<!-- City/States -->
-						<div class = "us-group">
-						<div class="form-group">
-						<label for="address">State and City</label> <br />
-						<div id="test"></div>
-						</div>
-						</div>
-						<div class="form-group">
-							<label for="address">Address</label> <br />
-							<input class="form-control" id="address-input" type="text" name="address" placeholder="Address">
-						</div>
-						<div class = "us-group">
-                        <div class="form-group" id="zipcode-group" >
-							<label for="zipcode">Zip Code</label> <br />
-							<input class="form-control" id="zipcode-input" type="text" name="zipcode" placeholder="Zip Code">
-						</div>
-						</div>
-						<div class = "other-country-group" style = "display: none;">
-						<div class="form-group" id="postalcode-group" >
-							<label for="postal-code">Postal Code</label> <br />
-							<input class="form-control" id="postal-code-input" type="text" name="postal-code" placeholder="Postal Code">
-						</div>
-						</div>
-							<button type="submit" class="btn btn-primary save-btn" value="save">Save</button>
+            							<label for="country">Country</label> <br />
+            							 <label class="radio-inline">
+            							  <input class= "country-option" type="radio" name="inlineRadioOptions-country" id="inlineRadio1-country" value="United States" checked> United States
+            							</label>
+            							<label class="radio-inline">
+            							  <input class= "country-option" type="radio" name="inlineRadioOptions-country" id="inlineRadio2-country" value="Other" > Other
+            							</label>
+            						 </div>
+            						
+            						<div class = "other-country-group" style = "display: none;">
+            						<div class="form-group" id="countryname-group" >
+            							<input class="form-control" id="country-name-input" type="text" name="country-name" placeholder="Country">
+            						</div>
+            						</div>
+            						
+            						<!-- City/States -->
+            						<div class = "us-group">
+            						<div class="form-group">
+            						<label for="address">State and City</label> <br />
+            						<div id="test"></div>
+            						</div>
+            						</div>
+            						<div class="form-group">
+            							<label for="address">Address</label> <br />
+            							<input class="form-control" id="address-input" type="text" name="address" placeholder="Address">
+            						</div>
+            						<div class = "us-group">
+                                    <div class="form-group" id="zipcode-group" >
+            							<label for="zipcode">Zip Code</label> <br />
+            							<input class="form-control" id="zipcode-input" type="text" name="zipcode" placeholder="Zip Code">
+            						</div>
+            						</div>
+            						<div class = "other-country-group" style = "display: none;">
+            						<div class="form-group" id="postalcode-group" >
+            							<label for="postal-code">Postal Code</label> <br />
+            							<input class="form-control" id="postal-code-input" type="text" name="postal-code" placeholder="Postal Code">
+            						</div>
+            						</div>
+            							<button type="submit" class="btn btn-info save-btn" value="save">Save</button>
                           <button type="button" class="btn btn-default cancel-btn" value="cancel" for="user-info-edit">Cancel</button>
                         </form>  
                       </div>
@@ -200,7 +203,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
       <div class="row">
           <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-              <div class="well well-sm ">
+              <div id="summary-header" class="well well-sm ">
                   <header>
                         <h2>Summary</h2>
                   </header>
@@ -213,9 +216,10 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 
                   <div id="summary-description" class="normal-view" > 
                     <div class="editable" for="summary-edit">
+                      <a class="anchor" href="#summary-header"></a>
                       <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                      <pre id="user-summary"></pre>
-                    </div>
+                      <div id="user-summary" class="white-space"></div>
+                    </div> 
                   </div>
                   <div id="summary-edit" class="edit-view" action="php/Education_controller.php" >
                     <div class="loading">
@@ -230,13 +234,14 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                         <span class="alert-msg"></span>
                       </div>
                       <textarea name="summary" class="form-control" id="summary-textarea" rows="10"></textarea> <br><br>
-                      <button type="submit" class="btn btn-primary save-btn">Save</button>
+                      <button type="submit" class="btn btn-info save-btn">Save</button>
                       <button type="button" class="btn btn-default cancel-btn">Cancel</button>
                     </form>
                   </div>
               </div>
               
               <div class="add-star" >
+                <a class="anchor" href="#summary-header"></a>
                 <button  class="add-btn" for="summary-description" edit="true" >Edit Summary</button>
               </div>
           </div>
@@ -246,7 +251,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
       <div class="row">
           <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-              <div class="well well-sm ">
+              <div id="skills-endorsements-header" class="well well-sm ">
                   <header>
                         <h2>Skills and Endorsements</h2>
                   </header>
@@ -262,6 +267,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                   <!-- normal-view -->
                   <div id="skills-endorsements" class="normal-view "> 
                     <div class="editable" for="skills-endorsements-edit">
+                      <a class="anchor" href="#skills-endorsements-header"></a>
                       <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                      
                       <div class="panel panel-default ">
@@ -310,7 +316,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 
                       <div class="playground form-group well well-sm"> <!-- contentEditable="true" -->
 
-                        <ul id="skill-list-edit" class="sortable grid">
+                        <ul id="skill-list-edit" class="skill-sortable grid">
                           <!-- <li entry-index="" >
                             <span class="badge">12</span>
                             <span class="skill-pill-name">asda</span>
@@ -319,7 +325,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                         </ul>
                       </div>
                       <b style="float:right">Drag to reorder</b>
-                      <button type="submit" class="btn btn-primary save-btn">Save</button>
+                      <button type="submit" class="btn btn-info save-btn">Save</button>
                       <button type="button" class="btn btn-default cancel-btn">Cancel</button>
                     </form>
                   </div>
@@ -327,6 +333,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
               </div>
               
               <div class="add-star" >
+                <a class='anchor' href='#skills-endorsements-header'></a>
                 <button id="skills-endorsements-edit-btn" class="add-btn" for="skills-endorsements" edit="true">Add Skill</button>
               </div>
           </div>
@@ -335,7 +342,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
       <!-- Experience -->
       <div class="row">
           <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <div class="well well-sm">
+              <div id="experiences-header" class="well well-sm">
                   <header>
                     <h2>Experience</h2>
                   </header>
@@ -420,10 +427,8 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                             <input name="work-end-year" type="text" class="form-control short-input" id="work-end-year" placeholder="Year" maxlength="4"><br>
                           </div>
                           <div class="checkbox">
-                            <label>
                               <input id="work-present-chk" name="work-present" type="checkbox" value="current">
-                              I currently work here.
-                            </label>
+                              <label for="work-present-chk"> I currently work here. </label>
                           </div> 
                         </div>
                       </div>
@@ -432,7 +437,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                       <label for="work-description">Description</label>
                       <textarea id="work-description" class="form-control" rows="5" name="experience-description"></textarea> 
                       <br><br>
-                      <button type="submit" class="btn btn-primary save-btn">Save</button>
+                      <button type="submit" class="btn btn-info save-btn">Save</button>
                       <button type="button" class="btn btn-default cancel-btn">Cancel</button>
                       <a class="remove-entry-link" href="#" >Remove this entry.</a>
                     </form>  
@@ -441,6 +446,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                   </div>
               </div>
               <div class="add-star">
+                <a class='anchor' href='#experiences-header'></a>
                 <button class="add-btn" for="experience-edit">Add Eperience</button>
               </div>
           </div>
@@ -449,7 +455,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
        <!-- Project-->
       <div class="row">
           <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <div class="well well-sm">
+              <div id="projects-header" class="well well-sm">
                   <header>
                     <h2>Projects</h2>
                   </header>
@@ -516,7 +522,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                       <label for="project-description">Description</label>
                       <textarea name="project-description" id="project-description" class="form-control" rows="5"></textarea> <br><br>
 
-                      <button type="submit" class="btn btn-primary save-btn">Save</button>
+                      <button type="submit" class="btn btn-info save-btn">Save</button>
                       <button type="button" class="btn btn-default cancel-btn">Cancel</button>
                       <a class="remove-entry-link" href="#" >Remove this entry.</a>
                     </form>  
@@ -550,6 +556,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                   </div>
                 </div>  
               <div class="add-star">
+                <a class='anchor' href='#projects-header'></a>
                 <button class="add-btn" for="project-edit">Add Project</button>
               </div>
           </div>
@@ -557,9 +564,9 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 
       <!-- Education -->
       <div class="row">
-          <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <div id="education-header" class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
               <div class="well well-sm">
-                  <header>
+                  <header >
                     <h2>Education</h2>
                   </header>
 
@@ -642,7 +649,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
                       <!-- file -->
                       <!-- <label for="school-description">Description</label>
                       <input name="school-description" id="school-description" class="form-control" rows="5"></input> <br><br> -->
-                      <button type="submit" class="btn btn-primary save-btn">Save</button>
+                      <button type="submit" class="btn btn-info save-btn">Save</button>
                       <button type="button" class="btn btn-default cancel-btn">Cancel</button>
                       <a class="remove-entry-link" href="#" >Remove this entry.</a>
                     </form>  
@@ -663,33 +670,32 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 
               </div>
               <div class="add-star">
+                <a class='anchor' href='#education-header'></a>
                 <button class="add-btn" for="education-edit">Add Education</button>
               </div>
           </div>
       </div>
-
-
     <!-- </div>/main-container -->
-
-    
-
 <?php
     $Content = ob_get_clean();
     include $_SERVER["DOCUMENT_ROOT"]."/master/index.php";
 ?>
 
 <!-- Custom styles for this template -->
-    <link href="css/profile-user-POV.css" rel="stylesheet">
     <!-- Custom modal handler -->
-    // <script src="../js/bootbox.min.js"></script>
+    <script src="../js/bootbox.min.js"></script>
+
     <!-- Sortable script -->
     <script src="../js/jquery.sortable.min.js"></script>
     <!-- Custom Script -->
+    <script src="../lib/ckeditor/ckeditor.js"></script>
+    <script src="../lib/js/FileUpload.js"></script>
+    <script src="/lib/js/StatesCitiesList.js"></script>
+    <script src="js/FormValidator.js"></script>
     <script src="js/User.js"></script>
     <script src="js/profile-user-POV.js"></script>
-    <script src="../lib/js/FileUpload.js"></script>
     <script src="js/ProfileImageUploader.js"></script>
-    <script src="/lib/js/StatesCitiesList.js"></script>
+
 
 
 

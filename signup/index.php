@@ -14,12 +14,9 @@
     <link rel="icon" href="../../favicon.ico">
 
     <title>Sign Up for ProConnect</title>
-	<link rel="ICON" href="../image/proconnect/Tab_logo2.ico" type="image/ico" />
+	<link rel="ICON" href="../image/proconnect/Tab_logo2_bold.ico" type="image/ico" />
     <!-- Bootstrap core CSS -->
-    <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-  
-    
+    <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">  
     <!-- JQuery link -->
     <script src="../lib/jquery/jquery-2.1.3.min.js"></script>
 
@@ -88,7 +85,7 @@
 
 								<div class="form-group">
 									<label for="confirmpassword">Confirm Password</label> <br />
-									<input class="form-control" id="confpassword" type="password" name="confpassword" placeholder="retype your password above" required>
+									<input class="form-control" id="confpassword" type="password" name="confpassword" placeholder="Retype your password above" required>
 								</div>
 
 								<!-- Invalid input alert -->

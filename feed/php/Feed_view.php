@@ -1,7 +1,8 @@
 <?php
 require_once __DIR__."/../../lib/php/interfaces.php";
-require_once __DIR__."/../../lib/php/classes/Feed.php";
+require_once __DIR__."/../../lib/php/classes/vw_Feed.php";
 require_once __DIR__."/../../lib/php/classes/Profile.php";
+require_once __DIR__."/../../lib/php/utils.php";
 
 /**
 *	Feed_view - the class create a json format view of one instance of the Feed class
@@ -16,13 +17,16 @@ class Feed_view implements view {
 			'FeedID'=>'',
 			'UserID'=>'',
 			'Creator'=>'',
+			'CreatorFirstName'=>'',
 			'Status'=>'',
 			'DateCreated'=>'',
 			'Type'=>'',
 			'CreatorImage'=>'',
 			'ImageURL'=>'',
-			'FeedLink'=>'',	
-			'ContentMessage'=>''
+			'YouTubeID'=>'',	
+			'ContentMessage'=>'',
+			'Liked'=>0, 
+			'nLiked'=>0
 		];
 	}
 
@@ -33,7 +37,7 @@ class Feed_view implements view {
 	public function load($f2u) {
 		if (!$f2u) return false;
 
-		$feed = new Feed();
+		$feed = new vw_Feed();
 		if (!$feed->load($f2u->getFeedID())) {
 			echo "Feed not found";
 			return false;
@@ -46,24 +50,32 @@ class Feed_view implements view {
 				$CreatorImage = "/users/".$User->getID()."/images/".$User->getProfileImage();
 		}
 
-		if ($feed->getInternalURL())
+		$FeedLink='';
+		if ($feed->getInternalURL()) {
 			$FeedLink=$feed->getInternalURL();
-		else {
-			$FeedLink=$feed->getExternalURL();
-			if (strpos($FeedLink, "http") != 0) {
-				$FeedLink = "http://".$FeedLink;
-			}
 		}
 
+		$TimeAgo = '';
+		if ($f2u->getDateCreated()) {
+			$TimeAgo = timetostr($f2u->getDateCreated());
+		}
+
+		$Liked = 0;
+		if ($f2u->getLiked()) $Liked = 1;
+
 		$out = [
-			'FeedID'=>$f2u->getFeedID(),
+			'FeedID'=>$f2u->getID(),
 			'Creator'=>$User->getName(),
-			'DateCreated'=>$f2u->getDateCreated(),
+			'CreatorFirstName'=>$User->getFirstName(),
+			'Timestamp'=>$TimeAgo,
 			'Type'=>$feed->getType(),
 			'CreatorImage'=>$CreatorImage,
 			'ImageURL'=>$feed->getImageURL(),
 			'FeedLink'=>$FeedLink,	
-			'ContentMessage'=>$feed->getContent()
+			'YouTubeID'=>$feed->getExternalURL(),
+			'ContentMessage'=>$feed->getContent(),
+			'Liked'=> $Liked,
+			'nLiked'=> $feed->getNLiked()
 		];
 
 		$this->FinalView = $out;

@@ -226,7 +226,7 @@
 }
 .navbar-brand.navbar-brand-primary,
 .navbar-brand.navbar-brand-primary:hover {
-  background: #26a69a;
+  background: #1565c0;
   color: #fff;
 }
 .navbar-brand.navbar-brand-primary a,
@@ -287,7 +287,7 @@
   color: #fff;
 }
 .navbar-primary .toggle.active {
-  color: #26a69a;
+  color: #1565c0;
   background: #ffffff;
 }
 @media (min-width: 768px) {
@@ -351,7 +351,7 @@
 .navbar-nav .dropdown-menu > li.active > a,
 .navbar-nav .dropdown-menu > li a:hover {
   background: #f5f7f7;
-  color: #26a69a;
+  color: #1565c0;
 }
 .navbar-nav > li.notifications.files img {
   width: 35px !important;
@@ -410,7 +410,7 @@
   }
 }
 .navbar-nav > li.notifications .dropdown-menu .dropdown-header {
-  background: #26a69a;
+  background: #1565c0;
   padding: 5px 10px;
   color: #fff;
   font-size: 14px;
@@ -679,7 +679,7 @@
 }
 .navbar-default .navbar-nav > li.active > a i,
 .navbar-default .navbar-nav > li.open > a i {
-  color: #26a69a;
+  color: #1565c0;
 }
 .navbar-default .navbar-nav > li > a {
   font-weight: 500;
@@ -688,7 +688,7 @@
   color: #7f7f7f;
 }
 .navbar-default .navbar-nav > li > a:hover i {
-  color: #26a69a;
+  color: #1565c0;
 }
 .navbar-default .navbar-form .checkbox {
   color: #3c4340;
@@ -697,7 +697,7 @@
   background: #3c4340;
 }
 .navbar-default .navbar-nav > li.notifications a.dropdown-toggle .badge.badge-primary {
-  background: #26a69a;
+  background: #1565c0;
 }
 .navbar-default .navbar-nav > li.notifications a.dropdown-toggle .badge.badge-danger {
   background: #bd362f;
@@ -717,8 +717,8 @@
   background-color: #f7f7f7;
 }
 .navbar-primary {
-  background-color: #26a69a;
-  border-color: #26a69a;
+  background-color: #1565c0;
+  border-color: #1565c0;
 }
 .navbar-primary .navbar-brand,
 .navbar-primary .navbar-brand a {
@@ -805,7 +805,7 @@
 }
 .navbar-primary .btn-default {
   color: #ffffff;
-  background-color: #26a69a;
+  background-color: #1565c0;
   border-color: #1e857b;
 }
 .navbar-primary .btn-default:hover,
@@ -841,11 +841,11 @@ fieldset[disabled] .navbar-primary .btn-default:active,
 .navbar-primary .btn-default.disabled.active,
 .navbar-primary .btn-default[disabled].active,
 fieldset[disabled] .navbar-primary .btn-default.active {
-  background-color: #26a69a;
+  background-color: #1565c0;
   border-color: #1e857b;
 }
 .navbar-primary .btn-default .badge {
-  color: #26a69a;
+  color: #1565c0;
   background-color: #ffffff;
 }
 .navbar-primary .btn-primary {
@@ -924,7 +924,7 @@ fieldset[disabled] .navbar-primary .btn-primary.active {
     color: #7f7f7f;
   }
   .navbar-skin-cover .navbar-nav > li > a:hover i {
-    color: #26a69a;
+    color: #1565c0;
   }
 }
 @media (min-width: 768px) {

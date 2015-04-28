@@ -9,6 +9,12 @@
         .' <a href="../signout/php/cookie_signout.php"><br />(Not '.$_COOKIE['__USER_FULL_NAME__'].'?)</a>'; 
     };
 
+    if (isset($_COOKIE['__USER_PROFILE_IMAGE__'])) {
+        $ProfileImage = $_COOKIE['__USER_PROFILE_IMAGE__'];
+    } else {
+        $ProfileImage = '/image/proconnect/Tab_logo2_100x100.png';
+    }
+
     //echo $_SERVER['SERVER_NAME'];
 ?>
 <!DOCTYPE html>
@@ -22,7 +28,7 @@
     <link rel="icon" href="../../favicon.ico">
 
     <title>Signin</title>
-	<link rel="ICON" href="../image/proconnect/Tab_logo2.ico" type="image/ico" />
+	<link rel="ICON" href="../image/proconnect/Tab_logo2_bold.ico" type="image/ico" />
     <!-- Bootstrap core CSS 
     <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
     
@@ -67,7 +73,7 @@
             <div class="lock-container formContainer col col-xs-12 col-sm-10 col-md-4 col-lg-4 col-sm-offset-1 col-md-offset-4 col-lg-offset-4">   
 				<a href= "../"><img id= "logo" src = "../image/proconnect/logo_text.png"></a>
 				<div class="panel panel-default text-center">
-						<img src="../social-1/images/people/110/guy-5.jpg" class="img-circle">
+						<img src="<?=$ProfileImage?>" class="img-circle" style="height: 100px; width: 100px; object-fit: cover;">
 						<div class= "panel-body">
 							<form class="form-signin form" id="SignInForm" action="php/session_signin.php" novalidate>							  								
 								<!-- Invalid input alert -->
@@ -149,7 +155,7 @@
     <!-- <script src="js/vendor-charts-easy-pie.min.js"></script> -->
     <!-- <script src="js/vendor-charts-morris.min.js"></script> -->
     <!-- <script src="js/vendor-charts-sparkline.min.js"></script> -->
-    <script src="../social-1/js/vendor-maps.min.js"></script>
+    <!-- <script src="../social-1/js/vendor-maps.min.js"></script> -->
     <!-- <script src="js/vendor-tree.min.js"></script> -->
     <!-- <script src="js/vendor-nestable.min.js"></script> -->
     <!-- <script src="js/vendor-angular.min.js"></script> -->
@@ -172,9 +178,9 @@
     <script src="../social-1/js/module-sidebar.min.js"></script>
     <!-- <script src="js/module-media.min.js"></script> -->
     <!-- <script src="js/module-player.min.js"></script> -->
-    <script src="../social-1/js/module-timeline.min.js"></script>
-    <script src="../social-1/js/module-chat.min.js"></script>
-    <script src="../social-1/js/module-maps.min.js"></script>
+    <!-- <script src="../social-1/js/module-timeline.min.js"></script> -->
+    <!-- <script src="../social-1/js/module-chat.min.js"></script> -->
+    <!-- <script src="../social-1/js/module-maps.min.js"></script> -->
     <!-- <script src="js/module-charts-all.min.js"></script> -->
     <!-- <script src="js/module-charts-flot.min.js"></script> -->
     <!-- <script src="js/module-charts-easy-pie.min.js"></script> -->

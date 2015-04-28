@@ -117,10 +117,9 @@ PublicUser.prototype = {
 
 		//do an ajax call to get user data
 		$.ajax({
-			// url: "php/Profile_controller.php",
-			url: "php/dummy.php",
+			url: "php/Profile_controller.php",
+			 // url: "php/dummy.php",
 			method: 'POST',
-			contentType: 'text/plain',
 			data: that.queryString(),   			// <----------- data is {"userID": 11111} 
 			error: function(xhr,status,error) {
 				bootbox.dialog({
@@ -159,14 +158,14 @@ PublicUser.prototype = {
 		$(".first-name").text(this.userData.personalInfo["first-name"]);
 		$("#user-mi").text(this.userData.personalInfo["middle-initial"]+'.');
 		$("#user-last").text(this.userData.personalInfo["last-name"]);
-		$("#user-address").text(this.userData.personalInfo["user-address"]["address-input"]);
-			$("#user-address").append(" ");
-			$("#user-address").append(this.userData.personalInfo["user-address"]["country-input"]);
+		$("#user-address").text(this.userData.personalInfo["user-address"]);
 		$("#user-email").text(this.userData.personalInfo["email-address"]);
 		$("#user-phone").text(this.userData.personalInfo["phone-number"]);
 		$("#user-home").text(this.userData.personalInfo["phone-number"]);
 
-		
+		if (this.userData.personalInfo['profile-image']) {
+			$('.profile-image').attr('src', this.userData.personalInfo['profile-image']);
+		}
 
 		//update summary description
 		if(this.userData.personalInfo["summary"] !== "") {
@@ -177,6 +176,37 @@ PublicUser.prototype = {
 
 			$("#user-summary").text("Say something about yourself!");
 		}
+		
+		//update about
+		var job;
+		var address = this.userData.personalInfo["user-address"];
+		var education;
+		var connection;
+			//job
+			$.each(this.userData.experiences,function(i,exp){
+
+				var endTime = (exp["work-present"] === "") ? exp["work-end-month"] + " " + exp['work-end-year'] : exp["work-present"];
+				if(endTime == "current") {
+					job = exp['position-title'] + " at " + exp['company-name'];
+				}
+			});
+			//address
+			//education
+			$.each(this.userData.education,function(key,edu){
+			var tempEnded = 0;
+			var schoolEnded = edu["school-year-ended"];
+			
+			if(schoolEnded > tempEnded) {
+				tempEnded=schoolEnded;
+				education= edu['field-of-study']+" at " + edu['school-name'];
+			}
+			});
+			//connection
+			console.log (education);
+		$("#about-job").text(job);
+		$("#about-address").text(address);
+		$("#about-education").text(education);
+		$("#about-connection").text(connection);
 
 		//update skill
 		if ($.isEmptyObject(this.userData.skill) === false){ //if not an empty object
@@ -193,12 +223,13 @@ PublicUser.prototype = {
 				//check for 0 value
 				value = (value == 0) ? "" : value;
 
-				if(count < 7){
-					$("#skill-top-list").append("<li class=\"list-group-item\"><span class=\"badge colored-badge\">" + value + "</span>" + key + "</li>");
-				} else {
+				//if(count < 7){
+					//$("#skill-top-list").append("<li class=\"list-group-item\"><span class=\"badge colored-badge\">" + value + "</span>" + key + "</li>");
+					$("#skill-top-list").append("<div class='skill-bean'><span >" + key + " <span class=\"badge colored-badge\">" + value + "</span></span></div>");
+				//} else {
 					$(".skill-more").show();
 					$("#skill-more-list").append("<div class='skill-bean'><span >" + key + " <span class=\"badge colored-badge\">" + value + "</span></span></div>");
-				}
+				//}
 				count++;
 			});
 			

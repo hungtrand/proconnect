@@ -1,7 +1,4 @@
 $(document).ready(function() {
-	
-	var suggList = new SuggestionList($('#SuggListing'));
-	suggList.load();
 
 	var feedList = new FeedList($('#FeedsSection'));
 	feedList.load();
@@ -12,9 +9,10 @@ $(document).ready(function() {
 	});
 
 	// initite scroll
-	$(window).scroll(function()
+	$('.st-content-inner').scroll(function()
 	{
-	    if($(window).scrollTop() == $(document).height() - $(window).height())
+		var triggerPoint = $('.st-content-inner').children('.container-fluid').height() - $('.st-content-inner').height() - 200;
+	    if($('.st-content-inner').scrollTop() > (triggerPoint - 10) && $('.st-content-inner').scrollTop() < (triggerPoint + 10))
 	    {
 	        feedList.next();
 	    }

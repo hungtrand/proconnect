@@ -11,6 +11,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 $Title = "Feed - Proconnect";
 $ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
 $JobTitle = $UData['TITLE'];
+$HomeActive = 'active';
 
 ob_start();
 
@@ -19,11 +20,33 @@ ob_start();
     <link rel="stylesheet" type="text/css" href="../lib/lightbox/dark.css" />
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     
-    
+        <div class="cover profile">
+            <div class="wrapper">
+                <div class="cover cover-image-full overlay">
+                    <img src="/image/BlurStreet.jpeg" alt="Profile Cover" />
+                </div>
+            </div>
+            <div class="cover-info">
+                <div class="avatar">
+                    <img src="<?=$ProfileImage?>" alt="<?=$FullName?>" style="object-fit: cover;"/>
+                </div>
+                <div class="name"><a href="#"><?=$FullName?>&nbsp;-&nbsp;<small><em><?=$JobTitle?></em></small></a>
+                </div>
+                <!-- <ul class="cover-nav">
+                    <li class="active"><a href="index.html"><i class="fa fa-fw icon-ship-wheel"></i> Timeline</a>
+                    </li>
+                    <li><a href="profile.html"><i class="fa fa-fw icon-user-1"></i> About</a>
+                    </li>
+                    <li><a href="users.html"><i class="fa fa-fw fa-users"></i> Friends</a>
+                    </li>
+                </ul> -->
+            </div>
+        </div>
+
         <div class="row">
             <!-- Left main content -->
-            <div class="col col-xs-12 col-sm-12 col-md-8 col-lg-8">
-                <div id="SelfSection" class="well well-sm">
+            <div class="col col-xs-11 col-sm-11 col-md-9 col-lg-9">
+                <!-- <div id="SelfSection" class="well well-sm">
                     <div id="UserStats" class="row">
                         <div id="ProfileCard" class="col col-xs-12 col-sm-6">
                             <div class="media">
@@ -46,7 +69,7 @@ ob_start();
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <div id="NewPost" class="well well-sm">
                     <div class="row">
@@ -64,14 +87,22 @@ ob_start();
                             </div>
 
                             <div class="form-group">
+                                <div class="input-group" style="display:none;">
+                                    <span class="input-group-addon">YouTube Link</span>
+                                    <input type="text" class="form-control" id="YouTubeURL" name="YouTubeURL" placeholder="Past YouTube URL here" value="" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <a id="btnAttachImg" class="btn btn-default btnAttachImg"><span class="glyphicon glyphicon-picture"></span></a>
+                                &nbsp;&nbsp;
+                                <a id="btnYouTube" class="btn btn-default btnYouTube"><i class="fa fa-youtube" style="font-size: 18px;"></i></a>
                                 <button id="btnSharePost" class="btn btn-primary pull-right">Share</button>
                                 <hr/>
                                 <div class="hiddenInputs">
                                     <input type="file" class="hidden" id="FeedImage" name="FeedImage" /><!-- temp image / not yet uploaded -->
                                     <!-- uploaded image link only populate when upload then reset after sumission -->
                                     <input type="text" class="hidden" id="ImageURL" name="ImageURL" value="" />
-
                                     <div id="AlertNewPost" class="alert alert-info" style="display: none;"></div>
                                     
                                 </div>
@@ -80,21 +111,21 @@ ob_start();
                     </div>
 
                     <div class="row">
-                         <div class="col col-xs-10">
+                         <div class="col col-xs-9 col-sm-10 col-md-10 col-lg-10">
                             <blockquote>A person who never made a mistake never tried anything new.</blockquote>
                         </div>
 
-                        <div class="col col-xs-2 text-right">
+                        <div class="col col-xs-3  col-sm-2 text-right">
                              <button id="btnPostMode" class="btn btn-danger" title="New Post">Post</button>
                         </div>
                     </div>
                 </div>
 
-                <div id="FeedsSection">
+                <ul id="FeedsSection" style="padding: 0;">
 
-                </div>
+                </ul>
 
-                <div id="FeedListEndAlert" class="alert alert-info hidden text-center" style="margin: 50px 20px;"></div>
+                <div id="FeedListEndAlert" class="alert alert-info text-center" style="margin: 50px 20px; display:none;"></div>
             </div>
 
             <!-- Right suggestions column -->
@@ -111,73 +142,120 @@ ob_start();
                     <div id="SuggestionsListEndAlert" class="alert alert-info hidden text-center"></div>
                 </div>
             </div> -->
+
+
+            <!--<div class="affix hidden-print hidden-xs hidden-sm text-right" 
+                style="position: fixed; width: 400px; right: 30px; top: 50px;" role="complimentary" data-spy="affix" data-offset-top="50">
+                <label class="text-default">People You may know...</label>
+                <ul id="SuggListing" class="nav text-right">
+                </ul>
+            </div>-->
+
         </div>
-        
-
-    <script type="text/template" id="SuggestionTemplate">
-    <div class="NewUserConnection" class="col col-xs-12">
-        <input type="hidden" class="UserID" name="UserID" value="" />
-        <div class="row">
-            <div class="col col-xs-3">
-                <img width="50px" src="../image/user_img.png" class="img-rounded ProfileImage" />
-            </div>
-
-            <div class="col col-xs-9">
-                <h5 class="text-primary ConnectionName" style="margin-top: 0px; margin-bottom: 7px;">John Doe</h5>
-                <p class="ConnectionWork" style= "font-size: 12px;"><span class="ConnectionJob"></span>&nbsp;at&nbsp;<span class="ConnectionCompany"></span></p>
-                   <a class="addNewConnection" href="#" style= "font-size: 12px;">
-                   <span class="glyphicon glyphicon-retweet">&nbsp;<span class="txt">Connect</span></a>
-                    &nbsp;&#8226;
-                   <a class="dismissConnection" href="#" style= "font-size: 12px; color: gray;">Skip</a>
-            </div>
-        </div>
-
-        <hr />
-    </div>
-    </script>
 
     <script type="text/template" id="FeedTemplate">
-        <div class="media feed">
+        <li class="media media-clearfix-xs feed well" style="border-color: #CCC;">
             <input type="hidden" class="FeedID" name="FeedID" value="" />
             <div class="media-left">
-                <a href="#">
-                  <img class="media-object creatorImage img-circle" style="object-fit: cover;" width="100px" height="100px" src="{{CreatorImage}}" alt="{{UserName}}">
-                </a>
-            </div>
-            <div class="media-body well well-sm">
-                <h4 class="media-heading contentHeading">{{User}} shared: </h4>
-                <hr />
-                <div class="feed-content">
-                    <div class="media">
-                        <div class="media-body contentMessage">
-                            
-                        </div>
-
-                         <div>
-                            <a class="contentImageLink" data-toggle="lightbox" href="{{ImageURL}}">
-                              <img class="media-object contentImage thumbnail" style="max-width: 700px;" src=".{{ImageURL}}" />
-                            </a>
-                        </div>
+                <div class="user-wrapper text-center row">
+                    <div class="col col-xs-3 col-sm-12">
+                        <img src="/image/user_img.png" alt="people" style="object-fit: cover;"
+                        class="img-circle media-object creatorImage hidden-xs" width="80" height="80" />
+                        <img src="/image/user_img.png" alt="people" style=""
+                        class="img-rounded media-object creatorImage hidden-sm hidden-md hidden-lg" width="80" />
+                    </div>
+                    <div class="col col-xs-9 col-sm-12">
+                        <a href="#" class="AuthorLink">{{UserName}}</a>
+                        <div class="timestamp">19 OCT</div>
                     </div>
                 </div>
+            </div>
+            <div class="media-body">
+                <div class="media-body-wrapper">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+                            <div class="panel panel-default share clearfix-xs">
+                                <div class="panel-heading panel-heading-gray title contentHeading">
+                                    What&acute;s new
+                                </div>
+                                <div class="panel-body feed-content">
+                                    <div class="contentMessage"></div>
+                                    <div>
+                                        <a class="contentImageLink" data-toggle="lightbox" href="{{ImageURL}}">
+                                          <img class="media-object contentImage thumbnail" style="max-width: 800px;" src=".{{ImageURL}}" />
+                                        </a>
+                                    </div>
 
-                <div class="feed-actions">
-                    <ul class="nav nav-pills">
-                        <li role="presentation"><a class="feedLike" href="#">Like</a></li>
-                        <li role="presentation"><a class="feedComment" href="#">Comment</a></li>
-                        <li role="presentation"><a class="feedShare" href="#">Share</a></li>
-                    </ul>
+                                    <div>
+                                        <iframe class="YouTubeFrame" width="560" height="315" src="https://www.youtube.com/embed/{{YouTubeID}}" frameborder="0" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                                <div class="panel-footer">
+                                    <i class="fa fa-thumbs-o-up"></i>&nbsp;<a href="#" class="feedLike">Like</a>
+                                    <span class="numLikes"></span>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <i class="fa fa-comment"></i>&nbsp;<a href="#" class="feedComment">Comment</a>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <i class="fa fa-share-alt"></i>&nbsp;<a href="#" class="feedPropagate">Propagate</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row commentsSection">
+                        <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+                            <form class="media media-clearfix-xs NewComment">
+                                <input type="hidden" class="CommentID" name="CommentID" value=0 />
+                                <div class="media-left">
+                                    <div class="user-wrapper text-center">
+                                        <img src="/image/user_img.png" alt="people" style="object-fit: cover;"
+                                        class="img-circle media-object CommentProfileImage hidden-xs" width="40" height="40" />
+                                        <div><small><a href="#" class="CommentAuthor">{{FirstName}}</a></small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="media-body CommentMessage">
+                                    <textarea class="txtNewComment form-control" name="CommentMessage" placeholder="Type new comment here..."></textarea>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+                            <ul class="media-list comments-list">
+
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
                 </div>
             </div>
-        </div>
+        </li>
+    </script>
+
+    <script type="text/template" id="CommentTemplate">
+        <li class="media media-clearfix-xs comment">
+            <input type="hidden" class="CommentID" name="CommentID" value="" />
+            <div class="media-left">
+                <div class="user-wrapper text-center">
+                    <img src="/image/user_img.png" alt="people" style="object-fit: cover;"
+                    class="img-circle media-object CommentProfileImage hidden-xs" width="40" height="40" />
+                    <div><small><a href="#" class="CommentAuthor">{{FirstName}}</a></small>
+                    </div>
+                </div>
+            </div>
+            <div class="media-body">
+                <div class="text-right CommentTimestamp"></div>
+                <div class="media-body-wrapper CommentMessage">
+                    
+                </div>
+            </div>
+        </li>
     </script>
 
 <?php
     $Content = ob_get_clean();
     include __DIR__."/../master/index.php";
 ?>
-    <script src="../connections/js/NewConnection.js"></script>
-    <script src="../connections/js/SuggestionList.js"></script>
     <script src="../lib/js/FileUpload.js"></script>
     <script src="../lib/ckeditor/ckeditor.js"></script>
     <script src="../lib/lightbox/ekko-lightbox.js"></script>
