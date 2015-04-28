@@ -52,7 +52,14 @@ $(document).ready(function() {
 	});
 	//enable edit view
 	$(".normal-view").on("click",".editable",function(){
-		console.log("hello");
+		//move window to head of form for easy access
+
+		var anchor = $(this).find("a.anchor").prop("href");
+		// console.log(anchor);
+		if(undefined != anchor) {
+			window.location.href = anchor;
+		}
+// 	
 		var target = "#" + $(this).attr("for");			//grab target
 		var targetLink = '#' + $(this).attr("link");	//grab link
 		var indexNum = $(this).attr("index");			//grab index
@@ -499,7 +506,8 @@ $(document).ready(function() {
 		//clear temporary data
 		$(this).parent("form").attr("editing","false")
 
-		//console.log(link);
+		//clear alert div
+		$(this).siblings("div.alert").hide();
 
 		//clear project member list
 		if($(this).parent("form").find("ul.sortable").length > 0) {
@@ -516,6 +524,14 @@ $(document).ready(function() {
 
 	//enable add new 
 	$(".add-btn").on("click",function(){
+
+		var anchor = $(this).siblings("a.anchor").prop("href");
+		if(undefined != anchor) {
+		console.log(anchor);
+
+			window.location.href = anchor;
+		}
+
 		var target = "#" + $(this).attr("for");	//grab target
 		var forTarget = '#' + $(this).attr("edit"); //grab edit flag
 

@@ -783,6 +783,7 @@ User.prototype = {
 			// console.log(workTime); index='" + i + "
 			$("#user-experiences").append(
 				"<div class=\"editable\" for=\"experience-edit\" index='" + i + "'>" +
+                    "<a class='anchor' href='#experiences-header'></a>" +
 					"<span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span>" +
 					"<h3>" + exp['position-title'] + "</h3>" + 
 		          	"<h4>" + exp['company-name'] + "</h4>" +
@@ -836,6 +837,7 @@ User.prototype = {
 			$("#user-projects").append(
             "<div>" + 
                 "<div class='editable' for='project-edit' link='" + 'elmo' + key +  "' index='" + key + "'>" + 
+                "<a class='anchor' href='#projects-header'></a>" +
                 "<span class='glyphicon glyphicon-pencil' aria-hidden='true'></span>" +
                 "<h3>" + projTitle + "</h3>" +
                 "<p name='description' class='white-space'>" + proj['project-description'] +"</p>" +
@@ -858,6 +860,7 @@ User.prototype = {
 			// console.log(schoolTime);
 			$("#user-education").append(
 								   "<div class='editable' for='education-edit' index='" + key + "'>" + 
+                					  "<a class='anchor' href='#education-header'></a>" +
 						              "<span class='glyphicon glyphicon-pencil' aria-hidden='true'></span>" +
 						              "<h3>" + edu['school-name'] + "</h3>" +
 						              "<h4>" + edu['degree'] + "<span> " + edu['grade'] + "</span></h4>" +

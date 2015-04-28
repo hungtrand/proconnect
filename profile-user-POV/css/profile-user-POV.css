@@ -118,8 +118,14 @@ margin-left: auto;
 
 .editable:hover {
 	cursor: pointer;
-	background-color: rgba(62, 146, 219, 0.41);
+	/*background-color: rgba(62, 146, 219, 0.41);*/
+	background-color: #caecfc;
 	border: 1px solid #337ab7;
+	/*color: #00a0dc;*/
+	-webkit-transition: background-color 0.2s,border 0.2s;
+    -moz-transition: background-color 0.2s,border 0.2s;
+    -o-transition: background-color 0.2s,border 0.2s;
+    transition: background-color 0.2s,border 0.2s;
 }
 
 .editable > span.glyphicon {

@@ -205,7 +205,7 @@ $ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
           <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
               <div class="well well-sm ">
-                  <header>
+                  <header id="summary-header">
                         <h2>Summary</h2>
                   </header>
                   <div class="alert alert-success alert-dismissible" role="alert">
@@ -217,6 +217,7 @@ $ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
 
                   <div id="summary-description" class="normal-view" > 
                     <div class="editable" for="summary-edit">
+                      <a class="anchor" href="#summary-header"></a>
                       <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                       <div id="user-summary" class="white-space"></div>
                     </div> 
@@ -250,8 +251,8 @@ $ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
       <div class="row">
           <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-              <div class="well well-sm ">
-                  <header>
+              <div  class="well well-sm ">
+                  <header id="skills-endorsements-header">
                         <h2>Skills and Endorsements</h2>
                   </header>
                   <!-- Success message goes here -->
@@ -266,6 +267,7 @@ $ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
                   <!-- normal-view -->
                   <div id="skills-endorsements" class="normal-view "> 
                     <div class="editable" for="skills-endorsements-edit">
+                      <a class="anchor" href="#skills-endorsements-header"></a>
                       <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                      
                       <div class="panel panel-default ">
@@ -340,7 +342,7 @@ $ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
       <div class="row">
           <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
               <div class="well well-sm">
-                  <header>
+                  <header id="experiences-header">
                     <h2>Experience</h2>
                   </header>
 
@@ -454,7 +456,7 @@ $ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
       <div class="row">
           <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
               <div class="well well-sm">
-                  <header>
+                  <header id="projects-header">
                     <h2>Projects</h2>
                   </header>
 
@@ -562,8 +564,8 @@ $ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
       <!-- Education -->
       <div class="row">
           <div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <div class="well well-sm">
-                  <header>
+              <div id="education-header" class="well well-sm">
+                  <header >
                     <h2>Education</h2>
                   </header>
 
@@ -667,6 +669,7 @@ $ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
 
               </div>
               <div class="add-star">
+                <a class='anchor' href='#education-header'></a>
                 <button class="add-btn" for="education-edit">Add Education</button>
               </div>
           </div>
