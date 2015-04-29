@@ -42,9 +42,6 @@ To learn more about the development process, please refer to the documentation. 
 This variant is to be used when loading the separate styling modules -->
     <link href="/master/css/theme-core.min.css" rel="stylesheet">
 
-    <!-- Custom ProConnect CSS -->
-    <link rel="stylesheet" type="text/css" href="/master/custom_proconnect/css/master.css">
-
     <!-- Standalone Modules
     As a convenience, we provide the entire UI framework broke down in separate modules
     Some of the standalone modules may have not been used with the current theme/module
@@ -73,6 +70,9 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+    <!-- Custom ProConnect CSS -->
+    <link rel="stylesheet" type="text/css" href="/master/custom_proconnect/css/master.css">
+    
     <!-- <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" /> -->
     <!-- // <script src="/lib/jquery/jquery-2.1.3.min.js"></script> -->
     <!-- // <script src="/lib/bootstrap/js/bootstrap.min.js"></script> -->
@@ -331,7 +331,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                         <!-- User -->
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img style="object-fit: cover;" width="30px" height="30px" src="<?=$ProfileImage?>" alt="<?=$FullName?>" class="img-circle" /> <?=$FullName?> <span class="caret"></span>
+                                <img style="object-fit: cover;" width="30px" height="30px" src="<?=$ProfileImage?>" alt="<?=$FullName?>" class="img-circle SignedInUserProfileImage" /> <?=$FullName?> <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="/profile-user-POV/">Profile</a>

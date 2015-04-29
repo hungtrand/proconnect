@@ -9,7 +9,11 @@ $UData = json_decode($_SESSION['__USERDATA__'], true);
 $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 
 $Title = "Feed - Proconnect";
-$ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
+if (isset($_COOKIE['__USER_PROFILE_IMAGE__'])) {
+    $ProfileImage = $_COOKIE['__USER_PROFILE_IMAGE__'];
+} else {
+    $ProfileImage = '/image/proconnect/Tab_logo2_100x100.png';
+}
 $JobTitle = $UData['TITLE'];
 $ConnectionActive = 'active';
 

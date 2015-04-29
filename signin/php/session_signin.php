@@ -33,7 +33,11 @@ if ($acc) {
 	echo $_SESSION['__USERDATA__'];
 
 	$FullName = $user->getName();
-	$ProfileImage = '/users/'.$user->getID().'/images/'.$user->getProfileImage();
+	$ProfileImage = "/image/user_img.png";
+	if (strlen(trim($user->getProfileImage())) > 0) {
+		$ProfileImage = '/users/'.$user->getID().'/images/'.$user->getProfileImage();
+	}
+	
 	setcookie("__USER_FULL_NAME__", $FullName, time()+60*60*24*365, '/');
 	setcookie("__USER_PROFILE_IMAGE__", $ProfileImage, time()+60*60*24*365, '/');
 } else {

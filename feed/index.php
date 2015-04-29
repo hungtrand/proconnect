@@ -6,10 +6,13 @@ include '/signout/php/session_check_signout.php';
 
 session_start();
 $UData = json_decode($_SESSION['__USERDATA__'], true);
-$FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
+if (isset($_COOKIE['__USER_PROFILE_IMAGE__'])) {
+    $ProfileImage = $_COOKIE['__USER_PROFILE_IMAGE__'];
+} else {
+    $ProfileImage = '/image/proconnect/Tab_logo2_100x100.png';
+}
 
 $Title = "Feed - Proconnect";
-$ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
 $JobTitle = $UData['TITLE'];
 $HomeActive = 'active';
 
@@ -43,7 +46,7 @@ ob_start();
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" style="">
             <!-- Left main content -->
             <div class="col col-xs-11 col-sm-11 col-md-9 col-lg-9">
 
@@ -107,8 +110,9 @@ ob_start();
         </div>
 
     <script type="text/template" id="FeedTemplate">
-        <li class="media media-clearfix-xs feed well" style="border-color: #CCC;">
+        <li class="media media-clearfix-xs feed well box" style="border-color: #CCC;">
             <input type="hidden" class="FeedID" name="FeedID" value="" />
+            <input type="hidden" class="F2UID" name="F2UID" value="" />
             <div class="media-left">
                 <div class="user-wrapper text-center row">
                     <div class="col col-xs-3 col-sm-12">
@@ -155,7 +159,7 @@ ob_start();
                         </div>
                     </div>
 
-                    <div class="row commentsSection">
+                    <div class="row CommentSection" style="display: none;">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <form class="media media-clearfix-xs NewComment">
                                 <input type="hidden" class="CommentID" name="CommentID" value=0 />
@@ -169,6 +173,8 @@ ob_start();
                                 </div>
                                 <div class="media-body CommentMessage">
                                     <textarea class="txtNewComment form-control" name="CommentMessage" placeholder="Type new comment here..."></textarea>
+                                    <br />
+                                    <button class="btn btn-default submitComment" disabled>Comment</button>
                                 </div>
                             </form>
                         </div>
@@ -176,6 +182,7 @@ ob_start();
                             <ul class="media-list comments-list">
 
                             </ul>
+                            <div class="alert alert-info CommentListEndAlert"></div>
                         </div>
                     </div>
 
@@ -188,11 +195,13 @@ ob_start();
     <script type="text/template" id="CommentTemplate">
         <li class="media media-clearfix-xs comment">
             <input type="hidden" class="CommentID" name="CommentID" value="" />
+            <input type="hidden" class="CommentFeedID" name="CommentFeedID" value="" />
+
             <div class="media-left">
                 <div class="user-wrapper text-center">
                     <img src="/image/user_img.png" alt="people" style="object-fit: cover;"
-                    class="img-circle media-object CommentProfileImage hidden-xs" width="40" height="40" />
-                    <div><small><a href="#" class="CommentAuthor">{{FirstName}}</a></small>
+                    class="img-circle media-object CreatorImage hidden-xs" width="40" height="40" />
+                    <div><small><a href="#" class="CreatorName">{{FirstName}}</a></small>
                     </div>
                 </div>
             </div>
@@ -212,6 +221,8 @@ ob_start();
     <script src="../lib/js/FileUpload.js"></script>
     <script src="../lib/ckeditor/ckeditor.js"></script>
     <script src="../lib/lightbox/ekko-lightbox.js"></script>
+    <script src="js/Comment.js"></script>
+    <script src="js/CommentList.js"></script>
     <script src="js/NewPost.js"></script>
     <script src="js/Feed.js"></script>
     <script src="js/FeedList.js"></script>

@@ -43,6 +43,10 @@ class Profile_View implements view {
 			$address .= $User->getZip();
 		}
 
+		$profileImage = "/image/user_img.png";;
+		if (strlen(trim($User->getProfileImage())) > 0)
+			$profileImage = "/users/".$User->getID()."/images/".$User->getProfileImage();
+
 		$data = [
 			"first-name"=>$User->getFirstName().'',
 			"last-name"=>$User->getLastName().'',
@@ -53,7 +57,7 @@ class Profile_View implements view {
 			"phone-number-type"=>$User->getPhoneType().'',
 			"user-address"=>$address.'',
 			"summary"=>$User->getSummary().'',
-			'profile-image'=>'/users/'.$User->getID().'/images/'.$User->getProfileImage().''
+			'profile-image'=>$profileImage
 		];
 
 		$this->FinalView['personalInfo'] = $data;

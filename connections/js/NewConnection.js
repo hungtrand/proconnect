@@ -101,6 +101,7 @@ NewConnection.prototype = {
 					conn.find('.BlurHide').show();
 					conn.find('.FullHide').hide();
 				});
+				conn.toggleClass('box', true);
 			break;
 			default:
 				if (that.mode == 'hide') return false;
@@ -113,6 +114,7 @@ NewConnection.prototype = {
 					});
 					conn.find('.panel').css('border-width', "0px");
 				});
+				conn.toggleClass('box', false);
 		}
 	},
 
