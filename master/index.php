@@ -40,7 +40,7 @@ To learn more about the development process, please refer to the documentation. 
     <!-- <link href="css/theme.bundle.min.css" rel="stylesheet"> -->
     <!-- Compressed Theme CORE
 This variant is to be used when loading the separate styling modules -->
-    <link href="/master/css/theme-core.min.css" rel="stylesheet">
+    <link href="/master/css/theme-core-proconnect.min.css" rel="stylesheet">
 
     <!-- Custom ProConnect CSS -->
     <link rel="stylesheet" type="text/css" href="/master/custom_proconnect/css/master.css">
