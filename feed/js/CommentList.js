@@ -75,7 +75,7 @@ CommentList.prototype = {
 			}
 
 			if (that.container.find('.newPostAlert').length < 1) {
-				var viewNewLink = $('<div class="alert alert-success newPostAlert text-center"><a href="#">' + json.length + ' new comments. Click to view.</a>');
+				var viewNewLink = $('<div class="alert alert-success newCommentAlert text-center"><a href="#">' + json.length + ' new comments. Click to view.</a>');
 				viewNewLink.on('click', function(e) {
 					e.preventDefault();
 					that.appendView(that.unreadCache);
