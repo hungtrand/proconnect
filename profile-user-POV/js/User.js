@@ -407,6 +407,7 @@ User.prototype = {
 		// 	// });
 		// }
 
+
 		var that = this;
 		var formName = jQFormEle.parent("div").attr("id");
 
@@ -428,7 +429,7 @@ User.prototype = {
 						}
 					});
 				});
-				console.log(that.userData.personalInfo);
+				// console.log(that.userData.personalInfo);
 			break;
 			case "summary-edit":
 				// console.log("summary-edit");
@@ -735,6 +736,20 @@ User.prototype = {
 
 	//update view
 	updateView: function(){
+		var month = new Array();
+		month[0] = "January";
+		month[1] = "February";
+		month[2] = "March";
+		month[3] = "April";
+		month[4] = "May";
+		month[5] = "June";
+		month[6] = "July";
+		month[7] = "August";
+		month[8] = "September";
+		month[9] = "October";
+		month[10] = "November";
+		month[11] = "December";
+
 		var that = this;
 		//update user info
 		 $('#preview').attr('src', this.userData.personalInfo["picture"]);
@@ -796,8 +811,8 @@ User.prototype = {
 		$.each(this.userData.experiences,function(i,exp){
 			// $("#user-experiences").html("");
 			// exp["company-location"]
-			var endTime = (exp["work-present"] === "") ? exp["work-end-month"] + " " + exp['work-end-year'] : exp["work-present"];
-			var workTime = exp['work-start-month'] + " " + exp['work-start-year'] + " &#8213 " + endTime;
+			var endTime = (exp["work-present"] === "") ? month[parseInt(exp["work-end-month"]) - 1] + " " + exp['work-end-year'] : exp["work-present"];
+			var workTime = month[parseInt(exp['work-start-month']) - 1] + " " + exp['work-start-year'] + " &#8213 " + endTime;
 
 			// console.log(workTime); index='" + i + "
 			$("#user-experiences").append(
