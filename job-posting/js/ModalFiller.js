@@ -1,9 +1,10 @@
+// script to fill the modal for preview
 function ModalFiller() {
 	this.container = $('#myModal');
 	this.jobTitle;
 	this.jobLocation;
 	this.contactInfo;
-	this.companyImg;
+	// this.companyImg;
 	this.jobDescription;
 	this.skillDescription;
 	this.companyDescription;
@@ -24,7 +25,7 @@ ModalFiller.prototype = {
 		that.jobTitle = that.container.find('#modalJobTitle');
 		that.jobLocation = that.container.find('#modalJobLocation');
 		that.contactInfo = that.container.find('#modalContactInfo');
-		that.companyImg = that.container.find('#modalImagePreview');
+		// that.companyImg = that.container.find('#modalImagePreview');
 		that.jobDescription = that.container.find('#modalJobDescription');
 		that.skillDescription = that.container.find('#modalSkillDescription');
 		that.companyDescription = that.container.find('#modalCompanyDescription');
@@ -40,7 +41,7 @@ ModalFiller.prototype = {
 		that.loadJobTitle();
 		that.loadJobLocation();
 		that.loadContactInfo();
-		that.loadCompanyImg();
+		// that.loadCompanyImg();
 		that.loadCompanyDesc();
 		that.loadJobDesc();
 		that.loadSkillDesc();
@@ -89,13 +90,13 @@ ModalFiller.prototype = {
 		}
 	},
 
-	loadCompanyImg: function() {
-		if($('#ImagePreview').attr('src') != '../image/companyimg') {
-			$('#modalImagePreview').attr('src', $('#ImagePreview').attr('src'));
-		} else {
-			$('#modalImagePreview').attr('src', '../image/companyimg');
-		}
-	},
+	// loadCompanyImg: function() {
+	// 	if($('#ImagePreview').attr('src') != '../image/companyimg') {
+	// 		$('#modalImagePreview').attr('src', $('#ImagePreview').attr('src'));
+	// 	} else {
+	// 		$('#modalImagePreview').attr('src', '../image/companyimg');
+	// 	}
+	// },
 
 	loadCompanyDesc: function() {
 		var that = this;

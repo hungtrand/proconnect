@@ -1,4 +1,4 @@
-// NewPost - the object validate the new post form, upload image and submit form
+//script to fill the job function dropbox
 function JobFunctionDropBox() {
 	this.dropbox = $('.jobFunc-dropbox');
 	this.data;
