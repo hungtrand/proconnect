@@ -32,44 +32,20 @@ ob_start();
                 </div>
                 <div class="name"><a href="#"><?=$FullName?>&nbsp;-&nbsp;<small><em><?=$JobTitle?></em></small></a>
                 </div>
-                <ul class="cover-nav">
+                <!-- <ul class="cover-nav">
                     <li class="active"><a href="index.html"><i class="fa fa-fw icon-ship-wheel"></i> Timeline</a>
                     </li>
                     <li><a href="profile.html"><i class="fa fa-fw icon-user-1"></i> About</a>
                     </li>
                     <li><a href="users.html"><i class="fa fa-fw fa-users"></i> Friends</a>
                     </li>
-                </ul>
+                </ul> -->
             </div>
         </div>
 
         <div class="row">
             <!-- Left main content -->
-            <div class="col col-xs-12 col-sm-12 col-md-9 col-lg-9">
-                <!-- <div id="SelfSection" class="well well-sm">
-                    <div id="UserStats" class="row">
-                        <div id="ProfileCard" class="col col-xs-12 col-sm-6">
-                            <div class="media">
-                                <div class="media-left">
-                                    <a href="#">
-                                      <img class="media-object img-circle" style="object-fit: cover;" width="100px" height="100px" src="<?=$ProfileImage?>" alt="...">
-                                    </a>
-                                </div>
-                                <div class="media-body">
-                                    <h4 class="media-heading txt-warning"><?=$FullName?></h4>
-                                    <em class="text-muted"><?=$JobTitle?></em>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="StatsCard" class="col col-xs-12 col-sm-6 hidden-xs" style="border-left: 1px solid #CCC;">
-                            <ul class="list-group" style="margin-top: 10px; margin-bottom: 10px; font-size: 16px;">
-                              <li class="list-group-item"><a>124</a>&nbsp;&nbsp; connections.&nbsp;&nbsp; <a>Grow your network.</a></li>
-                              <li class="list-group-item"><a>25</a>&nbsp;&nbsp; endorsements.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div> -->
+            <div class="col col-xs-11 col-sm-11 col-md-9 col-lg-9">
 
                 <div id="NewPost" class="well well-sm">
                     <div class="row">
@@ -111,64 +87,46 @@ ob_start();
                     </div>
 
                     <div class="row">
-                         <div class="col col-xs-10">
+                         <div class="col col-xs-9 col-sm-10 col-md-10 col-lg-10">
                             <blockquote>A person who never made a mistake never tried anything new.</blockquote>
                         </div>
 
-                        <div class="col col-xs-2 text-right">
+                        <div class="col col-xs-3  col-sm-2 text-right">
                              <button id="btnPostMode" class="btn btn-danger" title="New Post">Post</button>
                         </div>
                     </div>
                 </div>
 
-                <ul id="FeedsSection" class="timeline-list">
+                <ul id="FeedsSection" style="padding: 0;">
 
                 </ul>
 
                 <div id="FeedListEndAlert" class="alert alert-info text-center" style="margin: 50px 20px; display:none;"></div>
             </div>
 
-            <!-- Right suggestions column -->
-            <!-- Blog Sidebar Widgets Column -->
-            <!-- <div id="fixed-right-section" class="col col-md-4 affix hidden-print hidden-xs hidden-sm" style="position: fixed;" role="complimentary" data-spy="affix" data-offset-top="200 ">
-                <div class="well">
-                    <h3 class="text-primary" style="overflow: auto;">Suggestions</h3>
-                    <hr />
-
-                    <div id="SuggListing" >
-
-                    </div>
-
-                    <div id="SuggestionsListEndAlert" class="alert alert-info hidden text-center"></div>
-                </div>
-            </div> -->
-
-
-            <!--<div class="affix hidden-print hidden-xs hidden-sm text-right" 
-                style="position: fixed; width: 400px; right: 30px; top: 50px;" role="complimentary" data-spy="affix" data-offset-top="50">
-                <label class="text-default">People You may know...</label>
-                <ul id="SuggListing" class="nav text-right">
-                </ul>
-            </div>-->
-
         </div>
 
     <script type="text/template" id="FeedTemplate">
-        <li class="media media-clearfix-xs feed">
+        <li class="media media-clearfix-xs feed well" style="border-color: #CCC;">
             <input type="hidden" class="FeedID" name="FeedID" value="" />
             <div class="media-left">
-                <div class="user-wrapper">
-                    <img src="/image/user_img.png" alt="people" style="object-fit: cover; margin-left: 20px;"
-                    class="img-circle media-object creatorImage" width="80" height="80" />
-                    <div><a href="#" class="AuthorLink">{{UserName}}</a>
+                <div class="user-wrapper text-center row">
+                    <div class="col col-xs-3 col-sm-12">
+                        <img src="/image/user_img.png" alt="people" style="object-fit: cover;"
+                        class="img-circle media-object creatorImage hidden-xs" width="80" height="80" />
+                        <img src="/image/user_img.png" alt="people" style=""
+                        class="img-rounded media-object creatorImage hidden-sm hidden-md hidden-lg" width="80" />
                     </div>
-                    <div class="timestamp">19 OCT</div>
+                    <div class="col col-xs-9 col-sm-12">
+                        <a href="#" class="AuthorLink">{{UserName}}</a>
+                        <div class="timestamp">19 OCT</div>
+                    </div>
                 </div>
             </div>
             <div class="media-body">
                 <div class="media-body-wrapper">
                     <div class="row">
-                        <div class="col-md-10 col-lg-8">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="panel panel-default share clearfix-xs">
                                 <div class="panel-heading panel-heading-gray title contentHeading">
                                     What&acute;s new
@@ -198,13 +156,13 @@ ob_start();
                     </div>
 
                     <div class="row commentsSection">
-                        <div class="col-md-10 col-lg-8">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <form class="media media-clearfix-xs NewComment">
                                 <input type="hidden" class="CommentID" name="CommentID" value=0 />
                                 <div class="media-left">
                                     <div class="user-wrapper text-center">
                                         <img src="/image/user_img.png" alt="people" style="object-fit: cover;"
-                                        class="img-circle media-object CommentProfileImage" width="40" height="40" />
+                                        class="img-circle media-object CommentProfileImage hidden-xs" width="40" height="40" />
                                         <div><small><a href="#" class="CommentAuthor">{{FirstName}}</a></small>
                                         </div>
                                     </div>
@@ -214,7 +172,7 @@ ob_start();
                                 </div>
                             </form>
                         </div>
-                        <div class="col-md-10 col-lg-8">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <ul class="media-list comments-list">
 
                             </ul>
@@ -233,7 +191,7 @@ ob_start();
             <div class="media-left">
                 <div class="user-wrapper text-center">
                     <img src="/image/user_img.png" alt="people" style="object-fit: cover;"
-                    class="img-circle media-object CommentProfileImage" width="40" height="40" />
+                    class="img-circle media-object CommentProfileImage hidden-xs" width="40" height="40" />
                     <div><small><a href="#" class="CommentAuthor">{{FirstName}}</a></small>
                     </div>
                 </div>

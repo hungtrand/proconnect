@@ -8,8 +8,22 @@ function User(){
 	// 	"alt-email-address":"",
 	// 	"phone-number":"",
 	// 	"phone-number-type":"",
-	// 	"user-address":"",
+	// 	"user-address":"",					<------ deprecated
 	// 	"summary":""
+// 	address: ""   							<------ new
+// alt-email-address: "" 
+// city-name: "Select One"					<------ new
+// country-name: ""							<------ new
+// email-address: "hungtrand0929@gmail.com"
+// first-name: "Hung"	
+// inlineRadioOptions-country: "United States"	<------ new
+// last-name: "Tran" 
+// middle-initial: ""
+// phone-number: "555-555-5555"
+// phone-type: "Home"
+// postal-code: ""								<------ new
+// state-name: "Select One"						<------ new
+// zipcode: ""									<------ new
 	// };
 	// this.experiences = {
 	// 	"0":{
@@ -198,7 +212,7 @@ User.prototype = {
 			var succeeded = false;
 			 // try{
 					that.temporaryData = JSON.parse(data);
-					//console.log( that.temporaryData );
+					// console.log( that.temporaryData );
 					that.userData = that.temporaryData; 	//store as user data
 					succeeded = true;
 			// } catch (e){
@@ -414,6 +428,7 @@ User.prototype = {
 						}
 					});
 				});
+				console.log(that.userData.personalInfo);
 			break;
 			case "summary-edit":
 				// console.log("summary-edit");
@@ -577,7 +592,8 @@ User.prototype = {
 				var skillList = form.find("#skill-list-edit");
 				var count = 0;
 				var beans = "";
-				$.each(this.userData.skill,function(skillName,endorsementNum){
+				$.each(this.userData.skill,function(skillName,endorsementCount){
+					var endorsementNum = (endorsementCount > 0) ? endorsementCount : '';
 				    beans += "<li entry-index='" + count + "' >" +
 		                "<span class='badge'>" + endorsementNum + "</span> " +
 		                "<span class='skill-pill-name'>" + skillName + "</span>" +
@@ -586,6 +602,9 @@ User.prototype = {
 		            count++;
 	            });
 				skillList.html(beans);
+
+				//enable sortable - Needs to figure this out
+				$(".skill-sortable").sortable();
 			break;
 
 			case "#experience-edit":
@@ -783,6 +802,7 @@ User.prototype = {
 			// console.log(workTime); index='" + i + "
 			$("#user-experiences").append(
 				"<div class=\"editable\" for=\"experience-edit\" index='" + i + "'>" +
+                    "<a class='anchor' href='#experiences-header'></a>" +
 					"<span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span>" +
 					"<h3>" + exp['position-title'] + "</h3>" + 
 		          	"<h4>" + exp['company-name'] + "</h4>" +
@@ -836,6 +856,7 @@ User.prototype = {
 			$("#user-projects").append(
             "<div>" + 
                 "<div class='editable' for='project-edit' link='" + 'elmo' + key +  "' index='" + key + "'>" + 
+                "<a class='anchor' href='#projects-header'></a>" +
                 "<span class='glyphicon glyphicon-pencil' aria-hidden='true'></span>" +
                 "<h3>" + projTitle + "</h3>" +
                 "<p name='description' class='white-space'>" + proj['project-description'] +"</p>" +
@@ -858,6 +879,7 @@ User.prototype = {
 			// console.log(schoolTime);
 			$("#user-education").append(
 								   "<div class='editable' for='education-edit' index='" + key + "'>" + 
+                					  "<a class='anchor' href='#education-header'></a>" +
 						              "<span class='glyphicon glyphicon-pencil' aria-hidden='true'></span>" +
 						              "<h3>" + edu['school-name'] + "</h3>" +
 						              "<h4>" + edu['degree'] + "<span> " + edu['grade'] + "</span></h4>" +

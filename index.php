@@ -44,7 +44,7 @@
     <!-- Header -->
     <header id="top" class="header" style= "position: relative;">
 		<div class="text-right" style= "position: absolute; width: inherit; padding-top: 20px; padding-right: 20px;">
-			<a href="../signin" class="btn" id="signin" >Sign In</a>
+			<a href="../signin" class="btn btn-dark" id="signin" >Sign In</a>
 		</div>
         <div class="text-vertical-center">
 			<img class= "hidden-xs "id= "logo-main" src = "../image/proconnect/ProConnect_black.png" width="400">
@@ -85,7 +85,7 @@
                                 <i class="fa fa-users fa-stack-1x text-primary"></i>
                             </span>
                                 <h4>
-                                    <strong>build your network</strong>
+                                    <strong>Build your network</strong>
                                 </h4>
                                 <p>Connect and find opportunity</p>
                                 
@@ -124,7 +124,7 @@
                                 <i class="fa fa-file-text-o fa-stack-1x text-primary"></i>
                             </span>
                                 <h4>
-                                    <strong>Start your profile</strong>
+                                    <strong>Start a profile</strong>
                                 </h4>
                                 <p>Let people and opportunities find you</p>
                            

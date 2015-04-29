@@ -82,7 +82,7 @@ try {
 
 			die();
 		} else {
-			echo "An invitation is already pending."
+			echo "An invitation is already pending.";
 			die();
 		}
 	};
@@ -96,7 +96,7 @@ try {
 		echo json_encode(['success'=>1]);
 	};
 
-	echo $conn->err;
+	// echo $conn->err;
 	//echo "\n".json_encode($conns)."\n";
 } catch (Exception $e) {
 	echo $e->getMessage();
