@@ -1,5 +1,6 @@
 function JobPost() {
 	this.container = $('#form-div');
+	this.alert = $('#AlertNewImg')
 	this.data;
 	this.info;
 	this.resetBorder();
@@ -18,11 +19,12 @@ JobPost.prototype = {
 
 	load: function() {
 		var that = this;
+		// create a json object of all the data sent to the DB
 		var data = {
 			JobTitle: that.info.jobTitle.text(),
 			CompanyName: that.info.jobLocation.text(),
 			ContactInfo: that.info.contactInfo.text(),
-			CompanyImg: that.info.companyImg.attr('src'),
+			// CompanyImg: that.info.companyImg.attr('src'),
 			JobDescription: that.info.jobDescription.text(),
 			SkillDescription: that.info.skillDescription.text(),
 			CompanyDescription: that.info.companyDescription.text(),
@@ -33,6 +35,7 @@ JobPost.prototype = {
 		};
 		that.data = data;
 
+		//switch case to get all the required fields
 		var counter = 0;
 		$.each(data, function(key, value) {
 			switch(value) {
@@ -88,8 +91,9 @@ JobPost.prototype = {
 					break;
 			}
 		});
-			that.createJobPost();
-		if(counter === 10) {
+		// that.createPost();
+		// if counter does not equal 0, meaning there is one or more error in the form, then error
+		if(counter != 0) {
 			that.error();			
 		} else {
 			that.send( function(jsonData) {
@@ -98,6 +102,7 @@ JobPost.prototype = {
 		}
 	},
 
+	// reset the borders on submission
 	resetBorder: function() {
 		var that = this;
 		$('#job-title').css({"border": ""});			
@@ -117,66 +122,66 @@ JobPost.prototype = {
 		$('#industry-dropbox-2').css({"border": ""});
 	},
 
-	createJobPost: function() {
-		var that = this;
-		console.log(that.data.CompanyImg);
-		// if(that.data.CompanyImg != '../image/companyimg') {
+	// createPost: function() {
+	// 	var that = this;
+	// 	var uploadedImageURL = ''
 
-		// }
-		// if (that.inputFeedImage.val() != '') {
-		// 	that.uploadImage(function(success) {
-		// 		if (success) {
-		// 			saveFeed();
-		// 		} else {
-		// 			showAlert('Could not upload your image. Image must be less than 10MB.', 'danger');
-		// 		}
-		// 	});
-		// } else {
-		// 	saveFeed();
-		// }
+	// 	function saveFeed() {
+	// 		uploadedImageURL = that.processedImageURL.val();
+	// 		var feed = new Feed();
+	// 		feed.setContentMessage(contentMsg);
+	// 		feed.setFeedLink(that.inputExternalLink.val());
+	// 		feed.setImageURL(uploadedImageURL);
+	// 		feed.setYouTubeURL(that.YouTubeURL.val());
 
-		// function saveFeed() {
-		// 	uploadedImageURL = that.processedImageURL.val();
-		// 	var feed = new Feed();
-		// 	feed.setContentMessage(contentMsg);
-		// 	feed.setFeedLink(that.inputExternalLink.val());
-		// 	feed.setImageURL(uploadedImageURL);
+	// 		feed.update(function(json) { 
+	// 			try {
+	// 				that.showAlert('Successfully posted on your network', 'success');
+	// 				that.reset();
+	// 			} catch(e) {
+	// 				that.showAlert(json, 'danger');
+	// 				console.log(json);
+	// 			} 
 
-		// 	feed.update(function(json) { 
-		// 		try {
-		// 			that.showAlert('Successfully posted on your network', 'success');
-		// 			that.reset();
-		// 		} catch(e) {
-		// 			that.showAlert(json, 'danger');
-		// 			console.log(json);
-		// 		} 
+	// 			// execute all saved functions here
+	// 			that.executeCallback(json);
+	// 		});
+	// 	}
 
-		// 		// execute all saved functions here
-		// 		that.executeCallback(json);
-		// 	});
-		// }
-	},
+	// 	if(that.data.CompanyImg != '../image/comapnyimg') {
+	// 		that.uploadCompanyImage(function(success) {
+	// 			if(success) {
+	// 				saveFeed();
+	// 			} else {
+	// 				console.log('bye');
+	// 			}
+	// 		});
+	// 	} else {
+	// 		saveFeed();
+	// 	}
+	// },
 
-	uploadCompanyImage: function (callback) {
-		var that = this;
-		var success = false;
-		fileUpload(that.data.companyimg, '/feed/php/imageUpload.php', that.Alert.attr('id'), function() {
+	// uploadCompanyImage: function (callback) {
+	// 	var that = this;
+	// 	var success = false;
+	// 	fileUpload(that.data.companyimg, '/feed/php/imageUpload.php', that.Alert.attr('id'), function() {
 
-			if (that.Alert.find('#uploadedFile').length > 0) {
-				var newUrl = that.Alert.find('#uploadedFile').val();
-				that.processedImageURL.val(newUrl);
-				success = true;
-				callback(success);
-				setTimeout(function() {
-					that.Alert.find('.label-success').fadeOut('3000', function() {
-						$(this).remove();
-					});
-				}, 5000);
-			}
+	// 		if (that.Alert.find('#uploadedFile').length > 0) {
+	// 			var newUrl = that.Alert.find('#uploadedFile').val();
+	// 			that.processedImageURL.val(newUrl);
+	// 			success = true;
+	// 			callback(success);
+	// 			setTimeout(function() {
+	// 				that.Alert.find('.label-success').fadeOut('3000', function() {
+	// 					$(this).remove();
+	// 				});
+	// 			}, 5000);
+	// 		}
 			
-		});
-	},	
+	// 	});
+	// },	
 
+	//send the data to the database
 	send: function(callback) {
 		var that = this;
 		var data = that.data;
