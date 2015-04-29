@@ -40,7 +40,7 @@ To learn more about the development process, please refer to the documentation. 
     <!-- <link href="css/theme.bundle.min.css" rel="stylesheet"> -->
     <!-- Compressed Theme CORE
 This variant is to be used when loading the separate styling modules -->
-    <link href="/master/css/theme-core.min.css" rel="stylesheet">
+    <link href="/master/css/theme-core-proconnect.min.css" rel="stylesheet">
 
     <!-- Standalone Modules
     As a convenience, we provide the entire UI framework broke down in separate modules

@@ -172,6 +172,10 @@
 	transition: background-color 500ms linear;
 }
 
+/*.sidebar-menu li.active>a:hover {
+	background-color: #f4f4f4;
+}*/
+
 /*.snippet-zone {
 	text-overflow: ellipsis;
  	overflow: hidden;

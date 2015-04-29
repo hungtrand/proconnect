@@ -10,16 +10,11 @@ var FormValidator = (function(){
 	}
 
 	function compareYear(year1, year2) {
-		if(parseInt(year1) < parseInt(year2)) {
-			return false;
-		}
-		else {
-			return true;
-		}
+		return parseInt(year1) <= parseInt(year2);
 	}
 
 	function compareMonth(month1, month2) {
-		if(parseInt(month1) < parseInt(month2)) {
+		if(parseInt(month1) > parseInt(month2)) {
 			return false;
 		}
 		else {
@@ -27,18 +22,20 @@ var FormValidator = (function(){
 		}
 	}
 
-	function compareDate(month1, month2, year1, year2) {
-		if(compareYear(year1, year2) === false) {
+	function compareDate(startMonth, endMonth, startYear, endYear) {
+		if(compareYear(startYear, endYear) === false) {
 			return false;
 		}
 		else {
-			if(compareMonth(month1, month2) === false)
-			{
-				return false;
-			}
-			else
-			{
-				return true;
+			if(startYear === endYear) {
+				if(compareMonth(startMonth, endMonth) === false)
+				{
+					return false;
+				}
+				else
+				{
+					return true;
+				}
 			}
 		}
 	}
@@ -109,20 +106,7 @@ var FormValidator = (function(){
 	}
 
 	function IsMonth(monthIn){
-		// var month = new Array();
-		// month[0] = "January";
-		// month[1] = "February";
-		// month[2] = "March";
-		// month[3] = "April";
-		// month[4] = "May";
-		// month[5] = "June";
-		// month[6] = "July";
-		// month[7] = "August";
-		// month[8] = "September";
-		// month[9] = "October";
-		// month[10] = "November";
-		// month[11] = "December";
-
+		
 		if(!(monthIn >= 0) && !(monthIn < 12) ) {
 			return false;
 		} else {
@@ -135,6 +119,7 @@ var FormValidator = (function(){
 			var data = jQFormEle.serializeObject();
 			console.log(data);
 			switch(formName){
+				// begin user info edit
 				case "user-info-edit":
 					if(IsName(data['first-name']) === false){
 						throw "Invalid First Name.";
@@ -186,75 +171,73 @@ var FormValidator = (function(){
 							// 	}
 							// }
 					}
-				break;
+				break; //end user info edit
+				// begin summary edit
 				case "summary-edit":
 					if(wordCount(data['summary']) > 1000) {
-						throw "Maximum amount of characters have been reached." + wordCount($("#summary-textarea").val());
+						throw "Maximum amount of characters have been reached." + wordCount(data['summary']);
 					}
-				break;
+				break; //end summary edit
+				//begin skills endorsements edit
 				case "skills-endorsements-edit":
 					if($("#skill-list-edit li").length >= 50) {
 						throw "You have reached the limit for adding skills.";
 					}
-				break;//first-name-input
+				break;//end skills endorsement edit
+				//begin experience edit
 				case "experience-edit":
-					//console.log("experience-edit");
-
-					if(IsMonth(data["work-start-year"]) === false) {
+					if(IsMonth(data["work-start-month"]) === false) {
 						throw "Invalid Start Year.";
 					}
 
-					if(IsNumber(data["work-end-year"]) === false) {
+					if(IsNumber(data["work-start-year"]) === false) {
 						throw "Invalid End Year.";
 					}
 
 					if(data['work-present'] != 'current') {
-						if(compareDate(data["work-start-month"], data["work-end-month"], data["work-start-year"], data["work-end-year"])) {
+						if(compareDate(data["work-start-month"], data["work-end-month"], data["work-start-year"], data["work-end-year"]) === false) {
 							throw "Invalid Date Range";
 						}
 					}
-
-					
-				break;
+				break; //end skills endorsement edit
+				//begin project edit
 				case "project-edit":
-					//console.log("project-edit");
-
-					if(wordCount($("#project-description").val()) > 1000) {
+					if(wordCount(data['project-description']) > 1000) {
 						throw "Maximum amount of words have been reached." + wordCount($("#project-description").val());
 					}
-
-				break;
+				break; //end project edit
+				//begin education edit
 				case "education-edit":
 					//console.log("education-edit");
 
-					if(IsWord($("#school-name").val()) === false) {
+					if(IsWord(data["school-name"]) === false) {
 						throw "Invalid School Name";
 					}
 
-					if(IsWord($("#degree").val()) === false) {
+					if(data["degree"] !== "" && IsWord(data["degree"]) === false) {
 						throw "Invalid Degree Name";
 					}
 
-					if(IsWord($("#field-of-study").val()) === false) {
+					if(data["field-of-study"] !== "" && IsWord(data["field-of-study"]) === false) {
 						throw "Invalid Field Of Study Name";
 					}
 
-					if(IsWord($("#grade").val()) === false) {
+					if(data["grade"] !== "" && IsWord(data["grade"]) === false) {
 						throw "Invalid Grade Name";
 					}
 
-					if(compareYear($("#school-year-started").val(), $("#school-year-ended").val())) {
+					if(data["school-year-started"] !== "-" && data["school-year-ended"] !== "-" && compareYear(data["school-year-started"], data["school-year-ended"]) === false) {
 						throw "Invalid Date Organization";
 					}
 
-					if(wordCount($("#activities").val()) > 1000) {
-						throw "Maximum amount of words have been reached." + wordCount($("#project-description").val());
+					if(data["activities"] !== "" && wordCount(data["activities"]) > 1000) {
+						throw "Maximum amount of words have been reached." + wordCount(data["activities"]);
 					}
 
-					if(wordCount($("#education-description").val()) > 1000) {
-						throw "Maximum amount of words have been reached." + wordCount($("#project-description").val());
+					if(data["education-description"] !== "" && wordCount(data["education-description"]) > 1000) {
+						throw "Maximum amount of words have been reached." + wordCount(data["education-description"]);
 					}
-				break;
+				break; //end education edit
 			}
 		
 		}
