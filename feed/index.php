@@ -182,7 +182,7 @@ ob_start();
                             <ul class="media-list comments-list">
 
                             </ul>
-                            <div class="alert alert-info CommentListEndAlert"></div>
+                            <div class="alert alert-info CommentListEndAlert" style="display: none;"></div>
                         </div>
                     </div>
 
