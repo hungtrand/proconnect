@@ -10,20 +10,7 @@ function User(){
 	// 	"phone-number-type":"",
 	// 	"user-address":"",					<------ deprecated
 	// 	"summary":""
-// 	address: ""   							<------ new
-// alt-email-address: "" 
-// city-name: "Select One"					<------ new
-// country-name: ""							<------ new
-// email-address: "hungtrand0929@gmail.com"
-// first-name: "Hung"	
-// inlineRadioOptions-country: "United States"	<------ new
-// last-name: "Tran" 
-// middle-initial: ""
-// phone-number: "555-555-5555"
-// phone-type: "Home"
-// postal-code: ""								<------ new
-// state-name: "Select One"						<------ new
-// zipcode: ""									<------ new
+
 	// };
 	// this.experiences = {
 	// 	"0":{
@@ -212,7 +199,9 @@ User.prototype = {
 			var succeeded = false;
 			 // try{
 					that.temporaryData = JSON.parse(data);
-					// console.log( that.temporaryData );
+
+					console.log( that.temporaryData );
+
 					that.userData = that.temporaryData; 	//store as user data
 					succeeded = true;
 			// } catch (e){
@@ -277,8 +266,6 @@ User.prototype = {
 
 		//do an ajax call to fetch member object
 		//if no member exist, still return an empty object
-
-
 
 		// var template = {"template": {
 		// 				//default icon
@@ -566,9 +553,23 @@ User.prototype = {
 		var form = $(formWrapperID).find("form"); 	//gather the form
 
 		switch (formWrapperID) {
+			// address: ""   							<------ new
+			// alt-email-address: "" 
+			// city-name: "Select One"					<------ new
+			// country-name: ""							<------ new
+			// email-address: "hungtrand0929@gmail.com"
+			// first-name: "Hung"	
+			// inlineRadioOptions-country: "United States"	<------ new
+			// last-name: "Tran" 
+			// middle-initial: ""
+			// phone-number: "555-555-5555"
+			// phone-type: "Home"
+			// postal-code: ""								<------ new
+			// state-name: "Select One"						<------ new
+			// zipcode: ""									<------ new
 			
 			case "#user-info-edit":
-
+				var uD = this.userData.personalInfo;
 				// console.log(this.userData.personalInfo);
 				//load values
 				form.find("#first-name-input").val(this.userData.personalInfo["first-name"]);
@@ -578,10 +579,26 @@ User.prototype = {
 				form.find("#alt-email-input").val(this.userData.personalInfo["alt-email-address"]);
 				form.find("#phone-input").val(this.userData.personalInfo["phone-number"]);
 				form.find("#phone-number-type").val(this.userData.personalInfo["phone-number-type"]);
-				form.find("#zipcode-input").val(this.userData.personalInfo["user-address"]["zipcode-input"]);
-				form.find("#country-name-input").val(this.userData.personalInfo["user-address"]["country-input"]);
-				form.find("#postal-code-input").val(this.userData.personalInfo["user-address"]["postal-code-input"]);
-				form.find("#address-input").val(this.userData.personalInfo["user-address"]["address-input"]);
+
+
+				if(uD['inlineRadioOptions-country'] === 'United States') { //display based on United States
+					form.find("#inlineRadio1-country").select();
+
+					var query = 'select[name=state-name] option[value=\'' + uD['state-name'] + '\']';
+					form.find(query).attr('selected',true);
+					
+					query = 'select[name=city-name] option[value=\'' + uD['city-name'] + '\']';
+					form.find(query).attr('selected',true);
+
+					form.find("#zipcode-input").val(uD["zipcode"]);
+				} else {
+					form.find("#inlineRadio2-country").trigger('click');
+
+					form.find("#country-name-input").val(uD["country-name"]);
+					form.find("#postal-code-input").val(uD["postal-code"]);
+				}
+
+				form.find("#address-input").val(uD['address']);
 			break;
 
 			case "#summary-edit":
@@ -736,7 +753,11 @@ User.prototype = {
 
 	//update view
 	updateView: function(){
+		var data = this.userData.personalInfo;
+		var that = this;
 		var month = new Array();
+		var userAddy = '';
+
 		month[0] = "January";
 		month[1] = "February";
 		month[2] = "March";
@@ -750,18 +771,40 @@ User.prototype = {
 		month[10] = "November";
 		month[11] = "December";
 
-		var that = this;
+		if(data['inlineRadioOptions-country'] === 'United States') {
+			if (data['city-name'] !== 'Select City' && '' !== data['city-name']) {
+				userAddy += data['city-name'];
+			}
+			if ('' !== data['state-name'] && data['state-name'] !== 'Select State'){
+				if(userAddy !== '') {
+					userAddy += ', ';
+				}
+				userAddy += data['state-name'];
+			}
+			if (data['zipcode'] !== ''){
+				userAddy += ' ' + data['zipcode'];
+			}
+		} else {
+			if (data['country-name'] !== '') {
+				userAddy += data['country-name'];
+			}
+			if (data['postal-code'] !== ''){
+				userAddy += ' ' + data['postal-code'];
+			}
+		}
+			
+
 		//update user info
-		 $('#preview').attr('src', this.userData.personalInfo["picture"]);
+		$('#preview').attr('src', this.userData.personalInfo["picture"]);
 		$(".first-name").text(this.userData.personalInfo["first-name"]);
 
 		if (this.userData.personalInfo["middle-initial"])
 			$("#user-mi").text(this.userData.personalInfo["middle-initial"]+'.');
 		
 		$("#user-last").text(this.userData.personalInfo["last-name"]);
-		$("#user-address").text(this.userData.personalInfo["user-address"]);
-			$("#user-address").append(" ");
-			$("#user-address").append(this.userData.personalInfo["user-address"]["country-input"]);
+		$("#user-address").text(userAddy);
+			// $("#user-address").append(" ");
+			// $("#user-address").append(this.userData.personalInfo["user-address"]["country-input"]);
 		$("#user-email").text(this.userData.personalInfo["email-address"]);
 		$("#user-phone").text(this.userData.personalInfo["phone-number"]);
 		$("#user-home").text(this.userData.personalInfo["phone-number"]);

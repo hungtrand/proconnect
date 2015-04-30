@@ -54,6 +54,7 @@ if ($editing) {
 
 try {
 	switch ($mode) {
+
 		case "edit":
 			$firstname = '';
 			$lastname = '';
@@ -98,6 +99,7 @@ try {
 				$postalcode = $_POST["postal-code"];
 			if (isset($_POST["address"]))
 				$address = $_POST["address"];
+			
 			// End of data acquiring
 
 			// validate first
