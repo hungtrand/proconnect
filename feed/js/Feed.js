@@ -104,6 +104,7 @@ Feed.prototype = {
 		that.btnComment.on('click', function(e) {
 			e.preventDefault();
 			that.CommentSection.slideDown('400', function() {
+				that.txtNewComment.focus();
 				if (!that.jsCommentList) {
 					that.jsCommentList = new CommentList(that.CommentList, that.data['FeedID']); 
 					that.jsCommentList.load();
@@ -118,6 +119,8 @@ Feed.prototype = {
 
 		that.btnSubmitComment.on('click', function(e) {
 			e.preventDefault();
+			var btn = $(this);
+			btn.text('Submitting...').toggleClass('btn-default btn-info');
 			var data = {
 				'CommentID': 0,
 				'FeedID': that.data['FeedID'],
@@ -126,8 +129,15 @@ Feed.prototype = {
 
 			var url = 'php/comment_controller.php';
 			that.submit(data, url, function(json) {
-				console.log(json);
-				that.jsCommentList.appendView(json);
+				// console.log(json);
+				if (typeof json != 'string') {
+					btn.text('Sent').toggleClass('btn-info btn-success').attr('disabled', 'disabled');
+					that.txtNewComment.val('');
+					that.jsCommentList.appendView([json]); // note json is encapsulated in an array here
+					setTimeout(function() {
+						btn.text('Comment').toggleClass('btn-default btn-success');
+					}, 2000);
+				}
 			});
 		});
 	},

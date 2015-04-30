@@ -32,7 +32,7 @@ Comment.prototype = {
 		var heading = 'Shared: ';
 		comment.find('.CommentID').val(that.data['CommentID']);
 		comment.find('.CreatorName').text(that.data['CreatorFirstName']).attr('href', that.data['CreatorLink']);
-		comment.find('.CommentProfileImage').attr('src', that.data['CreatorImage']);
+		comment.find('.CreatorImage').attr('src', that.data['CreatorImage']);
 		comment.find('.CommentMessage').html(that.data['CommentMessage']);
 		comment.find('.CommentTimestamp').html(that.data['Timestamp']);
 

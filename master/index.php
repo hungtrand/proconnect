@@ -415,9 +415,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                         </ul>
                     </li> -->
                 </ul>
-
                 
-                <i class="fa fa-users pull-right"></i>
                 <div class="affix hidden-print hidden-xs hidden-sm" style="position: fixed; padding-left: 20px" role="complimentary" data-spy="affix" data-offset-top="400">
                     <label class="text-info">People You may know...</label>
                     <ul id="SuggListing" class="sidebar-feed nav">

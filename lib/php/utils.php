@@ -16,10 +16,10 @@ function timetostr($timestamp) {
     if ($age == 0) return $future ? "momentarily" : "just now";
 
     $scales = [
-        ["minute", "minutes", 60],
-        ["hour", "hours", 24],
-        ["day", "days", 7],
-        ["week", "weeks", 4.348214286],     // average with leap year every 4 years
+        ["min", "min", 60],
+        ["hr", "hr", 24],
+        ["d", "d", 7],
+        ["wk", "wk", 4.348214286],     // average with leap year every 4 years
         ["month", "months", 12],
         ["year", "years", 10],
         ["decade", "decades", 10],
