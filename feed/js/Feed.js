@@ -16,6 +16,7 @@ function Feed(data, template) {
 	this.txtNewComment;
 	this.CommentSection;
 	this.CommentList;
+	this.jsCommentList;
 
 	this.init(data);
 }
@@ -103,8 +104,10 @@ Feed.prototype = {
 		that.btnComment.on('click', function(e) {
 			e.preventDefault();
 			that.CommentSection.slideDown('400', function() {
-				var CList = new CommentList(that.CommentList, that.data['FeedID']); 
-				CList.load();
+				if (!that.jsCommentList) {
+					that.jsCommentList = new CommentList(that.CommentList, that.data['FeedID']); 
+					that.jsCommentList.load();
+				}
 			});
 		});
 
@@ -124,6 +127,7 @@ Feed.prototype = {
 			var url = 'php/comment_controller.php';
 			that.submit(data, url, function(json) {
 				console.log(json);
+				that.jsCommentList.appendView(json);
 			});
 		});
 	},

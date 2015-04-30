@@ -146,14 +146,17 @@ NewPost.prototype = {
 			feed.update(function(json) { 
 				try {
 					that.showAlert('Successfully posted on your network', 'success');
+					// execute all saved functions here
+					that.executeCallback(json);
 					that.reset();
 				} catch(e) {
+					// execute all saved functions here
+					that.executeCallback(json);
 					that.showAlert(json, 'danger');
 					console.log(json);
 				} 
 
-				// execute all saved functions here
-				that.executeCallback(json);
+				
 			});
 		}
 

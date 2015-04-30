@@ -12,6 +12,7 @@ if (isset($_COOKIE['__USER_PROFILE_IMAGE__'])) {
     $ProfileImage = '/image/proconnect/Tab_logo2_100x100.png';
 }
 
+$FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 $Title = "Feed - Proconnect";
 $JobTitle = $UData['TITLE'];
 $HomeActive = 'active';
