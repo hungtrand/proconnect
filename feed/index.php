@@ -46,30 +46,6 @@ ob_start();
         <div class="row">
             <!-- Left main content -->
             <div class="col col-xs-11 col-sm-11 col-md-9 col-lg-9">
-                <!-- <div id="SelfSection" class="well well-sm">
-                    <div id="UserStats" class="row">
-                        <div id="ProfileCard" class="col col-xs-12 col-sm-6">
-                            <div class="media">
-                                <div class="media-left">
-                                    <a href="#">
-                                      <img class="media-object img-circle" style="object-fit: cover;" width="100px" height="100px" src="<?=$ProfileImage?>" alt="...">
-                                    </a>
-                                </div>
-                                <div class="media-body">
-                                    <h4 class="media-heading txt-warning"><?=$FullName?></h4>
-                                    <em class="text-muted"><?=$JobTitle?></em>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="StatsCard" class="col col-xs-12 col-sm-6 hidden-xs" style="border-left: 1px solid #CCC;">
-                            <ul class="list-group" style="margin-top: 10px; margin-bottom: 10px; font-size: 16px;">
-                              <li class="list-group-item"><a>124</a>&nbsp;&nbsp; connections.&nbsp;&nbsp; <a>Grow your network.</a></li>
-                              <li class="list-group-item"><a>25</a>&nbsp;&nbsp; endorsements.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div> -->
 
                 <div id="NewPost" class="well well-sm">
                     <div class="row">
@@ -128,29 +104,6 @@ ob_start();
                 <div id="FeedListEndAlert" class="alert alert-info text-center" style="margin: 50px 20px; display:none;"></div>
             </div>
 
-            <!-- Right suggestions column -->
-            <!-- Blog Sidebar Widgets Column -->
-            <!-- <div id="fixed-right-section" class="col col-md-4 affix hidden-print hidden-xs hidden-sm" style="position: fixed;" role="complimentary" data-spy="affix" data-offset-top="200 ">
-                <div class="well">
-                    <h3 class="text-primary" style="overflow: auto;">Suggestions</h3>
-                    <hr />
-
-                    <div id="SuggListing" >
-
-                    </div>
-
-                    <div id="SuggestionsListEndAlert" class="alert alert-info hidden text-center"></div>
-                </div>
-            </div> -->
-
-
-            <!--<div class="affix hidden-print hidden-xs hidden-sm text-right" 
-                style="position: fixed; width: 400px; right: 30px; top: 50px;" role="complimentary" data-spy="affix" data-offset-top="50">
-                <label class="text-default">People You may know...</label>
-                <ul id="SuggListing" class="nav text-right">
-                </ul>
-            </div>-->
-
         </div>
 
     <script type="text/template" id="FeedTemplate">
@@ -173,7 +126,7 @@ ob_start();
             <div class="media-body">
                 <div class="media-body-wrapper">
                     <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="panel panel-default share clearfix-xs">
                                 <div class="panel-heading panel-heading-gray title contentHeading">
                                     What&acute;s new
@@ -182,7 +135,7 @@ ob_start();
                                     <div class="contentMessage"></div>
                                     <div>
                                         <a class="contentImageLink" data-toggle="lightbox" href="{{ImageURL}}">
-                                          <img class="media-object contentImage thumbnail" style="max-width: 800px;" src=".{{ImageURL}}" />
+                                          <img class="media-object contentImage thumbnail" style="max-width: 700px;" src=".{{ImageURL}}" />
                                         </a>
                                     </div>
 
@@ -203,7 +156,7 @@ ob_start();
                     </div>
 
                     <div class="row commentsSection">
-                        <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <form class="media media-clearfix-xs NewComment">
                                 <input type="hidden" class="CommentID" name="CommentID" value=0 />
                                 <div class="media-left">
@@ -219,7 +172,7 @@ ob_start();
                                 </div>
                             </form>
                         </div>
-                        <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <ul class="media-list comments-list">
 
                             </ul>

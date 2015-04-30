@@ -1,8 +1,8 @@
 $(document).ready(function(){
 	$('#mobile-view-main-nav-btn').html('<i class="fa fa-flag"></i>');
 	$(document).on('click', function() {
-		if (!$(".navbar-collapse").is(':hidden'))
-			$(".navbar-collapse").collapse('hide');
+		if ($(".navbar-collapse#main-nav").hasClass('in'))
+			$(".navbar-collapse#main-nav").collapse('hide');
 	});
 	//get notification every 10 seconds
 	NotificationGetter.get(10000,function(data){
