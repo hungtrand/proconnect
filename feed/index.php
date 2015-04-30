@@ -6,10 +6,13 @@ include '/signout/php/session_check_signout.php';
 
 session_start();
 $UData = json_decode($_SESSION['__USERDATA__'], true);
-$FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
+if (isset($_COOKIE['__USER_PROFILE_IMAGE__'])) {
+    $ProfileImage = $_COOKIE['__USER_PROFILE_IMAGE__'];
+} else {
+    $ProfileImage = '/image/proconnect/Tab_logo2_100x100.png';
+}
 
 $Title = "Feed - Proconnect";
-$ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
 $JobTitle = $UData['TITLE'];
 $HomeActive = 'active';
 
@@ -43,33 +46,9 @@ ob_start();
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" style="">
             <!-- Left main content -->
             <div class="col col-xs-11 col-sm-11 col-md-9 col-lg-9">
-                <!-- <div id="SelfSection" class="well well-sm">
-                    <div id="UserStats" class="row">
-                        <div id="ProfileCard" class="col col-xs-12 col-sm-6">
-                            <div class="media">
-                                <div class="media-left">
-                                    <a href="#">
-                                      <img class="media-object img-circle" style="object-fit: cover;" width="100px" height="100px" src="<?=$ProfileImage?>" alt="...">
-                                    </a>
-                                </div>
-                                <div class="media-body">
-                                    <h4 class="media-heading txt-warning"><?=$FullName?></h4>
-                                    <em class="text-muted"><?=$JobTitle?></em>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="StatsCard" class="col col-xs-12 col-sm-6 hidden-xs" style="border-left: 1px solid #CCC;">
-                            <ul class="list-group" style="margin-top: 10px; margin-bottom: 10px; font-size: 16px;">
-                              <li class="list-group-item"><a>124</a>&nbsp;&nbsp; connections.&nbsp;&nbsp; <a>Grow your network.</a></li>
-                              <li class="list-group-item"><a>25</a>&nbsp;&nbsp; endorsements.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div> -->
 
                 <div id="NewPost" class="well well-sm">
                     <div class="row">
@@ -128,34 +107,12 @@ ob_start();
                 <div id="FeedListEndAlert" class="alert alert-info text-center" style="margin: 50px 20px; display:none;"></div>
             </div>
 
-            <!-- Right suggestions column -->
-            <!-- Blog Sidebar Widgets Column -->
-            <!-- <div id="fixed-right-section" class="col col-md-4 affix hidden-print hidden-xs hidden-sm" style="position: fixed;" role="complimentary" data-spy="affix" data-offset-top="200 ">
-                <div class="well">
-                    <h3 class="text-primary" style="overflow: auto;">Suggestions</h3>
-                    <hr />
-
-                    <div id="SuggListing" >
-
-                    </div>
-
-                    <div id="SuggestionsListEndAlert" class="alert alert-info hidden text-center"></div>
-                </div>
-            </div> -->
-
-
-            <!--<div class="affix hidden-print hidden-xs hidden-sm text-right" 
-                style="position: fixed; width: 400px; right: 30px; top: 50px;" role="complimentary" data-spy="affix" data-offset-top="50">
-                <label class="text-default">People You may know...</label>
-                <ul id="SuggListing" class="nav text-right">
-                </ul>
-            </div>-->
-
         </div>
 
     <script type="text/template" id="FeedTemplate">
-        <li class="media media-clearfix-xs feed well" style="border-color: #CCC;">
+        <li class="media media-clearfix-xs feed well box" style="border-color: #CCC;">
             <input type="hidden" class="FeedID" name="FeedID" value="" />
+            <input type="hidden" class="F2UID" name="F2UID" value="" />
             <div class="media-left">
                 <div class="user-wrapper text-center row">
                     <div class="col col-xs-3 col-sm-12">
@@ -173,7 +130,7 @@ ob_start();
             <div class="media-body">
                 <div class="media-body-wrapper">
                     <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="panel panel-default share clearfix-xs">
                                 <div class="panel-heading panel-heading-gray title contentHeading">
                                     What&acute;s new
@@ -182,7 +139,7 @@ ob_start();
                                     <div class="contentMessage"></div>
                                     <div>
                                         <a class="contentImageLink" data-toggle="lightbox" href="{{ImageURL}}">
-                                          <img class="media-object contentImage thumbnail" style="max-width: 800px;" src=".{{ImageURL}}" />
+                                          <img class="media-object contentImage thumbnail" style="max-width: 700px;" src=".{{ImageURL}}" />
                                         </a>
                                     </div>
 
@@ -202,8 +159,8 @@ ob_start();
                         </div>
                     </div>
 
-                    <div class="row commentsSection">
-                        <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+                    <div class="row CommentSection" style="display: none;">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <form class="media media-clearfix-xs NewComment">
                                 <input type="hidden" class="CommentID" name="CommentID" value=0 />
                                 <div class="media-left">
@@ -216,13 +173,16 @@ ob_start();
                                 </div>
                                 <div class="media-body CommentMessage">
                                     <textarea class="txtNewComment form-control" name="CommentMessage" placeholder="Type new comment here..."></textarea>
+                                    <br />
+                                    <button class="btn btn-default submitComment" disabled>Comment</button>
                                 </div>
                             </form>
                         </div>
-                        <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <ul class="media-list comments-list">
 
                             </ul>
+                            <div class="alert alert-info CommentListEndAlert" style="display: none;"></div>
                         </div>
                     </div>
 
@@ -235,11 +195,13 @@ ob_start();
     <script type="text/template" id="CommentTemplate">
         <li class="media media-clearfix-xs comment">
             <input type="hidden" class="CommentID" name="CommentID" value="" />
+            <input type="hidden" class="CommentFeedID" name="CommentFeedID" value="" />
+
             <div class="media-left">
                 <div class="user-wrapper text-center">
                     <img src="/image/user_img.png" alt="people" style="object-fit: cover;"
-                    class="img-circle media-object CommentProfileImage hidden-xs" width="40" height="40" />
-                    <div><small><a href="#" class="CommentAuthor">{{FirstName}}</a></small>
+                    class="img-circle media-object CreatorImage hidden-xs" width="40" height="40" />
+                    <div><small><a href="#" class="CreatorName">{{FirstName}}</a></small>
                     </div>
                 </div>
             </div>
@@ -259,6 +221,8 @@ ob_start();
     <script src="../lib/js/FileUpload.js"></script>
     <script src="../lib/ckeditor/ckeditor.js"></script>
     <script src="../lib/lightbox/ekko-lightbox.js"></script>
+    <script src="js/Comment.js"></script>
+    <script src="js/CommentList.js"></script>
     <script src="js/NewPost.js"></script>
     <script src="js/Feed.js"></script>
     <script src="js/FeedList.js"></script>

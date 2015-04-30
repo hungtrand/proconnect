@@ -159,7 +159,6 @@
 }
 
 #mobile-view-main-nav-btn {
-	margin-top: 11px;
  	margin-left: 15px;
 }
 
@@ -172,6 +171,10 @@
 	-ms-transition: background-color 500ms linear;
 	transition: background-color 500ms linear;
 }
+
+/*.sidebar-menu li.active>a:hover {
+	background-color: #f4f4f4;
+}*/
 
 /*.snippet-zone {
 	text-overflow: ellipsis;

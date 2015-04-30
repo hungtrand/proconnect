@@ -12,6 +12,10 @@ function Feed(data, template) {
 	this.btnLike;
 	this.btnComment;
 	this.btnPropagate;
+	this.btnSubmitComment;
+	this.txtNewComment;
+	this.CommentSection;
+	this.CommentList;
 
 	this.init(data);
 }
@@ -34,6 +38,7 @@ Feed.prototype = {
 
 		var heading = 'Shared: ';
 		feed.find('.FeedID').val(that.data['FeedID']);
+		feed.find('.F2UID').val(that.data['F2UID']);
 		feed.find('.AuthorLink').text(that.data['Creator']).attr('href', that.data['FeedLink']);
 		feed.find('.NewComment .CommentAuthor').text(that.data['CreatorFirstName']).attr('href', that.data['FeedLink']);
 		feed.find('.creatorImage').attr('src', that.data['CreatorImage']);
@@ -67,6 +72,11 @@ Feed.prototype = {
 		that.btnComment = feed.find('.feedComment');
 		that.btnPropagate = feed.find('.feedPropagate');
 
+		that.CommentSection = feed.find(".CommentSection");
+		that.CommentList = feed.find('.comments-list');
+		that.txtNewComment = feed.find(".txtNewComment");
+		that.btnSubmitComment = feed.find('.submitComment');
+
 		that.container = feed;
 		that.bindEvents();
 	},
@@ -82,11 +92,38 @@ Feed.prototype = {
 
 		that.btnLike.on('click', function(e) {
 			if (that.data['FeedID'] <= 0) return false;
-			sendData = {'FeedID': that.data['FeedID'], 'Action':'Like'};
+			sendData = {'F2UID': that.data['F2UID'], 'Action':'Like'};
 			that.submit(sendData, 'php/FeedActions_controller.php', function(json) {
 				if (typeof json == 'string') return false;
 
 				that.btnLike.text('Liked').toggleClass('text-success', true).unbind('click').removeAttr('href');
+			});
+		});
+
+		that.btnComment.on('click', function(e) {
+			e.preventDefault();
+			that.CommentSection.slideDown('400', function() {
+				var CList = new CommentList(that.CommentList, that.data['FeedID']); 
+				CList.load();
+			});
+		});
+
+		that.txtNewComment.on('keyup', function() {
+			if ($(this).val()) that.btnSubmitComment.removeAttr('disabled');
+			else that.btnSubmitComment.attr('disabled', 'disabled');
+		});
+
+		that.btnSubmitComment.on('click', function(e) {
+			e.preventDefault();
+			var data = {
+				'CommentID': 0,
+				'FeedID': that.data['FeedID'],
+				'CommentMessage': that.txtNewComment.val().trim()
+			};
+
+			var url = 'php/comment_controller.php';
+			that.submit(data, url, function(json) {
+				console.log(json);
 			});
 		});
 	},

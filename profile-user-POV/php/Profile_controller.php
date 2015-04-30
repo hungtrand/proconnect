@@ -54,6 +54,7 @@ if ($editing) {
 
 try {
 	switch ($mode) {
+
 		case "edit":
 			$firstname = '';
 			$lastname = '';
@@ -66,6 +67,8 @@ try {
 			$countryname = '';
 			$postalcode = '';
 			$address = '';
+			$city = '';
+			$state = '';
 
 			// acquiring data
 			if (isset($_POST["first-name"]))
@@ -84,6 +87,10 @@ try {
 				$phonetype = $_POST["phone-type"];
 			if (isset($_POST["inlineRadioOptions-country"]))
 				$country = $_POST["inlineRadioOptions-country"];
+			if (isset($_POST["city-name"]))
+				$city = $_POST["city-name"];
+			if (isset($_POST["state-name"]))
+				$state = $_POST["state-name"];
 			if (isset($_POST["zipcode"]))
 				$zipcode = $_POST["zipcode"];
 			if (isset($_POST["country-name"]))
@@ -92,6 +99,7 @@ try {
 				$postalcode = $_POST["postal-code"];
 			if (isset($_POST["address"]))
 				$address = $_POST["address"];
+			
 			// End of data acquiring
 
 			// validate first
@@ -114,7 +122,7 @@ try {
 
 			$User->setName($firstname, $lastname, $middleintial);
 			$User->setPhone($phonenumber, $phonetype);
-			$User->setAddress($address, '', '', $zipcode, $country);
+			$User->setAddress($address, $city, $state, $zipcode, $country);
 
 			if ($Acc->update() && $User->update()) {
 				$profile = new Profile($User->getID());
