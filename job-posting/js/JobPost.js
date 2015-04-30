@@ -1,6 +1,6 @@
 function JobPost() {
 	this.container = $('#form-div');
-	this.alert = $('#AlertNewImg')
+	this.Alert = $('#AlertNewImg')
 	this.data;
 	this.info;
 	this.resetBorder();
