@@ -22,7 +22,9 @@ if (!$User = new USER($uid)) {
 	die();
 }
 ['JOBID', 'JOBLOCATION', 'JOBTITLE', 'INDUSTRY', 'COMPANYNAME', 'COMPANYDESCRIPTION', 'EXPERIENCE', 'SPECIALSKILL',
-									'EMPLOYMENTTYPE', 'JOBHIRING', 'PREFERENCELOCATION', 'PREFERENCEINDUSTRY', 'PREFERENCEJOBTYPE', 'USERID', 'DATECREATED'];
+									'EMPLOYMENTTYPE', 'JOBHIRING', 'PREFERENCELOCATION', 'PREFERENCEINDUSTRY', 'PREFERENCEJOBTYPE', 'USERID', 'DATECREATED', 'JOBDESCRIPTION', 'JOBFUNCTION'
+									, 'REDIRECTEMAIL', 'REDIRECTSITE'];
+	
 	$jobhiring = null;
 	$joblocation = null;
 	$jobtitle = null;
@@ -35,46 +37,63 @@ if (!$User = new USER($uid)) {
 	$preferencelocation = null;
 	$perferenceindustry = null;
 	$perferenceJobType = null;
+	$jobfunction = null;
+	$jobdescription = null;
+	$redirectemail = null;
+	$redirectsite = null;
 	
 	$id = 0; 
 	//$uid = $UData[3];
 
 
-	if(isset($_POST['jobhiring'])) {
-		$jobhiring = trim($_POST['jobhiring']);
+	if(isset($_POST['JOBHIRING'])) {
+		$jobhiring = trim($_POST['JOBHIRING']);
 	}
-	if(isset($_POST['joblocation'])){
-		$joblocation= trim($_POST['joblocation']);
+	if(isset($_POST['JOBLOCATION'])){
+		$joblocation= trim($_POST['JOBLOCATION']);
 	}
-	if(isset($_POST['jobtitle'])) {
-		$jobtitle = trim($_POST['jobtitle']);
+	if(isset($_POST['JOBTITLE'])) {
+		$jobtitle = trim($_POST['JOBTITLE']);
 	}
-	if(isset($_POST['industry'])) {
-		$industry= trim($_POST['industry']);
+	if(isset($_POST['INDUSTRY'])) {
+		$industry= trim($_POST['INDUSTRY']);
 	}
-	if(isset($_POST['companyname'])) {
-		$companyname = trim($_POST['companyname']);
+	if(isset($_POST['COMPANYNAME'])) {
+		$companyname = trim($_POST['COMPANYNAME']);
 	}
-	if(isset($_POST['description'])){
-		$description = trim($_POST['description']);
+	if(isset($_POST['COMPANYDESCRIPTION'])){
+		$description = trim($_POST['COMPANYDESCRIPTION']);
 	} 
-	if(isset($_POST['experience'])) {
-		$experience = trim($_POST['experience']);
+	if(isset($_POST['EXPERIENCE'])) {
+		$experience = trim($_POST['EXPERIENCE']);
 	}
-	if(isset($_POST['skill'])){
-		$skill = trim($_POST['skill']);
+	if(isset($_POST['SPECIALSKILL'])){
+		$skill = trim($_POST['SPECIALSKILL']);
 	}
-	if(isset($_POST['employmenttype'])) {
-		$employmenttype= trim($_POST['employmenttype']);
+	if(isset($_POST['EMPLOYMENTTYPE'])) {
+		$employmenttype= trim($_POST['EMPLOYMENTTYPE']);
 	}
-	if(isset($_POST['preferencelocation'])) {
-		$preferencelocation= trim($_POST['preferencelocation']);
+	if(isset($_POST['PREFERENCELOCATION'])) {
+		$preferencelocation= trim($_POST['PREFERENCELOCATION']);
 	}
-	if(isset($_POST['preferenceindustry'])) {
-		$preferenceindustry= trim($_POST['preferenceindustry']);
+	if(isset($_POST['PREFERENCEINDUSTRY'])) {
+		$preferenceindustry= trim($_POST['PREFERENCEINDUSTRY']);
 	}
-	if(isset($_POST['preferenceJobType'])) {
-		$preferenceJobType= trim($_POST['preferenceJobType']);
+	if(isset($_POST['PREFERENCEJOBTYPE'])) {
+		$preferenceJobType= trim($_POST['PREFERENCEJOBTYPE']);
+	}
+	if(isset($_POST['JOBDESCRIPTION'])){
+		$jobdescription = trim($_POST['JOBDESCRIPTION']);
+	}
+	if(isset($_POST['JOBFUNCTION'])){
+		$jobfunction = trim($_POST['JOBFUNCTION']);
+	}
+
+	if(isset($_POST['REDIRECTEMAIL'])){
+		$redirectemail = trim($_POST['REDIRECTEMAIL']);
+	}
+	if(isset($_POST['REDIRECTSITE'])){
+		$redirectsite = trim($_POST['REDIRECTSITE']);
 	}
 
 
@@ -89,15 +108,19 @@ if (!$User = new USER($uid)) {
 		$job->setJobhiring($jobhiring);
 		$job->setJobLocation($joblocation);
 		$job->setJobTitle($jobtitle);
-		$job->setIndustry($);
-		$job->setCompanyName($grade);
-		$job->setCompanyDescription($start);
-		$job->setExperience($end);
-		$job->setSpecialSkill($description);
-		$job->setEmploymentType($jobhiring);
-		$job->setPreferenceLocation($jobhiring);
-		$job->setPreferenceIndustry($jobhiring);
-		$job->setPreferenceJobType($jobhiring);
+		$job->setIndustry($industry);
+		$job->setCompanyName($companyname);
+		$job->setCompanyDescription($description);
+		$job->setExperience($experience);
+		$job->setSpecialSkill($skill);
+		$job->setEmploymentType($employmenttype);
+		$job->setPreferenceLocation($preferencelocation);
+		$job->setPreferenceIndustry($preferenceindustry);
+		$job->setPreferenceJobType($preferenceJobType);
+		$job->setJobDescription($jobDescription);
+		$job->setJobFunction($jobfunction);
+		$job->setRedirectEmail($redirectemail);
+		$job->setRedirectSite($redirectsite);
 		
 		$job->update();
 		die();
@@ -109,17 +132,19 @@ if (!$User = new USER($uid)) {
 		$job->setJobhiring($jobhiring);
 		$job->setJobLocation($joblocation);
 		$job->setJobTitle($jobtitle);
-		$job->setIndustry($);
-		$job->setCompanyName($grade);
-		$job->setCompanyDescription($start);
-		$job->setExperience($end);
-		$job->setSpecialSkill($description);
-		$job->setEmploymentType($jobhiring);
-		$job->setPreferenceLocation($jobhiring);
-		$job->setPreferenceIndustry($jobhiring);
-		$job->setPreferenceJobType($jobhiring);
-		
-		
+		$job->setIndustry($industry);
+		$job->setCompanyName($companyname);
+		$job->setCompanyDescription($description);
+		$job->setExperience($experience);
+		$job->setSpecialSkill($skill);
+		$job->setEmploymentType($employmenttype);
+		$job->setPreferenceLocation($preferencelocation);
+		$job->setPreferenceIndustry($preferenceindustry);
+		$job->setPreferenceJobType($preferenceJobType);
+		$job->setJobDescription($jobDescription);
+		$job->setJobFunction($jobfunction);
+		$job->setRedirectEmail($redirectemail);
+		$job->setRedirectSite($redirectsite);
 		
 
 		$job->save();
