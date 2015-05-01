@@ -43,7 +43,7 @@ Feed.prototype = {
 		feed.find('.AuthorLink').text(that.data['Creator']).attr('href', that.data['FeedLink']);
 		feed.find('.NewComment .CommentAuthor').text(that.data['CreatorFirstName']).attr('href', that.data['FeedLink']);
 		feed.find('.creatorImage').attr('src', that.data['CreatorImage']);
-		feed.find('.NewComment .CommentProfileImage').attr('src', that.data['CreatorImage']);
+		//feed.find('.NewComment .CommentProfileImage').attr('src', that.data['CreatorImage']);
 		feed.find('.contentHeading').text(heading);
 		feed.find('.contentImageLink').attr('href', that.data['ImageURL'])
 			.attr('data-title', that.data['ContentMessage']);
