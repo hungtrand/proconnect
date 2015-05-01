@@ -62,7 +62,7 @@
 	}*/
 
 	// Upload to the product images folder
-	$success = compress_image($imgFile["tmp_name"], UPLOAD_DIR.$FileName, 10);
+	$success = compress_image($imgFile["tmp_name"], UPLOAD_DIR.$FileName, 75);
     /*$success = move_uploaded_file($imgFile["tmp_name"],
         UPLOAD_DIR . $FileName);*/
 
