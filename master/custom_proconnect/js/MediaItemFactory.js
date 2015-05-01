@@ -41,7 +41,7 @@ function MediaItem(options) {
 
 	//START HERE
 	if( options["read"] ) {			//adding new-item
-		console.log( options['read'] === "");
+		// console.log( options['read'] === "");
 
 		baseItem.addClass("new-item");	//add new item class
 	}
@@ -106,13 +106,13 @@ function MessageItem(data){
 
 	/* handle new message notification clearing */ //<----redirect to message page
 	modTemplate.on("click",function(e){
-		window.location.href = "/message/"; //manually redirect user
 		var obj = {
 			data: {
 				'itemName':'MessageItemID',
 				'id':$(this).attr('NOMONKEYID')}
 		}
 		oItem.updateServer(obj);
+		window.location.href = "/message/"; //manually redirect user
 	});
 
 	
@@ -150,6 +150,9 @@ function NotificationItem(data) {
 	baseItem.find("p.snippet-zone").after(message);
 	
 	baseItem.on("click",function(e){
+		e.preventDefault();
+		e.stopPropagation();
+		
 		var obj = {
 				data: {
 					'itemName':'NotificationItemID',
@@ -157,8 +160,6 @@ function NotificationItem(data) {
 				}
 		}
 		oItem.updateServer(obj);
-		e.preventDefault();
-		e.stopPropagation();
 	});
 	return baseItem;
 }
