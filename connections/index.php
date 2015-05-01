@@ -38,7 +38,7 @@ ob_start();
                     
                 </div>
 
-                <div id="FilterTools" class="row well">
+                <!-- <div id="FilterTools" class="row well">
                     <div class="col col-xs-4">
                         <div class="btn-group">
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
@@ -71,7 +71,7 @@ ob_start();
                             <span class="glyphicon glyphicon-search"></span>
                         </button>
                     </div>
-                </div>
+                </div> -->
 
                 <hr />
 
@@ -99,7 +99,7 @@ ob_start();
         </div>
         <!-- /.row -->
 
-        <div id="modalNewConnection" class="modal fade" role="dialog">
+        <div id="modalNewConnection" class="modal fade" role="dialog" data-backdrop="false">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">

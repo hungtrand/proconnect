@@ -63,7 +63,6 @@ NewConnection.prototype = {
 		that.btnDismiss = that.container.find('.dismissConnection');
 		that.btnDismiss.on('click', function(e) {
 			e.preventDefault();
-			console.log('asdfafd');
 			that.dismiss();
 		});
 
@@ -96,8 +95,25 @@ NewConnection.prototype = {
 		var conn = this.container;
 		switch(mode) {
 			case 'static':
+				if (that.mode == 'static') return false;
+				that.mode = mode;
+				conn.find('.ProfileImage').unbind('mouseover');
+				conn.find('.panel-heading, .panel, .panel-body').css({
+					'background-color':'#fff',
+				});
+				conn.find('.panel').css('border-width', '2px');
+				conn.animate(
+					{width:'100%', 'z-index':"0", 'float': 'none', 'margin-bottom': '10px'},
+					400, 
+					'linear', 
+					function() {
+					conn.find('.BlurHide').show();
+					conn.find('.FullHide').hide();
+				});
+				conn.toggleClass('box', true);
+				break;
 			case 'show':
-				if (that.mode == 'show' || that.mode == 'static') return false;
+				if (that.mode == 'show') return false;
 				that.mode = mode;
 				conn.find('.panel-heading, .panel, .panel-body').css({
 					'background-color':'#fff',
