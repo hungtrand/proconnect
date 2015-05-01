@@ -51,6 +51,7 @@ class ProfileManager extends RecordSet {
 
 		$cond.="(";
 
+			
 		for($i=0; $i<count($keywords);$i++) {
 			$cleanKW = str_replace("'", "''", $keywords[$i]);
 			$cleanKW = str_replace([",", ";"], "", $cleanKW);
