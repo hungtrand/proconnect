@@ -38,7 +38,8 @@ class Messages_view implements view {
 				'sender-href'=>'/profile-public-POV/?UserID='.$sender->getID(),
 				'message-subject'=>$message->getSubject(),
 				'message-time'=>$timestamp,	
-				'sender-message'=>$message->getBody()
+				'sender-message'=>$message->getBody(),
+				'read'=>$mv->getRead()
 			];
 
 			$this->FinalView['message'.$mv->getID()] = $out;

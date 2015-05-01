@@ -5,20 +5,7 @@ $(document).ready(function(){
 			$(".navbar-collapse#main-nav").collapse('hide');
 	});
 	//get notification every 10 seconds
-	NotificationGetter.get(10000,function(data){
-		//display data
-		$.each(data,function(i,v){
-			if(v > 0) {
-				if(i === "messages") {
-					$("#message-list").find("span.notification-number").text(data["messages"]);
-				} else if (i === "notification") {
-					$("#notification-list").find("span.notification-number").text(data["notification"]);
-				} else if (i === "new-connection") {
-					$("#connection-list").find("span.notification-number").text(data["new-connection"]);
-				}
-			}
-		});
-	});
+	NotificationGetter.getUsingInterval(10000,NotificationHandler.displayNotifications);
 	
 	//get notification messages
 	function fillMessages(parent) {
