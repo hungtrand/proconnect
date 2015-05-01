@@ -2,8 +2,8 @@ var SearchResultGetter = (function(){
 	return {
 		get:function(options) {
 			$.ajax({
-				url: "php/dummy.php",
-				method: "GET",
+				url: "php/search_controller.php",
+				method: "POST",
 				data: options["data"],
 				beforeSend: function(jqXHR,obj){
 					if(options["beforeSend"] !== undefined) {

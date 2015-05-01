@@ -20,13 +20,15 @@ NewConnection.prototype = {
 		var conn = $(that.ConnTemplate);
 
 		var profileLink = '/profile-public-POV/?UserID=' + data['UserID'];
-		conn.find('.UserID').val(data['UserID']);
 		conn.find('.ConnectionName').text(data['Name']);
 		conn.find('.ConnectionName').attr('href', profileLink);
+		conn.find('.ProfileLink').attr('href', profileLink);
+		conn.find('.UserID').val(data['UserID']);
 		conn.find('.ConnectionFirstName').text(data['FirstName']);
 		conn.find('.ConnectionJob').text(data['JobTitle']);
 		conn.find('.ConnectionCompany').text(data['CompanyName']);
 		conn.find('.ConnectionLocation').text(data['Location']);
+		
 		if (data['ProfileImage']) {
 			conn.find('.ProfileImage').attr('src', data['ProfileImage']);
 		}
@@ -144,7 +146,7 @@ NewConnection.prototype = {
 		var that = this;
 		var data = {
 			'UserID': this.data['UserID']
-		}
+		};
 
 		$.ajax({
 			url: '/connections/php/NewConnection_controller.php',

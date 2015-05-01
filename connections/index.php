@@ -142,7 +142,9 @@ ob_start();
             <div class="panel-heading">
                 <div class="media">
                     <div class="pull-left text-center">
-                        <img src="../image/user_img.png" alt="people" style="object-fit: cover; padding: 0px;" width="100px" height="100px" class="media-object img-circle ProfileImage" />
+                        <a class="ProfileLink" href="#">
+                            <img src="../image/user_img.png" alt="people" style="object-fit: cover; padding: 0px;" width="100px" height="100px" class="media-object img-circle ProfileImage" />
+                        </a>
                     </div>
                     <div class="media-body">
                         <h4 class="media-heading margin-v-5"><a class="ConnectionName text-primary" href="#">Adrian D.</a>

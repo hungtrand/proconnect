@@ -46,20 +46,6 @@ class Profile_View implements view {
 		$profileImage = "/image/user_img.png";;
 		if (strlen(trim($User->getProfileImage())) > 0)
 			$profileImage = "/users/".$User->getID()."/images/".$User->getProfileImage();
-			// address: ""   							<------ new
-			// alt-email-address: "" 
-			// city-name: "Select One"					<------ new
-			// country-name: ""							<------ new
-			// email-address: "hungtrand0929@gmail.com"
-			// first-name: "Hung"	
-			// inlineRadioOptions-country: "United States"	<------ new
-			// last-name: "Tran" 
-			// middle-initial: ""
-			// phone-number: "555-555-5555"
-			// phone-type: "Home"
-			// postal-code: ""								<------ new
-			// state-name: "Select One"						<------ new
-			// zipcode: ""									<------ new
 		$data = [
 			"first-name"=>$User->getFirstName().'',
 			"last-name"=>$User->getLastName().'',
