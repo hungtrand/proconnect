@@ -36,12 +36,17 @@ function MediaItem(options) {
 	var date = options["date"] || ""; 
 	
 	baseItem.find(".time-ago").text(date);			//adding base item
+	// console.log(options["read"]);
+		baseItem.addClass("new-item");	//add new item class
 
-	if( options["isNewMessage"] === true) {
-		baseItem.find("li").addClass("new-item");	//add new item class
+	//START HERE
+	if( options["read"] ) {			//adding new-item
+		console.log( options['read'] === "");
+
+		baseItem.addClass("new-item");	//add new item class
 	}
 
-	// if( options['read'] === '') {					//adding new-item
+	// if( options['read'] === '') {					
 	baseItem.attr('NOMONKEYID',options['id']);
 
 	/* allow redirect to user page */
@@ -101,7 +106,7 @@ function MessageItem(data){
 
 	/* handle new message notification clearing */ //<----redirect to message page
 	modTemplate.on("click",function(e){
-		// window.location.href = "/message/"; //manually redirect user
+		window.location.href = "/message/"; //manually redirect user
 		var obj = {
 			data: {
 				'itemName':'MessageItemID',
@@ -145,8 +150,6 @@ function NotificationItem(data) {
 	baseItem.find("p.snippet-zone").after(message);
 	
 	baseItem.on("click",function(e){
-		// window.location.href = $(that).prop("href"); 				//manually redirect user
-		// window.location.href = "/message/";
 		var obj = {
 				data: {
 					'itemName':'NotificationItemID',
