@@ -40,6 +40,7 @@ Feed.prototype = {
 		var heading = 'Shared: ';
 		feed.find('.FeedID').val(that.data['FeedID']);
 		feed.find('.F2UID').val(that.data['F2UID']);
+		feed.find('.AuthorProfileLink').attr('href', that.data['FeedLink']);
 		feed.find('.AuthorLink').text(that.data['Creator']).attr('href', that.data['FeedLink']);
 		feed.find('.NewComment .CommentAuthor').text(that.data['CreatorFirstName']).attr('href', that.data['FeedLink']);
 		feed.find('.creatorImage').attr('src', that.data['CreatorImage']);

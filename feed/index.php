@@ -139,10 +139,14 @@ ob_start();
             <div class="media-left">
                 <div class="user-wrapper text-center row">
                     <div class="col col-xs-3 col-sm-12">
-                        <img src="/image/user_img.png" alt="people" style="object-fit: cover;"
-                        class="img-circle media-object creatorImage hidden-xs" width="80" height="80" />
-                        <img src="/image/user_img.png" alt="people" style=""
-                        class="img-rounded media-object creatorImage hidden-sm hidden-md hidden-lg" width="80" />
+                        <a href="#" class="AuthorProfileLink">
+                            <img src="/image/user_img.png" alt="people" style="object-fit: cover;"
+                            class="img-circle media-object creatorImage hidden-xs" width="80" height="80" />
+                        </a>
+                        <a href="#" class="AuthorProfileLink">
+                            <img src="/image/user_img.png" alt="people" style=""
+                            class="img-rounded media-object creatorImage hidden-sm hidden-md hidden-lg" width="80" />
+                        </a>
                     </div>
                     <div class="col col-xs-9 col-sm-12">
                         <a href="#" class="AuthorLink">{{UserName}}</a>
@@ -191,8 +195,11 @@ ob_start();
                                 <input type="hidden" class="CommentID" name="CommentID" value=0 />
                                 <div class="media-left">
                                     <div class="user-wrapper text-center">
-                                        <img src="<?=$ProfileImage?>" alt="people" style="object-fit: cover;"
-                                        class="img-circle media-object CommentProfileImage hidden-xs" width="40" height="40" />
+                                        <a href="#" class="AuthorProfileLink">
+                                            <img src="<?=$ProfileImage?>" alt="people" style="object-fit: cover;"
+                                            class="img-circle media-object CommentProfileImage hidden-xs" width="40" height="40" />
+                                        </a>
+
                                         <div><small><a href="#" class="CommentAuthor">{{FirstName}}</a></small>
                                         </div>
                                     </div>
@@ -225,8 +232,10 @@ ob_start();
 
             <div class="media-left">
                 <div class="user-wrapper text-center">
-                    <img src="/image/user_img.png" alt="people" style="object-fit: cover;"
-                    class="img-circle media-object CreatorImage hidden-xs" width="40" height="40" />
+                    <a href="#" class="ProfileLink">
+                        <img src="/image/user_img.png" alt="people" style="object-fit: cover;"
+                        class="img-circle media-object CreatorImage hidden-xs" width="40" height="40" />
+                    </a>
                     <div><small><a href="#" class="CreatorName">{{FirstName}}</a></small>
                     </div>
                 </div>
