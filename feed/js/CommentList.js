@@ -37,7 +37,7 @@ CommentList.prototype = {
 			data['page'] = that.page;
 
 		$.ajax({
-			url: 'php/CommentList_controller.php',
+			url: '/feed/php/CommentList_controller.php',
 			type: 'POST',
 			data: data
 		}).done(function(json) {

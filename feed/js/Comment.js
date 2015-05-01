@@ -7,7 +7,7 @@ function Comment(data, template) {
 		"CommentTimestamp": ''
 	}*/
 	this.data = {'CommentID': 0};
-	this.dataURL = "php/comment_controller.php";
+	this.dataURL = "/feed/php/comment_controller.php";
 	this.template = template ? template : $('#CommentTemplate').html();
 
 	this.init(data);
@@ -53,7 +53,7 @@ Comment.prototype = {
 	update: function(callback) {
 		var that = this;
 		var data = that.data;
-		that.submit(data, 'php/comment_controller.php', callback);
+		that.submit(data, '/feed/php/comment_controller.php', callback);
 	},
 
 	submit: function(data, url, callback) {

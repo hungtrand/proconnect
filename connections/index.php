@@ -12,7 +12,7 @@ $Title = "Feed - Proconnect";
 if (isset($_COOKIE['__USER_PROFILE_IMAGE__'])) {
     $ProfileImage = $_COOKIE['__USER_PROFILE_IMAGE__'];
 } else {
-    $ProfileImage = '/image/proconnect/Tab_logo2_100x100.png';
+    $ProfileImage = '/image/user_img.png';
 }
 $JobTitle = $UData['TITLE'];
 $ConnectionActive = 'active';
@@ -99,7 +99,7 @@ ob_start();
         </div>
         <!-- /.row -->
 
-        <div id="modalNewConnection" class="modal fade" role="dialog" data-backdrop="false">
+        <div id="modalNewConnection" class="modal fade" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -135,14 +135,14 @@ ob_start();
     </div>
 
     <script type="text/template" id="ConnectionTemplate">
-    <div class="UserConnection col-lg-4 col-md-4 col-sm-6 col-xs-12 item" style="height: 180px;">
+    <div class="UserConnection col-lg-4 col-md-4 col-sm-6 col-xs-12 item" style="height: 180px; margin: 20px 0;">
         <input type="hidden" class="UserID" name="UserID" value="" />
 
         <div class="panel panel-default">
             <div class="panel-heading">
                 <div class="media">
                     <div class="pull-left text-center">
-                        <img src="../image/proconnect/Tab_logo2_100x100.png" alt="people" style="object-fit: cover; padding: 0px;" width="150px" height="150px" class="media-object img-circle ProfileImage" />
+                        <img src="../image/user_img.png" alt="people" style="object-fit: cover; padding: 0px;" width="100px" height="100px" class="media-object img-circle ProfileImage" />
                     </div>
                     <div class="media-body">
                         <h4 class="media-heading margin-v-5"><a class="ConnectionName text-primary" href="#">Adrian D.</a>

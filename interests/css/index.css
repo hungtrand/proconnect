@@ -1,0 +1,23 @@
+body {
+    padding-top: 120px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    background-color: #E8E8E8;
+}
+
+.feed {
+  margin: 20px 0;
+}
+
+.box {
+  -webkit-box-shadow: 5px 5px 10px rgba(0,0,0,.25); // iOS <4.3 & Android <4.1
+          box-shadow: 5px 5px 10px rgba(0,0,0,.25);
+}
+
+.hover {
+  -webkit-box-shadow: 20px 20px 20px rgba(0,0,0,.25); // iOS <4.3 & Android <4.1
+          box-shadow: 20px 20px 20px rgba(0,0,0,.25);
+}
+
+.panel-default>.panel-heading {
+  background-color: #4193d0;
+  color: white;
+}

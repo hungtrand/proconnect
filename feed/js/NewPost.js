@@ -32,6 +32,7 @@ NewPost.prototype = {
 		that.processedImageURL = that.container.find('#ImageURL');
 		that.btnYouTube = that.container.find('#btnYouTube');
 		that.YouTubeURL = that.container.find('#YouTubeURL');
+		that.txtFeedCategory = that.container.find('.FeedCategory');
 		that.btnPostMode = that.container.find('#btnPostMode');
 		that.btnPostMode.on('click', function() {that.changeMode('active')});
 		that.btnSharePost = that.container.find('#btnSharePost');
@@ -105,6 +106,36 @@ NewPost.prototype = {
 		        fr.readAsDataURL(files[0]);
 		    }
 		});
+
+		// bind typeahead for interests
+		var interests = new Bloodhound({
+			datumTokenizer: Bloodhound.tokenizers.whitespace,
+			queryTokenizer: Bloodhound.tokenizers.whitespace,
+			prefetch: '../../lib/php/Lookup_Interests_controller.php'
+		});
+
+		function interestsWithDefaults(q, sync) {
+			if (q === '') {
+				sync(interests.get('General','Aerospace Engineering', 'Arts', 
+					'Biology', 'Biochemical Engineering', 'Chemical Engineering', 
+					'Computer Engineering',	'Computer Programming', 'Fashion Design',
+					'Health Science', 'Literature', 'Music'));
+			}
+
+			else {
+				interests.search(q, sync);
+			}
+		}
+
+		that.txtFeedCategory.typeahead({
+			minLength: 0,
+			highlight: true
+		}, {
+			name: 'Interests',
+			source: interestsWithDefaults,
+			limit: 10
+		});
+		// end of typeahead
 	},
 
 	changeMode: function(newMode) {
@@ -142,6 +173,7 @@ NewPost.prototype = {
 			feed.setFeedLink(that.inputExternalLink.val());
 			feed.setImageURL(uploadedImageURL);
 			feed.setYouTubeURL(that.YouTubeURL.val());
+			feed.setInterestCategory(that.txtFeedCategory.val());
 
 			feed.update(function(json) { 
 				try {

@@ -7,7 +7,7 @@ function Feed(data, template) {
 		"ContentMessage": ''
 	}*/
 	this.data = {'FeedID': 0};
-	this.dataURL = "php/feed_controller.php";
+	this.dataURL = "/feed/php/feed_controller.php";
 	this.template = template ? template : $('#FeedTemplate').html();
 	this.btnLike;
 	this.btnComment;
@@ -49,6 +49,7 @@ Feed.prototype = {
 			.attr('data-title', that.data['ContentMessage']);
 		feed.find('.contentImage').attr('src', that.data['ImageURL']);
 		feed.find('.contentMessage').html(that.data['ContentMessage']);
+		feed.find('.InterestCategory').text(that.data['InterestCategory']);
 		feed.find('.timestamp').html(that.data['Timestamp']);
 
 		if (that.data['YouTubeID']) {
@@ -140,6 +141,16 @@ Feed.prototype = {
 				}
 			});
 		});
+
+		if (that.container.hasClass('feed')) {
+			that.container.hover(function() {
+				$('.feed').not($(this)).css('opacity', 0.5);
+				$(this).toggleClass('hover', true);
+			}, function() {
+				$(this).toggleClass('hover', false);
+				$('.feed').css('opacity', 1);
+			});
+		}
 	},
 
 	setImageURL: function(strVal) {
@@ -160,6 +171,11 @@ Feed.prototype = {
 	setContentMessage: function(strVal) {
 		if (!strVal) return false;
 		this.data['ContentMessage'] = strVal;
+	},
+
+	setInterestCategory: function(strVal) {
+		if (!strVal) return false;
+		this.data['InterestCategory'] = strVal;
 	},
 
 	update: function(callback) {

@@ -13,8 +13,8 @@ class Feed extends ActiveRecord {
 	public static $TableName = 'Feed';
 	public static $PrimaryKey = 'FEEDID';
 	public static $Columns = ['FEEDID', 'CONTENT', 'IMAGEURL', 
-							'EXTERNALURL', 'INTERNALURL', 'CREATOR', 
-							'TYPE', 'DATECREATED'];
+							'EXTERNALURL', 'INTERNALURL', 'INTERESTCATEGORY', 
+							'CREATOR', 'TYPE', 'DATECREATED'];
 	
 	private $data = [];
 	private $FeedID;
@@ -91,6 +91,10 @@ class Feed extends ActiveRecord {
 		return $this->data['INTERNALURL'];
 	}
 
+	public function getInterestCategory() {
+		return $this->data['INTERESTCATEGORY'];
+	}
+
 	public function getCreator() {
 		return $this->data['CREATOR'];
 	}
@@ -124,6 +128,12 @@ class Feed extends ActiveRecord {
 
 	public function setInternalURL($strVal) {
 		$this->data['INTERNALURL'] = $strVal;
+
+		return true;
+	}
+
+	public function setInterestCategory($strVal) {
+		$this->data['INTERESTCATEGORY'] = $strVal;
 
 		return true;
 	}

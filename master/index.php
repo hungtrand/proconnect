@@ -378,7 +378,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                     </li>
                     <li class="<?=$JobActive?>"><a href="/jobs/"><i class="fa fa-suitcase"></i> <span>Jobs</span></a>
                     </li>
-                    <li class="<?=$InterestActive?>"><a href="/interest/"><i class="fa fa-star"></i> <span>Interests</span></a>
+                    <li class="<?=$InterestActive?>"><a href="/interests/"><i class="fa fa-star"></i> <span>Interests</span></a>
                     </li>
                     <!-- <li class="hasSubmenu">
                         <a href="#components"><i class="icon-paint-brushes"></i> <span>UI Components</span></a>
