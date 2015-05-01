@@ -191,7 +191,7 @@ ob_start();
                                 <input type="hidden" class="CommentID" name="CommentID" value=0 />
                                 <div class="media-left">
                                     <div class="user-wrapper text-center">
-                                        <img src="/image/user_img.png" alt="people" style="object-fit: cover;"
+                                        <img src="<?=$ProfileImage?>" alt="people" style="object-fit: cover;"
                                         class="img-circle media-object CommentProfileImage hidden-xs" width="40" height="40" />
                                         <div><small><a href="#" class="CommentAuthor">{{FirstName}}</a></small>
                                         </div>
