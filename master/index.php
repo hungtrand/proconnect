@@ -620,6 +620,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 
     <!-- Custom ProConnect -->
     <script type="text/javascript" src="/master/custom_proconnect/js/NotificationGetter.js"></script>
+    <script type="text/javascript" src="/master/custom_proconnect/js/NotificationHandler.js"></script>
     <script type="text/javascript" src="/master/custom_proconnect/js/AdvanceSearchInterfaceHandler.js"></script>
     <script type="text/javascript" src="/master/custom_proconnect/js/MessageGetter.js"></script>
     <script type="text/javascript" src="/master/custom_proconnect/js/MediaItemFactory.js"></script>

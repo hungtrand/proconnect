@@ -27,8 +27,8 @@ var MediaItemFactory = (function(){
 	}
 })();
 
-
 function MediaItem(options) {
+	// console.log(options)
 	// var baseItem = document.getElementById("MediaItem").content.cloneNode(true); //stamp out base item
 	var baseItem = $($("#MediaItem").html()); 
 	var imgURL = options["user-img-url"] || '/image/user_img.png';
@@ -41,6 +41,9 @@ function MediaItem(options) {
 		baseItem.find("li").addClass("new-item");	//add new item class
 	}
 
+	// if( options['read'] === '') {					//adding new-item
+	baseItem.attr('NOMONKEYID',options['id']);
+
 	/* allow redirect to user page */
 	baseItem.find("img.thumb").on("click",function(e){
 		e.preventDefault();
@@ -48,8 +51,27 @@ function MediaItem(options) {
 		window.location.href = userURL;				//send user to another user public POV
 	}).attr("src",imgURL);
 
-	
-	return baseItem;
+	this.updateServer = function(obj) {
+		$.ajax({
+			url: "/master/custom_proconnect/php/notifications_controller.php",
+			data: obj,
+			method: 'POST',
+			success: function(newNotification){
+				try {
+					// console.log(newNotification);
+					var data = JSON.parse(newNotification);
+					NotificationHandler.displayNotifications(data);
+				} catch (e) {
+					console.log(e);
+				}
+			},
+			error: function(qXHR, textStatus,errorThrown ) {
+				console.log(textStatus + ": " + errorThrown);
+			}
+		});
+	}
+
+	this.template = baseItem;
 }
 
 function MessageItem(data){
@@ -60,45 +82,35 @@ function MessageItem(data){
 		'user-url': data['sender-href'],
 		'message': data['sender-message'],
 		'user-name': data['sender-name'],
-		'user-img-url': data['sender-picture']
+		'user-img-url': data['sender-picture'],
+		'read':data['read']
 	};
 
-	var modTemplate = new MediaItem(options);
+	var oItem = new MediaItem(options);
 
-	// console.log(modTemplate[0]);
-	
+	var modTemplate = oItem.template;
+
 	var snippet = options["optional-snippet"] || "";
 	var message = options["message"] || "";
 
-
 	//fill in the required fields
 	modTemplate.find("a.landing-destination").attr("href","../message/");
-
 	modTemplate.find(".media-heading").text(options["user-name"]);
 	modTemplate.find("p.snippet-zone").text(snippet);
 	modTemplate.find("p.snippet-zone").after(message);
 
 	/* handle new message notification clearing */ //<----redirect to message page
 	modTemplate.on("click",function(e){
-		// window.location.href = $(that).prop("href"); 				//manually redirect user
-		window.location.href = "/message/";
-		/**
-		  * Decrement notification amount
-		  * NOTE: This step can be done before the ajax due to the non-volatile nature of the procedure 
-		  * and to guarantee usability
-		*/
-		// var notificationNumberDisplay = $(that).closest("li.notification-icon").find("span.notification-number");
-		// var newAmount = notificationNumberDisplay.text() - 1;
-		// if(newAmount > 0) {
-		// 	notificationNumberDisplay.text(newAmount);
-		// } else {
-		// 	notificationNumberDisplay.text("");
-		// 	$(that).closest("li.notification-icon").find("span.glyphicon").removeClass("attention-icon");			//remove attention-icon class
-		// }
-
-		// $(that).parent("li").removeClass("new-item");				//remove new-item class
-
+		// window.location.href = "/message/"; //manually redirect user
+		var obj = {
+			data: {
+				'itemName':'MessageItemID',
+				'id':$(this).attr('NOMONKEYID')}
+		}
+		oItem.updateServer(obj);
 	});
+
+	
 
 	return modTemplate;
 }
@@ -113,10 +125,13 @@ function NotificationItem(data) {
 		'user-url': data['href'],
 		'message': '',
 		'user-name': data['message'],
-		'user-img-url': data['picture']
+		'user-img-url': data['picture'],
+		'read': data['read']
 	};
 
-	var baseItem = new MediaItem(options);
+	var oItem = new MediaItem(options);
+
+	var baseItem = oItem.template;
 
 	var snippet = options["optional-snippet"] || "";
 	var message = options["message"] || "";
@@ -128,7 +143,20 @@ function NotificationItem(data) {
 	baseItem.find(".media-heading").text(options["user-name"]);
 	baseItem.find("p.snippet-zone").text(snippet);
 	baseItem.find("p.snippet-zone").after(message);
-
+	
+	baseItem.on("click",function(e){
+		// window.location.href = $(that).prop("href"); 				//manually redirect user
+		// window.location.href = "/message/";
+		var obj = {
+				data: {
+					'itemName':'NotificationItemID',
+					'id':$(this).attr('NOMONKEYID')
+				}
+		}
+		oItem.updateServer(obj);
+		e.preventDefault();
+		e.stopPropagation();
+	});
 	return baseItem;
 }
 
@@ -160,7 +188,8 @@ function NewConnectionItem(data) {
 		'user-img-url': data['ProfileImage']
 	};
 
-	var baseItem = new MediaItem(options);
+	var temp = new MediaItem(options);
+	var baseItem = temp.template;
 
 	var snippet = options["optional-snippet"] || "";
 	var message = options["message"] || "";
@@ -186,6 +215,7 @@ function NewConnectionItem(data) {
 				setTimeout(function() {
 					li.fadeOut('700', function() {$(this).remove();});
 				}, 3000);
+				NotificationGetter.getResponse(NotificationHandler.displayNotifications);
 			} catch (e) {
 				console.log(json);
 			}
