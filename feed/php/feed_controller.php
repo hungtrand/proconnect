@@ -40,6 +40,7 @@ $ExternalLink = '';
 $InternalLink = '/profile-public-POV/?UserID='.$uid;
 $ContentMessage = '';
 $YouTubeID = '';
+$InterestCategory = 'General';
 $FeedID = -1; 
 // testing  
 // $uid = 3;
@@ -57,6 +58,10 @@ if(isset($_POST['ContentMessage'])){
 }
 if(isset($_POST['ImageURL'])) {
 	$ImageURL = trim($_POST['ImageURL']);
+}
+if(isset($_POST['InterestCategory'])) {
+	$InterestCategory = trim($_POST['InterestCategory']);
+	if (strlen($InterestCategory) == 0) $InterestCategory = 'General';
 }
 
 $mode = "exit";
@@ -87,6 +92,7 @@ try {
 			$feed->setImageURL($ImageURL);
 			$feed->setExternalURL($YouTubeID);
 			$feed->setInternalURL($InternalLink);
+			$feed->setInterestCategory($InterestCategory);
 			$feed->setCreator($uid);
 			$feed->setType('normal');
 			

@@ -22,6 +22,7 @@ ob_start();
 ?>
     <link rel="stylesheet" type="text/css" href="../lib/lightbox/ekko-lightbox.min.css" />
     <link rel="stylesheet" type="text/css" href="../lib/lightbox/dark.css" />
+    <link rel="stylesheet" type="text/css" href="../lib/typeahead/dist/css/default.css" />
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     
         <div class="cover profile">
@@ -53,7 +54,7 @@ ob_start();
 
                 <div id="NewPost" class="well well-sm">
                     <div class="row">
-                        <form id="formNewPost" action="feed_controller.php" class="col col-xs-12" style="display: none;">
+                        <form id="formNewPost" action="feed_controller.php" class="form-horizontal col col-xs-12" style="display: none;">
                             <div class="form-group">
                                 <div class="media">
                                     <div class="media-body">
@@ -74,12 +75,33 @@ ob_start();
                             </div>
 
                             <div class="form-group">
-                                <a id="btnAttachImg" class="btn btn-default btnAttachImg"><span class="glyphicon glyphicon-picture"></span></a>
-                                &nbsp;&nbsp;
-                                <a id="btnYouTube" class="btn btn-default btnYouTube"><i class="fa fa-youtube" style="font-size: 18px;"></i></a>
-                                <button id="btnSharePost" class="btn btn-primary pull-right">Share</button>
-                                <hr/>
-                                <div class="hiddenInputs">
+                                <div class="col-xs-9">
+                                    <div class="btn-toolbar">
+                                        <div class="btn-group">
+                                            <a id="btnAttachImg" class="btn btn-default btnAttachImg">
+                                                <span class="glyphicon glyphicon-picture"></span></a>
+                                        </div>
+                                        <div class="btn-group">
+                                            <a id="btnYouTube" class="btn btn-default btnYouTube">
+                                                <i class="fa fa-youtube" style="font-size: 18px;"></i></a>
+                                        </div>
+                                        <div class="btn-group">
+                                            <i class="fa fa-tag" style="font-size: 18px;"></i>
+                                            <input type="text" class="form-control typeahead FeedCategory" name="InterestCategory" maxlength="100" placeholder="Interest Category Tag" />
+                                        </div>
+                                    </div>
+                                                                                                               
+                                </div>
+
+                                <div  class="col-xs-3 text-right">
+                                    <button id="btnSharePost" class="btn btn-primary">Share</button>
+                                </div>
+
+                            </div>
+
+                            <hr/>
+                            <div class="form-group">
+                                <div class="hiddenInputs col-xs-12">
                                     <input type="file" class="hidden" id="FeedImage" name="FeedImage" /><!-- temp image / not yet uploaded -->
                                     <!-- uploaded image link only populate when upload then reset after sumission -->
                                     <input type="text" class="hidden" id="ImageURL" name="ImageURL" value="" />
@@ -155,6 +177,9 @@ ob_start();
                                     <i class="fa fa-comment"></i>&nbsp;<a href="#" class="feedComment">Comment</a>
                                     &nbsp;&nbsp;&nbsp;&nbsp;
                                     <i class="fa fa-share-alt"></i>&nbsp;<a href="#" class="feedPropagate">Propagate</a>
+                                    <label class="label label-default pull-right clearfix labelInterestCategory">
+                                        <i class="fa fa-tag"></i>&nbsp;&nbsp;<span class="InterestCategory"></span>
+                                    </label>
                                 </div>
                             </div>
                         </div>
@@ -221,6 +246,7 @@ ob_start();
 ?>
     <script src="../lib/js/FileUpload.js"></script>
     <script src="../lib/ckeditor/ckeditor.js"></script>
+    <script src="../lib/typeahead/dist/typeahead.bundle.min.js"></script>
     <script src="../lib/lightbox/ekko-lightbox.js"></script>
     <script src="js/Comment.js"></script>
     <script src="js/CommentList.js"></script>

@@ -12,7 +12,7 @@ class vw_Feed extends ViewRecord {
 	public static $TableName = 'vw_Feed';
 	public static $PrimaryKey = 'FEEDID';
 	public static $Columns = ['FEEDID', 'CONTENT', 'IMAGEURL', 
-							'EXTERNALURL', 'INTERNALURL', 'CREATOR', 
+							'EXTERNALURL', 'INTERNALURL', 'INTERESTCATEGORY', 'CREATOR', 
 							'TYPE', 'DATECREATED', 'NLIKED'];/*
 	public static $PseudoColumns = ['TITLE', 'ORGANIZATION', 'LOCATION'];*/
 	
@@ -98,6 +98,10 @@ class vw_Feed extends ViewRecord {
 
 	public function getType() {
 		return $this->data['TYPE'];
+	}
+
+	public function getInterestCategory() {
+		return $this->data['INTERESTCATEGORY'];
 	}
 
 	public function getDateCreated() {

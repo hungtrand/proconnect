@@ -19,8 +19,10 @@ NewConnection.prototype = {
 
 		var conn = $(that.ConnTemplate);
 
+		var profileLink = '/profile-public-POV/?UserID=' + data['UserID'];
 		conn.find('.UserID').val(data['UserID']);
 		conn.find('.ConnectionName').text(data['Name']);
+		conn.find('.ConnectionName').attr('href', profileLink);
 		conn.find('.ConnectionFirstName').text(data['FirstName']);
 		conn.find('.ConnectionJob').text(data['JobTitle']);
 		conn.find('.ConnectionCompany').text(data['CompanyName']);

@@ -32,7 +32,7 @@ FeedList.prototype = {
 			data['page'] = that.page;
 
 		$.ajax({
-			url: 'php/FeedList_controller.php',
+			url: '/feed/php/FeedList_controller.php',
 			type: 'POST',
 			data: data
 		}).done(function(json) {
