@@ -50,7 +50,7 @@ try {
 	$profiles = $pm->getAll();
 
 	$view = new UserCard_view();
-	$view->load($profiles);
+	$view->load($uid, $profiles);
 	$data = $view->getView();
 
 	//echo "\n".json_encode($am->getData())."\n";

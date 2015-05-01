@@ -30,6 +30,10 @@ NewConnection.prototype = {
 		if (data['ProfileImage']) {
 			conn.find('.ProfileImage').attr('src', data['ProfileImage']);
 		}
+
+		if (parseInt(data['Connected']) == 1) {
+			conn.find('.addNewConnection').attr('disabled', 'disabled').text('Already Connected');
+		}
 		
 		/*toggle suggestions hide/show events*/
 		conn.find('.ProfileImage').on('mouseover', function() {
