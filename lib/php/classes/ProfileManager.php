@@ -58,10 +58,11 @@ class ProfileManager extends RecordSet {
 			$cleanKW = trim($cleanKW);
 			if (strlen($cleanKW) < 1) continue;
 
-			$cond.= $delimiter."EMAIL LIKE '%$cleanKW%' OR EMAIL_ALT LIKE '%$cleanKW%' OR NAME LIKE '%$cleanKW%'";
+			$cond .= $delimiter."EMAIL LIKE '%$cleanKW%' OR EMAIL_ALT LIKE '%$cleanKW%' OR NAME LIKE '%$cleanKW%' ";
 
-			$delimtier = "AND ";
+			$delimiter = 'OR ';
 		}
+		//echo $cond;
 
 		$cond.= ") ORDER BY ".$orderby." LIMIT ". $offset .", ". $numRows;
 		

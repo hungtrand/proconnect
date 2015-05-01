@@ -6,10 +6,14 @@ include '/signout/php/session_check_signout.php';
 
 session_start();
 $UData = json_decode($_SESSION['__USERDATA__'], true);
-$FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
+if (isset($_COOKIE['__USER_PROFILE_IMAGE__'])) {
+    $ProfileImage = $_COOKIE['__USER_PROFILE_IMAGE__'];
+} else {
+    $ProfileImage = '/image/proconnect/Tab_logo2_100x100.png';
+}
 
+$FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 $Title = "Feed - Proconnect";
-$ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
 $JobTitle = $UData['TITLE'];
 $HomeActive = 'active';
 
@@ -18,6 +22,7 @@ ob_start();
 ?>
     <link rel="stylesheet" type="text/css" href="../lib/lightbox/ekko-lightbox.min.css" />
     <link rel="stylesheet" type="text/css" href="../lib/lightbox/dark.css" />
+    <link rel="stylesheet" type="text/css" href="../lib/typeahead/dist/css/default.css" />
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     
         <div class="cover profile">
@@ -43,13 +48,13 @@ ob_start();
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" style="">
             <!-- Left main content -->
             <div class="col col-xs-11 col-sm-11 col-md-9 col-lg-9">
 
                 <div id="NewPost" class="well well-sm">
                     <div class="row">
-                        <form id="formNewPost" action="feed_controller.php" class="col col-xs-12" style="display: none;">
+                        <form id="formNewPost" action="feed_controller.php" class="form-horizontal col col-xs-12" style="display: none;">
                             <div class="form-group">
                                 <div class="media">
                                     <div class="media-body">
@@ -70,12 +75,33 @@ ob_start();
                             </div>
 
                             <div class="form-group">
-                                <a id="btnAttachImg" class="btn btn-default btnAttachImg"><span class="glyphicon glyphicon-picture"></span></a>
-                                &nbsp;&nbsp;
-                                <a id="btnYouTube" class="btn btn-default btnYouTube"><i class="fa fa-youtube" style="font-size: 18px;"></i></a>
-                                <button id="btnSharePost" class="btn btn-primary pull-right">Share</button>
-                                <hr/>
-                                <div class="hiddenInputs">
+                                <div class="col-xs-9">
+                                    <div class="btn-toolbar">
+                                        <div class="btn-group">
+                                            <a id="btnAttachImg" class="btn btn-default btnAttachImg">
+                                                <span class="glyphicon glyphicon-picture"></span></a>
+                                        </div>
+                                        <div class="btn-group">
+                                            <a id="btnYouTube" class="btn btn-default btnYouTube">
+                                                <i class="fa fa-youtube" style="font-size: 18px;"></i></a>
+                                        </div>
+                                        <div class="btn-group">
+                                            <i class="fa fa-tag" style="font-size: 18px;"></i>
+                                            <input type="text" class="form-control typeahead FeedCategory" name="InterestCategory" maxlength="100" placeholder="Interest Category Tag" />
+                                        </div>
+                                    </div>
+                                                                                                               
+                                </div>
+
+                                <div  class="col-xs-3 text-right">
+                                    <button id="btnSharePost" class="btn btn-primary">Share</button>
+                                </div>
+
+                            </div>
+
+                            <hr/>
+                            <div class="form-group">
+                                <div class="hiddenInputs col-xs-12">
                                     <input type="file" class="hidden" id="FeedImage" name="FeedImage" /><!-- temp image / not yet uploaded -->
                                     <!-- uploaded image link only populate when upload then reset after sumission -->
                                     <input type="text" class="hidden" id="ImageURL" name="ImageURL" value="" />
@@ -107,15 +133,20 @@ ob_start();
         </div>
 
     <script type="text/template" id="FeedTemplate">
-        <li class="media media-clearfix-xs feed well" style="border-color: #CCC;">
+        <li class="media media-clearfix-xs feed well box" style="border-color: #CCC;">
             <input type="hidden" class="FeedID" name="FeedID" value="" />
+            <input type="hidden" class="F2UID" name="F2UID" value="" />
             <div class="media-left">
                 <div class="user-wrapper text-center row">
                     <div class="col col-xs-3 col-sm-12">
-                        <img src="/image/user_img.png" alt="people" style="object-fit: cover;"
-                        class="img-circle media-object creatorImage hidden-xs" width="80" height="80" />
-                        <img src="/image/user_img.png" alt="people" style=""
-                        class="img-rounded media-object creatorImage hidden-sm hidden-md hidden-lg" width="80" />
+                        <a href="#" class="AuthorProfileLink">
+                            <img src="/image/user_img.png" alt="people" style="object-fit: cover;"
+                            class="img-circle media-object creatorImage hidden-xs" width="80" height="80" />
+                        </a>
+                        <a href="#" class="AuthorProfileLink">
+                            <img src="/image/user_img.png" alt="people" style=""
+                            class="img-rounded media-object creatorImage hidden-sm hidden-md hidden-lg" width="80" />
+                        </a>
                     </div>
                     <div class="col col-xs-9 col-sm-12">
                         <a href="#" class="AuthorLink">{{UserName}}</a>
@@ -150,25 +181,33 @@ ob_start();
                                     <i class="fa fa-comment"></i>&nbsp;<a href="#" class="feedComment">Comment</a>
                                     &nbsp;&nbsp;&nbsp;&nbsp;
                                     <i class="fa fa-share-alt"></i>&nbsp;<a href="#" class="feedPropagate">Propagate</a>
+                                    <label class="label label-default pull-right clearfix labelInterestCategory">
+                                        <i class="fa fa-tag"></i>&nbsp;&nbsp;<span class="InterestCategory"></span>
+                                    </label>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="row commentsSection">
+                    <div class="row CommentSection" style="display: none;">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <form class="media media-clearfix-xs NewComment">
                                 <input type="hidden" class="CommentID" name="CommentID" value=0 />
                                 <div class="media-left">
                                     <div class="user-wrapper text-center">
-                                        <img src="/image/user_img.png" alt="people" style="object-fit: cover;"
-                                        class="img-circle media-object CommentProfileImage hidden-xs" width="40" height="40" />
+                                        <a href="#" class="AuthorProfileLink">
+                                            <img src="<?=$ProfileImage?>" alt="people" style="object-fit: cover;"
+                                            class="img-circle media-object CommentProfileImage hidden-xs" width="40" height="40" />
+                                        </a>
+
                                         <div><small><a href="#" class="CommentAuthor">{{FirstName}}</a></small>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="media-body CommentMessage">
                                     <textarea class="txtNewComment form-control" name="CommentMessage" placeholder="Type new comment here..."></textarea>
+                                    <br />
+                                    <button class="btn btn-default submitComment" disabled>Comment</button>
                                 </div>
                             </form>
                         </div>
@@ -176,6 +215,7 @@ ob_start();
                             <ul class="media-list comments-list">
 
                             </ul>
+                            <div class="alert alert-info CommentListEndAlert" style="display: none;"></div>
                         </div>
                     </div>
 
@@ -188,11 +228,15 @@ ob_start();
     <script type="text/template" id="CommentTemplate">
         <li class="media media-clearfix-xs comment">
             <input type="hidden" class="CommentID" name="CommentID" value="" />
+            <input type="hidden" class="CommentFeedID" name="CommentFeedID" value="" />
+
             <div class="media-left">
                 <div class="user-wrapper text-center">
-                    <img src="/image/user_img.png" alt="people" style="object-fit: cover;"
-                    class="img-circle media-object CommentProfileImage hidden-xs" width="40" height="40" />
-                    <div><small><a href="#" class="CommentAuthor">{{FirstName}}</a></small>
+                    <a href="#" class="ProfileLink">
+                        <img src="/image/user_img.png" alt="people" style="object-fit: cover;"
+                        class="img-circle media-object CreatorImage hidden-xs" width="40" height="40" />
+                    </a>
+                    <div><small><a href="#" class="CreatorName">{{FirstName}}</a></small>
                     </div>
                 </div>
             </div>
@@ -211,7 +255,10 @@ ob_start();
 ?>
     <script src="../lib/js/FileUpload.js"></script>
     <script src="../lib/ckeditor/ckeditor.js"></script>
+    <script src="../lib/typeahead/dist/typeahead.bundle.min.js"></script>
     <script src="../lib/lightbox/ekko-lightbox.js"></script>
+    <script src="js/Comment.js"></script>
+    <script src="js/CommentList.js"></script>
     <script src="js/NewPost.js"></script>
     <script src="js/Feed.js"></script>
     <script src="js/FeedList.js"></script>

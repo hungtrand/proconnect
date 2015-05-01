@@ -12,7 +12,7 @@
 class FeedComment extends ActiveRecord {
 	public static $TableName = 'Feed_Comments';
 	public static $PrimaryKey = 'COMMENTID';
-	public static $Columns = ['FEEDID', 'USERID', 'COMMENT', 
+	public static $Columns = ['COMMENTID', 'FEEDID', 'USERID', 'COMMENT', 
 							'TIMESTAMP'];
 	
 	private $data = [];
@@ -67,7 +67,7 @@ class FeedComment extends ActiveRecord {
 			return false;
 		}
 
-		$this->FeedID = $ID;
+		$this->CommentID = $ID;
 
 		return true;
 	}

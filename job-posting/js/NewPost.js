@@ -1,8 +1,8 @@
 // NewPost - the object validate the new post form, upload image and submit form
 function NewPost() {
-	this.inputFeedImage;
-	this.imagePreview;
-	this.btnAttachImg;
+	// this.inputFeedImage;
+	// this.imagePreview;
+	// this.btnAttachImg;
 	this.init();
 }
 
@@ -12,7 +12,7 @@ NewPost.prototype = {
 	init: function() {
 		var that = this;
 		that.inputFeedImage = $('#FeedImage');
-		that.imagePreview = $('.ImagePreview');
+		that.imagePreview = $('#ImagePreview');
 		that.btnAttachImg = $('#btnAttachImg');
 
 		// replace textbox with CKEditor

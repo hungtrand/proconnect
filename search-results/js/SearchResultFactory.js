@@ -3,11 +3,11 @@ var SearchResultFactory = (function(){
 		makeItem:function(options){
 			var baseClass = null;
 
-			if(options["type"] === "normal") {
+			//if(options["type"] === "normal") {
 				baseClass = RegularSRItem;
 				// baseClass = SRItemWithBtn;
 
-			}
+			//}
 
 			if(baseClass === null) {
 				return false;
@@ -36,13 +36,15 @@ var SearchResultFactory = (function(){
 	// 	   </div>
 	// 	</div>
 function RegularSRItem(options){
-	var baseItem = $(document.getElementById("SearchResultMediaItemTemplate").content.cloneNode(true));
+	/*var baseItem = $(document.getElementById("SearchResultMediaItemTemplate").content.cloneNode(true));
 
 	baseItem.find(".user-url-anchor").prop("href", options["user-url"]);
 	baseItem.find("img.media-object").prop("src", options["user-img-url"]);
 	baseItem.find(".media-heading").text(options["user-name"]);
 	baseItem.find(".media-subheading").text(options["user-origin"]);
-	baseItem.find(".media-description").text(options["snippet"]);
+	baseItem.find(".media-description").text(options["snippet"]);*/
+	var conn = new NewConnection(options, 'static');
+	var baseItem = conn.getView();
 
 	return baseItem;
 }

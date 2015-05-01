@@ -40,8 +40,8 @@ $mode = "exit";
 // testing  
 // $uid = 3;
 
-if (isset($_POST['FeedID'])) {
-	$F2UID = (int)$_POST['FeedID'];
+if (isset($_POST['F2UID'])) {
+	$F2UID = (int)$_POST['F2UID'];
 }
 if(isset($_POST['Action'])) {
 	$mode = $_POST['Action'];

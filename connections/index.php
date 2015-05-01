@@ -9,7 +9,11 @@ $UData = json_decode($_SESSION['__USERDATA__'], true);
 $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 
 $Title = "Feed - Proconnect";
-$ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
+if (isset($_COOKIE['__USER_PROFILE_IMAGE__'])) {
+    $ProfileImage = $_COOKIE['__USER_PROFILE_IMAGE__'];
+} else {
+    $ProfileImage = '/image/user_img.png';
+}
 $JobTitle = $UData['TITLE'];
 $ConnectionActive = 'active';
 
@@ -34,7 +38,7 @@ ob_start();
                     
                 </div>
 
-                <div id="FilterTools" class="row well">
+                <!-- <div id="FilterTools" class="row well">
                     <div class="col col-xs-4">
                         <div class="btn-group">
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
@@ -67,7 +71,7 @@ ob_start();
                             <span class="glyphicon glyphicon-search"></span>
                         </button>
                     </div>
-                </div>
+                </div> -->
 
                 <hr />
 
@@ -131,14 +135,16 @@ ob_start();
     </div>
 
     <script type="text/template" id="ConnectionTemplate">
-    <div class="UserConnection col-lg-4 col-md-4 col-sm-6 col-xs-12 item" style="height: 180px;">
+    <div class="UserConnection col-lg-4 col-md-4 col-sm-6 col-xs-12 item" style="height: 180px; margin: 20px 0;">
         <input type="hidden" class="UserID" name="UserID" value="" />
 
         <div class="panel panel-default">
             <div class="panel-heading">
                 <div class="media">
                     <div class="pull-left text-center">
-                        <img src="../image/proconnect/Tab_logo2_100x100.png" alt="people" style="object-fit: cover; padding: 0px;" width="150px" height="150px" class="media-object img-circle ProfileImage" />
+                        <a class="ProfileLink" href="#">
+                            <img src="../image/user_img.png" alt="people" style="object-fit: cover; padding: 0px;" width="100px" height="100px" class="media-object img-circle ProfileImage" />
+                        </a>
                     </div>
                     <div class="media-body">
                         <h4 class="media-heading margin-v-5"><a class="ConnectionName text-primary" href="#">Adrian D.</a>

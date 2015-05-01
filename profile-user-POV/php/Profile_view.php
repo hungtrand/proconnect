@@ -28,21 +28,24 @@ class Profile_View implements view {
 
 	public function loadPersonalInfo($User, $Account) {
 		$address = '';
-		if (trim($User->getAddress()))
-			$address = $User->getAddress();
-		if (trim($User->getCity())) {
+		// if (trim($User->getAddress()))
+			// $address = $User->getAddress();
+		if (trim($User->getCity()) && $User->getCity() !== 'Select City') {
 			if ($address) $address.=', ';
 			$address .= $User->getCity();
 		}
-		if (trim($User->getState())){
+		if (trim($User->getState()) && $User->getState() !== 'Select State'){
 			if ($address) $address.=', ';
 			$address .= $User->getState();
 		}
 		if (trim($User->getZip())){
-			if ($address) $address.=', ';
+			if ($address) $address.=' ';
 			$address .= $User->getZip();
 		}
 
+		$profileImage = "/image/user_img.png";;
+		if (strlen(trim($User->getProfileImage())) > 0)
+			$profileImage = "/users/".$User->getID()."/images/".$User->getProfileImage();
 		$data = [
 			"first-name"=>$User->getFirstName().'',
 			"last-name"=>$User->getLastName().'',
@@ -51,9 +54,16 @@ class Profile_View implements view {
 			"alt-email-address"=>$Account->getEmail_Alt().'',
 			"phone-number"=>$User->getPhone().'',
 			"phone-number-type"=>$User->getPhoneType().'',
-			"user-address"=>$address.'',
+			// "user-address"=>$address.'',
 			"summary"=>$User->getSummary().'',
-			'profile-image'=>'/users/'.$User->getID().'/images/'.$User->getProfileImage().''
+			'profile-image'=>$profileImage.'',
+			'state-name'=>$User->getState().'',
+			'address'=>$User->getAddress().'',
+			'city-name'=>$User->getCity().'',
+			'country-name'=>$User->getCountry().'',
+			'inlineRadioOptions-country'=>$User->getCountry().'',
+			'postal-code'=>$User->getZip().'',
+			'zipcode'=>$User->getZip().''
 		];
 
 		$this->FinalView['personalInfo'] = $data;

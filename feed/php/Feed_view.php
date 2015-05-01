@@ -15,6 +15,7 @@ class Feed_view implements view {
 	function __construct() {
 		$this->FinalView = [
 			'FeedID'=>'',
+			'F2UID'=>'',
 			'UserID'=>'',
 			'Creator'=>'',
 			'CreatorFirstName'=>'',
@@ -25,6 +26,7 @@ class Feed_view implements view {
 			'ImageURL'=>'',
 			'YouTubeID'=>'',	
 			'ContentMessage'=>'',
+			'InterestCategory'=>'',
 			'Liked'=>0, 
 			'nLiked'=>0
 		];
@@ -46,7 +48,7 @@ class Feed_view implements view {
 		$User = new User();
 		$CreatorImage = "/image/user_img.png";
 		if ($User->load($feed->getCreator())) {
-			if ($User->getProfileImage())
+			if (strlen(trim($User->getProfileImage())) > 0)
 				$CreatorImage = "/users/".$User->getID()."/images/".$User->getProfileImage();
 		}
 
@@ -64,7 +66,8 @@ class Feed_view implements view {
 		if ($f2u->getLiked()) $Liked = 1;
 
 		$out = [
-			'FeedID'=>$f2u->getID(),
+			'FeedID'=>$f2u->getFeedID(),
+			'F2UID'=>$f2u->getID(),
 			'Creator'=>$User->getName(),
 			'CreatorFirstName'=>$User->getFirstName(),
 			'Timestamp'=>$TimeAgo,
@@ -74,6 +77,7 @@ class Feed_view implements view {
 			'FeedLink'=>$FeedLink,	
 			'YouTubeID'=>$feed->getExternalURL(),
 			'ContentMessage'=>$feed->getContent(),
+			'InterestCategory'=>$feed->getInterestCategory(),
 			'Liked'=> $Liked,
 			'nLiked'=> $feed->getNLiked()
 		];

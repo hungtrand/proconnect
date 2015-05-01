@@ -59,10 +59,14 @@ $ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
 		        }
 		      </style>
 		    </div>
-			<div id="sr-feed-zone">
-			</div>
+			<ul id="sr-feed-zone" class="nav">
+			</ul>
 		</div>	
 	</div>
+<?php
+    include_once __DIR__."/../ComponentTemplates/ConnectionSuggestionTemplate.html";
+?>
+
 <?php
     $Content = ob_get_clean();
     include $_SERVER["DOCUMENT_ROOT"]."/master/index.php";
@@ -70,3 +74,4 @@ $ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
 	<script type="text/javascript" src="js/SearchResultGetter.js"></script>
 	<script type="text/javascript" src="js/SearchResultFactory.js"></script>
 	<script type="text/javascript" src="js/search-results.js"></script>
+	<script src="/connections/js/NewConnection.js"></script>

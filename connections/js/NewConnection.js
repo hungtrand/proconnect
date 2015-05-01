@@ -19,14 +19,22 @@ NewConnection.prototype = {
 
 		var conn = $(that.ConnTemplate);
 
-		conn.find('.UserID').val(data['UserID']);
+		var profileLink = '/profile-public-POV/?UserID=' + data['UserID'];
 		conn.find('.ConnectionName').text(data['Name']);
+		conn.find('.ConnectionName').attr('href', profileLink);
+		conn.find('.ProfileLink').attr('href', profileLink);
+		conn.find('.UserID').val(data['UserID']);
 		conn.find('.ConnectionFirstName').text(data['FirstName']);
 		conn.find('.ConnectionJob').text(data['JobTitle']);
 		conn.find('.ConnectionCompany').text(data['CompanyName']);
 		conn.find('.ConnectionLocation').text(data['Location']);
+		
 		if (data['ProfileImage']) {
 			conn.find('.ProfileImage').attr('src', data['ProfileImage']);
+		}
+
+		if (parseInt(data['Connected']) == 1) {
+			conn.find('.addNewConnection').attr('disabled', 'disabled').text('Already Connected');
 		}
 		
 		/*toggle suggestions hide/show events*/
@@ -57,7 +65,6 @@ NewConnection.prototype = {
 		that.btnDismiss = that.container.find('.dismissConnection');
 		that.btnDismiss.on('click', function(e) {
 			e.preventDefault();
-			console.log('asdfafd');
 			that.dismiss();
 		});
 
@@ -90,8 +97,25 @@ NewConnection.prototype = {
 		var conn = this.container;
 		switch(mode) {
 			case 'static':
+				if (that.mode == 'static') return false;
+				that.mode = mode;
+				conn.find('.ProfileImage').unbind('mouseover');
+				conn.find('.panel-heading, .panel, .panel-body').css({
+					'background-color':'#fff',
+				});
+				conn.find('.panel').css('border-width', '2px');
+				conn.animate(
+					{width:'100%', 'z-index':"0", 'float': 'none', 'margin-bottom': '10px'},
+					400, 
+					'linear', 
+					function() {
+					conn.find('.BlurHide').show();
+					conn.find('.FullHide').hide();
+				});
+				conn.toggleClass('box', true);
+				break;
 			case 'show':
-				if (that.mode == 'show' || that.mode == 'static') return false;
+				if (that.mode == 'show') return false;
 				that.mode = mode;
 				conn.find('.panel-heading, .panel, .panel-body').css({
 					'background-color':'#fff',
@@ -101,6 +125,7 @@ NewConnection.prototype = {
 					conn.find('.BlurHide').show();
 					conn.find('.FullHide').hide();
 				});
+				conn.toggleClass('box', true);
 			break;
 			default:
 				if (that.mode == 'hide') return false;
@@ -113,6 +138,7 @@ NewConnection.prototype = {
 					});
 					conn.find('.panel').css('border-width', "0px");
 				});
+				conn.toggleClass('box', false);
 		}
 	},
 
@@ -120,7 +146,7 @@ NewConnection.prototype = {
 		var that = this;
 		var data = {
 			'UserID': this.data['UserID']
-		}
+		};
 
 		$.ajax({
 			url: '/connections/php/NewConnection_controller.php',

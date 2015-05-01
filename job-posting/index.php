@@ -33,7 +33,7 @@ ob_start();
                         <input type="file" class="hidden" id="FeedImage" name="FeedImage" /><!-- temp image / not yet uploaded -->
                         <!-- uploaded image link only populate when upload then reset after sumission -->
                         <input type="text" class="hidden" id="ImageURL" name="ImageURL" value="" />
-                        <div id="AlertNewPost" class="alert alert-info" style="display: none;">
+                        <div id="AlertNewImg" class="alert alert-info" style="display: none;">
                             
                         </div>
                     </div>
@@ -235,6 +235,7 @@ ob_start();
 ?>
 
 <!-- Custom modal handler -->
+<script src="../lib/js/FileUpload.js"></script>
 <script src="../lib/ckeditor/ckeditor.js"></script>
 <script src="js/index.js"></script>
 <script src="js/NewPost.js"></script>

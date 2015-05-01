@@ -4,6 +4,7 @@
 	require_once __DIR__."/../../lib/php/sqlConnection.php";
 	require_once __DIR__."/../../lib/php/classes/User.php";
 	require_once __DIR__."/../../lib/php/classes/Profile.php";
+	require_once __DIR__."/../../lib/php/utils.php";
 
 	session_start();
 	if (!$UData = json_decode($_SESSION['__USERDATA__'], true)) {
@@ -61,12 +62,14 @@
 	}*/
 
 	// Upload to the product images folder
-    $success = move_uploaded_file($imgFile["tmp_name"],
-        UPLOAD_DIR . $FileName);
+	$success = compress_image($imgFile["tmp_name"], UPLOAD_DIR.$FileName, 75);
+    /*$success = move_uploaded_file($imgFile["tmp_name"],
+        UPLOAD_DIR . $FileName);*/
 
     if ($success) { 
+    	$filePath = '/users/'.$uid.'/images/'. $FileName;
     	$rs = '<div class="label label-success">File Successfully Uploaded.</div>';
-    	$rs .= '<input type="hidden" id="uploadedFile" value="/users/'.$uid.'/images/'. $FileName . '" />';
+    	$rs .= '<input type="hidden" id="uploadedFile" value="'. $filePath . '" />';
     	
     	// set proper permissions on the new file
     	chmod(UPLOAD_DIR . $FileName, 0775);
@@ -75,6 +78,8 @@
 
     	$profile = new Profile($User->getID());
 		$_SESSION['__USERDATA__'] = json_encode($profile->getData());
+		setcookie("__USER_FULL_NAME__", $profile->getName(), time()+60*60*24*365, '/');
+		setcookie("__USER_PROFILE_IMAGE__", $filePath, time()+60*60*24*365, '/');
     } else {
     	$rs = '<div class="label label-danger">Unable to save file.</div>';
     }

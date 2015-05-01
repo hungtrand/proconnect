@@ -1,4 +1,4 @@
-// NewPost - the object validate the new post form, upload image and submit form
+//script to fill in the industry drop box
 function IndustryDropBox() {
 	this.dropbox = $('.industry-dropbox');
 	this.data;

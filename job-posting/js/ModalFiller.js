@@ -1,3 +1,4 @@
+// script to fill the modal for preview
 function ModalFiller() {
 	this.container = $('#myModal');
 	this.jobTitle;

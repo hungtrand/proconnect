@@ -37,7 +37,7 @@
 		}
 		//OVERRIDE
 		public function getID(){
-			return $this->UserID;
+			return $this->NotificationViewID;
 		}
 		//OVERRIDE
 		public function getColumns(){
@@ -103,7 +103,6 @@
 
 			return true;
 		}
-
 
 	}
 
