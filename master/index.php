@@ -49,7 +49,7 @@ This variant is to be used when loading the separate styling modules -->
     <link href="/master/css/module-essentials.min.css" rel="stylesheet" />
     <link href="/master/css/module-layout.min.css" rel="stylesheet" />
     <link href="/master/css/module-sidebar.min.css" rel="stylesheet" />
-    <link href="/master/css/module-sidebar-skins.min.css" rel="stylesheet" />
+    <link href="/master/css/custom-pc-module-sidebar-skins.min.css" rel="stylesheet" />
     <link href="/master/css/module-navbar.min.css" rel="stylesheet" />
     <!-- <link href="css/module-media.min.css" rel="stylesheet" /> -->
     <link href="/master/css/module-timeline.min.css" rel="stylesheet" />
