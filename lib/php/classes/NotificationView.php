@@ -74,7 +74,10 @@
 		}
 
 		public function getRead(){
-			return $this->data['READ'];
+			if ((bool)trim($this->data['READ']))
+				return true;
+			else
+				return false;
 		}
 
 		public function getTimestamp(){

@@ -22,9 +22,17 @@ $(document).ready(function(){
 				$.each(data,function(key,value){
 					// make items
 					var newItem = MediaItemFactory.makeItem(specialID,value);
-					// console.log(newItem[0]);
+
 					//fill the items
-					$(parent).find("ul.dropdown-menu").children().last().after(newItem);
+					if(value['read'] == 1) {
+						$(parent).find("ul.dropdown-menu").children().last().after(newItem);
+					} else {
+						if ($(parent).find("li.new-item")[0] === undefined) { //handle reverse order
+							$(parent).find("div.iam-loading").after(newItem);
+						} else {
+							$(parent).find("li.new-item").last().after(newItem);
+						}
+					}
 				});
 			}
 
