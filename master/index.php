@@ -49,14 +49,14 @@ This variant is to be used when loading the separate styling modules -->
     <link href="/master/css/module-essentials.min.css" rel="stylesheet" />
     <link href="/master/css/module-layout.min.css" rel="stylesheet" />
     <link href="/master/css/module-sidebar.min.css" rel="stylesheet" />
-    <link href="/master/css/module-sidebar-skins.min.css" rel="stylesheet" />
-    <link href="/master/css/module-navbar.min.css" rel="stylesheet" />
+    <link href="/master/css/custom-pc-module-sidebar-skins.min.css" rel="stylesheet" />
+    <link href="/master/css/custom-pc-module-navbar.min.css" rel="stylesheet" />
     <!-- <link href="css/module-media.min.css" rel="stylesheet" /> -->
     <link href="/master/css/module-timeline.min.css" rel="stylesheet" />
     <link href="/master/css/module-cover.min.css" rel="stylesheet" />
-    <link href="/master/css/module-chat.min.css" rel="stylesheet" />
+    <!-- <link href="/master/css/module-chat.min.css" rel="stylesheet" /> -->
     <!-- <link href="css/module-charts.min.css" rel="stylesheet" /> -->
-    <link href="/master/css/module-maps.min.css" rel="stylesheet" />
+    <!-- <link href="/master/css/module-maps.min.css" rel="stylesheet" /> -->
     <!-- <link href="css/module-colors-alerts.min.css" rel="stylesheet" /> -->
     <!-- <link href="css/module-colors-background.min.css" rel="stylesheet" /> -->
     <!-- <link href="css/module-colors-buttons.min.css" rel="stylesheet" /> -->
@@ -64,12 +64,12 @@ This variant is to be used when loading the separate styling modules -->
     <!-- <link href="css/module-colors-progress-bars.min.css" rel="stylesheet" /> -->
     <!-- <link href="css/module-colors-text.min.css" rel="stylesheet" /> -->
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
-WARNING: Respond.js doesn't work if you view the page via file:// -->
+    WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!-- If you don't need support for Internet Explorer <= 8 you can safely remove these -->
     <!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
     <!-- Custom ProConnect CSS -->
     <link rel="stylesheet" type="text/css" href="/master/custom_proconnect/css/master.css">
     
@@ -91,7 +91,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                 <div class="pull-right">
                     <span class="label label-default time-ago">5 min</span>
                 </div>
-                <h5 class="media-heading">Default</h5>
+                <p class="media-heading">Default</p>
                 <p class="margin-none snippet-zone">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
             </div>
         </li>
@@ -171,7 +171,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                                 <span class="badge notification-number notification-red"></span>
                             </a>
 
-                            <ul class="dropdown-menu">
+                            <ul class="dropdown-menu nav-dropdown-menu">
                                 <div class="iam-loading" >
                                     <div>
                                       <img src="/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif">
@@ -192,7 +192,6 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                                         <p class="margin-none">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                                     </div>
                                 </li> -->
-                                
                             </ul>
                         </li>
                         <!-- // END messages -->
@@ -202,7 +201,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                                 <i class="fa fw icon-user-1"></i>
                                 <span class="badge notification-number notification-red"></span>
                             </a>
-                            <ul class="dropdown-menu">
+                            <ul class="dropdown-menu nav-dropdown-menu">
                                 <div class="iam-loading" >
                                     <div>
                                       <img src="/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif">
@@ -218,7 +217,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                                 <span class="badge notification-number notification-red"></span>
                             </a>
 
-                            <ul class="dropdown-menu">
+                            <ul class="dropdown-menu nav-dropdown-menu">
                                 <div class="iam-loading" >
                                     <div>
                                       <img src="/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif">
@@ -356,7 +355,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!-- Sidebar component with st-effect-1 (set on the toggle button within the navbar) -->
         <div class="sidebar left sidebar-size-2 sidebar-offset-0 sidebar-visible-desktop sidebar-visible-mobile sidebar-skin-white-blue" id="sidebar-menu" data-type="collapse">
             <div data-scrollable>
-                <ul class="sidebar-menu">
+                <ul class="sidebar-menu custom-pc-sidebar-menu">
                     <!-- <li><a href="../../index.html"><i class="icon-paint-brush"></i> <span>Themes</span></a></li> -->
                     <!-- <li class="category">Navigation</li> -->
                     <!-- <li class="hasSubmenu">
@@ -380,6 +379,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                     </li>
                     <li class="<?=$InterestActive?>"><a href="/interests/"><i class="fa fa-star"></i> <span>Interests</span></a>
                     </li>
+                    <!-- <li class="category">People You may know...</li> -->
                     <!-- <li class="hasSubmenu">
                         <a href="#components"><i class="icon-paint-brushes"></i> <span>UI Components</span></a>
                         <ul id="components">
@@ -413,13 +413,17 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                             <li><a href="#"><i class="fa fa-circle-o"></i> Regular Link</a>
                             </li>
                         </ul>
+
+
                     </li> -->
+
+
                 </ul>
                 
-                <div class="affix hidden-print hidden-xs hidden-sm" style="position: fixed; padding-left: 20px" role="complimentary" data-spy="affix" data-offset-top="400">
-                    <label class="text-info">People You may know...</label>
+                <h4 class="category">People You may know...</h4>
+                <div class="custom-pc-pymk affix hidden-print hidden-xs hidden-sm" role="complimentary" data-spy="affix" data-offset-top="400">
+                    <!-- <label class="text-info"></label> -->
                     <ul id="SuggListing" class="sidebar-feed nav">
-                        
                     </ul>
                 </div>
                 <!-- <h4 class="category">Filter</h4>
@@ -570,7 +574,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
     };
     </script>
     <!-- Separate Vendor Script Bundles -->
-    <script src="/master/js/vendor-core.min.js"></script>
+    <script src="/master/js/custom-pc-vendor-core.min.js"></script>
     <script src="/master/js/vendor-tables.min.js"></script>
     <script src="/master/js/vendor-forms.min.js"></script>
     <!-- <script src="js/vendor-media.min.js"></script> -->
@@ -580,7 +584,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!-- <script src="js/vendor-charts-easy-pie.min.js"></script> -->
     <!-- <script src="js/vendor-charts-morris.min.js"></script> -->
     <!-- <script src="js/vendor-charts-sparkline.min.js"></script> -->
-    <script src="/master/js/vendor-maps.min.js"></script>
+    <!-- <script src="/master/js/vendor-maps.min.js"></script> -->
     <!-- <script src="js/vendor-tree.min.js"></script> -->
     <!-- <script src="js/vendor-nestable.min.js"></script> -->
     <!-- <script src="js/vendor-angular.min.js"></script> -->

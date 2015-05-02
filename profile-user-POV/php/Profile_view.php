@@ -118,7 +118,15 @@ class Profile_View implements view {
 		$this->FinalView['projects'] = $data;
 	}
 
-	public function loadSkills($arrSkills) {
+	public function loadSkills($skills) {
+
+		$arrSkills = array_fill(0, count($skills), '0'); //initialize an fixed size array
+
+		foreach($skills as $skill) {	//sort array by position order
+			$pos = intval( trim($skill->getOrderPosition()) );
+			$arrSkills[$pos] = $skill;
+		}
+
 		if (!isset($arrSkills) || count($arrSkills) < 1) return false;
 		$data = [];
 

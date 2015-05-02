@@ -37,7 +37,7 @@ class ProfileManager extends RecordSet {
 		return true;
 	}
 
-	public function loadBySearch($keywords, $page, $numRows, $orderby="NAME") {
+	public function loadBySearch($keywords, $page, $numRows, $orderby="NAME", $filters=null) {
 		if (!is_integer($page) || !is_integer($numRows) || !is_array($keywords)) {
 			$this->err = "Parameters are of wrong types";
 			return false;
@@ -51,6 +51,7 @@ class ProfileManager extends RecordSet {
 
 		$cond.="(";
 
+			
 		for($i=0; $i<count($keywords);$i++) {
 			$cleanKW = str_replace("'", "''", $keywords[$i]);
 			$cleanKW = str_replace([",", ";"], "", $cleanKW);
@@ -60,6 +61,27 @@ class ProfileManager extends RecordSet {
 			$cond .= $delimiter."EMAIL LIKE '%$cleanKW%' OR EMAIL_ALT LIKE '%$cleanKW%' OR NAME LIKE '%$cleanKW%' ";
 
 			$delimiter = 'OR ';
+		}
+
+		if (isset($filters) && is_array($filters)) {
+			foreach ($filters as $field => $filterKeys) {
+				if (is_array($filterKeys)) {
+					$delimiter = 'AND ';
+					$cond .= '(';
+					for($i=0; $i<count($filterKeys); $i++) {
+						$cleanKW = str_replace("'", "''", $filterKeys[$i]);
+						$cleanKW = str_replace([",", ";"], "", $cleanKW);
+						$cleanKW = trim($cleanKW);
+						if (strlen($cleanKW) < 1) continue;
+
+						$cond .= $delimiter.$field." LIKE '%$cleanKW%' ";
+
+						$delimiter = 'OR ';
+					}
+
+					$cond .= ") ";
+				}
+			}
 		}
 		//echo $cond;
 

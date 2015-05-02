@@ -30,6 +30,7 @@ class Messages_view implements view {
 			if ($message->getDateCreated())
 				$timestamp = timetostr($message->getDateCreated());
 
+			// $read = ($mv->getRead() == 0) 0 : 1;
 			$out = [
 				'messageID'=>$mv->getID(),
 				'sender-ID'=>$sender->getID(),
@@ -39,7 +40,8 @@ class Messages_view implements view {
 				'message-subject'=>$message->getSubject(),
 				'message-time'=>$timestamp,	
 				'sender-message'=>$message->getBody(),
-				'read'=>$mv->getRead()
+				'read'=>$read
+				// 'read'=>$mv->getRead()
 			];
 
 			$this->FinalView['message'.$mv->getID()] = $out;
