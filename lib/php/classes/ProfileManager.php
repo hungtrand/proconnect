@@ -67,7 +67,7 @@ class ProfileManager extends RecordSet {
 			foreach ($filters as $field => $filterKeys) {
 				if (is_array($filterKeys)) {
 					$delimiter = 'AND ';
-					$cond .= '('
+					$cond .= '(';
 					for($i=0; $i<count($filterKeys); $i++) {
 						$cleanKW = str_replace("'", "''", $filterKeys[$i]);
 						$cleanKW = str_replace([",", ";"], "", $cleanKW);
