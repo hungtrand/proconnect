@@ -48,7 +48,7 @@ class Comment_view implements view {
 			'CreatorImage'=>$CreatorImage,
 			'CreatorLink'=>'/profile-public-POV/?UserID='.$User->getID(),
 			'CommentMessage'=>$comment->getComment(),
-			'Timestamp'=>$comment->getTimestamp()
+			'Timestamp'=>timetostr($comment->getTimestamp())
 		];
 
 		$this->FinalView = $out;

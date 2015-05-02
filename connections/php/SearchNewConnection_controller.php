@@ -54,7 +54,7 @@ try {
 //echo var_dump($keywords).var_dump($page).var_dump($rowsaPage);
 
 	$view = new UserCard_view();
-	$view->load($profiles);
+	$view->load($uid, $profiles);
 	$data = $view->getView();
 
 	//echo "\n".json_encode($am->getData())."\n";

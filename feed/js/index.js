@@ -5,7 +5,7 @@ $(document).ready(function() {
 
 	var newPost = new NewPost();
 	newPost.onSubmit(function(jsonData) {
-		feedList.appendView(jsonData)
+		feedList.appendView(jsonData);
 	});
 
 	// initite scroll

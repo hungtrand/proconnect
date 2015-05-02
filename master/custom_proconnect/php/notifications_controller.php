@@ -5,6 +5,8 @@ require_once $_SERVER['DOCUMENT_ROOT']."/lib/php/sqlConnection.php";
 require_once $_SERVER['DOCUMENT_ROOT']."/lib/php/classes/User.php";
 require_once $_SERVER['DOCUMENT_ROOT']."/lib/php/classes/Message.php";
 require_once $_SERVER['DOCUMENT_ROOT']."/lib/php/classes/Notification.php";
+require_once $_SERVER['DOCUMENT_ROOT']."/lib/php/classes/NotificationView.php";
+require_once $_SERVER['DOCUMENT_ROOT']."/lib/php/classes/MessageView.php";
 require_once $_SERVER['DOCUMENT_ROOT']."/lib/php/classes/MessageViewManager.php";
 require_once $_SERVER['DOCUMENT_ROOT']."/lib/php/classes/ConnectionManager.php";
 require_once $_SERVER['DOCUMENT_ROOT']."/lib/php/classes/NotificationViewManager.php";
@@ -35,7 +37,26 @@ if (!$User = new User($uid)) {
 	die();
 }
 
-try {
+try {	
+	/*
+	* The following snippet is to handle read message flag
+	*/
+	if(isset($_POST['data'])) {
+
+		switch($_POST['data']['itemName']) {
+			case 'MessageItemID':
+				$messageObj = new MessageView( (int)$_POST['data']['id'] );
+				$messageObj->setRead(true);
+				$messageObj->update();
+				break;
+			case 'NotificationItemID':
+				$notiObj = new NotificationView( (int)$_POST['data']['id'] );
+				$notiObj->setRead(true);
+				$notiObj->update();
+				break;
+		}
+	} //end of snippet
+
 	$counts = array("messages" => 0, "notification" => 0, "new-connection" => 0);
 	
 	$count = 0;

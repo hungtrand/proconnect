@@ -4,6 +4,7 @@
 	require_once __DIR__."/../../lib/php/sqlConnection.php";
 	require_once __DIR__."/../../lib/php/classes/User.php";
 	require_once __DIR__."/../../lib/php/classes/Profile.php";
+	require_once __DIR__."/../../lib/php/utils.php";
 
 	session_start();
 	if (!$UData = json_decode($_SESSION['__USERDATA__'], true)) {
@@ -61,8 +62,9 @@
 	}*/
 
 	// Upload to the product images folder
-    $success = move_uploaded_file($imgFile["tmp_name"],
-        UPLOAD_DIR . $FileName);
+	$success = compress_image($imgFile["tmp_name"], UPLOAD_DIR.$FileName, 75);
+    /*$success = move_uploaded_file($imgFile["tmp_name"],
+        UPLOAD_DIR . $FileName);*/
 
     if ($success) { 
     	$filePath = '/users/'.$uid.'/images/'. $FileName;

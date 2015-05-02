@@ -26,19 +26,19 @@ ob_start();
             </div> -->
             <input type="text" class="form-control input-box" id="company-name">
 
-            <!-- <div id="imgupload">
+            <div id="imgupload">
                 <div class="form-group">
                     <a id="btnAttachImg" class="btn"><img id="ImagePreview" src="../image/companyimg" style="height: 150px; width: 200px;"></a>
                     <div class="hiddenInputs">
                         <input type="file" class="hidden" id="FeedImage" name="FeedImage" /><!-- temp image / not yet uploaded -->
-                        <!-- uploaded image link only populate when upload then reset after sumission
+                        <!-- uploaded image link only populate when upload then reset after sumission -->
                         <input type="text" class="hidden" id="ImageURL" name="ImageURL" value="" />
                         <div id="AlertNewImg" class="alert alert-info" style="display: none;">
                             
                         </div>
                     </div>
                 </div>
-            </div> -->
+            </div>
 
             <br />
             <h4><STRONG>Company Description</STRONG></h4>
@@ -160,9 +160,9 @@ ob_start();
                                 <span><p id="modalContactInfo"></p></span>
                                 <br />
 
-                                <!-- <div id="modalImgUpload">
+                                <div id="modalImgUpload">
                                     <img id="modalImagePreview" src="../image/companyimg" style="height: 150px; width: 200px;"></a>
-                                </div> -->
+                                </div>
                             </div>
                             <div>
                                 <span><p><STRONG>Job Description</STRONG></p></span>
@@ -235,6 +235,7 @@ ob_start();
 ?>
 
 <!-- Custom modal handler -->
+<script src="../lib/js/FileUpload.js"></script>
 <script src="../lib/ckeditor/ckeditor.js"></script>
 <script src="js/index.js"></script>
 <script src="js/NewPost.js"></script>

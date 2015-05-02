@@ -139,5 +139,39 @@ abstract class ViewRecordSet {
 			return false;
 		}
 	}
+
+	protected function fetchColumn($colIndex = 0) {
+		$sqlLimit = '';
+		$cols = $this->getColumns();
+
+		if (isset($this->Limit) && is_int($this->Limit)) 
+			$sqlLimit = " LIMIT ". (string)$this->Limit;
+
+		$sql = 'SELECT ' . $this->TableName.'.'.implode(', '.$this->TableName.'.', $cols);
+		$sql .=' FROM '.$this->TableName.$sqlLimit;
+
+		if ($stmt = $this->db->prepare($sql)) {
+
+			try {
+				$stmt->bindParam(1, $ID);
+
+				$stmt->execute();
+				
+				if ( $rs = $stmt->fetchAll(PDO::FETCH_COLUMN, $colIndex) ){
+					return $rs;
+				} else {
+					$this->err = "No data found.";
+					return false;
+				}
+				
+				
+			} catch (Exception $e) {
+				$this->err = $e->getMessage();
+				return false;
+			}
+		} else {
+			return false;
+		}
+	}
 }
 ?>

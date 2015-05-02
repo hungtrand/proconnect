@@ -25,12 +25,13 @@ var MessageGetter = (function() {
 			}).done(function(data){
 					try {
 						var messages = JSON.parse(data);
-						
+						// console.log(messages);
 						if(displayCallback !== undefined){
 							displayCallback(messages);
 						}
 					} catch (e) {
 						console.log(e);
+						console.log(data);
 						displayCallback(data);
 					}
 			});
