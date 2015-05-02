@@ -64,22 +64,23 @@ class ProfileManager extends RecordSet {
 		}
 
 		if (isset($filters) && is_array($filters)) {
-			if (array_key_exists('education', $filters))
-				$filterKey = $filters['education'];
-				$delimiter = 'AND ';
-				$cond .= '('
-				for($i=0; $i<count($filterKey); $i++) {
-					$cleanKW = str_replace("'", "''", $filterKey[$i]);
-					$cleanKW = str_replace([",", ";"], "", $cleanKW);
-					$cleanKW = trim($cleanKW);
-					if (strlen($cleanKW) < 1) continue;
+			foreach ($filters as $field => $filterKeys) {
+				if (is_array($filterKeys)) {
+					$delimiter = 'AND ';
+					$cond .= '('
+					for($i=0; $i<count($filterKeys); $i++) {
+						$cleanKW = str_replace("'", "''", $filterKeys[$i]);
+						$cleanKW = str_replace([",", ";"], "", $cleanKW);
+						$cleanKW = trim($cleanKW);
+						if (strlen($cleanKW) < 1) continue;
 
-					$cond .= $delimiter."AllStudies LIKE '%$cleanKW%' ";
+						$cond .= $delimiter.$field." LIKE '%$cleanKW%' ";
 
-					$delimiter = 'OR ';
+						$delimiter = 'OR ';
+					}
+
+					$cond .= ") ";
 				}
-
-				$cond .= ") "
 			}
 		}
 		//echo $cond;
