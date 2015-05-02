@@ -53,6 +53,31 @@
 			return true;
 		}
 
+		public function loadbysearch($keyword, $page, $numRows, $orderby="DATECREATED"){
+			if(!is_integer($page) || !is_integer($numRows) || !is_array($orderby)){
+				$this->err = "Parameter of the wrong type!";
+				return false;
+			}
+
+			$offset = $page * $numRows - $numRows;
+			$params = [];
+			$delimiter = "";
+
+			$cond = "";
+			for ($i=0; $i<count($keyword); $i++){
+				$cleanKW = str_replace("'", "''", $keyword[$i]);
+				$cleanKW = str_replace(",", ";", $cleanKW);
+
+
+
+				$delimiter = "AND";
+			}
+			
+
+
+
+
+		}
 
 
 		public  function getData(){
@@ -74,11 +99,14 @@
 		}
 	}
 
+	
+/*
 //Test
 $u = new User(10);
 $edu = new Job();
 //$edu->load(6);
 $edu->setCompanyName('Proconnect');
+$edu->setPreferenceIndustry('HCG');
 $edu->setUserID(10);
 //$edu->setFieldOfStudy('Computer Science');
 //$edu->setUserID($u->getID());
@@ -92,5 +120,5 @@ $em = new Jobmanager($u);
 echo "\n";
 echo json_encode($em->getData());
 echo $em->err;
-echo"\n";
+echo"\n";*/
 ?>
