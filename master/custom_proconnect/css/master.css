@@ -61,6 +61,19 @@
 	position: relative;
 }
 */
+/*.custom-pc-sidebar-menu span{ 
+	color: #4A4A4A;
+
+}
+
+.custom-pc-sidebar-menu i {
+	color: #ACACAC !important;
+}*/
+
+.custom-pc-pymk {
+	position: fixed;
+	padding-left: 20px
+}
 
 .iam-loading {
     position: relative; 

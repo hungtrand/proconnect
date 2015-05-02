@@ -54,9 +54,9 @@ This variant is to be used when loading the separate styling modules -->
     <!-- <link href="css/module-media.min.css" rel="stylesheet" /> -->
     <link href="/master/css/module-timeline.min.css" rel="stylesheet" />
     <link href="/master/css/module-cover.min.css" rel="stylesheet" />
-    <link href="/master/css/module-chat.min.css" rel="stylesheet" />
+    <!-- <link href="/master/css/module-chat.min.css" rel="stylesheet" /> -->
     <!-- <link href="css/module-charts.min.css" rel="stylesheet" /> -->
-    <link href="/master/css/module-maps.min.css" rel="stylesheet" />
+    <!-- <link href="/master/css/module-maps.min.css" rel="stylesheet" /> -->
     <!-- <link href="css/module-colors-alerts.min.css" rel="stylesheet" /> -->
     <!-- <link href="css/module-colors-background.min.css" rel="stylesheet" /> -->
     <!-- <link href="css/module-colors-buttons.min.css" rel="stylesheet" /> -->
@@ -355,7 +355,7 @@ This variant is to be used when loading the separate styling modules -->
         <!-- Sidebar component with st-effect-1 (set on the toggle button within the navbar) -->
         <div class="sidebar left sidebar-size-2 sidebar-offset-0 sidebar-visible-desktop sidebar-visible-mobile sidebar-skin-white-blue" id="sidebar-menu" data-type="collapse">
             <div data-scrollable>
-                <ul class="sidebar-menu">
+                <ul class="sidebar-menu custom-pc-sidebar-menu">
                     <!-- <li><a href="../../index.html"><i class="icon-paint-brush"></i> <span>Themes</span></a></li> -->
                     <!-- <li class="category">Navigation</li> -->
                     <!-- <li class="hasSubmenu">
@@ -415,7 +415,7 @@ This variant is to be used when loading the separate styling modules -->
                     </li> -->
                 </ul>
                 
-                <div class="affix hidden-print hidden-xs hidden-sm" style="position: fixed; padding-left: 20px" role="complimentary" data-spy="affix" data-offset-top="400">
+                <div class="custom-pc-pymk affix hidden-print hidden-xs hidden-sm" role="complimentary" data-spy="affix" data-offset-top="400">
                     <label class="text-info">People You may know...</label>
                     <ul id="SuggListing" class="sidebar-feed nav">
                         
@@ -579,7 +579,7 @@ This variant is to be used when loading the separate styling modules -->
     <!-- <script src="js/vendor-charts-easy-pie.min.js"></script> -->
     <!-- <script src="js/vendor-charts-morris.min.js"></script> -->
     <!-- <script src="js/vendor-charts-sparkline.min.js"></script> -->
-    <script src="/master/js/vendor-maps.min.js"></script>
+    <!-- <script src="/master/js/vendor-maps.min.js"></script> -->
     <!-- <script src="js/vendor-tree.min.js"></script> -->
     <!-- <script src="js/vendor-nestable.min.js"></script> -->
     <!-- <script src="js/vendor-angular.min.js"></script> -->
