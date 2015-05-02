@@ -30,7 +30,7 @@ class NotificationInbox_view implements view {
 				$timestamp = timetostr($notif->getTimestamp());
 
 			//convert bit to integer
-			if ( (bool)$nv->getRead() ) {
+			if ( (bool)trim($nv->getRead()) ) {
 				$read = 1;
 			} else {
 				$read = 0;
