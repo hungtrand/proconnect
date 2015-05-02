@@ -62,6 +62,11 @@
 }
 */
 
+.custom-pc-pymk {
+	position: fixed;
+	padding-left: 20px
+}
+
 .iam-loading {
     position: relative; 
     width: 100%;

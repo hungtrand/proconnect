@@ -60,7 +60,7 @@ function MediaItem(options) {
 	}).attr("src",imgURL);
 
 	this.updateServer = function(obj,doneCB) {
-		console.log(obj);
+		// console.log(obj);
 		$.ajax({
 			url: "/master/custom_proconnect/php/notifications_controller.php",
 			data: obj,
