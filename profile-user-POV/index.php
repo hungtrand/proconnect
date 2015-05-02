@@ -70,7 +70,7 @@ if (isset($_COOKIE['__USER_PROFILE_IMAGE__'])) {
                       <!-- Split button -->
                           <!-- <div class="btn-group"> -->
                             <form action="/profile-public-POV/" method="GET">
-                              <button  type="submit" class="btn btn-info" value=<?=$UData['USERID']?> name="userID">
+                              <button  type="submit" class="btn btn-info" value=<?=$UData['USERID']?> name="UserID">
                                   View Profile As Public
                               </button>
                             </form>
