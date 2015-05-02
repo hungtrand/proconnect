@@ -38,7 +38,6 @@ if (!$User = new User($uid)) {
 }
 
 try {	
-
 	/*
 	* The following snippet is to handle read message flag
 	*/

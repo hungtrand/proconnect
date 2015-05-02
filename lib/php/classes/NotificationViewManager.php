@@ -57,7 +57,6 @@
 			if (!$this->data = $this->fetchCustom($cond, $params)) return false;
 
 			return true;
-
 		}
 
 		public function getData(){

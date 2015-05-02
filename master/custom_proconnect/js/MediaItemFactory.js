@@ -28,6 +28,10 @@ var MediaItemFactory = (function(){
 })();
 
 function MediaItem(options) {
+	function unHighlight(item){
+		item.find('.media-heading').css('font-weight','normal'); //unbold text
+	}
+
 	// console.log(options)
 	// var baseItem = document.getElementById("MediaItem").content.cloneNode(true); //stamp out base item
 	var baseItem = $($("#MediaItem").html()); 
@@ -36,14 +40,13 @@ function MediaItem(options) {
 	var date = options["date"] || ""; 
 	
 	baseItem.find(".time-ago").text(date);			//adding base item
-	// console.log(options["read"]);
-		baseItem.addClass("new-item");	//add new item class
 
 	//START HERE
-	if( options["read"] ) {			//adding new-item
+	if( options["read"] == 0 ) {			//adding new-item
 		// console.log( options['read'] === "");
-
 		baseItem.addClass("new-item");	//add new item class
+	} else {
+		unHighlight(baseItem);
 	}
 
 	// if( options['read'] === '') {					
@@ -56,16 +59,18 @@ function MediaItem(options) {
 		window.location.href = userURL;				//send user to another user public POV
 	}).attr("src",imgURL);
 
-	this.updateServer = function(obj) {
+	this.updateServer = function(obj,doneCB) {
+		console.log(obj);
 		$.ajax({
 			url: "/master/custom_proconnect/php/notifications_controller.php",
 			data: obj,
 			method: 'POST',
 			success: function(newNotification){
 				try {
-					// console.log(newNotification);
 					var data = JSON.parse(newNotification);
 					NotificationHandler.displayNotifications(data);
+					unHighlight(baseItem);
+					baseItem.removeClass('new-item');					  //remove new-item class
 				} catch (e) {
 					console.log(e);
 				}
@@ -73,9 +78,8 @@ function MediaItem(options) {
 			error: function(qXHR, textStatus,errorThrown ) {
 				console.log(textStatus + ": " + errorThrown);
 			}
-		});
+		}).done(doneCB);
 	}
-
 	this.template = baseItem;
 }
 
@@ -110,8 +114,10 @@ function MessageItem(data){
 			data: {
 				'itemName':'MessageItemID',
 				'id':$(this).attr('NOMONKEYID')}
-		}
-		oItem.updateServer(obj);
+		};
+		oItem.updateServer(obj,function(d){
+			console.log('d');
+		});
 		window.location.href = "/message/"; //manually redirect user
 	});
 
@@ -152,7 +158,7 @@ function NotificationItem(data) {
 	baseItem.on("click",function(e){
 		e.preventDefault();
 		e.stopPropagation();
-		
+
 		var obj = {
 				data: {
 					'itemName':'NotificationItemID',

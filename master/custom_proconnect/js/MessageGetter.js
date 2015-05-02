@@ -31,6 +31,7 @@ var MessageGetter = (function() {
 						}
 					} catch (e) {
 						console.log(e);
+						console.log(data);
 						displayCallback(data);
 					}
 			});

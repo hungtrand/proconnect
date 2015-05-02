@@ -64,12 +64,12 @@ This variant is to be used when loading the separate styling modules -->
     <!-- <link href="css/module-colors-progress-bars.min.css" rel="stylesheet" /> -->
     <!-- <link href="css/module-colors-text.min.css" rel="stylesheet" /> -->
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
-WARNING: Respond.js doesn't work if you view the page via file:// -->
+    WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!-- If you don't need support for Internet Explorer <= 8 you can safely remove these -->
     <!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
     <!-- Custom ProConnect CSS -->
     <link rel="stylesheet" type="text/css" href="/master/custom_proconnect/css/master.css">
     
@@ -91,7 +91,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                 <div class="pull-right">
                     <span class="label label-default time-ago">5 min</span>
                 </div>
-                <h5 class="media-heading">Default</h5>
+                <p class="media-heading">Default</p>
                 <p class="margin-none snippet-zone">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
             </div>
         </li>
@@ -171,7 +171,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                                 <span class="badge notification-number notification-red"></span>
                             </a>
 
-                            <ul class="dropdown-menu">
+                            <ul class="dropdown-menu nav-dropdown-menu">
                                 <div class="iam-loading" >
                                     <div>
                                       <img src="/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif">
@@ -192,7 +192,6 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                                         <p class="margin-none">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                                     </div>
                                 </li> -->
-                                
                             </ul>
                         </li>
                         <!-- // END messages -->
@@ -202,7 +201,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                                 <i class="fa fw icon-user-1"></i>
                                 <span class="badge notification-number notification-red"></span>
                             </a>
-                            <ul class="dropdown-menu">
+                            <ul class="dropdown-menu nav-dropdown-menu">
                                 <div class="iam-loading" >
                                     <div>
                                       <img src="/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif">
@@ -218,7 +217,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                                 <span class="badge notification-number notification-red"></span>
                             </a>
 
-                            <ul class="dropdown-menu">
+                            <ul class="dropdown-menu nav-dropdown-menu">
                                 <div class="iam-loading" >
                                     <div>
                                       <img src="/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif">

@@ -29,6 +29,12 @@ class NotificationInbox_view implements view {
 			if ($notif->getTimestamp())
 				$timestamp = timetostr($notif->getTimestamp());
 
+			//convert bit to integer
+			if ( (bool)$nv->getRead() ) {
+				$read = 1;
+			} else {
+				$read = 0;
+			}
 			$out = [
 				'NotificationViewID'=>$nv->getID(),
 				'picture'=>'/users/'.$originator->getID().'/images/'.$originator->getProfileImage(),
@@ -36,7 +42,8 @@ class NotificationInbox_view implements view {
 				'href'=>'/profile-public-POV/?UserID='.$originator->getID(),
 				'timestamp'=>$timestamp,
 				'notificationType'=>$notif->getType(),
-				'read'=>$nv->getRead()
+				'read'=>$read
+				// 'read'=>$nv->getRead()
 			];
 
 			array_push($this->FinalView, $out);
