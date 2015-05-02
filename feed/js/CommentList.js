@@ -37,7 +37,7 @@ CommentList.prototype = {
 			data['page'] = that.page;
 
 		$.ajax({
-			url: 'php/CommentList_controller.php',
+			url: '/feed/php/CommentList_controller.php',
 			type: 'POST',
 			data: data
 		}).done(function(json) {
@@ -75,7 +75,7 @@ CommentList.prototype = {
 			}
 
 			if (that.container.find('.newPostAlert').length < 1) {
-				var viewNewLink = $('<div class="alert alert-success newCommentAlert text-center"><a href="#">' + json.length + ' new comments. Click to view.</a>');
+				var viewNewLink = $('<div class="alert alert-success newCommentAlert text-center" style="margin-top:20px;"><a href="#">' + json.length + ' new comments. Click to view.</a>');
 				viewNewLink.on('click', function(e) {
 					e.preventDefault();
 					that.appendView(that.unreadCache);
@@ -125,7 +125,7 @@ CommentList.prototype = {
 		for (var i = json.length, l=-1; i > l; i--) {
 			var comment = new Comment(json[i]);
 
-			var ele = Comment.getView();
+			var ele = comment.getView();
 
 			if (older) {
 				that.data.unshift(json[i]); // save the data to front of array 

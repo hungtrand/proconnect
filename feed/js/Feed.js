@@ -7,7 +7,7 @@ function Feed(data, template) {
 		"ContentMessage": ''
 	}*/
 	this.data = {'FeedID': 0};
-	this.dataURL = "php/feed_controller.php";
+	this.dataURL = "/feed/php/feed_controller.php";
 	this.template = template ? template : $('#FeedTemplate').html();
 	this.btnLike;
 	this.btnComment;
@@ -16,6 +16,7 @@ function Feed(data, template) {
 	this.txtNewComment;
 	this.CommentSection;
 	this.CommentList;
+	this.jsCommentList;
 
 	this.init(data);
 }
@@ -39,15 +40,17 @@ Feed.prototype = {
 		var heading = 'Shared: ';
 		feed.find('.FeedID').val(that.data['FeedID']);
 		feed.find('.F2UID').val(that.data['F2UID']);
+		feed.find('.AuthorProfileLink').attr('href', that.data['FeedLink']);
 		feed.find('.AuthorLink').text(that.data['Creator']).attr('href', that.data['FeedLink']);
 		feed.find('.NewComment .CommentAuthor').text(that.data['CreatorFirstName']).attr('href', that.data['FeedLink']);
 		feed.find('.creatorImage').attr('src', that.data['CreatorImage']);
-		feed.find('.NewComment .CommentProfileImage').attr('src', that.data['CreatorImage']);
+		//feed.find('.NewComment .CommentProfileImage').attr('src', that.data['CreatorImage']);
 		feed.find('.contentHeading').text(heading);
 		feed.find('.contentImageLink').attr('href', that.data['ImageURL'])
 			.attr('data-title', that.data['ContentMessage']);
 		feed.find('.contentImage').attr('src', that.data['ImageURL']);
 		feed.find('.contentMessage').html(that.data['ContentMessage']);
+		feed.find('.InterestCategory').text(that.data['InterestCategory']);
 		feed.find('.timestamp').html(that.data['Timestamp']);
 
 		if (that.data['YouTubeID']) {
@@ -103,8 +106,11 @@ Feed.prototype = {
 		that.btnComment.on('click', function(e) {
 			e.preventDefault();
 			that.CommentSection.slideDown('400', function() {
-				var CList = new CommentList(that.CommentList, that.data['FeedID']); 
-				CList.load();
+				that.txtNewComment.focus();
+				if (!that.jsCommentList) {
+					that.jsCommentList = new CommentList(that.CommentList, that.data['FeedID']); 
+					that.jsCommentList.load();
+				}
 			});
 		});
 
@@ -115,6 +121,8 @@ Feed.prototype = {
 
 		that.btnSubmitComment.on('click', function(e) {
 			e.preventDefault();
+			var btn = $(this);
+			btn.text('Submitting...').toggleClass('btn-default btn-info');
 			var data = {
 				'CommentID': 0,
 				'FeedID': that.data['FeedID'],
@@ -123,9 +131,27 @@ Feed.prototype = {
 
 			var url = 'php/comment_controller.php';
 			that.submit(data, url, function(json) {
-				console.log(json);
+				// console.log(json);
+				if (typeof json != 'string') {
+					btn.text('Sent').toggleClass('btn-info btn-success').attr('disabled', 'disabled');
+					that.txtNewComment.val('');
+					that.jsCommentList.appendView([json]); // note json is encapsulated in an array here
+					setTimeout(function() {
+						btn.text('Comment').toggleClass('btn-default btn-success');
+					}, 2000);
+				}
 			});
 		});
+
+		if (that.container.hasClass('feed')) {
+			that.container.hover(function() {
+				$('.feed').not($(this)).css('opacity', 0.5);
+				$(this).toggleClass('hover', true);
+			}, function() {
+				$(this).toggleClass('hover', false);
+				$('.feed').css('opacity', 1);
+			});
+		}
 	},
 
 	setImageURL: function(strVal) {
@@ -146,6 +172,11 @@ Feed.prototype = {
 	setContentMessage: function(strVal) {
 		if (!strVal) return false;
 		this.data['ContentMessage'] = strVal;
+	},
+
+	setInterestCategory: function(strVal) {
+		if (!strVal) return false;
+		this.data['InterestCategory'] = strVal;
 	},
 
 	update: function(callback) {

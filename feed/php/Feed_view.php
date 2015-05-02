@@ -26,6 +26,7 @@ class Feed_view implements view {
 			'ImageURL'=>'',
 			'YouTubeID'=>'',	
 			'ContentMessage'=>'',
+			'InterestCategory'=>'',
 			'Liked'=>0, 
 			'nLiked'=>0
 		];
@@ -76,6 +77,7 @@ class Feed_view implements view {
 			'FeedLink'=>$FeedLink,	
 			'YouTubeID'=>$feed->getExternalURL(),
 			'ContentMessage'=>$feed->getContent(),
+			'InterestCategory'=>$feed->getInterestCategory(),
 			'Liked'=> $Liked,
 			'nLiked'=> $feed->getNLiked()
 		];

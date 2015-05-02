@@ -7,7 +7,7 @@ function Comment(data, template) {
 		"CommentTimestamp": ''
 	}*/
 	this.data = {'CommentID': 0};
-	this.dataURL = "php/comment_controller.php";
+	this.dataURL = "/feed/php/comment_controller.php";
 	this.template = template ? template : $('#CommentTemplate').html();
 
 	this.init(data);
@@ -32,7 +32,7 @@ Comment.prototype = {
 		var heading = 'Shared: ';
 		comment.find('.CommentID').val(that.data['CommentID']);
 		comment.find('.CreatorName').text(that.data['CreatorFirstName']).attr('href', that.data['CreatorLink']);
-		comment.find('.CommentProfileImage').attr('src', that.data['CreatorImage']);
+		comment.find('.CreatorImage').attr('src', that.data['CreatorImage']);
 		comment.find('.CommentMessage').html(that.data['CommentMessage']);
 		comment.find('.CommentTimestamp').html(that.data['Timestamp']);
 
@@ -53,7 +53,7 @@ Comment.prototype = {
 	update: function(callback) {
 		var that = this;
 		var data = that.data;
-		that.submit(data, 'php/comment_controller.php', callback);
+		that.submit(data, '/feed/php/comment_controller.php', callback);
 	},
 
 	submit: function(data, url, callback) {

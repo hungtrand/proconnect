@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 	var uData = queryString();
-	uData["range"] = "1-10"; // <----- could be used for pagination later
+	uData["page"] = "1"; // <----- could be used for pagination later
 	// console.log(uData);
 	SearchResultGetter.get({
 		data: uData,

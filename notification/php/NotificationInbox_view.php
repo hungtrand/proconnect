@@ -35,7 +35,8 @@ class NotificationInbox_view implements view {
 				'message'=>$notif->getMessage(),
 				'href'=>'/profile-public-POV/?UserID='.$originator->getID(),
 				'timestamp'=>$timestamp,
-				'notificationType'=>$notif->getType()
+				'notificationType'=>$notif->getType(),
+				'read'=>$nv->getRead()
 			];
 
 			array_push($this->FinalView, $out);
