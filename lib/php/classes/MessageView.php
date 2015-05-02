@@ -74,19 +74,31 @@ class MessageView extends ActiveRecord{
 	}
 
 	public function getRead(){
-		return $this->data['READ'];
+		if ((bool)trim($this->data['READ']))
+			return true;
+		else
+			return false;
 	}
 
 	public function getArchived(){
-		return $this->data['ARCHIVED'];
+		if ((bool)trim($this->data['ARCHIVED']))
+			return true;
+		else
+			return false;
 	}
 
 	public function getDeleted(){
-		return $this->data['DELETED'];
+		if ((bool)trim($this->data['DELETED']))
+			return true;
+		else
+			return false;
 	}
 
 	public function isCreator() {
-		return (bool) $this->data['ISCREATOR'];
+		if ((bool)trim($this->data['ISCREATOR']))
+			return true;
+		else
+			return false;
 	}
 
 	//Set Methods
