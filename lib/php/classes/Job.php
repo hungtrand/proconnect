@@ -13,7 +13,8 @@
 		public static $TableName = 'Job';
 		public static $PrimaryKey = 'JobID';
 		public static $Columns = ['JOBID', 'JOBLOCATION', 'JOBTITLE', 'INDUSTRY', 'COMPANYNAME', 'COMPANYDESCRIPTION', 'EXPERIENCE', 'SPECIALSKILL',
-									'EMPLOYMENTTYPE', 'JOBHIRING', 'PREFERENCELOCATION', 'PREFERENCEINDUSTRY', 'PREFERENCEJOBTYPE', 'USERID'];
+									'EMPLOYMENTTYPE', 'JOBHIRING', 'PREFERENCELOCATION', 'PREFERENCEINDUSTRY', 'PREFERENCEJOBTYPE', 'USERID', 'DATECREATED', 'JOBDESCRIPTION', 'JOBFUNCTION',
+									'REDIRECTEMAIL', 'REDIRECTSITE'];
 
 		private $data = [];
 		private $JobID;
@@ -118,6 +119,28 @@
 		return $this->data['USERID'];
 	}
 
+	public function getDateCreated(){
+		return $this->data['DATECREATED'];
+	}
+
+	public function getJobDescription(){
+		return $this->data['JOBDESCRIPTION'];
+
+	}
+
+	public function getJobFunction(){
+		return $this->data['JOBFUNCTION'];
+
+
+	}
+
+	public function getRedirectEmail(){
+		return $this->data['REDIRECTEMAIL'];
+	}
+
+	public function getRedirectSite(){
+		return $this->data['REDIRECTSITE'];
+	}
 	//SET METHODS
 
 	public function setJobHiring($strVal){
@@ -168,5 +191,22 @@
 	public function setUserID($intVal){
 		$this->data['USERID'] = $intVal;
 	}
+
+	public function setJobDescription($strVal){
+		$this->data['JOBDESCRIPTION'] = $strVal;
+	}
+
+	public function setJobFunction($strVal){
+		$this->data['JOBFUNCTION'] = $strVal;
+	}
+
+	public function setRedirectEmail($strVal){
+		$this->data['REDIRECTEMAIL'] = $strVal;
+	}
+
+	public function setRedirectSite($strVal){
+		$this->data['REDIRECTSITE'] = $strVal;
+	}
+
 }
 ?>
