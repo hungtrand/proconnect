@@ -17,13 +17,13 @@ var NotificationGetter = (function() {
 					success: function(data){
 						try {
 							var notifications = JSON.parse(data);
-							// console.log(notifications);
 
 							if(displayCallback !== undefined){
 								displayCallback(notifications);
 							}
 						} catch (e) {
 							console.log(e);
+							console.log(data);
 						}
 					},
 					error: function(qXHR, textStatus,errorThrown ) {

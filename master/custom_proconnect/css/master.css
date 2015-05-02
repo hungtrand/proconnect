@@ -84,10 +84,17 @@
 /*.navi-menu {
 	padding-left: 16px !important;
 	padding-right: 16px !important;
+	#4A4A4A     on feed page, show the text field right away like tempalte, dont need name htere and banner, emphasis on job advertisement
+	edit profile page turns into 2 columns
 }*/
 
 .main-nav-search-btn {
 	/*border-right: 0px;*/
+}
+
+.nav-dropdown-menu {
+	max-height: 424px;
+	overflow: scroll;
 }
 
 #nav-right-links .dropdown-header {
