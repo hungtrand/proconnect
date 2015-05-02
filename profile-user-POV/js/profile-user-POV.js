@@ -329,6 +329,26 @@ $(document).ready(function() {
 		if(undefined != anchor) {
 			window.location.href = anchor;
 		}
+
+		// function checkDocumentHeight(callback){
+		//     var lastHeight = document.body.clientHeight, newHeight, timer;
+		//     console.log(lastHeight);
+		//     (function run(){
+		//         newHeight = document.body.clientHeight;
+		//         if( lastHeight != newHeight )
+		//             callback();
+		//         lastHeight = newHeight;
+		//         timer = setTimeout(run, 200);
+		//     })();
+		// }
+
+		// function doSomthing(){
+		//     console.log('height changed');
+		//     $(".spacer").show();
+		//     document.body.clientHeight += 200;
+		// }
+
+		// checkDocumentHeight(doSomthing);
 	});
 
 	//enable team member or skill deletion 
@@ -360,6 +380,7 @@ $(document).ready(function() {
 
 		$('body').append(uploader.getView());
 	});
+
 
 	// replace textbox with CKEditor
 	// CKEDITOR.replace("summary-textarea", {

@@ -194,7 +194,7 @@ if (isset($_COOKIE['__USER_PROFILE_IMAGE__'])) {
                     </form>  
                   </div>
               </div> <!-- End of User Info -->
-              <!-- Summary -->
+              <!-- Skills and Endorsements -->
               <div>
                 <div id="skills-endorsements-header" class="well well-sm ">
                     <header>
@@ -661,6 +661,9 @@ if (isset($_COOKIE['__USER_PROFILE_IMAGE__'])) {
           </div> <!-- End of Column 2 --> 
       </div>
     <!-- </div>/main-container -->
+
+    <!-- <div class="spacer" style="width:100%; height: 400px; border:1px solid red;"></div> -->
+
 <?php
     $Content = ob_get_clean();
     include $_SERVER["DOCUMENT_ROOT"]."/master/index.php";
