@@ -1,7 +1,7 @@
 <?php
 // error_reporting(E_ALL); // debug
 // ini_set("display_errors", 1); // debug
-include '../signout/php/session_check_signout.php';
+require_once('../signout/php/session_check_signout.php');
 
 session_start();
 $UData = json_decode($_SESSION['__USERDATA__'], true);
@@ -9,25 +9,24 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 if (isset($_COOKIE['__USER_PROFILE_IMAGE__'])) {
     $ProfileImage = $_COOKIE['__USER_PROFILE_IMAGE__'];
 } else {
-    $ProfileImage = '/image/proconnect/Tab_logo2_100x100.png';
+    $ProfileImage = '/image/user_img.png';
 }
 
   $Title = "Edit Profile"; //require for front end
   $ProfileActive = 'active';
-  // include '../header/header.php';
 
   ob_start();
 ?>
     <link href="css/profile-user-POV.css" rel="stylesheet">
 
     <!-- <div id="main-container" class="container-fluid"> -->
-      <div class="row">
+      <div class="pupov-content row">
           <!-- Column 1 -->
           <div id="column1" class="col col-xs-12 col-sm-12 col-md-6 col-lg-6">
               <!-- User Info -->
               <div class="well well-sm">
                   <div class="row normal-view">
-          					<div id="profile-image-block" class="col col-sm-6 col-md-4 col-lg-3">
+          					<div id="profile-image-block" class="col col-sm-6 col-md-5 col-lg-4">
           						<div id="progress-block" style= "z-index: 1;">
           							<div class="progress">
           							  <div id="img-progress-bar" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
@@ -70,7 +69,7 @@ if (isset($_COOKIE['__USER_PROFILE_IMAGE__'])) {
                       <!-- Split button -->
                           <!-- <div class="btn-group"> -->
                             <form action="/profile-public-POV/" method="GET">
-                              <button  type="submit" class="btn btn-info" value=<?=$UData['USERID']?> name="userID">
+                              <button  type="submit" class="btn btn-info" value=<?=$UData['USERID']?> name="UserID">
                                   View Profile As Public
                               </button>
                             </form>
@@ -193,15 +192,13 @@ if (isset($_COOKIE['__USER_PROFILE_IMAGE__'])) {
                           <button type="button" class="btn btn-default cancel-btn" value="cancel" for="user-info-edit">Cancel</button>
                     </form>  
                   </div>
-              </div> <!-- End of User Info -->
-              <!-- Skills and Endorsements -->
+              </div> <!-- /User Info -->
+              <!-- Summary -->
               <div>
-                <div id="skills-endorsements-header" class="well well-sm ">
+                <div id="summary-header" class="well well-sm ">
                     <header>
-                          <h2>Skills and Endorsements</h2>
+                          <h2>Summary</h2>
                     </header>
-                    <!-- Success message goes here -->
-
                     <div class="alert alert-success alert-dismissible" role="alert">
                       <button type="button" class="close" data-hide="alert" aria-label="Close"><span class="dimissible-color"aria-hidden="true">&times;</span></button>
                       <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -209,80 +206,38 @@ if (isset($_COOKIE['__USER_PROFILE_IMAGE__'])) {
                       <span class="alert-msg"></span>
                     </div>
 
-                    <!-- normal-view -->
-                    <div id="skills-endorsements" class="normal-view "> 
-                      <div class="editable" for="skills-endorsements-edit">
-                        <a class="anchor" href="#skills-endorsements-header"></a>
+                    <div id="summary-description" class="normal-view" > 
+                      <div class="editable" for="summary-edit">
+                        <a class="anchor" href="#summary-header"></a>
                         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                       
-                        <div class="panel panel-default ">
-                          <!-- Default panel contents -->
-                          <!-- List group -->
-                            <div id="skill-title" class="panel-heading"><b></b></div>
-
-                            <ul id="skill-top-list" class="list-group">
-                              <!-- <li class="list-group-item "><span class="badge colored-badge">12</span>Cras justo odio</li> -->
-                            </ul> 
-
-                            <div id="skill-more-title" class="panel-footer skill-more">
-                              <b><span class="first-name"></span> also know about...</b>
-                            </div>
-
-                            <!-- Default panel contents -->
-                            <!-- List group -->
-                            
-                            <div id="skill-more-list" class="panel-body skill-more">
-                              
-                            </div>
-                        </div>
-                      </div>  
+                        <div id="user-summary" class="white-space"></div>
+                      </div> 
                     </div>
-
-
-                    <!-- edit-view -->
-                    <div id="skills-endorsements-edit" class="edit-view " > 
+                    <div id="summary-edit" class="edit-view" action="php/Education_controller.php" >
                       <div class="loading">
-                        <img src="../image/ajax-loader.gif">
-                      </div>
+                          <img src="../image/ajax-loader.gif">
+                        </div>
                       <!-- <b><h4>Summary</h4></b> -->
-                      <form class="editable-form" action="php/Skill_controller.php">
-                        <input id="SkillID" name="SkillID" class="DataID" type="hidden" value="" />
+                      <form class="editable-form" action="php/Summary_controller.php">
                         <!-- Error Alert -->
                         <div class="alert alert-danger" role="alert">
                           <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                           <span class="sr-only">Error:</span>
                           <span class="alert-msg"></span>
                         </div>
-
-                        <div class="form-group">
-                          <input name="skill" type="text" class="form-control typeahead" id="skill-input" placeholder="What are you areas of expertise?">
-                        </div>  
-
-
-                        <div class="playground form-group well well-sm"> <!-- contentEditable="true" -->
-
-                          <ul id="skill-list-edit" class="skill-sortable grid">
-                            <!-- <li entry-index="" >
-                              <span class="badge">12</span>
-                              <span class="skill-pill-name">asda</span>
-                              <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            </li> -->
-                          </ul>
-                        </div>
-                        <b style="float:right">Drag to reorder</b>
+                        <textarea name="summary" class="form-control" id="summary-textarea" rows="10"></textarea> <br><br>
                         <button type="submit" class="btn btn-info save-btn">Save</button>
                         <button type="button" class="btn btn-default cancel-btn">Cancel</button>
                       </form>
                     </div>
-                    
                 </div>
                 
                 <div class="add-star" >
-                  <a class='anchor' href='#skills-endorsements-header'></a>
-                  <button id="skills-endorsements-edit-btn" class="add-btn" for="skills-endorsements" edit="true">Add Skill</button>
+                  <a class="anchor" href="#summary-header"></a>
+                  <button  class="add-btn" for="summary-description" edit="true" >Edit Summary</button>
                 </div>
-              </div> <!-- End of Summary -->
-               <!-- Projects -->
+              </div> <!-- /Summary -->
+              <!-- Projects -->
               <div>
                 <div id="projects-header" class="well well-sm">
                     <header>
@@ -388,17 +343,19 @@ if (isset($_COOKIE['__USER_PROFILE_IMAGE__'])) {
                   <a class='anchor' href='#projects-header'></a>
                   <button class="add-btn" for="project-edit">Add Project</button>
                 </div>
-              </div> <!-- End of Projects -->
+              </div> <!-- /Projects -->
           </div> <!-- End of Column 1-->
 
           <!-- Column 2 -->
           <div class="col col-xs-12 col-sm-12 col-md-6 col-lg-6">
-            <!-- Summary -->
+            <!-- Skills and Endorsements -->
             <div>
-              <div id="summary-header" class="well well-sm ">
+              <div id="skills-endorsements-header" class="well well-sm ">
                   <header>
-                        <h2>Summary</h2>
+                        <h2>Skills and Endorsements</h2>
                   </header>
+                  <!-- Success message goes here -->
+
                   <div class="alert alert-success alert-dismissible" role="alert">
                     <button type="button" class="close" data-hide="alert" aria-label="Close"><span class="dimissible-color"aria-hidden="true">&times;</span></button>
                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -406,37 +363,79 @@ if (isset($_COOKIE['__USER_PROFILE_IMAGE__'])) {
                     <span class="alert-msg"></span>
                   </div>
 
-                  <div id="summary-description" class="normal-view" > 
-                    <div class="editable" for="summary-edit">
-                      <a class="anchor" href="#summary-header"></a>
+                  <!-- normal-view -->
+                  <div id="skills-endorsements" class="normal-view "> 
+                    <div class="editable" for="skills-endorsements-edit">
+                      <a class="anchor" href="#skills-endorsements-header"></a>
                       <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                      <div id="user-summary" class="white-space"></div>
-                    </div> 
-                  </div>
-                  <div id="summary-edit" class="edit-view" action="php/Education_controller.php" >
-                    <div class="loading">
-                        <img src="../image/ajax-loader.gif">
+                     
+                      <div class="panel panel-default ">
+                        <!-- Default panel contents -->
+                        <!-- List group -->
+                          <div id="skill-title" class="panel-heading"><b></b></div>
+
+                          <ul id="skill-top-list" class="list-group">
+                            <!-- <li class="list-group-item "><span class="badge colored-badge">12</span>Cras justo odio</li> -->
+                          </ul> 
+
+                          <div id="skill-more-title" class="panel-footer skill-more">
+                            <b><span class="first-name"></span> also know about...</b>
+                          </div>
+
+                          <!-- Default panel contents -->
+                          <!-- List group -->
+                          
+                          <div id="skill-more-list" class="panel-body skill-more">
+                            
+                          </div>
                       </div>
+                    </div>  
+                  </div>
+
+
+                  <!-- edit-view -->
+                  <div id="skills-endorsements-edit" class="edit-view " > 
+                    <div class="loading">
+                      <img src="../image/ajax-loader.gif">
+                    </div>
                     <!-- <b><h4>Summary</h4></b> -->
-                    <form class="editable-form" action="php/Summary_controller.php">
+                    <form class="editable-form" action="php/Skill_controller.php">
+                      <input id="SkillID" name="SkillID" class="DataID" type="hidden" value="" />
                       <!-- Error Alert -->
                       <div class="alert alert-danger" role="alert">
                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                         <span class="sr-only">Error:</span>
                         <span class="alert-msg"></span>
                       </div>
-                      <textarea name="summary" class="form-control" id="summary-textarea" rows="10"></textarea> <br><br>
+
+                      <div class="form-group">
+                        <input name="skill" type="text" class="form-control typeahead" id="skill-input" placeholder="What are you areas of expertise?">
+                      </div>  
+
+
+                      <div class="playground form-group well well-sm"> <!-- contentEditable="true" -->
+
+                        <ul id="skill-list-edit" class="skill-sortable grid">
+                          <!-- <li entry-index="" >
+                            <span class="badge">12</span>
+                            <span class="skill-pill-name">asda</span>
+                            <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          </li> -->
+                        </ul>
+                      </div>
+                      <b style="float:right">Drag to reorder</b>
                       <button type="submit" class="btn btn-info save-btn">Save</button>
                       <button type="button" class="btn btn-default cancel-btn">Cancel</button>
                     </form>
                   </div>
+                  
               </div>
               
               <div class="add-star" >
-                <a class="anchor" href="#summary-header"></a>
-                <button  class="add-btn" for="summary-description" edit="true" >Edit Summary</button>
+                <a class='anchor' href='#skills-endorsements-header'></a>
+                <button id="skills-endorsements-edit-btn" class="add-btn" for="skills-endorsements" edit="true">Add Skill</button>
               </div>
-            </div> <!-- End of Summary -->
+            </div> <!-- /Skills and Enforsement -->
             <!-- Experiences -->
             <div>
               <div id="experiences-header" class="well well-sm">
@@ -546,7 +545,7 @@ if (isset($_COOKIE['__USER_PROFILE_IMAGE__'])) {
                 <a class='anchor' href='#experiences-header'></a>
                 <button class="add-btn" for="experience-edit">Add Eperience</button>
               </div>
-            </div> <!-- End of Experiences -->
+            </div> <!-- /Experiences -->
             <!-- Education -->
             <div id="education-header">
                 <div class="well well-sm">
@@ -662,7 +661,7 @@ if (isset($_COOKIE['__USER_PROFILE_IMAGE__'])) {
       </div>
     <!-- </div>/main-container -->
 
-    <!-- <div class="spacer" style="width:100%; height: 400px; border:1px solid red;"></div> -->
+    <!-- <div class="spacer" style="width:100%; height: 400px;"></div> -->
 
 <?php
     $Content = ob_get_clean();

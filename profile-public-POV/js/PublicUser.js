@@ -135,15 +135,15 @@ PublicUser.prototype = {
 			}
 		}).done(function(data){
 			var succeeded = false;
-			 // try{
+			 try{
 					that.temporaryData = JSON.parse(data);
 					console.log( that.temporaryData );
 					that.userData = that.temporaryData; 	//store as user data
 					succeeded = true;
-			// } catch (e){
-					// console.log("Error message: " + e);
-					// console.log(data);
-			// }
+			} catch (e){
+					console.log("Error message: " + e);
+					console.log(data);
+			}
 			if(succeeded) {
 				that.updateView();
 			}
@@ -174,7 +174,7 @@ PublicUser.prototype = {
 		} else {
 			// console.log(this.userData.personalInfo["summary"]);
 
-			$("#user-summary").text("Say something about yourself!");
+			$("#user-summary").text("");
 		}
 		
 		//update about
