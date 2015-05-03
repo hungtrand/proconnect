@@ -120,14 +120,15 @@ class Profile_View implements view {
 
 	public function loadSkills($skills) {
 
-		$arrSkills = array_fill(0, count($skills), '0'); //initialize an fixed size array
+		$arrSkills = $skills;
+		/*$arrSkills = array_fill(0, count($skills), '0'); //initialize an fixed size array
 
 		foreach($skills as $skill) {	//sort array by position order
 			$pos = intval( trim($skill->getOrderPosition()) );
 			$arrSkills[$pos] = $skill;
 		}
 
-		if (!isset($arrSkills) || count($arrSkills) < 1) return false;
+		if (!isset($arrSkills) || count($arrSkills) < 1) return false;*/
 		$data = [];
 
 		foreach ($arrSkills as $skill) {

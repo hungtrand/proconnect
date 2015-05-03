@@ -33,11 +33,23 @@ class SkillManager extends RecordSet {
 		return $this->Columns;
 	}
 
-	public function load($User) {
+	public function load($User=null) {
+		if (isset($User)) $this->User = $User;
+
 		$params = ['USERID'=>$User->getID()];
 		if (!$this->data = $this->fetchBy($params)) return false;
 
 		$this->User = $User;
+
+		return true;
+	}
+
+	public function loadByOrderPosition($User=null) {
+		if (isset($User)) $this->User = $User;
+
+		$cond = "WHERE USERID = ? ORDER BY ORDERPOSITION ";
+		$params = ['USERID'=>$this->User->getID()];
+		if (!$this->data = $this->fetchCustom($cond, $params)) return false;
 
 		return true;
 	}
