@@ -1,3 +1,6 @@
+body {
+	overflow: hidden;
+}
 /*hr {
 	border-top: 1px solid #ddd !important;
 	margin-top: 12px;

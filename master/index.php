@@ -340,17 +340,22 @@ This variant is to be used when loading the separate styling modules -->
                     <li>
                         <div class="navbar">
                             <a href="/mobile/notification_messages/" data-effect="st-effect-1" class="toggle pull-left">
-                                <i class="fa fa-envelope-o"></i>
-                                <!-- <span class="badge notification-number notification">1</span> -->
+                                <div class="pc-nav-message-list">
+                                    <i class="fa fa-envelope-o"></i>
+                                    <span class="badge notification-number notification"></span>
+                                </div>
                             </a>
                             <a href="/mobile/notification_connections/" data-effect="st-effect-1" class="toggle pull-left">
-                                <i class="fa fw icon-user-1"></i>
-                                <span class="badge notification-number notification-red">1</span>
+                                <div class="pc-nav-connection-list">
+                                    <i class="fa fw icon-user-1"></i>
+                                    <span class="badge notification-number notification-red"></span>
+                                </div>
                             </a>
                             <a href="/mobile/notification_general/" data-effect="st-effect-1" class="toggle pull-left">
-                                <i class="fa fa-flag-o"></i>
-                                <!-- <span class="badge notification-number notification-red">1</span> -->
-
+                                <div class="pc-nav-notification-list">
+                                    <i class="fa fa-flag-o"></i>
+                                    <span class="badge notification-number notification-red"></span>
+                                </div>
                             </a>
                         </div>
                     </li>
@@ -597,9 +602,9 @@ This variant is to be used when loading the separate styling modules -->
     };
     </script>
     <!-- Separate Vendor Script Bundles -->
-    <!-- // <script src="/master/js/custom-pc-vendor-core.min.js"></script> -->
+    <script src="/master/js/custom-pc-vendor-core.min.js"></script>
     <!-- // <script src="/master/js/vendor-core.js"></script> -->
-    <script src="/master/js/vendor-core.min.js"></script>
+    <!-- // <script src="/master/js/vendor-core.min.js"></script> -->
     <script src="/master/js/vendor-tables.min.js"></script>
     <script src="/master/js/vendor-forms.min.js"></script>
     <!-- <script src="js/vendor-media.min.js"></script> -->
