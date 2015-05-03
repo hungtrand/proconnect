@@ -44,10 +44,15 @@ NewConnection.prototype = {
 
 		conn.on('click', function(e) {
 			e.stopPropagation();
+			console.log(e);
 		});
 
 		$(document).on('click', function(e) {
-			if (that.mode == 'static') return false;
+			
+			if (that.mode == 'static') {
+				return false;
+			}
+
 			that.switchMode('hide');
 		});
 		/*end of suggestions hide/show events*/
@@ -126,7 +131,7 @@ NewConnection.prototype = {
 					conn.find('.FullHide').hide();
 				});
 				conn.toggleClass('box', true);
-			break;
+				break;
 			default:
 				if (that.mode == 'hide') return false;
 				that.mode = 'hide';
