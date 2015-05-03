@@ -32,10 +32,7 @@ $ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
 		</div>
     </template>
 	<div id="main" class="col-xs-12 col-md-8">
-		<div id="sr-left-col" class="col-md-2 hidden-xs">
-			Lorem ipsum
-		</div>
-		<div id="sr-right-col" class="col-xs-12 col-md-8">
+		<div id="sr-right-col" class="col-xs-12 col-md-12">
 			<div id="iam-loading2" >
 		      <div>
 		        <img src="/image/FlatPreloaders/64x64/Preloader_1/Preloader_1.gif">

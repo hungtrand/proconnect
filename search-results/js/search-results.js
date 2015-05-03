@@ -9,8 +9,12 @@ $(document).ready(function(){
 			$("#iam-loading2").show(); //hide loading gif
 		},
 		done:function(data){
-			$("#iam-loading2").hide(); //hide loading gif
-
+			$("#iam-loading2").slideUp('slow'); //hide loading gif
+			if (typeof data == 'string' || !data) {
+				$("#sr-feed-zone").html('<div class="alert alert-warning text-center">'+data+'</div>');
+				return false;
+			}
+			console.log(typeof data);
 			$("#sr-feed-zone").html(""); //clear all 
 			$.each(data,function(i,v){	//loop through entries
 				var item = SearchResultFactory.makeItem(v);
