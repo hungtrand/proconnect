@@ -21,6 +21,10 @@
 	border-top: none;
 }
 
+body {
+	overflow: hidden !important;
+}
+
 .select-inline{
 	display: inline-block;
 	width: auto;

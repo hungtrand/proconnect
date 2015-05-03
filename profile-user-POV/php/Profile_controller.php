@@ -1,6 +1,6 @@
 <?php
-//error_reporting(E_ALL); // debug
-//ini_set("display_errors", 1); // debug
+// error_reporting(E_ALL); // debug
+// ini_set("display_errors", 1); // debug
 require_once __DIR__."/../../lib/php/sqlConnection.php";
 require_once __DIR__."/../../lib/php/classes/Account.php";
 require_once __DIR__."/../../lib/php/classes/AccountAdmin.php";
@@ -150,6 +150,7 @@ try {
 			$AllProj = $ProjMgr->getAll();
 
 			$SkillMgr = new SkillManager($User);
+			$SkillMgr->loadByOrderPosition();
 			$AllSkills = $SkillMgr->getAll();
 
 			// Start Producing View here

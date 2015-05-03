@@ -198,7 +198,7 @@ ob_start();
             </div>
 
             <div class="col col-xs-9">
-                <h5 class="text-primary ConnectionName" style="margin-top: 0px; margin-bottom: 7px;">John Doe</h5>
+                <h5 class="text-primary ConnectionName" style="margin-top: 0px; margin-bottom: 7px; color: white;">John Doe</h5>
                 <p class="ConnectionWork" style= "font-size: 12px;"><span class="ConnectionJob"></span>&nbsp;at&nbsp;<span class="ConnectionCompany"></span></p>
                    <a class="addNewConnection" href="#" style= "font-size: 12px;">
                    <span class="glyphicon glyphicon-retweet">&nbsp;<span class="txt">Connect</span></a>

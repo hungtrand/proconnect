@@ -14,16 +14,16 @@ var SearchResultGetter = (function(){
 					console.log(textStatus + ": " + errorThrown);
 				}
 			}).done(function(data){
-				// try {
-					var messages = JSON.parse(data);
+				try {
+					data = JSON.parse(data);
 					// console.log(data);
+				} catch (e) {
+					console.log(data);
+				}
 
-					if(options["done"] !== undefined){
-						options["done"](messages);
-					}
-				// } catch (e) {
-				// 	console.log(e);
-				// }
+				if(options["done"] !== undefined){
+					options["done"](data);
+				}
 			});
 		}
 	}

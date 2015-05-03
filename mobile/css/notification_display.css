@@ -1,0 +1,32 @@
+.mobile-noti-header{
+	margin-top: 0px;
+}
+
+.mobile-noti-list {
+	padding-left: 0px;
+	margin: 0px -7px;
+}
+
+.mobile-noti-list .custom-media-body{ 
+	min-width: 244px;
+	max-width: 250px
+}
+
+.mobile-noti-list li {
+	border-bottom: 1px solid #CACCCE;
+	padding-bottom: 15px;
+}
+
+.mobile-noti-list .media {
+	margin-top: 0px;
+	background-color: #FFFFFF;
+	width: 100%
+}
+
+.mobile-noti-list .media .thumb {
+	max-width: 80px;
+	max-height: 80px;
+	padding-left: 0 !important;
+	padding-left: 10px !important;
+}
+

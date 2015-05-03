@@ -1,6 +1,6 @@
 <?php
-error_reporting(E_ALL); // debug
-ini_set("display_errors", 1); // debug
+// error_reporting(E_ALL); // debug
+// ini_set("display_errors", 1); // debug
 require_once __DIR__."/../../lib/php/sqlConnection.php";
 require_once __DIR__."/../../lib/php/classes/User.php";
 require_once __DIR__."/../../lib/php/classes/ProfileManager.php";
@@ -38,12 +38,29 @@ else $keywords = "";
 if (isset($_POST['page'])) $page = (int)$_POST['page'];
 else $page = 1;
 
+$EduFilters  = null;
+if (is_array($_POST['ao-education'])) 
+	$EduFilters = $_POST['ao-education'];
+elseif (isset($_POST['ao-education'])) {
+	$EduFilters = [$_POST['ao-education']]; // still array, but array of 1
+}
+
+$SchFilters  = null;
+if (is_array($_POST['ao-school'])) 
+	$SchFilters = $_POST['ao-school'];
+elseif (isset($_POST['ao-school'])) {
+	$SchFilters = [$_POST['ao-school']]; // still array, but array of 1
+}
+
 $keywords = explode(" ", $keywords);
 
 $rowsaPage = 10;
 
 try {
 	$pm = new ProfileManager();
+	if (is_array($EduFilters)) $pm->setFiltersByEducation($EduFilters);
+	if (is_array($SchFilters)) $pm->setFiltersBySchool($SchFilters);
+
 	$profiles = [];
 	if (!$pm->loadBySearch($keywords, $page, $rowsaPage)) {
 		echo "No results found.";

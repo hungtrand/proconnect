@@ -15,6 +15,7 @@ class ProfileManager extends RecordSet {
 	protected $Columns;
 
 	private $data;
+	private $filters;
 
 	public $err;
 
@@ -22,6 +23,8 @@ class ProfileManager extends RecordSet {
 		$this->PrimaryKey = Profile::$PrimaryKey;
 		$this->TableName = Profile::$TableName;
 		$this->Columns = Profile::$Columns;
+
+		$this->filters = [];
 
 		parent::__construct();
 	}
@@ -37,7 +40,7 @@ class ProfileManager extends RecordSet {
 		return true;
 	}
 
-	public function loadBySearch($keywords, $page, $numRows, $orderby="NAME", $filters=null) {
+	public function loadBySearch($keywords, $page, $numRows, $orderby="NAME") {
 		if (!is_integer($page) || !is_integer($numRows) || !is_array($keywords)) {
 			$this->err = "Parameters are of wrong types";
 			return false;
@@ -62,31 +65,34 @@ class ProfileManager extends RecordSet {
 
 			$delimiter = 'OR ';
 		}
+		$cond.=") ";
 
-		if (isset($filters) && is_array($filters)) {
-			foreach ($filters as $field => $filterKeys) {
-				if (is_array($filterKeys)) {
-					$delimiter = 'AND ';
-					$cond .= '(';
-					for($i=0; $i<count($filterKeys); $i++) {
-						$cleanKW = str_replace("'", "''", $filterKeys[$i]);
-						$cleanKW = str_replace([",", ";"], "", $cleanKW);
-						$cleanKW = trim($cleanKW);
-						if (strlen($cleanKW) < 1) continue;
+		$filtersCond = '';
+		foreach ($this->filters as $field => $arrKeywords) {
+			$fieldCond = ''; // reset every iteration
+			$delimiter = '';
+			if (is_array($arrKeywords)) {
+				for($i=0; $i<count($arrKeywords); $i++) {
+					if (strlen(trim($arrKeywords[$i])) == 0) continue;
+					$cleanKW = str_replace("'", "''", $arrKeywords[$i]);
+					$cleanKW = str_replace([",", ";"], "", $cleanKW);
+					$cleanKW = trim($cleanKW);
+					if (strlen($cleanKW) < 1) continue;
 
-						$cond .= $delimiter.$field." LIKE '%$cleanKW%' ";
+					$fieldCond .= $delimiter.$field." LIKE '%$cleanKW%' ";
 
-						$delimiter = 'OR ';
-					}
-
-					$cond .= ") ";
+					$delimiter = 'OR ';
 				}
 			}
-		}
-		//echo $cond;
 
-		$cond.= ") ORDER BY ".$orderby." LIMIT ". $offset .", ". $numRows;
-		
+			if (strlen($fieldCond) > 4) $filtersCond .= 'AND (' . $fieldCond . ') ';
+		}
+
+		if (strlen($filtersCond) > 0) $cond .= $filtersCond;
+
+		$cond.= "ORDER BY ".$orderby." LIMIT ". $offset .", ". $numRows;
+
+		//echo $cond;
 		if (!$this->data = $this->fetchCustom($cond, $params)) return false;
 
 		return true;
@@ -148,6 +154,26 @@ class ProfileManager extends RecordSet {
 		}
 
 		return $arr;
+	}
+
+	public function setFiltersByEducation($keywords) {
+		if (is_array($keywords)) {
+			$this->filters['ALLSTUDIES'] = $keywords;
+			return true;
+		} else {
+			$this->err = 'keywords must be an array';
+			return false;
+		}
+	}
+
+	public function setFiltersBySchool($keywords) {
+		if (is_array($keywords)) {
+			$this->filters['ALLSCHOOLS'] = $keywords;
+			return true;
+		} else {
+			$this->err = 'keywords must be an array';
+			return false;
+		}
 	}
 	
 }
