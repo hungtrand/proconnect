@@ -379,6 +379,7 @@ This variant is to be used when loading the separate styling modules -->
                     </li>
                     <li class="<?=$InterestActive?>"><a href="/interests/"><i class="fa fa-star"></i> <span>Interests</span></a>
                     </li>
+                    <!-- <li class="category">People You may know...</li> -->
                     <!-- <li class="hasSubmenu">
                         <a href="#components"><i class="icon-paint-brushes"></i> <span>UI Components</span></a>
                         <ul id="components">
@@ -412,13 +413,17 @@ This variant is to be used when loading the separate styling modules -->
                             <li><a href="#"><i class="fa fa-circle-o"></i> Regular Link</a>
                             </li>
                         </ul>
+
+
                     </li> -->
+
+
                 </ul>
                 
+                <h4 class="category">People You may know...</h4>
                 <div class="custom-pc-pymk affix hidden-print hidden-xs hidden-sm" role="complimentary" data-spy="affix" data-offset-top="400">
-                    <label class="text-info">People You may know...</label>
+                    <!-- <label class="text-info"></label> -->
                     <ul id="SuggListing" class="sidebar-feed nav">
-                        
                     </ul>
                 </div>
                 <!-- <h4 class="category">Filter</h4>
@@ -569,7 +574,7 @@ This variant is to be used when loading the separate styling modules -->
     };
     </script>
     <!-- Separate Vendor Script Bundles -->
-    <script src="/master/js/vendor-core.min.js"></script>
+    <script src="/master/js/custom-pc-vendor-core.min.js"></script>
     <script src="/master/js/vendor-tables.min.js"></script>
     <script src="/master/js/vendor-forms.min.js"></script>
     <!-- <script src="js/vendor-media.min.js"></script> -->

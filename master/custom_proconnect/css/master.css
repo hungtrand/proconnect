@@ -184,6 +184,10 @@
 	transition: background-color 500ms linear;
 }
 
+.st-content-inner {
+	background-color: #e7e9ec !important;
+}
+
 /*.sidebar-menu li.active>a:hover {
 	background-color: #f4f4f4;
 }*/

@@ -200,7 +200,7 @@ User.prototype = {
 			 // try{
 					that.temporaryData = JSON.parse(data);
 
-					console.log( that.temporaryData );
+					// console.log( that.temporaryData );
 
 					that.userData = that.temporaryData; 	//store as user data
 					succeeded = true;
@@ -608,6 +608,10 @@ User.prototype = {
 			case "#skills-endorsements-edit":
 				// console.log(formWrapperID + " index is: " + $(formWrapperID).find("form").attr("for-index"));
 				var skillList = form.find("#skill-list-edit");
+				skillList.on("click","button.close",function(e){			//remove skill event listener
+					$(this).parent('li').remove();
+				});	
+
 				var count = 0;
 				var beans = "";
 				$.each(this.userData.skill,function(skillName,endorsementCount){
@@ -619,10 +623,9 @@ User.prototype = {
 		              "</li>";
 		            count++;
 	            });
-				skillList.html(beans);
+				skillList.html(beans);		//attach bean
 
-				//enable sortable - Needs to figure this out
-				$(".skill-sortable").sortable();
+				skillList.sortable();		//enables sortable
 			break;
 
 			case "#experience-edit":

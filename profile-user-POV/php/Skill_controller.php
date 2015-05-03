@@ -41,7 +41,9 @@ if (!$User = new USER($uid)) {
 	}elseif($skillid == 0){
 		$mode = 'insert';
 	}
-	try{		
+	try{	
+
+		$position = 0;
 		// This for loop update endorsement and insert a new skill if not exists
 		foreach ($skills as $skillname=>$nEndorse) {
 			$sk = new Skill(); 
@@ -49,12 +51,13 @@ if (!$User = new USER($uid)) {
 			// if skill exists then update number of endorsement
 			if ($sk->loadBySkillName($uid, $skillname)) {
 				$sk->setEndorsements($nEndorse);
+				$sk->setOrderPosition($position++);
 				$sk->update();
 			} else { // else add new skill to database
 				$sk->setUserID($uid);
 				$sk->setSkillName($skillname);
 				$sk->setEndorsements($nEndorse);
-				$sk->setOrderPosition(1);
+				$sk->setOrderPosition($position++);
 				$sk->save();
 			}
 		}
