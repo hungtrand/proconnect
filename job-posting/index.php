@@ -15,7 +15,7 @@ $JobTitle = $UData['TITLE'];
 ob_start();
 
 ?>
-    <div class="col col-xs-6 well" id="form-div">
+    <div class="col col-xs-12 col-md-7 well" id="form-div">
         <h4><STRONG><span id="form-title">Build Your Job Posting</span></STRONG></h4>
             <h3><STRONG><span class="glyphicon glyphicon-briefcase"></span> Work Environment</STRONG></h3>
             <br />
@@ -200,7 +200,7 @@ ob_start();
             </div>
         </form>
     </div>
-    <div class="col col-xs-4" id="guarantee-div">
+    <div class="col col-xs-4 col-xs-12" id="guarantee-div">
         <div id="guarantee-seal">
             <span id="guarantee-number">10</span>
             <span id="guarantee-applicants">APPLICANTS</span>
