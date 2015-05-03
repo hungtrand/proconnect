@@ -602,9 +602,9 @@ This variant is to be used when loading the separate styling modules -->
     };
     </script>
     <!-- Separate Vendor Script Bundles -->
-    <script src="/master/js/custom-pc-vendor-core.min.js"></script>
+    <!-- // <script src="/master/js/custom-pc-vendor-core.min.js"></script> -->
     <!-- // <script src="/master/js/vendor-core.js"></script> -->
-    <!-- // <script src="/master/js/vendor-core.min.js"></script> -->
+    <script src="/master/js/vendor-core.min.js"></script>
     <script src="/master/js/vendor-tables.min.js"></script>
     <script src="/master/js/vendor-forms.min.js"></script>
     <!-- <script src="js/vendor-media.min.js"></script> -->
