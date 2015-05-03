@@ -28,7 +28,7 @@ if (!isset($InterestActive)) $InterestActive = "";
     <meta name="description" content="">
     <meta name="author" content="">
     <title><?=$Title?></title>
-	 <link rel="ICON" href="../image/proconnect/Tab_logo2_bold.ico" type="image/ico" />
+	 <link rel="ICON" href="/image/proconnect/Tab_logo2_bold.ico" type="image/ico" />
     <!-- Compressed Vendor BUNDLE
     Includes vendor (3rd party) styling such as the customized Bootstrap and other 3rd party libraries used for the current theme/module -->
     <link href="/master/css/vendor.min.css" rel="stylesheet">
@@ -70,9 +70,9 @@ This variant is to be used when loading the separate styling modules -->
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
     <!-- Custom ProConnect CSS -->
     <link rel="stylesheet" type="text/css" href="/master/custom_proconnect/css/master.css">
-    
     <!-- <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" /> -->
     <!-- // <script src="/lib/jquery/jquery-2.1.3.min.js"></script> -->
     <!-- // <script src="/lib/bootstrap/js/bootstrap.min.js"></script> -->
@@ -127,45 +127,42 @@ This variant is to be used when loading the separate styling modules -->
             <div class="container-fluid">
                 <div class="navbar-header">
                     <a href="#sidebar-menu" data-effect="st-effect-1" data-toggle="sidebar-menu" class="toggle pull-left visible-xs"><i class="fa fa-bars"></i></a>
-                    <button id="mobile-view-main-nav-btn" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
+                                                    <!-- #main-nav -->
+                    <!-- <a id="mobile-view-main-nav-btn" href="#message-ul" data-effect="st-effect-1" data-toggle="collapse" class="toggle pull-right visible-xs">
+                        <i class="fa fa-flag"></i>
+                    </a> -->
+                    <!-- class="navbar-toggle collapsed" -->
+                    <!-- <a  data-effect="st-effect-1" class="toggle visible-xs pull-right" data-toggle="collapse" data-target="#main-nav">
+                        <i class="fa fa-flag"></i>
+                    </a> -->
+                    <!-- <div class="row visible-xs">
+                        <div class="col-md-4 col-md-offset-3">
+                            <form action="" class="search-form">
+                                <div class="form-group has-feedback">
+                                    <label for="search" class="sr-only">Search</label>
+                                    <input type="text" class="form-control" name="searchKey" placeholder="Search for people...">
+                                    <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                                </div>
+                            </form>
+                        </div>
+                    </div> -->
                      <form class="navbar-form margin-none navbar-left visible-xs" method="GET" action="/search-results/results.php">
-                        <!-- Search -->
                         <div class="search-1">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="icon-search"></i></span>
-
                                 <input type="text" class="form-control" placeholder="Search for people..." name="searchKey">
-                                <!-- <span class="input-group-btn">
-                                    <input type="submit" class="btn btn-default">Search</input>
-                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                        <span class="caret"></span>
-                                        <span class="sr-only">Toggle Dropdown</span>
-                                    </button>
-                                    <ul class="dropdown-menu dropdown-menu-right well " role="menu">
-                                        <li>
-                                            <div>
-                                              <img src="/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif">
-                                            </div>
-                                        </li>
-                                    </ul> -->
                                 </span>
                             </div>
                         </div>
                     </form>
                     <!-- <a href="#sidebar-chat" data-toggle="sidebar-menu" data-effect="st-effect-1" class="toggle pull-right visible-xs "><i class="fa fa-comments"></i></a> -->
 
-                    <a class="navbar-brand navbar-brand-info hidden-xs" href="/feed/" style= "background-color: #1565c0;"><img width="150px" src="../image/proconnect/logo_text.png" alt="ProConnect" style = "margin-top: 10px;"/></a>
+                    <a class="navbar-brand navbar-brand-info hidden-xs" href="/feed/" style= "background-color: #1565c0;"><img width="150px" src="/image/proconnect/logo_text.png" alt="ProConnect" style = "margin-top: 10px;"/></a>
                 </div>
                 <div class="collapse navbar-collapse" id="main-nav">
-                    <ul class="nav navbar-nav ">
+                    <ul class="nav navbar-nav">
                         <!-- messages -->
-                        <li id="message-list" class="dropdown notifications notification-icon">
+                        <li id="message-list" class="pc-nav-message-list dropdown notifications notification-icon">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-envelope-o"></i>
                                 <span class="badge notification-number notification-red"></span>
@@ -177,26 +174,10 @@ This variant is to be used when loading the separate styling modules -->
                                       <img src="/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif">
                                     </div>
                                 </div>
-
-                                <!-- <li class="media">
-                                    <div class="media-left">
-                                        <a href="#">
-                                            <img class="media-object thumb" src="images/people/50/guy-2.jpg" alt="people">
-                                        </a>
-                                    </div>
-                                    <div class="media-body">
-                                        <div class="pull-right">
-                                            <span class="label label-default">5 min</span>
-                                        </div>
-                                        <h5 class="media-heading">Adrian D.</h5>
-                                        <p class="margin-none">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                    </div>
-                                </li> -->
                             </ul>
-                        </li>
-                        <!-- // END messages -->
+                        </li>  <!-- /messages -->
                         <!-- connection -->
-                        <li id="connection-list" class="dropdown notifications notification-icon">
+                        <li id="connection-list" class="pc-nav-connection-list dropdown notifications notification-icon">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fw icon-user-1"></i>
                                 <span class="badge notification-number notification-red"></span>
@@ -208,10 +189,9 @@ This variant is to be used when loading the separate styling modules -->
                                     </div>
                                 </div>
                             </ul>
-                        </li>
-                        <!-- // END connection -->
+                        </li> <!-- /connection -->
                         <!-- notification -->
-                        <li id="notification-list" class="dropdown notifications notification-icon">
+                        <li id="notification-list" class="pc-nav-notification-list dropdown notifications notification-icon">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-flag-o"></i>
                                 <span class="badge notification-number notification-red"></span>
@@ -224,8 +204,7 @@ This variant is to be used when loading the separate styling modules -->
                                     </div>
                                 </div>
                             </ul>
-                        </li>
-                        <!-- // END notification -->
+                        </li> <!-- /notification -->
                     </ul>
                     
                     <form class="navbar-form margin-none navbar-left hidden-xs" method="GET" action="/search-results/results.php">
@@ -255,6 +234,7 @@ This variant is to be used when loading the separate styling modules -->
                         <!-- Search Button -->
                         <div id="ao-search-btn-grp" class="pull-left visible-sm visible-md visible-lg"> 
                             <ul class="nav navbar-nav ">
+
                                 <li class="ao-search-btn">
                                     <a class="main-nav-search-btn" type="submit">Search</a>
                                 </li>
@@ -355,6 +335,34 @@ This variant is to be used when loading the separate styling modules -->
         <!-- Sidebar component with st-effect-1 (set on the toggle button within the navbar) -->
         <div class="sidebar left sidebar-size-2 sidebar-offset-0 sidebar-visible-desktop sidebar-visible-mobile sidebar-skin-white-blue" id="sidebar-menu" data-type="collapse">
             <div data-scrollable>
+                <!-- Mobile only -->
+                <ul class="mobile-notification-list visible-xs">
+                    <li>
+                        <div class="navbar">
+                            <a href="/mobile/notification_messages/" data-effect="st-effect-1" class="toggle pull-left">
+                                <i class="fa fa-envelope-o"></i>
+                                <!-- <span class="badge notification-number notification">1</span> -->
+                            </a>
+                            <a href="/mobile/notification_connections/" data-effect="st-effect-1" class="toggle pull-left">
+                                <i class="fa fw icon-user-1"></i>
+                                <span class="badge notification-number notification-red">1</span>
+                            </a>
+                            <a href="/mobile/notification_general/" data-effect="st-effect-1" class="toggle pull-left">
+                                <i class="fa fa-flag-o"></i>
+                                <!-- <span class="badge notification-number notification-red">1</span> -->
+
+                            </a>
+                        </div>
+                    </li>
+                </ul> <!-- /mobile only-->
+                <!-- Mobile only -->
+                <ul class="sidebar-menu visible-xs">
+                    <li>
+                        <a href="/feed/">
+                            <img style="object-fit: cover;" width="30px" height="30px" src="<?=$ProfileImage?>" alt="<?=$FullName?>" class="img-circle SignedInUserProfileImage" /> <?=$FullName?> 
+                        </a>
+                    </li>
+                </ul> <!-- /mobile only-->
                 <ul class="sidebar-menu custom-pc-sidebar-menu">
                     <!-- <li><a href="../../index.html"><i class="icon-paint-brush"></i> <span>Themes</span></a></li> -->
                     <!-- <li class="category">Navigation</li> -->
@@ -367,7 +375,7 @@ This variant is to be used when loading the separate styling modules -->
                             </li>
                         </ul>
                     </li> -->
-                    <li class="<?=$HomeActive?>"><a href="/feed/"><i class="fa fa-home"></i> <span>Home</span></a>
+                    <li class="<?=$HomeActive?> hidden-xs"><a href="/feed/"><i class="fa fa-home"></i> <span>Home</span></a>
                     </li>
                     <li class="<?=$ProfileActive?>"><a href="/profile-user-POV/"><i class="icon-user-1"></i> <span>Profile</span></a>
                     </li>
@@ -416,11 +424,26 @@ This variant is to be used when loading the separate styling modules -->
 
 
                     </li> -->
-
+                   
 
                 </ul>
+                <!-- Mobile only -->
+                <ul class="sidebar-menu visible-xs">
+                    <li>
+                        <a href="/signout/php/session_signout.php">Logout</a>
+                    </li>
+                </ul> <!-- /mobile only-->
+
+                <!-- <ul class="nav navbar-nav navbar-user visible-xs">
+                         <ul class="dropdown-menu" role="menu">
+                            <li><a href="/profile-user-POV/">Profile</a>
+                            </li>
+                            <li><a href="/message/">Messages</a>
+                            </li>
+                        </ul>
+                </ul> -->
                 
-                <h4 class="category">People You may know...</h4>
+                <h4 class="category hidden-xs">People you may know...</h4>
                 <div class="custom-pc-pymk affix hidden-print hidden-xs hidden-sm" role="complimentary" data-spy="affix" data-offset-top="400">
                     <!-- <label class="text-info"></label> -->
                     <ul id="SuggListing" class="sidebar-feed nav">
@@ -531,7 +554,7 @@ This variant is to be used when loading the separate styling modules -->
         </div>
         <!-- /st-pusher -->
         <!-- Footer -->
-        <footer class="footer">
+        <footer class="footer hidden-xs">
             <strong>ProConnect</strong> Quorious Design &copy; Copyright 2015
         </footer>
         <!-- // Footer -->
@@ -574,7 +597,9 @@ This variant is to be used when loading the separate styling modules -->
     };
     </script>
     <!-- Separate Vendor Script Bundles -->
-    <script src="/master/js/custom-pc-vendor-core.min.js"></script>
+    <!-- // <script src="/master/js/custom-pc-vendor-core.min.js"></script> -->
+    <!-- // <script src="/master/js/vendor-core.js"></script> -->
+    <script src="/master/js/vendor-core.min.js"></script>
     <script src="/master/js/vendor-tables.min.js"></script>
     <script src="/master/js/vendor-forms.min.js"></script>
     <!-- <script src="js/vendor-media.min.js"></script> -->
@@ -628,8 +653,8 @@ This variant is to be used when loading the separate styling modules -->
     <script type="text/javascript" src="/master/custom_proconnect/js/AdvanceSearchInterfaceHandler.js"></script>
     <script type="text/javascript" src="/master/custom_proconnect/js/MessageGetter.js"></script>
     <script type="text/javascript" src="/master/custom_proconnect/js/MediaItemFactory.js"></script>
-    <script src="../connections/js/NewConnection.js"></script>
-    <script src="../connections/js/SuggestionList.js"></script>
+    <script src="/connections/js/NewConnection.js"></script>
+    <script src="/connections/js/SuggestionList.js"></script>
     <script type="text/javascript" src="/master/custom_proconnect/js/master.js"></script>
 </body>
 </html>

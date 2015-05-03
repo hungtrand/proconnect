@@ -5,7 +5,8 @@ function SignUpForm(SignUpForm) {
 	this.LastInput = SignUpForm.find('#last');
 	this.PasswordInput = SignUpForm.find('#password');
 	this.ConfPasswordInput = SignUpForm.find('#confpassword');
-	this.Alert = SignUpForm.find('.alert');
+	this.Alert = SignUpForm.find('.alert1');
+	this.Alert2 = SignUpForm.find('.alert2');
 	this.waitingGif = '<img src="/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif" alt="Loading..."/>';
 	this.activeError = false;
 
@@ -21,8 +22,8 @@ SignUpForm.prototype = {
 			e.preventDefault();
 			if (!that.validate()) return false;
 			
-			that.Alert.html(that.waitingGif);
-			that.Alert.show();
+			that.Alert2.html(that.waitingGif);
+			that.Alert2.show();
 			that.signup();
 		});
 

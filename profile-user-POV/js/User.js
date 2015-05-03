@@ -196,22 +196,23 @@ User.prototype = {
 				console.log(status + ": " + error);
 			}
 		}).done(function(data){
+			// console.log(data);
 			var succeeded = false;
-			 // try{
+			 try{
 					that.temporaryData = JSON.parse(data);
 
 					// console.log( that.temporaryData );
 
 					that.userData = that.temporaryData; 	//store as user data
 					succeeded = true;
-			// } catch (e){
-					// console.log("Error message: " + e);
-					// console.log(data);
-			// }
+			} catch (e){
+					console.log("Error message: " + e);
+					console.log(data);
+			}
 			if(succeeded) {
 				that.updateView();
 			}
-		})
+		});
 		// this.updateData(newData,true);
 		// this.updateView();	
 	}, 
@@ -284,7 +285,7 @@ User.prototype = {
 	removeEntry: function(jQueryForm){
 		var that = this;
 		return function(){
-			console.log(jQueryForm);
+			// console.log(jQueryForm);
 			//get entry index
 			var data = jQueryForm.serializeObject();
 			data["remove"] = true;
@@ -308,7 +309,7 @@ User.prototype = {
 		var that = this;
 		var formName = jQForm.parent("div").attr("id");
 
-		var successMsg = jQForm.parent("div").siblings("div.alert-success")
+		var successMsg = jQForm.parent("div").siblings("div.alert-success");
 
 		newData["editing"] = editing;
 		$.ajax({

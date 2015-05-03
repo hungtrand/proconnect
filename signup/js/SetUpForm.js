@@ -30,6 +30,7 @@ SetUpForm.prototype = {
 			if (!that.validate()) return false;
 			
 			that.Alert.html(that.waitingGif);
+			that.Alert.toggleClass();
 			that.Alert.show();
 			that.submit();
 		});
@@ -59,7 +60,7 @@ SetUpForm.prototype = {
 			data: that.theForm.serialize()
 		})
 		.done(function(response) {
-			console.log(response);
+			// console.log(response);
 			try {
 				var json = $.parseJSON(response);
 				that.Alert.toggleClass('alert-danger', false)
@@ -200,7 +201,7 @@ SetUpForm.prototype = {
 			}
 		}
 		else if ($("#inlineRadio3").prop("checked")) {
-		console.log("student check")
+		// console.log("student check")
 			if(school==""){
 				that.SchoolInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
 				that.Alert.text("Please enter school ");

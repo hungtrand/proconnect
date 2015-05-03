@@ -77,8 +77,13 @@ $(document).ready(function() {
 		//display delete entry link
 		$(target).find("a.remove-entry-link").show();
 		//display edit view
-		$(target).fadeIn().find("form").attr( "link", $(this).attr("link") ).attr("editing","true"); 
-		$(target).find('input:text, textarea, input:radio, input:checkbox, select').first().focus();
+		$(target).fadeIn().find("form").attr( "link", $(this).attr("link") ).attr("editing","true");
+		 
+		setTimeout(function(){
+			$(target).find('input:text, textarea, input:radio, input:checkbox, select').first().focus();
+        }, 1);
+
+
 
 		//move window to head of form for easy access
 		var anchor = $(this).find("a.anchor").prop("href");
@@ -326,6 +331,7 @@ $(document).ready(function() {
 		}
 
 		var anchor = $(this).siblings("a.anchor").prop("href");
+		$(this).focus();
 		if(undefined != anchor) {
 			window.location.href = anchor;
 		}
@@ -381,6 +387,11 @@ $(document).ready(function() {
 		$('body').append(uploader.getView());
 	});
 
+	$(document).on('scroll',function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		console.log(e);
+	})
 
 	// replace textbox with CKEditor
 	// CKEDITOR.replace("summary-textarea", {

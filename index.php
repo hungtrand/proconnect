@@ -181,7 +181,8 @@
 
 								<!-- Invalid input alert -->
 								<div class="form-group">
-									<div class="alert alert-danger text-center" role="alert" style="display: none; margin-top: 10px;"><b>Invalid Input :</b> Please correct the marked field(s)</div>
+									<div class="alert1 alert alert-danger text-center" role="alert" style="display: none; margin-top: 10px;"><b>Invalid Input :</b> Please correct the marked field(s)</div>
+                                    <div class="alert2 alert alert-info text-center" role="alert" style="display: none; margin-top: 10px;"></div>
 								</div>
 
 								<div class="form-group text-center">
