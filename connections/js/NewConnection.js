@@ -47,8 +47,8 @@ NewConnection.prototype = {
 		});
 
 		$(document).on('click', function(e) {
-			if (that.mode == 'static') return false;
-			that.switchMode('hide');
+			if (that.mode != 'static')
+				that.switchMode('hide');
 		});
 		/*end of suggestions hide/show events*/
 
