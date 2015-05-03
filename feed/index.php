@@ -113,7 +113,7 @@ ob_start();
                     </div>
 
                     <div class="row">
-                         <div class="col col-xs-9 col-sm-10 col-md-10 col-lg-10">
+                         <div class="col col-xs-9 col-sm-10 col-md-10 col-lg-10 hidden-xs">
                             <blockquote>A person who never made a mistake never tried anything new.</blockquote>
                         </div>
 
