@@ -123,7 +123,7 @@ ob_start();
             <div class="col col-xs-12 topper">
             	<div>
 	                <a href="#" class="sender-href"><img src="../image/user_img.png" class="img-rounded sender-picture" style="float: left; margin-right:10px;"/></a>
-	                <h4 class="text-primary ConnectionName" style="color: white;"><strong><a href="#" class="sender-href"><span class="sender-name">John Doe</span></a></strong></h4>
+	                <h4 class="text-primary ConnectionName"><strong><a href="#" class="sender-href"><span class="sender-name">John Doe</span></a></strong></h4>
 	                <strong><p class="message-subject">Test</p></strong>
 	                <p class="message-time">message time</p>
                 </div>
@@ -198,7 +198,7 @@ ob_start();
             </div>
 
             <div class="col col-xs-9">
-                <h5 class="text-primary ConnectionName" style="margin-top: 0px; margin-bottom: 7px;">John Doe</h5>
+                <h5 class="text-primary ConnectionName" style="margin-top: 0px; margin-bottom: 7px; color: white;">John Doe</h5>
                 <p class="ConnectionWork" style= "font-size: 12px;"><span class="ConnectionJob"></span>&nbsp;at&nbsp;<span class="ConnectionCompany"></span></p>
                    <a class="addNewConnection" href="#" style= "font-size: 12px;">
                    <span class="glyphicon glyphicon-retweet">&nbsp;<span class="txt">Connect</span></a>
