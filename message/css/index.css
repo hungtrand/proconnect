@@ -1,3 +1,6 @@
+.well {
+
+}
 
 textarea {
 	resize: none;
@@ -38,6 +41,7 @@ textarea {
 }
 .topper {
 	background-color: #4687CE;
+	color: white;
 	height: 80px;
 	width: calc(100% - 10px);
 	border-radius: 5px;

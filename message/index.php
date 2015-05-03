@@ -123,7 +123,7 @@ ob_start();
             <div class="col col-xs-12 topper">
             	<div>
 	                <a href="#" class="sender-href"><img src="../image/user_img.png" class="img-rounded sender-picture" style="float: left; margin-right:10px;"/></a>
-	                <h4 class="text-primary ConnectionName"><strong><a href="#" class="sender-href"><span class="sender-name">John Doe</span></a></strong></h4>
+	                <h4 class="text-primary ConnectionName" style="color: white;"><strong><a href="#" class="sender-href"><span class="sender-name">John Doe</span></a></strong></h4>
 	                <strong><p class="message-subject">Test</p></strong>
 	                <p class="message-time">message time</p>
                 </div>
