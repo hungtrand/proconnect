@@ -1,6 +1,7 @@
 var NotificationHandler = (function() {
 	return {
 		displayNotifications: function(data){
+			// console.log(data);
 			//display data
 			$.each(data,function(i,v){
 				if(v >= 0) {

@@ -5,4 +5,12 @@ $(document).ready(function() {
 	jobGrid.load();
 
 	var searchedJobs = new SearchedJobs();
-})
+	
+	/*$('#swipeBox').on("swipeleft",function(){
+  		$('[href="#sidebar-menu"]').trigger('touchstart');
+	});
+	$('#swipeBox').on("swiperight",function(){
+  		$('[href="#sidebar-menu"]').trigger('touchstart');
+	});*/
+	
+});

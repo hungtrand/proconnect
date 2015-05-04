@@ -126,7 +126,7 @@ This variant is to be used when loading the separate styling modules -->
         <div class="navbar navbar-main navbar-default navbar-fixed-top" role="navigation">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a href="#sidebar-menu" data-effect="st-effect-1" data-toggle="sidebar-menu" class="toggle pull-left visible-xs"><i class="fa fa-bars"></i></a>
+                    <a href="#sidebar-menu" id="sidebar-menu-toggle" data-effect="st-effect-1" data-toggle="sidebar-menu" class="toggle pull-left visible-xs" value="false"><i class="fa fa-bars"></i></a>
                                                     <!-- #main-nav -->
                     <!-- <a id="mobile-view-main-nav-btn" href="#message-ul" data-effect="st-effect-1" data-toggle="collapse" class="toggle pull-right visible-xs">
                         <i class="fa fa-flag"></i>
@@ -340,17 +340,22 @@ This variant is to be used when loading the separate styling modules -->
                     <li>
                         <div class="navbar">
                             <a href="/mobile/notification_messages/" data-effect="st-effect-1" class="toggle pull-left">
-                                <i class="fa fa-envelope-o"></i>
-                                <!-- <span class="badge notification-number notification">1</span> -->
+                                <div class="pc-nav-message-list">
+                                    <i class="fa fa-envelope-o"></i>
+                                    <span class="badge notification-number notification"></span>
+                                </div>
                             </a>
                             <a href="/mobile/notification_connections/" data-effect="st-effect-1" class="toggle pull-left">
-                                <i class="fa fw icon-user-1"></i>
-                                <span class="badge notification-number notification-red">1</span>
+                                <div class="pc-nav-connection-list">
+                                    <i class="fa fw icon-user-1"></i>
+                                    <span class="badge notification-number notification-red"></span>
+                                </div>
                             </a>
                             <a href="/mobile/notification_general/" data-effect="st-effect-1" class="toggle pull-left">
-                                <i class="fa fa-flag-o"></i>
-                                <!-- <span class="badge notification-number notification-red">1</span> -->
-
+                                <div class="pc-nav-notification-list">
+                                    <i class="fa fa-flag-o"></i>
+                                    <span class="badge notification-number notification-red"></span>
+                                </div>
                             </a>
                         </div>
                     </li>
@@ -383,7 +388,7 @@ This variant is to be used when loading the separate styling modules -->
                     </li>
                     <li class="<?=$MessageActive?>"><a href="/message/"><i class="icon-comment-fill-1"></i> <span>Messages</span></a>
                     </li>
-                    <li class="<?=$JobActive?>"><a href="/jobs/"><i class="fa fa-suitcase"></i> <span>Jobs</span></a>
+                    <li class="<?=$JobActive?>"><a href="/job/"><i class="fa fa-suitcase"></i> <span>Jobs</span></a>
                     </li>
                     <li class="<?=$InterestActive?>"><a href="/interests/"><i class="fa fa-star"></i> <span>Interests</span></a>
                     </li>
@@ -544,7 +549,7 @@ This variant is to be used when loading the separate styling modules -->
             <div class="st-content">
                 <!-- extra div for emulating position:fixed of the menu -->
                 <div class="st-content-inner">
-                    <div class="container-fluid">
+                    <div  id="swipeBox" ontouchstart="touchStart(event,'swipeBox');"  ontouchend="touchEnd(event);" ontouchmove="touchMove(event);" ontouchcancel="touchCancel(event);" class="container-fluid">
                         <?=$Content?>
                     </div>
                 </div>
@@ -646,6 +651,7 @@ This variant is to be used when loading the separate styling modules -->
         module-bundle-main.js already includes theme-core.js so this should be loaded
         ONLY when using the standalone modules; -->
     <script src="/master/js/theme-core.min.js"></script>
+    <script src="/master/js/touch.js"></script>
 
     <!-- Custom ProConnect -->
     <script type="text/javascript" src="/master/custom_proconnect/js/NotificationGetter.js"></script>

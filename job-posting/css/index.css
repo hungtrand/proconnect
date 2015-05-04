@@ -1,7 +1,6 @@
 #form-div {
 	background-color: white;
 	height: 100%;
-	left:9%;
 }
 
 #form-title {
@@ -61,7 +60,6 @@
 #guarantee-div {
 	position: fixed;
 	left: 65%;
-	width: 400px;
 }
 
 #guarantee-ad {

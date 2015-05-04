@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+
 	// Mobile 
  	// $(".mobile-notification-list").on('click','a.toggle',function(e){
  	// 	// e.preventDefault();

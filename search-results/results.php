@@ -35,7 +35,7 @@ $ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
 		<div id="sr-right-col" class="col-xs-12 col-md-12">
 			<div id="iam-loading2" >
 		      <div>
-		        <img src="/image/FlatPreloaders/64x64/Preloader_1/Preloader_1.gif">
+		        <img src="/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif">
 		      </div>
 		      <style>
 		        #iam-loading2 {

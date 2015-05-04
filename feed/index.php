@@ -122,6 +122,19 @@ ob_start();
                             </div>
                         </form>
                     </div>
+<<<<<<< HEAD
+=======
+
+                    <div class="row">
+                         <div class="col col-xs-9 col-sm-10 col-md-10 col-lg-10 hidden-xs">
+                            <blockquote>A person who never made a mistake never tried anything new.</blockquote>
+                        </div>
+
+                        <div class="col col-xs-3  col-sm-2 text-right">
+                             <button id="btnPostMode" class="btn btn-danger" title="New Post">Post</button>
+                        </div>
+                    </div>
+>>>>>>> 0508774c2cfeae6f5b7a8c65b7371d1e2b0bbfda
                 </div>
 
                 <ul id="FeedsSection" style="padding: 0;">
