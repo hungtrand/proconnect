@@ -8,10 +8,10 @@ $(document).ready(function() {
 
 $('[href="#sidebar-menu"]').click();
 	$('#swipeBox').on("swipeleft",function(){
-		alert('meh');
+  		$('[href="#sidebar-menu"]').trigger('click');
 	});
 	$('#swipeBox').on("swiperight",function(){
-  		$('[href="#sidebar-menu"]').trigger('vclick');
+  		$('[href="#sidebar-menu"]').trigger('click');
 	});
 	
 });
