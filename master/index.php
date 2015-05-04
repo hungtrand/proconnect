@@ -388,7 +388,7 @@ This variant is to be used when loading the separate styling modules -->
                     </li>
                     <li class="<?=$MessageActive?>"><a href="/message/"><i class="icon-comment-fill-1"></i> <span>Messages</span></a>
                     </li>
-                    <li class="<?=$JobActive?>"><a href="/jobs/"><i class="fa fa-suitcase"></i> <span>Jobs</span></a>
+                    <li class="<?=$JobActive?>"><a href="/job/"><i class="fa fa-suitcase"></i> <span>Jobs</span></a>
                     </li>
                     <li class="<?=$InterestActive?>"><a href="/interests/"><i class="fa fa-star"></i> <span>Interests</span></a>
                     </li>

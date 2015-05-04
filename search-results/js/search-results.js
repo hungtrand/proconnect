@@ -18,7 +18,6 @@ $(document).ready(function(){
 			$("#sr-feed-zone").html(""); //clear all 
 			$.each(data,function(i,v){	//loop through entries
 				var item = SearchResultFactory.makeItem(v);
-				console.log(item);
 				$("#sr-feed-zone").append(item);
 			});			
 		}

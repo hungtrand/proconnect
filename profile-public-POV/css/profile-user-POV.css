@@ -368,6 +368,16 @@ small {
 	color: #999;
 }
 
+.expandable-open #user-summary {
+	word-wrap: break-word;
+}
+
+#user-summary { 
+  text-overflow: ellipsis;
+  white-space: pre-wrap;
+  overflow: hidden;
+}
+
 .playground {
 	height: 200px;
 	overflow: scroll;
