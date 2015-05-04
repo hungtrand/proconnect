@@ -25,7 +25,7 @@ ob_start();
     <link rel="stylesheet" type="text/css" href="../lib/typeahead/dist/css/default.css" />
     <link rel="stylesheet" type="text/css" href="css/index.css" />
 
-    <div  class="container-fluid">
+    <div class="interest-feed-pool container-fluid">
         <div class="cover profile">
             <div id="PostSearchContainer" class="wrapper">
                 
@@ -33,7 +33,9 @@ ob_start();
         </div>
 
         <div id="FeedsSection" class="timeline row">
-                    
+            <div id="FeedZone1" class="col-xs-12 col-md-6 col-lg-4"></div>
+            <div id="FeedZone2" class="col-xs-12 col-md-6 col-lg-4"></div>
+            <div id="FeedZone3" class="col-xs-12 col-md-6 col-lg-4"></div>
         </div>
 
         <div class="row">
@@ -42,7 +44,7 @@ ob_start();
     </div>
 
     <script type="text/template" id="FeedTemplate">
-        <div class="feed box col-xs-12 col-md-6 col-lg-4">
+        <div class="feed box col-xs-12 col-md-12 col-lg-12">
 
             <input type="hidden" class="FeedID" name="FeedID" value="" />
             <input type="hidden" class="F2UID" name="F2UID" value="" />
@@ -72,12 +74,12 @@ ob_start();
                         <div class="contentMessage"></div>
                         <div>
                             <a class="contentImageLink" data-toggle="lightbox" href="{{ImageURL}}">
-                              <img class="media-object contentImage thumbnail" style="max-width: 400px;" src=".{{ImageURL}}" />
+                              <img class="media-object contentImage thumbnail" style="max-width: 100%;" src=".{{ImageURL}}" />
                             </a>
                         </div>
 
                         <div>
-                            <iframe class="YouTubeFrame" width="100%" src="https://www.youtube.com/embed/{{YouTubeID}}" frameborder="0" allowfullscreen></iframe>
+                            <iframe class="YouTubeFrame" style="min-height: 300px;" width="100%" src="https://www.youtube.com/embed/{{YouTubeID}}" frameborder="0" allowfullscreen></iframe>
                         </div>
                     </div>
                     <div class="panel-footer">

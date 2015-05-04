@@ -143,15 +143,15 @@ Feed.prototype = {
 			});
 		});
 
-		if (that.container.hasClass('feed')) {
-			that.container.hover(function() {
-				$('.feed').not($(this)).css('opacity', 0.5);
-				$(this).toggleClass('hover', true);
-			}, function() {
-				$(this).toggleClass('hover', false);
-				$('.feed').css('opacity', 1);
-			});
-		}
+		// if (that.container.hasClass('feed')) {
+		// 	that.container.hover(function() {
+		// 		$('.feed').not($(this)).css('opacity', 0.5);
+		// 		$(this).toggleClass('hover', true);
+		// 	}, function() {
+		// 		$(this).toggleClass('hover', false);
+		// 		$('.feed').css('opacity', 1);
+		// 	});
+		// }
 	},
 
 	setImageURL: function(strVal) {
