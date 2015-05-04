@@ -19,7 +19,7 @@ if (isset($_COOKIE['__USER_PROFILE_IMAGE__'])) {
 ?>
     <link rel="stylesheet" type="text/css" href="../css/notification_display.css">
     <div>
-        <h4 class="mobile-noti-header">Connections</h4>
+        <h4 class="mobile-noti-header">Notification Connections</h4>
         <ul id="connection-list" class="mobile-noti-list">
             <div class="iam-loading" >
                 <div>

@@ -340,17 +340,22 @@ This variant is to be used when loading the separate styling modules -->
                     <li>
                         <div class="navbar">
                             <a href="/mobile/notification_messages/" data-effect="st-effect-1" class="toggle pull-left">
-                                <i class="fa fa-envelope-o"></i>
-                                <!-- <span class="badge notification-number notification">1</span> -->
+                                <div class="pc-nav-message-list">
+                                    <i class="fa fa-envelope-o"></i>
+                                    <span class="badge notification-number notification"></span>
+                                </div>
                             </a>
                             <a href="/mobile/notification_connections/" data-effect="st-effect-1" class="toggle pull-left">
-                                <i class="fa fw icon-user-1"></i>
-                                <span class="badge notification-number notification-red">1</span>
+                                <div class="pc-nav-connection-list">
+                                    <i class="fa fw icon-user-1"></i>
+                                    <span class="badge notification-number notification-red"></span>
+                                </div>
                             </a>
                             <a href="/mobile/notification_general/" data-effect="st-effect-1" class="toggle pull-left">
-                                <i class="fa fa-flag-o"></i>
-                                <!-- <span class="badge notification-number notification-red">1</span> -->
-
+                                <div class="pc-nav-notification-list">
+                                    <i class="fa fa-flag-o"></i>
+                                    <span class="badge notification-number notification-red"></span>
+                                </div>
                             </a>
                         </div>
                     </li>
@@ -383,7 +388,7 @@ This variant is to be used when loading the separate styling modules -->
                     </li>
                     <li class="<?=$MessageActive?>"><a href="/message/"><i class="icon-comment-fill-1"></i> <span>Messages</span></a>
                     </li>
-                    <li class="<?=$JobActive?>"><a href="/jobs/"><i class="fa fa-suitcase"></i> <span>Jobs</span></a>
+                    <li class="<?=$JobActive?>"><a href="/job/"><i class="fa fa-suitcase"></i> <span>Jobs</span></a>
                     </li>
                     <li class="<?=$InterestActive?>"><a href="/interests/"><i class="fa fa-star"></i> <span>Interests</span></a>
                     </li>

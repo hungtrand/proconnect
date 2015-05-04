@@ -13,9 +13,11 @@
                 <div class="media-body BlurHide">
                     <h4 class="media-heading margin-v-5"><a class="ConnectionName text-primary" href="#">Adrian D.</a>
                     </h4>
-                    <div class="text-info">
-                        <span><i class="fa fa-briefcase"></i>&nbsp;&nbsp;<span class="ConnectionJob">Job Here</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <span><i class="fa fa-building"></i>&nbsp;&nbsp;<span class="ConnectionCompany">Company Here</span></span>
+                    <p class='Media-Summary Media-Summary-Web hidden-xs'></p>
+                    <p class='Media-Summary Media-Summary-Mobile visible-xs'></p>
+                    <div class="text-info hidden-xs hidden">
+                        <span class="Media-ConnectionJob hidden"><i class="fa fa-briefcase"></i>&nbsp;&nbsp;<span class="ConnectionJob">Job Here</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="Media-ConnectionCompany hidden"><i class="fa fa-building"></i>&nbsp;&nbsp;<span class="ConnectionCompany">Company Here</span></span>
                     </div>
                 </div>
             </div>
@@ -26,4 +28,17 @@
         </div>
     </div>
 </li>
-</script>
+<!-- </script>
+<style type="text/css">
+    .Media-Summary {
+        margin: 5px 0px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    @media (max-width: 768px) {
+        div.media-body {
+            max-width: 200px !important;
+        }
+    }
+</style>

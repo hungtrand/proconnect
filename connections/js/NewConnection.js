@@ -13,7 +13,7 @@ NewConnection.prototype = {
 	constructor: this,
 
 	init: function(data, mode) {
-		var that = this;
+		var that = this, mobileSnipet;
 		that.data = data;
 		that.ConnTemplate = $('#SuggestionTemplate').html();
 
@@ -26,9 +26,33 @@ NewConnection.prototype = {
 		conn.find('.UserID').val(data['UserID']);
 		conn.find('.ConnectionFirstName').text(data['FirstName']);
 		conn.find('.ConnectionJob').text(data['JobTitle']);
-		conn.find('.ConnectionCompany').text(data['CompanyName']);
-		conn.find('.ConnectionLocation').text(data['Location']);
+
+		if(data['CompanyName'] !== '') {				//attach company name
+			conn.find('.ConnectionCompany').text(data['CompanyName']);
+			conn.find('.Media-ConnectionJob').removeClass('hidden');
+			conn.find(".text-info ").removeClass('hidden');
+		}
+		if(data['Location'] !== '') {
+			conn.find('.ConnectionLocation').text(data['Location']);
+			conn.find('.Media-ConnectionCompany').removeClass('hidden');
+			conn.find(".text-info ").removeClass('hidden');
+		}
+		conn.find('.Media-Summary-Web').text(data['Summary']);
+
+		//generate mobile text snippet
+		if(data['JobTitle'] !== '') {
+			mobileSnipet = data['JobTitle'];
+			if(data['CompanyName'] !== '') {
+				mobileSnipet += " at " + data['CompanyName'];
+			}
+		} else if(data['Summary'] !== '') {
+			mobileSnipet = data['Summary'];
+		} else {
+			mobileSnipet = '--';
+		}
+		conn.find('.Media-Summary-Mobile').text(mobileSnipet);
 		
+
 		if (data['ProfileImage']) {
 			conn.find('.ProfileImage').attr('src', data['ProfileImage']);
 		}
@@ -44,11 +68,12 @@ NewConnection.prototype = {
 
 		conn.on('click', function(e) {
 			e.stopPropagation();
+			// console.log(e);
 		});
 
 		$(document).on('click', function(e) {
-			if (that.mode == 'static') return false;
-			that.switchMode('hide');
+			if (that.mode != 'static')
+				that.switchMode('hide');
 		});
 		/*end of suggestions hide/show events*/
 
@@ -126,7 +151,7 @@ NewConnection.prototype = {
 					conn.find('.FullHide').hide();
 				});
 				conn.toggleClass('box', true);
-			break;
+				break;
 			default:
 				if (that.mode == 'hide') return false;
 				that.mode = 'hide';

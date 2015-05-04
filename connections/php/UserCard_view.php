@@ -43,7 +43,8 @@ class UserCard_view implements view {
 				'Location'=>$profile->getLocation(),
 				'Email'=>$profile->getEmail(),
 				'ProfileImage'=>$profileImage,
-				'Connected'=>$connected
+				'Connected'=>$connected,
+				'Summary'=>$profile->getSummary()
 			];
 
 			array_push($this->FinalView, $out);
