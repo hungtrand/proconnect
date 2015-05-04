@@ -34,7 +34,7 @@ ob_start();
                 <div id="NewPost" class="well well-sm">
 
                     <div class="row">
-                         <div class="col col-xs-9 col-sm-10 col-md-10 col-lg-10">
+                         <div class="col col-xs-8 col-sm-10 col-md-10 col-lg-10">
 							<div class="cover profile">
 								<!--<div class="wrapper">
 									<div class="cover cover-image-full overlay">
@@ -45,7 +45,7 @@ ob_start();
 									<div class="avatar">
 										<img src="<?=$ProfileImage?>" alt="<?=$FullName?>" style="object-fit: cover;"/>
 									</div>
-									<div class="name"><a href="#"><?=$FullName?>&nbsp;-&nbsp;<small><em><?=$JobTitle?></em></small></a>
+									<div class="name"><a href="#"><?=$FullName?><small><em class = "hidden-xs">&nbsp;-&nbsp;<?=$JobTitle?></em></small></a>
 									</div>
 									<!-- <ul class="cover-nav">
 										<li class="active"><a href="index.html"><i class="fa fa-fw icon-ship-wheel"></i> Timeline</a>
@@ -60,7 +60,7 @@ ob_start();
                             <!--<blockquote>A person who never made a mistake never tried anything new.</blockquote>-->
                         </div>
 
-                        <div class="col col-xs-3  col-sm-2 text-right">
+                        <div class="col col-xs-4  col-sm-2 text-right">
                              <button id="btnPostMode" class="btn btn-danger" title="New Post">Post</button>
                         </div>
                     </div>

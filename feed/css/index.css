@@ -74,4 +74,21 @@ blockquote p {
   color: #717171;
   /*margin: 10px;*/
 }
-
+.col-xs-11 {
+  width: 100%;
+}
+@media (max-width: 768px){
+	.cover.profile .cover-info .name {
+	  position: absolute;
+	  left: 100px;
+	  bottom: 0;
+	  margin-bottom: 65px;
+	  display: block;
+	  z-index: 3;
+	}
+}
+@media (min-width: 1200px){
+.col-lg-9 {
+  width: 75%;
+}
+}
