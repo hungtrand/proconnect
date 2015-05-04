@@ -25,35 +25,46 @@ ob_start();
     <link rel="stylesheet" type="text/css" href="../lib/typeahead/dist/css/default.css" />
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     
-        <div class="cover profile">
-            <div class="wrapper">
-                <div class="cover cover-image-full overlay">
-                    <img src="/image/BlurStreet.jpeg" alt="Profile Cover" />
-                </div>
-            </div>
-            <div class="cover-info">
-                <div class="avatar">
-                    <img src="<?=$ProfileImage?>" alt="<?=$FullName?>" style="object-fit: cover;"/>
-                </div>
-                <div class="name"><a href="#"><?=$FullName?>&nbsp;-&nbsp;<small><em><?=$JobTitle?></em></small></a>
-                </div>
-                <!-- <ul class="cover-nav">
-                    <li class="active"><a href="index.html"><i class="fa fa-fw icon-ship-wheel"></i> Timeline</a>
-                    </li>
-                    <li><a href="profile.html"><i class="fa fa-fw icon-user-1"></i> About</a>
-                    </li>
-                    <li><a href="users.html"><i class="fa fa-fw fa-users"></i> Friends</a>
-                    </li>
-                </ul> -->
-            </div>
-        </div>
+
 
         <div class="row" style="">
             <!-- Left main content -->
             <div class="col col-xs-11 col-sm-11 col-md-9 col-lg-9">
 
                 <div id="NewPost" class="well well-sm">
+
                     <div class="row">
+                         <div class="col col-xs-9 col-sm-10 col-md-10 col-lg-10">
+							<div class="cover profile">
+								<!--<div class="wrapper">
+									<div class="cover cover-image-full overlay">
+										<img src="/image/BlurStreet.jpeg" alt="Profile Cover" />
+									</div>
+								</div>-->
+								<div class="cover-info">
+									<div class="avatar">
+										<img src="<?=$ProfileImage?>" alt="<?=$FullName?>" style="object-fit: cover;"/>
+									</div>
+									<div class="name"><a href="#"><?=$FullName?>&nbsp;-&nbsp;<small><em><?=$JobTitle?></em></small></a>
+									</div>
+									<!-- <ul class="cover-nav">
+										<li class="active"><a href="index.html"><i class="fa fa-fw icon-ship-wheel"></i> Timeline</a>
+										</li>
+										<li><a href="profile.html"><i class="fa fa-fw icon-user-1"></i> About</a>
+										</li>
+										<li><a href="users.html"><i class="fa fa-fw fa-users"></i> Friends</a>
+										</li>
+									</ul> -->
+								</div>
+							</div>
+                            <!--<blockquote>A person who never made a mistake never tried anything new.</blockquote>-->
+                        </div>
+
+                        <div class="col col-xs-3  col-sm-2 text-right">
+                             <button id="btnPostMode" class="btn btn-danger" title="New Post">Post</button>
+                        </div>
+                    </div>
+					   <div class="row">
                         <form id="formNewPost" action="feed_controller.php" class="form-horizontal col col-xs-12" style="display: none;">
                             <div class="form-group">
                                 <div class="media">
@@ -110,16 +121,6 @@ ob_start();
                                 </div>
                             </div>
                         </form>
-                    </div>
-
-                    <div class="row">
-                         <div class="col col-xs-9 col-sm-10 col-md-10 col-lg-10">
-                            <blockquote>A person who never made a mistake never tried anything new.</blockquote>
-                        </div>
-
-                        <div class="col col-xs-3  col-sm-2 text-right">
-                             <button id="btnPostMode" class="btn btn-danger" title="New Post">Post</button>
-                        </div>
                     </div>
                 </div>
 
