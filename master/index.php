@@ -126,7 +126,7 @@ This variant is to be used when loading the separate styling modules -->
         <div class="navbar navbar-main navbar-default navbar-fixed-top" role="navigation">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a href="#sidebar-menu" data-effect="st-effect-1" data-toggle="sidebar-menu" class="toggle pull-left visible-xs"><i class="fa fa-bars"></i></a>
+                    <a href="#sidebar-menu" id="sidebar-toggle-btn" data-effect="st-effect-1" data-toggle="sidebar-menu" class="toggle pull-left visible-xs"><i class="fa fa-bars"></i></a>
                                                     <!-- #main-nav -->
                     <!-- <a id="mobile-view-main-nav-btn" href="#message-ul" data-effect="st-effect-1" data-toggle="collapse" class="toggle pull-right visible-xs">
                         <i class="fa fa-flag"></i>
@@ -544,7 +544,7 @@ This variant is to be used when loading the separate styling modules -->
             <div class="st-content">
                 <!-- extra div for emulating position:fixed of the menu -->
                 <div class="st-content-inner">
-                    <div class="container-fluid">
+                    <div  id="swipeBox" class="container-fluid">
                         <?=$Content?>
                     </div>
                 </div>
