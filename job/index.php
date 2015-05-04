@@ -276,6 +276,7 @@ ob_start();
 </script>
 <script src="js/index.js"></script>
 <script src="js/jquery.mobile-1.4.5.min.js"></script>
+<script src="js/touch.js"></script>
 <script src="js/AdvSearch.js"></script>
 <script src="js/IndustryDropbox.js"></script>
 <script src="js/CountryDropbox.js"></script>
