@@ -118,13 +118,17 @@
 				var swipedElement = document.getElementById(triggerElementID);
 				if ( swipeDirection == 'left' ) {
 					// REPLACE WITH YOUR ROUTINES
-					if ( $(window).width() <= 766 ) {
-					}						
-					$()
-					document.getElementById('sidebar-toggle-btn').click();
+					if($('#sidebar-menu-toggle').attr('value') === 'true') {
+						$('[href="#sidebar-menu"]').trigger('touchstart');
+						$('#sidebar-menu-toggle').attr('value', 'false');
+					}
 					swipedElement.style.backgroundColor = 'orange';
 				} else if ( swipeDirection == 'right' ) {
 					// REPLACE WITH YOUR ROUTINES
+					if($('#sidebar-menu-toggle').attr('value') === 'false') {
+						$('[href="#sidebar-menu"]').trigger('touchstart');
+						$('#sidebar-menu-toggle').attr('value', 'true');
+					}
 					swipedElement.style.backgroundColor = 'green';
 				} else if ( swipeDirection == 'up' ) {
 					// REPLACE WITH YOUR ROUTINES
