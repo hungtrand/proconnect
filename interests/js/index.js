@@ -1,9 +1,14 @@
 $(document).ready(function() {
 
 	var feedList = new FeedList($('#FeedsSection'));
-	// feedList.load();
-	feedList.loadCardView();
 
+	if(isMobile.phone) {
+		console.log('is phone');
+		feedList.load();
+	} else {
+		console.log('not phone');
+		feedList.loadCardView();
+	}
 	// initite scroll
 	$('.st-content-inner').scroll(function()
 	{

@@ -100,7 +100,7 @@ SetUpForm.prototype = {
 		var startStudent= parseInt(that.StartYearStudentInput.val());
 		var endStudent= parseInt(that.EndYearStudentInput.val());
 
-		if ($("#inlineRadio2-country").prop("checked")) {
+		/*if ($("#inlineRadio2-country").prop("checked")) {
 			if(country== ""){
 				that.CountryInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
 				that.Alert.text("Please enter Country ");
@@ -108,6 +108,14 @@ SetUpForm.prototype = {
 				that.CountryInput.val("");
 
 				return false;
+			}
+			if(address==""){
+		    that.AddressInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
+			that.Alert.text("Please enter address ");
+			that.Alert.show();
+			that.AddressInput.val("");
+
+		    return false;
 			}
 			if(postal== ""){
 				that.PostalInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
@@ -119,7 +127,15 @@ SetUpForm.prototype = {
 			}
 		}
 		else{
-			if(zipcode== "" || IsZipcode(zipcode)==false){
+			if(address==""){
+		    that.AddressInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
+			that.Alert.text("Please enter address ");
+			that.Alert.show();
+			that.AddressInput.val("");
+
+		    return false;
+			}*/
+			if(zipcode!= "" && IsZipcode(zipcode)==false){
 				that.ZipcodeInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
 				that.Alert.text("Please enter valid Zip Code");
 				that.Alert.show();
@@ -129,23 +145,16 @@ SetUpForm.prototype = {
 			}
 		}
 
-		if(address==""){
-		    that.AddressInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
-			that.Alert.text("Please enter address ");
-			that.Alert.show();
-			that.AddressInput.val("");
+		
 
-		    return false;
-		}
-
-		if (phonenumber=="" || IsPhonenumber(phonenumber)==false) {
+		if (phonenumber!="" && IsPhonenumber(phonenumber)==false) {
 			that.PhonenumberInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
 			that.Alert.text("Please enter valid phone number ");
 			that.PhonenumberInput.val("");
 
 			return false;
 		}
-		
+		/*
 		if ($("#inlineRadio1").prop("checked")) {
 			if(jobtitle==""){
 				that.JobTitleInput.css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
@@ -162,6 +171,7 @@ SetUpForm.prototype = {
 				return false;
 			}
 		}
+		/
 		if ($("#inlineRadio2").prop("checked")) {
 		console.log("looking check")
 			if(rctJobtitle==""){

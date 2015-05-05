@@ -654,6 +654,7 @@ This variant is to be used when loading the separate styling modules -->
     <script src="/master/js/touch.js"></script>
 
     <!-- Custom ProConnect -->
+    <script type="text/javascript" src="/lib/isMobile-master/isMobile.min.js"></script>
     <script type="text/javascript" src="/master/custom_proconnect/js/NotificationGetter.js"></script>
     <script type="text/javascript" src="/master/custom_proconnect/js/NotificationHandler.js"></script>
     <script type="text/javascript" src="/master/custom_proconnect/js/AdvanceSearchInterfaceHandler.js"></script>

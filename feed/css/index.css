@@ -46,10 +46,48 @@ blockquote p {
           box-shadow: 5px 5px 10px rgba(0,0,0,.25);
 }
 
+.cover.profile .cover-info .name {
+  position: absolute;
+  left: 155px;
+  bottom: 0;
+  margin-bottom: 65px;
+  display: block;
+  z-index: 3;
+}
+.cover.profile {
+  background: inherit;
+  border: 0px;
+  margin-bottom: 0px;
+}
+.cover.profile .cover-info {
+  position: relative;
+  height: 100px;
+}
+.cover.profile .cover-info .avatar img {
+  width: 90px;
+  height: 90px;
+}
+.cover.profile .cover-info .name {
+  top: 30px;
+}
+.cover.profile .cover-info .name a {
+  /*color: rgba(5, 5, 5, 0.7);*/
+  font-weight: 300;
+  color: #717171;
+  /*margin: 10px;*/
+}
 
-@media (max-width: 768px) {
+@media (max-width: 768px){
+	.cover.profile .cover-info .name {
+	  position: absolute;
+	  left: 100px;
+	  bottom: 0;
+	  margin-bottom: 65px;
+	  display: block;
+	  z-index: 3;
+	}
+
   #FeedsSection .media-body {
-      max-width: 100%;
+      max-width: 100% !important;
   }
-
 }

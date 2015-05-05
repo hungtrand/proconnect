@@ -26,8 +26,8 @@ ob_start();
     <link rel="stylesheet" type="text/css" href="css/index.css" />
 
     <div class="interest-feed-pool container-fluid">
-        <div class="cover profile">
-            <div id="PostSearchContainer" class="wrapper">
+        <div class="cover profile hidden">
+            <div id="PostSearchContainer" class="wrapper ">
                 
             </div>
         </div>
@@ -53,7 +53,7 @@ ob_start();
                 <div class="panel panel-default share clearfix-xs">
                     <div class="panel-heading panel-heading-gray title">
                         <div class="media user-wrapper">
-                            <div class="media-left">
+                            <div class="media-left col-xs-4">
                                 <div style="width: 50px; height: 50px;">
                                     <img src="/image/user_img.png" alt="people" style="object-fit: cover;"
                                     class="img-circle media-object creatorImage hidden-xs" width="50px" height="50px" />
