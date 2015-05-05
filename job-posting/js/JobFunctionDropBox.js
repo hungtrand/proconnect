@@ -43,7 +43,7 @@ JobFunctionDropBox.prototype = {
 		var data = that.data;
 
 		$.ajax({
-			url: 'php/dummy2.php',
+			url: '/lib/php/Lookup_JobFunctions_controller.php',
 			type: 'POST',
 			data: data,
 			contentType: 'text/plain'
@@ -69,8 +69,8 @@ JobFunctionDropBox.prototype = {
 
 	createIndustry: function(data) {
 		var that = this;
-		$.each(data, function (key, value) {
-			that.dropbox.append('<option value='+value.jobFuncID+'>'+value.jobFuncValue+'</option>');
+		$.each(data, function (i, value) {
+			that.dropbox.append('<option value='+value['JOBFUNCTION']+'>'+value['JOBFUNCTION']+'</option>');
 		})
 	}
 }

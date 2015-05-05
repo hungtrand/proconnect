@@ -43,7 +43,7 @@ IndustryDropBox.prototype = {
 		var data = that.data;
 
 		$.ajax({
-			url: 'php/dummy.php',
+			url: '/lib/php/Lookup_Industries_controller.php',
 			type: 'POST',
 			data: data,
 			contentType: 'text/plain'
@@ -69,8 +69,8 @@ IndustryDropBox.prototype = {
 
 	createIndustry: function(data) {
 		var that = this;
-		$.each(data, function (key, value) {
-			that.dropbox.append('<option value='+value.industryID+'>'+value.industryValue+'</option>');
+		$.each(data, function (i, value) {
+			that.dropbox.append('<option value='+value['INDUSTRYNAME']+'>'+value['INDUSTRYNAME']+'</option>');
 		})
 	}
 }

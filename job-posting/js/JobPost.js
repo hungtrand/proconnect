@@ -21,6 +21,7 @@ JobPost.prototype = {
 		var that = this;
 		// create a json object of all the data sent to the DB
 		var data = {
+			JobID: 0,
 			JobTitle: that.info.jobTitle.text(),
 			CompanyName: that.info.jobLocation.text(),
 			ContactInfo: that.info.contactInfo.text(),
@@ -40,51 +41,51 @@ JobPost.prototype = {
 		$.each(data, function(key, value) {
 			switch(value) {
 				case 'Job Title Unavailable':
-					$('#job-title').css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
+					$('#job-title').toggleClass("errorInput", true);
 					counter++;
 					break;
 				case 'Company Name Unavailable':
-					$('#company-name').css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
+					$('#company-name').toggleClass("errorInput", true);
 					counter++;
 					break;
 				case 'Email Unavailable':
-					$('#email').css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
+					$('#email').toggleClass("errorInput", true);
 					counter++;
 					break;
 				case 'Website Unavailable':
-					$('#website').css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
+					$('#website').toggleClass("errorInput", true);
 					counter++;
 					break;
 				case 'Company Description Unavailable':
-					$('#company-desc').css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
+					$('#company-desc').toggleClass("errorInput", true);
 					counter++;
 					break;
 				case 'Desired Skills & Experiences Unavailable':
-					$('#skill-desc').css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
+					$('#skill-desc').toggleClass("errorInput", true);
 					counter++;
 					break;
 				case 'Job Description Unavailable':
-					$('#job-desc').css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
+					$('#job-desc').toggleClass("errorInput", true);
 					counter++;
 					break;
 				case 'Employment Type Unavailable':
-					$('#employment-type-dropbox').css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
+					$('#employment-type-dropbox').toggleClass("errorInput", true);
 					counter++;
 					break;
 				case 'Experience Unavailable':
-					$('#experience-dropbox').css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
+					$('#experience-dropbox').toggleClass("errorInput", true);
 					counter++;
 					break;
 				case 'Job Functions Unavailable':
-					$('#jobFunc-dropbox-0').css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
-					$('#jobFunc-dropbox-1').css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
-					$('#jobFunc-dropbox-2').css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
+					$('#jobFunc-dropbox-0').toggleClass("errorInput", true);
+					$('#jobFunc-dropbox-1').toggleClass("errorInput", true);
+					$('#jobFunc-dropbox-2').toggleClass("errorInput", true);
 					counter++;
 					break;
 				case 'Industries Unavailable':
-					$('#industry-dropbox-0').css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
-					$('#industry-dropbox-1').css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
-					$('#industry-dropbox-2').css({"border": "3px solid rgba(184, 68, 66, 0.62)"});
+					$('#industry-dropbox-0').toggleClass("errorInput", true);
+					$('#industry-dropbox-1').toggleClass("errorInput", true);
+					$('#industry-dropbox-2').toggleClass("errorInput", true);
 					counter++;
 					break;
 				default:
@@ -105,21 +106,21 @@ JobPost.prototype = {
 	// reset the borders on submission
 	resetBorder: function() {
 		var that = this;
-		$('#job-title').css({"border": ""});			
-		$('#company-name').css({"border": ""});
-		$('#email').css({"border": ""});			
-		$('#website').css({"border": ""});
-		$('#company-desc').css({"border": ""});	
-		$('#skill-desc').css({"border": ""});
-		$('#job-desc').css({"border": ""});			
-		$('#employment-type-dropbox').css({"border": ""});			
-		$('#experience-dropbox').css({"border": ""});			
-		$('#jobFunc-dropbox-0').css({"border": ""});
-		$('#jobFunc-dropbox-1').css({"border": ""});
-		$('#jobFunc-dropbox-2').css({"border": ""});			
-		$('#industry-dropbox-0').css({"border": ""});
-		$('#industry-dropbox-1').css({"border": ""});
-		$('#industry-dropbox-2').css({"border": ""});
+		$('#job-title').toggleClass("errorInput", false);			
+		$('#company-name').toggleClass("errorInput", false);
+		$('#email').toggleClass("errorInput", false);			
+		$('#website').toggleClass("errorInput", false);
+		$('#company-desc').toggleClass("errorInput", false);	
+		$('#skill-desc').toggleClass("errorInput", false);
+		$('#job-desc').toggleClass("errorInput", false);			
+		$('#employment-type-dropbox').toggleClass("errorInput", false);			
+		$('#experience-dropbox').toggleClass("errorInput", false);			
+		$('#jobFunc-dropbox-0').toggleClass("errorInput", false);
+		$('#jobFunc-dropbox-1').toggleClass("errorInput", false);
+		$('#jobFunc-dropbox-2').toggleClass("errorInput", false);			
+		$('#industry-dropbox-0').toggleClass("errorInput", false);
+		$('#industry-dropbox-1').toggleClass("errorInput", false);
+		$('#industry-dropbox-2').toggleClass("errorInput", false);
 	},
 
 	// createPost: function() {
@@ -187,7 +188,7 @@ JobPost.prototype = {
 		var data = that.data;
 
 		$.ajax({
-			url: 'php/dummy3.php',
+			url: 'php/jobpost_controller.php',
 			data: data,
 			type: 'POST'
 		}).done(function(json) {
@@ -209,6 +210,17 @@ JobPost.prototype = {
 
 	error: function() {
 		var that = this;
-		alert("A field Is Incomplete, please review and correctly fill in all fields");
+		var alertMsg = 'Please provide information for required fields.';
+		that.container.find('.errorInput:first').focus();
+		$('.toast').html(alertMsg).slideDown('slow');
+		that.container.find('.errorInput').one('change', function() {
+			$(this).toggleClass('errorInput', false);
+		});
+
+		setTimeout(function() {
+			$('.toast').slideUp('slow', function() {
+				$(this).html('');
+			});
+		}, 3000);
 	}
 }
