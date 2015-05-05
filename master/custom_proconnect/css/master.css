@@ -92,6 +92,14 @@ body {
 	edit profile page turns into 2 columns
 }*/
 
+.ls-bottom-footer .st-container {
+	padding-bottom: 0px;
+}
+
+.ls-bottom-footer .st-container>.sidebar {
+	bottom: 0;
+}
+
 .main-nav-search-btn {
 	/*border-right: 0px;*/
 }
@@ -252,13 +260,7 @@ body {
 }
 
 @media (max-width: 767px){
-	.ls-bottom-footer .st-container {
-		padding-bottom: 0px;
-	}
-
-	.ls-bottom-footer .st-container>.sidebar {
-		bottom: 0;
-	}
+	
 
 	.notification-number{
 		/*margin-left: 0px !important;
