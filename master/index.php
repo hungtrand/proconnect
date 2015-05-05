@@ -559,9 +559,9 @@ This variant is to be used when loading the separate styling modules -->
         </div>
         <!-- /st-pusher -->
         <!-- Footer -->
-        <footer class="footer hidden-xs">
+        <!-- <footer class="footer hidden-xs">
             <strong>ProConnect</strong> Quorious Design &copy; Copyright 2015
-        </footer>
+        </footer> -->
         <!-- // Footer -->
     </div>
     <!-- /st-container -->
