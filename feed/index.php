@@ -26,7 +26,6 @@ ob_start();
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     
 
-
         <div class="row" style="">
             <!-- Left main content -->
             <div class="col col-xs-12 col-sm-11 col-md-9 col-lg-9">
@@ -61,14 +60,14 @@ ob_start();
                         </div>
 
                         <div class="col col-xs-4  col-sm-2 text-right">
-                             <button id="btnPostMode" class="btn btn-danger" title="New Post">Post</button>
+                             <button id="btnPostMode" class="btn btn-danger" title="New Post" style="position: fixed; z-index: 100; display: block;">Post</button>
                         </div>
                     </div>
-					   <div class="row">
+					   <div class="row" style="position: fixed; z-index: 100;">
                         <form id="formNewPost" action="feed_controller.php" class="form-horizontal col col-xs-12" style="display: none;">
                             <div class="form-group">
-                                <div class="media">
-                                    <div class="media-body">
+                                <div id = "form-section" class="media">
+                                    <div class="media-body" style= "max-width: 100% !important;">
                                         <textarea class="form-control" id="ContentMessage" name="ContentMessage" rows="5" placeholder="share, inspire, motivate,..."></textarea>
                                     </div>
 
@@ -249,10 +248,12 @@ ob_start();
         </li>
     </script>
 
+
 <?php
     $Content = ob_get_clean();
     include __DIR__."/../master/index.php";
 ?>
+
     <script src="../lib/js/FileUpload.js"></script>
     <script src="../lib/ckeditor/ckeditor.js"></script>
     <script src="../lib/typeahead/dist/typeahead.bundle.min.js"></script>
