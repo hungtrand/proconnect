@@ -28,13 +28,16 @@ ob_start();
 
             <div id="imgupload">
                 <div class="form-group">
-                    <a id="btnAttachImg" class="btn"><img id="ImagePreview" src="../image/companyimg" style="height: 150px; width: 200px;"></a>
+                    <a id="btnAttachImg" class="btn"><img id="ImagePreview" src="../image/companyimg" style="width:100%;"></a>
                     <div class="hiddenInputs">
-                        <input type="file" class="hidden" id="FeedImage" name="FeedImage" /><!-- temp image / not yet uploaded -->
-                        <!-- uploaded image link only populate when upload then reset after sumission -->
-                        <input type="text" class="hidden" id="ImageURL" name="ImageURL" value="" />
-                        <div id="AlertNewImg" class="alert alert-info" style="display: none;">
-                            
+                        <form id="formCompanyImage">
+                            <input type="file" class="hidden" id="CompanyImage" name="CompanyImage" /><!-- temp image / not yet uploaded -->
+                            <!-- uploaded image link only populate when upload then reset after sumission -->
+                           <input type="text" class="hidden" id="CompanyImageURL" name="CompanyImageURL" value="" />
+                        </form>
+                        <div id="AlertNewImg" class="alert alert-info text-center" style="display: none;">
+                            <img src="/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif" alt="Loading..."/>
+                            <div class="alertMsg"></div>
                         </div>
                     </div>
                 </div>
@@ -184,18 +187,20 @@ ob_start();
                         </div>
                         <div class="modal-footer">
                             <span><p class="additional">Additional Information</p></span>
-                            <div class="col col-xs-4 text-left">
-                                <span><p class="additional">Type:</p></span>
-                                <span><p class="additional">Experience:</p></span>
-                                <span><p class="additional">Functions:</p></span>
-                                <span><p class="additional">Industries:</p></span>
-                            </div>
+                            <div class="row">
+                                <div class="col col-xs-4 text-left">
+                                    <p class="additional">Type:</p>
+                                    <p class="additional">Experience:</p>
+                                    <p class="additional">Functions:</p>
+                                    <p class="additional">Industries:</p>
+                                </div>
 
-                            <div class="col col-xs-8 text-left" id="additional-content">
-                                <span><p class="additional-info" id="job-employment-type"></p></span>
-                                <span><p class="additional-info" id="job-experience"></p></span>
-                                <span><p class="additional-info" id="job-function"></p></span>
-                                <span><p class="additional-info" id="industries"></p></span>
+                                <div class="col col-xs-8 text-left" id="additional-content">
+                                    <p class="additional-info" id="job-employment-type">&nbsp;</p>
+                                    <p class="additional-info" id="job-experience">&nbsp;</p>
+                                    <p class="additional-info" id="job-function">&nbsp;</p>
+                                    <p class="additional-info" id="industries">&nbsp;</p>
+                                </div>
                             </div>
                         </div>
                     </div>
