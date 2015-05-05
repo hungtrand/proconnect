@@ -1,6 +1,6 @@
 <?php
 
-	require_once "../sqlConnection.php"; //testing
+	// require_once "../sqlConnection.php"; //testing
 	require_once __DIR__."/User.php"; //testing
 	require_once __DIR__."/Job.php";
 	require_once __DIR__."/RecordSet.php";
@@ -57,7 +57,8 @@
 			}
 
 			$offset = $page * $numRows - $numRows;
-
+			$params = [];
+			
 			$cond = "WHERE JOBHIRING = 1 ";
 			$cond.= "ORDER BY ".$orderby." LIMIT ". $offset .", ". $numRows;
 			//$params = ['USERID'=>$this->User->getID()];

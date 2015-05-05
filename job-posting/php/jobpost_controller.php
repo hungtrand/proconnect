@@ -45,6 +45,7 @@ $EmploymentType= isset($_POST['EmploymentType']) ? $_POST['EmploymentType'] : ''
 $Experience= isset($_POST['Experience']) ? $_POST['Experience'] : '';+
 $JobFunctions= isset($_POST['JobFunctions']) ? $_POST['JobFunctions'] : '';
 $Industries= isset($_POST['Industries']) ? $_POST['Industries'] : '';
+$CompanyImage = isset($_POST['CompanyImage']) ? $_POST['CompanyImage'] : '';
 $isHiring = true;
 
 $JobID = -1;
@@ -89,6 +90,7 @@ try {
 			$job->setJobFunction($JobFunctions);
 			$job->setIndustry($Industries);
 			$job->setJobHiring($isHiring);
+			$job->setCompanyImage($CompanyImage);
 			
 			if ($job->save()) {
 				$ucm = new UserConnectionManager($User);

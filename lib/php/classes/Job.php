@@ -11,10 +11,10 @@
 
 	class Job extends ActiveRecord{
 		public static $TableName = 'Job';
-		public static $PrimaryKey = 'JobID';
+		public static $PrimaryKey = 'JOBID';
 		public static $Columns = ['JOBID', 'JOBLOCATION', 'JOBTITLE', 'INDUSTRY', 'COMPANYNAME', 'COMPANYDESCRIPTION', 'EXPERIENCE', 'SPECIALSKILL',
 									'EMPLOYMENTTYPE', 'JOBHIRING', 'PREFERENCELOCATION', 'PREFERENCEINDUSTRY', 'PREFERENCEJOBTYPE', 'USERID', 'DATECREATED', 'JOBDESCRIPTION', 'JOBFUNCTION',
-									'CONTACTINFO'];
+									'CONTACTINFO', 'COMPANYIMAGE'];
 
 		private $data = [];
 		private $JobID;
@@ -71,7 +71,7 @@
 	public function getJobHiring(){
 		return $this->data['JOBHIRING'];
 	}
-	public function getJobLoacation(){
+	public function getJobLocation(){
 		return $this->data['JOBLOCATION'];
 	}
 
@@ -137,6 +137,10 @@
 	public function getContactInfo(){
 		return $this->data['CONTACTINFO'];
 	}
+
+	public function getCompanyImage(){
+		return $this->data['COMPANYIMAGE'];
+	}
 	//SET METHODS
 
 	public function setJobHiring($boolVal = true){
@@ -198,6 +202,10 @@
 
 	public function setContactInfo($strVal){
 		$this->data['CONTACTINFO'] = $strVal;
+	}
+
+	public function setCompanyImage($strVal){
+		$this->data['COMPANYIMAGE'] = $strVal;
 	}
 
 }

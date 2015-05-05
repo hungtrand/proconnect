@@ -11,7 +11,7 @@ NewPost.prototype = {
 
 	init: function() {
 		var that = this;
-		that.inputFeedImage = $('#FeedImage');
+		that.inputImage = $('#CompanyImage');
 		that.imagePreview = $('#ImagePreview');
 		that.btnAttachImg = $('#btnAttachImg');
 
@@ -75,10 +75,10 @@ NewPost.prototype = {
 
 		that.btnAttachImg.on('click', function(e) {
 			e.preventDefault();
-			that.inputFeedImage.trigger('click');
+			that.inputImage.trigger('click');
 		});
 
-		that.inputFeedImage.on('change', function(evt) {
+		that.inputImage.on('change', function(evt) {
 			var tgt = evt.target || window.event.srcElement, files = tgt.files;
 
 			if (FileReader && files && files.length) {

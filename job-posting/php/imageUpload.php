@@ -31,14 +31,14 @@
 	}
 
 	// 1. Check if any image was transferred at all, if not exit
-	if (empty($_FILES["FeedImage"]))
+	if (empty($_FILES["CompanyImage"]))
 	{
 		$rs = '<div class="label label-danger">No File Received.</div>';
 		echo $rs;
 		exit();
 	}
 
-	$imgFile = $_FILES["FeedImage"];
+	$imgFile = $_FILES["CompanyImage"];
 
 	// 2. Check if any error occurred during the transfer
 	if ($imgFile["error"] !== UPLOAD_ERR_OK)

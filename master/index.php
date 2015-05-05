@@ -4,6 +4,26 @@
 *   the following variables can be used to inject contents into master
 */
 
+// Check if logged in
+if (isset($_POST['Username']) && isset($_POST['Password'])) {
+    $login = $_POST['Username'];
+    $password = $_POST['Password'];
+    $accAdm = new AccountAdmin();
+
+    $acc = $accAdm->getAccount($login, $password);
+    $uid = $acc->getUserID();
+} else {
+    session_start();
+    $home = 'Location: ../../';
+    if (!$UData = json_decode($_SESSION['__USERDATA__'], true)) {
+        //header($home);
+        header('Location: /signin/');
+        die();
+    }
+
+    $uid = $UData['USERID'];
+}
+
 if (!isset($Title)) $Title = "Proconnect";
 if (!isset($ProfileImage)) $ProfileImage = "/image/user_img.png";
 if (!isset($Content)) $Content = "Content not loaded.";

@@ -48,7 +48,8 @@ ModalFiller.prototype = {
 		that.loadEmploymentType();
 		that.loadExperience();
 		that.loadJobFunc();
-		that.loadIndustries();		
+		that.loadIndustries();	
+		that.loadCompanyImg();	
 	},
 
 	loadJobTitle: function() {

@@ -32,7 +32,8 @@ JobPost.prototype = {
 			EmploymentType: that.info.employmentType.text(),
 			Experience: that.info.experience.text(),
 			JobFunctions: that.info.jobFunctions.text(),
-			Industries: that.info.industries.text()
+			Industries: that.info.industries.text(),
+			CompanyImage: that.container.find('#CompanyImageURL').val()
 		};
 		that.data = data;
 
@@ -187,40 +188,90 @@ JobPost.prototype = {
 		var that = this;
 		var data = that.data;
 
-		$.ajax({
-			url: 'php/jobpost_controller.php',
-			data: data,
-			type: 'POST'
-		}).done(function(json) {
-			try {
-				json = $.parseJSON(json);
-				callback(json);
-			} catch (e) {
-				callback(json);
+		var submitForm = function() {
+			$.ajax({
+				url: 'php/jobpost_controller.php',
+				data: data,
+				type: 'POST'
+			}).done(function(json) {
+				try {
+					json = $.parseJSON(json);
+					callback(json);
+				} catch (e) {
+					callback(json);
+				}
+			}).fail(function(e) {
+				console.log(e);
+			});
+		};
+
+		if  (!that.container.find('#CompanyImage').val()) {
+			submitForm();
+		} else {
+			that.uploadImage(function(success) {
+				if (success) {
+					data.CompanyImage = that.container.find("#CompanyImageURL").val();
+					submitForm();
+				} else {
+					that.displayToast('Failed to upload file. Form not submitted.');
+				}
+				
+			});
+		}
+
+		
+	},
+
+	uploadImage: function(callback) {
+		var that = this;
+		that.displayToast(that.container.find('#AlertNewImg img'), true); // display waiting gif
+		var success = false;
+		fileUpload(document.getElementById('formCompanyImage'), '/job-posting/php/imageUpload.php', 'AlertNewImg', function() {
+			var alertDiv = that.container.find('#AlertNewImg');
+			if (alertDiv.find('#uploadedFile').length > 0) {
+				var newUrl = alertDiv.find('#uploadedFile').val(); 
+				that.container.find('#CompanyImageURL').val(newUrl);
+				success = true;
+				callback(success);
 			}
-		}).fail(function(e) {
-			console.log(e);
+			
 		});
 	},
 
 	confirmSent: function(callback) {
 		var that = this;
-		alert("Should redirect the user to their Job Post");
+		that.displayToast('Your job post has successfully been submitted.');
+		that.container.find('input[type="text"], textarea').val('');
+		that.container.find('input[type="file"]').val('');
+		that.container.find('select option').removeAttr('selected');
+		that.container.find('input[type="radio"]').removeAttr('checked');
+		CKEDITOR.instances.companyDesc.setData('');
+		CKEDITOR.instances.skillDesc.setData('');
+		CKEDITOR.instances.jobDesc.setData('');
+		$('#ImagePreview').attr('src', '../image/companyimg');
 	},
 
 	error: function() {
 		var that = this;
 		var alertMsg = 'Please provide information for required fields.';
 		that.container.find('.errorInput:first').focus();
-		$('.toast').html(alertMsg).slideDown('slow');
 		that.container.find('.errorInput').one('change', function() {
 			$(this).toggleClass('errorInput', false);
 		});
 
-		setTimeout(function() {
-			$('.toast').slideUp('slow', function() {
-				$(this).html('');
-			});
-		}, 3000);
+		that.displayToast(alertMsg);
+		
+	},
+
+	displayToast: function(msg, keepShown) {
+		$('.toast').html(msg).slideDown('slow');
+
+		if (!keepShown) {
+			setTimeout(function() {
+				$('.toast').slideUp('slow', function() {
+					$(this).html('');
+				});
+			}, 5000);
+		}
 	}
 }

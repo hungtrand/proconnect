@@ -26,7 +26,23 @@ class Job_view implements view {
 		if (!$job) return false;
 
 		$out = [
-			
+			'jobID' =>$job->getID(),
+			'JobHiring'=>$job->getJobHiring(),
+			'jobLocation'=>$job->getJobLocation(),
+			'jobTitle'=>$job->getJobTitle(),
+			'jobDescription'=>$job->getJobDescription(),
+			'jobFunctions'=>$job->getJobFunction(),
+			'industries'=>$job->getIndustry(),
+			'companyName'=>$job->getCompanyName(), 
+			'companyDescription'=>$job->getCompanyDescription(), 
+			'experience'=>$job->getExperience(),
+			'employmentType'=>$job-> getEmploymentType(),
+			'PreferenceLocation'=>$job->getPreferenceLocation(),
+			'PreferenceIndustry'=>$job->getPreferenceIndustry(),
+			'PreferenceJobType'=>$job->getPreferenceJobType(),
+			'companyImg'=> "../image/pronetwork.jpg",
+			"contactInfo"=> $job->getContactInfo(),
+			'UserID'=>$job->getUserID()
 		];
 
 		$this->FinalView = $out;
