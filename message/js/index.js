@@ -1,5 +1,6 @@
 $(window).load(function() {
 	$("#loading-main").show();
+
 	setTimeout(function() {
 		$("#loading-main").hide('800', function() {
 			$(this).hide();
@@ -10,8 +11,7 @@ $(window).load(function() {
 			if(window.innerWidth < 862) {
 				$("#nav-container").append(tempSmall);
 				animater(120);
-			}
-			else {
+			} else {
 				$("#nav-container").append(tempLarge);
 			}
 
@@ -28,7 +28,7 @@ $(window).load(function() {
 			});
 			var searchTypeahead = new typeahead();
 
-			/*Initial start up witll load inbox*/
+			/*Initial start up will load inbox*/
 			globalPageNumber = 1;
 			globalVal = "Inbox";
 			$(".message-frame-name").text(globalVal);
@@ -75,7 +75,7 @@ $(window).load(function() {
 					    	$("#search-subject").val("");
 					    	return false;
 						});
-					}, 1500);
+					}, 500);
 					animater(272);
 			    });
 			});
@@ -101,7 +101,7 @@ $(window).load(function() {
 						var messages = new LoadMessages($('.message-frame-display'), value, 1);
 						messages.load();
 						});
-					}, 1500);
+					}, 500);
 					animater(272);
 				});
 			};
@@ -109,10 +109,10 @@ $(window).load(function() {
 			function animater(number) {
 				$('html,body').animate({
 		        	scrollTop: $("#message-div").offset().top - number
-		    	}, 500);
+		    	}, 200);
 			};
 			var suggList = new SuggestionList($('#SuggListing'));
 			suggList.load();
 		})
-	}, 1200);
+	}, 500);
 });
