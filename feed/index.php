@@ -50,7 +50,7 @@ ob_start();
 
         <div class="row" style="">
             <!-- Left main content -->
-            <div class="col col-xs-11 col-sm-11 col-md-9 col-lg-9">
+            <div class="col col-xs-12 col-sm-11 col-md-9 col-lg-9">
 
                 <div id="NewPost" class="well well-sm">
                     <div class="row">
