@@ -77,6 +77,10 @@ blockquote p {
   /*margin: 10px;*/
 }
 
+#FeedsSection {
+  list-style: none;
+}
+
 @media (max-width: 768px){
 	.cover.profile .cover-info .name {
 	  position: absolute;
