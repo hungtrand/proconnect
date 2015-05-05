@@ -18,7 +18,7 @@
 		Protected $data;
 
 		public $err;
-		function __construct($User){
+		function __construct($User=null){
 			$this->PrimaryKey = Job::$PrimaryKey;
 			$this->TableName = Job::$TableName;
 			$this->Columns = Job::$Columns;
@@ -26,7 +26,8 @@
 
 			parent::__construct();
 
-			$this->load($User);
+			if (isset($User))
+				$this->load($User);
 
 		}
 
@@ -36,18 +37,30 @@
 			return $this->Columns;
 		}
 
-		public function load($User){
-			$params = ['USERID'=>$User->getID()];
-			if(!$this->data = $this->fetchBy($params)) return false;
-			$this->User = $User;
+		public function load($User=null){
+			if (isset($User)) {
+				$params = ['USERID'=>$User->getID()];
+				if(!$this->data = $this->fetchBy($params)) return false;
+				$this->User = $User;
+			} else {
+				if(!$this->data = $this->fetch()) return false;
+			}
+			
+			
 			return true;
 		}
 
-		public function loadCurrent() {
-			$cond = "WHERE USERID = ? AND DATECREATED IS NOT NULL ";
-			$cond .="ORDER BY DATECREATED DESC LIMIT 1 ";
+		public function loadHiring($page, $numRows, $orderby="DATECREATED") {
+			if (!is_integer($page) || !is_integer($numRows)) {
+				$this->err = "Parameters must be integers";
+				return false;
+			}
 
-			$params = ['USERID'=>$this->User->getID()];
+			$offset = $page * $numRows - $numRows;
+
+			$cond = "WHERE JOBHIRING = 1 ";
+			$cond.= "ORDER BY ".$orderby." LIMIT ". $offset .", ". $numRows;
+			//$params = ['USERID'=>$this->User->getID()];
 			if (!$this->data = $this->fetchCustom($cond, $params)) return false;
 
 			return true;
@@ -68,15 +81,15 @@
 				$cleanKW = str_replace("'", "''", $keyword[$i]);
 				$cleanKW = str_replace(",", ";", $cleanKW);
 
-
-
 				$delimiter = "AND";
 			}
-			
 
+			$cond.= "ORDER BY ".$orderby." LIMIT ". $offset .", ". $numRows;
 
+			//echo $cond;
+			if (!$this->data = $this->fetchCustom($cond, $params)) return false;
 
-
+			return true;
 		}
 
 

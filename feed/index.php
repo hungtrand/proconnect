@@ -123,7 +123,6 @@ ob_start();
                         </form>
                     </div>
                 </div>
-
                 <ul id="FeedsSection" style="padding: 0;">
 
                 </ul>

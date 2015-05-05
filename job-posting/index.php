@@ -53,18 +53,21 @@ ob_start();
                 <li id="industry-additional-zero">
                     <select class="form-control input-box industry-dropbox" id="industry-dropbox-0">
                         <!-- Content to be filled with JS -->
+                        <option value="" selected>Select One</option>
                     </select><a href="" class="add" id="industry-btn-zero"><span class="glyphicon glyphicon-plus-sign add-text"></span></a>
                     <br />
                 </li>
                 <li id="industry-additional-one" style="display:none;">
                     <select class="form-control input-box industry-dropbox" id="industry-dropbox-1">
                             <!-- Content to be filled with JS -->
+                        <option value="" selected>Select One</option>
                     </select><a href="" class="add" id="industry-btn-one"><span class="glyphicon glyphicon-minus-sign add-text"></span></a>   
                     <br />
                 </li>
                 <li id="industry-additional-two" style="display:none;">
                     <select class="form-control input-box industry-dropbox" id="industry-dropbox-2">
                             <!-- Content to be filled with JS -->
+                        <option value="" selected>Select One</option>
                     </select><a href="" class="add" id="industry-btn-two"><span class="glyphicon glyphicon-minus-sign add-text"></span></a>   
                     <br />
                 </li>
@@ -90,19 +93,19 @@ ob_start();
             <ul class="dropbox-ul" style="list-style: none;">
                 <li id="jobFunc-zero">
                     <select class="form-control input-box jobFunc-dropbox" id="jobFunc-dropbox-0">
-                        
+                        <option value="" selected>Select One</option>
                     </select><a href="" class="add" id="jobFunc-btn-zero"><span class="glyphicon glyphicon-plus-sign add-text"></span></a>   
                     <br />
                 </li>
                 <li id="jobFunc-one" style="display:none;">
                     <select class="form-control input-box jobFunc-dropbox" id="jobFunc-dropbox-1">
-                        
+                        <option value="" selected>Select One</option>
                     </select><a href="" class="add" id="jobFunc-btn-one"><span class="glyphicon glyphicon-minus-sign add-text"></span></a>   
                     <br />
                 </li>
                 <li id="jobFunc-two" style="display:none;">
                     <select class="form-control input-box jobFunc-dropbox" id="jobFunc-dropbox-2">
-                        
+                        <option value="" selected>Select One</option>
                     </select><a href="" class="add" id="jobFunc-btn-two"><span class="glyphicon glyphicon-minus-sign add-text"></span></a>   
                     <br />
                 </li>
@@ -199,7 +202,11 @@ ob_start();
                 </div>
             </div>
         </form>
+
     </div>
+
+    <div class="toast well"></div>
+
     <div class="col col-xs-4 col-xs-12" id="guarantee-div">
         <div id="guarantee-seal">
             <span id="guarantee-number">10</span>
