@@ -5,9 +5,9 @@ require_once __DIR__."/../../lib/php/sqlConnection.php";
 require_once __DIR__."/../../lib/php/classes/Account.php";
 require_once __DIR__."/../../lib/php/classes/AccountAdmin.php";
 require_once __DIR__."/../../lib/php/classes/User.php";
-require_once __DIR__."/../../lib/php/classes/Feed.php";
-require_once __DIR__."/../../lib/php/classes/Feed2UserManager.php";
-require_once __DIR__."/FeedList_view.php";
+require_once __DIR__."/../../lib/php/classes/Job.php";
+require_once __DIR__."/../../lib/php/classes/JobManager.php";
+require_once __DIR__."/JobList_view.php";
 
 // Check if logged in
 if (isset($_POST['Username']) && isset($_POST['Password'])) {
@@ -37,25 +37,22 @@ if (!$User = new User($uid)) {
 //$User = new User(10); // For Testing
 if (isset($_POST['page'])) $page = (int)$_POST['page'];
 else $page = 1;
-$rowsaPage = 12;
+$rowsaPage = 10;
 
 if (isset($_POST['afterID'])) $afterID = (int)$_POST['afterID'];
 
 try {
-	$fum = new Feed2UserManager($User);
+	$jm = new JobManager($User);
 
-	if (is_numeric($afterID))
-		$fum->loadNewer($afterID);
-	else
-		$fum->loadPage($page, $rowsaPage);
+	$jm->loadPage($page, $rowsaPage);
 	
-	$feeds = $fum->getAll();
+	$jobs = $jm->getAll();
 
-	$view = new FeedList_view();
-	$view->load($feeds);
+	$view = new JobList_view();
+	$view->load($jobs);
 	$data = $view->getView();
 
-	// echo "\n".json_encode($fum->getData())."\n";
+	// echo "\n".json_encode($jm->getData())."\n";
 } catch (Exception $e) {
 	echo $e->getMessage();
 

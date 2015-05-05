@@ -67,7 +67,7 @@ JobGrid.prototype = {
 				that.data = json;
 				callback(json);
 			} catch(e) {
-				$('#job-page-alert').text("Unforunately we were unable to load content");
+				$('#job-page-alert').text("There are currently no jobs available.");
 			}
 		}).fail (function() {
 			$('#job-page-alert').text("Unforunately we were unable to load content");

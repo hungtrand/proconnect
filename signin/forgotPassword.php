@@ -76,7 +76,7 @@
 		</div> <!-- /container -->
 	</div>
 	<!-- Footer -->
-    <footer class="footer">
+    <footer class="footer hidden-xs">
         <strong>ProConnect</strong> v1.0 &copy; Copyright 2015
     </footer>
     <!-- // Footer -->

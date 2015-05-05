@@ -131,7 +131,7 @@ class MessageView extends ActiveRecord{
 		if ($boolVal) $this->data['DELETED'] = true;
 		else $this->data['DELETED'] = false;
 
-		return true;
+		return $this->data['DELETED'];
 	}
 
 	public function setIsCreator($boolVal = false) {

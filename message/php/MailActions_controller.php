@@ -149,14 +149,16 @@ switch ($action) {
 		foreach($MessageViewIDs as $MessageViewID) {
 			if (!$msg = new MessageView((int)$MessageViewID)) continue;
 
-			$msg->setDeleted(false);
+			$msg->setDeleted(false); //recover from delete
+			$msg->setArchived(false); //recover from archive 
+										//NOTE: A message can only be in 1 category at a time, but this will cover both cases
 			if (!$msg->update()) {
 				echo "An error occurred.";
 				die();
 			}
 		}
 		
-		echo json_encode(["success"=>1]);
+		echo json_encode( ["success"=>1] );
 	break;
 
 	case 'burn':

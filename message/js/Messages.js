@@ -150,6 +150,7 @@ Messages.prototype = {
 			data: data,
 			type: 'POST'
 		}).done(function(json) {
+			console.log(json);
 			try {
 				json = $.parseJSON(json);
 				returnedData(json);

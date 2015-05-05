@@ -158,85 +158,71 @@ ModalFiller.prototype = {
 	loadJobFunc: function() {
 		var that = this;
 
-		var jobFunc0Value = $('#jobFunc-dropbox-0').val();
-		var jobFunc0Input = $('#jobFunc-dropbox-0 option[value='+jobFunc0Value+']');
+		$('#jobFunc-dropbox-0, #jobFunc-dropbox-1, #jobFunc-dropbox-2').on('change', function() {
+			var jobFunc0Value = $('#jobFunc-dropbox-0').val();
 
-		var jobFunc1Value = $('#jobFunc-dropbox-1').val();
-		var jobFunc1Input = $('#jobFunc-dropbox-1 option[value='+jobFunc1Value+']');
+			var jobFunc1Value = $('#jobFunc-dropbox-1').val();
 
-		var jobFunc2Value = $('#jobFunc-dropbox-2').val();
-		var jobFunc2Input = $('#jobFunc-dropbox-2 option[value='+jobFunc2Value+']');
+			var jobFunc2Value = $('#jobFunc-dropbox-2').val();
 
-		var jobFunc = [];
-		if(jobFunc0Input.val() > 0) {
-			jobFunc.push(jobFunc0Input.text());
-		}
-		if(jobFunc1Input.val() > 0) {
-			jobFunc.push(jobFunc1Input.text());
-		}
-		if(jobFunc2Input.val() > 0) {
-			jobFunc.push(jobFunc2Input.text());
-		}
+			var jobFunc = [jobFunc0Value, jobFunc1Value, jobFunc2Value];
 
-		var jobFuncString = '';
-		var counter1 = 0;
-		$.each(jobFunc, function(index, item) {
-			if(counter1 > 0) {
-				jobFuncString += ', ';
+			var jobFuncString = '';
+			var counter1 = 0;
+			$.each(jobFunc, function(index, item) {
+				if (item.trim().length > 0) {
+					if(counter1 > 0) {
+						jobFuncString += ', ';
+					}
+					jobFuncString += item;
+					counter1++;
+				}
+			});
+
+			if(jobFuncString.length > 0) {
+				that.jobFunctions.text(jobFuncString);	
+			} else {
+				that.jobFunctions.text('Job Functions Unavailable');
 			}
-			jobFuncString += item;
-			counter1++;
 		});
-
-		if(jobFuncString.length > 0) {
-			that.jobFunctions.text(jobFuncString);	
-		} else {
-			that.jobFunctions.text('Job Functions Unavailable')
-		}
 	},
 
 	loadIndustries: function() {
 		var that = this;
 
-		var industry0Value = $('#industry-dropbox-0').val();
-		var industry0Input = $('#industry-dropbox-0 option[value='+industry0Value+']');
+		$('#industry-dropbox-0, #industry-dropbox-1, #industry-dropbox-2').on('change', function() {
+			var industry0Value = $('#industry-dropbox-0').val();
 
-		var industry1Value = $('#industry-dropbox-1').val();
-		var industry1Input = $('#industry-dropbox-1 option[value='+industry1Value+']');
+			var industry1Value = $('#industry-dropbox-1').val();
 
-		var industry2Value = $('#industry-dropbox-2').val();
-		var industry2Input = $('#industry-dropbox-2 option[value='+industry2Value+']');
+			var industry2Value = $('#industry-dropbox-2').val();
 
-		var industryArr = [];
-		if(industry0Input.val() > 0) {
-			industryArr.push(industry0Input.text());
-		}
-		if(industry1Input.val() > 0) {
-			industryArr.push(industry1Input.text());
-		}
-		if(industry2Input.val() > 0) {
-			industryArr.push(industry2Input.text());
-		}
+			var industryArr = [industry0Value, industry1Value, industry2Value];
 
-		var industryString = '';
-		var counter2 = 0;
-		$.each(industryArr, function(index, item) {
-			if(counter2 > 0) {
-				industryString += ', ';
+			var industryString = '';
+			var counter2 = 0;
+			$.each(industryArr, function(index, item) {
+				if (item.trim().length > 0) {
+					if(counter2 > 0) {
+						industryString += ', ';
+					}
+					industryString += item;
+					counter2++;
+				}
+			});
+
+			if(industryString.length > 0) {
+				that.industries.text(industryString);
+			} else {
+				that.industries.text('Industries Unavailable');
 			}
-			industryString += item;
-			counter2++;
 		});
 
-		if(industryString.length > 0) {
-			that.industries.text(industryString);
-		} else {
-			that.industries.text('Industries Unavailable');
-		}
+		$('#industry-dropbox-0, #industry-dropbox-1, #industry-dropbox-2').trigger('change');
 	},
 
 	load: function () {
 		var that = this;
-		that.createModal()
+		that.createModal();
 	}
 }

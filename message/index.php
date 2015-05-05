@@ -20,6 +20,8 @@ $MessageActive = 'active';
 ob_start();
 
 ?>
+<!-- Custom CSS -->
+<link href="css/index.css" rel="stylesheet">
 
 <div id="container">
     <div id="loading-main">
@@ -228,5 +230,4 @@ ob_start();
   <script src="js/NewMessage.js"></script>
   <script src="js/readmore.js"></script>
 
-  <!-- Custom CSS -->
-  <link href="css/index.css" rel="stylesheet">
+  

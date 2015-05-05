@@ -652,8 +652,10 @@ This variant is to be used when loading the separate styling modules -->
         ONLY when using the standalone modules; -->
     <script src="/master/js/theme-core.min.js"></script>
     <script src="/master/js/hammer.min.js"></script>
+ <!--    // <script src="/master/js/jquery.mobile-1.4.5.min.js"></script> -->
 
     <!-- Custom ProConnect -->
+    <script type="text/javascript" src="/lib/isMobile-master/isMobile.min.js"></script>
     <script type="text/javascript" src="/master/custom_proconnect/js/NotificationGetter.js"></script>
     <script type="text/javascript" src="/master/custom_proconnect/js/NotificationHandler.js"></script>
     <script type="text/javascript" src="/master/custom_proconnect/js/AdvanceSearchInterfaceHandler.js"></script>

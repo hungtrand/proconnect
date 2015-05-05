@@ -54,9 +54,8 @@
 <body class = "login">
 	<div id="content">
 		<div class="container-fluid">
-			
-			<div class="row">
-				<div class ="lock-container formContainer col col-xs-12 col-sm-10 col-md-4 col-lg-4 col-sm-offset-1 col-md-offset-4 col-lg-offset-4">		
+
+				<div class ="lock-container formContainer">		
 					<a href= "../"><img id= "logo" src = "../image/proconnect/logo_text.png"></a>
 					<div class="panel panel-default text-center">
 						<div class= "panel-body">
@@ -103,11 +102,11 @@
 						</div>
 					</div>
 				 </div>
-			</div>
+		
 		</div> <!-- /container -->
 	</div>
 	<!-- Footer -->
-    <footer class="footer">
+    <footer class="footer hidden-xs">
         <strong>ProConnect</strong> v1.0 &copy; Copyright 2015
     </footer>
     <!-- // Footer -->
