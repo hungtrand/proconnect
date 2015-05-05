@@ -7,6 +7,8 @@ function FeedList(container) {
 	this.Alert;
 	this.waitingGif = $('<div class="text-center hidden waitingGif"><img src="/image/FlatPreloaders/32x32/Preloader_1/Preloader_1.gif" alt="Loading..."/></div>');
 
+	this.feedZoneNum = 0;
+
 	this.init();
 }
 
@@ -53,6 +55,8 @@ FeedList.prototype = {
 	fetchNewest: function() {
 		var that = this;
 
+		// console.log(that.unreadCache);
+		// (that.data[that.data.length - 1] === undefined) ? '' : 
 		var afterID = that.data[that.data.length - 1]['FeedID'];
 		if (that.unreadCache.length > 0) {
 			afterID = that.unreadCache[that.unreadCache.length - 1]['FeedID'];
@@ -89,10 +93,26 @@ FeedList.prototype = {
 		that.Alert.toggleClass('hidden', true);
 		that.container.html('');
 
+
 		that.fetch(function(jsonData) {
 			that.appendView(jsonData);
 		});
-		
+	},
+
+	// Card View for Interest page
+	loadCardView: function() {
+		var that = this;
+
+		that.container.append(that.waitingGif);
+
+		that.page = 1;
+		that.Alert.toggleClass('hidden', true);
+
+		// that.container.html('');
+
+		that.fetch(function(jsonData) {
+			that.appendCardView(jsonData);
+		});
 	},
 
 	next: function() {
@@ -107,6 +127,21 @@ FeedList.prototype = {
 
 		that.fetch(function(jsonData) {
 			that.appendView(jsonData, true);
+		});
+	},
+
+	nextCardView: function() {
+		var that = this;
+		if (that.page == -1) {
+			that.showAlert('End of results', 'info');
+			return false;
+		}
+		
+		that.page++;
+		that.showAlert(that.waitingGif, "info");
+
+		that.fetch(function(jsonData) {
+			that.appendCardView(jsonData, true);
 		});
 	},
 
@@ -126,6 +161,26 @@ FeedList.prototype = {
 				that.container.prepend(ele);
 			}
 		}
+	},
+
+	// json - data obj
+	// CardView for Interest page
+	appendCardView: function(json,older){
+		var that = this;
+		// console.log( json );
+		for (var i = json.length-1, l=-1; i > l; i--) {
+			var feed = new Feed(json[i]);
+			var columnNum = (that.feedZoneNum++)%3+1;
+			var ele = feed.getView();
+
+			if (older) {
+				that.data.unshift(json[i]); // save the data to front of array 
+				this.container.find('div#FeedZone'+columnNum).append(ele);
+			} else {
+				that.data.push(json[i]);  // save the data to the end of array
+				this.container.find('div#FeedZone'+columnNum).prepend(ele); //add feed to each column then increment to the next column index
+			}
+		}	
 	},
 
 	showAlert: function(msg, type) {

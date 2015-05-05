@@ -56,4 +56,8 @@ $(document).ready(function(){
 	// Load connections suggestions
 	var suggList = new SuggestionList($('#SuggListing'));
 	suggList.load('compact');
+
+	$('#swipeBox').on('swiperight', function(ev) {
+		$('[href="#sidebar-menu"]').trigger('touchstart');
+	});
 });

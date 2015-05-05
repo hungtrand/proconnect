@@ -1,7 +1,8 @@
 $(document).ready(function() {
 
 	var feedList = new FeedList($('#FeedsSection'));
-	feedList.load();
+	// feedList.load();
+	feedList.loadCardView();
 
 	// initite scroll
 	$('.st-content-inner').scroll(function()
@@ -9,7 +10,7 @@ $(document).ready(function() {
 		var triggerPoint = $('.st-content-inner').children('.container-fluid').height() - $('.st-content-inner').height() - 200;
 	    if($('.st-content-inner').scrollTop() > (triggerPoint - 10) && $('.st-content-inner').scrollTop() < (triggerPoint + 10))
 	    {
-	        feedList.next();
+	        feedList.nextCardView();
 	    }
 	});
 });
