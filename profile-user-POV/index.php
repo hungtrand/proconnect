@@ -140,10 +140,10 @@ if (isset($_COOKIE['__USER_PROFILE_IMAGE__'])) {
                               <abbr title="Required" class="required">*</abbr>
                               <input name="last-name" type="text" class="form-control" id="last-name-input" placeholder="Last" required>
                             </div>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                               <label for="middle-initial-input">M.I.</label>
                               <input name="middle-initial" type="text" class="form-control" id="middle-initial-input" placeholder="M.I." style="width:50px;" maxlength="1">
-                            </div>
+                            </div> -->
                           </div>
                           <!-- Email Address -->
                            <div class="form-group">
