@@ -114,21 +114,21 @@ class MessageView extends ActiveRecord{
 	}
 
 	public function setRead($boolVal = false){
-		if ($boolVal) $this->data['READ'] = true;
+		if ($boolVal == true) $this->data['READ'] = true;
 		else $this->data['READ'] = false;
 
 		return true;
 	}
 
 	public function setArchived($boolVal = false){
-		if ($boolVal) $this->data['ARCHIVED'] = true;
+		if ($boolVal == true) $this->data['ARCHIVED'] = true;
 		else $this->data['ARCHIVED'] = false;
 
 		return true;
 	}
 
 	public function setDeleted($boolVal = false){
-		if ($boolVal) $this->data['DELETED'] = true;
+		if ($boolVal == true) $this->data['DELETED'] = true;
 		else $this->data['DELETED'] = false;
 
 		return $this->data['DELETED'];
