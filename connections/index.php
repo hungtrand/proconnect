@@ -28,12 +28,12 @@ ob_start();
             <!-- Blog Entries Column -->
             <div class="col col-md-12 col-sm-12 col-xs-12">
                 <div id="ConnectionsHeader" class="row">
-                    <div class="col col-xs-8">
+                    <div class="col col-xs-8 col-sm-11 col-md-11 col-lg-11">
                         <h2 class="text-info">Connections</h2>
                     </div>
 
-                    <div class="col col-xs-4 text-right">
-                        <button id="btnAddConnection" class="btn btn-danger" title="Add New Connection" data-toggle="modal" data-target="#modalNewConnection"><span class="glyphicon glyphicon-plus"></span></button>
+                    <div class="col col-xs-4 col-sm-1 col-md-1 col-lg-1 text-right">
+                        <button id="btnAddConnection" class="btn btn-danger" title="Add New Connection" data-toggle="modal" data-target="#modalNewConnection" style="position: fixed; z-index: 100; display: block;margin-top:10px;"><span class="glyphicon glyphicon-plus"></span></button>
                     </div>
                     
                 </div>

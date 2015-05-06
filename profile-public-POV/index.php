@@ -8,7 +8,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 if (isset($_COOKIE['__USER_PROFILE_IMAGE__'])) {
     $ProfileImage = $_COOKIE['__USER_PROFILE_IMAGE__'];
 } else {
-    $ProfileImage = '/image/proconnect/Tab_logo2_100x100.png';
+    $ProfileImage = '/image/user_img.png';
 }
 
   $Title = "Profile"; //require for front end
@@ -65,7 +65,7 @@ if (isset($_COOKIE['__USER_PROFILE_IMAGE__'])) {
                </div>
 		  </div>
 		</div><!--left-->		
-	<div class = "media-body">		
+	<div class = "media-body" style="   max-width: 100% !important;">		
 		
 		<div class="row">
 				<div class="col-md-6">

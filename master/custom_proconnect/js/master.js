@@ -77,8 +77,10 @@ $(document).ready(function(){
 		});*/
 	var mc = new Hammer.Manager(document.getElementById('swipeBox'), {'preventDefault': true});
 	// mc.add( new Hammer.Pan({ direction: Hammer.DIRECTION_ALL, threshold: 0 }) );
-	mc.add( new Hammer.Swipe({ event: 'open', pointers: 1, threshold: 50, direction: Hammer.DIRECTION_RIGHT, velocity: 0.01 }));
-	mc.add( new Hammer.Swipe({ event: 'close', pointers: 1, threshold: 50, direction: Hammer.DIRECTION_LEFT, velocity: 0.01 }));
+	mc.add( new Hammer.Swipe({ event: 'open', pointers: 1, threshold: 20, direction: Hammer.DIRECTION_RIGHT, velocity: 0.001 }));
+	mc.add( new Hammer.Swipe({ event: 'close', pointers: 1, threshold: 20, direction: Hammer.DIRECTION_LEFT, velocity: 0.001 }));
+	mc.add( new Hammer.Swipe({ event: 'refresh', pointers: 2, threshold: 20, direction: Hammer.DIRECTION_DOWN , velocity: 0.001 }));
+	mc.add( new Hammer.Tap({ event: 'tapclose', pointers: 1}));
 
 	mc.on("open", function(ev) {
 		if($('#swipeBox').attr('value') === 'false') {
@@ -88,12 +90,15 @@ $(document).ready(function(){
 			}, 600);
 		}
 	});
-	mc.on("close", function(ev) {
+	mc.on("close tapclose", function(ev) {
 		if($('#swipeBox').attr('value') === 'true') {
 			$('[href="#sidebar-menu"]').trigger('touchstart');
 			setTimeout(function(ev) {
 				$('#swipeBox').attr('value', 'false');
 			}, 600);
 		}
+	});
+	mc.on("refresh", function(ev) {
+		location.reload();
 	});
 });

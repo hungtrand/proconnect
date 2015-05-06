@@ -3,8 +3,6 @@ body {
     background-color: #E8E8E8;
 }
 
-
-
 #btnPostMode {
 	width: 70px;
 	height: 70px;
@@ -13,6 +11,33 @@ body {
 	-webkit-border-radius: 50%;
 	font-size: 20px;
 	margin: 10px;
+  z-index: 100;
+}
+
+#btnPostModesm {
+  position: fixed; 
+  bottom: 20px; 
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  font-size: 15px;
+  margin: 10px;
+  z-index: 100;
+}
+
+.fixedPostMode {
+  position: fixed; 
+  top: 100px; 
+  width: 90%;
+  z-index: 100;
+  border-width: 3px;
+  border-color: #333;
+  border-radius: 10px;
+  -webkit-box-shadow: 2px 1px 12px rgba(0,0,0,.25); // iOS <4.3 & Android <4.1
+  box-shadow: 2px 1px 12px rgba(0,0,0,.25);
 }
 
 blockquote {
@@ -33,11 +58,6 @@ blockquote:before {
 }
 blockquote p {
   display: inline;
-}
-
-.box {
-  -webkit-box-shadow: 2px 1px 12px rgba(0,0,0,.25); // iOS <4.3 & Android <4.1
-          box-shadow: 2px 1px 12px rgba(0,0,0,.25);
 }
 
 .cover.profile .cover-info .name {

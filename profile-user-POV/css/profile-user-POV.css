@@ -452,3 +452,14 @@ small {
   -webkit-box-shadow: 5px 5px 10px rgba(0,0,0,.25); // iOS <4.3 & Android <4.1
           box-shadow: 5px 5px 10px rgba(0,0,0,.25);
 }
+
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  box-shadow: 0 -3px 5px -3px rgba(0,0,0,.15);
+  z-index: 101;
+  display: block;
+}

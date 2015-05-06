@@ -57,7 +57,7 @@ JobGrid.prototype = {
 		var data = {'page': that.pageCounter};
 
 		$.ajax({
-			url: 'php/DataForViewingJobs.php',
+			url: 'php/JobList_controller.php',
 			type: 'POST',
 			data: data,
 			contentType: 'text/plain'
