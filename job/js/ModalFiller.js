@@ -14,6 +14,7 @@ function ModalFiller() {
 	this.jobFunctions;
 	this.industries;
 	this.modalCreator;
+	this.applyBtn;
 	this.data;
 	this.init();
 }
@@ -54,6 +55,7 @@ ModalFiller.prototype = {
 			that.experience.text(pretense.find('.experience').val());
 			that.jobFunctions.html(pretense.find('.jobFunctions').val());
 			that.industries.text(pretense.find('.industry').val());
+			that.
 		});
 	}
 }

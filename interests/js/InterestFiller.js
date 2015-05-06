@@ -149,7 +149,7 @@ InterestFiller.prototype = {
 			that.divData.push(that.temp);
 			that.div.on('click', function(ev) {
 				ev.preventDefault();
-				window.location.hash = value.INTEREST;
+				window.location.hash = value.INTERESTID;
 			});
 			that.init();
 		});
