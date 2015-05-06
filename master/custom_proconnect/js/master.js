@@ -13,7 +13,7 @@ $(document).ready(function(){
 	});
 
 	//get notification every 10 seconds
-	NotificationGetter.getUsingInterval(3000,NotificationHandler.displayNotifications);
+	NotificationGetter.getUsingInterval(15000,NotificationHandler.displayNotifications);
 	
 	
 	
