@@ -152,13 +152,20 @@ ob_start();
                     </div>
                     <div class="modal-body">
                         <div class="well">
-                            <span><p id="modalJobTitle"></p></span>
-                            <span><p id="modalJobLocation"></p></span>
-                            <span><p id="modalContactInfo"></p></span>
-                            <br />
-                            <div id="modalImgUpload">
-                                <img id="modalImagePreview" src="../image/companyimg" style="height: 150px; width: 200px;"></a>
+                            <div class="row">
+                                <div class="col col-xs-12 col-sm-8">
+                                    <span><p id="modalJobTitle"></p></span>
+                                    <span><p id="modalJobLocation"></p></span>
+                                    <span><p id="modalContactInfo"></p></span>
+                                </div>
+
+                                <div class="col col-xs-12 col-sm-4">
+                                    <div id="modalImgUpload">
+                                        <img id="modalImagePreview" src="../image/companyimg" >
+                                    </div>
+                                </div>
                             </div>
+                            
                         </div>
                         <div>
                             <span><p><STRONG>Job Description</STRONG></p></span>
@@ -227,40 +234,6 @@ ob_start();
             </div>
         </div>
 
-        <div class="modal fade" id="applyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" id="modalClose" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Apply With Your Profile</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="well">
-                            <span><p id="modalUserName"></p></span>
-                            <span><p id="modalUserStatus"></p></span>
-                            <span><p id="modalCompany"></p></span>
-                            <br />
-                            <div id="modalImgUpload">
-                                <img id="modalImagePreview" src="../image/user_img.png" style="height: 150px; width: 200px;"></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <input type="hidden" name="userID" id="userID" value="">
-                        <span>Email Address</span>
-                        <span><p id="modalEmailAddress"></p></span>
-                        <hr />
-                        <span>Phone Number</span>
-                        <input type='text' class="form-control" id="modalPhoneNumber" placeholder="###-###-####" value="" style="width: 120px;">
-                        <br />
-                        <button class="btn btn-primary" id="jobApplication">Submit</button>
-                        <button class="btn btn-default" type="button" id="modalClose" data-dismiss="modal">Cancel</button>
-                        <br />
-                        <span>A complete profile will be included with your application. We will not message your ProConnect network about your application activity.</span>
-                    </div>
-                </div>
-            </div>
-        </div>
 </div>
 <?php
     $Content = ob_get_clean();
@@ -270,7 +243,7 @@ ob_start();
 <!-- Custom modal handler -->
 <script type="text/template" id="job-container">
     <div class="col col-md-4 col-md-12 well specific-job">
-        <div style="width: 100%; overflow: hidden;">
+        <div style="width: 100%; height: 175px; overflow: hidden;">
             <a href="#" class="modalCreator img-thumbnail" data-toggle="modal" data-target="#myModal"><img src="../image/pronetwork.jpg" class="companyImg"></a>
         </div>
         <br />
@@ -294,7 +267,6 @@ ob_start();
 <script src="js/JobFuncDropbox.js"></script>
 <script src="js/JobGrid.js"></script>
 <script src="js/ModalFiller.js"></script>
-<script src="js/ApplyModalFiller.js"></script>
 <script src="js/SearchedJobs.js"></script>
 
 <!-- Custom CSS -->

@@ -52,11 +52,8 @@ ModalFiller.prototype = {
 			that.companyDescription.text(pretense.find('.companyDescription').val());
 			that.employmentType.text(pretense.find('.employmentType').val());
 			that.experience.text(pretense.find('.experience').val());
-			that.jobFunctions.text(pretense.find('.jobFunctions').val());
+			that.jobFunctions.html(pretense.find('.jobFunctions').val());
 			that.industries.text(pretense.find('.industry').val());
-
-			var application = new ApplyModalFiller();
-			application.load();
 		});
 	}
 }
