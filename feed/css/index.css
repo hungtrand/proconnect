@@ -3,6 +3,16 @@ body {
     background-color: #E8E8E8;
 }
 
+<<<<<<< HEAD
+#fixed-right-section {
+	position: absolute;
+	height: 80%;
+	overflow: auto;
+	right: 20px;
+}
+
+=======
+>>>>>>> 48ede19f8d59603136e2d24bd684eca82e395952
 #btnPostMode {
 	width: 70px;
 	height: 70px;
