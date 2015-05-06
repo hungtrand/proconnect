@@ -1,6 +1,5 @@
 <?php
 
-
   	include '../signout/php/session_check_signout.php';
   	$UData = json_decode($_SESSION['__USERDATA__'], true);
 	$FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
