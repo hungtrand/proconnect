@@ -1,6 +1,10 @@
 #form-div {
-	background-color: white;
 	height: 100%;
+}
+
+#form-div input, #form-div select {
+	border-color: #999;
+	color: #999;
 }
 
 #form-title {
