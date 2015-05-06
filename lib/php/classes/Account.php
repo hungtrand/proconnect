@@ -33,7 +33,7 @@ class Account extends ActiveRecord {
 	function __construct($ID = null) {
 		parent::__construct();
 
-		if (isset($ID)) {
+		if (isset($ID) == true) {
 			$this->AccountID = $ID; // Primary Key
 			if (!$this->data = $this->fetch($ID)) {
 				$this->err = "Record not found.";
@@ -268,21 +268,21 @@ class Account extends ActiveRecord {
 	}
 
 	public function setActive($isActive) {
-		if ($isActive) $this->data['ACTIVE'] = true;
+		if ($isActive == true) $this->data['ACTIVE'] = true;
 		else $this->data['ACTIVE'] = false;
 
 		return true;
 	}
 
 	public function setVerified($isVerified) {
-		if ($isVerified) $this->data['VERIFIED'] = true;
+		if ($isVerified == true) $this->data['VERIFIED'] = true;
 		else $this->data['VERIFIED'] = false;
 
 		return true;
 	}
 
 	public function setIsRecruiter($isRecruiter) {
-		if ($isRecruiter) $this->data['ISRECRUITER'] = true;
+		if ($isRecruiter == true) $this->data['ISRECRUITER'] = true;
 		else $this->data['ISRECRUITER'] = false;
 
 		return true;
