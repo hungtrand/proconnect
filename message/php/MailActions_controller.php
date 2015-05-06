@@ -70,6 +70,9 @@ switch ($action) {
 		$msgv->setMessageID($msg->getID());
 		$msgv->setUserID($uid);
 		$msgv->setIsCreator(true);
+		$msgv->setRead(true);
+		$msgv->setArchive(false);
+		$msgv->setDeleted(false);
 		$msgv->save();
 
 		// save a MessageView for recipient // send message
@@ -81,6 +84,10 @@ switch ($action) {
 			$msgv = new MessageView();
 			$msgv->setMessageID($msg->getID());
 			$msgv->setUserID($recip);
+			$msgv->setIsCreator(false);
+			$msgv->setRead(false);
+			$msgv->setArchive(false);
+			$msgv->setDeleted(false);
 			$msgv->save();
 		}
 
