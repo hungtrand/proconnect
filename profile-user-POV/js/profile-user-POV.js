@@ -83,8 +83,6 @@ $(document).ready(function() {
 			$(target).find('input:text, textarea, input:radio, input:checkbox, select').first().focus();
         }, 1);
 
-
-
 		//move window to head of form for easy access
 		var anchor = $(this).find("a.anchor").prop("href");
 		// console.log(anchor);

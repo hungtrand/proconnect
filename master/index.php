@@ -4,6 +4,7 @@
 *   the following variables can be used to inject contents into master
 */
 
+$isRecruiter = 'empty';
 // Check if logged in
 if (isset($_POST['Username']) && isset($_POST['Password'])) {
     $login = $_POST['Username'];
@@ -12,6 +13,8 @@ if (isset($_POST['Username']) && isset($_POST['Password'])) {
 
     $acc = $accAdm->getAccount($login, $password);
     $uid = $acc->getUserID();
+
+    // $isRecruiter = ($acc->isRecruiter() == true ) ? 'true' : 'false';
 } else {
     session_start();
     $home = 'Location: ../../';
@@ -258,8 +261,7 @@ This variant is to be used when loading the separate styling modules -->
                                 <li class="ao-search-btn">
                                     <a class="main-nav-search-btn" type="submit">Search</a>
                                 </li>
-                                
-                                <li class="dropdown" >
+                                <li class="dropdown"  >
                                     <a id="ao-show-btn" data-toggle="dropdown" class="dropdown-toggle">
                                         <i class="fa fa-caret-down"></i>
                                     </a>
