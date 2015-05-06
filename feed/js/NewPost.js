@@ -34,7 +34,16 @@ NewPost.prototype = {
 		that.YouTubeURL = that.container.find('#YouTubeURL');
 		that.txtFeedCategory = that.container.find('.FeedCategory');
 		that.btnPostMode = that.container.find('#btnPostMode');
-		that.btnPostMode.on('click', function() {that.changeMode('active')});
+		that.btnPostModesm = that.container.find('#btnPostModesm');
+		that.btnPostMode.on('click', function() {that.changeMode('active'); });
+		that.btnPostModesm.on('click', function() { 
+			that.changeMode('active'); 
+			that.container.toggleClass('fixedPostMode', true);
+		});
+		that.btnHidePostMode = $('.hidePostMode').hide();
+		that.btnHidePostMode.on('click', function() {
+			that.changeMode('inactive');
+		});
 		that.btnSharePost = that.container.find('#btnSharePost');
 		that.btnAttachImg = that.container.find('#btnAttachImg');
 		that.btnAttachLink = that.container.find('#btnAttachLink');
@@ -141,7 +150,13 @@ NewPost.prototype = {
 	changeMode: function(newMode) {
 		var that = this;
 		if (newMode == that.mode) return;
-		if (that.mode=='active' && CKEDITOR.instances.ContentMessage.getData().trim() != '') return;
+		if (that.mode=='active') {
+			if (CKEDITOR.instances.ContentMessage) {
+				if (CKEDITOR.instances.ContentMessage.getData().trim() != '') return;
+			} else if (that.inputContentMessage.val().trim() != '') {
+				return
+			}
+		}
 
 		if (newMode) that.mode = newMode;
 		else
@@ -149,20 +164,33 @@ NewPost.prototype = {
 
 		if (that.mode == 'active') {
 			that.formNewPost.show(600, 'linear', function() {
-				that.formNewPost.find('textarea').focus();
+				if (CKEDITOR.instances.ContentMessage)
+				 	CKEDITOR.instances.ContentMessage.focus();
+				else
+					that.inputContentMessage.focus();
 			});
 			that.btnPostMode.fadeOut(600);
+			that.btnPostModesm.fadeOut(600, function() { $(this).toggleClass('hidden', true);});
 			that.container.find('blockquote').fadeOut(600);
+			that.btnHidePostMode.show();
 		} else {
-			that.formNewPost.hide(600, 'linear');
+			that.formNewPost.hide(600, 'linear', function() {
+				that.container.toggleClass('fixedPostMode', false);
+			});
+			that.btnHidePostMode.hide();
 			that.btnPostMode.fadeIn(600);
+			that.btnPostModesm.fadeIn(600, function() { $(this).toggleClass('hidden', false);});
 			that.container.find('blockquote').fadeIn(600);
 		}
 	},
 
 	saveNewPost: function() {
 		var that = this;
-		var contentMsg = CKEDITOR.instances.ContentMessage.getData().trim();
+		if (CKEDITOR.instances.ContentMessage)
+			var contentMsg = CKEDITOR.instances.ContentMessage.getData().trim();
+		else
+			var contentMsg = that.inputContentMessage.val();
+
 		if (contentMsg == '' && that.inputFeedImage.val() == '') return false;
 		var uploadedImageURL = '';
 
@@ -179,6 +207,7 @@ NewPost.prototype = {
 				try {
 					that.showAlert('Successfully posted on your network', 'success');
 					that.reset();
+					that.changeMode('inactive');
 				} catch(e) {
 					that.showAlert(json, 'danger');
 					console.log(json);
@@ -253,7 +282,11 @@ NewPost.prototype = {
 	reset: function() {
 		var that = this;
 		that.inputExternalLink.val('');
-		CKEDITOR.instances.ContentMessage.setData('');
+		if (CKEDITOR.instances.ContentMessage)
+			CKEDITOR.instances.ContentMessage.setData('');
+		else
+			that.inputContentMessage.val('');
+		
 		that.inputFeedImage.val('');
 		that.imagePreview.attr('src', '');
 		that.imagePreview.hide();

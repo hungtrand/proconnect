@@ -78,6 +78,7 @@ function PublicUser(){
 	// };
 	this.userData = "";
 	this.temporaryData = "";	// meant to hold any temporary data
+	this.query; 
 }
 
 PublicUser.prototype = {
@@ -112,6 +113,7 @@ PublicUser.prototype = {
 	//talk to backend to get initiate a user data object
 	fetchData: function() { 
 		var that = this;
+		this.query = that.queryString();
 		// console.log("doing ajax call");
 		// var newData = {"some":"data"};
 
@@ -120,7 +122,7 @@ PublicUser.prototype = {
 			url: "php/Profile_controller.php",
 			//url: "php/dummy.php",
 			method: 'POST',
-			data: that.queryString(),   			// <----------- data is {"userID": 11111} 
+			data: that.query,   			// <----------- data is {"userID": 11111} 
 			error: function(xhr,status,error) {
 				bootbox.dialog({
 						title: "<div style='text-align:center;'><b style='color:red;'>Error!</b></div>",
@@ -137,7 +139,7 @@ PublicUser.prototype = {
 			var succeeded = false;
 			 try{
 					that.temporaryData = JSON.parse(data);
-					console.log( that.temporaryData );
+					// console.log( that.temporaryData );
 					that.userData = that.temporaryData; 	//store as user data
 					succeeded = true;
 			} catch (e){
@@ -156,7 +158,9 @@ PublicUser.prototype = {
 		//update user info
 		 $('#preview').attr('src', this.userData.personalInfo["picture"]);
 		$(".first-name").text(this.userData.personalInfo["first-name"]);
-		$("#user-mi").text(this.userData.personalInfo["middle-initial"]+'.');
+
+		var middleInit = (this.userData.personalInfo["middle-initial"] === '') ? '' : this.userData.personalInfo["middle-initial"]+'.';
+		$("#user-mi").text(middleInit);
 		$("#user-last").text(this.userData.personalInfo["last-name"]);
 		$("#user-address").text(this.userData.personalInfo["user-address"]);
 		$("#user-email").text(this.userData.personalInfo["email-address"]);
@@ -165,6 +169,31 @@ PublicUser.prototype = {
 
 		if (this.userData.personalInfo['profile-image']) {
 			$('.profile-image').attr('src', this.userData.personalInfo['profile-image']);
+		}
+
+		//update with connect button
+		if(this.userData.ConnectionStatus === 'Not Connected') {
+			$('button.connect-btn').removeClass('hidden').on('click',function(){
+				$.ajax({
+					url: '/connections/php/NewConnection_controller.php',
+					data: {'UserID': that.query['UserID']},
+					success: function(data){
+						var odata = JSON.parse(data);
+						if(odata['success'] == 1) {
+							console.log('success');
+							$('button.connect-btn').text('Invitation Sent');
+						} else {
+							console.log(odata['success']);
+							console.log('failed');
+						}
+					},
+					error: function(xhr,status,error) { 
+						console.log(error + ": " + status);
+					}
+				})
+			});
+		} else {
+			$('button.following-btn').removeClass('hidden');
 		}
 
 		//update summary description
@@ -202,7 +231,7 @@ PublicUser.prototype = {
 			}
 			});
 			//connection
-			console.log (education);
+			// console.log (education);
 		$("#about-job").text(job);
 		$("#about-address").text(address);
 		$("#about-education").text(education);

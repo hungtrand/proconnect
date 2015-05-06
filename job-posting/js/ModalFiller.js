@@ -48,7 +48,8 @@ ModalFiller.prototype = {
 		that.loadEmploymentType();
 		that.loadExperience();
 		that.loadJobFunc();
-		that.loadIndustries();		
+		that.loadIndustries();	
+		that.loadCompanyImg();	
 	},
 
 	loadJobTitle: function() {
@@ -100,10 +101,15 @@ ModalFiller.prototype = {
 
 	loadCompanyDesc: function() {
 		var that = this;
+		var str = '';
 
-		if(CKEDITOR.instances.companyDesc.getData().trim() != '') {
-			that.companyDescription.text('');
-			that.companyDescription.append(CKEDITOR.instances.companyDesc.getData());
+		if (CKEDITOR.instances.companyDesc)
+			str = CKEDITOR.instances.companyDesc.getData().trim();
+		else
+			str = $('#companyDesc').val().trim();
+
+		if (str) {
+			that.companyDescription.html(str);
 		} else {
 			that.companyDescription.text('Company Description Unavailable');
 		}
@@ -112,9 +118,15 @@ ModalFiller.prototype = {
 	loadSkillDesc: function() {
 		var that = this;
 
-		if(CKEDITOR.instances.skillDesc.getData().trim() != '') {
-			that.skillDescription.text('');
-			that.skillDescription.append(CKEDITOR.instances.skillDesc.getData());
+		var str = '';
+
+		if (CKEDITOR.instances.skillDesc)
+			str = CKEDITOR.instances.skillDesc.getData().trim();
+		else
+			str = $('#skillDesc').val().trim();
+
+		if(str) {
+			that.skillDescription.html(str);
 		} else {
 			that.skillDescription.text('Desired Skills & Experiences Unavailable');
 		}
@@ -123,9 +135,15 @@ ModalFiller.prototype = {
 	loadJobDesc: function() {
 		var that = this;
 
-		if(CKEDITOR.instances.jobDesc.getData().trim() != '') {
-			that.jobDescription.text('');
-			that.jobDescription.append(CKEDITOR.instances.jobDesc.getData());
+		var str = '';
+
+		if (CKEDITOR.instances.jobDesc)
+			str = CKEDITOR.instances.jobDesc.getData().trim();
+		else
+			str = $('#jobDesc').val().trim();
+
+		if(str) {
+			that.jobDescription.html(str);
 		} else {
 			that.jobDescription.text('Job Description Unavailable');
 		}

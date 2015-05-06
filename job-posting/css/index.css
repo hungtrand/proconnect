@@ -1,6 +1,10 @@
 #form-div {
-	background-color: white;
 	height: 100%;
+}
+
+#form-div input[type="text"], #form-div select, #form-div textarea {
+	border-color: #999;
+	width: 90%;
 }
 
 #form-title {
@@ -13,38 +17,16 @@
 	border-radius: 4px;
 }
 
-#imgupload {
-	position: absolute;
-	right: 10px;
-	margin-top: -22.4%;
-}
-
-#modalImgUpload {
-	position: absolute;
-	right: 25px;
-	margin-top: -18.7%;
-}
-
-.input-box {
-	width: 60%;
-}
-
 .add {
-	color: #CCCCCC;
-	font-size: 25px;
-	position: absolute;
-	margin-top: -32px;
-	margin-left: 58%;
+	font-size: 30px;
+	color: #666;
+	padding-left: 10px;
 }
 
 #myModal {
 	padding-top: 6%;
 }
 
-.modal-content {
-	width: 125%;
-	margin-left: -12.5%;
-}
 #modalJobTitle {
 	font-size: 2em;
 }
@@ -134,9 +116,6 @@
 	margin-left: 10px;
 }
 
-.dropbox-ul {
-	margin-left: -40px;
-}
 textarea {
 	resize: none;
 }
@@ -148,11 +127,11 @@ textarea {
 }
 
 .errorInput {
-	border: 3px solid rgba(184, 68, 66, 0.62)
+	border: 3px solid rgba(184, 68, 66, 0.62) !important;
 }
 
 .toast {
-	position: absolute;
+	position: fixed;
 	font-size: 1.5em;
 	top: 55px;
 	right: 200px;

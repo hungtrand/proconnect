@@ -12,7 +12,7 @@ var MessageGetter = (function() {
 				data['filter'] = 'pending';
 			}
 
-			console.log(categoryID);
+			// console.log(categoryID);
 			$.ajax({
 				url: contentURL,			//<------ must be hard link
 				data: data,			//<------ may not be necessary

@@ -8,7 +8,7 @@ $FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
 if (isset($_COOKIE['__USER_PROFILE_IMAGE__'])) {
     $ProfileImage = $_COOKIE['__USER_PROFILE_IMAGE__'];
 } else {
-    $ProfileImage = '/image/proconnect/Tab_logo2_100x100.png';
+    $ProfileImage = '/image/user_img.png';
 }
 
   $Title = "Profile"; //require for front end
@@ -23,10 +23,18 @@ if (isset($_COOKIE['__USER_PROFILE_IMAGE__'])) {
 						<img src="http://placehold.it/380x500" alt="" class="img-circle profile-image" style="height: 110px; width: 110px; object-fit: cover;" id="preview"/>			
 						<h3><span id="user-first" class="first-name"></span> <span id="user-mi"></span> <span id="user-last"></span></h3>
 					   <!-- Split button -->
-						<div class="btn-group">
-							  <button type="button" class="btn btn-info">
-								  Connect</button>
-							  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+						<!-- <div class="btn-group"> -->
+							  <button type="button" class="btn btn-info connect-btn hidden">
+								  Connect
+							  </button>
+
+							  <button type="button" class="btn btn-success following-btn hidden">
+								  Following 
+								  <i class="fa fa-check-circle fa-fw"></i>
+							  </button>
+
+
+							  <!-- <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
 								  <span class="caret"></span><span class="sr-only">Social</span>
 							  </button>
 							  <ul class="dropdown-menu" role="menu">
@@ -35,8 +43,8 @@ if (isset($_COOKIE['__USER_PROFILE_IMAGE__'])) {
 								  <li><a href="https://www.facebook.com/jquery2dotnet">Facebook</a></li>
 								  <li class="divider"></li>
 								  <li><a href="#">View Skills</a></li>
-							  </ul>
-						</div>									
+							  </ul> -->
+						<!-- </div>									 -->
 					</div>
 					<!-- Summary -->
 					<div class="panel-body">
@@ -65,7 +73,7 @@ if (isset($_COOKIE['__USER_PROFILE_IMAGE__'])) {
                </div>
 		  </div>
 		</div><!--left-->		
-	<div class = "media-body">		
+	<div class = "media-body" style="   max-width: 100% !important;">		
 		
 		<div class="row">
 				<div class="col-md-6">
@@ -157,8 +165,6 @@ if (isset($_COOKIE['__USER_PROFILE_IMAGE__'])) {
 	
 	</div>
 </div>
-
-   
 
 <?php
     $Content = ob_get_clean();

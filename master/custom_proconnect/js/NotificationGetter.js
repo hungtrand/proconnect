@@ -1,12 +1,20 @@
 var NotificationGetter = (function() {
+
+	var interval;
 	return {
 		getUsingInterval: function(timeBetweenEachAjax, displayCallback) {
-
+			var that = this;
 			timeBetweenEachAjax = timeBetweenEachAjax || 1000; //default time is 1 second
 
 			this.getResponse(displayCallback);		//query response right away
 
-			var interval = window.setInterval(this.getResponse(displayCallback),timeBetweenEachAjax);						  //query a response
+			interval = window.setInterval(function(){
+				that.getResponse(displayCallback);
+			},timeBetweenEachAjax);						  //query a response
+			
+
+			// window.setInterval(this.getResponse(displayCallback),timeBetweenEachAjax);						  //query a response
+
 		},
 		getResponse: function(displayCallback) {
 			$.ajax({
@@ -15,6 +23,7 @@ var NotificationGetter = (function() {
 					data: {"userID":"notification-getter"},															  //<------ may not be necessary
 					method: "POST",
 					success: function(data){
+						console.log(data);
 						try {
 							var notifications = JSON.parse(data);
 

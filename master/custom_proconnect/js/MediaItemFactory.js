@@ -31,11 +31,11 @@ function MediaItem(options) {
 	function unHighlight(item){
 		item.find('.media-heading').css('font-weight','normal'); //unbold text
 	}
+	var regex = new RegExp('/images/$'); //temporary solution to the default image url miss link problem
 
-	// console.log(options)
 	// var baseItem = document.getElementById("MediaItem").content.cloneNode(true); //stamp out base item
 	var baseItem = $($("#MediaItem").html()); 
-	var imgURL = options["user-img-url"] || '/image/user_img.png';
+	var imgURL = (regex.test(options["user-img-url"])) ? '/image/user_img.png' : options["user-img-url"];
 	var userURL = options["user-url"] || '#';
 	var date = options["date"] || ""; 
 	
@@ -73,6 +73,7 @@ function MediaItem(options) {
 					baseItem.removeClass('new-item');					  //remove new-item class
 				} catch (e) {
 					console.log(e);
+					console.log(newNotification);
 				}
 			},
 			error: function(qXHR, textStatus,errorThrown ) {
