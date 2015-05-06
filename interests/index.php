@@ -27,10 +27,10 @@ ob_start();
 
     <div class="container-fluid">
         <div class ="row" id="interest-navigation">
-            <div class="col col-xs-11 col-sm-11 col-md-11 text-right" id="interest-navigation-big">
+            <div class="col col-xs-11 col-sm-11 col-md-12 col-lg-12 text-right" id="interest-navigation-big">
                 <button class="btn btn-primary glyphicon glyphicon-th form-control interest-expand"></button>
             </div>
-            <div class="col col-xs-11 col-sm-11 col-md-11 text-right">
+            <div class="col col-xs-11 col-sm-11 col-md-12 col-lg-12 text-right">
                 <div>
                     <input type="hidden" name="boolean flag" value="false" id="flag">
                     
@@ -39,13 +39,17 @@ ob_start();
                             <input type="text" placeholder="Search Interests" class="form-control searchedInterest typeahead" name="searchedInterest" id="searchedInterest" value="" style="background-color: white;">
                         </div>
                         <div id="wrapper">
-                            <div class="text-left" id="interest-wrapper">
+                            <div class="row text-center" id="interest-wrapper">
                             </div>
                         </div>
                     </div>
                     
                 </div>
             </div>
+        </div>
+
+        <div class="row">
+            <div class="col col-xs-12 clearfix" style="height: 50px;"></div>
         </div>
         <div class="interest-feed-pool">
             <div class="cover profile hidden">
@@ -67,11 +71,16 @@ ob_start();
     </div>
 
     <script type="text/template" id="interest-div"> 
-        <a href="#" style="text-decoration: none;" class="hash-edit"><div class="col col-xs-6 well div-btn" id="" style="border-radius: 8px;">
-            <input type="hidden" name="interestID" class="interestID" value="">
-            <input type="hidden" name="interestName" class="interestName" value=""> 
-            <h4><p class="interestN"></p></h4>
-        </div></a>
+        <div class="col col-xs-12 col-sm-12 col-md-6">
+            <a href="#" style="text-decoration: none;" class="hash-edit">
+                <div class="div-btn well-sm" id="" style="margin: 5px;">
+                    <input type="hidden" name="interestID" class="interestID" value="">
+                    <input type="hidden" name="interestName" class="interestName" value=""> 
+                    <h4><p class="interestN"></p></h4>
+                </div>
+            </a>
+        </div>
+        
     </script>
 
     <script type="text/template" id="FeedTemplate">
