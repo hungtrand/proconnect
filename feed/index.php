@@ -31,6 +31,11 @@ ob_start();
             <div class="col col-xs-12 col-sm-11 col-md-9 col-lg-9">
 
                 <div id="NewPost" class="well well-sm">
+                    <div class="row">
+                        <div class="col col-xs-12 text-right">
+                            <button type="button" class="close hidePostMode" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                    </div>
 
                     <div class="row">
                          <div class="col col-xs-8 col-sm-10 col-md-10 col-lg-10">
@@ -60,19 +65,24 @@ ob_start();
                         </div>
 
                         <div class="col col-xs-4  col-sm-2 text-right">
-                             <button id="btnPostMode" class="btn btn-danger" title="New Post" style="position: fixed; z-index: 100; display: block;">Post</button>
+                             <button id="btnPostMode" class="btn btn-danger btnPostMode hidden-xs" title="New Post">Post</button>
+                              <button id="btnPostModesm" class="btn btn-danger visible-xs-block btnPostMode" title="New Post">Post</button>
                         </div>
                     </div>
-					   <div class="row" style="position: fixed; z-index: 100;">
+					   <div class="row">
                         <form id="formNewPost" action="feed_controller.php" class="form-horizontal col col-xs-12" style="display: none;">
                             <div class="form-group">
                                 <div id = "form-section" class="media">
                                     <div class="media-body" style= "max-width: 100% !important;">
-                                        <textarea class="form-control" id="ContentMessage" name="ContentMessage" rows="5" placeholder="share, inspire, motivate,..."></textarea>
-                                    </div>
-
-                                    <div class="media-right">
-                                        <img src="" id="ImagePreview" class="thumbnail" style="max-height: 150px; display: none;" alt="No Image Preview Available" />
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9">
+                                                <textarea class="form-control" id="ContentMessage" name="ContentMessage" rows="5" placeholder="share, inspire, motivate,..."></textarea>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
+                                                <img src="" id="ImagePreview" class="thumbnail" style="max-height: 150px; max-width: 100%; display: none;" alt="No Image Preview Available" />
+                                            </div>
+                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>
