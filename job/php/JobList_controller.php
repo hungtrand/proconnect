@@ -42,7 +42,7 @@ $rowsaPage = 10;
 if (isset($_POST['afterID'])) $afterID = (int)$_POST['afterID'];
 
 try {
-	$jm = new JobManager($User);
+	$jm = new JobManager();
 
 	$jm->loadHiring($page, $rowsaPage);
 	
