@@ -16,6 +16,7 @@ ob_start();
 
 ?>
     <div class="col col-xs-12 col-md-7 well" id="form-div">
+        <form class="form-horizontal">
         <h4><STRONG><span id="form-title">Build Your Job Posting</span></STRONG></h4>
             <h3><STRONG><span class="glyphicon glyphicon-briefcase"></span> Work Environment</STRONG></h3>
             <br />
@@ -52,29 +53,43 @@ ob_start();
             </div>
             <br />
             <h4><STRONG>Industry</STRONG></h4>
-            <ul class="dropbox-ul" style="list-style: none;">
-                <li id="industry-additional-zero">
-                    <select class="form-control input-box industry-dropbox" id="industry-dropbox-0">
+            <div class="dropbox-ul">
+                <div id="industry-additional-zero" class="form-group">
+                    <select class="form-control col col-xs-10 input-box industry-dropbox" id="industry-dropbox-0">
                         <!-- Content to be filled with JS -->
                         <option value="" selected>Select One</option>
-                    </select><a href="" class="add" id="industry-btn-zero"><span class="glyphicon glyphicon-plus-sign add-text"></span></a>
-                    <br />
-                </li>
-                <li id="industry-additional-one" style="display:none;">
+                    </select>
+
+                    <div class="col col-xs-2">
+                        <a href="" class="add" id="industry-btn-zero">
+                            <span class="glyphicon glyphicon-plus-sign add-text"></span>
+                        </a>
+                    </div>
+                </div>
+                <div id="industry-additional-one" style="display:none;" class="form-group">
                     <select class="form-control input-box industry-dropbox" id="industry-dropbox-1">
                             <!-- Content to be filled with JS -->
                         <option value="" selected>Select One</option>
-                    </select><a href="" class="add" id="industry-btn-one"><span class="glyphicon glyphicon-minus-sign add-text"></span></a>   
+                    </select>
+
+                    <a href="" class="add" id="industry-btn-one">
+                        <span class="glyphicon glyphicon-minus-sign add-text"></span></a>   
                     <br />
-                </li>
-                <li id="industry-additional-two" style="display:none;">
-                    <select class="form-control input-box industry-dropbox" id="industry-dropbox-2">
+                </div>
+                <div id="industry-additional-two" style="display:none;" class="form-group">
+                    <select class="form-control col-xs-10 input-box industry-dropbox" id="industry-dropbox-2">
                             <!-- Content to be filled with JS -->
                         <option value="" selected>Select One</option>
-                    </select><a href="" class="add" id="industry-btn-two"><span class="glyphicon glyphicon-minus-sign add-text"></span></a>   
+                    </select>
+                    <span class="col-xs-2" id="basic-addon2">
+                        <a href="" class="add" id="industry-btn-two">
+                            <span class="glyphicon glyphicon-minus-sign add-text"></span>
+                        </a>
+                    </span>
+                       
                     <br />
-                </li>
-            </ul>
+                </div>
+            </div>
             <hr />
             <h3><STRONG><span class="glyphicon glyphicon-book"></span> Position</STRONG></h3>
             <br />
@@ -156,19 +171,26 @@ ob_start();
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                        <button type="button" class="close" id="modalClose" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Job Preview</h4>
+                            <button type="button" class="close" id="modalClose" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Job Preview</h4>
                         </div>
                         <div class="modal-body">
                             <div class="well">
-                                <span><p id="modalJobTitle"></p></span>
-                                <span><p id="modalJobLocation"></p></span>
-                                <span><p id="modalContactInfo"></p></span>
-                                <br />
+                                <div class="row">
+                                    <div class="col col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                                        <span><p id="modalJobTitle"></p></span>
+                                        <span><p id="modalJobLocation"></p></span>
+                                        <span><p id="modalContactInfo"></p></span>
+                                    </div>
 
-                                <div id="modalImgUpload">
-                                    <img id="modalImagePreview" src="../image/companyimg" style="height: 150px; width: 200px;"></a>
+                                    <div class="col col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                        <div id="modalImgUpload">
+                                            <img id="modalImagePreview" src="../image/companyimg" style="height: 150px; width: 200px;">
+                                        </div>
+                                    </div>
+
                                 </div>
+                                
                             </div>
                             <div>
                                 <span><p><STRONG>Job Description</STRONG></p></span>
