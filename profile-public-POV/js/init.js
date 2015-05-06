@@ -3,6 +3,6 @@ $(document).ready(function(){
 	var user = new PublicUser();
 	user.init();
 
-	//dirty script to handle displaying connect button
+	// dirty script to handle displaying connect button
 	
 });
