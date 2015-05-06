@@ -25,23 +25,54 @@ ob_start();
     <link rel="stylesheet" type="text/css" href="../lib/typeahead/dist/css/default.css" />
     <link rel="stylesheet" type="text/css" href="css/index.css" />
 
-    <div class="interest-feed-pool container-fluid">
-        <div class="cover profile hidden">
-            <div id="PostSearchContainer" class="wrapper ">
-                
+    <div class="container-fluid">
+        <div class ="row" id="interest-navigation">
+            <div class="col col-xs-11 col-sm-11 col-md-11 text-right" id="interest-navigation-big">
+                <button class="btn btn-primary glyphicon glyphicon-th form-control interest-expand"></button>
+            </div>
+            <div class="col col-xs-11 col-sm-11 col-md-11 text-right">
+                <div>
+                    <input type="hidden" name="boolean flag" value="false" id="flag">
+                    
+                    <div class="well" id="interest-container">
+                        <div class="form-group">
+                            <input type="text" placeholder="Search Interests" class="form-control searchedInterest typeahead" name="searchedInterest" id="searchedInterest" value="" style="background-color: white;">
+                        </div>
+                        <div id="wrapper">
+                            <div class="text-left" id="interest-wrapper">
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
             </div>
         </div>
+        <div class="interest-feed-pool">
+            <div class="cover profile hidden">
+                <div id="PostSearchContainer" class="wrapper ">
+                    
+                </div>
+            </div>
 
-        <div id="FeedsSection" class="timeline row">
-            <div id="FeedZone1" class="col-xs-12 col-md-6 col-lg-4"></div>
-            <div id="FeedZone2" class="col-xs-12 col-md-6 col-lg-4"></div>
-            <div id="FeedZone3" class="col-xs-12 col-md-6 col-lg-4"></div>
-        </div>
+            <div id="FeedsSection" class="timeline row">
+                <div id="FeedZone1" class="col-xs-12 col-md-6 col-lg-4"></div>
+                <div id="FeedZone2" class="col-xs-12 col-md-6 col-lg-4"></div>
+                <div id="FeedZone3" class="col-xs-12 col-md-6 col-lg-4"></div>
+            </div>
 
-        <div class="row">
-            <div id="FeedListEndAlert" class="alert alert-info text-center clearfix" style="margin: 50px 20px; display:none;"></div>
+            <div class="row">
+                <div id="FeedListEndAlert" class="alert alert-info text-center clearfix" style="margin: 50px 20px; display:none;"></div>
+            </div>
         </div>
     </div>
+
+    <script type="text/template" id="interest-div"> 
+        <a href="#" style="text-decoration: none;" class="hash-edit"><div class="col col-xs-6 well div-btn" id="" style="border-radius: 8px;">
+            <input type="hidden" name="interestID" class="interestID" value="">
+            <input type="hidden" name="interestName" class="interestName" value=""> 
+            <h4><p class="interestN"></p></h4>
+        </div></a>
+    </script>
 
     <script type="text/template" id="FeedTemplate">
         <div class="feed box col-xs-12 col-md-12 col-lg-12">
@@ -121,11 +152,18 @@ ob_start();
     include __DIR__."/../master/index.php";
 ?>
     <script src="../lib/js/FileUpload.js"></script>
+    <!-- Hung typeahead -->
     <script src="../lib/typeahead/dist/typeahead.bundle.min.js"></script>
+    <!-- Quoc typeahead -->
+
+ <!--  //<script src="/lib/bootstrap/js/bootstrap-typeahead.min.js"></script>
+  //<script src="/lib/js/underscore-min.js"></script>
+  //<script src="js/typeahead.js"></script> -->
     <script src="../lib/lightbox/ekko-lightbox.js"></script>
     <script src="../feed/js/Comment.js"></script>
     <script src="../feed/js/CommentList.js"></script>
     <script src="../feed/js/NewPost.js"></script>
     <script src="../feed/js/Feed.js"></script>
     <script src="../feed/js/FeedList.js"></script>
+    <script src="js/InterestFiller.js"></script>
     <script src="js/index.js"></script>

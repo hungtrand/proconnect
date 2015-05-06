@@ -1,4 +1,4 @@
-"use strict"
+-"use strict"
 function User(){
 	// this.personalInfo = {
 	// 	"first-name":"",
@@ -858,7 +858,7 @@ User.prototype = {
 		$.each(this.userData.experiences,function(i,exp){
 			// $("#user-experiences").html("");
 			// exp["company-location"]
-			var endTime = (exp["work-present"] === "") ? month[parseInt(exp["work-end-month"]) - 1] + " " + exp['work-end-year'] : exp["work-present"];
+			var endTime = (exp["work-present"] !== "") ? month[parseInt(exp["work-end-month"]) - 1] + " " + exp['work-end-year'] : 'Current';
 			var workTime = month[parseInt(exp['work-start-month']) - 1] + " " + exp['work-start-year'] + " &#8213 " + endTime;
 
 			// console.log(workTime); index='" + i + "
@@ -882,9 +882,15 @@ User.prototype = {
 		//update projects
 		$.each(this.userData.projects,function(key,proj){
 
-			// console.log();
-			//format project title
-			var projTitle = (proj['project-url'] === "") ? proj['project-name'] : '<a target="_blank" href="' + proj['project-url'] + '">' + proj['project-name'] +'</a>';
+			// console.log(key);
+			var projTitle;
+			if(proj['project-url'] === "") {		//format project title
+				projTitle = proj['project-name']
+			} else {
+				var regex = new RegExp('^http','im');				//check for potocol, need it to correctly connect to site
+			 	var url = (regex.test(proj['project-url'])) ? proj['project-url'] : 'http://' + proj['project-url'];
+ 			 	projTitle = '<a target="_blank" href="' + url + '">' + proj['project-name'] +'</a>'; 
+			}
 
 			var teamMemberBlock = "";
 

@@ -2,6 +2,49 @@ body {
     padding-top: 120px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
     background-color: #E8E8E8;
 }
+/*.DocumentList
+{
+    overflow-x:scroll;
+    overflow-y:hidden;
+    height:120px;
+    padding: 0 15px;
+}
+
+.interest-fun
+{
+    height: 100px;
+    width: 100px;
+    overflow: auto;
+    border-radius: 10px;
+    background-color: #CEF6F5;
+}
+
+.list-inline {
+  white-space:nowrap;
+}*/
+
+#wrapper {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+#interest-wrapper {
+  height: 80%;
+  overflow: auto;
+}
+
+#interest-navigation {
+  position: absolute;
+  width: 100%;
+}
+
+#interest-container {
+  opacity: 0;
+  background-color: white;
+  height: 400px;
+  overflow: hidden;
+}
 
 .feed {
   margin: 20px 0;
