@@ -260,7 +260,7 @@ CREATE TABLE `Job` (
   `ContactInfo` varchar(600) DEFAULT NULL,
   `CompanyImage` varchar(400) DEFAULT NULL,
   PRIMARY KEY (`JobID`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -280,7 +280,7 @@ CREATE TABLE `Message` (
   UNIQUE KEY `MessageID_UNIQUE` (`MessageID`),
   KEY `fk_Message_User_idx` (`Creator`),
   CONSTRAINT `fk_Message_User` FOREIGN KEY (`Creator`) REFERENCES `User` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -305,7 +305,7 @@ CREATE TABLE `MessageView` (
   KEY `fk_MessageView_Message_idx` (`MessageID`),
   CONSTRAINT `fk_MessageView_Message` FOREIGN KEY (`MessageID`) REFERENCES `Message` (`MessageID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_MessageView_User` FOREIGN KEY (`UserID`) REFERENCES `User` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -325,7 +325,7 @@ CREATE TABLE `Notification` (
   PRIMARY KEY (`NotificationID`),
   KEY `fk_Notification_User_idx` (`UserID`),
   CONSTRAINT `fk_Notification_User` FOREIGN KEY (`UserID`) REFERENCES `User` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -347,7 +347,7 @@ CREATE TABLE `NotificationView` (
   KEY `fk_NotificationView_Notification_idx` (`NotificationID`),
   CONSTRAINT `fk_NotificationView_Notification` FOREIGN KEY (`NotificationID`) REFERENCES `Notification` (`NotificationID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_NotificationView_User` FOREIGN KEY (`UserID`) REFERENCES `User` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=201 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=225 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -479,6 +479,7 @@ SET character_set_client = utf8;
  1 AS `Password`,
  1 AS `Active`,
  1 AS `Verified`,
+ 1 AS `isRecruiter`,
  1 AS `AllStudies`,
  1 AS `AllSchools`*/;
 SET character_set_client = @saved_cs_client;
@@ -514,7 +515,7 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `vw_PersonalInfo` AS (select `User`.`UserID` AS `UserID`,`User`.`FirstName` AS `FirstName`,`User`.`MiddleName` AS `MiddleName`,`User`.`LastName` AS `LastName`,concat(`User`.`FirstName`,' ',`User`.`MiddleName`,' ',`User`.`LastName`) AS `Name`,`User`.`Gender` AS `Gender`,`User`.`Birthday` AS `Birthday`,`User`.`Address` AS `Address`,`User`.`City` AS `City`,`User`.`State` AS `State`,`User`.`Zip` AS `Zip`,`User`.`Summary` AS `Summary`,`User`.`ProfileImage` AS `ProfileImage`,`User`.`Phone` AS `Phone`,`User`.`PhoneType` AS `PhoneType`,`User`.`EmploymentStatus` AS `EmploymentStatus`,`User`.`Country` AS `Country`,`Account`.`AccountID` AS `AccountID`,`Account`.`Email` AS `Email`,`Account`.`Email_Alt` AS `Email_Alt`,`Account`.`Username` AS `Username`,`Account`.`Password` AS `Password`,`Account`.`Active` AS `Active`,`Account`.`Verified` AS `Verified`,(select group_concat(`Education`.`FieldOfStudy` separator ',') from `Education` where (`Education`.`UserID` = `User`.`UserID`)) AS `AllStudies`,(select group_concat(`Education`.`School` separator ',') from `Education` where (`Education`.`UserID` = `User`.`UserID`)) AS `AllSchools` from (`User` join `Account` on((`User`.`UserID` = `Account`.`UserID`)))) */;
+/*!50001 VIEW `vw_PersonalInfo` AS (select `User`.`UserID` AS `UserID`,`User`.`FirstName` AS `FirstName`,`User`.`MiddleName` AS `MiddleName`,`User`.`LastName` AS `LastName`,concat(`User`.`FirstName`,' ',`User`.`MiddleName`,' ',`User`.`LastName`) AS `Name`,`User`.`Gender` AS `Gender`,`User`.`Birthday` AS `Birthday`,`User`.`Address` AS `Address`,`User`.`City` AS `City`,`User`.`State` AS `State`,`User`.`Zip` AS `Zip`,`User`.`Summary` AS `Summary`,`User`.`ProfileImage` AS `ProfileImage`,`User`.`Phone` AS `Phone`,`User`.`PhoneType` AS `PhoneType`,`User`.`EmploymentStatus` AS `EmploymentStatus`,`User`.`Country` AS `Country`,`Account`.`AccountID` AS `AccountID`,`Account`.`Email` AS `Email`,`Account`.`Email_Alt` AS `Email_Alt`,`Account`.`Username` AS `Username`,`Account`.`Password` AS `Password`,`Account`.`Active` AS `Active`,`Account`.`Verified` AS `Verified`,`Account`.`isRecruiter` AS `isRecruiter`,(select group_concat(`Education`.`FieldOfStudy` separator ',') from `Education` where (`Education`.`UserID` = `User`.`UserID`)) AS `AllStudies`,(select group_concat(`Education`.`School` separator ',') from `Education` where (`Education`.`UserID` = `User`.`UserID`)) AS `AllSchools` from (`User` join `Account` on((`User`.`UserID` = `Account`.`UserID`)))) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -528,4 +529,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-05-05 19:40:14
+-- Dump completed on 2015-05-06 16:44:13
