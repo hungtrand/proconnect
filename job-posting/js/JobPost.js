@@ -245,9 +245,15 @@ JobPost.prototype = {
 		that.container.find('input[type="file"]').val('');
 		that.container.find('select option').removeAttr('selected');
 		that.container.find('input[type="radio"]').removeAttr('checked');
-		CKEDITOR.instances.companyDesc.setData('');
-		CKEDITOR.instances.skillDesc.setData('');
-		CKEDITOR.instances.jobDesc.setData('');
+
+		if (CKEDITOR.instances.companyDesc)
+			CKEDITOR.instances.companyDesc.setData('');
+		if (CKEDITOR.instances.skillDesc)
+			CKEDITOR.instances.skillDesc.setData('');
+
+		if (CKEDITOR.instances.jobDesc)
+			CKEDITOR.instances.jobDesc.setData('');
+		
 		$('#ImagePreview').attr('src', '../image/companyimg');
 	},
 
