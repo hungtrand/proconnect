@@ -3,13 +3,6 @@ body {
     background-color: #E8E8E8;
 }
 
-#fixed-right-section {
-	position: fixed;
-	height: 80%;
-	overflow: auto;
-	right: 20px;
-}
-
 #btnPostMode {
 	width: 70px;
 	height: 70px;
@@ -43,8 +36,8 @@ body {
   border-width: 3px;
   border-color: #333;
   border-radius: 10px;
-  -webkit-box-shadow: 5px 5px 10px rgba(0,0,0,.25); // iOS <4.3 & Android <4.1
-  box-shadow: 5px 5px 10px rgba(0,0,0,.25);
+  -webkit-box-shadow: 2px 1px 12px rgba(0,0,0,.25); // iOS <4.3 & Android <4.1
+  box-shadow: 2px 1px 12px rgba(0,0,0,.25);
 }
 
 blockquote {
@@ -65,11 +58,6 @@ blockquote:before {
 }
 blockquote p {
   display: inline;
-}
-
-.box {
-  -webkit-box-shadow: 5px 5px 10px rgba(0,0,0,.25); // iOS <4.3 & Android <4.1
-          box-shadow: 5px 5px 10px rgba(0,0,0,.25);
 }
 
 .cover.profile .cover-info .name {
@@ -106,6 +94,17 @@ blockquote p {
 
 #FeedsSection {
   list-style: none;
+}
+
+#fixed-right-section {
+  position: fixed;
+  height: 80%;
+  overflow: auto;
+  right: 20px;
+}
+
+#NewPost {
+  background-color: #FFFFFF;
 }
 
 @media (max-width: 768px){

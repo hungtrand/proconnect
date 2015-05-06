@@ -1,6 +1,6 @@
 <?php
-error_reporting(E_ALL); // debug
-ini_set("display_errors", 1); // debug
+// error_reporting(E_ALL); // debug
+// ini_set("display_errors", 1); // debug
 require_once $_SERVER['DOCUMENT_ROOT']."/lib/php/sqlConnection.php";
 require_once $_SERVER['DOCUMENT_ROOT']."/lib/php/classes/User.php";
 require_once $_SERVER['DOCUMENT_ROOT']."/lib/php/classes/Message.php";
@@ -41,11 +41,12 @@ try {
 	/*
 	* The following snippet is to handle read message flag
 	*/
+	$strict = $_POST['data']['itemName'];
 	if(isset($_POST['data'])) {
-
-		switch($_POST['data']['itemName']) {
+		switch($strict) {
 			case 'MessageItemID':
-				$messageObj = new MessageView( (int)$_POST['data']['id'] );
+				$id = (int)$_POST['data']['id'];
+				$messageObj = new MessageView( $id );
 				$messageObj->setRead(true);
 				$messageObj->update();
 				break;

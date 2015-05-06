@@ -12,7 +12,7 @@ $Title = "Messages - Proconnect";
 if (isset($_COOKIE['__USER_PROFILE_IMAGE__'])) {
     $ProfileImage = $_COOKIE['__USER_PROFILE_IMAGE__'];
 } else {
-    $ProfileImage = '/image/proconnect/Tab_logo2_100x100.png';
+    $ProfileImage = '/image/user_img.png';
 }
 $JobTitle = $UData['TITLE'];
 $MessageActive = 'active';
@@ -112,7 +112,7 @@ ob_start();
 
     </div>
     <div class="message-content" class="well well-sm">
-        <button type="submit" class="btn btn-primary send-btn">Save</button>
+        <button type="submit" class="btn btn-primary send-btn">Submit</button>
         <button type="button" class="btn btn-default cancel-btn">Cancel</button>
      </div>
 </script>

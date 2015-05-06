@@ -101,7 +101,7 @@
 		}
 
 		public function setRead($boolVal = false){
-			if ($boolVal) $this->data['READ'] = true;
+			if ($boolVal == true) $this->data['READ'] = true;
 			else $this->data['READ'] = false;
 
 			return true;

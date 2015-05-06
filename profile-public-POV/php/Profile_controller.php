@@ -68,11 +68,13 @@ $AllSkills = $SkillMgr->getAll();
 
 $conn = new Connection();
 $connStatus = "Not Connected";
-if ($conn->loadByUsers($uid, $CUserID)) {
+
+$CUserID = (int)trim($_POST['UserID']);	//fetch connection id
+
+if ($conn->loadByUsers((int)$uid, $CUserID)) {
 	if ($conn->getAccepted()) $connStatus = "Connected";
 	else $connStatus = "Invitation Pending.";
-}
-
+} 
 
 // Start Producing View here
 $view = new Profile_View();

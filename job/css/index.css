@@ -18,35 +18,18 @@
 	font-weight: bold;
 }
 
-#job-page-searching-footer1 {
-	height: 1px;
-	margin-top: -24px;
-	font-size: 0.8em;
-}
-
-#job-page-searching-footer2 {
-	height: 1px;
-	margin-top: -24px;
-	font-size: 0.8em;
-}
 
 #btn-search-2 {
 	display: none;
 }
 
-#adv-industry-div {
-	height: 240px;
-	overflow: auto;
-}
-
-#adv-function-div {
-	height: 100px;
-	overflow: auto;
-}
-
 #adv-salary-div {
 	height: 100px;
 	overflow: auto;
+}
+
+#header {
+	padding: 10px;
 }
 
 #footer {
@@ -57,28 +40,21 @@
 	background-color: white;
 }
 
-#job-display-footer1 {
-	height: 30px;
-}
-
-#job-display-footer2 {
-	height: 30px;
-}
 
 #posting-job1 {
 	background-color: white;
 }
 
-#posting-job2 {
-	background-color: white;
-	display: none;
-}
-
 .specific-job {
 }
 .companyImg {
-	width: 100%;
-	height: 125px;
+	max-height: 100%;
+	max-width: 100%;
+}
+
+#modalImagePreview {
+	max-width: 100%;
+	max-height: 100%;
 }
 
 #myModalLabel {
@@ -107,18 +83,9 @@
 	margin-bottom: 10px;
 }
 
-#modalImgUpload {
-	position: absolute;
-	right: 25px;
-	margin-top: -23.7%;
-}
 
 .additional {
 	font-weight: bold;
-}
-
-#load-more2 {
-	display: none;
 }
 
 @media only screen and (max-width: 992px) {

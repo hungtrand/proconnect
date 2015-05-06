@@ -20,7 +20,7 @@ class MessageView extends ActiveRecord{
 		parent:: __construct();
 		if(isset($ID)){
 			$this->MessageViewID =$ID;
-			if(!$this->data = $this->fetch($ID)){
+			if(!$this->load($ID)){
 				$this->err = "Record not found!";
 				return false;
 			}; 
@@ -114,21 +114,21 @@ class MessageView extends ActiveRecord{
 	}
 
 	public function setRead($boolVal = false){
-		if ($boolVal) $this->data['READ'] = true;
+		if ($boolVal == true) $this->data['READ'] = true;
 		else $this->data['READ'] = false;
 
 		return true;
 	}
 
 	public function setArchived($boolVal = false){
-		if ($boolVal) $this->data['ARCHIVED'] = true;
+		if ($boolVal == true) $this->data['ARCHIVED'] = true;
 		else $this->data['ARCHIVED'] = false;
 
 		return true;
 	}
 
 	public function setDeleted($boolVal = false){
-		if ($boolVal) $this->data['DELETED'] = true;
+		if ($boolVal == true) $this->data['DELETED'] = true;
 		else $this->data['DELETED'] = false;
 
 		return $this->data['DELETED'];

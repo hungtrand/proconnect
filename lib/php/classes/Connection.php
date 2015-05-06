@@ -134,7 +134,7 @@ class Connection extends ActiveRecord {
 	}
 
 	public function setAccepted($boolVal = false) {
-		if ($boolVal) $this->data['ACCEPTED'] = true;
+		if ($boolVal == true) $this->data['ACCEPTED'] = true;
 		else $this->data['ACCEPTED'] = false;
 
 		return true;
@@ -147,7 +147,7 @@ class Connection extends ActiveRecord {
 	}
 
 	public function setDeclined($boolVal = false) {
-		if ($boolVal) $this->data['DECLINED'] = true;
+		if ($boolVal == true) $this->data['DECLINED'] = true;
 		else $this->data['DECLINED'] = false;
 
 		return true;

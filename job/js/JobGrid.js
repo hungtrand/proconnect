@@ -29,7 +29,7 @@ JobGrid.prototype = {
 		that.wrapper = $('#job-grid');
 		that.template = $('#job-container').html();
 		that.container = $(that.template);
-		that.pageCounter = $('#page-counter').val();
+		that.pageCounter = parseInt($('#page-counter').val());
 		that.jobID = that.container.find('.jobID');
 		that.jobTitle = that.container.find('.jobTitle');
 		that.jobLocation = that.container.find('.jobLocation');
@@ -38,7 +38,7 @@ JobGrid.prototype = {
 		that.jobDescription = that.container.find('.jobDescription');
 		that.skillDescription = that.container.find('.skillDescription');
 		that.companyDescription = that.container.find('.companyDescription');
-		that.employmentType = that.container.find('.employmentType');
+		that.employmentType = that.container.find('.mploymentType');
 		that.experience = that.container.find('.experience');
 		that.jobFunctions = that.container.find('.jobFunctions');
 		that.industries = that.container.find('.industry');
@@ -54,13 +54,13 @@ JobGrid.prototype = {
 
 	fetch: function(callback) {
 		var that = this;
-		var data = {'page': that.pageCounter};
+		var data = {'page': that.pageCounter++};
+		$('#page-counter').val(that.pageCounter);
 
 		$.ajax({
 			url: 'php/JobList_controller.php',
 			type: 'POST',
-			data: data,
-			contentType: 'text/plain'
+			data: data
 		}).done( function(json) {
 			try {
 				json = $.parseJSON(json.trim());
@@ -81,6 +81,7 @@ JobGrid.prototype = {
 		$.each(data, function(key, value) {
 			that.jobID.val(value.jobID);
 			that.companyImg.attr('src', value.companyImg);
+			
 			that.jobTitle.text(value.jobTitle);
 			that.jobLocation.text(value.jobLocation);
 			that.contactInfo.val(value.contactInfo);
@@ -102,12 +103,12 @@ JobGrid.prototype = {
 		that.loadMoreBtn = $('#job-display-footer1');
 		that.loadMoreBtn.click( function(ev) {
 			ev.preventDefault();
-			$('#loading-div').fadeIn('1000', function() {
+			$('#loading-div').slideDown('1000', function() {
 				$(this).show();
 				scrollTop: $(this).offset().top
 			});
 			setTimeout( function() {
-				$('#loading-div').fadeOut('1000', function() {
+				$('#loading-div').slideUp('1000', function() {
 					$(this).hide();
 					that.pageCounter++;
 					$('#page-counter').attr('value', that.pageCounter);
@@ -119,7 +120,6 @@ JobGrid.prototype = {
 
 	loadMore: function() {
 		var that = this;
-		console.log('hello');
 		that.fetch(function(jsonData) {
 			that.loadMoreBtn = '';
 			that.createJob(jsonData);

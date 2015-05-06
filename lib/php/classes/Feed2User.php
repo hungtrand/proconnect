@@ -115,14 +115,14 @@ class Feed2User extends ActiveRecord {
 	}
 
 	public function setLiked($boolVal = false) {
-		if ($boolVal) $this->data['LIKED'] = true;
+		if ($boolVal == true) $this->data['LIKED'] = true;
 		else $this->data['LIKED'] = false;
 
 		return true;
 	}
 
 	public function setIsCreator($boolVal = false) {
-		if ($boolVal) $this->data['ISCREATOR'] = true;
+		if ($boolVal == true) $this->data['ISCREATOR'] = true;
 		else $this->data['ISCREATOR'] = false;
 
 		return true;

@@ -2,16 +2,61 @@ body {
     padding-top: 120px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
     background-color: #E8E8E8;
 }
+/*.DocumentList
+{
+    overflow-x:scroll;
+    overflow-y:hidden;
+    height:120px;
+    padding: 0 15px;
+}
+
+.interest-fun
+{
+    height: 100px;
+    width: 100px;
+    overflow: auto;
+    border-radius: 10px;
+    background-color: #CEF6F5;
+}
+
+.list-inline {
+  white-space:nowrap;
+}*/
+
+#wrapper {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+#interest-wrapper {
+  height: 80%;
+  width: 99%;
+  overflow: auto;
+}
+
+#interest-navigation {
+  position: absolute;
+  width: 99%;
+  z-index: 10;
+}
+
+#interest-container {
+  opacity: 0;
+  background-color: white;
+  height: 400px;
+  overflow: hidden;
+}
 
 .feed {
   margin: 20px 0;
 }
 
-.box {
+/*.box {
   -webkit-box-shadow: 5px 5px 10px rgba(0,0,0,.25); // iOS <4.3 & Android <4.1
           box-shadow: 5px 5px 10px rgba(0,0,0,.25);
 }
-
+*/
 .hover {
   -webkit-box-shadow: 20px 20px 20px rgba(0,0,0,.25); // iOS <4.3 & Android <4.1
           box-shadow: 20px 20px 20px rgba(0,0,0,.25);

@@ -10,9 +10,10 @@ $(document).ready(function() {
 
 	// initite scroll
 	$('.st-content-inner').scroll(function()
-	{
+	{	
+		var spread = 30;
 		var triggerPoint = $('.st-content-inner').children('.container-fluid').height() - $('.st-content-inner').height() - 200;
-	    if($('.st-content-inner').scrollTop() > (triggerPoint - 10) && $('.st-content-inner').scrollTop() < (triggerPoint + 10))
+	    if($('.st-content-inner').scrollTop() > (triggerPoint - spread) && $('.st-content-inner').scrollTop() < (triggerPoint + spread))
 	    {
 	        feedList.next();
 	    }

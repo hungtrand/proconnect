@@ -14,6 +14,7 @@ function ModalFiller() {
 	this.jobFunctions;
 	this.industries;
 	this.modalCreator;
+	this.applyBtn;
 	this.data;
 	this.init();
 }
@@ -37,6 +38,7 @@ ModalFiller.prototype = {
 		that.experience = that.container.find('#job-experience');
 		that.jobFunctions = that.container.find('#job-function');
 		that.industries = that.container.find('#industries');
+		that.applyBtn = that.container.find('#apply-btn');
 		that.modalCreator = $('.modalCreator');
 		
 		that.modalCreator.on('click', function(ev) {
@@ -52,11 +54,13 @@ ModalFiller.prototype = {
 			that.companyDescription.text(pretense.find('.companyDescription').val());
 			that.employmentType.text(pretense.find('.employmentType').val());
 			that.experience.text(pretense.find('.experience').val());
-			that.jobFunctions.text(pretense.find('.jobFunctions').val());
+			that.jobFunctions.html(pretense.find('.jobFunctions').val());
 			that.industries.text(pretense.find('.industry').val());
-
-			var application = new ApplyModalFiller();
-			application.load();
+			that.applyBtn.on('click', function(ev) {
+				ev.preventDefault();
+				that.applyBtn.css('background-color', 'green');
+				alert('You have successfully applied for this job');
+			});
 		});
 	}
 }
