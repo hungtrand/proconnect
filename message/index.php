@@ -12,7 +12,7 @@ $Title = "Messages - Proconnect";
 if (isset($_COOKIE['__USER_PROFILE_IMAGE__'])) {
     $ProfileImage = $_COOKIE['__USER_PROFILE_IMAGE__'];
 } else {
-    $ProfileImage = '/image/proconnect/Tab_logo2_100x100.png';
+    $ProfileImage = '/image/user_img.png';
 }
 $JobTitle = $UData['TITLE'];
 $MessageActive = 'active';

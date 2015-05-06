@@ -23,10 +23,18 @@ if (isset($_COOKIE['__USER_PROFILE_IMAGE__'])) {
 						<img src="http://placehold.it/380x500" alt="" class="img-circle profile-image" style="height: 110px; width: 110px; object-fit: cover;" id="preview"/>			
 						<h3><span id="user-first" class="first-name"></span> <span id="user-mi"></span> <span id="user-last"></span></h3>
 					   <!-- Split button -->
-						<div class="btn-group">
-							  <button type="button" class="btn btn-info">
-								  Connect</button>
-							  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+						<!-- <div class="btn-group"> -->
+							  <button type="button" class="btn btn-info connect-btn hidden">
+								  Connect
+							  </button>
+
+							  <button type="button" class="btn btn-success following-btn hidden">
+								  Following 
+								  <i class="fa fa-check-circle fa-fw"></i>
+							  </button>
+
+
+							  <!-- <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
 								  <span class="caret"></span><span class="sr-only">Social</span>
 							  </button>
 							  <ul class="dropdown-menu" role="menu">
@@ -35,8 +43,8 @@ if (isset($_COOKIE['__USER_PROFILE_IMAGE__'])) {
 								  <li><a href="https://www.facebook.com/jquery2dotnet">Facebook</a></li>
 								  <li class="divider"></li>
 								  <li><a href="#">View Skills</a></li>
-							  </ul>
-						</div>									
+							  </ul> -->
+						<!-- </div>									 -->
 					</div>
 					<!-- Summary -->
 					<div class="panel-body">
