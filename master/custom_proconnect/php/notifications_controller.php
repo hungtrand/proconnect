@@ -45,11 +45,12 @@ try {
 	if(isset($_POST['data'])) {
 		switch($strict) {
 			case 'MessageItemID':
-				$fuck = (int)$_POST['data']['id'];
-				$messageObj = new MessageView( $fuck );
+				$id = (int)$_POST['data']['id'];
+				$messageObj = new MessageView( $id );
 				$messageObj->setRead(true);
 				$messageObj->setArchived(false);
 				$messageObj->setDeleted(false);
+				print_r($messageObj->)
 				$messageObj->update();
 				break;
 			case 'NotificationItemID':
