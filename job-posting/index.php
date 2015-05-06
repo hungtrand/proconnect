@@ -18,7 +18,6 @@ ob_start();
 
 ?>
     <div class="col col-xs-12 col-md-7 well" id="form-div">
-        <form class="form-horizontal">
         <h4><STRONG><span id="form-title">Build Your Job Posting</span></STRONG></h4>
             <h3><STRONG><span class="glyphicon glyphicon-briefcase"></span> Work Environment</STRONG></h3>
             <br />
@@ -230,7 +229,6 @@ ob_start();
                     </div>
                 </div>
             </div>
-        </form>
 
     </div>
 
