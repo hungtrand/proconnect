@@ -20,7 +20,7 @@ class MessageView extends ActiveRecord{
 		parent:: __construct();
 		if(isset($ID)){
 			$this->MessageViewID =$ID;
-			if(!$this->data = $this->fetch($ID)){
+			if(!$this->data = $this->load($ID)){
 				$this->err = "Record not found!";
 				return false;
 			}; 
