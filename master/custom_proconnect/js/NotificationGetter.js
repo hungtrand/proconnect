@@ -23,6 +23,7 @@ var NotificationGetter = (function() {
 					data: {"userID":"notification-getter"},															  //<------ may not be necessary
 					method: "POST",
 					success: function(data){
+						console.log(data);
 						try {
 							var notifications = JSON.parse(data);
 

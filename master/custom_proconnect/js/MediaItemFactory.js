@@ -73,6 +73,7 @@ function MediaItem(options) {
 					baseItem.removeClass('new-item');					  //remove new-item class
 				} catch (e) {
 					console.log(e);
+					console.log(newNotification);
 				}
 			},
 			error: function(qXHR, textStatus,errorThrown ) {

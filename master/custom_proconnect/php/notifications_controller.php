@@ -41,11 +41,15 @@ try {
 	/*
 	* The following snippet is to handle read message flag
 	*/
+	$strict = $_POST['data']['itemName'];
 	if(isset($_POST['data'])) {
-		switch($_POST['data']['itemName']) {
+		switch($strict) {
 			case 'MessageItemID':
-				$messageObj = new MessageView( (int)$_POST['data']['id'] );
+				$fuck = (int)$_POST['data']['id'];
+				$messageObj = new MessageView( $fuck );
 				$messageObj->setRead(true);
+				$messageObj->setArchived(false);
+				$messageObj->setDeleted(false);
 				$messageObj->update();
 				break;
 			case 'NotificationItemID':
@@ -53,6 +57,9 @@ try {
 				$notiObj->setRead(true);
 				$notiObj->update();
 				break;
+
+			default: 
+				echo 'asdhhdfjkdfjkdfkj';
 		}
 	} //end of snippet
 
