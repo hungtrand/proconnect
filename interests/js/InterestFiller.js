@@ -33,10 +33,10 @@ InterestFiller.prototype = {
 		that.interestID = that.temp.find('.interestID');
 		that.interestName = that.temp.find('.interestName');
 		that.interestN = that.temp.find('.interestN');
-		that.txtFeedCategory = $('.searchedInterest');
+		// that.txtFeedCategory = $('.searchedInterest');
 		that.div = that.temp.find('.div-btn');
 		that.edit = that.temp.find('.hash-edit');
-		that.bindEvents();
+		// that.bindEvents();
 	},
 
 	setInputReader: function() {
@@ -73,39 +73,39 @@ InterestFiller.prototype = {
 		});
 	},
 
-	bindEvents: function() {
-		var that = this;
+	// bindEvents: function() {
+	// 	var that = this;
 
-		// bind typeahead for interests
-		var interests = new Bloodhound({
-			datumTokenizer: Bloodhound.tokenizers.whitespace,
-			queryTokenizer: Bloodhound.tokenizers.whitespace,
-			prefetch: '/lib/php/Lookup_Interests_controller.php'
-		});
+	// 	// bind typeahead for interests
+	// 	var interests = new Bloodhound({
+	// 		datumTokenizer: Bloodhound.tokenizers.whitespace,
+	// 		queryTokenizer: Bloodhound.tokenizers.whitespace,
+	// 		prefetch: '/lib/php/Lookup_Interests_controller.php'
+	// 	});
 
-		function interestsWithDefaults(q, sync) {
-			if (q === '') {
-				sync(interests.get('General','Aerospace Engineering', 'Arts', 
-					'Biology', 'Biochemical Engineering', 'Chemical Engineering', 
-					'Computer Engineering',	'Computer Programming', 'Fashion Design',
-					'Health Science', 'Literature', 'Music'));
-			}
+	// 	function interestsWithDefaults(q, sync) {
+	// 		if (q === '') {
+	// 			sync(interests.get('General','Aerospace Engineering', 'Arts', 
+	// 				'Biology', 'Biochemical Engineering', 'Chemical Engineering', 
+	// 				'Computer Engineering',	'Computer Programming', 'Fashion Design',
+	// 				'Health Science', 'Literature', 'Music'));
+	// 		}
 
-			else {
-				interests.search(q, sync);
-			}
-		}
+	// 		else {
+	// 			interests.search(q, sync);
+	// 		}
+	// 	}
 
-		that.txtFeedCategory.typeahead({
-			minLength: 0,
-			highlight: true
-		}, {
-			name: 'Interests',
-			source: interestsWithDefaults,
-			limit: 10
-		});
-		// end of typeahead
-	},
+	// 	that.txtFeedCategory.typeahead({
+	// 		minLength: 0,
+	// 		highlight: true
+	// 	}, {
+	// 		name: 'Interests',
+	// 		source: interestsWithDefaults,
+	// 		limit: 10
+	// 	});
+	// 	// end of typeahead
+	// },
 
 	load: function() {
 		var that = this;
@@ -154,7 +154,7 @@ InterestFiller.prototype = {
 			that.init();
 		});
 			console.log(that.divData);
-			//that.setInputReader();
+			that.setInputReader();
 			that.container.append(that.divData);
 	},
 
