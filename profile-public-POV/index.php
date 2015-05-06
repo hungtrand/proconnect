@@ -158,8 +158,6 @@ if (isset($_COOKIE['__USER_PROFILE_IMAGE__'])) {
 	</div>
 </div>
 
-   
-
 <?php
     $Content = ob_get_clean();
     include $_SERVER["DOCUMENT_ROOT"]."/master/index.php";

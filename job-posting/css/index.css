@@ -13,40 +13,10 @@
 	border-radius: 4px;
 }
 
-#imgupload {
-	position: absolute;
-	right: 10px;
-	margin-top: -16.4%;
-	width: 200px;
-	height: 150px;
-}
-
-#modalImgUpload {
-	position: absolute;
-	right: 25px;
-	margin-top: -18.7%;
-}
-
-.input-box {
-	width: 60%;
-}
-
-.add {
-	color: #CCCCCC;
-	font-size: 25px;
-	position: absolute;
-	margin-top: -32px;
-	margin-left: 58%;
-}
-
 #myModal {
 	padding-top: 6%;
 }
 
-.modal-content {
-	width: 125%;
-	margin-left: -12.5%;
-}
 #modalJobTitle {
 	font-size: 2em;
 }
@@ -136,9 +106,6 @@
 	margin-left: 10px;
 }
 
-.dropbox-ul {
-	margin-left: -40px;
-}
 textarea {
 	resize: none;
 }

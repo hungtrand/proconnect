@@ -1,14 +1,17 @@
 <?php
 
 
-  include '../signout/php/session_check_signout.php';
-  $UData = json_decode($_SESSION['__USERDATA__'], true);
-$FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
-$ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
-  
-  $Title = "Search Results"; //require for front end
-  // include '../header/header.php';
-  ob_start();
+  	include '../signout/php/session_check_signout.php';
+  	$UData = json_decode($_SESSION['__USERDATA__'], true);
+	$FullName = $UData['FIRSTNAME'].' '.$UData['LASTNAME'];
+
+	if($UData['PROFILEIMAGE'] !== NULL) {
+		$ProfileImage = '/users/'.$UData['USERID'].'/images/'.$UData['PROFILEIMAGE'];
+	} 
+	
+ 	$Title = "Search Results"; //require for front end
+  	// include '../header/header.php';
+  	ob_start();
 ?>
 	<link rel="stylesheet" type="text/css" href="css/results.css">
 
