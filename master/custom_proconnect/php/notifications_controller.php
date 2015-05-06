@@ -50,7 +50,7 @@ try {
 				$messageObj->setRead(true);
 				$messageObj->setArchived(false);
 				$messageObj->setDeleted(false);
-				print_r($messageObj->)
+
 				$messageObj->update();
 				break;
 			case 'NotificationItemID':
@@ -58,9 +58,6 @@ try {
 				$notiObj->setRead(true);
 				$notiObj->update();
 				break;
-
-			default: 
-				echo 'asdhhdfjkdfjkdfkj';
 		}
 	} //end of snippet
 
