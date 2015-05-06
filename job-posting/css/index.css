@@ -2,9 +2,9 @@
 	height: 100%;
 }
 
-#form-div input, #form-div select {
+#form-div input[type="text"], #form-div select, #form-div textarea {
 	border-color: #999;
-	color: #999;
+	width: 90%;
 }
 
 #form-title {
@@ -15,6 +15,12 @@
 	margin-top: -30px;
 	margin-left: -20px;
 	border-radius: 4px;
+}
+
+.add {
+	font-size: 30px;
+	color: #666;
+	padding-left: 10px;
 }
 
 #myModal {

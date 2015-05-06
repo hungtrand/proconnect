@@ -58,40 +58,38 @@ ob_start();
         <br />
         <h4><STRONG>Industry</STRONG></h4>
         <div class="dropbox-ul row">
-            <div id="industry-additional-zero" class="form-group">
-                <select class="form-control col col-xs-10 input-box industry-dropbox" id="industry-dropbox-0">
-                    <!-- Content to be filled with JS -->
-                    <option value="" selected>Select One</option>
-                </select>
+            <div class="col col-xs-12">
+                <div id="industry-additional-zero" class="form-group">
+                    <select class="form-control pull-left input-box industry-dropbox" id="industry-dropbox-0">
+                        <!-- Content to be filled with JS -->
+                        <option value="" selected>Select One</option>
+                    </select>
 
-                <div class="col col-xs-2">
-                    <a href="" class="add" id="industry-btn-zero">
+                    <a href="" class="add pull-left" id="industry-btn-zero">
                         <span class="glyphicon glyphicon-plus-sign add-text"></span>
                     </a>
                 </div>
-            </div>
-            <div id="industry-additional-one" style="display:none;" class="form-group">
-                <select class="form-control input-box industry-dropbox" id="industry-dropbox-1">
-                        <!-- Content to be filled with JS -->
-                    <option value="" selected>Select One</option>
-                </select>
+                <div id="industry-additional-one" style="display:none;" class="form-group">
+                    <select class="form-control pull-left input-box industry-dropbox" id="industry-dropbox-1">
+                            <!-- Content to be filled with JS -->
+                        <option value="" selected>Select One</option>
+                    </select>
 
-                <a href="" class="add" id="industry-btn-one">
-                    <span class="glyphicon glyphicon-minus-sign add-text"></span></a>   
-                <br />
-            </div>
-            <div id="industry-additional-two" style="display:none;" class="form-group">
-                <select class="form-control col-xs-10 input-box industry-dropbox" id="industry-dropbox-2">
-                        <!-- Content to be filled with JS -->
-                    <option value="" selected>Select One</option>
-                </select>
-                <span class="col-xs-2" id="basic-addon2">
-                    <a href="" class="add" id="industry-btn-two">
+                    <a href="" class="add pull-left" id="industry-btn-one">
+                        <span class="glyphicon glyphicon-minus-sign add-text"></span></a>   
+                    <br />
+                </div>
+                <div id="industry-additional-two" style="display:none;" class="form-group">
+                    <select class="form-control pull-left input-box industry-dropbox" id="industry-dropbox-2">
+                            <!-- Content to be filled with JS -->
+                        <option value="" selected>Select One</option>
+                    </select>
+
+                    <a href="" class="add pull-left" id="industry-btn-two">
                         <span class="glyphicon glyphicon-minus-sign add-text"></span>
-                    </a>
-                </span>
-                   
-                <br />
+                    </a>   
+                    <br />
+                </div>
             </div>
         </div>
         <hr />
@@ -112,26 +110,30 @@ ob_start();
             <option value="8">Not Applicable</option>
         </select>
         <h4><STRONG>Job Function</STRONG></h4>
-        <ul class="dropbox-ul" style="list-style: none;">
-            <li id="jobFunc-zero">
-                <select class="form-control input-box jobFunc-dropbox" id="jobFunc-dropbox-0">
-                    <option value="" selected>Select One</option>
-                </select><a href="" class="add" id="jobFunc-btn-zero"><span class="glyphicon glyphicon-plus-sign add-text"></span></a>   
-                <br />
-            </li>
-            <li id="jobFunc-one" style="display:none;">
-                <select class="form-control input-box jobFunc-dropbox" id="jobFunc-dropbox-1">
-                    <option value="" selected>Select One</option>
-                </select><a href="" class="add" id="jobFunc-btn-one"><span class="glyphicon glyphicon-minus-sign add-text"></span></a>   
-                <br />
-            </li>
-            <li id="jobFunc-two" style="display:none;">
-                <select class="form-control input-box jobFunc-dropbox" id="jobFunc-dropbox-2">
-                    <option value="" selected>Select One</option>
-                </select><a href="" class="add" id="jobFunc-btn-two"><span class="glyphicon glyphicon-minus-sign add-text"></span></a>   
-                <br />
-            </li>
-        </ul>
+        <div class="dropbox-ul row">
+            <div class="col col-xs-12">
+                <div id="jobFunc-zero">
+                    <select class="form-control pull-left input-box jobFunc-dropbox" id="jobFunc-dropbox-0">
+                        <option value="" selected>Select One</option>
+                    </select>
+                    <a href="" class="add pull-left" id="jobFunc-btn-zero"><span class="glyphicon glyphicon-plus-sign add-text"></span></a>   
+                    <br />
+                </div>
+                <div id="jobFunc-one" style="display:none;">
+                    <select class="form-control pull-left input-box jobFunc-dropbox" id="jobFunc-dropbox-1">
+                        <option value="" selected>Select One</option>
+                    </select><a href="" class="add pull-left" id="jobFunc-btn-one"><span class="glyphicon glyphicon-minus-sign add-text"></span></a>   
+                    <br />
+                </div>
+                <div id="jobFunc-two" style="display:none;">
+                    <select class="form-control pull-left input-box jobFunc-dropbox" id="jobFunc-dropbox-2">
+                        <option value="" selected>Select One</option>
+                    </select>
+                    <a href="" class="add pull-left" id="jobFunc-btn-two"><span class="glyphicon glyphicon-minus-sign add-text"></span></a>   
+                    <br />
+                </div>
+            </div>
+        </div>
         <h4><STRONG>Employment Type</STRONG></h4>
         <select class="form-control input-box" id="employment-type-dropbox">
             <option value="1">Choose...</option>
