@@ -71,7 +71,7 @@ switch ($action) {
 		$msgv->setUserID($uid);
 		$msgv->setIsCreator(true);
 		$msgv->setRead(true);
-		$msgv->setArchive(false);
+		$msgv->setArchived(false);
 		$msgv->setDeleted(false);
 		$msgv->save();
 
@@ -86,7 +86,7 @@ switch ($action) {
 			$msgv->setUserID($recip);
 			$msgv->setIsCreator(false);
 			$msgv->setRead(false);
-			$msgv->setArchive(false);
+			$msgv->setArchived(false);
 			$msgv->setDeleted(false);
 			$msgv->save();
 		}
