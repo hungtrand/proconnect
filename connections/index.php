@@ -22,11 +22,11 @@ ob_start();
     <!-- Custom CSS -->
     <link href="css/index.css" rel="stylesheet">
 
-    <div class="wrapper" style="padding: 20px;">
+    <div class="wrapper" >
         <div class="row">
 
             <!-- Blog Entries Column -->
-            <div class="col col-md-12 col-sm-10 col-xs-10">
+            <div class="col col-md-12 col-sm-12 col-xs-12">
                 <div id="ConnectionsHeader" class="row">
                     <div class="col col-xs-8">
                         <h2 class="text-info">Connections</h2>

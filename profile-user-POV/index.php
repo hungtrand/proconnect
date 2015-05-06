@@ -19,7 +19,7 @@ if (isset($_COOKIE['__USER_PROFILE_IMAGE__'])) {
 ?>
     <link href="css/profile-user-POV.css" rel="stylesheet">
 
-    <div class="cover profile">
+    <!-- <div class="cover profile">
             <div class="wrapper">
                 <div class="cover cover-image-full overlay">
                     <img src="/image/BlurStreet.jpeg" alt="Profile Cover" />
@@ -38,9 +38,9 @@ if (isset($_COOKIE['__USER_PROFILE_IMAGE__'])) {
                     </li>
                     <li><a href="users.html"><i class="fa fa-fw fa-users"></i> Friends</a>
                     </li>
-                </ul> -->
+                </ul> 
             </div>
-        </div>
+      </div> -->
     <!-- <div id="main-container" class="container-fluid"> -->
       <div class="pupov-content row">
           <!-- Column 1 -->

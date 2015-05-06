@@ -270,7 +270,7 @@ This variant is to be used when loading the separate styling modules -->
                                                     <div>
                                                         <ul id="ao-school" class="dynamic-result-div list-unstyled">
                                                         </ul> 
-                                                        <input class="ao-add-option" type="text" placeholder="+ Add">
+                                                        <input class="ao-add-option" type="text" placeholder="+ Add"> 
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -279,7 +279,7 @@ This variant is to be used when loading the separate styling modules -->
                                         <button type="button" class="ao-close close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
                                         <!-- Extra Search Button -->
-                                        <button type="submit" class="btn btn-primary">Search</button>
+                                        <!-- <button type="submit" class="btn btn-primary">Search</button> -->
                                         
                                     </div>
                                 </li>
