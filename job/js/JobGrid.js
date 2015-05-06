@@ -81,6 +81,7 @@ JobGrid.prototype = {
 		$.each(data, function(key, value) {
 			that.jobID.val(value.jobID);
 			that.companyImg.attr('src', value.companyImg);
+			
 			that.jobTitle.text(value.jobTitle);
 			that.jobLocation.text(value.jobLocation);
 			that.contactInfo.val(value.contactInfo);
