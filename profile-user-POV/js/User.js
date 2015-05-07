@@ -615,6 +615,7 @@ User.prototype = {
 
 				var count = 0;
 				var beans = "";
+				if (!this.userData.skill) this.userData.skill = [];
 				$.each(this.userData.skill,function(skillName,endorsementCount){
 					var endorsementNum = (endorsementCount > 0) ? endorsementCount : '';
 				    beans += "<li entry-index='" + count + "' >" +
