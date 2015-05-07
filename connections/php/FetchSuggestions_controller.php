@@ -35,7 +35,7 @@ $User = new User($uid);*/ // For Testing
 if (isset($_POST['page'])) $page = (int)$_POST['page'];
 else $page = 1;
 
-$rowsaPage = 10;
+$rowsaPage = 30;
 
 try {
 	$pm = new ProfileManager();

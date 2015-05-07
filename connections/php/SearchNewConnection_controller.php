@@ -40,7 +40,7 @@ else $page = 1;
 
 $keywords = explode(" ", $keywords);
 
-$rowsaPage = 10;
+$rowsaPage = 30;
 
 try {
 	$pm = new ProfileManager();

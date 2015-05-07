@@ -36,7 +36,7 @@ if (!$User = new User($uid)) {
 if (isset($_POST['page'])) $page = (int)$_POST['page'];
 else $page = 1;
 
-$rowsaPage = 10;
+$rowsaPage = 30;
 $filter = "";
 
 if (isset($_POST['filter'])) {

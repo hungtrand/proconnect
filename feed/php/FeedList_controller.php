@@ -38,7 +38,7 @@ if (!$User = new User($uid)) {
 //$User = new User(10); // For Testing
 if (isset($_POST['page'])) $page = (int)$_POST['page'];
 else $page = 1;
-$rowsaPage = 12;
+$rowsaPage = 15;
 
 if (isset($_POST['afterID'])) $afterID = (int)$_POST['afterID'];
 if (isset($_POST['Interest'])) $Interest = trim($_POST['Interest']);
