@@ -219,7 +219,7 @@ if (isset($_COOKIE['__USER_PROFILE_IMAGE__'])) {
             <div>
               <div id="skills-endorsements-header" class="well well-sm ">
                   <header>
-                        <h2>Skills and Endorsements</h2>
+                        <h2>Skills</h2>
                   </header>
                   <!-- Success message goes here -->
 
