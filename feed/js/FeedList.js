@@ -3,6 +3,7 @@ function FeedList(container) {
 	this.unreadCache = [];
 	this.Interest;
 	this.CardView;
+	this.FullTemplate;
 
 	this.container = container;
 	this.page = 0;
@@ -20,6 +21,7 @@ FeedList.prototype = {
 	init: function() {
 		var that = this;
 		this.Alert = $('#FeedListEndAlert');
+		that.getFullTemplate();
 		setInterval(function() {
 			if (that.Interest) return;
 			that.fetchNewest();
@@ -180,6 +182,10 @@ FeedList.prototype = {
 			var feed = new Feed(json[i]);
 			var columnNum = (that.feedZoneNum++)%3+1;
 			var ele = feed.getView();
+			var thisData = json[i];
+			ele.on('click', function() {
+				that.activateModal(thisData);
+			});
 
 			if (older) {
 				that.data.unshift(json[i]); // save the data to front of array 
@@ -189,6 +195,16 @@ FeedList.prototype = {
 				this.container.find('div#FeedZone'+columnNum).prepend(ele); //add feed to each column then increment to the next column index
 			}
 		}	
+	},
+
+	activateModal: function(eleData) {
+		var that = this;
+
+		var modal = $('.feedModal');
+		var ele = new Feed(eleData, that.FullTemplate);
+console.log(ele.getView());
+		modal.find('.modal-body').html(ele.getView());
+		modal.modal('show');
 	},
 
 	showAlert: function(msg, type) {
@@ -211,6 +227,17 @@ FeedList.prototype = {
 			}, 2000);
 		});
 		
+	},
+
+	getFullTemplate: function() {
+		var that = this;
+
+		$.ajax({
+			url: '/ComponentTemplates/FullFeedTemplate.php',
+			type: 'GET'
+		}).done(function(html) {
+			that.FullTemplate = $(html);
+		});
 	},
 
 	setInterest: function(newInterest) {

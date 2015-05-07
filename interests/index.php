@@ -39,7 +39,7 @@ ob_start();
                             <input type="text" placeholder="Search Interests" class="form-control searchedInterest typeahead" name="searchedInterest" id="searchedInterest" value="" style="background-color: white;">
                         </div>
                         <div id="wrapper">
-                            <div class="row text-center" id="interest-wrapper">
+                            <div class="row text-center" id="interest-wrapper" style="margin-top: 25px;">
                             </div>
                         </div>
                     </div>
@@ -68,6 +68,24 @@ ob_start();
                 <div id="FeedListEndAlert" class="alert alert-info text-center clearfix" style="margin: 50px 20px; display:none;"></div>
             </div>
         </div>
+    </div>
+
+    <div class="modal fade feedModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+
+                <div class="modal-body">
+                    
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
     </div>
 
     <script type="text/template" id="interest-div"> 

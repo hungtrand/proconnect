@@ -44,11 +44,11 @@ $(document).ready(function() {
 	// var TypeAhead = new typeahead();
 	$('.interest-expand').on('click', function(ev) {
 		ev.preventDefault();
-		if($('#interest-container').css('opacity') == 0) {
-			$('#interest-container').animate({opacity: 1}, 600);
+		if($('#interest-container').is(':hidden')) {
+			$('#interest-container').slideDown('slow');
 			$('.searchedInterest').focus();
 		} else {
-			$('#interest-container').animate({opacity: 0}, 600);			
+			$('#interest-container').slideUp('slow');			
 		}
 	});
 

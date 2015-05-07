@@ -42,7 +42,7 @@ body {
 }
 
 #interest-container {
-  opacity: 0;
+  display: none;
   background-color: white;
   height: 400px;
   overflow: hidden;
