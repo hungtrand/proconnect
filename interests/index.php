@@ -129,7 +129,7 @@ ob_start();
                         </div>
                     </div>
                     <div class="panel-body feed-content">
-                        <div class="contentMessage"></div>
+                        <div class="contentMessage" style="max-height: 200px; overflow: hidden; text-overflow: ellipsis;"></div>
                         <div>
                             <a class="contentImageLink" data-toggle="lightbox" href="{{ImageURL}}">
                               <img class="media-object contentImage thumbnail" style="max-width: 100%;" src=".{{ImageURL}}" />
