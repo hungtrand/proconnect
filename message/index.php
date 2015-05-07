@@ -108,7 +108,7 @@ ob_start();
                 <img src="../image/ajax-loader.gif">
             </div>
             <textarea name="summary" class="form-control" id="summary-textarea" rows="10"></textarea> <br>
-    </form>
+		</form>
 
     </div>
     <div class="message-content" class="well well-sm">

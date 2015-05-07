@@ -214,7 +214,7 @@ ob_start();
                                     </div>
                                 </div>
                                 <div class="media-body CommentMessage">
-                                    <textarea class="txtNewComment form-control" name="CommentMessage" placeholder="Type new comment here..."></textarea>
+                                    <textarea class="txtNewComment form-control" name="CommentMessage" style= " background-color: #FFFFFF;" placeholder="Type new comment here..."></textarea>
                                     <br />
                                     <button class="btn btn-default submitComment" disabled>Comment</button>
                                 </div>

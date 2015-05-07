@@ -36,13 +36,17 @@ textarea {
 	width: 40%;
 }
 .topper {
-	background-color: #4687CE;
-	color: white;
-	height: 80px;
-	width: calc(100% - 10px);
-	border-radius: 5px;
-	margin-top: -10px;
-	margin-left: 5px;
+  background-color: #EEEEEE;
+  border-bottom-style: solid;
+  border-width: 1px;
+  border-color: rgb(212, 212, 212);
+  color: rgb(125, 125, 125);
+  height: 80px;
+  width: 100%;
+  /* border-radius: 10px; */
+  margin-top: -10px;
+  /* margin-left: 5px; */
+  margin-left: 0px;
 }
 .user img {
 	float:left;
@@ -117,7 +121,7 @@ textarea {
 }
 
 #message-content {
-	border-color: #4687CE;
+	border-color: #D4D4D4;
 }
 
 #message-div {
@@ -180,7 +184,7 @@ textarea {
   font-weight: normal;
 }
 .sender-name {
-	color: #242628;
+	color: #606060;
 }
 .sender-href img {
 	max-width: 50px;
