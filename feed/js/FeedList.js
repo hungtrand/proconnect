@@ -196,8 +196,8 @@ FeedList.prototype = {
 
 			ele.find('img, a').on('click', function(e) {
 				e.preventDefault();
-				e.stopPropagation();
-				that.activateModal(thisData);
+				var index = $(this).find('.dataIndex').val();
+				that.activateModal(json[index]);
 			});
 
 			if (older) {
