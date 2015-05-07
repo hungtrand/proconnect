@@ -155,6 +155,21 @@ PublicUser.prototype = {
 	//update view
 	updateView: function(){
 		var that = this;
+		
+		var month = new Array();
+		month[0] = "January";
+		month[1] = "February";
+		month[2] = "March";
+		month[3] = "April";
+		month[4] = "May";
+		month[5] = "June";
+		month[6] = "July";
+		month[7] = "August";
+		month[8] = "September";
+		month[9] = "October";
+		month[10] = "November";
+		month[11] = "December";
+		
 		//update user info
 		 $('#preview').attr('src', this.userData.personalInfo["picture"]);
 		$(".first-name").text(this.userData.personalInfo["first-name"]);
@@ -274,8 +289,8 @@ PublicUser.prototype = {
 			// $("#user-experiences").html("");
 
 			// exp["company-location"]
-			var endTime = (exp["work-present"] === "") ? exp["work-end-month"] + " " + exp['work-end-year'] : exp["work-present"];
-			var workTime = exp['work-start-month'] + " " + exp['work-start-year'] + " &#8213 " + endTime;
+			var endTime = (exp["work-present"] !== "") ? month[parseInt(exp["work-end-month"]) - 1] + " " + exp['work-end-year'] : 'Current';
+			var workTime = month[parseInt(exp['work-start-month']) - 1] + " " + exp['work-start-year'] + " &#8213 " + endTime;
 
 			// console.log(workTime); index='" + i + "
 			$("#user-experiences").append(
