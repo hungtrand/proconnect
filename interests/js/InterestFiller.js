@@ -56,9 +56,9 @@ InterestFiller.prototype = {
 				var arr = repositoryItem.match(reg);
 				console.log(arr);
 				if (arr) {
-					$(repositoryID).show();
+					$(repositoryID).closest('.col').show();
 				} else {
-					$(repositoryID).hide();
+					$(repositoryID).closest('.col').hide();
 				};
 
 				// for(i = 0; i < searchedItemLength+1; i++) {

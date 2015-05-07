@@ -46,6 +46,7 @@ $(document).ready(function() {
 		ev.preventDefault();
 		if($('#interest-container').css('opacity') == 0) {
 			$('#interest-container').animate({opacity: 1}, 600);
+			$('.searchedInterest').focus();
 		} else {
 			$('#interest-container').animate({opacity: 0}, 600);			
 		}
