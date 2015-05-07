@@ -9,7 +9,7 @@ width: 300px;
 padding: 10px 30px;
 }
 .panel {
-  padding: 15px;
+ padding: 15px 40px;
 }
 .footer {
   position: fixed;
@@ -35,7 +35,7 @@ body.login .lock-container .panel {
   max-width: inherit!important;
 }
 body.login .lock-container {
-  width: inherit;
+
   margin-top:30px;
 
 }
