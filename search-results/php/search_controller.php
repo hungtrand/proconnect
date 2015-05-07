@@ -52,7 +52,11 @@ elseif (isset($_POST['ao-school'])) {
 	$SchFilters = [$_POST['ao-school']]; // still array, but array of 1
 }
 
-$keywords = explode(" ", $keywords);
+if (strlen($keywords) == 0) {
+	$keywords = [''];
+} else {
+	$keywords = explode(" ", $keywords);
+}
 
 $rowsaPage = 10;
 
