@@ -58,7 +58,7 @@ $HomeActive = 'active';
                                     &nbsp;&nbsp;&nbsp;&nbsp;
                                     <i class="fa fa-comment"></i>&nbsp;<a href="#" class="feedComment">Comment</a>
                                     &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <i class="fa fa-share-alt"></i>&nbsp;<a href="#" class="feedPropagate">Propagate</a>
+                                    <!-- <i class="fa fa-share-alt"></i>&nbsp;<a href="#" class="feedPropagate">Propagate</a> -->
                                     <label class="label label-default pull-right clearfix labelInterestCategory">
                                         <i class="fa fa-tag"></i>&nbsp;&nbsp;<span class="InterestCategory"></span>
                                     </label>
