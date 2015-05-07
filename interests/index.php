@@ -28,7 +28,7 @@ ob_start();
     <div class="container-fluid">
         <div class ="row" id="interest-navigation">
             <div class="col col-xs-11 col-sm-11 col-md-12 col-lg-12 text-right" id="interest-navigation-big">
-                <button class="btn btn-lg interest-expand" style="color: #3366CC;font-size: 25px; width: 100%; background-color: #A9D0F5;"><i class="glyphicon glyphicon-th"></i></button>
+                <button class="btn btn-lg interest-expand" style="color: #FFF;font-size: 25px; width: 100%; background-color: #A9F5A9;"><i class="glyphicon glyphicon-th"></i></button>
             </div>
             <div class="col col-xs-11 col-sm-11 col-md-12 col-lg-12 text-right">
                 <div>
