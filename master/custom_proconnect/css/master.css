@@ -37,9 +37,9 @@ body {
 	/*border: 1px solid red;*/
 }
 
-.ao-search-btn {
+/*.ao-group-search-btn li:not(:last-child){
 	border-right: 0px !important;
-}
+}*/
 
 #ao-search-btn-grp:hover {
 	cursor: pointer;

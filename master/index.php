@@ -256,12 +256,13 @@ This variant is to be used when loading the separate styling modules -->
 
                         <!-- Search Button -->
                         <div id="ao-search-btn-grp" class="pull-left visible-sm visible-md visible-lg"> 
-                            <ul class="nav navbar-nav ">
+                            <ul class="nav navbar-nav ao-group-search-btn">
 
                                 <li class="ao-search-btn">
                                     <a class="main-nav-search-btn" type="submit">Search</a>
                                 </li>
-                                <li class="dropdown"  >
+
+                                <li class="dropdown <?php if($UData['ISRECRUITER'] != true){echo 'hidden';}else{echo 'asdasd';}?>"  >
                                     <a id="ao-show-btn" data-toggle="dropdown" class="dropdown-toggle">
                                         <i class="fa fa-caret-down"></i>
                                     </a>

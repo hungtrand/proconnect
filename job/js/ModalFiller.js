@@ -58,8 +58,8 @@ ModalFiller.prototype = {
 			that.industries.text(pretense.find('.industry').val());
 			that.applyBtn.on('click', function(ev) {
 				ev.preventDefault();
-				that.applyBtn.css('background-color', '#A9F5A9');
-				that.applyBtn.innerHTML('Applied');
+				that.applyBtn.css('background-color', '#BFFF00');
+				that.applyBtn.text('Applied');
 				alert('You have successfully applied for this job');
 			});
 		});

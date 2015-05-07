@@ -135,6 +135,7 @@ $(document).ready(function() {
 
 			var newSkill = $("#skill-input").val();
 			var skillList = {};
+
 			$.each($(this).find("ul#skill-list-edit li"),function(i,li){
 				var skillName = $(li).find("span.skill-pill-name").text();
 				var endorsementNum = $(li).find("span.badge").text();
@@ -180,7 +181,6 @@ $(document).ready(function() {
 
 			if( $(this).parent("div").attr("id") === "skills-endorsements-edit") { //grabbing skill data
 				var skillList = {};
-				// console.log($(this).find("ul#skill-list-edit"));
 				$.each($(this).find("ul#skill-list-edit li"),function(i,li){
 					var skillName = $(li).find("span.skill-pill-name").text();
 					var endorsementNum = $(li).find("span.badge").text();
