@@ -33,4 +33,8 @@ $(document).ready(function() {
 			$('#interest-container').animate({opacity: 0}, 600);			
 		}
 	});
+
+	$(window).on('hashchange', function() {
+	  //.. work ..
+	});
 });
