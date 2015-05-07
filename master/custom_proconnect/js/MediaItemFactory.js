@@ -119,7 +119,7 @@ function MessageItem(data){
 		oItem.updateServer(obj,function(d){
 			console.log('d');
 		});
-		window.location.href = "/message/"; //manually redirect user
+		// window.location.href = "/message/"; //manually redirect user
 	});
 
 	

@@ -26,13 +26,16 @@ SetUpForm.prototype = {
 	init: function() {
 		var that = this;
 		that.theForm.on('submit', function(e) {
+			console.log('clicked');
 			e.preventDefault();
-			if (!that.validate()) return false;
+			// e.stopPropagation();
+
+			// if (!that.validate()) return false;
 			
-			that.Alert.html(that.waitingGif);
-			that.Alert.toggleClass();
-			that.Alert.show();
-			that.submit();
+			// that.Alert.html(that.waitingGif);
+			// that.Alert.toggleClass();
+			// that.Alert.show();
+			// that.submit();
 		});
 
 		that.CountryInput.on('keyup', function(e) { that.reset(); });
