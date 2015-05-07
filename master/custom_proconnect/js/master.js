@@ -77,9 +77,9 @@ $(document).ready(function(){
 		});*/
 	var mc = new Hammer.Manager(document.getElementById('swipeBox'), {'preventDefault': true});
 	// mc.add( new Hammer.Pan({ direction: Hammer.DIRECTION_ALL, threshold: 0 }) );
-	mc.add( new Hammer.Swipe({ event: 'open', pointers: 1, threshold: 20, direction: Hammer.DIRECTION_RIGHT, velocity: 0.001 }));
-	mc.add( new Hammer.Swipe({ event: 'close', pointers: 1, threshold: 20, direction: Hammer.DIRECTION_LEFT, velocity: 0.001 }));
-	mc.add( new Hammer.Swipe({ event: 'refresh', pointers: 2, threshold: 20, direction: Hammer.DIRECTION_DOWN , velocity: 0.001 }));
+	mc.add( new Hammer.Swipe({ event: 'open', pointers: 1, threshold: 20, direction: Hammer.DIRECTION_RIGHT, velocity: 0.02 }));
+	mc.add( new Hammer.Swipe({ event: 'close', pointers: 1, threshold: 20, direction: Hammer.DIRECTION_LEFT, velocity: 0.02 }));
+	mc.add( new Hammer.Swipe({ event: 'refresh', pointers: 2, threshold: 20, direction: Hammer.DIRECTION_DOWN , velocity: 0.02 }));
 	mc.add( new Hammer.Tap({ event: 'tapclose', pointers: 1}));
 
 	mc.on("open", function(ev) {
