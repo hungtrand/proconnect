@@ -185,12 +185,15 @@ FeedList.prototype = {
 			var thisData = json[i];
 			ele.css('cursor', 'pointer');
 			ele.find('*').unbind('click');
+			ele.find('a').removeAttr('href');
+			ele.append('<input type="hidden" class="dataIndex" value="' + i + '" />');
 			ele.on('click', function(e) {
 				e.stopPropagation();
-				that.activateModal(thisData);
+				var index = $(this).find('.dataIndex').val();
+				that.activateModal(json[index]);
 			});
 
-			ele.find('a').removeAttr('href');
+
 			ele.find('img, a').on('click', function(e) {
 				e.preventDefault();
 				e.stopPropagation();
