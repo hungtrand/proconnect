@@ -101,7 +101,7 @@ ob_start();
     </div>
 
     <div class="row">
-        <div class="col col-xs-12 col-md-4 visible-xs-block text-center" id="posting-job2">
+        <div class="col col-xs-12 col-md-4 visible-xs-block text-center posting-job2 <?php if($UData['ISRECRUITER'] != true){echo 'hidden';}else{echo 'asdasd';}?>" id="">
             <div class="well text-left">
                 <p><h4>Are you hiring?</h4></p>
                 <hr />
@@ -133,7 +133,7 @@ ob_start();
             </a> -->
         </div>
 
-        <div class="col col-xs-12 col-md-4 hidden-xs text-center" id="posting-job2">
+        <div class="col col-xs-12 col-md-4 hidden-xs text-center posting-job2 <?php if($UData['ISRECRUITER'] != true){echo 'hidden';}else{echo 'asdasd';}?>" id="">
             <div class="well text-left">
                 <p><h4>Are you hiring?</h4></p>
                 <hr />
