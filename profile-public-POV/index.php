@@ -120,7 +120,7 @@ if (isset($_COOKIE['__USER_PROFILE_IMAGE__'])) {
 					<div class="panel panel-default">
 						<div class="panel-heading panel-heading-gray">
 							<i class="fa fa-wrench "></i>		
-							&nbsp;Skills and Endorsements		  
+							&nbsp;Skills		  
 						</div>
 						<!-- normal-view -->
 						<div id="skills-endorsements" class="normal-view "> 
