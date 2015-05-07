@@ -151,7 +151,7 @@ InterestFiller.prototype = {
 			that.div.on('click', function(ev) {
 				ev.preventDefault();
 				window.location.hash = value.INTERESTID;
-				$('#interest-container').hide();
+				$('#interest-container').animate({opacity: 0}, 600);
 				callback(data);
 			});
 			that.init();
