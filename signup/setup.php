@@ -115,7 +115,7 @@
 								<div class="form-group">
 									  <label class="control-label" for="usertype">I am currently</label> <br />
 									 <label class="radio-inline">
-									  <input class= "signup-option" type="radio" name="EmploymentStatus" id="inlineRadio1" value="employed" checked> Employed
+									  <input class= "signup-option" type="radio" name="EmploymentStatus" id="inlineRadio1" value="employed" checked> Employer
 									</label>
 									<label class="radio-inline">
 									  <input class= "signup-option" type="radio" name="EmploymentStatus" id="inlineRadio2" value="looking" > Job Seeker
