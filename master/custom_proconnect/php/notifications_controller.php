@@ -47,7 +47,10 @@ try {
 			case 'MessageItemID':
 				$id = (int)$_POST['data']['id'];
 				$messageObj = new MessageView( $id );
+				$messageObj->setIsCreator(false);
 				$messageObj->setRead(true);
+				$messageObj->setArchived(false);
+				$messageObj->setDeleted(false);
 				$messageObj->update();
 				break;
 			case 'NotificationItemID':
