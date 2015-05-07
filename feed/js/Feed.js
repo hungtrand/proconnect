@@ -48,7 +48,10 @@ Feed.prototype = {
 		feed.find('.contentHeading').text(heading);
 		feed.find('.contentImageLink').attr('href', that.data['ImageURL'])
 			.attr('data-title', that.data['ContentMessage']);
-		feed.find('.contentImage').attr('src', that.data['ImageURL']);
+		if (that.data['ImageURL'])
+			feed.find('.contentImage').attr('src', that.data['ImageURL']);
+		else 
+			feed.find('.contentImage').hide();
 		feed.find('.contentMessage').html(that.data['ContentMessage']);
 		feed.find('.InterestCategory').text(that.data['InterestCategory']);
 		feed.find('.timestamp').html(that.data['Timestamp']);

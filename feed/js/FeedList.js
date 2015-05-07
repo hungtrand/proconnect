@@ -184,7 +184,15 @@ FeedList.prototype = {
 			var ele = feed.getView();
 			var thisData = json[i];
 			ele.css('cursor', 'pointer');
+			ele.find('*').unbind('click');
 			ele.on('click', function(e) {
+				e.stopPropagation();
+				that.activateModal(thisData);
+			});
+
+			ele.find('a').removeAttr('href');
+			ele.find('img, a').on('click', function(e) {
+				e.preventDefault();
 				e.stopPropagation();
 				that.activateModal(thisData);
 			});
