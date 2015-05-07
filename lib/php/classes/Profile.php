@@ -17,7 +17,7 @@ class Profile extends ViewRecord {
 							, 'GENDER', 'BIRTHDAY', 'ADDRESS', 'CITY', 'STATE', 'ZIP'
 							, 'SUMMARY', 'PROFILEIMAGE', 'PHONE', 'PHONETYPE', 'EMPLOYMENTSTATUS'
 							, 'COUNTRY', 'ACCOUNTID', 'EMAIL', 'EMAIL_ALT'
-							, 'USERNAME', 'PASSWORD', 'ACTIVE', 'VERIFIED'];
+							, 'USERNAME', 'PASSWORD', 'ACTIVE', 'VERIFIED', 'ISRECRUITER'];
 	public static $PseudoColumns = ['TITLE', 'ORGANIZATION', 'LOCATION'];
 	
 	private $data = [];
@@ -112,6 +112,10 @@ class Profile extends ViewRecord {
 	/* End of Implementing Abstract Methods */
 
 	// Get methods
+	public function isRecruiter() {
+		return (bool)trim($this->data['ISRECRUITER']);
+	}
+	
 	public function getName($isFullName=null) {
 		if ($isFullName)
 			return $this->data['NAME'];

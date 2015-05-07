@@ -35,7 +35,11 @@ if ($acc) {
 
 	session_start();
 
-	$_SESSION['__USERDATA__'] = json_encode($user->getData());
+	// $_SESSION['__USERDATA__'] = json_encode($user->getData());
+	$var= $user->getData();
+	$var['ISRECRUITER'] = (bool)trim($var['ISRECRUITER']);
+	$_SESSION['__USERDATA__'] = json_encode($var);
+
 	echo $_SESSION['__USERDATA__'];
 
 	$FullName = $user->getName();
