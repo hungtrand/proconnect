@@ -59,6 +59,7 @@ ModalFiller.prototype = {
 			that.applyBtn.on('click', function(ev) {
 				ev.preventDefault();
 				that.applyBtn.css('background-color', 'green');
+				that.applyBtn.innerHTML('Applied');
 				alert('You have successfully applied for this job');
 			});
 		});
