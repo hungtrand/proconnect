@@ -6,6 +6,7 @@
  * @return  string
  */
 function timetostr($timestamp) {
+    return '';
     $age = time() - strtotime($timestamp);
     if ($age == 0)
         return "just now";
