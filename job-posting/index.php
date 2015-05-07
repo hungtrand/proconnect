@@ -31,7 +31,7 @@ ob_start();
             <div class="col col-xs-12 col-md-4 text-center">
                  <div id="imgupload">
                     <div class="form-group">
-                        <a id="btnAttachImg" class="btn"><img id="ImagePreview" src="../image/companyimg" style="width:100%;"></a>
+                        <a id="btnAttachImg" class="btn hidden-xs"><img id="ImagePreview" src="../image/companyimg" style="width:100%;"></a>
                         <div class="hiddenInputs">
                             <form id="formCompanyImage">
                                 <input type="file" class="hidden" id="CompanyImage" name="CompanyImage" /><!-- temp image / not yet uploaded -->

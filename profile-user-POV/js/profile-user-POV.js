@@ -181,6 +181,7 @@ $(document).ready(function() {
 
 			if( $(this).parent("div").attr("id") === "skills-endorsements-edit") { //grabbing skill data
 				var skillList = {};
+
 				$.each($(this).find("ul#skill-list-edit li"),function(i,li){
 					var skillName = $(li).find("span.skill-pill-name").text();
 					var endorsementNum = $(li).find("span.badge").text();

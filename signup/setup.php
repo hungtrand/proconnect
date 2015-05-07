@@ -1,6 +1,6 @@
 <?php
-    error_reporting(E_ALL); // debug
-    ini_set("display_errors", 1); // debug
+    // error_reporting(E_ALL); // debug
+    // ini_set("display_errors", 1); // debug
     include '../signin/php/session_check.php';
 ?>
 
@@ -67,7 +67,8 @@
 					<header class="text-center"><a href= "../"><img id= "logo" src = "../image/proconnect/logo_text.png"></a></header>
 					<div class="panel panel-default text-center">
 						<div class= "panel-body">
-							<form id="SetUpForm" action="php/Setup_controller.php" class="text-left" novalidate>
+							<!-- php/Setup_controller.php -->
+							<form id="SetUpForm" action="#" class="text-left" novalidate>
 								<div class="form-group">				
 									<label for="country">Country</label> <br />
 									 <label class="radio-inline">
@@ -77,8 +78,6 @@
 									  <input class= "country-option" type="radio" name="inlineRadioOptions-country" id="inlineRadio2-country" value="Other" > Other
 									</label>
 								</div>
-								
-
 								
 								<div class = "other-country-group" style = "display: none;">
 									<div class="form-group" id="countryname-group" >
@@ -116,7 +115,7 @@
 								<div class="form-group">
 									  <label class="control-label" for="usertype">I am currently</label> <br />
 									 <label class="radio-inline">
-									  <input class= "signup-option" type="radio" name="EmploymentStatus" id="inlineRadio1" value="employed" checked> Employed
+									  <input class= "signup-option" type="radio" name="EmploymentStatus" id="inlineRadio1" value="employed" checked> Employer
 									</label>
 									<label class="radio-inline">
 									  <input class= "signup-option" type="radio" name="EmploymentStatus" id="inlineRadio2" value="looking" > Job Seeker
