@@ -114,11 +114,12 @@
 								  <!--I am Currently-->
 								<div class="form-group">
 									  <label class="control-label" for="usertype">I am currently</label> <br />
-									 <label class="radio-inline">
-									  <input class= "signup-option" type="radio" name="EmploymentStatus" id="inlineRadio1" value="employed" checked> Employer
-									</label>
+									
 									<label class="radio-inline">
-									  <input class= "signup-option" type="radio" name="EmploymentStatus" id="inlineRadio2" value="looking" > Job Seeker
+									  <input class= "signup-option" type="radio" name="EmploymentStatus" id="inlineRadio2" value="looking" checked> Job Seeker
+									</label>
+									 <label class="radio-inline">
+									  <input class= "signup-option" type="radio" name="EmploymentStatus" id="inlineRadio1" value="employed" > Employer
 									</label>
 									<label class="radio-inline">
 									  <input class= "signup-option" type="radio" name="EmploymentStatus" id="inlineRadio3" value="student" > Student
@@ -128,7 +129,7 @@
 									</label>
 								</div>
 								<!--For employed-->	 
-								<div id= "employedSelection">
+								<div id= "employedSelection" style= "display:none;">
 									<div class="form-group">
 									  <!-- Job title-->
 									  <label class="control-label" for="jobTitle">Job title</label> <br />
@@ -146,7 +147,7 @@
 									</div>
 								</div>
 									<!--For Job Seekers-->
-								<div  id= "jobSeekerSelection" style= "display:none;">
+								<div  id= "jobSeekerSelection" >
 									  <!--Most recent Job title-->
 									 <div class="form-group">
 									  <label class="control-label" for="recentJobTitle">Most recent Job title</label>
