@@ -53,7 +53,7 @@ Messages.prototype = {
 			case "Trash":
 				$("#remove-trash").show();
 				conn.find("#footers ol").append('<li role="presentation"><a href="#" class="recover-message"><span class="glyphicon glyphicon-transfer"></span>&nbsp;&nbsp;Recover</a></li>');
-				conn.find("#footers ol").append('<li role="presentation"><a href="#" class="remove-mail" ><span class="glyphicon glyphicon-trash"></span>&nbsp;Trash</a></li>');
+				//conn.find("#footers ol").append('<li role="presentation"><a href="#" class="remove-mail" ><span class="glyphicon glyphicon-trash"></span>&nbsp;Trash</a></li>');
 			break;
 			case "SearchedBox":
 				conn.find("#footers ol").append('<li role="presentation"><a href="#" class="message-friend"><span class="glyphicon glyphicon-envelope"></span>&nbsp;Reply</a></li>');

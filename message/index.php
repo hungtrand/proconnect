@@ -112,7 +112,7 @@ ob_start();
 
     </div>
     <div class="message-content" class="well well-sm">
-        <button type="submit" class="btn btn-primary send-btn">Submit</button>
+        <button type="submit" class="btn btn-primary send-btn">Send</button>
         <button type="button" class="btn btn-default cancel-btn">Cancel</button>
      </div>
 </script>
