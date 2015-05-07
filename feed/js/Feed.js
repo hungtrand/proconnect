@@ -132,7 +132,7 @@ Feed.prototype = {
 				'CommentMessage': that.txtNewComment.val().trim()
 			};
 
-			var url = 'php/comment_controller.php';
+			var url = '/feed/php/comment_controller.php';
 			that.submit(data, url, function(json) {
 				// console.log(json);
 				if (typeof json != 'string') {
