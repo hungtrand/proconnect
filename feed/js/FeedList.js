@@ -183,7 +183,9 @@ FeedList.prototype = {
 			var columnNum = (that.feedZoneNum++)%3+1;
 			var ele = feed.getView();
 			var thisData = json[i];
-			ele.on('click', function() {
+			ele.css('cursor', 'pointer');
+			ele.on('click', function(e) {
+				e.stopPropagation();
 				that.activateModal(thisData);
 			});
 
@@ -202,7 +204,7 @@ FeedList.prototype = {
 
 		var modal = $('.feedModal');
 		var ele = new Feed(eleData, that.FullTemplate);
-console.log(ele.getView());
+
 		modal.find('.modal-body').html(ele.getView());
 		modal.modal('show');
 	},
