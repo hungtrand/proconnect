@@ -1,7 +1,7 @@
 <?php
 // require_once "../sqlConnection.php"; // for testing
 // require_once __DIR__."/User.php"; // for testing
-require_once __DIR__."/Feed2User.php";
+require_once __DIR__."/Feed.php";
 require_once __DIR__."/RecordSet.php";
 
 /**
@@ -10,7 +10,7 @@ require_once __DIR__."/RecordSet.php";
 *	Responsibilities: load the user's feed data or get the data from database. 
 */
 
-class Feed2UserManager extends RecordSet {
+class FeedManager extends RecordSet {
 	protected $PrimaryKey;
 	protected $TableName;
 	protected $Columns;
@@ -20,15 +20,16 @@ class Feed2UserManager extends RecordSet {
 
 	public $err;
 
-	function __construct($User) {
-		$this->PrimaryKey = Feed2User::$PrimaryKey;
-		$this->TableName = Feed2User::$TableName;
-		$this->Columns = Feed2User::$Columns;
+	function __construct($User = null) {
+		$this->PrimaryKey = Feed::$PrimaryKey;
+		$this->TableName = Feed::$TableName;
+		$this->Columns = Feed::$Columns;
 		$this->User = $User;
 
 		parent::__construct();
 
-		$this->load($User);
+		if (isset($User))
+			$this->User = $User;
 	}
 
 	// OVERRIDE
@@ -36,8 +37,10 @@ class Feed2UserManager extends RecordSet {
 		return $this->Columns;
 	}
 
-	public function load($User) {
-		$this->User = $User;
+	public function load($User = null) {
+		if (isset($this->User))
+			$this->User = $User;
+
 		if (!$this->loadPage(1, 10)) return false; // default: load page 1 on initialization
 
 		return true;
@@ -69,30 +72,6 @@ class Feed2UserManager extends RecordSet {
 		$cond = "WHERE USERID = ? and FEEDID > ? ";
 		$cond.= "ORDER BY ".$orderby;
 		$params = ['USERID'=>$this->User->getID(), 'FEEDID'=>$newerThanID];
-		if (!$this->data = $this->fetchCustom($cond, $params)) return false;
-
-		return true;
-
-	}
-
-	public function loadInterest($page, $numRows, $interest = '', $orderby="DATECREATED DESC") {
-		if (!is_integer($page) || !is_integer($numRows)) {
-			$this->err = "Parameters must be integers";
-			return false;
-		}
-
-		$offset = $page * $numRows - $numRows;
-
-		$cleanKW = str_replace("'", "''", $interest);
-		$cleanKW = str_replace([",", ";"], "", $cleanKW);
-		$cleanKW = trim($cleanKW);
-
-		$cond = "WHERE USERID <> ? ";
-		if (isset($interest) && $interest != '')
-			$cond .= "AND INTERESTCATEGORY LIKE '%$cleanKW%' ";
-
-		$cond.= "ORDER BY ".$orderby." LIMIT ". $offset .", ". $numRows;
-		$params = ['USERID'=>$this->User->getID()];
 		if (!$this->data = $this->fetchCustom($cond, $params)) return false;
 
 		return true;

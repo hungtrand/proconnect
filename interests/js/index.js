@@ -8,6 +8,7 @@ $(document).ready(function() {
 		$('#interest-wrapper').css('right','0px');
 	} else {
 		// console.log('not phone');
+		feedList.CardView = true;
 		feedList.loadCardView();
 		$('#interest-wrapper').css('right','-15px');
 	}
@@ -22,8 +23,24 @@ $(document).ready(function() {
 	    }
 	});
 
+	var interestsData = [];
 	var interestFiller = new InterestFiller();
-	interestFiller.load();
+	interestFiller.load(function(data) {
+		interestsData = data;
+
+		if (!window.location.hash) return;
+
+		var interestID = window.location.hash.substring(1);
+  		interestID  = parseInt(interestID);
+  		var interest = $('#'+interestID).find('.interestName').val();
+  		feedList.setInterest(interest);console.log(interest);
+		
+		if(isMobile.phone) {
+			feedList.load();
+		} else {
+			feedList.loadCardView();
+		}
+	});
 	// var TypeAhead = new typeahead();
 	$('.interest-expand').on('click', function(ev) {
 		ev.preventDefault();
@@ -34,7 +51,5 @@ $(document).ready(function() {
 		}
 	});
 
-	$(window).on('hashchange', function() {
-	  //.. work ..
-	});
+	
 });

@@ -22,6 +22,7 @@ function InterestFiller() {
 	this.data;
 	this.divData =[];
 	this.init();
+	this.repositoryElement;
 }
 
 InterestFiller.prototype = {
@@ -50,7 +51,7 @@ InterestFiller.prototype = {
 			$.each(data, function(index, value) {
 				var repositoryItem = $(value).find('.interestName').attr('value').toLowerCase();
 				var repositoryID = '#'+$(value).find('.interestID').attr('value');
-
+				that.repositoryElement = $(repositoryID);
 				var reg = new RegExp(searchedItem, 'g');
 				var arr = repositoryItem.match(reg);
 				console.log(arr);
@@ -107,10 +108,10 @@ InterestFiller.prototype = {
 	// 	// end of typeahead
 	// },
 
-	load: function() {
+	load: function(callback) {
 		var that = this;
 		that.fetch( function(jsonData) {
-			that.create(jsonData);
+			that.create(callback);
 		});
 	},
 
@@ -127,7 +128,7 @@ InterestFiller.prototype = {
 			try {
 				json = $.parseJSON(json.trim());
 				that.data = json;
-				console.log(that.data);
+				//console.log(that.data);
 				callback(json);
 			} catch (ev) {
 				console.log('stuff');
@@ -150,10 +151,12 @@ InterestFiller.prototype = {
 			that.div.on('click', function(ev) {
 				ev.preventDefault();
 				window.location.hash = value.INTERESTID;
+				$('#interest-container').hide();
+				callback(data);
 			});
 			that.init();
 		});
-			console.log(that.divData);
+			//console.log(that.divData);
 			that.setInputReader();
 			that.container.append(that.divData);
 	},

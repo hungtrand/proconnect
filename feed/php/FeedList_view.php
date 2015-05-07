@@ -36,5 +36,16 @@ class FeedList_view implements view {
 
 		return true;
 	}
+
+	public function loadFeeds($feeds) {
+		foreach ($feeds as $f) {
+			$fView = new Feed_view();
+			$fView->loadFeed($f);
+			$out = $fView->getView();
+
+			array_push($this->FinalView, $out);
+		}
+
+	}
 }
 ?>

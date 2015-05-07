@@ -1,6 +1,8 @@
 function FeedList(container) {
 	this.data = [];
 	this.unreadCache = [];
+	this.Interest;
+	this.CardView;
 
 	this.container = container;
 	this.page = 0;
@@ -19,6 +21,7 @@ FeedList.prototype = {
 		var that = this;
 		this.Alert = $('#FeedListEndAlert');
 		setInterval(function() {
+			if (that.Interest) return;
 			that.fetchNewest();
 		}, 15000);
 	},
@@ -32,6 +35,10 @@ FeedList.prototype = {
 			data['afterID'] = intNewerThanID;
 		else
 			data['page'] = that.page;
+
+		if (that.Interest) {
+			data['Interest'] = that.Interest;
+		}
 
 		$.ajax({
 			url: '/feed/php/FeedList_controller.php',
@@ -87,6 +94,7 @@ FeedList.prototype = {
 
 	load: function() {
 		var that = this;
+		that.container.find('div').html('');
 		that.container.append(that.waitingGif);
 
 		that.page = 1;
@@ -102,7 +110,7 @@ FeedList.prototype = {
 	// Card View for Interest page
 	loadCardView: function() {
 		var that = this;
-
+		that.container.find('div').html('');
 		that.container.append(that.waitingGif);
 
 		that.page = 1;
@@ -203,5 +211,11 @@ FeedList.prototype = {
 			}, 2000);
 		});
 		
+	},
+
+	setInterest: function(newInterest) {
+		var that = this;
+
+		that.Interest = newInterest;
 	}
 }

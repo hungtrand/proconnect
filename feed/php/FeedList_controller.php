@@ -1,12 +1,13 @@
 <?php
-// error_reporting(E_ALL); // debug
-// ini_set("display_errors", 1); // debug
+//error_reporting(E_ALL); // debug
+//ini_set("display_errors", 1); // debug
 require_once __DIR__."/../../lib/php/sqlConnection.php";
 require_once __DIR__."/../../lib/php/classes/Account.php";
 require_once __DIR__."/../../lib/php/classes/AccountAdmin.php";
 require_once __DIR__."/../../lib/php/classes/User.php";
 require_once __DIR__."/../../lib/php/classes/Feed.php";
 require_once __DIR__."/../../lib/php/classes/Feed2UserManager.php";
+require_once __DIR__."/../../lib/php/classes/vw_FeedManager.php";
 require_once __DIR__."/FeedList_view.php";
 
 // Check if logged in
@@ -40,20 +41,34 @@ else $page = 1;
 $rowsaPage = 12;
 
 if (isset($_POST['afterID'])) $afterID = (int)$_POST['afterID'];
+if (isset($_POST['Interest'])) $Interest = trim($_POST['Interest']);
 
 try {
 	$fum = new Feed2UserManager($User);
 
 	if (is_numeric($afterID))
 		$fum->loadNewer($afterID);
+	elseif (strlen($Interest)) {
+		$fim = new vw_FeedManager($User);
+		$fim->load($page, $rowsaPage, $Interest);
+	}
 	else
 		$fum->loadPage($page, $rowsaPage);
 	
-	$feeds = $fum->getAll();
+	if (strlen($Interest)) {
+		$feeds = $fim->getAll();
 
-	$view = new FeedList_view();
-	$view->load($feeds);
-	$data = $view->getView();
+		$view = new FeedList_view();
+		$view->loadFeeds($feeds);
+		$data = $view->getView();
+	} else {
+		$feeds = $fum->getAll();
+
+		$view = new FeedList_view();
+		$view->load($feeds);
+		$data = $view->getView();
+	}
+	
 
 	// echo "\n".json_encode($fum->getData())."\n";
 } catch (Exception $e) {
