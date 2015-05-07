@@ -107,7 +107,7 @@ This variant is to be used when loading the separate styling modules -->
         <li class="media custom-media-item">
             <div class="media-left">
                 <a class="user-url" href="#">
-                    <img class="media-object thumb" src="/image/user_img.png" alt="default">
+                    <img class="media-object img-circle" src="../image/user_img.png" alt="default" style="object-fit: cover;" width="30px" height="30px" >
                 </a>
             </div>
             <div class="media-body custom-media-body">
